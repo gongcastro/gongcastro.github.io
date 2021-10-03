@@ -6,16 +6,25 @@
     <description>Recent content in Posts on Gonzalo García-Castro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Dec 2020 21:13:14 -0500</lastBuildDate><atom:link href="http://gongcastro.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://gongcastro.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello R Markdown</title>
-      <link>http://gongcastro.github.io/2020/12/01/hello-r-markdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      <title>Visualising polynomial regression</title>
+      <link>http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/</link>
+      <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://gongcastro.github.io/2020/12/01/hello-r-markdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
+      <guid>http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/</guid>
+      <description>TL;DRThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.
+Why polynomialsWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation</description>
+    </item>
+    
+    <item>
+      <title>How similar is the word &#34;mask&#34; across languages?</title>
+      <link>http://gongcastro.github.io/2020/11/20/how-similar-is-the-word-mask-across-languages/</link>
+      <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://gongcastro.github.io/2020/11/20/how-similar-is-the-word-mask-across-languages/</guid>
+      <description>The ubiquity of masks has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. I gathered a big-ish dataset with translation equivalents of the word mask across ~110 languages. I tweeted about this today, and wanted to dedicate some more lines to nuance.
+The ubiquity of #masks😷 has given psycholinguists a frequent-ish stimulus to use in experiments.</description>
     </item>
     
     <item>
