@@ -26,6 +26,6 @@ options(blogdown.hugo.version = "0.80.0")
 
 # copy public/ to docs/
 public_to_docs <- function() {
-dir.create("docs")
-file.copy("public", "docs", recursive = TRUE)
+  dir.create("docs", showWarnings = FALSE)
+  file.copy("public", "docs", recursive = TRUE)
 }
