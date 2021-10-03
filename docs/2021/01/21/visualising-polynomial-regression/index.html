@@ -1,70 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Visualising polynomial regression | Gonzalo García-Castro</title>
-<meta name="keywords" content="" />
-<meta name="description" content="TL;DRThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.
-Why polynomialsWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation">
 <meta name="author" content="Gonzalo Garcia-Castro">
-<link rel="canonical" href="http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.2dbef8664bbfb3e83a0a44fd4a8fc5010240dbcd1dbc1400753b928b497b8f5e.css" integrity="sha256-Lb74Zku/s&#43;g6CkT9So/FAQJA280dvBQAdTuSi0l7j14=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
-    onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="http://gongcastro.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://gongcastro.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://gongcastro.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://gongcastro.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="http://gongcastro.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.80.0" />
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><meta property="og:title" content="Visualising polynomial regression" />
-<meta property="og:description" content="TL;DRThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.
+<meta name="description" content="TL;DRThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.
 Why polynomialsWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-01-21T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-01-21T00:00:00&#43;00:00" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/" />
+
+
+    <title>
+        
+            Visualising polynomial regression :: Gonzalo García-Castro 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.edb08d9474e18f675672f6f7b3debc9342ee3f0cb88e9fb4079620d09c53b30c.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Visualising polynomial regression">
+<meta itemprop="description" content="TL;DRThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.
+Why polynomialsWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation">
+<meta itemprop="datePublished" content="2021-01-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1598">
+
+
+
+<meta itemprop="keywords" content="" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Visualising polynomial regression"/>
@@ -72,131 +50,84 @@
 Why polynomialsWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation"/>
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "http://gongcastro.github.io/post/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Visualising polynomial regression",
-      "item": "http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Visualising polynomial regression",
-  "name": "Visualising polynomial regression",
-  "description": "TL;DR\r\rThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.\n\r\rWhy polynomials\rWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation",
-  "keywords": [
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-01-21 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
     
-  ],
-  "articleBody": "\r\r\rTL;DR\r\rThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.\n\r\rWhy polynomials\rWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation\n\\[y_i = \\beta_{0} + \\beta_{1}x_{i}\\]\nwhere \\(\\beta_{0}\\) is the intercept (the value of the input variable \\(x\\) where the output variable \\(y=0\\)), and where \\(\\beta_{1}\\) is the coefficient of the input variable (how much \\(y\\) increases for every unit increase in \\(x\\)). To illustrate this, let’s imagine we are curious abut what proportion of the students in a classroom are paying attention, and how this proportion changes as minutes pass. We could formalise our model as\n\\(y_i = \\beta_{0} + \\beta_{1} Time_i\\).\nLet’s generate some data to illustrate this example. Let’s say that, at the beginning of the lesson, almost 100% of the students are paying attention, but that after some time stop paying attention. Right before the end of the class, students start paying attention again.\nThe attention paid by the students did not decay linearly, but first dropped and rose up again, following a curvilinear trend. In these cases, we may want to perform some transformation on some input variables to account for this non-linear relationship. One of these transformations are polynomial transformations. In this context, when we talk about applying a polynomial function to a set of values, we usually mean exponentiating it by a positive number larger than 1. The power by which we exponentiate our variable defines the degree of the polynomial we are obtaining. Exponentiating our variable to the power of 2 will give us its second-degree polynomial. Exponentiating it by 3 will give us its third-degree polynomial, and so on. Back to our classroom example, we could add a new term to our regression equation: the second-degree polynomial of the input variable \\(Time\\), or even a third degree polynomial if we wanted to test to what extend our model follows a more complex pattern. Our regression trend will not be linear any more, but curvilinear. Let’s take a look at the anatomy of polynomials from a visual (and very informal perspective). Our model would look like this:\n\\[\ry_i = \\beta_{0} + \\beta_{1} Time_i + \\beta_{2} Time_{i}^2 + \\beta_{3} Time_{i}^3\r\\]\nAdding polynomial terms to our regression offers much flexibility to researchers when modelling this kind of associations between input and output variables. This practice is, for example, common in Cognitive Science when analysing repeated measures data such as eye-tracking data, where we register what participants fixated in a screen during a trial under several conditions. Polynomial regression could be considered as of the main techniques in the more general category of Growth Curve Analyis (GCA) methods. If you are interested in learning GCA, you should take a look at Daniel Mirman’s “Growth Curve Analysis and Visualization Using R” [book].\nPowerful as this technique is, it presents some pitfalls, especially to newbies like me. For instance, interpreting the outputs of a regression model that includes polynomials can tricky. In our example, depending on the values of the coefficients \\(\\beta_{1}\\), \\(\\beta_2\\) and \\(\\beta_3\\)–the first-degree and second-degree polynomials of \\(Time\\)–the shape of the resulting curve will be different. The combination of values that these two coefficient can take is infinite, and so is the number of potential shapes our curve can adopt. Interpreting how the values of these coefficients affect the shape of our model, and more importantly, their interaction with other predictors of interest in the model can be difficult without any kind of visualisation. The aim of this post is to visualise how the regression lines of a regression model changes with the degree of its polynomials. For computational constraints, and to make visualisation easier, I will only cover one, two, and three-degree polynomials. I will generate plots for multiple combinations of the coefficients of these polynomials using the base R function poly() to generate polynomials, the R package ggplot2() to generate plots, and the gganimate R package to animate the plots. I will briefly describe what is going on in each plot, but I hope the figures are themselves more informative than anything I can say about them!\n\rIntercept\rFirst, let’s start with how the value of the intercept (\\(\\beta_0\\)) changes the regression line for polynomials of different degree (1st, 2nd, and 3rd). I set the rest of the coefficients to arbitrary values for simplicity (\\(\\beta_1 = \\beta_2 = \\beta_3 = 1\\)). As you can see, regardless of the order of the polynomials involved in the model, increasing the intercept makes the line be higher in the Y-axis, and decreasing the value of the intercept makes the line be lower in the Y-axis. Simple as that.\nThe interpretation of the intercept is similar to how we interpret it in standard linear regression models. It tells us the value of \\(y\\) when all predictors are set to 0 (in our case \\(Time = 0\\)). As we will discuss later, what that means in practice depends on what that zero means for the other coefficients, that is, how we coded them. For now, let’s continue adding more terms to the equation.\n\rLinear term: adding a 1st-order polynomial\rNow let’s see how a linear model (with only a 1st degree polynomial) changes as we vary the value of \\(\\beta_1\\), the coefficient of the linear term \\(Time\\). As you can see, nothing special happens, the line just gets steeper, meaning that for every unit increase in \\(x\\), \\(y\\) increases (or decreases, depending on the sign) in \\(\\beta_1\\) units. When the coefficient equals zero, there is no increase nor decrease in \\(y\\) for any change in \\(x\\).\nWhen \\(\\beta_1=0\\), the resulting line is completely horizontal, parallel to the X-axis. This is what a model with just an intercept (\\(y = \\beta_{0}\\)) would look like. We generalise this to say that the linear model we just visualised is exactly the same as adding a 2nd and a 3rd degree polynomial to the model with their correspondent coefficients set to zero (\\(\\beta_2 = 0\\) and \\(\\beta_3 = 0\\), respectively).\n\rQuadratic: adding a 2nd-order polynomial\rNow things get a bit more interesting. When we add a second degree polynomial (\\(Time^2\\)), the line is not linear any more. If the coefficient of the 2nd-order polynomial (\\(\\beta_2\\)) is positive, the curve will go down and up in that order. When \\(\\beta_2 , the curve goes up and then down. When \\(\\beta_2 = 0\\), the curve turns out the be a line whose slope is defined by \\(\\beta_1\\), just like in the previous example.\nImportantly, varying the value of the coefficient of 1st-order polynomials (\\(\\beta_1\\)) also changes the shape of the curve: more positive values of \\(\\beta_1\\) make the curve “fold” at higher values of \\(x\\). As you can see, when \\(\\beta_1 (left panel, in blue), the point at which the curve starts increasing or decreasing occurs more to the left. When \\(\\beta_2  0\\), this change occurs more to the right.\n\rCubic: adding a 3rd-order polynomial\rFinally, let’s complicate things a bit more by adding a third-order polynomial. Now the curve will “fold” two times. The magnitude of \\(\\beta_3\\) (the coefficient of the 3rd-degree polynomial) determines how distant both folding points are in the y-axis. When \\(\\beta_3\\) is close to zero, both folding points get closer, resembling the shape we’ve seen in a model with just a 2nd-degree polynomial. In fact, when \\(\\beta_3 = 0\\), we get the same plot (compare the panel to the right-upper corner to the plot in the previous section). The sign of \\(\\beta_3\\) also determines whether the curve goes down-up-down or up-down-up: down-up-down if \\(\\beta_3 , and up-down-up if \\(\\beta_3  0\\).\nThe magnitude of \\(\\beta_2\\) (the coefficient of the 2rd-degree polynomial) determines the location of the mid-point between both folding points. For more positive values of \\(\\beta_2\\) this point is located higher in the y-axis, while for more negative values of \\(\\beta_2\\), this point is located lower in the y-axis. This value is a bit difficult to put in perspective in our practical example. Probably \\(\\beta_1\\) is more informative: \\(\\beta_1\\) changes the value of \\(x\\) at which the curve folds. More negative values of \\(\\beta_1\\) make the curve fold at lower values of \\(x\\), while more positive values of \\(\\beta_1\\) make the curve fold at higher values of \\(x\\).\n\rConclusion\rThere are way more things to say about polynomial regression, and it’s more than likely that I sacrifice accuracy for simplicity. After all, the aim of generating these animations was helping myself understand the outputs of polynomial models a bit more easily in the future. I hope it helps others too. If you consider something is misleading or inaccurate, please let me know! I’m the first interested in getting it right. Cheers!\n\rJust the code\r\r\rSession info\rsessionInfo()\r## R version 4.0.4 (2021-02-15)\r## Platform: x86_64-w64-mingw32/x64 (64-bit)\r## Running under: Windows 10 x64 (build 19041)\r## ## Matrix products: default\r## ## locale:\r## [1] LC_COLLATE=English_United States.1252 ## [2] LC_CTYPE=English_United States.1252 ## [3] LC_MONETARY=English_United States.1252\r## [4] LC_NUMERIC=C ## [5] LC_TIME=English_United States.1252 ## ## attached base packages:\r## [1] stats graphics grDevices utils datasets methods base ## ## other attached packages:\r## [1] blogdown_1.5\r## ## loaded via a namespace (and not attached):\r## [1] bookdown_0.22.3 digest_0.6.27 R6_2.5.0 jsonlite_1.7.2 ## [5] magrittr_2.0.1 evaluate_0.14 stringi_1.6.2 rlang_0.4.11 ## [9] jquerylib_0.1.4 bslib_0.2.5.1 rmarkdown_2.11.1 tools_4.0.4 ## [13] stringr_1.4.0 xfun_0.24 yaml_2.2.1 compiler_4.0.4 ## [17] htmltools_0.5.1.1 knitr_1.33 sass_0.4.0\r\r",
-  "wordCount" : "1598",
-  "inLanguage": "en",
-  "datePublished": "2021-01-21T00:00:00Z",
-  "dateModified": "2021-01-21T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "Gonzalo Garcia-Castro"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Gonzalo García-Castro",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "http://gongcastro.github.io/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://gongcastro.github.io/" accesskey="h" title="Gonzalo García-Castro (Alt + H)">Gonzalo García-Castro</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
             </span>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://gongcastro.github.io/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/gongcastro" title="GitHub">
-                    <span>GitHub</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://twitter.com/gongcastro" title="Twitter">
-                    <span>Twitter</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+        
+    </div>
+</a>
 
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title">
-      Visualising polynomial regression
-    </h1>
-    <div class="post-meta">January 21, 2021&nbsp;·&nbsp;Gonzalo Garcia-Castro
-</div>
-  </header> 
-  <div class="post-content">
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/cv/">CV</a></li><li><a href="https://github.com/gongcastro">GitHub</a></li><li><a href="/post/">Posts</a></li><li><a href="https://twitter.com/gongcastro">Twitter</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/">Visualising polynomial regression</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                
 <script src="http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
@@ -286,80 +217,35 @@ y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3
 ## [17] htmltools_0.5.1.1 knitr_1.33        sass_0.4.0</code></pre>
 </div>
 
+            </div>
+        </article>
 
-  </div>
+        <hr />
 
-  <footer class="post-footer">
-  </footer>
-</article>
+        <div class="post-info">
+            
+            
+  		</div>
     </main>
+
+            </div>
+
+            
+                <footer class="footer">
     
-<footer class="footer">
-    <span>&copy; 2021 <a href="http://gongcastro.github.io/">Gonzalo García-Castro</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
 
-<script>
-    let menu = document.getElementById('menu')
-    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-    menu.onscroll = function () {
-        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-    }
+            
+        </div>
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
+        
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
 
-</script>
-</body>
+<script type="text/javascript" src="/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
 
+
+
+    </body>
 </html>

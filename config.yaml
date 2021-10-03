@@ -1,5 +1,6 @@
-theme: "hugo-PaperMod"
-baseURL: http://gongcastro.github.io/
+theme: "hugo-theme-hello-friend-ng"
+baseURL: "http://gongcastro.github.io/"
+url-pretty: "gongcastro.gongcastro.io"
 languageCode: en-us
 title: "Gonzalo García-Castro"
 
@@ -15,9 +16,42 @@ permalinks:
   
 menu:
   main:
-    - name: About
-      url: /about/
+    - identifier: about
+      name: About
+      url: about/
+    - identifier: posts
+      name: Posts
+      url: post/
+    - identifier: cv
+      name: CV
+      url: cv/
     - name: GitHub
       url: https://github.com/gongcastro
     - name: Twitter
       url: https://twitter.com/gongcastro
+
+params:
+  social:
+    - name: twitter
+      url: https://twitter.com/gongcastro
+    - name: googlescholar
+      url: https://scholar.google.com/citations?user=fHetiuQAAAAJ
+    - name: orcid
+      url: https://orcid.org/0000-0002-8553-4209
+    - name: researchgate
+      url: https://www.researchgate.net/profile/Gonzalo-Garcia-Castro
+    - name: email
+      url: mailto:gonzalo.garciadecastro@upf.edu
+    - name: github
+      url: https://github.com/gongcastro
+    - name: gitlab
+      url: https://gitlab.com/gongcastro
+    - name: linkedin
+      url: https://linkedin.com/in/gongcastro
+    - name: docker
+      url: https://hub.docker.com/gongcastro
+    - name: stackoverflow
+      url: https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro
+    - name: twitch
+      url: https://www.twitch.tv/gongcastro
+
