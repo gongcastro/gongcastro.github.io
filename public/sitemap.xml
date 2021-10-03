@@ -18,43 +18,13 @@
   </url>
   
   <url>
-    <loc>http://gongcastro.github.io/categories/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gongcastro.github.io/2020/12/01/hello-r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gongcastro.github.io/tags/plot/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gongcastro.github.io/categories/r/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gongcastro.github.io/tags/r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gongcastro.github.io/tags/regression/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gongcastro.github.io/tags/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://gongcastro.github.io/2020/11/20/how-similar-is-the-word-mask-across-languages/</loc>
     <lastmod>2020-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gongcastro.github.io/categories/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -69,6 +39,11 @@
   
   <url>
     <loc>http://gongcastro.github.io/categories/rstats/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gongcastro.github.io/tags/</loc>
     <lastmod>2020-07-05T00:00:00+00:00</lastmod>
   </url>
   
