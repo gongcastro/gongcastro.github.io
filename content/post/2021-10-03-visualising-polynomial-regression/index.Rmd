@@ -25,7 +25,7 @@ $$y_i = \beta_{0} + \beta_{1}x_{i}$$
 
 where $\beta_{0}$ is the **intercept** (the value of the input variable $x$ where the output variable $y=0$), and where $\beta_{1}$ is the **coefficient** of the input variable (how much $y$ increases for every unit increase in $x$). To illustrate this, let's imagine we are curious abut what proportion of the students in a classroom are paying attention, and how this proportion changes as minutes pass. We could formalise our model as
 
-$y_i = \beta_{0} + \beta_{1} Time_i$.
+$y_i = \beta_{0} + \beta_{1} Time_i$
 
 Let's generate some data to illustrate this example. Let's say that, at the beginning of the lesson, almost 100% of the students are paying attention, but that after some time stop paying attention. Right before the end of the class, students start paying attention again.
 

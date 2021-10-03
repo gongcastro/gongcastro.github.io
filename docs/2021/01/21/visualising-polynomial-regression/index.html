@@ -9,13 +9,13 @@
 Why polynomialsWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation" />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
+<meta name="theme-color" content="#fcba03" />
 <link rel="canonical" href="http://gongcastro.github.io/2021/01/21/visualising-polynomial-regression/" />
 
 
     <title>
         
-            Visualising polynomial regression :: Gonzalo García-Castro 
+            Visualising polynomial regression :: Gonzalo García-Castro  — Developmental sycholinguistics and R
         
     </title>
 
@@ -29,6 +29,10 @@
 <link rel="stylesheet" href="/main.edb08d9474e18f675672f6f7b3debc9342ee3f0cb88e9fb4079620d09c53b30c.css">
 
 
+    
+        <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    
+
 
 
 
@@ -37,7 +41,7 @@
 <meta itemprop="description" content="TL;DRThe outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.
 Why polynomialsWhen modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation">
 <meta itemprop="datePublished" content="2021-01-21T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-01-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-03T17:07:50+02:00" />
 <meta itemprop="wordCount" content="1598">
 
 
@@ -80,10 +84,10 @@
     <div class="logo">
         
             <span class="logo__mark">></span>
-            <span class="logo__text">hello</span>
+            <span class="logo__text">$ cd /gongcastro/</span>
             <span class="logo__cursor" style=
                   "
-                   
+                   background-color:#fcba03;
                    ">
             </span>
         
@@ -145,7 +149,7 @@
 <p>When modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation</p>
 <p><span class="math display">\[y_i = \beta_{0} + \beta_{1}x_{i}\]</span></p>
 <p>where <span class="math inline">\(\beta_{0}\)</span> is the <strong>intercept</strong> (the value of the input variable <span class="math inline">\(x\)</span> where the output variable <span class="math inline">\(y=0\)</span>), and where <span class="math inline">\(\beta_{1}\)</span> is the <strong>coefficient</strong> of the input variable (how much <span class="math inline">\(y\)</span> increases for every unit increase in <span class="math inline">\(x\)</span>). To illustrate this, let’s imagine we are curious abut what proportion of the students in a classroom are paying attention, and how this proportion changes as minutes pass. We could formalise our model as</p>
-<p><span class="math inline">\(y_i = \beta_{0} + \beta_{1} Time_i\)</span>.</p>
+<p><span class="math inline">\(y_i = \beta_{0} + \beta_{1} Time_i\)</span></p>
 <p>Let’s generate some data to illustrate this example. Let’s say that, at the beginning of the lesson, almost 100% of the students are paying attention, but that after some time stop paying attention. Right before the end of the class, students start paying attention again.</p>
 <p><img src="/img/attention.png" /></p>
 <p>The attention paid by the students did not decay linearly, but first dropped and rose up again, following a curvilinear trend. In these cases, we may want to perform some transformation on some input variables to account for this non-linear relationship. One of these transformations are <strong>polynomial transformations</strong>. In this context, when we talk about applying a polynomial function to a set of values, we usually mean exponentiating it by a positive number larger than 1. The power by which we exponentiate our variable defines the degree of the polynomial we are obtaining. Exponentiating our variable to the power of 2 will give us its second-degree polynomial. Exponentiating it by 3 will give us its third-degree polynomial, and so on. Back to our classroom example, we could add a new term to our regression equation: the second-degree polynomial of the input variable <span class="math inline">\(Time\)</span>, or even a third degree polynomial if we wanted to test to what extend our model follows a more complex pattern. Our regression trend will not be linear any more, but curvilinear. Let’s take a look at the anatomy of polynomials from a visual (and very informal perspective). Our model would look like this:</p>
@@ -225,6 +229,7 @@ y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3
         <div class="post-info">
             
             
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="06a0dd7eec7981d79a0683ec4b4c98db87fffa2d" target="_blank" rel="noopener">06a0dd7</a> @ 2021-10-03</p>
   		</div>
     </main>
 
@@ -247,5 +252,27 @@ y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3
 
 
 
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
     </body>
 </html>

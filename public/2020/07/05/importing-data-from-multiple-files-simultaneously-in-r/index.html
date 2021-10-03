@@ -8,13 +8,13 @@
 <meta name="description" content="TL;DRWe need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using purrr::map in combination with do.call or dplyr::bind_rows is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to for loops (~220ms) or using lapply (~123 ms). data.table::fread is the fastest function for importing data." />
 <meta name="keywords" content=", rstats" />
 <meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
+<meta name="theme-color" content="#fcba03" />
 <link rel="canonical" href="http://gongcastro.github.io/2020/07/05/importing-data-from-multiple-files-simultaneously-in-r/" />
 
 
     <title>
         
-            Importing data from multiple files simultaneously in R :: Gonzalo García-Castro 
+            Importing data from multiple files simultaneously in R :: Gonzalo García-Castro  — Developmental sycholinguistics and R
         
     </title>
 
@@ -28,6 +28,10 @@
 <link rel="stylesheet" href="/main.edb08d9474e18f675672f6f7b3debc9342ee3f0cb88e9fb4079620d09c53b30c.css">
 
 
+    
+        <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    
+
 
 
 
@@ -35,7 +39,7 @@
 <meta itemprop="name" content="Importing data from multiple files simultaneously in R">
 <meta itemprop="description" content="TL;DRWe need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using purrr::map in combination with do.call or dplyr::bind_rows is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to for loops (~220ms) or using lapply (~123 ms). data.table::fread is the fastest function for importing data.">
 <meta itemprop="datePublished" content="2020-07-05T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-07-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-03T16:44:21+02:00" />
 <meta itemprop="wordCount" content="2301">
 
 
@@ -79,10 +83,10 @@
     <div class="logo">
         
             <span class="logo__mark">></span>
-            <span class="logo__text">hello</span>
+            <span class="logo__text">$ cd /gongcastro/</span>
             <span class="logo__cursor" style=
                   "
-                   
+                   background-color:#fcba03;
                    ">
             </span>
         
@@ -211,7 +215,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ihstwrvzuk .gt_table {
+#nevowpjllu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -236,7 +240,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-left-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_heading {
+#nevowpjllu .gt_heading {
   background-color: #141414;
   text-align: center;
   border-bottom-color: #141414;
@@ -248,7 +252,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-right-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_title {
+#nevowpjllu .gt_title {
   color: #FFFFFF;
   font-size: 125%;
   font-weight: initial;
@@ -258,7 +262,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-bottom-width: 0;
 }
 
-#ihstwrvzuk .gt_subtitle {
+#nevowpjllu .gt_subtitle {
   color: #FFFFFF;
   font-size: 85%;
   font-weight: initial;
@@ -268,13 +272,13 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-top-width: 0;
 }
 
-#ihstwrvzuk .gt_bottom_border {
+#nevowpjllu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_col_headings {
+#nevowpjllu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -289,7 +293,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-right-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_col_heading {
+#nevowpjllu .gt_col_heading {
   color: #FFFFFF;
   background-color: #141414;
   font-size: 100%;
@@ -309,7 +313,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   overflow-x: hidden;
 }
 
-#ihstwrvzuk .gt_column_spanner_outer {
+#nevowpjllu .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #141414;
   font-size: 100%;
@@ -321,15 +325,15 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   padding-right: 4px;
 }
 
-#ihstwrvzuk .gt_column_spanner_outer:first-child {
+#nevowpjllu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ihstwrvzuk .gt_column_spanner_outer:last-child {
+#nevowpjllu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ihstwrvzuk .gt_column_spanner {
+#nevowpjllu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -341,7 +345,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   width: 100%;
 }
 
-#ihstwrvzuk .gt_group_heading {
+#nevowpjllu .gt_group_heading {
   padding: 8px;
   color: #FFFFFF;
   background-color: #3b3d42;
@@ -363,7 +367,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   vertical-align: middle;
 }
 
-#ihstwrvzuk .gt_empty_group_heading {
+#nevowpjllu .gt_empty_group_heading {
   padding: 0.5px;
   color: #FFFFFF;
   background-color: #3b3d42;
@@ -378,15 +382,15 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   vertical-align: middle;
 }
 
-#ihstwrvzuk .gt_from_md > :first-child {
+#nevowpjllu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ihstwrvzuk .gt_from_md > :last-child {
+#nevowpjllu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ihstwrvzuk .gt_row {
+#nevowpjllu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -405,7 +409,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   overflow-x: hidden;
 }
 
-#ihstwrvzuk .gt_stub {
+#nevowpjllu .gt_stub {
   color: #FFFFFF;
   background-color: #141414;
   font-size: 100%;
@@ -417,7 +421,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   padding-left: 12px;
 }
 
-#ihstwrvzuk .gt_summary_row {
+#nevowpjllu .gt_summary_row {
   color: #FFFFFF;
   background-color: #141414;
   text-transform: inherit;
@@ -427,7 +431,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   padding-right: 5px;
 }
 
-#ihstwrvzuk .gt_first_summary_row {
+#nevowpjllu .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -437,7 +441,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-top-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_grand_summary_row {
+#nevowpjllu .gt_grand_summary_row {
   color: #FFFFFF;
   background-color: #141414;
   text-transform: inherit;
@@ -447,7 +451,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   padding-right: 5px;
 }
 
-#ihstwrvzuk .gt_first_grand_summary_row {
+#nevowpjllu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -457,11 +461,11 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-top-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_striped {
+#nevowpjllu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ihstwrvzuk .gt_table_body {
+#nevowpjllu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -470,7 +474,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-bottom-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_footnotes {
+#nevowpjllu .gt_footnotes {
   color: #FFFFFF;
   background-color: #141414;
   border-bottom-style: none;
@@ -484,13 +488,13 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-right-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_footnote {
+#nevowpjllu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ihstwrvzuk .gt_sourcenotes {
+#nevowpjllu .gt_sourcenotes {
   color: #FFFFFF;
   background-color: #141414;
   border-bottom-style: none;
@@ -504,46 +508,46 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
   border-right-color: #D3D3D3;
 }
 
-#ihstwrvzuk .gt_sourcenote {
+#nevowpjllu .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ihstwrvzuk .gt_left {
+#nevowpjllu .gt_left {
   text-align: left;
 }
 
-#ihstwrvzuk .gt_center {
+#nevowpjllu .gt_center {
   text-align: center;
 }
 
-#ihstwrvzuk .gt_right {
+#nevowpjllu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ihstwrvzuk .gt_font_normal {
+#nevowpjllu .gt_font_normal {
   font-weight: normal;
 }
 
-#ihstwrvzuk .gt_font_bold {
+#nevowpjllu .gt_font_bold {
   font-weight: bold;
 }
 
-#ihstwrvzuk .gt_font_italic {
+#nevowpjllu .gt_font_italic {
   font-style: italic;
 }
 
-#ihstwrvzuk .gt_super {
+#nevowpjllu .gt_super {
   font-size: 65%;
 }
 
-#ihstwrvzuk .gt_footnote_marks {
+#nevowpjllu .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="ihstwrvzuk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="nevowpjllu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="8" class="gt_heading gt_title gt_font_normal" style>Time taken to import and merge</th>
@@ -769,6 +773,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
         
     </p>
 
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="c5fd18d220a594a3e494a9707fa88423615f5fc8" target="_blank" rel="noopener">c5fd18d</a> @ 2021-10-03</p>
   		</div>
     </main>
 
@@ -791,5 +796,27 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
 
 
 
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
     </body>
 </html>

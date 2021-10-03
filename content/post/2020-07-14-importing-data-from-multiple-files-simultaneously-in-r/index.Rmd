@@ -7,6 +7,8 @@ categories:
   - rstats
 tags:
   - rstats
+header:
+  image: 'header.png'
 ---
 
 ## TL;DR

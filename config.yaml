@@ -4,6 +4,12 @@ url-pretty: "gongcastro.gongcastro.io"
 languageCode: en-us
 title: "Gonzalo García-Castro"
 
+PygmentsCodeFences: yes
+PygmentsStyle: monokai
+enableRobotsTXT: yes
+enableGitInfo: true
+enableEmoji: yes
+
 ignoreFiles:
   - \.Rmd$
   - \.Rmarkdown$
@@ -31,6 +37,7 @@ menu:
       url: https://twitter.com/gongcastro
 
 params:
+  customCSS: ["/css/custom.css"]
   social:
     - name: twitter
       url: https://twitter.com/gongcastro
@@ -49,9 +56,28 @@ params:
     - name: linkedin
       url: https://linkedin.com/in/gongcastro
     - name: docker
-      url: https://hub.docker.com/gongcastro
+      url: https://hub.docker.com/u/gongcastro
     - name: stackoverflow
       url: https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro
     - name: twitch
       url: https://www.twitch.tv/gongcastro
+  themeColor: "#fcba03"
+  
+  logo:
+    logoHomeLink:
+    logoText: $ cd /gongcastro/
+    logoCursorColor: "#fcba03"
+  portrait:
+    path: "/img/logo.jpg"
+    alt: Logo
+    maxWidth: 150px
 
+languages:
+  en:
+    copyright: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    subtitle: "Developmental sycholinguistics and R"
+    weight: 1
+  es:
+    copyright: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    subtitle: "Psicolingüística evolutiva y R"
+    weight: 2
