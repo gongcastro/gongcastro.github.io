@@ -1,20 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>dataviz on Gonzalo García-Castro</title>
-    <link>http://gongcastro.github.io/tags/dataviz/</link>
-    <description>Recent content in dataviz on Gonzalo García-Castro</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://gongcastro.github.io/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How similar is the word “mask” across languages?</title>
-      <link>http://gongcastro.github.io/2020/11/20/how-similar-is-the-word-mask-across-languages/</link>
-      <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://gongcastro.github.io/2020/11/20/how-similar-is-the-word-mask-across-languages/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
-</rss>
