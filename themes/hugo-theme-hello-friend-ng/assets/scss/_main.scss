@@ -37,9 +37,9 @@ body {
     font-size: 1rem;
   }
 
-  @media (prefers-color-scheme: dark) {
-    background-color: $dark-background;
-    color: $dark-color;
+  @media (prefers-color-scheme: light) {
+    background-color: $light-background;
+    color: $light-color;
   }
 
   @media (prefers-color-scheme: light) {
@@ -48,8 +48,8 @@ body {
   }
 
   [data-theme=dark] & {
-    background-color: $dark-background;
-    color: $dark-color;
+    background-color: $light-background;
+    color: $light-color;
   }
 
   [data-theme=light] & {
@@ -194,7 +194,7 @@ em, i, strong {
   color: black;
 
   @media (prefers-color-scheme: dark) {
-    color: white;
+    color: black;
   }
 
   @media (prefers-color-scheme: light) {
@@ -202,7 +202,7 @@ em, i, strong {
   }
 
   [data-theme=dark] & {
-    color: white;
+    color: black;
   }
 
   [data-theme=light] & {
@@ -222,7 +222,7 @@ code {
   background: $light-background-secondary;
 
   @media (prefers-color-scheme: dark) {
-    background: $dark-background-secondary;
+    background: $light-background-secondary;
   }
 
   @media (prefers-color-scheme: light) {
@@ -230,7 +230,7 @@ code {
   }
 
   [data-theme=dark] & {
-    background: $dark-background-secondary;
+    background: $light-background-secondary;
   }
 
   [data-theme=light] & {
@@ -239,48 +239,52 @@ code {
 }
 
 pre {
+  
   [data-theme=dark] & {
-    background-color: $dark-background-secondary;
+    background-color: lightsalmon;
   }
 
   [data-theme=light] & {
-    background-color: $light-background-secondary;
+    background-color: lightsalmon;
   }
 
   padding: 10px 10px 10px 20px;
-  border-radius: 8px;
   font-size: 0.95rem;
   overflow: auto;
+  border-left: 5px solid lightsalmon;
+  margin: 40px;
+  padding: 10px 20px;
 
   @media #{$media-size-phone} {
     white-space: pre-wrap;
     word-wrap: break-word;
   }
+}
 
-  code {
-    background: none !important;
+code {
+    background-color: lightsalmon;  
+    background: white;
     margin: 0;
     padding: 0;
     font-size: inherit;
     // Default
-    color: #ccc;
-
+    color: black;
+    
     @media (prefers-color-scheme: dark) {
-      color: inherit;
+      color: black;
     }
   
     @media (prefers-color-scheme: light) {
-      color: #ccc;
+      color: black;
     }
   
     [data-theme=dark] & {
-      color: inherit;
+      color: black;
     }
   
     [data-theme=light] & {
-      color: #ccc;
+      color: black;
     }
-  }
 }
 
 blockquote {
@@ -355,7 +359,7 @@ hr {
   background: $light-border-color;
 
   @media (prefers-color-scheme: dark) {
-    background: $dark-border-color;
+    background: $light-border-color;
   }
 
   @media (prefers-color-scheme: light) {
@@ -363,7 +367,7 @@ hr {
   }
 
   [data-theme=dark] & {
-    background: $dark-border-color;
+    background: $light-border-color;
   }
 
   [data-theme=light] & {

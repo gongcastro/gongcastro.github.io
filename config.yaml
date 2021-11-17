@@ -62,11 +62,15 @@ params:
     - name: twitch
       url: https://www.twitch.tv/gongcastro
   themeColor: "#fcba03"
-  
+  highlightjsVersion: "11.3.1"
+  highlightjsLang: ["r", "yaml", "julia", "bash", "python"]
+  highlightjsTheme: "github"
+  highlightStyle: "default"
+  MathJaxCDN: "//cdn.bootcss.com"
   logo:
     logoHomeLink:
     logoText: $ cd /gongcastro/
-    logoCursorColor: "#fcba03"
+    logoCursorColor: "lightsalmon"
   portrait:
     path: "/img/logo.jpg"
     alt: Logo

@@ -8,3 +8,10 @@ blockquote {
     quotes: "\201C""\201D""\2018""\2019";
 }
 
+pre, code, pre code,  {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: black;
+    background-color: lightsalmon;
+    border-radius: 4px
+}
