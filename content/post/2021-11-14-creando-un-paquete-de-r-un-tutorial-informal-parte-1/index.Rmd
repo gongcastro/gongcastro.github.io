@@ -34,7 +34,7 @@ En este tutorial en colaboración con Alicia Franco-Martínez  @[AliciaFrancoXVE
 
 [![](/img/psicotuiter.png){width=30%; style='float:right;padding:10px'}](https://gongcastro.github.io/psicotwitteR/)
 
-El paquete [**psicotuiteR**](https://gongcastro.github.io/psicotwitteR/) es un paquete muy simple que hemos creado para que la gente de la comunidad de [#psicotuiter](https://twitter.com/search?q=%23psicotuiter&src=typed_query), en Twitter, pudiera experimentar con él añadiendo funciones o jugando con los datos que incluye. Podéis ver más informaicón sobre el paquete en su página web.
+El paquete [**psicotuiteR**](https://gongcastro.github.io/psicotwitteR/) es un paquete muy simple que hemos creado para que la gente de la comunidad de [#psicotuiter](https://twitter.com/search?q=%23psicotuiter&src=typed_query), en Twitter, pudiera experimentar con él añadiendo funciones o jugando con los datos que incluye. Podéis ver más información sobre el paquete en su página web.
 
 
 ## ¿Qué es un paquete de R?

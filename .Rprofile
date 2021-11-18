@@ -29,3 +29,6 @@ public_to_docs <- function() {
   dir.create("docs", showWarnings = FALSE)
   file.copy("public", "docs", recursive = TRUE)
 }
+
+
+message("Remember to remove docs/ and rename public/ as docs/ after calling blogdown::build_site()")
