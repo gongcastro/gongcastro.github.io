@@ -11,6 +11,15 @@ tags:
   - r
 draft: no
 images: ~
+featureImage: /img/psicotuiter.png
+image:
+  placement: 1
+  caption: 'Logo de psicotuiteR'
+  focal_point: ''
+  preview_only: false
+header:
+  image: "/img/psicotuiter.png"
+  caption: "Logo de psicotuiteR"
 ---
 
 ```{r include=FALSE}
