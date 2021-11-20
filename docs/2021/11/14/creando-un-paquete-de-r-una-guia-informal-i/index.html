@@ -40,7 +40,7 @@
 <meta itemprop="description" content="En este tutorial en colaboración con Alicia Franco-Martínez @AliciaFrancoXVE1, explicaremos cómo se ha creado el paquete de R {psicotuiteR}. En el canal de Twitch de Alicia, Psicometries (al que también debéis suscribiros), hicimos un directo en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.">
 <meta itemprop="datePublished" content="2021-11-14T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-11-20T12:13:42+01:00" />
-<meta itemprop="wordCount" content="5484">
+<meta itemprop="wordCount" content="5520">
 
 
 
@@ -141,8 +141,25 @@
 
 
 <p>En este tutorial en colaboración con Alicia Franco-Martínez @<a href="https://twitter.com/AliciaFrancoXVE">AliciaFrancoXVE</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, explicaremos cómo se ha creado el paquete de R <strong>{psicotuiteR}</strong>. En el canal de Twitch de Alicia, <a href="https://t.co/JtxXtTszGi?amp=1">Psicometries</a> (al que también debéis suscribiros), hicimos un <a href="https://www.twitch.tv/videos/1202539110">directo</a> en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</p>
-<p><a href="https://gongcastro.github.io/psicotwitteR/"><img src="/img/psicotuiter.png" style="float:right;padding:10px" /></a></p>
-<p>El paquete <a href="https://gongcastro.github.io/psicotwitteR/"><strong>psicotuiteR</strong></a> es un paquete muy simple que hemos creado para que la gente de la comunidad de <a href="https://twitter.com/search?q=%23psicotuiter&amp;src=typed_query">#psicotuiter</a>, en Twitter, pudiera experimentar con él añadiendo funciones o jugando con los datos que incluye. Podéis ver más información sobre el paquete en su página web.</p>
+<!-- Add a placeholder for the Twitch embed -->
+<div id="twitch-embed">
+
+</div>
+<!-- Load the Twitch embed script -->
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+<!-- Create a Twitch.Player object. This will render within the placeholder div -->
+<script type="text/javascript">
+  new Twitch.Player("twitch-embed", {
+    video: "1202539110",
+    width: 550,
+    height: 300
+  });
+</script>
+<div id="qué-es-el-paquete-psicotuiter" class="section level2">
+<h2>¿Qué es el paquete {psicotuiteR}?</h2>
+<p><a href="https://gongcastro.github.io/psicotuiterR/"><img src="/img/psicotuiter.png" style="float:right;padding:10px" /></a></p>
+<p>El paquete <a href="https://gongcastro.github.io/psicotuiterR/"><strong>psicotuiteR</strong></a> es un paquete muy simple que hemos creado para que la gente de la comunidad de <a href="https://twitter.com/search?q=%23psicotuiter&amp;src=typed_query">#psicotuiter</a>, en Twitter, pudiera experimentar con él añadiendo funciones o jugando con los datos que incluye. Podéis ver más información sobre el paquete en su página web. La comunidad es psicotuiter es un grupo de castellanoparlantes que hablan, entre otras cosas, sobre psicología y salud mental en Twitter.</p>
+</div>
 <div id="qué-es-un-paquete-de-r" class="section level2">
 <h2>¿Qué es un paquete de R?</h2>
 <p>En el manual <a href="https://r-pkgs.org/"><strong>R packages</strong></a> de Hadley Wickham y Jenny Bryan, se describe un paquete de R así:</p>

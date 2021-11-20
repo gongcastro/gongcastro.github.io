@@ -9,6 +9,7 @@ PygmentsStyle: monokai
 enableRobotsTXT: yes
 enableGitInfo: true
 enableEmoji: yes
+enableSharingButtons: true
 
 ignoreFiles:
   - \.Rmd$

@@ -41,9 +41,27 @@ library(psicotuiteR)
 
 En este tutorial en colaboración con Alicia Franco-Martínez  @[AliciaFrancoXVE](https://twitter.com/AliciaFrancoXVE)^[Merece la pena seguir a Alicia en Twitter: hace muy buena divulgación sobre psicometría, estadística y R.], explicaremos cómo se ha creado el paquete de R **{psicotuiteR}**. En el canal de Twitch de Alicia, [Psicometries](https://t.co/JtxXtTszGi?amp=1) (al que también debéis suscribiros), hicimos un [directo](https://www.twitch.tv/videos/1202539110) en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.
 
-[![](/img/psicotuiter.png){width=30%; style='float:right;padding:10px'}](https://gongcastro.github.io/psicotwitteR/)
+<!-- Add a placeholder for the Twitch embed -->
+<div id="twitch-embed"></div>
 
-El paquete [**psicotuiteR**](https://gongcastro.github.io/psicotwitteR/) es un paquete muy simple que hemos creado para que la gente de la comunidad de [#psicotuiter](https://twitter.com/search?q=%23psicotuiter&src=typed_query), en Twitter, pudiera experimentar con él añadiendo funciones o jugando con los datos que incluye. Podéis ver más información sobre el paquete en su página web.
+<!-- Load the Twitch embed script -->
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+<!-- Create a Twitch.Player object. This will render within the placeholder div -->
+<script type="text/javascript">
+  new Twitch.Player("twitch-embed", {
+    video: "1202539110",
+    width: 550,
+    height: 300
+  });
+</script>
+
+
+## ¿Qué es el paquete {psicotuiteR}?
+
+[![](/img/psicotuiter.png){width=30%; style='float:right;padding:10px'}](https://gongcastro.github.io/psicotuiterR/)
+
+El paquete [**psicotuiteR**](https://gongcastro.github.io/psicotuiterR/) es un paquete muy simple que hemos creado para que la gente de la comunidad de [#psicotuiter](https://twitter.com/search?q=%23psicotuiter&src=typed_query), en Twitter, pudiera experimentar con él añadiendo funciones o jugando con los datos que incluye. Podéis ver más información sobre el paquete en su página web. La comunidad es psicotuiter es un grupo de castellanoparlantes que hablan, entre otras cosas, sobre psicología y salud mental en Twitter.
 
 
 ## ¿Qué es un paquete de R?

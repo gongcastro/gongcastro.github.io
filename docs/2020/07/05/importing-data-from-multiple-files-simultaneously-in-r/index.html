@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Importing data from multiple files simultaneously in R">
 <meta itemprop="description" content="TL;DRWe need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using purrr::map in combination with do.call or dplyr::bind_rows is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to for loops (~220ms) or using lapply (~123 ms). data.table::fread is the fastest function for importing data.">
 <meta itemprop="datePublished" content="2020-07-05T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-11-18T15:41:52+01:00" />
+<meta itemprop="dateModified" content="2021-11-20T12:26:30+01:00" />
 <meta itemprop="wordCount" content="2291">
 
 
@@ -780,7 +780,7 @@ Figure 1: Mean time (and standard deviation) for each combination of methods and
         
     </p>
 
-			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="25686fe35a36cffa68231fa3370e393c24d828df" target="_blank" rel="noopener">25686fe</a> @ 2021-11-18</p>
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="b3d7efc51543afccd31d4d04771c06a61fd80870" target="_blank" rel="noopener">b3d7efc</a> @ 2021-11-20</p>
   		</div>
     </main>
 
