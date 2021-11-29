@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>r on Gonzalo García-Castro</title>
+    <link>http://gongcastro.github.io/tags/r/</link>
+    <description>Recent content in r on Gonzalo García-Castro</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 14 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://gongcastro.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creando un paquete de R: una guía informal (I)</title>
+      <link>http://gongcastro.github.io/2021/11/14/creando-un-paquete-de-r-una-guia-informal-i/</link>
+      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://gongcastro.github.io/2021/11/14/creando-un-paquete-de-r-una-guia-informal-i/</guid>
+      <description>En este tutorial en colaboración con Alicia Franco-Martínez @AliciaFrancoXVE1, explicaremos cómo se ha creado el paquete de R {psicotuiteR}. En el canal de Twitch de Alicia, Psicometries (al que también debéis suscribiros), hicimos un directo en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</description>
+    </item>
+    
+  </channel>
+</rss>

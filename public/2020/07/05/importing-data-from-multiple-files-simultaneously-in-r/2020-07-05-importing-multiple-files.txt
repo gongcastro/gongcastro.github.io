@@ -1,0 +1,3601 @@
+package	format	vectorisation	merge	time
+base	.csv	for loop	do.call	1.74585390090942
+base	.csv	for loop	do.call	1.30826783180237
+base	.csv	for loop	do.call	1.43103218078613
+base	.csv	for loop	do.call	1.43077683448792
+base	.csv	for loop	do.call	1.3520040512085
+base	.csv	for loop	do.call	1.3185019493103
+base	.csv	for loop	do.call	1.3349289894104
+base	.csv	for loop	do.call	1.387864112854
+base	.csv	for loop	do.call	1.28490900993347
+base	.csv	for loop	do.call	1.37472987174988
+base	.csv	for loop	do.call	1.3131730556488
+base	.csv	for loop	do.call	1.33689999580383
+base	.csv	for loop	do.call	1.29946398735046
+base	.csv	for loop	do.call	1.29807901382446
+base	.csv	for loop	do.call	1.42958617210388
+base	.csv	for loop	do.call	1.29649996757507
+base	.csv	for loop	do.call	1.40025091171265
+base	.csv	for loop	do.call	1.31471991539001
+base	.csv	for loop	do.call	1.3096911907196
+base	.csv	for loop	do.call	1.28862595558167
+base	.csv	for loop	do.call	1.33496904373169
+base	.csv	for loop	do.call	1.30805683135986
+base	.csv	for loop	do.call	1.28732204437256
+base	.csv	for loop	do.call	1.31759595870972
+base	.csv	for loop	do.call	1.28505706787109
+base	.csv	for loop	do.call	1.3712010383606
+base	.csv	for loop	do.call	1.31875991821289
+base	.csv	for loop	do.call	1.39421606063843
+base	.csv	for loop	do.call	1.29985094070435
+base	.csv	for loop	do.call	1.31003212928772
+base	.csv	for loop	do.call	1.36136198043823
+base	.csv	for loop	do.call	1.34936094284058
+base	.csv	for loop	do.call	1.29957985877991
+base	.csv	for loop	do.call	1.32263922691345
+base	.csv	for loop	do.call	1.30530786514282
+base	.csv	for loop	do.call	1.301913022995
+base	.csv	for loop	do.call	1.29877710342407
+base	.csv	for loop	do.call	1.37933588027954
+base	.csv	for loop	do.call	1.30076098442078
+base	.csv	for loop	do.call	1.27331113815308
+base	.csv	for loop	do.call	1.275141954422
+base	.csv	for loop	do.call	1.40209197998047
+base	.csv	for loop	do.call	1.29835486412048
+base	.csv	for loop	do.call	1.30004000663757
+base	.csv	for loop	do.call	1.32304215431213
+base	.csv	for loop	do.call	1.30665397644043
+base	.csv	for loop	do.call	1.32329297065735
+base	.csv	for loop	do.call	1.29845404624939
+base	.csv	for loop	do.call	1.31693387031555
+base	.csv	for loop	do.call	1.39176297187805
+base	.csv	for loop	do.call	1.38799214363098
+base	.csv	for loop	do.call	1.34745001792908
+base	.csv	for loop	do.call	1.46044182777405
+base	.csv	for loop	do.call	1.33157920837402
+base	.csv	for loop	do.call	1.3049578666687
+base	.csv	for loop	do.call	1.41054010391235
+base	.csv	for loop	do.call	1.31218981742859
+base	.csv	for loop	do.call	1.37246322631836
+base	.csv	for loop	do.call	1.3614227771759
+base	.csv	for loop	do.call	1.336590051651
+base	.csv	for loop	do.call	1.42070412635803
+base	.csv	for loop	do.call	1.31609296798706
+base	.csv	for loop	do.call	1.28758096694946
+base	.csv	for loop	do.call	1.31463694572449
+base	.csv	for loop	do.call	1.2892279624939
+base	.csv	for loop	do.call	1.33378911018372
+base	.csv	for loop	do.call	1.3000168800354
+base	.csv	for loop	do.call	1.30436611175537
+base	.csv	for loop	do.call	1.29787302017212
+base	.csv	for loop	do.call	1.41891694068909
+base	.csv	for loop	do.call	1.31403589248657
+base	.csv	for loop	do.call	1.37905502319336
+base	.csv	for loop	do.call	1.28492403030396
+base	.csv	for loop	do.call	1.33390712738037
+base	.csv	for loop	do.call	1.38340091705322
+base	.csv	for loop	do.call	1.3210711479187
+base	.csv	for loop	do.call	1.35120487213135
+base	.csv	for loop	do.call	1.31504607200623
+base	.csv	for loop	do.call	1.31901907920837
+base	.csv	for loop	do.call	1.32982802391052
+base	.csv	for loop	do.call	1.33005595207214
+base	.csv	for loop	do.call	1.31038188934326
+base	.csv	for loop	do.call	1.28478598594666
+base	.csv	for loop	do.call	1.39814209938049
+base	.csv	for loop	do.call	1.27806711196899
+base	.csv	for loop	do.call	1.2710428237915
+base	.csv	for loop	do.call	1.46783208847046
+base	.csv	for loop	do.call	1.32543992996216
+base	.csv	for loop	do.call	1.30016708374023
+base	.csv	for loop	do.call	1.2753438949585
+base	.csv	for loop	do.call	1.31105184555054
+base	.csv	for loop	do.call	1.29163002967834
+base	.csv	for loop	do.call	1.28315401077271
+base	.csv	for loop	do.call	1.41634297370911
+base	.csv	for loop	do.call	1.40125107765198
+base	.csv	for loop	do.call	1.30601286888123
+base	.csv	for loop	do.call	1.32948923110962
+base	.csv	for loop	do.call	1.32210278511047
+base	.csv	for loop	do.call	1.32466316223145
+base	.csv	for loop	do.call	1.35640692710876
+readr	.csv	for loop	do.call	1.50357294082642
+readr	.csv	for loop	do.call	1.38937091827393
+readr	.csv	for loop	do.call	1.3644859790802
+readr	.csv	for loop	do.call	1.36688995361328
+readr	.csv	for loop	do.call	1.45200610160828
+readr	.csv	for loop	do.call	1.35760498046875
+readr	.csv	for loop	do.call	1.34816908836365
+readr	.csv	for loop	do.call	1.35533881187439
+readr	.csv	for loop	do.call	1.43727207183838
+readr	.csv	for loop	do.call	1.31013894081116
+readr	.csv	for loop	do.call	1.34800004959106
+readr	.csv	for loop	do.call	1.44109702110291
+readr	.csv	for loop	do.call	1.33980798721313
+readr	.csv	for loop	do.call	1.34686493873596
+readr	.csv	for loop	do.call	1.35874009132385
+readr	.csv	for loop	do.call	1.36073803901672
+readr	.csv	for loop	do.call	1.4401478767395
+readr	.csv	for loop	do.call	1.3608729839325
+readr	.csv	for loop	do.call	1.34748816490173
+readr	.csv	for loop	do.call	1.34190106391907
+readr	.csv	for loop	do.call	1.43906688690186
+readr	.csv	for loop	do.call	1.43944406509399
+readr	.csv	for loop	do.call	1.35639905929565
+readr	.csv	for loop	do.call	1.33501696586609
+readr	.csv	for loop	do.call	1.42880511283875
+readr	.csv	for loop	do.call	1.32817387580872
+readr	.csv	for loop	do.call	1.34667801856995
+readr	.csv	for loop	do.call	1.34041309356689
+readr	.csv	for loop	do.call	1.34776592254639
+readr	.csv	for loop	do.call	1.4504280090332
+readr	.csv	for loop	do.call	1.33461689949036
+readr	.csv	for loop	do.call	1.44013023376465
+readr	.csv	for loop	do.call	1.35682392120361
+readr	.csv	for loop	do.call	1.44690203666687
+readr	.csv	for loop	do.call	1.33310985565186
+readr	.csv	for loop	do.call	1.35603618621826
+readr	.csv	for loop	do.call	1.38467383384705
+readr	.csv	for loop	do.call	1.35748505592346
+readr	.csv	for loop	do.call	1.44818091392517
+readr	.csv	for loop	do.call	1.33730697631836
+readr	.csv	for loop	do.call	1.35067701339722
+readr	.csv	for loop	do.call	1.41996097564697
+readr	.csv	for loop	do.call	1.36782813072205
+readr	.csv	for loop	do.call	1.42102003097534
+readr	.csv	for loop	do.call	1.37895488739014
+readr	.csv	for loop	do.call	1.37664008140564
+readr	.csv	for loop	do.call	1.42449498176575
+readr	.csv	for loop	do.call	1.32326292991638
+readr	.csv	for loop	do.call	1.36435604095459
+readr	.csv	for loop	do.call	1.35484910011292
+readr	.csv	for loop	do.call	1.37471795082092
+readr	.csv	for loop	do.call	1.34213280677795
+readr	.csv	for loop	do.call	1.44790101051331
+readr	.csv	for loop	do.call	1.3560311794281
+readr	.csv	for loop	do.call	1.36161684989929
+readr	.csv	for loop	do.call	1.37187194824219
+readr	.csv	for loop	do.call	1.35405802726746
+readr	.csv	for loop	do.call	1.36461400985718
+readr	.csv	for loop	do.call	1.43843603134155
+readr	.csv	for loop	do.call	1.43750309944153
+readr	.csv	for loop	do.call	1.35535001754761
+readr	.csv	for loop	do.call	1.36237502098084
+readr	.csv	for loop	do.call	1.56086397171021
+readr	.csv	for loop	do.call	1.6210880279541
+readr	.csv	for loop	do.call	1.40444302558899
+readr	.csv	for loop	do.call	1.37379908561707
+readr	.csv	for loop	do.call	1.4655749797821
+readr	.csv	for loop	do.call	1.36693692207336
+readr	.csv	for loop	do.call	1.36234092712402
+readr	.csv	for loop	do.call	1.38631701469421
+readr	.csv	for loop	do.call	1.38083219528198
+readr	.csv	for loop	do.call	1.37332582473755
+readr	.csv	for loop	do.call	1.41688013076782
+readr	.csv	for loop	do.call	1.36458683013916
+readr	.csv	for loop	do.call	1.35971212387085
+readr	.csv	for loop	do.call	1.33088994026184
+readr	.csv	for loop	do.call	1.41866397857666
+readr	.csv	for loop	do.call	1.34883308410645
+readr	.csv	for loop	do.call	1.37206697463989
+readr	.csv	for loop	do.call	1.38479995727539
+readr	.csv	for loop	do.call	1.3541100025177
+readr	.csv	for loop	do.call	1.35666799545288
+readr	.csv	for loop	do.call	1.44852089881897
+readr	.csv	for loop	do.call	1.44876909255981
+readr	.csv	for loop	do.call	1.3408350944519
+readr	.csv	for loop	do.call	1.38763880729675
+readr	.csv	for loop	do.call	1.36628198623657
+readr	.csv	for loop	do.call	1.38585019111633
+readr	.csv	for loop	do.call	1.34494996070862
+readr	.csv	for loop	do.call	1.35401105880737
+readr	.csv	for loop	do.call	1.3714759349823
+readr	.csv	for loop	do.call	1.46044898033142
+readr	.csv	for loop	do.call	1.36630320549011
+readr	.csv	for loop	do.call	1.4681568145752
+readr	.csv	for loop	do.call	1.39228200912476
+readr	.csv	for loop	do.call	1.35114979743958
+readr	.csv	for loop	do.call	1.37332201004028
+readr	.csv	for loop	do.call	1.39219117164612
+readr	.csv	for loop	do.call	1.35671401023865
+readr	.csv	for loop	do.call	1.35109901428223
+data.table	.csv	for loop	do.call	1.22904205322266
+data.table	.csv	for loop	do.call	1.20947289466858
+data.table	.csv	for loop	do.call	1.19417595863342
+data.table	.csv	for loop	do.call	1.15495705604553
+data.table	.csv	for loop	do.call	1.22375702857971
+data.table	.csv	for loop	do.call	1.17600393295288
+data.table	.csv	for loop	do.call	1.15413808822632
+data.table	.csv	for loop	do.call	1.23810505867004
+data.table	.csv	for loop	do.call	1.12025499343872
+data.table	.csv	for loop	do.call	1.1656219959259
+data.table	.csv	for loop	do.call	1.13872218132019
+data.table	.csv	for loop	do.call	1.15050101280212
+data.table	.csv	for loop	do.call	1.131019115448
+data.table	.csv	for loop	do.call	1.17338299751282
+data.table	.csv	for loop	do.call	1.31906986236572
+data.table	.csv	for loop	do.call	1.66216206550598
+data.table	.csv	for loop	do.call	1.61441206932068
+data.table	.csv	for loop	do.call	1.63376092910767
+data.table	.csv	for loop	do.call	1.5244619846344
+data.table	.csv	for loop	do.call	1.56188011169434
+data.table	.csv	for loop	do.call	1.53543186187744
+data.table	.csv	for loop	do.call	1.52694797515869
+data.table	.csv	for loop	do.call	1.53435707092285
+data.table	.csv	for loop	do.call	1.52508997917175
+data.table	.csv	for loop	do.call	1.52754402160645
+data.table	.csv	for loop	do.call	1.3965539932251
+data.table	.csv	for loop	do.call	1.18344712257385
+data.table	.csv	for loop	do.call	1.15492177009583
+data.table	.csv	for loop	do.call	1.14860606193542
+data.table	.csv	for loop	do.call	1.14197301864624
+data.table	.csv	for loop	do.call	1.15239810943604
+data.table	.csv	for loop	do.call	1.12864685058594
+data.table	.csv	for loop	do.call	1.14808106422424
+data.table	.csv	for loop	do.call	1.23070907592773
+data.table	.csv	for loop	do.call	1.1357159614563
+data.table	.csv	for loop	do.call	1.14933204650879
+data.table	.csv	for loop	do.call	1.23468804359436
+data.table	.csv	for loop	do.call	1.16488480567932
+data.table	.csv	for loop	do.call	1.16637516021729
+data.table	.csv	for loop	do.call	1.13653588294983
+data.table	.csv	for loop	do.call	1.14122009277344
+data.table	.csv	for loop	do.call	1.15991497039795
+data.table	.csv	for loop	do.call	1.14640307426453
+data.table	.csv	for loop	do.call	1.16808080673218
+data.table	.csv	for loop	do.call	1.24404215812683
+data.table	.csv	for loop	do.call	1.13235688209534
+data.table	.csv	for loop	do.call	1.9516761302948
+data.table	.csv	for loop	do.call	3.54252481460571
+data.table	.csv	for loop	do.call	3.11367321014404
+data.table	.csv	for loop	do.call	2.69519591331482
+data.table	.csv	for loop	do.call	2.46108508110046
+data.table	.csv	for loop	do.call	2.1588888168335
+data.table	.csv	for loop	do.call	1.67357301712036
+data.table	.csv	for loop	do.call	1.48865103721619
+data.table	.csv	for loop	do.call	1.41912198066711
+data.table	.csv	for loop	do.call	1.2317841053009
+data.table	.csv	for loop	do.call	1.16947102546692
+data.table	.csv	for loop	do.call	1.22648787498474
+data.table	.csv	for loop	do.call	1.11476516723633
+data.table	.csv	for loop	do.call	1.21821403503418
+data.table	.csv	for loop	do.call	1.14049601554871
+data.table	.csv	for loop	do.call	1.14105796813965
+data.table	.csv	for loop	do.call	1.12642312049866
+data.table	.csv	for loop	do.call	1.23532509803772
+data.table	.csv	for loop	do.call	1.25442695617676
+data.table	.csv	for loop	do.call	1.15062403678894
+data.table	.csv	for loop	do.call	1.17952680587769
+data.table	.csv	for loop	do.call	1.32432818412781
+data.table	.csv	for loop	do.call	1.30524682998657
+data.table	.csv	for loop	do.call	1.30356407165527
+data.table	.csv	for loop	do.call	1.27006793022156
+data.table	.csv	for loop	do.call	1.23278307914734
+data.table	.csv	for loop	do.call	1.21947693824768
+data.table	.csv	for loop	do.call	1.37266111373901
+data.table	.csv	for loop	do.call	1.25633192062378
+data.table	.csv	for loop	do.call	1.28155994415283
+data.table	.csv	for loop	do.call	1.20934510231018
+data.table	.csv	for loop	do.call	1.18865489959717
+data.table	.csv	for loop	do.call	1.18492317199707
+data.table	.csv	for loop	do.call	1.2734489440918
+data.table	.csv	for loop	do.call	1.36799192428589
+data.table	.csv	for loop	do.call	1.21920013427734
+data.table	.csv	for loop	do.call	1.15771293640137
+data.table	.csv	for loop	do.call	1.1936309337616
+data.table	.csv	for loop	do.call	1.16041612625122
+data.table	.csv	for loop	do.call	1.24073195457459
+data.table	.csv	for loop	do.call	1.15393686294556
+data.table	.csv	for loop	do.call	1.16991519927979
+data.table	.csv	for loop	do.call	1.18124794960022
+data.table	.csv	for loop	do.call	1.17778205871582
+data.table	.csv	for loop	do.call	1.19284582138062
+data.table	.csv	for loop	do.call	1.26810908317566
+data.table	.csv	for loop	do.call	1.23930191993713
+data.table	.csv	for loop	do.call	1.16591691970825
+data.table	.csv	for loop	do.call	1.25569701194763
+data.table	.csv	for loop	do.call	1.13440608978271
+data.table	.csv	for loop	do.call	1.18192601203918
+data.table	.csv	for loop	do.call	1.1651508808136
+data.table	.csv	for loop	do.call	1.17560291290283
+data.table	.csv	for loop	do.call	1.15642714500427
+base	.txt	for loop	do.call	1.22969698905945
+base	.txt	for loop	do.call	1.19589996337891
+base	.txt	for loop	do.call	1.25336885452271
+base	.txt	for loop	do.call	1.15177917480469
+base	.txt	for loop	do.call	1.13278794288635
+base	.txt	for loop	do.call	1.16469502449036
+base	.txt	for loop	do.call	1.16679501533508
+base	.txt	for loop	do.call	1.16939997673035
+base	.txt	for loop	do.call	1.1827929019928
+base	.txt	for loop	do.call	1.21633315086365
+base	.txt	for loop	do.call	1.24076700210571
+base	.txt	for loop	do.call	1.15209794044495
+base	.txt	for loop	do.call	1.18610620498657
+base	.txt	for loop	do.call	1.16358590126038
+base	.txt	for loop	do.call	1.16937494277954
+base	.txt	for loop	do.call	1.18224811553955
+base	.txt	for loop	do.call	1.17881083488464
+base	.txt	for loop	do.call	1.1699321269989
+base	.txt	for loop	do.call	1.22775483131409
+base	.txt	for loop	do.call	1.26220798492432
+base	.txt	for loop	do.call	1.14285206794739
+base	.txt	for loop	do.call	1.16553115844727
+base	.txt	for loop	do.call	1.16453385353088
+base	.txt	for loop	do.call	1.24445414543152
+base	.txt	for loop	do.call	1.14893388748169
+base	.txt	for loop	do.call	1.18382906913757
+base	.txt	for loop	do.call	1.16038393974304
+base	.txt	for loop	do.call	1.26300597190857
+base	.txt	for loop	do.call	1.13826608657837
+base	.txt	for loop	do.call	1.18396902084351
+base	.txt	for loop	do.call	1.16920280456543
+base	.txt	for loop	do.call	1.15261006355286
+base	.txt	for loop	do.call	1.15868997573853
+base	.txt	for loop	do.call	1.16787099838257
+base	.txt	for loop	do.call	1.14925217628479
+base	.txt	for loop	do.call	1.15515780448914
+base	.txt	for loop	do.call	1.17010807991028
+base	.txt	for loop	do.call	1.15134406089783
+base	.txt	for loop	do.call	1.23936486244202
+base	.txt	for loop	do.call	1.15511703491211
+base	.txt	for loop	do.call	1.17583799362183
+base	.txt	for loop	do.call	1.15495300292969
+base	.txt	for loop	do.call	1.15767407417297
+base	.txt	for loop	do.call	1.14250898361206
+base	.txt	for loop	do.call	1.1858389377594
+base	.txt	for loop	do.call	1.17315316200256
+base	.txt	for loop	do.call	1.16230702400208
+base	.txt	for loop	do.call	1.25544714927673
+base	.txt	for loop	do.call	1.14696788787842
+base	.txt	for loop	do.call	1.1586709022522
+base	.txt	for loop	do.call	1.16240000724792
+base	.txt	for loop	do.call	1.16491317749023
+base	.txt	for loop	do.call	1.24593877792358
+base	.txt	for loop	do.call	1.24640107154846
+base	.txt	for loop	do.call	1.16207909584045
+base	.txt	for loop	do.call	1.18370389938355
+base	.txt	for loop	do.call	1.24008107185364
+base	.txt	for loop	do.call	1.14998602867126
+base	.txt	for loop	do.call	1.17550897598267
+base	.txt	for loop	do.call	1.16402101516724
+base	.txt	for loop	do.call	1.15785098075867
+base	.txt	for loop	do.call	1.16024994850159
+base	.txt	for loop	do.call	1.18526697158813
+base	.txt	for loop	do.call	1.17383694648743
+base	.txt	for loop	do.call	1.24509501457214
+base	.txt	for loop	do.call	1.16040110588074
+base	.txt	for loop	do.call	1.19717502593994
+base	.txt	for loop	do.call	1.186518907547
+base	.txt	for loop	do.call	1.18765902519226
+base	.txt	for loop	do.call	1.25563812255859
+base	.txt	for loop	do.call	1.17259788513184
+base	.txt	for loop	do.call	1.16687297821045
+base	.txt	for loop	do.call	1.17036199569702
+base	.txt	for loop	do.call	1.32307195663452
+base	.txt	for loop	do.call	1.14025497436523
+base	.txt	for loop	do.call	1.16130614280701
+base	.txt	for loop	do.call	1.17691898345947
+base	.txt	for loop	do.call	1.17842197418213
+base	.txt	for loop	do.call	1.15429186820984
+base	.txt	for loop	do.call	1.1728630065918
+base	.txt	for loop	do.call	1.15734815597534
+base	.txt	for loop	do.call	1.16907000541687
+base	.txt	for loop	do.call	1.15687584877014
+base	.txt	for loop	do.call	1.22545099258423
+base	.txt	for loop	do.call	1.15402913093567
+base	.txt	for loop	do.call	1.16442799568176
+base	.txt	for loop	do.call	1.25810194015503
+base	.txt	for loop	do.call	1.16889810562134
+base	.txt	for loop	do.call	1.16738295555115
+base	.txt	for loop	do.call	1.14709186553955
+base	.txt	for loop	do.call	1.17853713035584
+base	.txt	for loop	do.call	1.1640739440918
+base	.txt	for loop	do.call	1.26514410972595
+base	.txt	for loop	do.call	1.16392183303833
+base	.txt	for loop	do.call	1.15837597846985
+base	.txt	for loop	do.call	1.16978216171265
+base	.txt	for loop	do.call	1.20575594902039
+base	.txt	for loop	do.call	1.30448007583618
+base	.txt	for loop	do.call	1.27766585350037
+base	.txt	for loop	do.call	1.18618392944336
+readr	.txt	for loop	do.call	1.30400991439819
+readr	.txt	for loop	do.call	1.17696905136108
+readr	.txt	for loop	do.call	1.18062901496887
+readr	.txt	for loop	do.call	1.1428918838501
+readr	.txt	for loop	do.call	1.16887903213501
+readr	.txt	for loop	do.call	1.16273307800293
+readr	.txt	for loop	do.call	1.16793084144592
+readr	.txt	for loop	do.call	1.1428370475769
+readr	.txt	for loop	do.call	1.16760897636414
+readr	.txt	for loop	do.call	1.14791202545166
+readr	.txt	for loop	do.call	1.26905107498169
+readr	.txt	for loop	do.call	1.13230895996094
+readr	.txt	for loop	do.call	1.19253206253052
+readr	.txt	for loop	do.call	1.1711208820343
+readr	.txt	for loop	do.call	1.16195511817932
+readr	.txt	for loop	do.call	1.16209888458252
+readr	.txt	for loop	do.call	1.15337800979614
+readr	.txt	for loop	do.call	1.16839385032654
+readr	.txt	for loop	do.call	1.32010912895203
+readr	.txt	for loop	do.call	1.16017985343933
+readr	.txt	for loop	do.call	1.15627598762512
+readr	.txt	for loop	do.call	1.14122915267944
+readr	.txt	for loop	do.call	1.14074897766113
+readr	.txt	for loop	do.call	1.18235492706299
+readr	.txt	for loop	do.call	1.1771399974823
+readr	.txt	for loop	do.call	1.23454213142395
+readr	.txt	for loop	do.call	1.16828989982605
+readr	.txt	for loop	do.call	1.17990589141846
+readr	.txt	for loop	do.call	1.24466013908386
+readr	.txt	for loop	do.call	1.12962102890015
+readr	.txt	for loop	do.call	1.17580389976501
+readr	.txt	for loop	do.call	1.16090607643127
+readr	.txt	for loop	do.call	1.13614892959595
+readr	.txt	for loop	do.call	1.14828896522522
+readr	.txt	for loop	do.call	1.23349595069885
+readr	.txt	for loop	do.call	1.13726115226746
+readr	.txt	for loop	do.call	1.20377802848816
+readr	.txt	for loop	do.call	1.12928581237793
+readr	.txt	for loop	do.call	1.21872305870056
+readr	.txt	for loop	do.call	1.20848894119263
+readr	.txt	for loop	do.call	1.16658902168274
+readr	.txt	for loop	do.call	1.13560199737549
+readr	.txt	for loop	do.call	1.1694221496582
+readr	.txt	for loop	do.call	1.15084385871887
+readr	.txt	for loop	do.call	1.16182708740234
+readr	.txt	for loop	do.call	1.14589881896973
+readr	.txt	for loop	do.call	1.23895502090454
+readr	.txt	for loop	do.call	1.15059614181519
+readr	.txt	for loop	do.call	1.15378904342651
+readr	.txt	for loop	do.call	1.12733888626099
+readr	.txt	for loop	do.call	1.14339208602905
+readr	.txt	for loop	do.call	1.13859605789185
+readr	.txt	for loop	do.call	1.15444779396057
+readr	.txt	for loop	do.call	1.14268016815186
+readr	.txt	for loop	do.call	1.20658993721008
+readr	.txt	for loop	do.call	1.1474769115448
+readr	.txt	for loop	do.call	1.1342670917511
+readr	.txt	for loop	do.call	1.13148093223572
+readr	.txt	for loop	do.call	1.14998197555542
+readr	.txt	for loop	do.call	1.13079309463501
+readr	.txt	for loop	do.call	1.1384289264679
+readr	.txt	for loop	do.call	1.13747501373291
+readr	.txt	for loop	do.call	1.16475200653076
+readr	.txt	for loop	do.call	1.14320492744446
+readr	.txt	for loop	do.call	1.47579598426819
+readr	.txt	for loop	do.call	1.31052112579346
+readr	.txt	for loop	do.call	1.19509601593018
+readr	.txt	for loop	do.call	1.1603569984436
+readr	.txt	for loop	do.call	1.14002895355225
+readr	.txt	for loop	do.call	1.16706991195679
+readr	.txt	for loop	do.call	1.14322900772095
+readr	.txt	for loop	do.call	1.22749495506287
+readr	.txt	for loop	do.call	1.2091109752655
+readr	.txt	for loop	do.call	1.15186309814453
+readr	.txt	for loop	do.call	1.14969110488892
+readr	.txt	for loop	do.call	1.14380693435669
+readr	.txt	for loop	do.call	1.1512439250946
+readr	.txt	for loop	do.call	1.13622999191284
+readr	.txt	for loop	do.call	1.15291810035706
+readr	.txt	for loop	do.call	1.15204286575317
+readr	.txt	for loop	do.call	1.15690612792969
+readr	.txt	for loop	do.call	1.1740620136261
+readr	.txt	for loop	do.call	1.23782300949097
+readr	.txt	for loop	do.call	1.2923469543457
+readr	.txt	for loop	do.call	1.3033709526062
+readr	.txt	for loop	do.call	1.29520201683044
+readr	.txt	for loop	do.call	1.19403409957886
+readr	.txt	for loop	do.call	1.1780309677124
+readr	.txt	for loop	do.call	1.15673494338989
+readr	.txt	for loop	do.call	1.14112496376038
+readr	.txt	for loop	do.call	1.19633197784424
+readr	.txt	for loop	do.call	1.15793800354004
+readr	.txt	for loop	do.call	1.17077898979187
+readr	.txt	for loop	do.call	1.14148616790771
+readr	.txt	for loop	do.call	1.1557948589325
+readr	.txt	for loop	do.call	1.14042401313782
+readr	.txt	for loop	do.call	1.16286706924438
+readr	.txt	for loop	do.call	1.15615701675415
+readr	.txt	for loop	do.call	1.15201187133789
+readr	.txt	for loop	do.call	1.14542102813721
+data.table	.txt	for loop	do.call	1.27002811431885
+data.table	.txt	for loop	do.call	1.12675595283508
+data.table	.txt	for loop	do.call	1.16218185424805
+data.table	.txt	for loop	do.call	1.15492510795593
+data.table	.txt	for loop	do.call	1.12237787246704
+data.table	.txt	for loop	do.call	1.13106203079224
+data.table	.txt	for loop	do.call	1.13500905036926
+data.table	.txt	for loop	do.call	1.14417695999146
+data.table	.txt	for loop	do.call	1.20407700538635
+data.table	.txt	for loop	do.call	1.11901307106018
+data.table	.txt	for loop	do.call	1.12497401237488
+data.table	.txt	for loop	do.call	1.11727690696716
+data.table	.txt	for loop	do.call	1.14892506599426
+data.table	.txt	for loop	do.call	1.15213704109192
+data.table	.txt	for loop	do.call	1.1233549118042
+data.table	.txt	for loop	do.call	1.15166711807251
+data.table	.txt	for loop	do.call	1.15241003036499
+data.table	.txt	for loop	do.call	1.12058186531067
+data.table	.txt	for loop	do.call	1.31653809547424
+data.table	.txt	for loop	do.call	1.21797299385071
+data.table	.txt	for loop	do.call	1.15091800689697
+data.table	.txt	for loop	do.call	1.129802942276
+data.table	.txt	for loop	do.call	1.13565015792847
+data.table	.txt	for loop	do.call	1.11904501914978
+data.table	.txt	for loop	do.call	1.13795590400696
+data.table	.txt	for loop	do.call	1.21180891990662
+data.table	.txt	for loop	do.call	1.17983913421631
+data.table	.txt	for loop	do.call	1.13849401473999
+data.table	.txt	for loop	do.call	1.1234278678894
+data.table	.txt	for loop	do.call	1.17691016197205
+data.table	.txt	for loop	do.call	1.15588092803955
+data.table	.txt	for loop	do.call	1.23943400382996
+data.table	.txt	for loop	do.call	1.11166000366211
+data.table	.txt	for loop	do.call	1.14811491966248
+data.table	.txt	for loop	do.call	1.15915298461914
+data.table	.txt	for loop	do.call	1.14580297470093
+data.table	.txt	for loop	do.call	1.24742197990417
+data.table	.txt	for loop	do.call	1.181636095047
+data.table	.txt	for loop	do.call	1.1960780620575
+data.table	.txt	for loop	do.call	1.24915885925293
+data.table	.txt	for loop	do.call	1.14913511276245
+data.table	.txt	for loop	do.call	1.16590404510498
+data.table	.txt	for loop	do.call	1.24486088752747
+data.table	.txt	for loop	do.call	1.22649598121643
+data.table	.txt	for loop	do.call	1.25737404823303
+data.table	.txt	for loop	do.call	1.17525911331177
+data.table	.txt	for loop	do.call	1.16771793365479
+data.table	.txt	for loop	do.call	1.18941998481751
+data.table	.txt	for loop	do.call	1.16026210784912
+data.table	.txt	for loop	do.call	1.1639678478241
+data.table	.txt	for loop	do.call	1.17258405685425
+data.table	.txt	for loop	do.call	1.2033588886261
+data.table	.txt	for loop	do.call	1.15064406394959
+data.table	.txt	for loop	do.call	1.26705598831177
+data.table	.txt	for loop	do.call	1.26517701148987
+data.table	.txt	for loop	do.call	1.17306399345398
+data.table	.txt	for loop	do.call	1.15979599952698
+data.table	.txt	for loop	do.call	1.18018102645874
+data.table	.txt	for loop	do.call	1.14355993270874
+data.table	.txt	for loop	do.call	1.16370701789856
+data.table	.txt	for loop	do.call	1.15833616256714
+data.table	.txt	for loop	do.call	1.16499900817871
+data.table	.txt	for loop	do.call	1.22237586975098
+data.table	.txt	for loop	do.call	1.21781802177429
+data.table	.txt	for loop	do.call	1.15366196632385
+data.table	.txt	for loop	do.call	1.13517093658447
+data.table	.txt	for loop	do.call	1.14452409744263
+data.table	.txt	for loop	do.call	1.21798491477966
+data.table	.txt	for loop	do.call	1.15555000305176
+data.table	.txt	for loop	do.call	1.1552951335907
+data.table	.txt	for loop	do.call	1.25129199028015
+data.table	.txt	for loop	do.call	1.14830493927002
+data.table	.txt	for loop	do.call	1.23269891738892
+data.table	.txt	for loop	do.call	1.14532518386841
+data.table	.txt	for loop	do.call	1.14824390411377
+data.table	.txt	for loop	do.call	1.15052700042725
+data.table	.txt	for loop	do.call	1.14183807373047
+data.table	.txt	for loop	do.call	1.15901589393616
+data.table	.txt	for loop	do.call	1.15638613700867
+data.table	.txt	for loop	do.call	1.14194798469543
+data.table	.txt	for loop	do.call	1.26388692855835
+data.table	.txt	for loop	do.call	1.12303304672241
+data.table	.txt	for loop	do.call	1.22604393959045
+data.table	.txt	for loop	do.call	1.12896299362183
+data.table	.txt	for loop	do.call	1.15004301071167
+data.table	.txt	for loop	do.call	1.15246391296387
+data.table	.txt	for loop	do.call	1.14753913879395
+data.table	.txt	for loop	do.call	1.15644001960754
+data.table	.txt	for loop	do.call	1.1619348526001
+data.table	.txt	for loop	do.call	1.16398096084595
+data.table	.txt	for loop	do.call	1.22837805747986
+data.table	.txt	for loop	do.call	1.12963914871216
+data.table	.txt	for loop	do.call	1.15955400466919
+data.table	.txt	for loop	do.call	1.1461718082428
+data.table	.txt	for loop	do.call	1.1678740978241
+data.table	.txt	for loop	do.call	1.14342594146729
+data.table	.txt	for loop	do.call	1.16308617591858
+data.table	.txt	for loop	do.call	1.13599991798401
+data.table	.txt	for loop	do.call	1.21832799911499
+data.table	.txt	for loop	do.call	1.16904807090759
+base	.csv	lapply	do.call	1.21174311637878
+base	.csv	lapply	do.call	1.10705089569092
+base	.csv	lapply	do.call	1.12100410461426
+base	.csv	lapply	do.call	1.24167895317078
+base	.csv	lapply	do.call	1.1294641494751
+base	.csv	lapply	do.call	1.1823468208313
+base	.csv	lapply	do.call	1.30849313735962
+base	.csv	lapply	do.call	1.12796998023987
+base	.csv	lapply	do.call	1.11199688911438
+base	.csv	lapply	do.call	1.31246399879456
+base	.csv	lapply	do.call	1.07924318313599
+base	.csv	lapply	do.call	1.14446496963501
+base	.csv	lapply	do.call	1.22246599197388
+base	.csv	lapply	do.call	1.11709094047546
+base	.csv	lapply	do.call	1.16916394233704
+base	.csv	lapply	do.call	1.13898897171021
+base	.csv	lapply	do.call	1.10105299949646
+base	.csv	lapply	do.call	1.23280715942383
+base	.csv	lapply	do.call	1.09471583366394
+base	.csv	lapply	do.call	1.10949802398682
+base	.csv	lapply	do.call	1.27136492729187
+base	.csv	lapply	do.call	1.08809208869934
+base	.csv	lapply	do.call	1.10805106163025
+base	.csv	lapply	do.call	1.09909391403198
+base	.csv	lapply	do.call	1.10254311561584
+base	.csv	lapply	do.call	1.10702395439148
+base	.csv	lapply	do.call	1.13892602920532
+base	.csv	lapply	do.call	1.13149785995483
+base	.csv	lapply	do.call	1.194176197052
+base	.csv	lapply	do.call	1.19740700721741
+base	.csv	lapply	do.call	1.07814598083496
+base	.csv	lapply	do.call	1.16687989234924
+base	.csv	lapply	do.call	1.12853503227234
+base	.csv	lapply	do.call	1.12551999092102
+base	.csv	lapply	do.call	1.01730990409851
+base	.csv	lapply	do.call	1.20966601371765
+base	.csv	lapply	do.call	1.17357206344605
+base	.csv	lapply	do.call	1.18707990646362
+base	.csv	lapply	do.call	1.07838010787964
+base	.csv	lapply	do.call	0.984366893768311
+base	.csv	lapply	do.call	1.10108208656311
+base	.csv	lapply	do.call	1.08085203170776
+base	.csv	lapply	do.call	1.07550406455994
+base	.csv	lapply	do.call	1.17186594009399
+base	.csv	lapply	do.call	1.07476305961609
+base	.csv	lapply	do.call	1.08212995529175
+base	.csv	lapply	do.call	1.10207891464233
+base	.csv	lapply	do.call	1.08112215995789
+base	.csv	lapply	do.call	1.07213878631592
+base	.csv	lapply	do.call	1.08906102180481
+base	.csv	lapply	do.call	1.11890816688538
+base	.csv	lapply	do.call	1.0931088924408
+base	.csv	lapply	do.call	1.07383894920349
+base	.csv	lapply	do.call	0.998330116271973
+base	.csv	lapply	do.call	1.17986297607422
+base	.csv	lapply	do.call	1.18089079856873
+base	.csv	lapply	do.call	1.02423214912415
+base	.csv	lapply	do.call	1.1220269203186
+base	.csv	lapply	do.call	1.01033496856689
+base	.csv	lapply	do.call	1.10583114624023
+base	.csv	lapply	do.call	1.12997698783875
+base	.csv	lapply	do.call	1.10803985595703
+base	.csv	lapply	do.call	1.14117312431335
+base	.csv	lapply	do.call	1.08722686767578
+base	.csv	lapply	do.call	1.07863712310791
+base	.csv	lapply	do.call	0.965427875518799
+base	.csv	lapply	do.call	1.01488018035889
+base	.csv	lapply	do.call	1.00926089286804
+base	.csv	lapply	do.call	1.11221599578857
+base	.csv	lapply	do.call	1.07376503944397
+base	.csv	lapply	do.call	1.08508992195129
+base	.csv	lapply	do.call	1.0820791721344
+base	.csv	lapply	do.call	0.99488091468811
+base	.csv	lapply	do.call	1.02979707717896
+base	.csv	lapply	do.call	1.26260995864868
+base	.csv	lapply	do.call	1.01031184196472
+base	.csv	lapply	do.call	1.01631212234497
+base	.csv	lapply	do.call	1.10527300834656
+base	.csv	lapply	do.call	1.14948296546936
+base	.csv	lapply	do.call	1.01267695426941
+base	.csv	lapply	do.call	1.09204697608948
+base	.csv	lapply	do.call	1.00633001327515
+base	.csv	lapply	do.call	1.15247917175293
+base	.csv	lapply	do.call	1.14195990562439
+base	.csv	lapply	do.call	1.11600089073181
+base	.csv	lapply	do.call	1.17448997497559
+base	.csv	lapply	do.call	1.07254600524902
+base	.csv	lapply	do.call	1.09108805656433
+base	.csv	lapply	do.call	1.07910799980164
+base	.csv	lapply	do.call	1.00287294387817
+base	.csv	lapply	do.call	1.04059290885925
+base	.csv	lapply	do.call	1.21879410743713
+base	.csv	lapply	do.call	0.993315935134888
+base	.csv	lapply	do.call	1.01305413246155
+base	.csv	lapply	do.call	1.0675368309021
+base	.csv	lapply	do.call	1.15567708015442
+base	.csv	lapply	do.call	0.995429992675781
+base	.csv	lapply	do.call	1.08414196968079
+base	.csv	lapply	do.call	0.983104944229126
+base	.csv	lapply	do.call	1.10390305519104
+readr	.csv	lapply	do.call	0.989361047744751
+readr	.csv	lapply	do.call	1.02931213378906
+readr	.csv	lapply	do.call	1.03725290298462
+readr	.csv	lapply	do.call	1.14214491844177
+readr	.csv	lapply	do.call	0.996199131011963
+readr	.csv	lapply	do.call	1.11131000518799
+readr	.csv	lapply	do.call	1.0861189365387
+readr	.csv	lapply	do.call	0.992361068725586
+readr	.csv	lapply	do.call	1.08675789833069
+readr	.csv	lapply	do.call	0.991413116455078
+readr	.csv	lapply	do.call	1.08516597747803
+readr	.csv	lapply	do.call	0.961431980133057
+readr	.csv	lapply	do.call	1.08710598945618
+readr	.csv	lapply	do.call	1.04723596572876
+readr	.csv	lapply	do.call	0.972414016723633
+readr	.csv	lapply	do.call	1.080157995224
+readr	.csv	lapply	do.call	0.966379165649414
+readr	.csv	lapply	do.call	0.955952882766724
+readr	.csv	lapply	do.call	1.19707798957825
+readr	.csv	lapply	do.call	1.22776913642883
+readr	.csv	lapply	do.call	1.34041500091553
+readr	.csv	lapply	do.call	1.15596795082092
+readr	.csv	lapply	do.call	1.28455400466919
+readr	.csv	lapply	do.call	1.38536286354065
+readr	.csv	lapply	do.call	1.25726819038391
+readr	.csv	lapply	do.call	1.24965786933899
+readr	.csv	lapply	do.call	1.36299610137939
+readr	.csv	lapply	do.call	1.26861596107483
+readr	.csv	lapply	do.call	1.55788707733154
+readr	.csv	lapply	do.call	1.29456281661987
+readr	.csv	lapply	do.call	1.31342005729675
+readr	.csv	lapply	do.call	1.34693598747253
+readr	.csv	lapply	do.call	1.44014692306519
+readr	.csv	lapply	do.call	1.2127571105957
+readr	.csv	lapply	do.call	1.39807081222534
+readr	.csv	lapply	do.call	1.22279405593872
+readr	.csv	lapply	do.call	1.04025793075562
+readr	.csv	lapply	do.call	1.08242511749268
+readr	.csv	lapply	do.call	1.0519118309021
+readr	.csv	lapply	do.call	0.96845817565918
+readr	.csv	lapply	do.call	0.996822834014893
+readr	.csv	lapply	do.call	1.00132203102112
+readr	.csv	lapply	do.call	1.09110999107361
+readr	.csv	lapply	do.call	0.926537990570068
+readr	.csv	lapply	do.call	1.01226711273193
+readr	.csv	lapply	do.call	0.976400852203369
+readr	.csv	lapply	do.call	1.0988621711731
+readr	.csv	lapply	do.call	0.973397016525269
+readr	.csv	lapply	do.call	0.983397960662842
+readr	.csv	lapply	do.call	0.993969917297363
+readr	.csv	lapply	do.call	1.10257315635681
+readr	.csv	lapply	do.call	0.979414939880371
+readr	.csv	lapply	do.call	1.01344394683838
+readr	.csv	lapply	do.call	0.988399982452393
+readr	.csv	lapply	do.call	1.05217599868774
+readr	.csv	lapply	do.call	1.03880214691162
+readr	.csv	lapply	do.call	1.04738593101501
+readr	.csv	lapply	do.call	1.09902000427246
+readr	.csv	lapply	do.call	0.958459138870239
+readr	.csv	lapply	do.call	1.07220387458801
+readr	.csv	lapply	do.call	0.949084997177124
+readr	.csv	lapply	do.call	0.985037088394165
+readr	.csv	lapply	do.call	0.97441291809082
+readr	.csv	lapply	do.call	1.06513690948486
+readr	.csv	lapply	do.call	0.967123031616211
+readr	.csv	lapply	do.call	1.08310198783875
+readr	.csv	lapply	do.call	1.07408618927002
+readr	.csv	lapply	do.call	0.939529895782471
+readr	.csv	lapply	do.call	0.989214897155762
+readr	.csv	lapply	do.call	1.09087514877319
+readr	.csv	lapply	do.call	0.963548898696899
+readr	.csv	lapply	do.call	1.00796890258789
+readr	.csv	lapply	do.call	1.0721640586853
+readr	.csv	lapply	do.call	1.02984213829041
+readr	.csv	lapply	do.call	1.17469596862793
+readr	.csv	lapply	do.call	0.956398963928223
+readr	.csv	lapply	do.call	0.967468976974487
+readr	.csv	lapply	do.call	1.05714321136475
+readr	.csv	lapply	do.call	0.940711975097656
+readr	.csv	lapply	do.call	0.962416172027588
+readr	.csv	lapply	do.call	0.94648289680481
+readr	.csv	lapply	do.call	1.02927899360657
+readr	.csv	lapply	do.call	1.05916595458984
+readr	.csv	lapply	do.call	0.948072910308838
+readr	.csv	lapply	do.call	1.05372405052185
+readr	.csv	lapply	do.call	0.988499164581299
+readr	.csv	lapply	do.call	0.970635890960693
+readr	.csv	lapply	do.call	1.0980179309845
+readr	.csv	lapply	do.call	0.994354009628296
+readr	.csv	lapply	do.call	0.965418100357056
+readr	.csv	lapply	do.call	1.02027106285095
+readr	.csv	lapply	do.call	0.99035382270813
+readr	.csv	lapply	do.call	0.992372035980225
+readr	.csv	lapply	do.call	1.00729298591614
+readr	.csv	lapply	do.call	0.978387117385864
+readr	.csv	lapply	do.call	0.988412857055664
+readr	.csv	lapply	do.call	0.996333122253418
+readr	.csv	lapply	do.call	1.0033130645752
+readr	.csv	lapply	do.call	1.01929187774658
+readr	.csv	lapply	do.call	1.01880598068237
+data.table	.csv	lapply	do.call	0.883657932281494
+data.table	.csv	lapply	do.call	0.858887910842896
+data.table	.csv	lapply	do.call	0.838757038116455
+data.table	.csv	lapply	do.call	0.980420112609863
+data.table	.csv	lapply	do.call	0.898226976394653
+data.table	.csv	lapply	do.call	0.866680860519409
+data.table	.csv	lapply	do.call	0.83476710319519
+data.table	.csv	lapply	do.call	0.838757991790772
+data.table	.csv	lapply	do.call	0.96342396736145
+data.table	.csv	lapply	do.call	0.834537982940674
+data.table	.csv	lapply	do.call	0.84322714805603
+data.table	.csv	lapply	do.call	0.883636951446533
+data.table	.csv	lapply	do.call	0.853716850280762
+data.table	.csv	lapply	do.call	0.965923070907593
+data.table	.csv	lapply	do.call	0.838783979415894
+data.table	.csv	lapply	do.call	0.878494024276733
+data.table	.csv	lapply	do.call	0.959433078765869
+data.table	.csv	lapply	do.call	0.846766948699951
+data.table	.csv	lapply	do.call	0.88360595703125
+data.table	.csv	lapply	do.call	0.959476947784424
+data.table	.csv	lapply	do.call	0.87113618850708
+data.table	.csv	lapply	do.call	0.84924578666687
+data.table	.csv	lapply	do.call	0.880643129348755
+data.table	.csv	lapply	do.call	0.858435869216919
+data.table	.csv	lapply	do.call	0.874660015106201
+data.table	.csv	lapply	do.call	0.861737012863159
+data.table	.csv	lapply	do.call	0.953491926193237
+data.table	.csv	lapply	do.call	0.842214107513428
+data.table	.csv	lapply	do.call	0.878691911697388
+data.table	.csv	lapply	do.call	0.853677034378052
+data.table	.csv	lapply	do.call	0.839794874191284
+data.table	.csv	lapply	do.call	0.913555145263672
+data.table	.csv	lapply	do.call	0.969668865203857
+data.table	.csv	lapply	do.call	0.854717016220093
+data.table	.csv	lapply	do.call	0.956399917602539
+data.table	.csv	lapply	do.call	0.860700130462647
+data.table	.csv	lapply	do.call	0.920532941818237
+data.table	.csv	lapply	do.call	0.83332085609436
+data.table	.csv	lapply	do.call	0.842233180999756
+data.table	.csv	lapply	do.call	0.883677959442139
+data.table	.csv	lapply	do.call	0.886610984802246
+data.table	.csv	lapply	do.call	0.963444948196411
+data.table	.csv	lapply	do.call	0.865700006484985
+data.table	.csv	lapply	do.call	0.855539083480835
+data.table	.csv	lapply	do.call	0.881628036499023
+data.table	.csv	lapply	do.call	0.866640090942383
+data.table	.csv	lapply	do.call	0.936059951782227
+data.table	.csv	lapply	do.call	0.913548946380615
+data.table	.csv	lapply	do.call	0.871857881546021
+data.table	.csv	lapply	do.call	0.887814044952393
+data.table	.csv	lapply	do.call	0.872705936431885
+data.table	.csv	lapply	do.call	0.876663208007813
+data.table	.csv	lapply	do.call	0.880704879760742
+data.table	.csv	lapply	do.call	0.882596969604492
+data.table	.csv	lapply	do.call	0.869351148605347
+data.table	.csv	lapply	do.call	0.870643854141235
+data.table	.csv	lapply	do.call	0.918543100357056
+data.table	.csv	lapply	do.call	1.00440788269043
+data.table	.csv	lapply	do.call	0.898832082748413
+data.table	.csv	lapply	do.call	0.854430913925171
+data.table	.csv	lapply	do.call	0.855756998062134
+data.table	.csv	lapply	do.call	0.864236116409302
+data.table	.csv	lapply	do.call	0.859237909317017
+data.table	.csv	lapply	do.call	0.845741033554077
+data.table	.csv	lapply	do.call	0.845777034759522
+data.table	.csv	lapply	do.call	0.875746965408325
+data.table	.csv	lapply	do.call	0.861886024475098
+data.table	.csv	lapply	do.call	0.965413093566895
+data.table	.csv	lapply	do.call	0.846698999404907
+data.table	.csv	lapply	do.call	0.856746912002564
+data.table	.csv	lapply	do.call	0.867663860321045
+data.table	.csv	lapply	do.call	0.813819169998169
+data.table	.csv	lapply	do.call	0.839756011962891
+data.table	.csv	lapply	do.call	0.898636817932129
+data.table	.csv	lapply	do.call	0.84470009803772
+data.table	.csv	lapply	do.call	0.859941005706787
+data.table	.csv	lapply	do.call	0.882827043533325
+data.table	.csv	lapply	do.call	0.868691921234131
+data.table	.csv	lapply	do.call	0.876132011413574
+data.table	.csv	lapply	do.call	0.85171914100647
+data.table	.csv	lapply	do.call	0.855735063552856
+data.table	.csv	lapply	do.call	0.88265585899353
+data.table	.csv	lapply	do.call	0.823312044143677
+data.table	.csv	lapply	do.call	0.82961106300354
+data.table	.csv	lapply	do.call	0.853811979293823
+data.table	.csv	lapply	do.call	0.846735000610352
+data.table	.csv	lapply	do.call	0.873661994934082
+data.table	.csv	lapply	do.call	0.843797206878662
+data.table	.csv	lapply	do.call	0.973886013031006
+data.table	.csv	lapply	do.call	0.879661798477173
+data.table	.csv	lapply	do.call	0.841747045516968
+data.table	.csv	lapply	do.call	0.892658948898315
+data.table	.csv	lapply	do.call	0.961387157440186
+data.table	.csv	lapply	do.call	0.857702016830444
+data.table	.csv	lapply	do.call	0.953696012496948
+data.table	.csv	lapply	do.call	0.855731010437012
+data.table	.csv	lapply	do.call	0.87168288230896
+data.table	.csv	lapply	do.call	0.854713916778565
+data.table	.csv	lapply	do.call	0.814864158630371
+data.table	.csv	lapply	do.call	0.849720001220703
+base	.txt	lapply	do.call	0.883657932281494
+base	.txt	lapply	do.call	0.858887910842896
+base	.txt	lapply	do.call	0.838757038116455
+base	.txt	lapply	do.call	0.980420112609863
+base	.txt	lapply	do.call	0.898226976394653
+base	.txt	lapply	do.call	0.866680860519409
+base	.txt	lapply	do.call	0.83476710319519
+base	.txt	lapply	do.call	0.838757991790772
+base	.txt	lapply	do.call	0.96342396736145
+base	.txt	lapply	do.call	0.834537982940674
+base	.txt	lapply	do.call	0.84322714805603
+base	.txt	lapply	do.call	0.883636951446533
+base	.txt	lapply	do.call	0.853716850280762
+base	.txt	lapply	do.call	0.965923070907593
+base	.txt	lapply	do.call	0.838783979415894
+base	.txt	lapply	do.call	0.878494024276733
+base	.txt	lapply	do.call	0.959433078765869
+base	.txt	lapply	do.call	0.846766948699951
+base	.txt	lapply	do.call	0.88360595703125
+base	.txt	lapply	do.call	0.959476947784424
+base	.txt	lapply	do.call	0.87113618850708
+base	.txt	lapply	do.call	0.84924578666687
+base	.txt	lapply	do.call	0.880643129348755
+base	.txt	lapply	do.call	0.858435869216919
+base	.txt	lapply	do.call	0.874660015106201
+base	.txt	lapply	do.call	0.861737012863159
+base	.txt	lapply	do.call	0.953491926193237
+base	.txt	lapply	do.call	0.842214107513428
+base	.txt	lapply	do.call	0.878691911697388
+base	.txt	lapply	do.call	0.853677034378052
+base	.txt	lapply	do.call	0.839794874191284
+base	.txt	lapply	do.call	0.913555145263672
+base	.txt	lapply	do.call	0.969668865203857
+base	.txt	lapply	do.call	0.854717016220093
+base	.txt	lapply	do.call	0.956399917602539
+base	.txt	lapply	do.call	0.860700130462647
+base	.txt	lapply	do.call	0.920532941818237
+base	.txt	lapply	do.call	0.83332085609436
+base	.txt	lapply	do.call	0.842233180999756
+base	.txt	lapply	do.call	0.883677959442139
+base	.txt	lapply	do.call	0.886610984802246
+base	.txt	lapply	do.call	0.963444948196411
+base	.txt	lapply	do.call	0.865700006484985
+base	.txt	lapply	do.call	0.855539083480835
+base	.txt	lapply	do.call	0.881628036499023
+base	.txt	lapply	do.call	0.866640090942383
+base	.txt	lapply	do.call	0.936059951782227
+base	.txt	lapply	do.call	0.913548946380615
+base	.txt	lapply	do.call	0.871857881546021
+base	.txt	lapply	do.call	0.887814044952393
+base	.txt	lapply	do.call	0.872705936431885
+base	.txt	lapply	do.call	0.876663208007813
+base	.txt	lapply	do.call	0.880704879760742
+base	.txt	lapply	do.call	0.882596969604492
+base	.txt	lapply	do.call	0.869351148605347
+base	.txt	lapply	do.call	0.870643854141235
+base	.txt	lapply	do.call	0.918543100357056
+base	.txt	lapply	do.call	1.00440788269043
+base	.txt	lapply	do.call	0.898832082748413
+base	.txt	lapply	do.call	0.854430913925171
+base	.txt	lapply	do.call	0.855756998062134
+base	.txt	lapply	do.call	0.864236116409302
+base	.txt	lapply	do.call	0.859237909317017
+base	.txt	lapply	do.call	0.845741033554077
+base	.txt	lapply	do.call	0.845777034759522
+base	.txt	lapply	do.call	0.875746965408325
+base	.txt	lapply	do.call	0.861886024475098
+base	.txt	lapply	do.call	0.965413093566895
+base	.txt	lapply	do.call	0.846698999404907
+base	.txt	lapply	do.call	0.856746912002564
+base	.txt	lapply	do.call	0.867663860321045
+base	.txt	lapply	do.call	0.813819169998169
+base	.txt	lapply	do.call	0.839756011962891
+base	.txt	lapply	do.call	0.898636817932129
+base	.txt	lapply	do.call	0.84470009803772
+base	.txt	lapply	do.call	0.859941005706787
+base	.txt	lapply	do.call	0.882827043533325
+base	.txt	lapply	do.call	0.868691921234131
+base	.txt	lapply	do.call	0.876132011413574
+base	.txt	lapply	do.call	0.85171914100647
+base	.txt	lapply	do.call	0.855735063552856
+base	.txt	lapply	do.call	0.88265585899353
+base	.txt	lapply	do.call	0.823312044143677
+base	.txt	lapply	do.call	0.82961106300354
+base	.txt	lapply	do.call	0.853811979293823
+base	.txt	lapply	do.call	0.846735000610352
+base	.txt	lapply	do.call	0.873661994934082
+base	.txt	lapply	do.call	0.843797206878662
+base	.txt	lapply	do.call	0.973886013031006
+base	.txt	lapply	do.call	0.879661798477173
+base	.txt	lapply	do.call	0.841747045516968
+base	.txt	lapply	do.call	0.892658948898315
+base	.txt	lapply	do.call	0.961387157440186
+base	.txt	lapply	do.call	0.857702016830444
+base	.txt	lapply	do.call	0.953696012496948
+base	.txt	lapply	do.call	0.855731010437012
+base	.txt	lapply	do.call	0.87168288230896
+base	.txt	lapply	do.call	0.854713916778565
+base	.txt	lapply	do.call	0.814864158630371
+base	.txt	lapply	do.call	0.849720001220703
+readr	.txt	lapply	do.call	0.800055027008057
+readr	.txt	lapply	do.call	0.835446834564209
+readr	.txt	lapply	do.call	0.929558992385864
+readr	.txt	lapply	do.call	0.821757078170776
+readr	.txt	lapply	do.call	0.935497045516968
+readr	.txt	lapply	do.call	0.8228440284729
+readr	.txt	lapply	do.call	0.814795970916748
+readr	.txt	lapply	do.call	0.816053867340088
+readr	.txt	lapply	do.call	0.839754104614258
+readr	.txt	lapply	do.call	0.837775945663452
+readr	.txt	lapply	do.call	0.939451932907104
+readr	.txt	lapply	do.call	0.838800191879273
+readr	.txt	lapply	do.call	0.804826974868774
+readr	.txt	lapply	do.call	0.8367600440979
+readr	.txt	lapply	do.call	0.846735954284668
+readr	.txt	lapply	do.call	0.809834957122803
+readr	.txt	lapply	do.call	0.832773923873901
+readr	.txt	lapply	do.call	0.861696004867554
+readr	.txt	lapply	do.call	0.823341131210327
+readr	.txt	lapply	do.call	0.799945831298828
+readr	.txt	lapply	do.call	0.822350025177002
+readr	.txt	lapply	do.call	0.821761131286621
+readr	.txt	lapply	do.call	0.836803913116455
+readr	.txt	lapply	do.call	0.825269937515259
+readr	.txt	lapply	do.call	0.831339120864868
+readr	.txt	lapply	do.call	0.814777851104736
+readr	.txt	lapply	do.call	0.85322117805481
+readr	.txt	lapply	do.call	0.836758852005005
+readr	.txt	lapply	do.call	0.879675149917603
+readr	.txt	lapply	do.call	0.869670867919922
+readr	.txt	lapply	do.call	0.741117000579834
+readr	.txt	lapply	do.call	0.765769004821777
+readr	.txt	lapply	do.call	0.800835132598877
+readr	.txt	lapply	do.call	0.758478879928589
+readr	.txt	lapply	do.call	0.74006986618042
+readr	.txt	lapply	do.call	0.772907018661499
+readr	.txt	lapply	do.call	0.767987012863159
+readr	.txt	lapply	do.call	0.766010046005249
+readr	.txt	lapply	do.call	0.768898963928223
+readr	.txt	lapply	do.call	0.765953063964844
+readr	.txt	lapply	do.call	0.784898996353149
+readr	.txt	lapply	do.call	0.77592396736145
+readr	.txt	lapply	do.call	0.780914068222046
+readr	.txt	lapply	do.call	0.777574062347412
+readr	.txt	lapply	do.call	0.885123014450073
+readr	.txt	lapply	do.call	0.778913974761963
+readr	.txt	lapply	do.call	0.762959957122803
+readr	.txt	lapply	do.call	0.779973030090332
+readr	.txt	lapply	do.call	0.768275022506714
+readr	.txt	lapply	do.call	0.773406982421875
+readr	.txt	lapply	do.call	0.784899950027466
+readr	.txt	lapply	do.call	0.769491910934448
+readr	.txt	lapply	do.call	0.772891044616699
+readr	.txt	lapply	do.call	0.778937101364136
+readr	.txt	lapply	do.call	0.903206825256348
+readr	.txt	lapply	do.call	0.77189302444458
+readr	.txt	lapply	do.call	0.725226163864136
+readr	.txt	lapply	do.call	0.747998952865601
+readr	.txt	lapply	do.call	0.771445989608765
+readr	.txt	lapply	do.call	0.764952182769775
+readr	.txt	lapply	do.call	0.779538869857788
+readr	.txt	lapply	do.call	0.873856067657471
+readr	.txt	lapply	do.call	0.771960020065308
+readr	.txt	lapply	do.call	0.783866882324219
+readr	.txt	lapply	do.call	0.76099419593811
+readr	.txt	lapply	do.call	0.773903846740723
+readr	.txt	lapply	do.call	0.776921033859253
+readr	.txt	lapply	do.call	0.75098991394043
+readr	.txt	lapply	do.call	0.773969173431397
+readr	.txt	lapply	do.call	0.777020931243897
+readr	.txt	lapply	do.call	0.77457594871521
+readr	.txt	lapply	do.call	0.748470067977905
+readr	.txt	lapply	do.call	0.743518829345703
+readr	.txt	lapply	do.call	0.740020990371704
+readr	.txt	lapply	do.call	0.864687204360962
+readr	.txt	lapply	do.call	0.767006874084473
+readr	.txt	lapply	do.call	0.778923034667969
+readr	.txt	lapply	do.call	0.764914035797119
+readr	.txt	lapply	do.call	0.828796863555908
+readr	.txt	lapply	do.call	0.74252200126648
+readr	.txt	lapply	do.call	0.816841125488281
+readr	.txt	lapply	do.call	0.782896041870117
+readr	.txt	lapply	do.call	0.735032796859741
+readr	.txt	lapply	do.call	0.733042001724243
+readr	.txt	lapply	do.call	0.70311713218689
+readr	.txt	lapply	do.call	0.722068786621094
+readr	.txt	lapply	do.call	0.851723194122315
+readr	.txt	lapply	do.call	0.748996019363403
+readr	.txt	lapply	do.call	0.756999969482422
+readr	.txt	lapply	do.call	0.742799043655396
+readr	.txt	lapply	do.call	0.767096042633057
+readr	.txt	lapply	do.call	0.788919925689697
+readr	.txt	lapply	do.call	0.763000965118408
+readr	.txt	lapply	do.call	0.783143043518066
+readr	.txt	lapply	do.call	0.781866073608398
+readr	.txt	lapply	do.call	0.782104015350342
+readr	.txt	lapply	do.call	0.740975856781006
+readr	.txt	lapply	do.call	0.750039100646973
+readr	.txt	lapply	do.call	0.760963916778565
+readr	.txt	lapply	do.call	0.899918079376221
+data.table	.txt	lapply	do.call	0.800055027008057
+data.table	.txt	lapply	do.call	0.835446834564209
+data.table	.txt	lapply	do.call	0.929558992385864
+data.table	.txt	lapply	do.call	0.821757078170776
+data.table	.txt	lapply	do.call	0.935497045516968
+data.table	.txt	lapply	do.call	0.8228440284729
+data.table	.txt	lapply	do.call	0.814795970916748
+data.table	.txt	lapply	do.call	0.816053867340088
+data.table	.txt	lapply	do.call	0.839754104614258
+data.table	.txt	lapply	do.call	0.837775945663452
+data.table	.txt	lapply	do.call	0.939451932907104
+data.table	.txt	lapply	do.call	0.838800191879273
+data.table	.txt	lapply	do.call	0.804826974868774
+data.table	.txt	lapply	do.call	0.8367600440979
+data.table	.txt	lapply	do.call	0.846735954284668
+data.table	.txt	lapply	do.call	0.809834957122803
+data.table	.txt	lapply	do.call	0.832773923873901
+data.table	.txt	lapply	do.call	0.861696004867554
+data.table	.txt	lapply	do.call	0.823341131210327
+data.table	.txt	lapply	do.call	0.799945831298828
+data.table	.txt	lapply	do.call	0.822350025177002
+data.table	.txt	lapply	do.call	0.821761131286621
+data.table	.txt	lapply	do.call	0.836803913116455
+data.table	.txt	lapply	do.call	0.825269937515259
+data.table	.txt	lapply	do.call	0.831339120864868
+data.table	.txt	lapply	do.call	0.814777851104736
+data.table	.txt	lapply	do.call	0.85322117805481
+data.table	.txt	lapply	do.call	0.836758852005005
+data.table	.txt	lapply	do.call	0.879675149917603
+data.table	.txt	lapply	do.call	0.869670867919922
+data.table	.txt	lapply	do.call	0.741117000579834
+data.table	.txt	lapply	do.call	0.765769004821777
+data.table	.txt	lapply	do.call	0.800835132598877
+data.table	.txt	lapply	do.call	0.758478879928589
+data.table	.txt	lapply	do.call	0.74006986618042
+data.table	.txt	lapply	do.call	0.772907018661499
+data.table	.txt	lapply	do.call	0.767987012863159
+data.table	.txt	lapply	do.call	0.766010046005249
+data.table	.txt	lapply	do.call	0.768898963928223
+data.table	.txt	lapply	do.call	0.765953063964844
+data.table	.txt	lapply	do.call	0.784898996353149
+data.table	.txt	lapply	do.call	0.77592396736145
+data.table	.txt	lapply	do.call	0.780914068222046
+data.table	.txt	lapply	do.call	0.777574062347412
+data.table	.txt	lapply	do.call	0.885123014450073
+data.table	.txt	lapply	do.call	0.778913974761963
+data.table	.txt	lapply	do.call	0.762959957122803
+data.table	.txt	lapply	do.call	0.779973030090332
+data.table	.txt	lapply	do.call	0.768275022506714
+data.table	.txt	lapply	do.call	0.773406982421875
+data.table	.txt	lapply	do.call	0.784899950027466
+data.table	.txt	lapply	do.call	0.769491910934448
+data.table	.txt	lapply	do.call	0.772891044616699
+data.table	.txt	lapply	do.call	0.778937101364136
+data.table	.txt	lapply	do.call	0.903206825256348
+data.table	.txt	lapply	do.call	0.77189302444458
+data.table	.txt	lapply	do.call	0.725226163864136
+data.table	.txt	lapply	do.call	0.747998952865601
+data.table	.txt	lapply	do.call	0.771445989608765
+data.table	.txt	lapply	do.call	0.764952182769775
+data.table	.txt	lapply	do.call	0.779538869857788
+data.table	.txt	lapply	do.call	0.873856067657471
+data.table	.txt	lapply	do.call	0.771960020065308
+data.table	.txt	lapply	do.call	0.783866882324219
+data.table	.txt	lapply	do.call	0.76099419593811
+data.table	.txt	lapply	do.call	0.773903846740723
+data.table	.txt	lapply	do.call	0.776921033859253
+data.table	.txt	lapply	do.call	0.75098991394043
+data.table	.txt	lapply	do.call	0.773969173431397
+data.table	.txt	lapply	do.call	0.777020931243897
+data.table	.txt	lapply	do.call	0.77457594871521
+data.table	.txt	lapply	do.call	0.748470067977905
+data.table	.txt	lapply	do.call	0.743518829345703
+data.table	.txt	lapply	do.call	0.740020990371704
+data.table	.txt	lapply	do.call	0.864687204360962
+data.table	.txt	lapply	do.call	0.767006874084473
+data.table	.txt	lapply	do.call	0.778923034667969
+data.table	.txt	lapply	do.call	0.764914035797119
+data.table	.txt	lapply	do.call	0.828796863555908
+data.table	.txt	lapply	do.call	0.74252200126648
+data.table	.txt	lapply	do.call	0.816841125488281
+data.table	.txt	lapply	do.call	0.782896041870117
+data.table	.txt	lapply	do.call	0.735032796859741
+data.table	.txt	lapply	do.call	0.733042001724243
+data.table	.txt	lapply	do.call	0.70311713218689
+data.table	.txt	lapply	do.call	0.722068786621094
+data.table	.txt	lapply	do.call	0.851723194122315
+data.table	.txt	lapply	do.call	0.748996019363403
+data.table	.txt	lapply	do.call	0.756999969482422
+data.table	.txt	lapply	do.call	0.742799043655396
+data.table	.txt	lapply	do.call	0.767096042633057
+data.table	.txt	lapply	do.call	0.788919925689697
+data.table	.txt	lapply	do.call	0.763000965118408
+data.table	.txt	lapply	do.call	0.783143043518066
+data.table	.txt	lapply	do.call	0.781866073608398
+data.table	.txt	lapply	do.call	0.782104015350342
+data.table	.txt	lapply	do.call	0.740975856781006
+data.table	.txt	lapply	do.call	0.750039100646973
+data.table	.txt	lapply	do.call	0.760963916778565
+data.table	.txt	lapply	do.call	0.899918079376221
+base	.csv	purrr::map	do.call	0.1875319480896
+base	.csv	purrr::map	do.call	0.171504974365234
+base	.csv	purrr::map	do.call	0.166554927825928
+base	.csv	purrr::map	do.call	0.164560079574585
+base	.csv	purrr::map	do.call	0.163563013076782
+base	.csv	purrr::map	do.call	0.266515970230103
+base	.csv	purrr::map	do.call	0.158575057983398
+base	.csv	purrr::map	do.call	0.162554979324341
+base	.csv	purrr::map	do.call	0.165563106536865
+base	.csv	purrr::map	do.call	0.152576923370361
+base	.csv	purrr::map	do.call	0.14686107635498
+base	.csv	purrr::map	do.call	0.147455930709839
+base	.csv	purrr::map	do.call	0.145611047744751
+base	.csv	purrr::map	do.call	0.146649122238159
+base	.csv	purrr::map	do.call	0.142576932907105
+base	.csv	purrr::map	do.call	0.232856035232544
+base	.csv	purrr::map	do.call	0.152591943740845
+base	.csv	purrr::map	do.call	0.149600028991699
+base	.csv	purrr::map	do.call	0.149634838104248
+base	.csv	purrr::map	do.call	0.138630151748657
+base	.csv	purrr::map	do.call	0.139221906661987
+base	.csv	purrr::map	do.call	0.142627000808716
+base	.csv	purrr::map	do.call	0.139271020889282
+base	.csv	purrr::map	do.call	0.139600038528442
+base	.csv	purrr::map	do.call	0.139137983322144
+base	.csv	purrr::map	do.call	0.139626979827881
+base	.csv	purrr::map	do.call	0.141622066497803
+base	.csv	purrr::map	do.call	0.151594877243042
+base	.csv	purrr::map	do.call	0.13762903213501
+base	.csv	purrr::map	do.call	0.13666296005249
+base	.csv	purrr::map	do.call	0.135612010955811
+base	.csv	purrr::map	do.call	0.1356360912323
+base	.csv	purrr::map	do.call	0.136632919311523
+base	.csv	purrr::map	do.call	0.140133142471313
+base	.csv	purrr::map	do.call	0.139624834060669
+base	.csv	purrr::map	do.call	0.140639066696167
+base	.csv	purrr::map	do.call	0.149600028991699
+base	.csv	purrr::map	do.call	0.152592897415161
+base	.csv	purrr::map	do.call	0.138627052307129
+base	.csv	purrr::map	do.call	0.139654159545898
+base	.csv	purrr::map	do.call	0.138628959655762
+base	.csv	purrr::map	do.call	0.139137029647827
+base	.csv	purrr::map	do.call	0.138950824737549
+base	.csv	purrr::map	do.call	0.142575979232788
+base	.csv	purrr::map	do.call	0.139661073684692
+base	.csv	purrr::map	do.call	0.139539957046509
+base	.csv	purrr::map	do.call	0.143156051635742
+base	.csv	purrr::map	do.call	0.134638071060181
+base	.csv	purrr::map	do.call	0.137537956237793
+base	.csv	purrr::map	do.call	0.137632131576538
+base	.csv	purrr::map	do.call	0.226394891738892
+base	.csv	purrr::map	do.call	0.138782978057861
+base	.csv	purrr::map	do.call	0.140131950378418
+base	.csv	purrr::map	do.call	0.139628171920776
+base	.csv	purrr::map	do.call	0.143635988235474
+base	.csv	purrr::map	do.call	0.144613981246948
+base	.csv	purrr::map	do.call	0.13762903213501
+base	.csv	purrr::map	do.call	0.137660026550293
+base	.csv	purrr::map	do.call	0.137638807296753
+base	.csv	purrr::map	do.call	0.223574161529541
+base	.csv	purrr::map	do.call	0.138628959655762
+base	.csv	purrr::map	do.call	0.138649940490723
+base	.csv	purrr::map	do.call	0.139662981033325
+base	.csv	purrr::map	do.call	0.140660047531128
+base	.csv	purrr::map	do.call	0.13959002494812
+base	.csv	purrr::map	do.call	0.144654989242554
+base	.csv	purrr::map	do.call	0.139585018157959
+base	.csv	purrr::map	do.call	0.138629913330078
+base	.csv	purrr::map	do.call	0.137632131576538
+base	.csv	purrr::map	do.call	0.134816884994507
+base	.csv	purrr::map	do.call	0.135596036911011
+base	.csv	purrr::map	do.call	0.138352870941162
+base	.csv	purrr::map	do.call	0.139031171798706
+base	.csv	purrr::map	do.call	0.138628005981445
+base	.csv	purrr::map	do.call	0.14562201499939
+base	.csv	purrr::map	do.call	0.138679027557373
+base	.csv	purrr::map	do.call	0.140744924545288
+base	.csv	purrr::map	do.call	0.223402976989746
+base	.csv	purrr::map	do.call	0.139626026153564
+base	.csv	purrr::map	do.call	0.139661073684692
+base	.csv	purrr::map	do.call	0.224918127059937
+base	.csv	purrr::map	do.call	0.139635801315308
+base	.csv	purrr::map	do.call	0.138629198074341
+base	.csv	purrr::map	do.call	0.142610788345337
+base	.csv	purrr::map	do.call	0.150596141815186
+base	.csv	purrr::map	do.call	0.13962984085083
+base	.csv	purrr::map	do.call	0.13863205909729
+base	.csv	purrr::map	do.call	0.138864040374756
+base	.csv	purrr::map	do.call	0.222816944122314
+base	.csv	purrr::map	do.call	0.136182069778442
+base	.csv	purrr::map	do.call	0.138638019561768
+base	.csv	purrr::map	do.call	0.138627052307129
+base	.csv	purrr::map	do.call	0.138629913330078
+base	.csv	purrr::map	do.call	0.231358051300049
+base	.csv	purrr::map	do.call	0.138629913330078
+base	.csv	purrr::map	do.call	0.138628959655762
+base	.csv	purrr::map	do.call	0.137632131576538
+base	.csv	purrr::map	do.call	0.13966178894043
+base	.csv	purrr::map	do.call	0.139792203903198
+base	.csv	purrr::map	do.call	0.139585018157959
+readr	.csv	purrr::map	do.call	0.150596857070923
+readr	.csv	purrr::map	do.call	0.142617225646973
+readr	.csv	purrr::map	do.call	0.153591871261597
+readr	.csv	purrr::map	do.call	0.143876075744629
+readr	.csv	purrr::map	do.call	0.143650054931641
+readr	.csv	purrr::map	do.call	0.147616863250732
+readr	.csv	purrr::map	do.call	0.241341114044189
+readr	.csv	purrr::map	do.call	0.142621040344238
+readr	.csv	purrr::map	do.call	0.146607875823975
+readr	.csv	purrr::map	do.call	0.144615173339844
+readr	.csv	purrr::map	do.call	0.145518779754639
+readr	.csv	purrr::map	do.call	0.151971101760864
+readr	.csv	purrr::map	do.call	0.143654108047485
+readr	.csv	purrr::map	do.call	0.143617868423462
+readr	.csv	purrr::map	do.call	0.142619132995605
+readr	.csv	purrr::map	do.call	0.141618967056274
+readr	.csv	purrr::map	do.call	0.144650936126709
+readr	.csv	purrr::map	do.call	0.139784097671509
+readr	.csv	purrr::map	do.call	0.139667987823486
+readr	.csv	purrr::map	do.call	0.14063286781311
+readr	.csv	purrr::map	do.call	0.234373092651367
+readr	.csv	purrr::map	do.call	0.139628887176514
+readr	.csv	purrr::map	do.call	0.139624118804932
+readr	.csv	purrr::map	do.call	0.138628005981445
+readr	.csv	purrr::map	do.call	0.139627933502197
+readr	.csv	purrr::map	do.call	0.139626026153564
+readr	.csv	purrr::map	do.call	0.143573999404907
+readr	.csv	purrr::map	do.call	0.139626026153564
+readr	.csv	purrr::map	do.call	0.139626026153564
+readr	.csv	purrr::map	do.call	0.153589010238647
+readr	.csv	purrr::map	do.call	0.139626979827881
+readr	.csv	purrr::map	do.call	0.140624046325684
+readr	.csv	purrr::map	do.call	0.138629913330078
+readr	.csv	purrr::map	do.call	0.139626979827881
+readr	.csv	purrr::map	do.call	0.139624118804932
+readr	.csv	purrr::map	do.call	0.139626979827881
+readr	.csv	purrr::map	do.call	0.14261794090271
+readr	.csv	purrr::map	do.call	0.141353845596313
+readr	.csv	purrr::map	do.call	0.147907018661499
+readr	.csv	purrr::map	do.call	0.147606134414673
+readr	.csv	purrr::map	do.call	0.223464012145996
+readr	.csv	purrr::map	do.call	0.137598991394043
+readr	.csv	purrr::map	do.call	0.137634038925171
+readr	.csv	purrr::map	do.call	0.140213012695313
+readr	.csv	purrr::map	do.call	0.140624046325684
+readr	.csv	purrr::map	do.call	0.138628959655762
+readr	.csv	purrr::map	do.call	0.139626979827881
+readr	.csv	purrr::map	do.call	0.140623092651367
+readr	.csv	purrr::map	do.call	0.146608829498291
+readr	.csv	purrr::map	do.call	0.138629198074341
+readr	.csv	purrr::map	do.call	0.14165997505188
+readr	.csv	purrr::map	do.call	0.140185832977295
+readr	.csv	purrr::map	do.call	0.139222145080566
+readr	.csv	purrr::map	do.call	0.138841152191162
+readr	.csv	purrr::map	do.call	0.138986825942993
+readr	.csv	purrr::map	do.call	0.144613027572632
+readr	.csv	purrr::map	do.call	0.140625
+readr	.csv	purrr::map	do.call	0.15577507019043
+readr	.csv	purrr::map	do.call	0.143615961074829
+readr	.csv	purrr::map	do.call	0.13863205909729
+readr	.csv	purrr::map	do.call	0.138622045516968
+readr	.csv	purrr::map	do.call	0.13858699798584
+readr	.csv	purrr::map	do.call	0.13963794708252
+readr	.csv	purrr::map	do.call	0.139647960662842
+readr	.csv	purrr::map	do.call	0.141623020172119
+readr	.csv	purrr::map	do.call	0.14332389831543
+readr	.csv	purrr::map	do.call	0.149600982666016
+readr	.csv	purrr::map	do.call	0.143615961074829
+readr	.csv	purrr::map	do.call	0.223751068115234
+readr	.csv	purrr::map	do.call	0.139626026153564
+readr	.csv	purrr::map	do.call	0.140624046325684
+readr	.csv	purrr::map	do.call	0.139673948287964
+readr	.csv	purrr::map	do.call	0.139679908752441
+readr	.csv	purrr::map	do.call	0.138622999191284
+readr	.csv	purrr::map	do.call	0.139620065689087
+readr	.csv	purrr::map	do.call	0.138628959655762
+readr	.csv	purrr::map	do.call	0.146608114242554
+readr	.csv	purrr::map	do.call	0.139592885971069
+readr	.csv	purrr::map	do.call	0.138669013977051
+readr	.csv	purrr::map	do.call	0.139625072479248
+readr	.csv	purrr::map	do.call	0.138624906539917
+readr	.csv	purrr::map	do.call	0.138980150222778
+readr	.csv	purrr::map	do.call	0.139634847640991
+readr	.csv	purrr::map	do.call	0.139852046966553
+readr	.csv	purrr::map	do.call	0.139782905578613
+readr	.csv	purrr::map	do.call	0.150602102279663
+readr	.csv	purrr::map	do.call	0.141861915588379
+readr	.csv	purrr::map	do.call	0.142657041549683
+readr	.csv	purrr::map	do.call	0.142616987228394
+readr	.csv	purrr::map	do.call	0.141621112823486
+readr	.csv	purrr::map	do.call	0.139626979827881
+readr	.csv	purrr::map	do.call	0.138628959655762
+readr	.csv	purrr::map	do.call	0.141635894775391
+readr	.csv	purrr::map	do.call	0.139607191085815
+readr	.csv	purrr::map	do.call	0.138845920562744
+readr	.csv	purrr::map	do.call	0.316176891326904
+readr	.csv	purrr::map	do.call	0.138634920120239
+readr	.csv	purrr::map	do.call	0.138630151748657
+readr	.csv	purrr::map	do.call	0.140622854232788
+readr	.csv	purrr::map	do.call	0.138628005981445
+data.table	.csv	purrr::map	do.call	0.179559946060181
+data.table	.csv	purrr::map	do.call	0.173541069030762
+data.table	.csv	purrr::map	do.call	0.166234016418457
+data.table	.csv	purrr::map	do.call	0.169547080993652
+data.table	.csv	purrr::map	do.call	0.166540861129761
+data.table	.csv	purrr::map	do.call	0.180495977401733
+data.table	.csv	purrr::map	do.call	0.179054021835327
+data.table	.csv	purrr::map	do.call	0.166527032852173
+data.table	.csv	purrr::map	do.call	0.1667640209198
+data.table	.csv	purrr::map	do.call	0.163563966751099
+data.table	.csv	purrr::map	do.call	0.167850017547607
+data.table	.csv	purrr::map	do.call	0.161931037902832
+data.table	.csv	purrr::map	do.call	0.161568880081177
+data.table	.csv	purrr::map	do.call	0.161074161529541
+data.table	.csv	purrr::map	do.call	0.161815881729126
+data.table	.csv	purrr::map	do.call	0.16954493522644
+data.table	.csv	purrr::map	do.call	0.161962032318115
+data.table	.csv	purrr::map	do.call	0.158577919006348
+data.table	.csv	purrr::map	do.call	0.157486200332642
+data.table	.csv	purrr::map	do.call	0.162564992904663
+data.table	.csv	purrr::map	do.call	0.243350028991699
+data.table	.csv	purrr::map	do.call	0.15761399269104
+data.table	.csv	purrr::map	do.call	0.157587051391602
+data.table	.csv	purrr::map	do.call	0.163564920425415
+data.table	.csv	purrr::map	do.call	0.159768104553223
+data.table	.csv	purrr::map	do.call	0.1580650806427
+data.table	.csv	purrr::map	do.call	0.156980991363525
+data.table	.csv	purrr::map	do.call	0.15991997718811
+data.table	.csv	purrr::map	do.call	0.257313013076782
+data.table	.csv	purrr::map	do.call	0.159796953201294
+data.table	.csv	purrr::map	do.call	0.158567905426025
+data.table	.csv	purrr::map	do.call	0.158063173294067
+data.table	.csv	purrr::map	do.call	0.165552854537964
+data.table	.csv	purrr::map	do.call	0.161531925201416
+data.table	.csv	purrr::map	do.call	0.157577991485596
+data.table	.csv	purrr::map	do.call	0.157578229904175
+data.table	.csv	purrr::map	do.call	0.158575773239136
+data.table	.csv	purrr::map	do.call	0.163936138153076
+data.table	.csv	purrr::map	do.call	0.157581090927124
+data.table	.csv	purrr::map	do.call	0.159610986709595
+data.table	.csv	purrr::map	do.call	0.159205913543701
+data.table	.csv	purrr::map	do.call	0.165091991424561
+data.table	.csv	purrr::map	do.call	0.157578945159912
+data.table	.csv	purrr::map	do.call	0.161827087402344
+data.table	.csv	purrr::map	do.call	0.157577037811279
+data.table	.csv	purrr::map	do.call	0.165419816970825
+data.table	.csv	purrr::map	do.call	0.157584190368652
+data.table	.csv	purrr::map	do.call	0.157487869262695
+data.table	.csv	purrr::map	do.call	0.157546043395996
+data.table	.csv	purrr::map	do.call	0.15860915184021
+data.table	.csv	purrr::map	do.call	0.163574934005737
+data.table	.csv	purrr::map	do.call	0.157751083374023
+data.table	.csv	purrr::map	do.call	0.157799005508423
+data.table	.csv	purrr::map	do.call	0.165512800216675
+data.table	.csv	purrr::map	do.call	0.163872003555298
+data.table	.csv	purrr::map	do.call	0.156582117080688
+data.table	.csv	purrr::map	do.call	0.158576011657715
+data.table	.csv	purrr::map	do.call	0.160609006881714
+data.table	.csv	purrr::map	do.call	0.159570932388306
+data.table	.csv	purrr::map	do.call	0.164557933807373
+data.table	.csv	purrr::map	do.call	0.15754508972168
+data.table	.csv	purrr::map	do.call	0.159234046936035
+data.table	.csv	purrr::map	do.call	0.158576011657715
+data.table	.csv	purrr::map	do.call	0.165608882904053
+data.table	.csv	purrr::map	do.call	0.157741069793701
+data.table	.csv	purrr::map	do.call	0.159564018249512
+data.table	.csv	purrr::map	do.call	0.157586812973022
+data.table	.csv	purrr::map	do.call	0.169503211975098
+data.table	.csv	purrr::map	do.call	0.157816886901855
+data.table	.csv	purrr::map	do.call	0.15884804725647
+data.table	.csv	purrr::map	do.call	0.161568880081177
+data.table	.csv	purrr::map	do.call	0.178519010543823
+data.table	.csv	purrr::map	do.call	0.171518087387085
+data.table	.csv	purrr::map	do.call	0.246342897415161
+data.table	.csv	purrr::map	do.call	0.158576011657715
+data.table	.csv	purrr::map	do.call	0.161568164825439
+data.table	.csv	purrr::map	do.call	0.208031892776489
+data.table	.csv	purrr::map	do.call	0.157751083374023
+data.table	.csv	purrr::map	do.call	0.159607887268066
+data.table	.csv	purrr::map	do.call	0.159538984298706
+data.table	.csv	purrr::map	do.call	0.171885967254639
+data.table	.csv	purrr::map	do.call	0.15857720375061
+data.table	.csv	purrr::map	do.call	0.158575773239136
+data.table	.csv	purrr::map	do.call	0.160571098327637
+data.table	.csv	purrr::map	do.call	0.173533916473389
+data.table	.csv	purrr::map	do.call	0.157591104507446
+data.table	.csv	purrr::map	do.call	0.160572052001953
+data.table	.csv	purrr::map	do.call	0.16755199432373
+data.table	.csv	purrr::map	do.call	0.189491987228394
+data.table	.csv	purrr::map	do.call	0.159610033035278
+data.table	.csv	purrr::map	do.call	0.157541990280151
+data.table	.csv	purrr::map	do.call	0.158577919006348
+data.table	.csv	purrr::map	do.call	0.157577037811279
+data.table	.csv	purrr::map	do.call	0.167586088180542
+data.table	.csv	purrr::map	do.call	0.158540964126587
+data.table	.csv	purrr::map	do.call	0.241355895996094
+data.table	.csv	purrr::map	do.call	0.157578945159912
+data.table	.csv	purrr::map	do.call	0.166553974151611
+data.table	.csv	purrr::map	do.call	0.158576011657715
+data.table	.csv	purrr::map	do.call	0.158576011657715
+base	.txt	purrr::map	do.call	0.177524089813232
+base	.txt	purrr::map	do.call	0.220768928527832
+base	.txt	purrr::map	do.call	0.172224998474121
+base	.txt	purrr::map	do.call	0.162569046020508
+base	.txt	purrr::map	do.call	0.167795896530151
+base	.txt	purrr::map	do.call	0.178521156311035
+base	.txt	purrr::map	do.call	0.178521871566772
+base	.txt	purrr::map	do.call	0.164560079574585
+base	.txt	purrr::map	do.call	0.162592887878418
+base	.txt	purrr::map	do.call	0.162539005279541
+base	.txt	purrr::map	do.call	0.173534154891968
+base	.txt	purrr::map	do.call	0.16459584236145
+base	.txt	purrr::map	do.call	0.162564039230347
+base	.txt	purrr::map	do.call	0.162898063659668
+base	.txt	purrr::map	do.call	0.169546842575073
+base	.txt	purrr::map	do.call	0.161872148513794
+base	.txt	purrr::map	do.call	0.158576011657715
+base	.txt	purrr::map	do.call	0.179532051086426
+base	.txt	purrr::map	do.call	0.168548822402954
+base	.txt	purrr::map	do.call	0.183897972106934
+base	.txt	purrr::map	do.call	0.162742137908936
+base	.txt	purrr::map	do.call	0.162564992904663
+base	.txt	purrr::map	do.call	0.165559053421021
+base	.txt	purrr::map	do.call	0.171540021896362
+base	.txt	purrr::map	do.call	0.162564992904663
+base	.txt	purrr::map	do.call	0.162566900253296
+base	.txt	purrr::map	do.call	0.158574104309082
+base	.txt	purrr::map	do.call	0.243350982666016
+base	.txt	purrr::map	do.call	0.16954493522644
+base	.txt	purrr::map	do.call	0.162564992904663
+base	.txt	purrr::map	do.call	0.157629013061523
+base	.txt	purrr::map	do.call	0.158801078796387
+base	.txt	purrr::map	do.call	0.166582822799683
+base	.txt	purrr::map	do.call	0.158177137374878
+base	.txt	purrr::map	do.call	0.159572839736938
+base	.txt	purrr::map	do.call	0.157579183578491
+base	.txt	purrr::map	do.call	0.16559886932373
+base	.txt	purrr::map	do.call	0.16067910194397
+base	.txt	purrr::map	do.call	0.157742023468018
+base	.txt	purrr::map	do.call	0.159255981445313
+base	.txt	purrr::map	do.call	0.243916034698486
+base	.txt	purrr::map	do.call	0.166561841964722
+base	.txt	purrr::map	do.call	0.248394966125488
+base	.txt	purrr::map	do.call	0.158589124679565
+base	.txt	purrr::map	do.call	0.158576011657715
+base	.txt	purrr::map	do.call	0.16755199432373
+base	.txt	purrr::map	do.call	0.159036874771118
+base	.txt	purrr::map	do.call	0.157580137252808
+base	.txt	purrr::map	do.call	0.162814855575562
+base	.txt	purrr::map	do.call	0.159573078155518
+base	.txt	purrr::map	do.call	0.165591955184937
+base	.txt	purrr::map	do.call	0.161364078521729
+base	.txt	purrr::map	do.call	0.157578945159912
+base	.txt	purrr::map	do.call	0.157587051391602
+base	.txt	purrr::map	do.call	0.166554927825928
+base	.txt	purrr::map	do.call	0.157729148864746
+base	.txt	purrr::map	do.call	0.159570932388306
+base	.txt	purrr::map	do.call	0.157578945159912
+base	.txt	purrr::map	do.call	0.167554140090942
+base	.txt	purrr::map	do.call	0.158573865890503
+base	.txt	purrr::map	do.call	0.158385038375855
+base	.txt	purrr::map	do.call	0.162566900253296
+base	.txt	purrr::map	do.call	0.173575162887573
+base	.txt	purrr::map	do.call	0.160568952560425
+base	.txt	purrr::map	do.call	0.161521911621094
+base	.txt	purrr::map	do.call	0.159173011779785
+base	.txt	purrr::map	do.call	0.158837080001831
+base	.txt	purrr::map	do.call	0.167508840560913
+base	.txt	purrr::map	do.call	0.158576011657715
+base	.txt	purrr::map	do.call	0.158729076385498
+base	.txt	purrr::map	do.call	0.160609006881714
+base	.txt	purrr::map	do.call	0.167598962783813
+base	.txt	purrr::map	do.call	0.158775091171265
+base	.txt	purrr::map	do.call	0.158623933792114
+base	.txt	purrr::map	do.call	0.157577037811279
+base	.txt	purrr::map	do.call	0.157579898834229
+base	.txt	purrr::map	do.call	0.168584108352661
+base	.txt	purrr::map	do.call	0.158582925796509
+base	.txt	purrr::map	do.call	0.159574031829834
+base	.txt	purrr::map	do.call	0.157571077346802
+base	.txt	purrr::map	do.call	0.165520906448364
+base	.txt	purrr::map	do.call	0.157579898834229
+base	.txt	purrr::map	do.call	0.158576011657715
+base	.txt	purrr::map	do.call	0.158751010894775
+base	.txt	purrr::map	do.call	0.169766902923584
+base	.txt	purrr::map	do.call	0.1598060131073
+base	.txt	purrr::map	do.call	0.157579898834229
+base	.txt	purrr::map	do.call	0.159573078155518
+base	.txt	purrr::map	do.call	0.158576011657715
+base	.txt	purrr::map	do.call	0.175529003143311
+base	.txt	purrr::map	do.call	0.158576011657715
+base	.txt	purrr::map	do.call	0.157829999923706
+base	.txt	purrr::map	do.call	0.16156005859375
+base	.txt	purrr::map	do.call	0.17176079750061
+base	.txt	purrr::map	do.call	0.16359806060791
+base	.txt	purrr::map	do.call	0.163727045059204
+base	.txt	purrr::map	do.call	0.162564992904663
+base	.txt	purrr::map	do.call	0.162564039230347
+base	.txt	purrr::map	do.call	0.169512033462524
+base	.txt	purrr::map	do.call	0.157579183578491
+readr	.txt	purrr::map	do.call	0.16352105140686
+readr	.txt	purrr::map	do.call	0.147631883621216
+readr	.txt	purrr::map	do.call	0.1493980884552
+readr	.txt	purrr::map	do.call	0.144657135009766
+readr	.txt	purrr::map	do.call	0.25232195854187
+readr	.txt	purrr::map	do.call	0.154597043991089
+readr	.txt	purrr::map	do.call	0.153546810150146
+readr	.txt	purrr::map	do.call	0.141649007797241
+readr	.txt	purrr::map	do.call	0.141618967056274
+readr	.txt	purrr::map	do.call	0.141595840454102
+readr	.txt	purrr::map	do.call	0.144211053848267
+readr	.txt	purrr::map	do.call	0.142619132995605
+readr	.txt	purrr::map	do.call	0.142654180526733
+readr	.txt	purrr::map	do.call	0.1506028175354
+readr	.txt	purrr::map	do.call	0.143576145172119
+readr	.txt	purrr::map	do.call	0.143650054931641
+readr	.txt	purrr::map	do.call	0.141829013824463
+readr	.txt	purrr::map	do.call	0.138629913330078
+readr	.txt	purrr::map	do.call	0.225398063659668
+readr	.txt	purrr::map	do.call	0.139626026153564
+readr	.txt	purrr::map	do.call	0.139628887176514
+readr	.txt	purrr::map	do.call	0.140170097351074
+readr	.txt	purrr::map	do.call	0.138845920562744
+readr	.txt	purrr::map	do.call	0.144613981246948
+readr	.txt	purrr::map	do.call	0.138617992401123
+readr	.txt	purrr::map	do.call	0.224402904510498
+readr	.txt	purrr::map	do.call	0.140185117721558
+readr	.txt	purrr::map	do.call	0.139626026153564
+readr	.txt	purrr::map	do.call	0.138640880584717
+readr	.txt	purrr::map	do.call	0.142652988433838
+readr	.txt	purrr::map	do.call	0.139626979827881
+readr	.txt	purrr::map	do.call	0.138811111450195
+readr	.txt	purrr::map	do.call	0.145612955093384
+readr	.txt	purrr::map	do.call	0.140655040740967
+readr	.txt	purrr::map	do.call	0.140074014663696
+readr	.txt	purrr::map	do.call	0.142659902572632
+readr	.txt	purrr::map	do.call	0.139585018157959
+readr	.txt	purrr::map	do.call	0.222751140594482
+readr	.txt	purrr::map	do.call	0.138628959655762
+readr	.txt	purrr::map	do.call	0.139657974243164
+readr	.txt	purrr::map	do.call	0.142879962921143
+readr	.txt	purrr::map	do.call	0.143615961074829
+readr	.txt	purrr::map	do.call	0.229614019393921
+readr	.txt	purrr::map	do.call	0.138627052307129
+readr	.txt	purrr::map	do.call	0.137624025344849
+readr	.txt	purrr::map	do.call	0.137627840042114
+readr	.txt	purrr::map	do.call	0.139630079269409
+readr	.txt	purrr::map	do.call	0.139267921447754
+readr	.txt	purrr::map	do.call	0.1393141746521
+readr	.txt	purrr::map	do.call	0.138629913330078
+readr	.txt	purrr::map	do.call	0.139887094497681
+readr	.txt	purrr::map	do.call	0.144881963729858
+readr	.txt	purrr::map	do.call	0.138629913330078
+readr	.txt	purrr::map	do.call	0.139626026153564
+readr	.txt	purrr::map	do.call	0.13866400718689
+readr	.txt	purrr::map	do.call	0.140790939331055
+readr	.txt	purrr::map	do.call	0.138663053512573
+readr	.txt	purrr::map	do.call	0.139796018600464
+readr	.txt	purrr::map	do.call	0.138629913330078
+readr	.txt	purrr::map	do.call	0.138168096542358
+readr	.txt	purrr::map	do.call	0.140623807907105
+readr	.txt	purrr::map	do.call	0.145126104354858
+readr	.txt	purrr::map	do.call	0.139626979827881
+readr	.txt	purrr::map	do.call	0.139626979827881
+readr	.txt	purrr::map	do.call	0.138668060302734
+readr	.txt	purrr::map	do.call	0.143296003341675
+readr	.txt	purrr::map	do.call	0.138668060302734
+readr	.txt	purrr::map	do.call	0.139634847640991
+readr	.txt	purrr::map	do.call	0.138620853424072
+readr	.txt	purrr::map	do.call	0.138629198074341
+readr	.txt	purrr::map	do.call	0.147607803344727
+readr	.txt	purrr::map	do.call	0.138626098632813
+readr	.txt	purrr::map	do.call	0.13863205909729
+readr	.txt	purrr::map	do.call	0.138627052307129
+readr	.txt	purrr::map	do.call	0.139591932296753
+readr	.txt	purrr::map	do.call	0.141185998916626
+readr	.txt	purrr::map	do.call	0.142067909240723
+readr	.txt	purrr::map	do.call	0.143124103546143
+readr	.txt	purrr::map	do.call	0.14261794090271
+readr	.txt	purrr::map	do.call	0.138628959655762
+readr	.txt	purrr::map	do.call	0.230384111404419
+readr	.txt	purrr::map	do.call	0.141621828079224
+readr	.txt	purrr::map	do.call	0.144887208938599
+readr	.txt	purrr::map	do.call	0.139042854309082
+readr	.txt	purrr::map	do.call	0.139626026153564
+readr	.txt	purrr::map	do.call	0.137633085250855
+readr	.txt	purrr::map	do.call	0.138629198074341
+readr	.txt	purrr::map	do.call	0.139664888381958
+readr	.txt	purrr::map	do.call	0.139625072479248
+readr	.txt	purrr::map	do.call	0.145608901977539
+readr	.txt	purrr::map	do.call	0.13998007774353
+readr	.txt	purrr::map	do.call	0.139853954315186
+readr	.txt	purrr::map	do.call	0.138601064682007
+readr	.txt	purrr::map	do.call	0.138653039932251
+readr	.txt	purrr::map	do.call	0.140005826950073
+readr	.txt	purrr::map	do.call	0.140622138977051
+readr	.txt	purrr::map	do.call	0.138665914535522
+readr	.txt	purrr::map	do.call	0.139631032943726
+readr	.txt	purrr::map	do.call	0.138633012771606
+readr	.txt	purrr::map	do.call	0.22934103012085
+data.table	.txt	purrr::map	do.call	0.16352105140686
+data.table	.txt	purrr::map	do.call	0.147631883621216
+data.table	.txt	purrr::map	do.call	0.1493980884552
+data.table	.txt	purrr::map	do.call	0.144657135009766
+data.table	.txt	purrr::map	do.call	0.25232195854187
+data.table	.txt	purrr::map	do.call	0.154597043991089
+data.table	.txt	purrr::map	do.call	0.153546810150146
+data.table	.txt	purrr::map	do.call	0.141649007797241
+data.table	.txt	purrr::map	do.call	0.141618967056274
+data.table	.txt	purrr::map	do.call	0.141595840454102
+data.table	.txt	purrr::map	do.call	0.144211053848267
+data.table	.txt	purrr::map	do.call	0.142619132995605
+data.table	.txt	purrr::map	do.call	0.142654180526733
+data.table	.txt	purrr::map	do.call	0.1506028175354
+data.table	.txt	purrr::map	do.call	0.143576145172119
+data.table	.txt	purrr::map	do.call	0.143650054931641
+data.table	.txt	purrr::map	do.call	0.141829013824463
+data.table	.txt	purrr::map	do.call	0.138629913330078
+data.table	.txt	purrr::map	do.call	0.225398063659668
+data.table	.txt	purrr::map	do.call	0.139626026153564
+data.table	.txt	purrr::map	do.call	0.139628887176514
+data.table	.txt	purrr::map	do.call	0.140170097351074
+data.table	.txt	purrr::map	do.call	0.138845920562744
+data.table	.txt	purrr::map	do.call	0.144613981246948
+data.table	.txt	purrr::map	do.call	0.138617992401123
+data.table	.txt	purrr::map	do.call	0.224402904510498
+data.table	.txt	purrr::map	do.call	0.140185117721558
+data.table	.txt	purrr::map	do.call	0.139626026153564
+data.table	.txt	purrr::map	do.call	0.138640880584717
+data.table	.txt	purrr::map	do.call	0.142652988433838
+data.table	.txt	purrr::map	do.call	0.139626979827881
+data.table	.txt	purrr::map	do.call	0.138811111450195
+data.table	.txt	purrr::map	do.call	0.145612955093384
+data.table	.txt	purrr::map	do.call	0.140655040740967
+data.table	.txt	purrr::map	do.call	0.140074014663696
+data.table	.txt	purrr::map	do.call	0.142659902572632
+data.table	.txt	purrr::map	do.call	0.139585018157959
+data.table	.txt	purrr::map	do.call	0.222751140594482
+data.table	.txt	purrr::map	do.call	0.138628959655762
+data.table	.txt	purrr::map	do.call	0.139657974243164
+data.table	.txt	purrr::map	do.call	0.142879962921143
+data.table	.txt	purrr::map	do.call	0.143615961074829
+data.table	.txt	purrr::map	do.call	0.229614019393921
+data.table	.txt	purrr::map	do.call	0.138627052307129
+data.table	.txt	purrr::map	do.call	0.137624025344849
+data.table	.txt	purrr::map	do.call	0.137627840042114
+data.table	.txt	purrr::map	do.call	0.139630079269409
+data.table	.txt	purrr::map	do.call	0.139267921447754
+data.table	.txt	purrr::map	do.call	0.1393141746521
+data.table	.txt	purrr::map	do.call	0.138629913330078
+data.table	.txt	purrr::map	do.call	0.139887094497681
+data.table	.txt	purrr::map	do.call	0.144881963729858
+data.table	.txt	purrr::map	do.call	0.138629913330078
+data.table	.txt	purrr::map	do.call	0.139626026153564
+data.table	.txt	purrr::map	do.call	0.13866400718689
+data.table	.txt	purrr::map	do.call	0.140790939331055
+data.table	.txt	purrr::map	do.call	0.138663053512573
+data.table	.txt	purrr::map	do.call	0.139796018600464
+data.table	.txt	purrr::map	do.call	0.138629913330078
+data.table	.txt	purrr::map	do.call	0.138168096542358
+data.table	.txt	purrr::map	do.call	0.140623807907105
+data.table	.txt	purrr::map	do.call	0.145126104354858
+data.table	.txt	purrr::map	do.call	0.139626979827881
+data.table	.txt	purrr::map	do.call	0.139626979827881
+data.table	.txt	purrr::map	do.call	0.138668060302734
+data.table	.txt	purrr::map	do.call	0.143296003341675
+data.table	.txt	purrr::map	do.call	0.138668060302734
+data.table	.txt	purrr::map	do.call	0.139634847640991
+data.table	.txt	purrr::map	do.call	0.138620853424072
+data.table	.txt	purrr::map	do.call	0.138629198074341
+data.table	.txt	purrr::map	do.call	0.147607803344727
+data.table	.txt	purrr::map	do.call	0.138626098632813
+data.table	.txt	purrr::map	do.call	0.13863205909729
+data.table	.txt	purrr::map	do.call	0.138627052307129
+data.table	.txt	purrr::map	do.call	0.139591932296753
+data.table	.txt	purrr::map	do.call	0.141185998916626
+data.table	.txt	purrr::map	do.call	0.142067909240723
+data.table	.txt	purrr::map	do.call	0.143124103546143
+data.table	.txt	purrr::map	do.call	0.14261794090271
+data.table	.txt	purrr::map	do.call	0.138628959655762
+data.table	.txt	purrr::map	do.call	0.230384111404419
+data.table	.txt	purrr::map	do.call	0.141621828079224
+data.table	.txt	purrr::map	do.call	0.144887208938599
+data.table	.txt	purrr::map	do.call	0.139042854309082
+data.table	.txt	purrr::map	do.call	0.139626026153564
+data.table	.txt	purrr::map	do.call	0.137633085250855
+data.table	.txt	purrr::map	do.call	0.138629198074341
+data.table	.txt	purrr::map	do.call	0.139664888381958
+data.table	.txt	purrr::map	do.call	0.139625072479248
+data.table	.txt	purrr::map	do.call	0.145608901977539
+data.table	.txt	purrr::map	do.call	0.13998007774353
+data.table	.txt	purrr::map	do.call	0.139853954315186
+data.table	.txt	purrr::map	do.call	0.138601064682007
+data.table	.txt	purrr::map	do.call	0.138653039932251
+data.table	.txt	purrr::map	do.call	0.140005826950073
+data.table	.txt	purrr::map	do.call	0.140622138977051
+data.table	.txt	purrr::map	do.call	0.138665914535522
+data.table	.txt	purrr::map	do.call	0.139631032943726
+data.table	.txt	purrr::map	do.call	0.138633012771606
+data.table	.txt	purrr::map	do.call	0.22934103012085
+base	.csv	for loop	dplyr::bind_rows	1.32952117919922
+base	.csv	for loop	dplyr::bind_rows	1.37770581245422
+base	.csv	for loop	dplyr::bind_rows	1.38203001022339
+base	.csv	for loop	dplyr::bind_rows	1.28679800033569
+base	.csv	for loop	dplyr::bind_rows	1.36153316497803
+base	.csv	for loop	dplyr::bind_rows	1.33479785919189
+base	.csv	for loop	dplyr::bind_rows	1.56586194038391
+base	.csv	for loop	dplyr::bind_rows	1.4986560344696
+base	.csv	for loop	dplyr::bind_rows	1.50309014320374
+base	.csv	for loop	dplyr::bind_rows	1.74552488327026
+base	.csv	for loop	dplyr::bind_rows	1.38235592842102
+base	.csv	for loop	dplyr::bind_rows	1.39463710784912
+base	.csv	for loop	dplyr::bind_rows	1.27595400810242
+base	.csv	for loop	dplyr::bind_rows	1.24539804458618
+base	.csv	for loop	dplyr::bind_rows	1.31404805183411
+base	.csv	for loop	dplyr::bind_rows	1.36683583259583
+base	.csv	for loop	dplyr::bind_rows	1.34596514701843
+base	.csv	for loop	dplyr::bind_rows	1.2417049407959
+base	.csv	for loop	dplyr::bind_rows	1.23286294937134
+base	.csv	for loop	dplyr::bind_rows	1.25980997085571
+base	.csv	for loop	dplyr::bind_rows	1.28764414787292
+base	.csv	for loop	dplyr::bind_rows	1.23998594284058
+base	.csv	for loop	dplyr::bind_rows	1.2453019618988
+base	.csv	for loop	dplyr::bind_rows	1.24567794799805
+base	.csv	for loop	dplyr::bind_rows	1.3070981502533
+base	.csv	for loop	dplyr::bind_rows	1.24997496604919
+base	.csv	for loop	dplyr::bind_rows	1.26632785797119
+base	.csv	for loop	dplyr::bind_rows	1.25262498855591
+base	.csv	for loop	dplyr::bind_rows	1.26429200172424
+base	.csv	for loop	dplyr::bind_rows	1.25870108604431
+base	.csv	for loop	dplyr::bind_rows	1.2503879070282
+base	.csv	for loop	dplyr::bind_rows	1.23447704315186
+base	.csv	for loop	dplyr::bind_rows	1.23380208015442
+base	.csv	for loop	dplyr::bind_rows	1.24896597862244
+base	.csv	for loop	dplyr::bind_rows	1.23225402832031
+base	.csv	for loop	dplyr::bind_rows	1.25222396850586
+base	.csv	for loop	dplyr::bind_rows	1.30520391464233
+base	.csv	for loop	dplyr::bind_rows	1.52143812179565
+base	.csv	for loop	dplyr::bind_rows	1.47889089584351
+base	.csv	for loop	dplyr::bind_rows	1.31314396858215
+base	.csv	for loop	dplyr::bind_rows	1.26613807678223
+base	.csv	for loop	dplyr::bind_rows	1.25053691864014
+base	.csv	for loop	dplyr::bind_rows	1.23495817184448
+base	.csv	for loop	dplyr::bind_rows	1.21499490737915
+base	.csv	for loop	dplyr::bind_rows	1.22112107276917
+base	.csv	for loop	dplyr::bind_rows	1.28859782218933
+base	.csv	for loop	dplyr::bind_rows	1.24621820449829
+base	.csv	for loop	dplyr::bind_rows	1.22177481651306
+base	.csv	for loop	dplyr::bind_rows	1.24134016036987
+base	.csv	for loop	dplyr::bind_rows	1.26090693473816
+base	.csv	for loop	dplyr::bind_rows	1.28821301460266
+base	.csv	for loop	dplyr::bind_rows	1.2489218711853
+base	.csv	for loop	dplyr::bind_rows	1.23705816268921
+base	.csv	for loop	dplyr::bind_rows	1.22668886184692
+base	.csv	for loop	dplyr::bind_rows	1.25529313087463
+base	.csv	for loop	dplyr::bind_rows	1.22511982917786
+base	.csv	for loop	dplyr::bind_rows	1.22491717338562
+base	.csv	for loop	dplyr::bind_rows	1.20724987983704
+base	.csv	for loop	dplyr::bind_rows	1.25165390968323
+base	.csv	for loop	dplyr::bind_rows	1.23624014854431
+base	.csv	for loop	dplyr::bind_rows	1.44814682006836
+base	.csv	for loop	dplyr::bind_rows	1.51215410232544
+base	.csv	for loop	dplyr::bind_rows	1.57282400131226
+base	.csv	for loop	dplyr::bind_rows	1.60327506065369
+base	.csv	for loop	dplyr::bind_rows	1.5610990524292
+base	.csv	for loop	dplyr::bind_rows	1.60870385169983
+base	.csv	for loop	dplyr::bind_rows	1.75101900100708
+base	.csv	for loop	dplyr::bind_rows	1.80661296844482
+base	.csv	for loop	dplyr::bind_rows	1.85349202156067
+base	.csv	for loop	dplyr::bind_rows	1.875244140625
+base	.csv	for loop	dplyr::bind_rows	1.81124997138977
+base	.csv	for loop	dplyr::bind_rows	1.5176100730896
+base	.csv	for loop	dplyr::bind_rows	1.47807192802429
+base	.csv	for loop	dplyr::bind_rows	1.46932506561279
+base	.csv	for loop	dplyr::bind_rows	1.45689988136292
+base	.csv	for loop	dplyr::bind_rows	1.51146912574768
+base	.csv	for loop	dplyr::bind_rows	1.30884981155396
+base	.csv	for loop	dplyr::bind_rows	1.24729514122009
+base	.csv	for loop	dplyr::bind_rows	1.26289296150208
+base	.csv	for loop	dplyr::bind_rows	1.36489796638489
+base	.csv	for loop	dplyr::bind_rows	1.43835711479187
+base	.csv	for loop	dplyr::bind_rows	1.45246195793152
+base	.csv	for loop	dplyr::bind_rows	1.32757091522217
+base	.csv	for loop	dplyr::bind_rows	1.25524997711182
+base	.csv	for loop	dplyr::bind_rows	1.4071409702301
+base	.csv	for loop	dplyr::bind_rows	1.45710110664368
+base	.csv	for loop	dplyr::bind_rows	1.35203790664673
+base	.csv	for loop	dplyr::bind_rows	1.24406504631042
+base	.csv	for loop	dplyr::bind_rows	1.26530885696411
+base	.csv	for loop	dplyr::bind_rows	1.28253412246704
+base	.csv	for loop	dplyr::bind_rows	1.21436095237732
+base	.csv	for loop	dplyr::bind_rows	1.21343493461609
+base	.csv	for loop	dplyr::bind_rows	1.23872113227844
+base	.csv	for loop	dplyr::bind_rows	1.20965886116028
+base	.csv	for loop	dplyr::bind_rows	1.22094202041626
+base	.csv	for loop	dplyr::bind_rows	1.21076798439026
+base	.csv	for loop	dplyr::bind_rows	1.2259202003479
+base	.csv	for loop	dplyr::bind_rows	1.21378493309021
+base	.csv	for loop	dplyr::bind_rows	1.22330498695374
+base	.csv	for loop	dplyr::bind_rows	1.22159099578857
+readr	.csv	for loop	dplyr::bind_rows	1.31963491439819
+readr	.csv	for loop	dplyr::bind_rows	1.25309205055237
+readr	.csv	for loop	dplyr::bind_rows	1.20078587532043
+readr	.csv	for loop	dplyr::bind_rows	1.24618816375732
+readr	.csv	for loop	dplyr::bind_rows	1.21893882751465
+readr	.csv	for loop	dplyr::bind_rows	1.20388102531433
+readr	.csv	for loop	dplyr::bind_rows	1.19731712341309
+readr	.csv	for loop	dplyr::bind_rows	1.24570488929749
+readr	.csv	for loop	dplyr::bind_rows	1.20623302459717
+readr	.csv	for loop	dplyr::bind_rows	1.20915794372559
+readr	.csv	for loop	dplyr::bind_rows	1.21484303474426
+readr	.csv	for loop	dplyr::bind_rows	1.23731899261475
+readr	.csv	for loop	dplyr::bind_rows	1.26289701461792
+readr	.csv	for loop	dplyr::bind_rows	1.223149061203
+readr	.csv	for loop	dplyr::bind_rows	1.21989488601685
+readr	.csv	for loop	dplyr::bind_rows	1.23738408088684
+readr	.csv	for loop	dplyr::bind_rows	1.22645807266235
+readr	.csv	for loop	dplyr::bind_rows	1.23113799095154
+readr	.csv	for loop	dplyr::bind_rows	1.24221587181091
+readr	.csv	for loop	dplyr::bind_rows	1.25116205215454
+readr	.csv	for loop	dplyr::bind_rows	1.2111668586731
+readr	.csv	for loop	dplyr::bind_rows	1.2370970249176
+readr	.csv	for loop	dplyr::bind_rows	1.2133150100708
+readr	.csv	for loop	dplyr::bind_rows	1.24653196334839
+readr	.csv	for loop	dplyr::bind_rows	1.32114100456238
+readr	.csv	for loop	dplyr::bind_rows	1.27834105491638
+readr	.csv	for loop	dplyr::bind_rows	1.25946998596191
+readr	.csv	for loop	dplyr::bind_rows	1.22286200523376
+readr	.csv	for loop	dplyr::bind_rows	1.22551417350769
+readr	.csv	for loop	dplyr::bind_rows	1.27477979660034
+readr	.csv	for loop	dplyr::bind_rows	1.21905708312988
+readr	.csv	for loop	dplyr::bind_rows	1.24441599845886
+readr	.csv	for loop	dplyr::bind_rows	1.21890306472778
+readr	.csv	for loop	dplyr::bind_rows	1.24914884567261
+readr	.csv	for loop	dplyr::bind_rows	1.22144508361816
+readr	.csv	for loop	dplyr::bind_rows	1.2377610206604
+readr	.csv	for loop	dplyr::bind_rows	1.2122209072113
+readr	.csv	for loop	dplyr::bind_rows	1.21035599708557
+readr	.csv	for loop	dplyr::bind_rows	1.22319102287292
+readr	.csv	for loop	dplyr::bind_rows	1.2195291519165
+readr	.csv	for loop	dplyr::bind_rows	1.22477197647095
+readr	.csv	for loop	dplyr::bind_rows	1.25123620033264
+readr	.csv	for loop	dplyr::bind_rows	1.22887897491455
+readr	.csv	for loop	dplyr::bind_rows	1.22528696060181
+readr	.csv	for loop	dplyr::bind_rows	1.21395897865295
+readr	.csv	for loop	dplyr::bind_rows	1.23651099205017
+readr	.csv	for loop	dplyr::bind_rows	1.21527194976807
+readr	.csv	for loop	dplyr::bind_rows	1.20993900299072
+readr	.csv	for loop	dplyr::bind_rows	1.22448301315308
+readr	.csv	for loop	dplyr::bind_rows	1.21042609214783
+readr	.csv	for loop	dplyr::bind_rows	1.21767592430115
+readr	.csv	for loop	dplyr::bind_rows	1.20555901527405
+readr	.csv	for loop	dplyr::bind_rows	1.21274709701538
+readr	.csv	for loop	dplyr::bind_rows	1.21197986602783
+readr	.csv	for loop	dplyr::bind_rows	1.21122407913208
+readr	.csv	for loop	dplyr::bind_rows	1.20211791992188
+readr	.csv	for loop	dplyr::bind_rows	1.2007110118866
+readr	.csv	for loop	dplyr::bind_rows	1.20801997184753
+readr	.csv	for loop	dplyr::bind_rows	1.20027995109558
+readr	.csv	for loop	dplyr::bind_rows	1.20973300933838
+readr	.csv	for loop	dplyr::bind_rows	1.21401309967041
+readr	.csv	for loop	dplyr::bind_rows	1.21100902557373
+readr	.csv	for loop	dplyr::bind_rows	1.20224785804749
+readr	.csv	for loop	dplyr::bind_rows	1.2179970741272
+readr	.csv	for loop	dplyr::bind_rows	1.19484305381775
+readr	.csv	for loop	dplyr::bind_rows	1.21613097190857
+readr	.csv	for loop	dplyr::bind_rows	2.24420595169067
+readr	.csv	for loop	dplyr::bind_rows	2.00698208808899
+readr	.csv	for loop	dplyr::bind_rows	1.58085989952087
+readr	.csv	for loop	dplyr::bind_rows	1.42286109924316
+readr	.csv	for loop	dplyr::bind_rows	1.44662284851074
+readr	.csv	for loop	dplyr::bind_rows	1.3460111618042
+readr	.csv	for loop	dplyr::bind_rows	1.28281188011169
+readr	.csv	for loop	dplyr::bind_rows	1.24704098701477
+readr	.csv	for loop	dplyr::bind_rows	1.20745396614075
+readr	.csv	for loop	dplyr::bind_rows	1.20843410491943
+readr	.csv	for loop	dplyr::bind_rows	1.22602295875549
+readr	.csv	for loop	dplyr::bind_rows	1.19566798210144
+readr	.csv	for loop	dplyr::bind_rows	1.21781611442566
+readr	.csv	for loop	dplyr::bind_rows	1.2126989364624
+readr	.csv	for loop	dplyr::bind_rows	1.22447299957275
+readr	.csv	for loop	dplyr::bind_rows	1.2477810382843
+readr	.csv	for loop	dplyr::bind_rows	1.22286200523376
+readr	.csv	for loop	dplyr::bind_rows	1.2120418548584
+readr	.csv	for loop	dplyr::bind_rows	1.2053370475769
+readr	.csv	for loop	dplyr::bind_rows	1.2207350730896
+readr	.csv	for loop	dplyr::bind_rows	1.23422408103943
+readr	.csv	for loop	dplyr::bind_rows	1.23408889770508
+readr	.csv	for loop	dplyr::bind_rows	1.24622988700867
+readr	.csv	for loop	dplyr::bind_rows	1.22513604164124
+readr	.csv	for loop	dplyr::bind_rows	1.24029016494751
+readr	.csv	for loop	dplyr::bind_rows	1.21309900283813
+readr	.csv	for loop	dplyr::bind_rows	1.22537779808044
+readr	.csv	for loop	dplyr::bind_rows	1.2317111492157
+readr	.csv	for loop	dplyr::bind_rows	1.21106290817261
+readr	.csv	for loop	dplyr::bind_rows	1.20798206329346
+readr	.csv	for loop	dplyr::bind_rows	1.22325992584229
+readr	.csv	for loop	dplyr::bind_rows	1.20697999000549
+readr	.csv	for loop	dplyr::bind_rows	1.24977588653564
+readr	.csv	for loop	dplyr::bind_rows	1.22817707061768
+data.table	.csv	for loop	dplyr::bind_rows	1.18445897102356
+data.table	.csv	for loop	dplyr::bind_rows	1.1719799041748
+data.table	.csv	for loop	dplyr::bind_rows	1.1329300403595
+data.table	.csv	for loop	dplyr::bind_rows	1.132248878479
+data.table	.csv	for loop	dplyr::bind_rows	1.10849404335022
+data.table	.csv	for loop	dplyr::bind_rows	1.11340188980103
+data.table	.csv	for loop	dplyr::bind_rows	1.13648700714111
+data.table	.csv	for loop	dplyr::bind_rows	1.12998795509338
+data.table	.csv	for loop	dplyr::bind_rows	1.13393616676331
+data.table	.csv	for loop	dplyr::bind_rows	1.17390298843384
+data.table	.csv	for loop	dplyr::bind_rows	1.13285207748413
+data.table	.csv	for loop	dplyr::bind_rows	1.14951181411743
+data.table	.csv	for loop	dplyr::bind_rows	1.15673899650574
+data.table	.csv	for loop	dplyr::bind_rows	1.19757914543152
+data.table	.csv	for loop	dplyr::bind_rows	1.17085099220276
+data.table	.csv	for loop	dplyr::bind_rows	1.15382599830627
+data.table	.csv	for loop	dplyr::bind_rows	1.15316796302795
+data.table	.csv	for loop	dplyr::bind_rows	1.17155194282532
+data.table	.csv	for loop	dplyr::bind_rows	1.13534593582153
+data.table	.csv	for loop	dplyr::bind_rows	1.11028599739075
+data.table	.csv	for loop	dplyr::bind_rows	1.15491318702698
+data.table	.csv	for loop	dplyr::bind_rows	1.13396596908569
+data.table	.csv	for loop	dplyr::bind_rows	1.13051795959473
+data.table	.csv	for loop	dplyr::bind_rows	1.12256598472595
+data.table	.csv	for loop	dplyr::bind_rows	1.14590001106262
+data.table	.csv	for loop	dplyr::bind_rows	1.15756392478943
+data.table	.csv	for loop	dplyr::bind_rows	1.15529799461365
+data.table	.csv	for loop	dplyr::bind_rows	1.13932013511658
+data.table	.csv	for loop	dplyr::bind_rows	1.10103392601013
+data.table	.csv	for loop	dplyr::bind_rows	1.14042711257935
+data.table	.csv	for loop	dplyr::bind_rows	1.12626600265503
+data.table	.csv	for loop	dplyr::bind_rows	1.15806198120117
+data.table	.csv	for loop	dplyr::bind_rows	1.1342499256134
+data.table	.csv	for loop	dplyr::bind_rows	1.13233804702759
+data.table	.csv	for loop	dplyr::bind_rows	1.14026784896851
+data.table	.csv	for loop	dplyr::bind_rows	1.14037203788757
+data.table	.csv	for loop	dplyr::bind_rows	1.15971899032593
+data.table	.csv	for loop	dplyr::bind_rows	1.1226589679718
+data.table	.csv	for loop	dplyr::bind_rows	1.14394021034241
+data.table	.csv	for loop	dplyr::bind_rows	1.11833477020264
+data.table	.csv	for loop	dplyr::bind_rows	1.1217679977417
+data.table	.csv	for loop	dplyr::bind_rows	1.15052008628845
+data.table	.csv	for loop	dplyr::bind_rows	1.13525009155273
+data.table	.csv	for loop	dplyr::bind_rows	1.12994599342346
+data.table	.csv	for loop	dplyr::bind_rows	1.12562489509583
+data.table	.csv	for loop	dplyr::bind_rows	1.17763900756836
+data.table	.csv	for loop	dplyr::bind_rows	1.24161505699158
+data.table	.csv	for loop	dplyr::bind_rows	1.20448994636536
+data.table	.csv	for loop	dplyr::bind_rows	1.15139102935791
+data.table	.csv	for loop	dplyr::bind_rows	1.1208119392395
+data.table	.csv	for loop	dplyr::bind_rows	1.10053610801697
+data.table	.csv	for loop	dplyr::bind_rows	1.12286186218262
+data.table	.csv	for loop	dplyr::bind_rows	1.14191389083862
+data.table	.csv	for loop	dplyr::bind_rows	1.11852598190308
+data.table	.csv	for loop	dplyr::bind_rows	1.11004304885864
+data.table	.csv	for loop	dplyr::bind_rows	1.1084771156311
+data.table	.csv	for loop	dplyr::bind_rows	1.1105809211731
+data.table	.csv	for loop	dplyr::bind_rows	1.13415312767029
+data.table	.csv	for loop	dplyr::bind_rows	1.12189698219299
+data.table	.csv	for loop	dplyr::bind_rows	1.1201958656311
+data.table	.csv	for loop	dplyr::bind_rows	1.13084697723389
+data.table	.csv	for loop	dplyr::bind_rows	1.12122702598572
+data.table	.csv	for loop	dplyr::bind_rows	1.13824009895325
+data.table	.csv	for loop	dplyr::bind_rows	1.12292695045471
+data.table	.csv	for loop	dplyr::bind_rows	1.10839605331421
+data.table	.csv	for loop	dplyr::bind_rows	1.10817694664001
+data.table	.csv	for loop	dplyr::bind_rows	1.12368297576904
+data.table	.csv	for loop	dplyr::bind_rows	1.14034199714661
+data.table	.csv	for loop	dplyr::bind_rows	1.12150692939758
+data.table	.csv	for loop	dplyr::bind_rows	1.0939769744873
+data.table	.csv	for loop	dplyr::bind_rows	1.10592603683472
+data.table	.csv	for loop	dplyr::bind_rows	1.09072613716125
+data.table	.csv	for loop	dplyr::bind_rows	1.12296485900879
+data.table	.csv	for loop	dplyr::bind_rows	1.12067413330078
+data.table	.csv	for loop	dplyr::bind_rows	1.09550189971924
+data.table	.csv	for loop	dplyr::bind_rows	1.10047888755798
+data.table	.csv	for loop	dplyr::bind_rows	1.11865901947021
+data.table	.csv	for loop	dplyr::bind_rows	1.10944509506226
+data.table	.csv	for loop	dplyr::bind_rows	1.12004804611206
+data.table	.csv	for loop	dplyr::bind_rows	1.15168285369873
+data.table	.csv	for loop	dplyr::bind_rows	1.28963017463684
+data.table	.csv	for loop	dplyr::bind_rows	1.41405892372131
+data.table	.csv	for loop	dplyr::bind_rows	1.23108792304993
+data.table	.csv	for loop	dplyr::bind_rows	1.15578198432922
+data.table	.csv	for loop	dplyr::bind_rows	1.15630102157593
+data.table	.csv	for loop	dplyr::bind_rows	1.13398814201355
+data.table	.csv	for loop	dplyr::bind_rows	1.13088488578796
+data.table	.csv	for loop	dplyr::bind_rows	1.12060809135437
+data.table	.csv	for loop	dplyr::bind_rows	1.13008785247803
+data.table	.csv	for loop	dplyr::bind_rows	1.16395902633667
+data.table	.csv	for loop	dplyr::bind_rows	1.14989614486694
+data.table	.csv	for loop	dplyr::bind_rows	1.16093397140503
+data.table	.csv	for loop	dplyr::bind_rows	1.11402201652527
+data.table	.csv	for loop	dplyr::bind_rows	1.14968490600586
+data.table	.csv	for loop	dplyr::bind_rows	1.12060308456421
+data.table	.csv	for loop	dplyr::bind_rows	1.1591010093689
+data.table	.csv	for loop	dplyr::bind_rows	1.12131810188293
+data.table	.csv	for loop	dplyr::bind_rows	1.10479283332825
+data.table	.csv	for loop	dplyr::bind_rows	1.13036298751831
+data.table	.csv	for loop	dplyr::bind_rows	1.12698602676392
+base	.txt	for loop	dplyr::bind_rows	1.19828701019287
+base	.txt	for loop	dplyr::bind_rows	1.14793992042542
+base	.txt	for loop	dplyr::bind_rows	1.11863207817078
+base	.txt	for loop	dplyr::bind_rows	1.11270880699158
+base	.txt	for loop	dplyr::bind_rows	1.11921811103821
+base	.txt	for loop	dplyr::bind_rows	1.10774707794189
+base	.txt	for loop	dplyr::bind_rows	1.12647581100464
+base	.txt	for loop	dplyr::bind_rows	1.11551403999329
+base	.txt	for loop	dplyr::bind_rows	1.13764810562134
+base	.txt	for loop	dplyr::bind_rows	1.13109302520752
+base	.txt	for loop	dplyr::bind_rows	1.12578701972961
+base	.txt	for loop	dplyr::bind_rows	1.14277982711792
+base	.txt	for loop	dplyr::bind_rows	1.14595317840576
+base	.txt	for loop	dplyr::bind_rows	1.11790180206299
+base	.txt	for loop	dplyr::bind_rows	1.13742613792419
+base	.txt	for loop	dplyr::bind_rows	1.14696216583252
+base	.txt	for loop	dplyr::bind_rows	1.25286793708801
+base	.txt	for loop	dplyr::bind_rows	1.28023505210876
+base	.txt	for loop	dplyr::bind_rows	1.2302188873291
+base	.txt	for loop	dplyr::bind_rows	1.19585418701172
+base	.txt	for loop	dplyr::bind_rows	1.1737699508667
+base	.txt	for loop	dplyr::bind_rows	1.22230100631714
+base	.txt	for loop	dplyr::bind_rows	1.15691494941711
+base	.txt	for loop	dplyr::bind_rows	1.1331160068512
+base	.txt	for loop	dplyr::bind_rows	1.17998600006104
+base	.txt	for loop	dplyr::bind_rows	1.14309191703796
+base	.txt	for loop	dplyr::bind_rows	1.1304919719696
+base	.txt	for loop	dplyr::bind_rows	1.14229798316956
+base	.txt	for loop	dplyr::bind_rows	1.14082813262939
+base	.txt	for loop	dplyr::bind_rows	1.13524079322815
+base	.txt	for loop	dplyr::bind_rows	1.13255190849304
+base	.txt	for loop	dplyr::bind_rows	1.13478112220764
+base	.txt	for loop	dplyr::bind_rows	1.12047386169434
+base	.txt	for loop	dplyr::bind_rows	1.14954614639282
+base	.txt	for loop	dplyr::bind_rows	1.11678290367126
+base	.txt	for loop	dplyr::bind_rows	1.12984704971313
+base	.txt	for loop	dplyr::bind_rows	1.12727999687195
+base	.txt	for loop	dplyr::bind_rows	1.13110995292664
+base	.txt	for loop	dplyr::bind_rows	1.13182401657105
+base	.txt	for loop	dplyr::bind_rows	1.14641690254211
+base	.txt	for loop	dplyr::bind_rows	1.13154816627502
+base	.txt	for loop	dplyr::bind_rows	1.13169193267822
+base	.txt	for loop	dplyr::bind_rows	1.13053107261658
+base	.txt	for loop	dplyr::bind_rows	1.13365983963013
+base	.txt	for loop	dplyr::bind_rows	1.15260815620422
+base	.txt	for loop	dplyr::bind_rows	1.14227819442749
+base	.txt	for loop	dplyr::bind_rows	1.11365985870361
+base	.txt	for loop	dplyr::bind_rows	1.12131595611572
+base	.txt	for loop	dplyr::bind_rows	1.14723610877991
+base	.txt	for loop	dplyr::bind_rows	1.1101758480072
+base	.txt	for loop	dplyr::bind_rows	1.12444400787354
+base	.txt	for loop	dplyr::bind_rows	1.10278916358948
+base	.txt	for loop	dplyr::bind_rows	1.13819694519043
+base	.txt	for loop	dplyr::bind_rows	1.13568210601807
+base	.txt	for loop	dplyr::bind_rows	1.12748789787292
+base	.txt	for loop	dplyr::bind_rows	1.13623404502869
+base	.txt	for loop	dplyr::bind_rows	1.11028289794922
+base	.txt	for loop	dplyr::bind_rows	1.10667610168457
+base	.txt	for loop	dplyr::bind_rows	1.1076328754425
+base	.txt	for loop	dplyr::bind_rows	1.12655401229858
+base	.txt	for loop	dplyr::bind_rows	1.12941002845764
+base	.txt	for loop	dplyr::bind_rows	1.11288499832153
+base	.txt	for loop	dplyr::bind_rows	1.11855792999268
+base	.txt	for loop	dplyr::bind_rows	1.11707210540771
+base	.txt	for loop	dplyr::bind_rows	1.15022706985474
+base	.txt	for loop	dplyr::bind_rows	1.12808895111084
+base	.txt	for loop	dplyr::bind_rows	1.10404205322266
+base	.txt	for loop	dplyr::bind_rows	1.10359001159668
+base	.txt	for loop	dplyr::bind_rows	1.11905002593994
+base	.txt	for loop	dplyr::bind_rows	1.1326060295105
+base	.txt	for loop	dplyr::bind_rows	1.13434886932373
+base	.txt	for loop	dplyr::bind_rows	1.13539600372314
+base	.txt	for loop	dplyr::bind_rows	1.10771918296814
+base	.txt	for loop	dplyr::bind_rows	1.11436676979065
+base	.txt	for loop	dplyr::bind_rows	1.1022322177887
+base	.txt	for loop	dplyr::bind_rows	1.11861085891724
+base	.txt	for loop	dplyr::bind_rows	1.20559501647949
+base	.txt	for loop	dplyr::bind_rows	1.14515209197998
+base	.txt	for loop	dplyr::bind_rows	1.10564184188843
+base	.txt	for loop	dplyr::bind_rows	1.12802314758301
+base	.txt	for loop	dplyr::bind_rows	1.12190985679626
+base	.txt	for loop	dplyr::bind_rows	1.10614991188049
+base	.txt	for loop	dplyr::bind_rows	1.11848902702332
+base	.txt	for loop	dplyr::bind_rows	1.10551500320435
+base	.txt	for loop	dplyr::bind_rows	1.10743999481201
+base	.txt	for loop	dplyr::bind_rows	1.13583207130432
+base	.txt	for loop	dplyr::bind_rows	1.12918901443481
+base	.txt	for loop	dplyr::bind_rows	1.10881996154785
+base	.txt	for loop	dplyr::bind_rows	1.1284670829773
+base	.txt	for loop	dplyr::bind_rows	1.11392498016357
+base	.txt	for loop	dplyr::bind_rows	1.12600088119507
+base	.txt	for loop	dplyr::bind_rows	1.14246702194214
+base	.txt	for loop	dplyr::bind_rows	1.13692402839661
+base	.txt	for loop	dplyr::bind_rows	1.12297201156616
+base	.txt	for loop	dplyr::bind_rows	1.14210200309753
+base	.txt	for loop	dplyr::bind_rows	1.10891699790955
+base	.txt	for loop	dplyr::bind_rows	1.12452602386475
+base	.txt	for loop	dplyr::bind_rows	1.12987208366394
+base	.txt	for loop	dplyr::bind_rows	1.12211394309998
+base	.txt	for loop	dplyr::bind_rows	1.13680601119995
+readr	.txt	for loop	dplyr::bind_rows	1.1659688949585
+readr	.txt	for loop	dplyr::bind_rows	1.27575397491455
+readr	.txt	for loop	dplyr::bind_rows	1.1440851688385
+readr	.txt	for loop	dplyr::bind_rows	1.13225483894348
+readr	.txt	for loop	dplyr::bind_rows	1.13956713676453
+readr	.txt	for loop	dplyr::bind_rows	1.17361092567444
+readr	.txt	for loop	dplyr::bind_rows	1.14506006240845
+readr	.txt	for loop	dplyr::bind_rows	1.13968992233276
+readr	.txt	for loop	dplyr::bind_rows	1.11927795410156
+readr	.txt	for loop	dplyr::bind_rows	1.10958099365234
+readr	.txt	for loop	dplyr::bind_rows	1.11095809936523
+readr	.txt	for loop	dplyr::bind_rows	1.11785507202148
+readr	.txt	for loop	dplyr::bind_rows	1.18040680885315
+readr	.txt	for loop	dplyr::bind_rows	1.14149808883667
+readr	.txt	for loop	dplyr::bind_rows	1.13748812675476
+readr	.txt	for loop	dplyr::bind_rows	1.13297510147095
+readr	.txt	for loop	dplyr::bind_rows	1.12618684768677
+readr	.txt	for loop	dplyr::bind_rows	1.11718606948853
+readr	.txt	for loop	dplyr::bind_rows	1.14566493034363
+readr	.txt	for loop	dplyr::bind_rows	1.12913703918457
+readr	.txt	for loop	dplyr::bind_rows	1.12727904319763
+readr	.txt	for loop	dplyr::bind_rows	1.12616181373596
+readr	.txt	for loop	dplyr::bind_rows	1.14391207695007
+readr	.txt	for loop	dplyr::bind_rows	1.12840294837952
+readr	.txt	for loop	dplyr::bind_rows	1.16811108589172
+readr	.txt	for loop	dplyr::bind_rows	1.14534902572632
+readr	.txt	for loop	dplyr::bind_rows	1.14084696769714
+readr	.txt	for loop	dplyr::bind_rows	1.11448407173157
+readr	.txt	for loop	dplyr::bind_rows	1.12712693214417
+readr	.txt	for loop	dplyr::bind_rows	1.13383007049561
+readr	.txt	for loop	dplyr::bind_rows	1.1479070186615
+readr	.txt	for loop	dplyr::bind_rows	1.13992094993591
+readr	.txt	for loop	dplyr::bind_rows	1.11925888061523
+readr	.txt	for loop	dplyr::bind_rows	1.1322660446167
+readr	.txt	for loop	dplyr::bind_rows	1.1082010269165
+readr	.txt	for loop	dplyr::bind_rows	1.14522504806519
+readr	.txt	for loop	dplyr::bind_rows	1.13998413085938
+readr	.txt	for loop	dplyr::bind_rows	1.12328696250916
+readr	.txt	for loop	dplyr::bind_rows	1.12635087966919
+readr	.txt	for loop	dplyr::bind_rows	1.15139007568359
+readr	.txt	for loop	dplyr::bind_rows	1.13912701606751
+readr	.txt	for loop	dplyr::bind_rows	1.12898707389832
+readr	.txt	for loop	dplyr::bind_rows	1.12714099884033
+readr	.txt	for loop	dplyr::bind_rows	1.15133786201477
+readr	.txt	for loop	dplyr::bind_rows	1.13175010681152
+readr	.txt	for loop	dplyr::bind_rows	1.14738702774048
+readr	.txt	for loop	dplyr::bind_rows	1.1546528339386
+readr	.txt	for loop	dplyr::bind_rows	1.12479400634766
+readr	.txt	for loop	dplyr::bind_rows	1.1163330078125
+readr	.txt	for loop	dplyr::bind_rows	1.13633012771606
+readr	.txt	for loop	dplyr::bind_rows	1.14220786094666
+readr	.txt	for loop	dplyr::bind_rows	1.13912105560303
+readr	.txt	for loop	dplyr::bind_rows	1.12545895576477
+readr	.txt	for loop	dplyr::bind_rows	1.12713718414307
+readr	.txt	for loop	dplyr::bind_rows	1.14429092407227
+readr	.txt	for loop	dplyr::bind_rows	1.12375593185425
+readr	.txt	for loop	dplyr::bind_rows	1.10475015640259
+readr	.txt	for loop	dplyr::bind_rows	1.10020279884338
+readr	.txt	for loop	dplyr::bind_rows	1.09893202781677
+readr	.txt	for loop	dplyr::bind_rows	1.12548208236694
+readr	.txt	for loop	dplyr::bind_rows	1.11037492752075
+readr	.txt	for loop	dplyr::bind_rows	1.10446310043335
+readr	.txt	for loop	dplyr::bind_rows	1.15879988670349
+readr	.txt	for loop	dplyr::bind_rows	1.12465119361877
+readr	.txt	for loop	dplyr::bind_rows	1.12322616577148
+readr	.txt	for loop	dplyr::bind_rows	1.13665795326233
+readr	.txt	for loop	dplyr::bind_rows	1.11304688453674
+readr	.txt	for loop	dplyr::bind_rows	1.11915802955627
+readr	.txt	for loop	dplyr::bind_rows	1.10175013542175
+readr	.txt	for loop	dplyr::bind_rows	1.10870504379272
+readr	.txt	for loop	dplyr::bind_rows	1.10526609420776
+readr	.txt	for loop	dplyr::bind_rows	1.11115312576294
+readr	.txt	for loop	dplyr::bind_rows	1.41295886039734
+readr	.txt	for loop	dplyr::bind_rows	1.30972814559937
+readr	.txt	for loop	dplyr::bind_rows	1.17952394485474
+readr	.txt	for loop	dplyr::bind_rows	1.14547204971313
+readr	.txt	for loop	dplyr::bind_rows	1.13383388519287
+readr	.txt	for loop	dplyr::bind_rows	1.10866498947144
+readr	.txt	for loop	dplyr::bind_rows	1.14790415763855
+readr	.txt	for loop	dplyr::bind_rows	1.12686085700989
+readr	.txt	for loop	dplyr::bind_rows	1.09926199913025
+readr	.txt	for loop	dplyr::bind_rows	1.11038899421692
+readr	.txt	for loop	dplyr::bind_rows	1.11505317687988
+readr	.txt	for loop	dplyr::bind_rows	1.09074282646179
+readr	.txt	for loop	dplyr::bind_rows	1.14017105102539
+readr	.txt	for loop	dplyr::bind_rows	1.09815907478333
+readr	.txt	for loop	dplyr::bind_rows	1.11218285560608
+readr	.txt	for loop	dplyr::bind_rows	1.10408616065979
+readr	.txt	for loop	dplyr::bind_rows	1.10687899589539
+readr	.txt	for loop	dplyr::bind_rows	1.1217520236969
+readr	.txt	for loop	dplyr::bind_rows	1.12637686729431
+readr	.txt	for loop	dplyr::bind_rows	1.13244295120239
+readr	.txt	for loop	dplyr::bind_rows	1.11676120758057
+readr	.txt	for loop	dplyr::bind_rows	1.12344098091125
+readr	.txt	for loop	dplyr::bind_rows	1.1184937953949
+readr	.txt	for loop	dplyr::bind_rows	1.13568902015686
+readr	.txt	for loop	dplyr::bind_rows	1.10452318191528
+readr	.txt	for loop	dplyr::bind_rows	1.13328886032105
+readr	.txt	for loop	dplyr::bind_rows	1.11306715011597
+readr	.txt	for loop	dplyr::bind_rows	1.13743996620178
+data.table	.txt	for loop	dplyr::bind_rows	1.2212769985199
+data.table	.txt	for loop	dplyr::bind_rows	1.15510296821594
+data.table	.txt	for loop	dplyr::bind_rows	1.13606214523315
+data.table	.txt	for loop	dplyr::bind_rows	1.13995695114136
+data.table	.txt	for loop	dplyr::bind_rows	1.13035893440247
+data.table	.txt	for loop	dplyr::bind_rows	1.1140661239624
+data.table	.txt	for loop	dplyr::bind_rows	1.56328701972961
+data.table	.txt	for loop	dplyr::bind_rows	1.6055908203125
+data.table	.txt	for loop	dplyr::bind_rows	1.34698009490967
+data.table	.txt	for loop	dplyr::bind_rows	1.47343993186951
+data.table	.txt	for loop	dplyr::bind_rows	1.29132509231567
+data.table	.txt	for loop	dplyr::bind_rows	1.18761396408081
+data.table	.txt	for loop	dplyr::bind_rows	1.27373814582825
+data.table	.txt	for loop	dplyr::bind_rows	1.2158670425415
+data.table	.txt	for loop	dplyr::bind_rows	1.13459897041321
+data.table	.txt	for loop	dplyr::bind_rows	1.132887840271
+data.table	.txt	for loop	dplyr::bind_rows	1.1388430595398
+data.table	.txt	for loop	dplyr::bind_rows	1.1014609336853
+data.table	.txt	for loop	dplyr::bind_rows	1.12005591392517
+data.table	.txt	for loop	dplyr::bind_rows	1.11488509178162
+data.table	.txt	for loop	dplyr::bind_rows	1.12434101104736
+data.table	.txt	for loop	dplyr::bind_rows	1.12321400642395
+data.table	.txt	for loop	dplyr::bind_rows	1.1371169090271
+data.table	.txt	for loop	dplyr::bind_rows	1.12500715255737
+data.table	.txt	for loop	dplyr::bind_rows	1.11122298240662
+data.table	.txt	for loop	dplyr::bind_rows	1.09685087203979
+data.table	.txt	for loop	dplyr::bind_rows	1.10612201690674
+data.table	.txt	for loop	dplyr::bind_rows	1.1128351688385
+data.table	.txt	for loop	dplyr::bind_rows	1.10004091262817
+data.table	.txt	for loop	dplyr::bind_rows	1.10272693634033
+data.table	.txt	for loop	dplyr::bind_rows	1.0981559753418
+data.table	.txt	for loop	dplyr::bind_rows	1.10353517532349
+data.table	.txt	for loop	dplyr::bind_rows	1.11145901679993
+data.table	.txt	for loop	dplyr::bind_rows	1.1208348274231
+data.table	.txt	for loop	dplyr::bind_rows	1.21697807312012
+data.table	.txt	for loop	dplyr::bind_rows	1.20685791969299
+data.table	.txt	for loop	dplyr::bind_rows	1.12226009368896
+data.table	.txt	for loop	dplyr::bind_rows	1.10736083984375
+data.table	.txt	for loop	dplyr::bind_rows	1.11607694625854
+data.table	.txt	for loop	dplyr::bind_rows	1.11010122299194
+data.table	.txt	for loop	dplyr::bind_rows	1.16464686393738
+data.table	.txt	for loop	dplyr::bind_rows	1.22735714912415
+data.table	.txt	for loop	dplyr::bind_rows	1.22793197631836
+data.table	.txt	for loop	dplyr::bind_rows	1.15520286560059
+data.table	.txt	for loop	dplyr::bind_rows	1.18212008476257
+data.table	.txt	for loop	dplyr::bind_rows	1.23475503921509
+data.table	.txt	for loop	dplyr::bind_rows	1.14489388465881
+data.table	.txt	for loop	dplyr::bind_rows	1.14169692993164
+data.table	.txt	for loop	dplyr::bind_rows	1.10785317420959
+data.table	.txt	for loop	dplyr::bind_rows	1.12030100822449
+data.table	.txt	for loop	dplyr::bind_rows	1.08437085151672
+data.table	.txt	for loop	dplyr::bind_rows	1.10304999351501
+data.table	.txt	for loop	dplyr::bind_rows	1.11202812194824
+data.table	.txt	for loop	dplyr::bind_rows	1.11572980880737
+data.table	.txt	for loop	dplyr::bind_rows	1.13222408294678
+data.table	.txt	for loop	dplyr::bind_rows	1.12571692466736
+data.table	.txt	for loop	dplyr::bind_rows	1.10223698616028
+data.table	.txt	for loop	dplyr::bind_rows	1.07730317115784
+data.table	.txt	for loop	dplyr::bind_rows	1.10614109039307
+data.table	.txt	for loop	dplyr::bind_rows	1.09806299209595
+data.table	.txt	for loop	dplyr::bind_rows	1.12884902954102
+data.table	.txt	for loop	dplyr::bind_rows	1.11397695541382
+data.table	.txt	for loop	dplyr::bind_rows	1.11290407180786
+data.table	.txt	for loop	dplyr::bind_rows	1.10902786254883
+data.table	.txt	for loop	dplyr::bind_rows	1.12703704833984
+data.table	.txt	for loop	dplyr::bind_rows	1.18810510635376
+data.table	.txt	for loop	dplyr::bind_rows	1.48380279541016
+data.table	.txt	for loop	dplyr::bind_rows	1.58099317550659
+data.table	.txt	for loop	dplyr::bind_rows	1.50835299491882
+data.table	.txt	for loop	dplyr::bind_rows	1.42867302894592
+data.table	.txt	for loop	dplyr::bind_rows	1.50677800178528
+data.table	.txt	for loop	dplyr::bind_rows	1.47113084793091
+data.table	.txt	for loop	dplyr::bind_rows	1.47792601585388
+data.table	.txt	for loop	dplyr::bind_rows	1.49261093139648
+data.table	.txt	for loop	dplyr::bind_rows	1.49801111221313
+data.table	.txt	for loop	dplyr::bind_rows	1.46709203720093
+data.table	.txt	for loop	dplyr::bind_rows	1.40502786636353
+data.table	.txt	for loop	dplyr::bind_rows	1.24438214302063
+data.table	.txt	for loop	dplyr::bind_rows	1.15827679634094
+data.table	.txt	for loop	dplyr::bind_rows	1.10524106025696
+data.table	.txt	for loop	dplyr::bind_rows	1.09564900398254
+data.table	.txt	for loop	dplyr::bind_rows	1.12827110290527
+data.table	.txt	for loop	dplyr::bind_rows	1.11078500747681
+data.table	.txt	for loop	dplyr::bind_rows	1.1281578540802
+data.table	.txt	for loop	dplyr::bind_rows	1.09626317024231
+data.table	.txt	for loop	dplyr::bind_rows	1.11022186279297
+data.table	.txt	for loop	dplyr::bind_rows	1.12053894996643
+data.table	.txt	for loop	dplyr::bind_rows	1.11823606491089
+data.table	.txt	for loop	dplyr::bind_rows	1.13661313056946
+data.table	.txt	for loop	dplyr::bind_rows	1.135577917099
+data.table	.txt	for loop	dplyr::bind_rows	1.12076997756958
+data.table	.txt	for loop	dplyr::bind_rows	1.1188759803772
+data.table	.txt	for loop	dplyr::bind_rows	1.12948608398438
+data.table	.txt	for loop	dplyr::bind_rows	1.14100098609924
+data.table	.txt	for loop	dplyr::bind_rows	1.13302993774414
+data.table	.txt	for loop	dplyr::bind_rows	1.10852003097534
+data.table	.txt	for loop	dplyr::bind_rows	1.12982797622681
+data.table	.txt	for loop	dplyr::bind_rows	1.1135401725769
+data.table	.txt	for loop	dplyr::bind_rows	1.11588001251221
+data.table	.txt	for loop	dplyr::bind_rows	1.14230990409851
+base	.csv	lapply	dplyr::bind_rows	0.809902906417847
+base	.csv	lapply	dplyr::bind_rows	0.881160020828247
+base	.csv	lapply	dplyr::bind_rows	0.979351043701172
+base	.csv	lapply	dplyr::bind_rows	0.929516077041626
+base	.csv	lapply	dplyr::bind_rows	0.89513897895813
+base	.csv	lapply	dplyr::bind_rows	0.940563917160034
+base	.csv	lapply	dplyr::bind_rows	0.892026901245117
+base	.csv	lapply	dplyr::bind_rows	0.945008039474487
+base	.csv	lapply	dplyr::bind_rows	0.929124116897583
+base	.csv	lapply	dplyr::bind_rows	0.9218590259552
+base	.csv	lapply	dplyr::bind_rows	0.939522981643677
+base	.csv	lapply	dplyr::bind_rows	0.90156102180481
+base	.csv	lapply	dplyr::bind_rows	0.891633033752441
+base	.csv	lapply	dplyr::bind_rows	0.915710926055908
+base	.csv	lapply	dplyr::bind_rows	0.88588285446167
+base	.csv	lapply	dplyr::bind_rows	0.901537179946899
+base	.csv	lapply	dplyr::bind_rows	0.900352954864502
+base	.csv	lapply	dplyr::bind_rows	0.878154993057251
+base	.csv	lapply	dplyr::bind_rows	0.937767028808594
+base	.csv	lapply	dplyr::bind_rows	0.94660496711731
+base	.csv	lapply	dplyr::bind_rows	0.917692899703979
+base	.csv	lapply	dplyr::bind_rows	0.853742122650147
+base	.csv	lapply	dplyr::bind_rows	0.902113914489746
+base	.csv	lapply	dplyr::bind_rows	0.873664140701294
+base	.csv	lapply	dplyr::bind_rows	0.896613836288452
+base	.csv	lapply	dplyr::bind_rows	0.909834146499634
+base	.csv	lapply	dplyr::bind_rows	0.872866868972778
+base	.csv	lapply	dplyr::bind_rows	0.87985110282898
+base	.csv	lapply	dplyr::bind_rows	0.8367600440979
+base	.csv	lapply	dplyr::bind_rows	0.882682800292969
+base	.csv	lapply	dplyr::bind_rows	0.918560028076172
+base	.csv	lapply	dplyr::bind_rows	0.906720161437988
+base	.csv	lapply	dplyr::bind_rows	0.892654895782471
+base	.csv	lapply	dplyr::bind_rows	0.85820198059082
+base	.csv	lapply	dplyr::bind_rows	0.855284929275513
+base	.csv	lapply	dplyr::bind_rows	0.881787061691284
+base	.csv	lapply	dplyr::bind_rows	0.92204213142395
+base	.csv	lapply	dplyr::bind_rows	0.898018836975098
+base	.csv	lapply	dplyr::bind_rows	0.902587175369263
+base	.csv	lapply	dplyr::bind_rows	0.93547797203064
+base	.csv	lapply	dplyr::bind_rows	0.900616884231567
+base	.csv	lapply	dplyr::bind_rows	0.900861024856567
+base	.csv	lapply	dplyr::bind_rows	0.90653395652771
+base	.csv	lapply	dplyr::bind_rows	0.889133930206299
+base	.csv	lapply	dplyr::bind_rows	0.897655010223389
+base	.csv	lapply	dplyr::bind_rows	0.895579099655151
+base	.csv	lapply	dplyr::bind_rows	0.982743978500366
+base	.csv	lapply	dplyr::bind_rows	0.894684076309204
+base	.csv	lapply	dplyr::bind_rows	0.94341778755188
+base	.csv	lapply	dplyr::bind_rows	0.924276113510132
+base	.csv	lapply	dplyr::bind_rows	0.924529075622559
+base	.csv	lapply	dplyr::bind_rows	0.892582893371582
+base	.csv	lapply	dplyr::bind_rows	0.911109924316406
+base	.csv	lapply	dplyr::bind_rows	0.934478044509888
+base	.csv	lapply	dplyr::bind_rows	0.935501098632812
+base	.csv	lapply	dplyr::bind_rows	1.02327585220337
+base	.csv	lapply	dplyr::bind_rows	0.935766220092773
+base	.csv	lapply	dplyr::bind_rows	0.918298959732056
+base	.csv	lapply	dplyr::bind_rows	0.916535139083862
+base	.csv	lapply	dplyr::bind_rows	0.909371852874756
+base	.csv	lapply	dplyr::bind_rows	0.919233083724976
+base	.csv	lapply	dplyr::bind_rows	0.901514053344727
+base	.csv	lapply	dplyr::bind_rows	0.882859945297241
+base	.csv	lapply	dplyr::bind_rows	0.903733968734741
+base	.csv	lapply	dplyr::bind_rows	0.915112018585205
+base	.csv	lapply	dplyr::bind_rows	1.02423000335693
+base	.csv	lapply	dplyr::bind_rows	0.951503992080688
+base	.csv	lapply	dplyr::bind_rows	0.905034065246582
+base	.csv	lapply	dplyr::bind_rows	1.11242890357971
+base	.csv	lapply	dplyr::bind_rows	1.06122207641602
+base	.csv	lapply	dplyr::bind_rows	1.15000581741333
+base	.csv	lapply	dplyr::bind_rows	1.14396810531616
+base	.csv	lapply	dplyr::bind_rows	1.09325289726257
+base	.csv	lapply	dplyr::bind_rows	1.15296006202698
+base	.csv	lapply	dplyr::bind_rows	1.18461799621582
+base	.csv	lapply	dplyr::bind_rows	1.16490817070007
+base	.csv	lapply	dplyr::bind_rows	1.13806581497192
+base	.csv	lapply	dplyr::bind_rows	1.16191697120667
+base	.csv	lapply	dplyr::bind_rows	1.16738200187683
+base	.csv	lapply	dplyr::bind_rows	1.18684196472168
+base	.csv	lapply	dplyr::bind_rows	1.18189311027527
+base	.csv	lapply	dplyr::bind_rows	1.35038900375366
+base	.csv	lapply	dplyr::bind_rows	1.37847900390625
+base	.csv	lapply	dplyr::bind_rows	1.36038684844971
+base	.csv	lapply	dplyr::bind_rows	1.35642910003662
+base	.csv	lapply	dplyr::bind_rows	1.29603886604309
+base	.csv	lapply	dplyr::bind_rows	1.15542387962341
+base	.csv	lapply	dplyr::bind_rows	1.16089701652527
+base	.csv	lapply	dplyr::bind_rows	1.13998103141785
+base	.csv	lapply	dplyr::bind_rows	1.15209794044495
+base	.csv	lapply	dplyr::bind_rows	1.17937994003296
+base	.csv	lapply	dplyr::bind_rows	1.14798808097839
+base	.csv	lapply	dplyr::bind_rows	1.17582607269287
+base	.csv	lapply	dplyr::bind_rows	1.09506893157959
+base	.csv	lapply	dplyr::bind_rows	1.11302590370178
+base	.csv	lapply	dplyr::bind_rows	1.15154004096985
+base	.csv	lapply	dplyr::bind_rows	1.20164012908936
+base	.csv	lapply	dplyr::bind_rows	1.16770601272583
+base	.csv	lapply	dplyr::bind_rows	1.03272080421448
+base	.csv	lapply	dplyr::bind_rows	0.963249206542969
+readr	.csv	lapply	dplyr::bind_rows	0.965183019638062
+readr	.csv	lapply	dplyr::bind_rows	0.943501949310303
+readr	.csv	lapply	dplyr::bind_rows	0.977386951446533
+readr	.csv	lapply	dplyr::bind_rows	0.947174072265625
+readr	.csv	lapply	dplyr::bind_rows	0.96954607963562
+readr	.csv	lapply	dplyr::bind_rows	0.954536914825439
+readr	.csv	lapply	dplyr::bind_rows	1.04620289802551
+readr	.csv	lapply	dplyr::bind_rows	0.93354606628418
+readr	.csv	lapply	dplyr::bind_rows	0.975378036499023
+readr	.csv	lapply	dplyr::bind_rows	1.07315897941589
+readr	.csv	lapply	dplyr::bind_rows	1.02180814743042
+readr	.csv	lapply	dplyr::bind_rows	0.979368925094604
+readr	.csv	lapply	dplyr::bind_rows	0.97037410736084
+readr	.csv	lapply	dplyr::bind_rows	1.07711887359619
+readr	.csv	lapply	dplyr::bind_rows	0.937524080276489
+readr	.csv	lapply	dplyr::bind_rows	0.881726026535034
+readr	.csv	lapply	dplyr::bind_rows	0.93247389793396
+readr	.csv	lapply	dplyr::bind_rows	0.906128883361816
+readr	.csv	lapply	dplyr::bind_rows	0.889738082885742
+readr	.csv	lapply	dplyr::bind_rows	0.869647979736328
+readr	.csv	lapply	dplyr::bind_rows	0.927515983581543
+readr	.csv	lapply	dplyr::bind_rows	0.878010034561157
+readr	.csv	lapply	dplyr::bind_rows	0.827786922454834
+readr	.csv	lapply	dplyr::bind_rows	0.850764989852905
+readr	.csv	lapply	dplyr::bind_rows	0.877648115158081
+readr	.csv	lapply	dplyr::bind_rows	0.871399879455566
+readr	.csv	lapply	dplyr::bind_rows	0.879192113876343
+readr	.csv	lapply	dplyr::bind_rows	0.901097059249878
+readr	.csv	lapply	dplyr::bind_rows	0.885658025741577
+readr	.csv	lapply	dplyr::bind_rows	0.886628866195679
+readr	.csv	lapply	dplyr::bind_rows	0.885601997375488
+readr	.csv	lapply	dplyr::bind_rows	0.908215999603271
+readr	.csv	lapply	dplyr::bind_rows	0.891568899154663
+readr	.csv	lapply	dplyr::bind_rows	0.862693071365356
+readr	.csv	lapply	dplyr::bind_rows	0.878695964813232
+readr	.csv	lapply	dplyr::bind_rows	0.889167070388794
+readr	.csv	lapply	dplyr::bind_rows	0.889482021331787
+readr	.csv	lapply	dplyr::bind_rows	0.911149978637695
+readr	.csv	lapply	dplyr::bind_rows	0.903903961181641
+readr	.csv	lapply	dplyr::bind_rows	0.888650894165039
+readr	.csv	lapply	dplyr::bind_rows	0.899132966995239
+readr	.csv	lapply	dplyr::bind_rows	0.897598028182983
+readr	.csv	lapply	dplyr::bind_rows	0.902103185653687
+readr	.csv	lapply	dplyr::bind_rows	0.895610809326172
+readr	.csv	lapply	dplyr::bind_rows	0.894853115081787
+readr	.csv	lapply	dplyr::bind_rows	0.892654895782471
+readr	.csv	lapply	dplyr::bind_rows	0.899588108062744
+readr	.csv	lapply	dplyr::bind_rows	1.00022888183594
+readr	.csv	lapply	dplyr::bind_rows	0.882304191589356
+readr	.csv	lapply	dplyr::bind_rows	0.887021780014038
+readr	.csv	lapply	dplyr::bind_rows	0.889273166656494
+readr	.csv	lapply	dplyr::bind_rows	0.886656999588013
+readr	.csv	lapply	dplyr::bind_rows	0.918217897415161
+readr	.csv	lapply	dplyr::bind_rows	0.903079032897949
+readr	.csv	lapply	dplyr::bind_rows	0.889752864837647
+readr	.csv	lapply	dplyr::bind_rows	0.866724014282227
+readr	.csv	lapply	dplyr::bind_rows	0.885662078857422
+readr	.csv	lapply	dplyr::bind_rows	0.891573905944824
+readr	.csv	lapply	dplyr::bind_rows	0.915877103805542
+readr	.csv	lapply	dplyr::bind_rows	0.900563955307007
+readr	.csv	lapply	dplyr::bind_rows	0.972398042678833
+readr	.csv	lapply	dplyr::bind_rows	0.940505027770996
+readr	.csv	lapply	dplyr::bind_rows	0.955476045608521
+readr	.csv	lapply	dplyr::bind_rows	0.896601915359497
+readr	.csv	lapply	dplyr::bind_rows	0.869718074798584
+readr	.csv	lapply	dplyr::bind_rows	0.863765954971314
+readr	.csv	lapply	dplyr::bind_rows	0.845763921737671
+readr	.csv	lapply	dplyr::bind_rows	0.893598079681397
+readr	.csv	lapply	dplyr::bind_rows	0.846735954284668
+readr	.csv	lapply	dplyr::bind_rows	0.898596048355103
+readr	.csv	lapply	dplyr::bind_rows	0.91710901260376
+readr	.csv	lapply	dplyr::bind_rows	0.913558959960938
+readr	.csv	lapply	dplyr::bind_rows	0.884819984436035
+readr	.csv	lapply	dplyr::bind_rows	0.908345937728882
+readr	.csv	lapply	dplyr::bind_rows	0.886157035827637
+readr	.csv	lapply	dplyr::bind_rows	0.933611154556274
+readr	.csv	lapply	dplyr::bind_rows	0.891824960708618
+readr	.csv	lapply	dplyr::bind_rows	0.884634017944336
+readr	.csv	lapply	dplyr::bind_rows	0.886788129806519
+readr	.csv	lapply	dplyr::bind_rows	0.904568910598755
+readr	.csv	lapply	dplyr::bind_rows	0.901554107666016
+readr	.csv	lapply	dplyr::bind_rows	0.903141021728516
+readr	.csv	lapply	dplyr::bind_rows	0.916541814804077
+readr	.csv	lapply	dplyr::bind_rows	0.90358304977417
+readr	.csv	lapply	dplyr::bind_rows	0.894622087478638
+readr	.csv	lapply	dplyr::bind_rows	0.886647939682007
+readr	.csv	lapply	dplyr::bind_rows	0.896619081497192
+readr	.csv	lapply	dplyr::bind_rows	0.911326885223389
+readr	.csv	lapply	dplyr::bind_rows	0.929562091827393
+readr	.csv	lapply	dplyr::bind_rows	0.930564880371094
+readr	.csv	lapply	dplyr::bind_rows	0.932043075561523
+readr	.csv	lapply	dplyr::bind_rows	0.927556991577148
+readr	.csv	lapply	dplyr::bind_rows	0.895636081695557
+readr	.csv	lapply	dplyr::bind_rows	0.92106294631958
+readr	.csv	lapply	dplyr::bind_rows	0.908102989196777
+readr	.csv	lapply	dplyr::bind_rows	0.926562070846558
+readr	.csv	lapply	dplyr::bind_rows	0.889823913574219
+readr	.csv	lapply	dplyr::bind_rows	0.879313945770264
+readr	.csv	lapply	dplyr::bind_rows	0.900879144668579
+readr	.csv	lapply	dplyr::bind_rows	0.893311023712158
+data.table	.csv	lapply	dplyr::bind_rows	0.873624086380005
+data.table	.csv	lapply	dplyr::bind_rows	0.884634017944336
+data.table	.csv	lapply	dplyr::bind_rows	0.955441951751709
+data.table	.csv	lapply	dplyr::bind_rows	1.0992419719696
+data.table	.csv	lapply	dplyr::bind_rows	1.10559296607971
+data.table	.csv	lapply	dplyr::bind_rows	1.02628016471863
+data.table	.csv	lapply	dplyr::bind_rows	1.0401918888092
+data.table	.csv	lapply	dplyr::bind_rows	0.918092966079712
+data.table	.csv	lapply	dplyr::bind_rows	0.824361085891724
+data.table	.csv	lapply	dplyr::bind_rows	0.95048999786377
+data.table	.csv	lapply	dplyr::bind_rows	0.828476905822754
+data.table	.csv	lapply	dplyr::bind_rows	0.822844982147217
+data.table	.csv	lapply	dplyr::bind_rows	0.822786092758179
+data.table	.csv	lapply	dplyr::bind_rows	0.847724914550781
+data.table	.csv	lapply	dplyr::bind_rows	0.810734033584595
+data.table	.csv	lapply	dplyr::bind_rows	0.836721897125244
+data.table	.csv	lapply	dplyr::bind_rows	0.805845022201538
+data.table	.csv	lapply	dplyr::bind_rows	0.756977081298828
+data.table	.csv	lapply	dplyr::bind_rows	0.755681991577148
+data.table	.csv	lapply	dplyr::bind_rows	0.808881044387817
+data.table	.csv	lapply	dplyr::bind_rows	0.812840938568115
+data.table	.csv	lapply	dplyr::bind_rows	0.85969090461731
+data.table	.csv	lapply	dplyr::bind_rows	0.82978105545044
+data.table	.csv	lapply	dplyr::bind_rows	0.819847106933594
+data.table	.csv	lapply	dplyr::bind_rows	0.802893877029419
+data.table	.csv	lapply	dplyr::bind_rows	0.823774099349976
+data.table	.csv	lapply	dplyr::bind_rows	0.829797029495239
+data.table	.csv	lapply	dplyr::bind_rows	0.849985837936401
+data.table	.csv	lapply	dplyr::bind_rows	0.842858076095581
+data.table	.csv	lapply	dplyr::bind_rows	0.833739995956421
+data.table	.csv	lapply	dplyr::bind_rows	0.833770036697388
+data.table	.csv	lapply	dplyr::bind_rows	0.824380874633789
+data.table	.csv	lapply	dplyr::bind_rows	0.817301034927368
+data.table	.csv	lapply	dplyr::bind_rows	0.840772151947022
+data.table	.csv	lapply	dplyr::bind_rows	0.83035683631897
+data.table	.csv	lapply	dplyr::bind_rows	0.805799961090088
+data.table	.csv	lapply	dplyr::bind_rows	0.824836015701294
+data.table	.csv	lapply	dplyr::bind_rows	0.825750112533569
+data.table	.csv	lapply	dplyr::bind_rows	0.84483790397644
+data.table	.csv	lapply	dplyr::bind_rows	0.827749967575073
+data.table	.csv	lapply	dplyr::bind_rows	0.801379203796387
+data.table	.csv	lapply	dplyr::bind_rows	0.83083987236023
+data.table	.csv	lapply	dplyr::bind_rows	0.826792001724243
+data.table	.csv	lapply	dplyr::bind_rows	0.853183031082153
+data.table	.csv	lapply	dplyr::bind_rows	0.839777946472168
+data.table	.csv	lapply	dplyr::bind_rows	0.831774950027466
+data.table	.csv	lapply	dplyr::bind_rows	0.838758230209351
+data.table	.csv	lapply	dplyr::bind_rows	0.797057867050171
+data.table	.csv	lapply	dplyr::bind_rows	0.837759017944336
+data.table	.csv	lapply	dplyr::bind_rows	0.914546012878418
+data.table	.csv	lapply	dplyr::bind_rows	0.872190952301025
+data.table	.csv	lapply	dplyr::bind_rows	0.812825918197632
+data.table	.csv	lapply	dplyr::bind_rows	0.773930072784424
+data.table	.csv	lapply	dplyr::bind_rows	0.78988790512085
+data.table	.csv	lapply	dplyr::bind_rows	0.798867225646973
+data.table	.csv	lapply	dplyr::bind_rows	0.811885833740234
+data.table	.csv	lapply	dplyr::bind_rows	0.852139949798584
+data.table	.csv	lapply	dplyr::bind_rows	0.829573154449463
+data.table	.csv	lapply	dplyr::bind_rows	0.931467056274414
+data.table	.csv	lapply	dplyr::bind_rows	0.812969207763672
+data.table	.csv	lapply	dplyr::bind_rows	0.82083797454834
+data.table	.csv	lapply	dplyr::bind_rows	0.830874919891357
+data.table	.csv	lapply	dplyr::bind_rows	0.830836057662964
+data.table	.csv	lapply	dplyr::bind_rows	0.815777063369751
+data.table	.csv	lapply	dplyr::bind_rows	0.907604932785034
+data.table	.csv	lapply	dplyr::bind_rows	0.835767984390259
+data.table	.csv	lapply	dplyr::bind_rows	0.788920164108276
+data.table	.csv	lapply	dplyr::bind_rows	0.796839952468872
+data.table	.csv	lapply	dplyr::bind_rows	0.829801082611084
+data.table	.csv	lapply	dplyr::bind_rows	0.811869859695435
+data.table	.csv	lapply	dplyr::bind_rows	0.757930994033814
+data.table	.csv	lapply	dplyr::bind_rows	0.755980968475342
+data.table	.csv	lapply	dplyr::bind_rows	0.819838047027588
+data.table	.csv	lapply	dplyr::bind_rows	0.766991853713989
+data.table	.csv	lapply	dplyr::bind_rows	0.819332122802734
+data.table	.csv	lapply	dplyr::bind_rows	0.799509048461914
+data.table	.csv	lapply	dplyr::bind_rows	0.812546014785767
+data.table	.csv	lapply	dplyr::bind_rows	0.829192876815796
+data.table	.csv	lapply	dplyr::bind_rows	0.831314086914063
+data.table	.csv	lapply	dplyr::bind_rows	0.793876886367798
+data.table	.csv	lapply	dplyr::bind_rows	0.829184055328369
+data.table	.csv	lapply	dplyr::bind_rows	0.773921012878418
+data.table	.csv	lapply	dplyr::bind_rows	0.773927927017212
+data.table	.csv	lapply	dplyr::bind_rows	0.791648149490356
+data.table	.csv	lapply	dplyr::bind_rows	0.806986093521118
+data.table	.csv	lapply	dplyr::bind_rows	0.827879905700684
+data.table	.csv	lapply	dplyr::bind_rows	0.827877998352051
+data.table	.csv	lapply	dplyr::bind_rows	0.838266134262085
+data.table	.csv	lapply	dplyr::bind_rows	0.827255964279175
+data.table	.csv	lapply	dplyr::bind_rows	0.841786861419678
+data.table	.csv	lapply	dplyr::bind_rows	0.841753005981445
+data.table	.csv	lapply	dplyr::bind_rows	0.826757192611694
+data.table	.csv	lapply	dplyr::bind_rows	0.782922983169556
+data.table	.csv	lapply	dplyr::bind_rows	0.882299184799194
+data.table	.csv	lapply	dplyr::bind_rows	0.82978081703186
+data.table	.csv	lapply	dplyr::bind_rows	0.810832023620606
+data.table	.csv	lapply	dplyr::bind_rows	0.857721090316773
+data.table	.csv	lapply	dplyr::bind_rows	0.786449909210205
+data.table	.csv	lapply	dplyr::bind_rows	0.808806896209717
+data.table	.csv	lapply	dplyr::bind_rows	0.873322010040283
+base	.txt	lapply	dplyr::bind_rows	0.873624086380005
+base	.txt	lapply	dplyr::bind_rows	0.884634017944336
+base	.txt	lapply	dplyr::bind_rows	0.955441951751709
+base	.txt	lapply	dplyr::bind_rows	1.0992419719696
+base	.txt	lapply	dplyr::bind_rows	1.10559296607971
+base	.txt	lapply	dplyr::bind_rows	1.02628016471863
+base	.txt	lapply	dplyr::bind_rows	1.0401918888092
+base	.txt	lapply	dplyr::bind_rows	0.918092966079712
+base	.txt	lapply	dplyr::bind_rows	0.824361085891724
+base	.txt	lapply	dplyr::bind_rows	0.95048999786377
+base	.txt	lapply	dplyr::bind_rows	0.828476905822754
+base	.txt	lapply	dplyr::bind_rows	0.822844982147217
+base	.txt	lapply	dplyr::bind_rows	0.822786092758179
+base	.txt	lapply	dplyr::bind_rows	0.847724914550781
+base	.txt	lapply	dplyr::bind_rows	0.810734033584595
+base	.txt	lapply	dplyr::bind_rows	0.836721897125244
+base	.txt	lapply	dplyr::bind_rows	0.805845022201538
+base	.txt	lapply	dplyr::bind_rows	0.756977081298828
+base	.txt	lapply	dplyr::bind_rows	0.755681991577148
+base	.txt	lapply	dplyr::bind_rows	0.808881044387817
+base	.txt	lapply	dplyr::bind_rows	0.812840938568115
+base	.txt	lapply	dplyr::bind_rows	0.85969090461731
+base	.txt	lapply	dplyr::bind_rows	0.82978105545044
+base	.txt	lapply	dplyr::bind_rows	0.819847106933594
+base	.txt	lapply	dplyr::bind_rows	0.802893877029419
+base	.txt	lapply	dplyr::bind_rows	0.823774099349976
+base	.txt	lapply	dplyr::bind_rows	0.829797029495239
+base	.txt	lapply	dplyr::bind_rows	0.849985837936401
+base	.txt	lapply	dplyr::bind_rows	0.842858076095581
+base	.txt	lapply	dplyr::bind_rows	0.833739995956421
+base	.txt	lapply	dplyr::bind_rows	0.833770036697388
+base	.txt	lapply	dplyr::bind_rows	0.824380874633789
+base	.txt	lapply	dplyr::bind_rows	0.817301034927368
+base	.txt	lapply	dplyr::bind_rows	0.840772151947022
+base	.txt	lapply	dplyr::bind_rows	0.83035683631897
+base	.txt	lapply	dplyr::bind_rows	0.805799961090088
+base	.txt	lapply	dplyr::bind_rows	0.824836015701294
+base	.txt	lapply	dplyr::bind_rows	0.825750112533569
+base	.txt	lapply	dplyr::bind_rows	0.84483790397644
+base	.txt	lapply	dplyr::bind_rows	0.827749967575073
+base	.txt	lapply	dplyr::bind_rows	0.801379203796387
+base	.txt	lapply	dplyr::bind_rows	0.83083987236023
+base	.txt	lapply	dplyr::bind_rows	0.826792001724243
+base	.txt	lapply	dplyr::bind_rows	0.853183031082153
+base	.txt	lapply	dplyr::bind_rows	0.839777946472168
+base	.txt	lapply	dplyr::bind_rows	0.831774950027466
+base	.txt	lapply	dplyr::bind_rows	0.838758230209351
+base	.txt	lapply	dplyr::bind_rows	0.797057867050171
+base	.txt	lapply	dplyr::bind_rows	0.837759017944336
+base	.txt	lapply	dplyr::bind_rows	0.914546012878418
+base	.txt	lapply	dplyr::bind_rows	0.872190952301025
+base	.txt	lapply	dplyr::bind_rows	0.812825918197632
+base	.txt	lapply	dplyr::bind_rows	0.773930072784424
+base	.txt	lapply	dplyr::bind_rows	0.78988790512085
+base	.txt	lapply	dplyr::bind_rows	0.798867225646973
+base	.txt	lapply	dplyr::bind_rows	0.811885833740234
+base	.txt	lapply	dplyr::bind_rows	0.852139949798584
+base	.txt	lapply	dplyr::bind_rows	0.829573154449463
+base	.txt	lapply	dplyr::bind_rows	0.931467056274414
+base	.txt	lapply	dplyr::bind_rows	0.812969207763672
+base	.txt	lapply	dplyr::bind_rows	0.82083797454834
+base	.txt	lapply	dplyr::bind_rows	0.830874919891357
+base	.txt	lapply	dplyr::bind_rows	0.830836057662964
+base	.txt	lapply	dplyr::bind_rows	0.815777063369751
+base	.txt	lapply	dplyr::bind_rows	0.907604932785034
+base	.txt	lapply	dplyr::bind_rows	0.835767984390259
+base	.txt	lapply	dplyr::bind_rows	0.788920164108276
+base	.txt	lapply	dplyr::bind_rows	0.796839952468872
+base	.txt	lapply	dplyr::bind_rows	0.829801082611084
+base	.txt	lapply	dplyr::bind_rows	0.811869859695435
+base	.txt	lapply	dplyr::bind_rows	0.757930994033814
+base	.txt	lapply	dplyr::bind_rows	0.755980968475342
+base	.txt	lapply	dplyr::bind_rows	0.819838047027588
+base	.txt	lapply	dplyr::bind_rows	0.766991853713989
+base	.txt	lapply	dplyr::bind_rows	0.819332122802734
+base	.txt	lapply	dplyr::bind_rows	0.799509048461914
+base	.txt	lapply	dplyr::bind_rows	0.812546014785767
+base	.txt	lapply	dplyr::bind_rows	0.829192876815796
+base	.txt	lapply	dplyr::bind_rows	0.831314086914063
+base	.txt	lapply	dplyr::bind_rows	0.793876886367798
+base	.txt	lapply	dplyr::bind_rows	0.829184055328369
+base	.txt	lapply	dplyr::bind_rows	0.773921012878418
+base	.txt	lapply	dplyr::bind_rows	0.773927927017212
+base	.txt	lapply	dplyr::bind_rows	0.791648149490356
+base	.txt	lapply	dplyr::bind_rows	0.806986093521118
+base	.txt	lapply	dplyr::bind_rows	0.827879905700684
+base	.txt	lapply	dplyr::bind_rows	0.827877998352051
+base	.txt	lapply	dplyr::bind_rows	0.838266134262085
+base	.txt	lapply	dplyr::bind_rows	0.827255964279175
+base	.txt	lapply	dplyr::bind_rows	0.841786861419678
+base	.txt	lapply	dplyr::bind_rows	0.841753005981445
+base	.txt	lapply	dplyr::bind_rows	0.826757192611694
+base	.txt	lapply	dplyr::bind_rows	0.782922983169556
+base	.txt	lapply	dplyr::bind_rows	0.882299184799194
+base	.txt	lapply	dplyr::bind_rows	0.82978081703186
+base	.txt	lapply	dplyr::bind_rows	0.810832023620606
+base	.txt	lapply	dplyr::bind_rows	0.857721090316773
+base	.txt	lapply	dplyr::bind_rows	0.786449909210205
+base	.txt	lapply	dplyr::bind_rows	0.808806896209717
+base	.txt	lapply	dplyr::bind_rows	0.873322010040283
+readr	.txt	lapply	dplyr::bind_rows	0.759158134460449
+readr	.txt	lapply	dplyr::bind_rows	0.725064039230347
+readr	.txt	lapply	dplyr::bind_rows	0.705118894577026
+readr	.txt	lapply	dplyr::bind_rows	0.728080034255981
+readr	.txt	lapply	dplyr::bind_rows	0.744009017944336
+readr	.txt	lapply	dplyr::bind_rows	0.759017944335938
+readr	.txt	lapply	dplyr::bind_rows	0.791924953460693
+readr	.txt	lapply	dplyr::bind_rows	0.768913984298706
+readr	.txt	lapply	dplyr::bind_rows	0.772933006286621
+readr	.txt	lapply	dplyr::bind_rows	0.778917074203491
+readr	.txt	lapply	dplyr::bind_rows	0.773962020874023
+readr	.txt	lapply	dplyr::bind_rows	0.799830913543701
+readr	.txt	lapply	dplyr::bind_rows	0.807837009429932
+readr	.txt	lapply	dplyr::bind_rows	0.780914068222046
+readr	.txt	lapply	dplyr::bind_rows	0.763031005859375
+readr	.txt	lapply	dplyr::bind_rows	0.788905143737793
+readr	.txt	lapply	dplyr::bind_rows	0.805884838104248
+readr	.txt	lapply	dplyr::bind_rows	0.789874076843262
+readr	.txt	lapply	dplyr::bind_rows	0.767916917800903
+readr	.txt	lapply	dplyr::bind_rows	0.780151128768921
+readr	.txt	lapply	dplyr::bind_rows	0.788947820663452
+readr	.txt	lapply	dplyr::bind_rows	0.774541139602661
+readr	.txt	lapply	dplyr::bind_rows	0.722107887268066
+readr	.txt	lapply	dplyr::bind_rows	0.720091104507446
+readr	.txt	lapply	dplyr::bind_rows	0.731044054031372
+readr	.txt	lapply	dplyr::bind_rows	0.774955987930298
+readr	.txt	lapply	dplyr::bind_rows	0.888009071350098
+readr	.txt	lapply	dplyr::bind_rows	0.766921043395996
+readr	.txt	lapply	dplyr::bind_rows	0.739563941955566
+readr	.txt	lapply	dplyr::bind_rows	0.729063987731934
+readr	.txt	lapply	dplyr::bind_rows	0.769925117492676
+readr	.txt	lapply	dplyr::bind_rows	0.764953851699829
+readr	.txt	lapply	dplyr::bind_rows	0.771937131881714
+readr	.txt	lapply	dplyr::bind_rows	0.796895027160645
+readr	.txt	lapply	dplyr::bind_rows	0.798866033554077
+readr	.txt	lapply	dplyr::bind_rows	0.764954090118408
+readr	.txt	lapply	dplyr::bind_rows	0.708142042160034
+readr	.txt	lapply	dplyr::bind_rows	0.696100950241089
+readr	.txt	lapply	dplyr::bind_rows	0.716084003448486
+readr	.txt	lapply	dplyr::bind_rows	0.765967845916748
+readr	.txt	lapply	dplyr::bind_rows	0.781668186187744
+readr	.txt	lapply	dplyr::bind_rows	0.77895712852478
+readr	.txt	lapply	dplyr::bind_rows	0.766906976699829
+readr	.txt	lapply	dplyr::bind_rows	0.771936893463135
+readr	.txt	lapply	dplyr::bind_rows	0.726577043533325
+readr	.txt	lapply	dplyr::bind_rows	0.879647970199585
+readr	.txt	lapply	dplyr::bind_rows	0.767039060592651
+readr	.txt	lapply	dplyr::bind_rows	0.801819086074829
+readr	.txt	lapply	dplyr::bind_rows	0.777919769287109
+readr	.txt	lapply	dplyr::bind_rows	0.730353116989136
+readr	.txt	lapply	dplyr::bind_rows	0.714107036590576
+readr	.txt	lapply	dplyr::bind_rows	0.833003997802734
+readr	.txt	lapply	dplyr::bind_rows	0.737262964248657
+readr	.txt	lapply	dplyr::bind_rows	0.758972883224487
+readr	.txt	lapply	dplyr::bind_rows	0.821284055709839
+readr	.txt	lapply	dplyr::bind_rows	0.800110101699829
+readr	.txt	lapply	dplyr::bind_rows	0.769965887069702
+readr	.txt	lapply	dplyr::bind_rows	0.761965036392212
+readr	.txt	lapply	dplyr::bind_rows	0.765950918197632
+readr	.txt	lapply	dplyr::bind_rows	0.777426958084106
+readr	.txt	lapply	dplyr::bind_rows	0.778917074203491
+readr	.txt	lapply	dplyr::bind_rows	0.787893056869507
+readr	.txt	lapply	dplyr::bind_rows	0.776984930038452
+readr	.txt	lapply	dplyr::bind_rows	0.761964082717896
+readr	.txt	lapply	dplyr::bind_rows	0.755977869033814
+readr	.txt	lapply	dplyr::bind_rows	0.785964012145996
+readr	.txt	lapply	dplyr::bind_rows	0.79990291595459
+readr	.txt	lapply	dplyr::bind_rows	0.791867017745972
+readr	.txt	lapply	dplyr::bind_rows	0.774929046630859
+readr	.txt	lapply	dplyr::bind_rows	0.766503810882568
+readr	.txt	lapply	dplyr::bind_rows	0.76905107498169
+readr	.txt	lapply	dplyr::bind_rows	0.784899950027466
+readr	.txt	lapply	dplyr::bind_rows	0.777984142303467
+readr	.txt	lapply	dplyr::bind_rows	0.774884939193726
+readr	.txt	lapply	dplyr::bind_rows	0.784929990768433
+readr	.txt	lapply	dplyr::bind_rows	0.78187894821167
+readr	.txt	lapply	dplyr::bind_rows	0.770937919616699
+readr	.txt	lapply	dplyr::bind_rows	0.752986192703247
+readr	.txt	lapply	dplyr::bind_rows	0.71062183380127
+readr	.txt	lapply	dplyr::bind_rows	0.85773515701294
+readr	.txt	lapply	dplyr::bind_rows	0.756456851959229
+readr	.txt	lapply	dplyr::bind_rows	0.786898136138916
+readr	.txt	lapply	dplyr::bind_rows	0.753983020782471
+readr	.txt	lapply	dplyr::bind_rows	0.769966840744019
+readr	.txt	lapply	dplyr::bind_rows	0.726030111312866
+readr	.txt	lapply	dplyr::bind_rows	0.728054046630859
+readr	.txt	lapply	dplyr::bind_rows	0.759987831115723
+readr	.txt	lapply	dplyr::bind_rows	0.754484176635742
+readr	.txt	lapply	dplyr::bind_rows	0.728214979171753
+readr	.txt	lapply	dplyr::bind_rows	0.716084003448486
+readr	.txt	lapply	dplyr::bind_rows	0.720073938369751
+readr	.txt	lapply	dplyr::bind_rows	0.739052057266235
+readr	.txt	lapply	dplyr::bind_rows	0.759938955307007
+readr	.txt	lapply	dplyr::bind_rows	0.773945808410645
+readr	.txt	lapply	dplyr::bind_rows	0.773439168930054
+readr	.txt	lapply	dplyr::bind_rows	0.771939039230347
+readr	.txt	lapply	dplyr::bind_rows	0.791879892349243
+readr	.txt	lapply	dplyr::bind_rows	0.720113039016724
+readr	.txt	lapply	dplyr::bind_rows	0.705115079879761
+readr	.txt	lapply	dplyr::bind_rows	0.700173854827881
+data.table	.txt	lapply	dplyr::bind_rows	0.759158134460449
+data.table	.txt	lapply	dplyr::bind_rows	0.725064039230347
+data.table	.txt	lapply	dplyr::bind_rows	0.705118894577026
+data.table	.txt	lapply	dplyr::bind_rows	0.728080034255981
+data.table	.txt	lapply	dplyr::bind_rows	0.744009017944336
+data.table	.txt	lapply	dplyr::bind_rows	0.759017944335938
+data.table	.txt	lapply	dplyr::bind_rows	0.791924953460693
+data.table	.txt	lapply	dplyr::bind_rows	0.768913984298706
+data.table	.txt	lapply	dplyr::bind_rows	0.772933006286621
+data.table	.txt	lapply	dplyr::bind_rows	0.778917074203491
+data.table	.txt	lapply	dplyr::bind_rows	0.773962020874023
+data.table	.txt	lapply	dplyr::bind_rows	0.799830913543701
+data.table	.txt	lapply	dplyr::bind_rows	0.807837009429932
+data.table	.txt	lapply	dplyr::bind_rows	0.780914068222046
+data.table	.txt	lapply	dplyr::bind_rows	0.763031005859375
+data.table	.txt	lapply	dplyr::bind_rows	0.788905143737793
+data.table	.txt	lapply	dplyr::bind_rows	0.805884838104248
+data.table	.txt	lapply	dplyr::bind_rows	0.789874076843262
+data.table	.txt	lapply	dplyr::bind_rows	0.767916917800903
+data.table	.txt	lapply	dplyr::bind_rows	0.780151128768921
+data.table	.txt	lapply	dplyr::bind_rows	0.788947820663452
+data.table	.txt	lapply	dplyr::bind_rows	0.774541139602661
+data.table	.txt	lapply	dplyr::bind_rows	0.722107887268066
+data.table	.txt	lapply	dplyr::bind_rows	0.720091104507446
+data.table	.txt	lapply	dplyr::bind_rows	0.731044054031372
+data.table	.txt	lapply	dplyr::bind_rows	0.774955987930298
+data.table	.txt	lapply	dplyr::bind_rows	0.888009071350098
+data.table	.txt	lapply	dplyr::bind_rows	0.766921043395996
+data.table	.txt	lapply	dplyr::bind_rows	0.739563941955566
+data.table	.txt	lapply	dplyr::bind_rows	0.729063987731934
+data.table	.txt	lapply	dplyr::bind_rows	0.769925117492676
+data.table	.txt	lapply	dplyr::bind_rows	0.764953851699829
+data.table	.txt	lapply	dplyr::bind_rows	0.771937131881714
+data.table	.txt	lapply	dplyr::bind_rows	0.796895027160645
+data.table	.txt	lapply	dplyr::bind_rows	0.798866033554077
+data.table	.txt	lapply	dplyr::bind_rows	0.764954090118408
+data.table	.txt	lapply	dplyr::bind_rows	0.708142042160034
+data.table	.txt	lapply	dplyr::bind_rows	0.696100950241089
+data.table	.txt	lapply	dplyr::bind_rows	0.716084003448486
+data.table	.txt	lapply	dplyr::bind_rows	0.765967845916748
+data.table	.txt	lapply	dplyr::bind_rows	0.781668186187744
+data.table	.txt	lapply	dplyr::bind_rows	0.77895712852478
+data.table	.txt	lapply	dplyr::bind_rows	0.766906976699829
+data.table	.txt	lapply	dplyr::bind_rows	0.771936893463135
+data.table	.txt	lapply	dplyr::bind_rows	0.726577043533325
+data.table	.txt	lapply	dplyr::bind_rows	0.879647970199585
+data.table	.txt	lapply	dplyr::bind_rows	0.767039060592651
+data.table	.txt	lapply	dplyr::bind_rows	0.801819086074829
+data.table	.txt	lapply	dplyr::bind_rows	0.777919769287109
+data.table	.txt	lapply	dplyr::bind_rows	0.730353116989136
+data.table	.txt	lapply	dplyr::bind_rows	0.714107036590576
+data.table	.txt	lapply	dplyr::bind_rows	0.833003997802734
+data.table	.txt	lapply	dplyr::bind_rows	0.737262964248657
+data.table	.txt	lapply	dplyr::bind_rows	0.758972883224487
+data.table	.txt	lapply	dplyr::bind_rows	0.821284055709839
+data.table	.txt	lapply	dplyr::bind_rows	0.800110101699829
+data.table	.txt	lapply	dplyr::bind_rows	0.769965887069702
+data.table	.txt	lapply	dplyr::bind_rows	0.761965036392212
+data.table	.txt	lapply	dplyr::bind_rows	0.765950918197632
+data.table	.txt	lapply	dplyr::bind_rows	0.777426958084106
+data.table	.txt	lapply	dplyr::bind_rows	0.778917074203491
+data.table	.txt	lapply	dplyr::bind_rows	0.787893056869507
+data.table	.txt	lapply	dplyr::bind_rows	0.776984930038452
+data.table	.txt	lapply	dplyr::bind_rows	0.761964082717896
+data.table	.txt	lapply	dplyr::bind_rows	0.755977869033814
+data.table	.txt	lapply	dplyr::bind_rows	0.785964012145996
+data.table	.txt	lapply	dplyr::bind_rows	0.79990291595459
+data.table	.txt	lapply	dplyr::bind_rows	0.791867017745972
+data.table	.txt	lapply	dplyr::bind_rows	0.774929046630859
+data.table	.txt	lapply	dplyr::bind_rows	0.766503810882568
+data.table	.txt	lapply	dplyr::bind_rows	0.76905107498169
+data.table	.txt	lapply	dplyr::bind_rows	0.784899950027466
+data.table	.txt	lapply	dplyr::bind_rows	0.777984142303467
+data.table	.txt	lapply	dplyr::bind_rows	0.774884939193726
+data.table	.txt	lapply	dplyr::bind_rows	0.784929990768433
+data.table	.txt	lapply	dplyr::bind_rows	0.78187894821167
+data.table	.txt	lapply	dplyr::bind_rows	0.770937919616699
+data.table	.txt	lapply	dplyr::bind_rows	0.752986192703247
+data.table	.txt	lapply	dplyr::bind_rows	0.71062183380127
+data.table	.txt	lapply	dplyr::bind_rows	0.85773515701294
+data.table	.txt	lapply	dplyr::bind_rows	0.756456851959229
+data.table	.txt	lapply	dplyr::bind_rows	0.786898136138916
+data.table	.txt	lapply	dplyr::bind_rows	0.753983020782471
+data.table	.txt	lapply	dplyr::bind_rows	0.769966840744019
+data.table	.txt	lapply	dplyr::bind_rows	0.726030111312866
+data.table	.txt	lapply	dplyr::bind_rows	0.728054046630859
+data.table	.txt	lapply	dplyr::bind_rows	0.759987831115723
+data.table	.txt	lapply	dplyr::bind_rows	0.754484176635742
+data.table	.txt	lapply	dplyr::bind_rows	0.728214979171753
+data.table	.txt	lapply	dplyr::bind_rows	0.716084003448486
+data.table	.txt	lapply	dplyr::bind_rows	0.720073938369751
+data.table	.txt	lapply	dplyr::bind_rows	0.739052057266235
+data.table	.txt	lapply	dplyr::bind_rows	0.759938955307007
+data.table	.txt	lapply	dplyr::bind_rows	0.773945808410645
+data.table	.txt	lapply	dplyr::bind_rows	0.773439168930054
+data.table	.txt	lapply	dplyr::bind_rows	0.771939039230347
+data.table	.txt	lapply	dplyr::bind_rows	0.791879892349243
+data.table	.txt	lapply	dplyr::bind_rows	0.720113039016724
+data.table	.txt	lapply	dplyr::bind_rows	0.705115079879761
+data.table	.txt	lapply	dplyr::bind_rows	0.700173854827881
+base	.csv	purrr::map	dplyr::bind_rows	0.186499834060669
+base	.csv	purrr::map	dplyr::bind_rows	0.17956018447876
+base	.csv	purrr::map	dplyr::bind_rows	0.172061920166016
+base	.csv	purrr::map	dplyr::bind_rows	0.182384967803955
+base	.csv	purrr::map	dplyr::bind_rows	0.178579092025757
+base	.csv	purrr::map	dplyr::bind_rows	0.177106142044067
+base	.csv	purrr::map	dplyr::bind_rows	0.176357984542847
+base	.csv	purrr::map	dplyr::bind_rows	0.184144020080566
+base	.csv	purrr::map	dplyr::bind_rows	0.176512956619263
+base	.csv	purrr::map	dplyr::bind_rows	0.176541805267334
+base	.csv	purrr::map	dplyr::bind_rows	0.185904026031494
+base	.csv	purrr::map	dplyr::bind_rows	0.17995810508728
+base	.csv	purrr::map	dplyr::bind_rows	0.164608001708984
+base	.csv	purrr::map	dplyr::bind_rows	0.16256308555603
+base	.csv	purrr::map	dplyr::bind_rows	0.160048007965088
+base	.csv	purrr::map	dplyr::bind_rows	0.156622886657715
+base	.csv	purrr::map	dplyr::bind_rows	0.154544115066528
+base	.csv	purrr::map	dplyr::bind_rows	0.151594877243042
+base	.csv	purrr::map	dplyr::bind_rows	0.158030986785889
+base	.csv	purrr::map	dplyr::bind_rows	0.146146059036255
+base	.csv	purrr::map	dplyr::bind_rows	0.145609855651855
+base	.csv	purrr::map	dplyr::bind_rows	0.1441330909729
+base	.csv	purrr::map	dplyr::bind_rows	0.142579078674316
+base	.csv	purrr::map	dplyr::bind_rows	0.137505054473877
+base	.csv	purrr::map	dplyr::bind_rows	0.150937795639038
+base	.csv	purrr::map	dplyr::bind_rows	0.142621994018555
+base	.csv	purrr::map	dplyr::bind_rows	0.146602153778076
+base	.csv	purrr::map	dplyr::bind_rows	0.138624906539917
+base	.csv	purrr::map	dplyr::bind_rows	0.146765947341919
+base	.csv	purrr::map	dplyr::bind_rows	0.138629198074341
+base	.csv	purrr::map	dplyr::bind_rows	0.137673854827881
+base	.csv	purrr::map	dplyr::bind_rows	0.138023138046265
+base	.csv	purrr::map	dplyr::bind_rows	0.141611814498901
+base	.csv	purrr::map	dplyr::bind_rows	0.139665126800537
+base	.csv	purrr::map	dplyr::bind_rows	0.134088039398193
+base	.csv	purrr::map	dplyr::bind_rows	0.141462802886963
+base	.csv	purrr::map	dplyr::bind_rows	0.141710996627808
+base	.csv	purrr::map	dplyr::bind_rows	0.151280164718628
+base	.csv	purrr::map	dplyr::bind_rows	0.139997005462646
+base	.csv	purrr::map	dplyr::bind_rows	0.139518976211548
+base	.csv	purrr::map	dplyr::bind_rows	0.138633966445923
+base	.csv	purrr::map	dplyr::bind_rows	0.13800311088562
+base	.csv	purrr::map	dplyr::bind_rows	0.14261794090271
+base	.csv	purrr::map	dplyr::bind_rows	0.138629913330078
+base	.csv	purrr::map	dplyr::bind_rows	0.13464093208313
+base	.csv	purrr::map	dplyr::bind_rows	0.135637044906616
+base	.csv	purrr::map	dplyr::bind_rows	0.134281158447266
+base	.csv	purrr::map	dplyr::bind_rows	0.142639875411987
+base	.csv	purrr::map	dplyr::bind_rows	0.140147924423218
+base	.csv	purrr::map	dplyr::bind_rows	0.141022205352783
+base	.csv	purrr::map	dplyr::bind_rows	0.132349967956543
+base	.csv	purrr::map	dplyr::bind_rows	0.142267942428589
+base	.csv	purrr::map	dplyr::bind_rows	0.133074998855591
+base	.csv	purrr::map	dplyr::bind_rows	0.139523029327393
+base	.csv	purrr::map	dplyr::bind_rows	0.13364315032959
+base	.csv	purrr::map	dplyr::bind_rows	0.134639978408813
+base	.csv	purrr::map	dplyr::bind_rows	0.134667158126831
+base	.csv	purrr::map	dplyr::bind_rows	0.146100997924805
+base	.csv	purrr::map	dplyr::bind_rows	0.138131141662598
+base	.csv	purrr::map	dplyr::bind_rows	0.138633966445923
+base	.csv	purrr::map	dplyr::bind_rows	0.140706062316895
+base	.csv	purrr::map	dplyr::bind_rows	0.137630939483643
+base	.csv	purrr::map	dplyr::bind_rows	0.138587951660156
+base	.csv	purrr::map	dplyr::bind_rows	0.136635065078735
+base	.csv	purrr::map	dplyr::bind_rows	0.134649991989136
+base	.csv	purrr::map	dplyr::bind_rows	0.134641885757446
+base	.csv	purrr::map	dplyr::bind_rows	0.134639978408813
+base	.csv	purrr::map	dplyr::bind_rows	0.145611047744751
+base	.csv	purrr::map	dplyr::bind_rows	0.14067006111145
+base	.csv	purrr::map	dplyr::bind_rows	0.138849973678589
+base	.csv	purrr::map	dplyr::bind_rows	0.137633085250855
+base	.csv	purrr::map	dplyr::bind_rows	0.138624906539917
+base	.csv	purrr::map	dplyr::bind_rows	0.135632038116455
+base	.csv	purrr::map	dplyr::bind_rows	0.135607004165649
+base	.csv	purrr::map	dplyr::bind_rows	0.133642911911011
+base	.csv	purrr::map	dplyr::bind_rows	0.135637044906616
+base	.csv	purrr::map	dplyr::bind_rows	0.141623020172119
+base	.csv	purrr::map	dplyr::bind_rows	0.135637998580933
+base	.csv	purrr::map	dplyr::bind_rows	0.134660005569458
+base	.csv	purrr::map	dplyr::bind_rows	0.135177850723267
+base	.csv	purrr::map	dplyr::bind_rows	0.137633085250855
+base	.csv	purrr::map	dplyr::bind_rows	0.137630939483643
+base	.csv	purrr::map	dplyr::bind_rows	0.139626026153564
+base	.csv	purrr::map	dplyr::bind_rows	0.137632131576538
+base	.csv	purrr::map	dplyr::bind_rows	0.138628959655762
+base	.csv	purrr::map	dplyr::bind_rows	0.135181903839111
+base	.csv	purrr::map	dplyr::bind_rows	0.14261794090271
+base	.csv	purrr::map	dplyr::bind_rows	0.133669137954712
+base	.csv	purrr::map	dplyr::bind_rows	0.134836912155151
+base	.csv	purrr::map	dplyr::bind_rows	0.138631105422974
+base	.csv	purrr::map	dplyr::bind_rows	0.138216972351074
+base	.csv	purrr::map	dplyr::bind_rows	0.138642072677612
+base	.csv	purrr::map	dplyr::bind_rows	0.137627840042114
+base	.csv	purrr::map	dplyr::bind_rows	0.138586044311523
+base	.csv	purrr::map	dplyr::bind_rows	0.138667106628418
+base	.csv	purrr::map	dplyr::bind_rows	0.138628959655762
+base	.csv	purrr::map	dplyr::bind_rows	0.145572900772095
+base	.csv	purrr::map	dplyr::bind_rows	0.134665966033936
+base	.csv	purrr::map	dplyr::bind_rows	0.134648084640503
+base	.csv	purrr::map	dplyr::bind_rows	0.137887001037598
+readr	.csv	purrr::map	dplyr::bind_rows	0.150146007537842
+readr	.csv	purrr::map	dplyr::bind_rows	0.142616987228394
+readr	.csv	purrr::map	dplyr::bind_rows	0.141618967056274
+readr	.csv	purrr::map	dplyr::bind_rows	0.143622159957886
+readr	.csv	purrr::map	dplyr::bind_rows	0.14261794090271
+readr	.csv	purrr::map	dplyr::bind_rows	0.157026052474976
+readr	.csv	purrr::map	dplyr::bind_rows	0.153589010238647
+readr	.csv	purrr::map	dplyr::bind_rows	0.145669937133789
+readr	.csv	purrr::map	dplyr::bind_rows	0.142592191696167
+readr	.csv	purrr::map	dplyr::bind_rows	0.143492937088013
+readr	.csv	purrr::map	dplyr::bind_rows	0.141627073287964
+readr	.csv	purrr::map	dplyr::bind_rows	0.142618894577026
+readr	.csv	purrr::map	dplyr::bind_rows	0.139626026153564
+readr	.csv	purrr::map	dplyr::bind_rows	0.138400077819824
+readr	.csv	purrr::map	dplyr::bind_rows	0.137665987014771
+readr	.csv	purrr::map	dplyr::bind_rows	0.146114826202393
+readr	.csv	purrr::map	dplyr::bind_rows	0.13962721824646
+readr	.csv	purrr::map	dplyr::bind_rows	0.139662981033325
+readr	.csv	purrr::map	dplyr::bind_rows	0.138100862503052
+readr	.csv	purrr::map	dplyr::bind_rows	0.138521909713745
+readr	.csv	purrr::map	dplyr::bind_rows	0.138654947280884
+readr	.csv	purrr::map	dplyr::bind_rows	0.138629198074341
+readr	.csv	purrr::map	dplyr::bind_rows	0.137631893157959
+readr	.csv	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.csv	purrr::map	dplyr::bind_rows	0.147605180740356
+readr	.csv	purrr::map	dplyr::bind_rows	0.138136863708496
+readr	.csv	purrr::map	dplyr::bind_rows	0.142619132995605
+readr	.csv	purrr::map	dplyr::bind_rows	0.137707948684692
+readr	.csv	purrr::map	dplyr::bind_rows	0.138589859008789
+readr	.csv	purrr::map	dplyr::bind_rows	0.137632131576538
+readr	.csv	purrr::map	dplyr::bind_rows	0.139662027359009
+readr	.csv	purrr::map	dplyr::bind_rows	0.139634847640991
+readr	.csv	purrr::map	dplyr::bind_rows	0.138625144958496
+readr	.csv	purrr::map	dplyr::bind_rows	0.137852907180786
+readr	.csv	purrr::map	dplyr::bind_rows	0.145610094070435
+readr	.csv	purrr::map	dplyr::bind_rows	0.134677886962891
+readr	.csv	purrr::map	dplyr::bind_rows	0.134643077850342
+readr	.csv	purrr::map	dplyr::bind_rows	0.135639905929565
+readr	.csv	purrr::map	dplyr::bind_rows	0.14081597328186
+readr	.csv	purrr::map	dplyr::bind_rows	0.137631177902222
+readr	.csv	purrr::map	dplyr::bind_rows	0.138635873794556
+readr	.csv	purrr::map	dplyr::bind_rows	0.138615131378174
+readr	.csv	purrr::map	dplyr::bind_rows	0.137642860412598
+readr	.csv	purrr::map	dplyr::bind_rows	0.146615028381348
+readr	.csv	purrr::map	dplyr::bind_rows	0.137629985809326
+readr	.csv	purrr::map	dplyr::bind_rows	0.139626979827881
+readr	.csv	purrr::map	dplyr::bind_rows	0.137625932693481
+readr	.csv	purrr::map	dplyr::bind_rows	0.138592004776001
+readr	.csv	purrr::map	dplyr::bind_rows	0.135672092437744
+readr	.csv	purrr::map	dplyr::bind_rows	0.135011911392212
+readr	.csv	purrr::map	dplyr::bind_rows	0.135122060775757
+readr	.csv	purrr::map	dplyr::bind_rows	0.134639978408813
+readr	.csv	purrr::map	dplyr::bind_rows	0.134642124176025
+readr	.csv	purrr::map	dplyr::bind_rows	0.150596857070923
+readr	.csv	purrr::map	dplyr::bind_rows	0.137632131576538
+readr	.csv	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.csv	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.csv	purrr::map	dplyr::bind_rows	0.137630939483643
+readr	.csv	purrr::map	dplyr::bind_rows	0.135868072509766
+readr	.csv	purrr::map	dplyr::bind_rows	0.13464093208313
+readr	.csv	purrr::map	dplyr::bind_rows	0.138192176818848
+readr	.csv	purrr::map	dplyr::bind_rows	0.134639024734497
+readr	.csv	purrr::map	dplyr::bind_rows	0.152499914169312
+readr	.csv	purrr::map	dplyr::bind_rows	0.138206958770752
+readr	.csv	purrr::map	dplyr::bind_rows	0.138817071914673
+readr	.csv	purrr::map	dplyr::bind_rows	0.138598918914795
+readr	.csv	purrr::map	dplyr::bind_rows	0.137638092041016
+readr	.csv	purrr::map	dplyr::bind_rows	0.141403913497925
+readr	.csv	purrr::map	dplyr::bind_rows	0.139632940292358
+readr	.csv	purrr::map	dplyr::bind_rows	0.137947082519531
+readr	.csv	purrr::map	dplyr::bind_rows	0.138631105422974
+readr	.csv	purrr::map	dplyr::bind_rows	0.138689041137695
+readr	.csv	purrr::map	dplyr::bind_rows	0.146892070770264
+readr	.csv	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.csv	purrr::map	dplyr::bind_rows	0.139286994934082
+readr	.csv	purrr::map	dplyr::bind_rows	0.137630939483643
+readr	.csv	purrr::map	dplyr::bind_rows	0.139012098312378
+readr	.csv	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.csv	purrr::map	dplyr::bind_rows	0.138005018234253
+readr	.csv	purrr::map	dplyr::bind_rows	0.143615961074829
+readr	.csv	purrr::map	dplyr::bind_rows	0.13866400718689
+readr	.csv	purrr::map	dplyr::bind_rows	0.138596057891846
+readr	.csv	purrr::map	dplyr::bind_rows	0.147605895996094
+readr	.csv	purrr::map	dplyr::bind_rows	0.138628005981445
+readr	.csv	purrr::map	dplyr::bind_rows	0.137051105499268
+readr	.csv	purrr::map	dplyr::bind_rows	0.134639978408813
+readr	.csv	purrr::map	dplyr::bind_rows	0.134639978408813
+readr	.csv	purrr::map	dplyr::bind_rows	0.134543895721436
+readr	.csv	purrr::map	dplyr::bind_rows	0.135603189468384
+readr	.csv	purrr::map	dplyr::bind_rows	0.138676881790161
+readr	.csv	purrr::map	dplyr::bind_rows	0.139107942581177
+readr	.csv	purrr::map	dplyr::bind_rows	0.144613981246948
+readr	.csv	purrr::map	dplyr::bind_rows	0.140624046325684
+readr	.csv	purrr::map	dplyr::bind_rows	0.138633012771606
+readr	.csv	purrr::map	dplyr::bind_rows	0.138844013214111
+readr	.csv	purrr::map	dplyr::bind_rows	0.137629985809326
+readr	.csv	purrr::map	dplyr::bind_rows	0.139626979827881
+readr	.csv	purrr::map	dplyr::bind_rows	0.138631105422974
+readr	.csv	purrr::map	dplyr::bind_rows	0.137630939483643
+readr	.csv	purrr::map	dplyr::bind_rows	0.138629913330078
+data.table	.csv	purrr::map	dplyr::bind_rows	0.17756986618042
+data.table	.csv	purrr::map	dplyr::bind_rows	0.161523103713989
+data.table	.csv	purrr::map	dplyr::bind_rows	0.161595821380615
+data.table	.csv	purrr::map	dplyr::bind_rows	0.164292097091675
+data.table	.csv	purrr::map	dplyr::bind_rows	0.170282125473022
+data.table	.csv	purrr::map	dplyr::bind_rows	0.17949390411377
+data.table	.csv	purrr::map	dplyr::bind_rows	0.167552947998047
+data.table	.csv	purrr::map	dplyr::bind_rows	0.162600040435791
+data.table	.csv	purrr::map	dplyr::bind_rows	0.162568092346191
+data.table	.csv	purrr::map	dplyr::bind_rows	0.170540809631348
+data.table	.csv	purrr::map	dplyr::bind_rows	0.161568164825439
+data.table	.csv	purrr::map	dplyr::bind_rows	0.158803939819336
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.165556907653809
+data.table	.csv	purrr::map	dplyr::bind_rows	0.158510208129883
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156581878662109
+data.table	.csv	purrr::map	dplyr::bind_rows	0.161533117294312
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.166554927825928
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156581878662109
+data.table	.csv	purrr::map	dplyr::bind_rows	0.158575057983398
+data.table	.csv	purrr::map	dplyr::bind_rows	0.158611059188843
+data.table	.csv	purrr::map	dplyr::bind_rows	0.174532890319824
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157578945159912
+data.table	.csv	purrr::map	dplyr::bind_rows	0.160580158233643
+data.table	.csv	purrr::map	dplyr::bind_rows	0.251282930374146
+data.table	.csv	purrr::map	dplyr::bind_rows	0.152594089508057
+data.table	.csv	purrr::map	dplyr::bind_rows	0.153586864471436
+data.table	.csv	purrr::map	dplyr::bind_rows	0.152594089508057
+data.table	.csv	purrr::map	dplyr::bind_rows	0.160582065582275
+data.table	.csv	purrr::map	dplyr::bind_rows	0.1575767993927
+data.table	.csv	purrr::map	dplyr::bind_rows	0.15612006187439
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.162197113037109
+data.table	.csv	purrr::map	dplyr::bind_rows	0.163257837295532
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157315969467163
+data.table	.csv	purrr::map	dplyr::bind_rows	0.160571098327637
+data.table	.csv	purrr::map	dplyr::bind_rows	0.159573078155518
+data.table	.csv	purrr::map	dplyr::bind_rows	0.168546915054321
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156583070755005
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157955884933472
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156958103179932
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157580852508545
+data.table	.csv	purrr::map	dplyr::bind_rows	0.164998054504395
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.155977964401245
+data.table	.csv	purrr::map	dplyr::bind_rows	0.15857720375061
+data.table	.csv	purrr::map	dplyr::bind_rows	0.162961959838867
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156580924987793
+data.table	.csv	purrr::map	dplyr::bind_rows	0.159615039825439
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156579971313477
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156882047653198
+data.table	.csv	purrr::map	dplyr::bind_rows	0.163568019866943
+data.table	.csv	purrr::map	dplyr::bind_rows	0.155632019042969
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157167911529541
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.163599014282227
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157723903656006
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156583070755005
+data.table	.csv	purrr::map	dplyr::bind_rows	0.15662407875061
+data.table	.csv	purrr::map	dplyr::bind_rows	0.163517951965332
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157579898834229
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156579971313477
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156581163406372
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156582832336426
+data.table	.csv	purrr::map	dplyr::bind_rows	0.164450168609619
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156581878662109
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156768083572388
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157578945159912
+data.table	.csv	purrr::map	dplyr::bind_rows	0.167668104171753
+data.table	.csv	purrr::map	dplyr::bind_rows	0.155619859695435
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156579971313477
+data.table	.csv	purrr::map	dplyr::bind_rows	0.161764144897461
+data.table	.csv	purrr::map	dplyr::bind_rows	0.159572839736938
+data.table	.csv	purrr::map	dplyr::bind_rows	0.162566900253296
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157539129257202
+data.table	.csv	purrr::map	dplyr::bind_rows	0.155618906021118
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156585931777954
+data.table	.csv	purrr::map	dplyr::bind_rows	0.163175106048584
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157577991485596
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157809019088745
+data.table	.csv	purrr::map	dplyr::bind_rows	0.154935836791992
+data.table	.csv	purrr::map	dplyr::bind_rows	0.158576011657715
+data.table	.csv	purrr::map	dplyr::bind_rows	0.152592182159424
+data.table	.csv	purrr::map	dplyr::bind_rows	0.152591943740845
+data.table	.csv	purrr::map	dplyr::bind_rows	0.152628898620605
+data.table	.csv	purrr::map	dplyr::bind_rows	0.165802955627441
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156546115875244
+data.table	.csv	purrr::map	dplyr::bind_rows	0.158576011657715
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156581878662109
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157026052474976
+data.table	.csv	purrr::map	dplyr::bind_rows	0.157403945922852
+data.table	.csv	purrr::map	dplyr::bind_rows	0.158491134643555
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156431913375855
+data.table	.csv	purrr::map	dplyr::bind_rows	0.156748056411743
+data.table	.csv	purrr::map	dplyr::bind_rows	0.162955045700073
+data.table	.csv	purrr::map	dplyr::bind_rows	0.154781818389893
+data.table	.csv	purrr::map	dplyr::bind_rows	0.151875019073486
+base	.txt	purrr::map	dplyr::bind_rows	0.181526184082031
+base	.txt	purrr::map	dplyr::bind_rows	0.160377025604248
+base	.txt	purrr::map	dplyr::bind_rows	0.16573691368103
+base	.txt	purrr::map	dplyr::bind_rows	0.162123918533325
+base	.txt	purrr::map	dplyr::bind_rows	0.161627054214478
+base	.txt	purrr::map	dplyr::bind_rows	0.186448097229004
+base	.txt	purrr::map	dplyr::bind_rows	0.183509826660156
+base	.txt	purrr::map	dplyr::bind_rows	0.174822092056274
+base	.txt	purrr::map	dplyr::bind_rows	0.18956995010376
+base	.txt	purrr::map	dplyr::bind_rows	0.190103054046631
+base	.txt	purrr::map	dplyr::bind_rows	0.192888021469116
+base	.txt	purrr::map	dplyr::bind_rows	0.195828914642334
+base	.txt	purrr::map	dplyr::bind_rows	0.191569089889526
+base	.txt	purrr::map	dplyr::bind_rows	0.193215847015381
+base	.txt	purrr::map	dplyr::bind_rows	0.205130100250244
+base	.txt	purrr::map	dplyr::bind_rows	0.192845821380615
+base	.txt	purrr::map	dplyr::bind_rows	0.199719190597534
+base	.txt	purrr::map	dplyr::bind_rows	0.197978973388672
+base	.txt	purrr::map	dplyr::bind_rows	0.219444990158081
+base	.txt	purrr::map	dplyr::bind_rows	0.200433969497681
+base	.txt	purrr::map	dplyr::bind_rows	0.202485084533691
+base	.txt	purrr::map	dplyr::bind_rows	0.203426837921143
+base	.txt	purrr::map	dplyr::bind_rows	0.216459035873413
+base	.txt	purrr::map	dplyr::bind_rows	0.200467109680176
+base	.txt	purrr::map	dplyr::bind_rows	0.212141990661621
+base	.txt	purrr::map	dplyr::bind_rows	0.205538034439087
+base	.txt	purrr::map	dplyr::bind_rows	0.202457904815674
+base	.txt	purrr::map	dplyr::bind_rows	0.212392091751099
+base	.txt	purrr::map	dplyr::bind_rows	0.201750993728638
+base	.txt	purrr::map	dplyr::bind_rows	0.202465772628784
+base	.txt	purrr::map	dplyr::bind_rows	0.20744514465332
+base	.txt	purrr::map	dplyr::bind_rows	0.211431980133057
+base	.txt	purrr::map	dplyr::bind_rows	0.210437059402466
+base	.txt	purrr::map	dplyr::bind_rows	0.205451965332031
+base	.txt	purrr::map	dplyr::bind_rows	0.201459884643555
+base	.txt	purrr::map	dplyr::bind_rows	0.209441184997559
+base	.txt	purrr::map	dplyr::bind_rows	0.225395917892456
+base	.txt	purrr::map	dplyr::bind_rows	0.208631992340088
+base	.txt	purrr::map	dplyr::bind_rows	0.216906070709229
+base	.txt	purrr::map	dplyr::bind_rows	0.210439920425415
+base	.txt	purrr::map	dplyr::bind_rows	0.214452981948853
+base	.txt	purrr::map	dplyr::bind_rows	0.203428983688355
+base	.txt	purrr::map	dplyr::bind_rows	0.204453945159912
+base	.txt	purrr::map	dplyr::bind_rows	0.210437059402466
+base	.txt	purrr::map	dplyr::bind_rows	0.221406936645508
+base	.txt	purrr::map	dplyr::bind_rows	0.224441051483154
+base	.txt	purrr::map	dplyr::bind_rows	0.224359035491943
+base	.txt	purrr::map	dplyr::bind_rows	0.211980104446411
+base	.txt	purrr::map	dplyr::bind_rows	0.210453987121582
+base	.txt	purrr::map	dplyr::bind_rows	0.224347829818726
+base	.txt	purrr::map	dplyr::bind_rows	0.214448928833008
+base	.txt	purrr::map	dplyr::bind_rows	0.223402976989746
+base	.txt	purrr::map	dplyr::bind_rows	0.219573020935059
+base	.txt	purrr::map	dplyr::bind_rows	0.232378005981445
+base	.txt	purrr::map	dplyr::bind_rows	0.216435194015503
+base	.txt	purrr::map	dplyr::bind_rows	0.20743989944458
+base	.txt	purrr::map	dplyr::bind_rows	0.209403991699219
+base	.txt	purrr::map	dplyr::bind_rows	0.214503049850464
+base	.txt	purrr::map	dplyr::bind_rows	0.231336832046509
+base	.txt	purrr::map	dplyr::bind_rows	0.217418193817139
+base	.txt	purrr::map	dplyr::bind_rows	0.222404003143311
+base	.txt	purrr::map	dplyr::bind_rows	0.220438957214355
+base	.txt	purrr::map	dplyr::bind_rows	0.225368976593018
+base	.txt	purrr::map	dplyr::bind_rows	0.203456878662109
+base	.txt	purrr::map	dplyr::bind_rows	0.206447124481201
+base	.txt	purrr::map	dplyr::bind_rows	0.210438013076782
+base	.txt	purrr::map	dplyr::bind_rows	0.214452981948853
+base	.txt	purrr::map	dplyr::bind_rows	0.201434850692749
+base	.txt	purrr::map	dplyr::bind_rows	0.202458143234253
+base	.txt	purrr::map	dplyr::bind_rows	0.204961061477661
+base	.txt	purrr::map	dplyr::bind_rows	0.210436820983887
+base	.txt	purrr::map	dplyr::bind_rows	0.213427066802979
+base	.txt	purrr::map	dplyr::bind_rows	0.203493118286133
+base	.txt	purrr::map	dplyr::bind_rows	0.215433835983276
+base	.txt	purrr::map	dplyr::bind_rows	0.203412055969238
+base	.txt	purrr::map	dplyr::bind_rows	0.219474077224731
+base	.txt	purrr::map	dplyr::bind_rows	0.210407018661499
+base	.txt	purrr::map	dplyr::bind_rows	0.209481954574585
+base	.txt	purrr::map	dplyr::bind_rows	0.21239185333252
+base	.txt	purrr::map	dplyr::bind_rows	0.217418193817139
+base	.txt	purrr::map	dplyr::bind_rows	0.210494995117188
+base	.txt	purrr::map	dplyr::bind_rows	0.221410036087036
+base	.txt	purrr::map	dplyr::bind_rows	0.217417001724243
+base	.txt	purrr::map	dplyr::bind_rows	0.215465784072876
+base	.txt	purrr::map	dplyr::bind_rows	0.200455188751221
+base	.txt	purrr::map	dplyr::bind_rows	0.202499866485596
+base	.txt	purrr::map	dplyr::bind_rows	0.189494132995605
+base	.txt	purrr::map	dplyr::bind_rows	0.186460971832275
+base	.txt	purrr::map	dplyr::bind_rows	0.192007064819336
+base	.txt	purrr::map	dplyr::bind_rows	0.178528070449829
+base	.txt	purrr::map	dplyr::bind_rows	0.174852848052979
+base	.txt	purrr::map	dplyr::bind_rows	0.170583009719849
+base	.txt	purrr::map	dplyr::bind_rows	0.17903995513916
+base	.txt	purrr::map	dplyr::bind_rows	0.169099092483521
+base	.txt	purrr::map	dplyr::bind_rows	0.16579794883728
+base	.txt	purrr::map	dplyr::bind_rows	0.163563966751099
+base	.txt	purrr::map	dplyr::bind_rows	0.170314073562622
+base	.txt	purrr::map	dplyr::bind_rows	0.160764932632446
+base	.txt	purrr::map	dplyr::bind_rows	0.161602020263672
+base	.txt	purrr::map	dplyr::bind_rows	0.159887075424194
+readr	.txt	purrr::map	dplyr::bind_rows	0.157618045806885
+readr	.txt	purrr::map	dplyr::bind_rows	0.156470060348511
+readr	.txt	purrr::map	dplyr::bind_rows	0.144612789154053
+readr	.txt	purrr::map	dplyr::bind_rows	0.14162015914917
+readr	.txt	purrr::map	dplyr::bind_rows	0.142443895339966
+readr	.txt	purrr::map	dplyr::bind_rows	0.14660906791687
+readr	.txt	purrr::map	dplyr::bind_rows	0.159609079360962
+readr	.txt	purrr::map	dplyr::bind_rows	0.147886037826538
+readr	.txt	purrr::map	dplyr::bind_rows	0.14261794090271
+readr	.txt	purrr::map	dplyr::bind_rows	0.141622066497803
+readr	.txt	purrr::map	dplyr::bind_rows	0.150595903396606
+readr	.txt	purrr::map	dplyr::bind_rows	0.139662027359009
+readr	.txt	purrr::map	dplyr::bind_rows	0.138630151748657
+readr	.txt	purrr::map	dplyr::bind_rows	0.140622854232788
+readr	.txt	purrr::map	dplyr::bind_rows	0.137635946273804
+readr	.txt	purrr::map	dplyr::bind_rows	0.139837026596069
+readr	.txt	purrr::map	dplyr::bind_rows	0.137598991394043
+readr	.txt	purrr::map	dplyr::bind_rows	0.138629198074341
+readr	.txt	purrr::map	dplyr::bind_rows	0.139625787734985
+readr	.txt	purrr::map	dplyr::bind_rows	0.158575057983398
+readr	.txt	purrr::map	dplyr::bind_rows	0.13631796836853
+readr	.txt	purrr::map	dplyr::bind_rows	0.135639190673828
+readr	.txt	purrr::map	dplyr::bind_rows	0.134827852249146
+readr	.txt	purrr::map	dplyr::bind_rows	0.134647130966187
+readr	.txt	purrr::map	dplyr::bind_rows	0.134637832641602
+readr	.txt	purrr::map	dplyr::bind_rows	0.136638164520264
+readr	.txt	purrr::map	dplyr::bind_rows	0.140581846237183
+readr	.txt	purrr::map	dplyr::bind_rows	0.137673139572144
+readr	.txt	purrr::map	dplyr::bind_rows	0.137635946273804
+readr	.txt	purrr::map	dplyr::bind_rows	0.146928071975708
+readr	.txt	purrr::map	dplyr::bind_rows	0.135680913925171
+readr	.txt	purrr::map	dplyr::bind_rows	0.134632110595703
+readr	.txt	purrr::map	dplyr::bind_rows	0.134639978408813
+readr	.txt	purrr::map	dplyr::bind_rows	0.13576602935791
+readr	.txt	purrr::map	dplyr::bind_rows	0.134639978408813
+readr	.txt	purrr::map	dplyr::bind_rows	0.135639905929565
+readr	.txt	purrr::map	dplyr::bind_rows	0.136672973632813
+readr	.txt	purrr::map	dplyr::bind_rows	0.138818979263306
+readr	.txt	purrr::map	dplyr::bind_rows	0.146608114242554
+readr	.txt	purrr::map	dplyr::bind_rows	0.140918970108032
+readr	.txt	purrr::map	dplyr::bind_rows	0.139626026153564
+readr	.txt	purrr::map	dplyr::bind_rows	0.138629913330078
+readr	.txt	purrr::map	dplyr::bind_rows	0.133642196655273
+readr	.txt	purrr::map	dplyr::bind_rows	0.133645057678223
+readr	.txt	purrr::map	dplyr::bind_rows	0.134158849716187
+readr	.txt	purrr::map	dplyr::bind_rows	0.135650157928467
+readr	.txt	purrr::map	dplyr::bind_rows	0.134639978408813
+readr	.txt	purrr::map	dplyr::bind_rows	0.135637998580933
+readr	.txt	purrr::map	dplyr::bind_rows	0.147604942321777
+readr	.txt	purrr::map	dplyr::bind_rows	0.141620874404907
+readr	.txt	purrr::map	dplyr::bind_rows	0.138630151748657
+readr	.txt	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.txt	purrr::map	dplyr::bind_rows	0.137632846832275
+readr	.txt	purrr::map	dplyr::bind_rows	0.139652013778687
+readr	.txt	purrr::map	dplyr::bind_rows	0.1372230052948
+readr	.txt	purrr::map	dplyr::bind_rows	0.134638071060181
+readr	.txt	purrr::map	dplyr::bind_rows	0.135599136352539
+readr	.txt	purrr::map	dplyr::bind_rows	0.134638786315918
+readr	.txt	purrr::map	dplyr::bind_rows	0.144074201583862
+readr	.txt	purrr::map	dplyr::bind_rows	0.140155792236328
+readr	.txt	purrr::map	dplyr::bind_rows	0.137668132781982
+readr	.txt	purrr::map	dplyr::bind_rows	0.137631893157959
+readr	.txt	purrr::map	dplyr::bind_rows	0.137634992599487
+readr	.txt	purrr::map	dplyr::bind_rows	0.13762903213501
+readr	.txt	purrr::map	dplyr::bind_rows	0.137630939483643
+readr	.txt	purrr::map	dplyr::bind_rows	0.135048151016235
+readr	.txt	purrr::map	dplyr::bind_rows	0.137676000595093
+readr	.txt	purrr::map	dplyr::bind_rows	0.134635925292969
+readr	.txt	purrr::map	dplyr::bind_rows	0.14484691619873
+readr	.txt	purrr::map	dplyr::bind_rows	0.13660717010498
+readr	.txt	purrr::map	dplyr::bind_rows	0.13567590713501
+readr	.txt	purrr::map	dplyr::bind_rows	0.138624906539917
+readr	.txt	purrr::map	dplyr::bind_rows	0.137640953063965
+readr	.txt	purrr::map	dplyr::bind_rows	0.138821125030518
+readr	.txt	purrr::map	dplyr::bind_rows	0.138869047164917
+readr	.txt	purrr::map	dplyr::bind_rows	0.137632846832275
+readr	.txt	purrr::map	dplyr::bind_rows	0.138637065887451
+readr	.txt	purrr::map	dplyr::bind_rows	0.146566152572632
+readr	.txt	purrr::map	dplyr::bind_rows	0.140623807907105
+readr	.txt	purrr::map	dplyr::bind_rows	0.136837959289551
+readr	.txt	purrr::map	dplyr::bind_rows	0.133644104003906
+readr	.txt	purrr::map	dplyr::bind_rows	0.13464093208313
+readr	.txt	purrr::map	dplyr::bind_rows	0.133642911911011
+readr	.txt	purrr::map	dplyr::bind_rows	0.135637044906616
+readr	.txt	purrr::map	dplyr::bind_rows	0.139626979827881
+readr	.txt	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.txt	purrr::map	dplyr::bind_rows	0.138948202133179
+readr	.txt	purrr::map	dplyr::bind_rows	0.147804021835327
+readr	.txt	purrr::map	dplyr::bind_rows	0.139627933502197
+readr	.txt	purrr::map	dplyr::bind_rows	0.139659881591797
+readr	.txt	purrr::map	dplyr::bind_rows	0.137598991394043
+readr	.txt	purrr::map	dplyr::bind_rows	0.139191150665283
+readr	.txt	purrr::map	dplyr::bind_rows	0.138630867004395
+readr	.txt	purrr::map	dplyr::bind_rows	0.138674974441528
+readr	.txt	purrr::map	dplyr::bind_rows	0.136630058288574
+readr	.txt	purrr::map	dplyr::bind_rows	0.13509202003479
+readr	.txt	purrr::map	dplyr::bind_rows	0.139626979827881
+readr	.txt	purrr::map	dplyr::bind_rows	0.1441490650177
+readr	.txt	purrr::map	dplyr::bind_rows	0.138628959655762
+readr	.txt	purrr::map	dplyr::bind_rows	0.138628005981445
+data.table	.txt	purrr::map	dplyr::bind_rows	0.157618045806885
+data.table	.txt	purrr::map	dplyr::bind_rows	0.156470060348511
+data.table	.txt	purrr::map	dplyr::bind_rows	0.144612789154053
+data.table	.txt	purrr::map	dplyr::bind_rows	0.14162015914917
+data.table	.txt	purrr::map	dplyr::bind_rows	0.142443895339966
+data.table	.txt	purrr::map	dplyr::bind_rows	0.14660906791687
+data.table	.txt	purrr::map	dplyr::bind_rows	0.159609079360962
+data.table	.txt	purrr::map	dplyr::bind_rows	0.147886037826538
+data.table	.txt	purrr::map	dplyr::bind_rows	0.14261794090271
+data.table	.txt	purrr::map	dplyr::bind_rows	0.141622066497803
+data.table	.txt	purrr::map	dplyr::bind_rows	0.150595903396606
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139662027359009
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138630151748657
+data.table	.txt	purrr::map	dplyr::bind_rows	0.140622854232788
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137635946273804
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139837026596069
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137598991394043
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138629198074341
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139625787734985
+data.table	.txt	purrr::map	dplyr::bind_rows	0.158575057983398
+data.table	.txt	purrr::map	dplyr::bind_rows	0.13631796836853
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135639190673828
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134827852249146
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134647130966187
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134637832641602
+data.table	.txt	purrr::map	dplyr::bind_rows	0.136638164520264
+data.table	.txt	purrr::map	dplyr::bind_rows	0.140581846237183
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137673139572144
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137635946273804
+data.table	.txt	purrr::map	dplyr::bind_rows	0.146928071975708
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135680913925171
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134632110595703
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134639978408813
+data.table	.txt	purrr::map	dplyr::bind_rows	0.13576602935791
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134639978408813
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135639905929565
+data.table	.txt	purrr::map	dplyr::bind_rows	0.136672973632813
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138818979263306
+data.table	.txt	purrr::map	dplyr::bind_rows	0.146608114242554
+data.table	.txt	purrr::map	dplyr::bind_rows	0.140918970108032
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139626026153564
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138629913330078
+data.table	.txt	purrr::map	dplyr::bind_rows	0.133642196655273
+data.table	.txt	purrr::map	dplyr::bind_rows	0.133645057678223
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134158849716187
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135650157928467
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134639978408813
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135637998580933
+data.table	.txt	purrr::map	dplyr::bind_rows	0.147604942321777
+data.table	.txt	purrr::map	dplyr::bind_rows	0.141620874404907
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138630151748657
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138628959655762
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137632846832275
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139652013778687
+data.table	.txt	purrr::map	dplyr::bind_rows	0.1372230052948
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134638071060181
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135599136352539
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134638786315918
+data.table	.txt	purrr::map	dplyr::bind_rows	0.144074201583862
+data.table	.txt	purrr::map	dplyr::bind_rows	0.140155792236328
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137668132781982
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137631893157959
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137634992599487
+data.table	.txt	purrr::map	dplyr::bind_rows	0.13762903213501
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137630939483643
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135048151016235
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137676000595093
+data.table	.txt	purrr::map	dplyr::bind_rows	0.134635925292969
+data.table	.txt	purrr::map	dplyr::bind_rows	0.14484691619873
+data.table	.txt	purrr::map	dplyr::bind_rows	0.13660717010498
+data.table	.txt	purrr::map	dplyr::bind_rows	0.13567590713501
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138624906539917
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137640953063965
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138821125030518
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138869047164917
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137632846832275
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138637065887451
+data.table	.txt	purrr::map	dplyr::bind_rows	0.146566152572632
+data.table	.txt	purrr::map	dplyr::bind_rows	0.140623807907105
+data.table	.txt	purrr::map	dplyr::bind_rows	0.136837959289551
+data.table	.txt	purrr::map	dplyr::bind_rows	0.133644104003906
+data.table	.txt	purrr::map	dplyr::bind_rows	0.13464093208313
+data.table	.txt	purrr::map	dplyr::bind_rows	0.133642911911011
+data.table	.txt	purrr::map	dplyr::bind_rows	0.135637044906616
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139626979827881
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138628959655762
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138948202133179
+data.table	.txt	purrr::map	dplyr::bind_rows	0.147804021835327
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139627933502197
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139659881591797
+data.table	.txt	purrr::map	dplyr::bind_rows	0.137598991394043
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139191150665283
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138630867004395
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138674974441528
+data.table	.txt	purrr::map	dplyr::bind_rows	0.136630058288574
+data.table	.txt	purrr::map	dplyr::bind_rows	0.13509202003479
+data.table	.txt	purrr::map	dplyr::bind_rows	0.139626979827881
+data.table	.txt	purrr::map	dplyr::bind_rows	0.1441490650177
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138628959655762
+data.table	.txt	purrr::map	dplyr::bind_rows	0.138628005981445
