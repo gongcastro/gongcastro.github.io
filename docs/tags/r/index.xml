@@ -17,5 +17,15 @@
       <description>En este tutorial en colaboración con Alicia Franco-Martínez @AliciaFrancoXVE1, explicaremos cómo se ha creado el paquete de R {psicotuiteR}. En el canal de Twitch de Alicia, Psicometries (al que también debéis suscribiros), hicimos un directo en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</description>
     </item>
     
+    <item>
+      <title>A primer on Mixed-Effects Models: Theory and practice</title>
+      <link>http://gongcastro.github.io/2020/03/31/a-primer-on-mixed-effects-models-theory-and-practice/</link>
+      <pubDate>Tue, 31 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://gongcastro.github.io/2020/03/31/a-primer-on-mixed-effects-models-theory-and-practice/</guid>
+      <description>When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on March 10th, 2020 (yes, early pandemic 😖). This post shares the result.
+This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD.</description>
+    </item>
+    
   </channel>
 </rss>
