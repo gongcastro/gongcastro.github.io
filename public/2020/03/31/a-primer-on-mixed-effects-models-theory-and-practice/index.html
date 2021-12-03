@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Gonzalo García-Castro">
-<meta name="description" content="When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on Match 10th, 2020. This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD." />
+<meta name="description" content="When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on March 10th, 2020 (yes, early pandemic 😖). This post shares the result.
+This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD." />
 <meta name="keywords" content=", r, rstats, statistics" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#fcba03" />
@@ -37,10 +38,11 @@
 
 
 <meta itemprop="name" content="A primer on Mixed-Effects Models: Theory and practice">
-<meta itemprop="description" content="When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on Match 10th, 2020. This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD.">
+<meta itemprop="description" content="When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on March 10th, 2020 (yes, early pandemic 😖). This post shares the result.
+This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD.">
 <meta itemprop="datePublished" content="2020-03-31T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-03-31T00:00:00+00:00" />
-<meta itemprop="wordCount" content="190">
+<meta itemprop="dateModified" content="2021-12-03T17:13:01+01:00" />
+<meta itemprop="wordCount" content="283">
 
 
 
@@ -48,7 +50,8 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="A primer on Mixed-Effects Models: Theory and practice"/>
-<meta name="twitter:description" content="When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on Match 10th, 2020. This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD."/>
+<meta name="twitter:description" content="When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on March 10th, 2020 (yes, early pandemic 😖). This post shares the result.
+This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD."/>
 
 
 
@@ -141,12 +144,16 @@
 <script src="http://gongcastro.github.io/2020/03/31/a-primer-on-mixed-effects-models-theory-and-practice/index_files/fitvids/fitvids.min.js"></script>
 
 
-<p>When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on Match 10th, 2020. This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD. Here are the <a href="https://gongcastro.github.io/2020-03-31_linear-mixed-models/#1">slides</a>:</p>
+<blockquote>
+<p>When I started my PhD I had to get familiar with <strong>Linear Mixed Models</strong> very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on March 10th, 2020 (yes, early pandemic 😖). This post shares the result.</p>
+</blockquote>
+<p>This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD. Here are the <a href="https://gongcastro.github.io/2020-03-31_linear-mixed-models/#1">slides</a>:</p>
 <div class="shareagain" style="min-width:300px;margin:1em auto;">
 <iframe src="https://gongcastro.github.io/2020-03-31_linear-mixed-models/#1" width="1600" height="900" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
 <script>fitvids('.shareagain', {players: 'iframe'});</script>
 </div>
-<p>Vefore the presentation I tweeted one of the animations I generated for it.</p>
+<p>What I should be taken more seriously are (1) the <strong>references</strong> I suggest in the first slides (which I consider some of the best resources available to learn linear mixed-effects models), and (2) the <strong>memes</strong>, which I personally curated and even created to sweeten up the dreadful incoherence of the content of some of the slides (sorry about that).</p>
+<p>Before the presentation I tweeted one of the animations I generated for it.</p>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 Tomorrow I’ll be talking about multilevel models with some colleagues. I’ve been playing with some <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> for the slides. Not perfect, but I’m quite happy with this. (Generated with <a href="https://twitter.com/thomasp85?ref_src=twsrc%5Etfw"><span class="citation">@thomasp85</span></a>’s {gganimate} on <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>, which is super intuitive and easy to add to ggplots 🙌). <a href="https://t.co/Wt4USuSm5a">pic.twitter.com/Wt4USuSm5a</a>
@@ -154,13 +161,12 @@ Tomorrow I’ll be talking about multilevel models with some colleagues. I’ve 
 — Gon García-Castro (<span class="citation">@gongcastro</span>) <a href="https://twitter.com/gongcastro/status/1244682429983580161?ref_src=twsrc%5Etfw">March 30, 2020</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Many folks have asked for the R code or the GIF file of the specific animation included in the tweet, so here they are:</p>
+<p>This tweet got some attention (for my usual numbers) and many kind folks have asked for the R code or the GIF file of the specific animation included in the tweet, so here they are (you’ll also find them in the <a href="https://github.com/gongcastro/2020-03-31_linear-mixed-models">GitHub repository</a>) in a perhaps more comfortable format, ready to be cloned or downloaded):</p>
 <div class="figure">
 <img src="images/task_model.gif" alt="" />
 <p class="caption">Linear mixed models animated</p>
 </div>
 <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fgongcastro%2F2020-03-31_linear-mixed-models%2Fblob%2Fmain%2FR%2Fplots.R&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
-<p>More information in the GitHub <a href="https://github.com/gongcastro/2020-03-31_linear-mixed-models">repository</a>!</p>
 
             </div>
         </article>
@@ -187,6 +193,7 @@ Tomorrow I’ll be talking about multilevel models with some colleagues. I’ve 
         
     </p>
 
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="4a05fcba4f72993fa82b0af214a13d47e048a976" target="_blank" rel="noopener">4a05fcb</a> @ 2021-12-03</p>
   		</div>
     </main>
 

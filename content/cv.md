@@ -4,16 +4,18 @@ aliases:
 - about-hugo
 - contact
 author:
-  name: Gonzalo García-Castro
+  name: Gonzalo Garciaa-Castro
 date: "2020-03-015"
 title: CV
 ---
+
+> [Click here for **PDF**](https://github.com/gongcastro/cv/raw/master/cv.pdf)
 
 ## Education
 
 October 2018 - Present
 
-> **PhD, Biomedecine**; Pompeu Fabra University (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
+**PhD, Biomedecine**; Pompeu Fabra University (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
 
 October 2017 - July 2018
 
@@ -37,20 +39,34 @@ Sampedro-Piquero, P., Álvarez-Suárez, P., Moreno-Fernández, R., **García-Cas
 
 Santolin, C., **García-Castro, G.**, Zettersten, M., Sebastian-Galles, N., & Saffran, J. (2020, March 4). Experience with research paradigms relates to infants’ direction of preference. https://doi.org/10.31234/osf.io/xgvbh
 
+## Proceedings
+
+Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Sebastian-Galles, N., Plunkett, K. (Sempember, 2021). A study of lingusitic distance and infant vocabulary trajectories using bilingual CDIs of English and one additional language. Presented at the *Boston University Conference in Language Development*, held online (Boston, United States).
+
+
+Siow, S., **Garcia-Castro, G.**, Sebastian-Galles, N., Plunkett, K. (September, 2021). An alternative approach to defining cross-linguistic phonological similarity using a model of monolingual speech recognition. Presentation at the *Architectures and Mechanisms for Language Processing* conference, held online (Paris, France). [pdf](https://amlap2021.github.io/program/23.pdf) [scholar](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=fHetiuQAAAAJ&citation_for_view=fHetiuQAAAAJ:2osOgNQ5qMEC)
+
 
 ### Posters
 
-**García-Castro, G.**, Siow, S., Sebastian-Galles, N. and Plunkett, Kim (July, 2020). The role of lexical similarity on bilingual parallel activation: A priming study in toddlers. Poster presented at the International Congress on Infant Studies (Edimburgh, United Kingdom, held online). proceedings
+Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Sebastian-Galles, N., Plunkett, K. (August, 2021). A study of linguistic distance and infant vocabulary trajectories using bilingual CDIs of English and one additional language. Presentation at the *Lancaster Conference on Infant and Early Child Development*, held online (Lancaster, United Kingdom).se
 
-**García-Castro, G.**, Avila-Varela, D., and Sebastian-Galles, N. (July, 2020). Does phonological overlap across translation equivalents predict earlier age of acquisition?. Poster presented at the International Congress on Infant Studies (Edimburgh, United Kingdom, held online). proceedings
+**Garcia-Castro, G.**, Siow, S., Sebastian-Galles, N., Plunkett, K. (August, 2021). The impact of cognateness on bilingual lexical access: a longitudinal priming study. Poster presented at the *Lancaster Conference on Infant and Early Child Development*, held online (Lancaster, United Kingdom).
 
-Siow, S., **García-Castro, G.**, Sebastian-Galles, N., and Plunkett, K. (August, 2019). The impact of phonology (cognateness) on the bilingual lexicon: Parallel cross-language phonological priming. Poster presented at the Lancaster Conference on Infant and Early Child Development (Lancaster, United Kingdom).
 
-**García-Castro, G.**, Marimon, M., Santolin, C., and Sebastian-Galles, N. (June, 2019). Encoding new word forms when contrastive phonemes are interchanged: A preliminary study on 8-month-old infants. Poster presented at the Workshop in Infant Language Development (Potsdam, Germany). https://doi.org/10.17605/OSF.IO/GYKUH
+**Garcia-Castro, G.**, Siow, S., Sebastian-Galles, N. and Plunkett, Kim (June, 2021). The role of cognateness in nonnative spoken word recognition. Poster presented at the *XI International Symposium of Psycholinguistics* (Madrid, Spain, held online).
 
-**García-Castro, G.**, Álvarez-Suárez, P., García-Abad, N., Cuesta, M., and Begega, A. (June, 2017). Pro-cognitive effects of environmental enrichment on attention and spatial memory: hippocampal metabolic activity in a Wistar rat model. Poster presented at the 4th International Congress on Health and Aging Research (Murcia, Spain).
+**Garcia-Castro, G.**, Siow, S., Sebastian-Galles, N. and Plunkett, Kim (July, 2020). The role of lexical similarity on bilingual parallel activation: A priming study in toddlers. Poster presented at the *International Congress on Infant Studies* (Edimburgh, United Kingdom, held online). proceedings
 
-García-Abad, N., Santirso, M., **García-Castro, G.**, and Álvarez-Suárez, P. (June, 2017). Efectos del omega-3 en las redes implicadas en la memoria de trabajo espacial en ratas Wistar. Poster presented at the 3rd National Congress of Psychology (Oviedo, Spain)
+**Garcia-Castro, G.**, Avila-Varela, D., and Sebastian-Galles, N. (July, 2020). Does phonological overlap across translation equivalents predict earlier age of acquisition?. Poster presented at the *International Congress on Infant Studies* (Edimburgh, United Kingdom, held online). proceedings
+
+Siow, S., **Garcia-Castro, G.**, Sebastian-Galles, N., and Plunkett, K. (August, 2019). The impact of phonology (cognateness) on the bilingual lexicon: Parallel cross-language phonological priming. Poster presented at the *Lancaster Conference on Infant and Early Child Development* (Lancaster, United Kingdom).
+
+**Garcia-Castro, G.**, Marimon, M., Santolin, C., and Sebastian-Galles, N. (June, 2019). Encoding new word forms when contrastive phonemes are interchanged: A preliminary study on 8-month-old infants. Poster presented at the *Workshop in Infant Language Development* (Potsdam, Germany). https://doi.org/10.17605/OSF.IO/GYKUH
+
+**García-Castro, G.**, Álvarez-Suárez, P., García-Abad, N., Cuesta, M., and Begega, A. (June, 2017). Pro-cognitive effects of environmental enrichment on attention and spatial memory: hippocampal metabolic activity in a Wistar rat model. Poster presented at the *4th International Congress on Health and Aging Research* (Murcia, Spain).
+
+García-Abad, N., Santirso, M., **García-Castro, G.**, and Álvarez-Suárez, P. (June, 2017). Efectos del omega-3 en las redes implicadas en la memoria de trabajo espacial en ratas Wistar. Poster presented at the *3rd National Congress of Psychology* (Oviedo, Spain)
 
 ### Scientific dissemination
 
