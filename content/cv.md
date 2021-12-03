@@ -9,7 +9,7 @@ date: "2020-03-015"
 title: CV
 ---
 
-> [Click here for **PDF**](https://github.com/gongcastro/cv/raw/master/cv.pdf)
+[Click here for **PDF**](https://github.com/gongcastro/cv/raw/master/cv.pdf)
 
 ## Education
 

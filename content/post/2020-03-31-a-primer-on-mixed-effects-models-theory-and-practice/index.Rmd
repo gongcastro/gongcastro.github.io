@@ -22,7 +22,7 @@ This is not supposed to be taken as a formal guide to linear mixed-effects model
 library(xaringanExtra)
 embed_xaringan(
   url = "https://gongcastro.github.io/2020-03-31_linear-mixed-models/#1",
-  ratio = "16:9"
+  ratio = "8:4.5"
 )
 ```
 
