@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>statistics on Gonzalo García-Castro</title>
+    <link>http://gongcastro.github.io/tags/statistics/</link>
+    <description>Recent content in statistics on Gonzalo García-Castro</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 31 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://gongcastro.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A primer on Mixed-Effects Models: Theory and practice</title>
+      <link>http://gongcastro.github.io/2020/03/31/a-primer-on-mixed-effects-models-theory-and-practice/</link>
+      <pubDate>Tue, 31 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://gongcastro.github.io/2020/03/31/a-primer-on-mixed-effects-models-theory-and-practice/</guid>
+      <description>When I started my PhD I had to get familiar with Linear Mixed Models very well very quickly. Then I was asked to present what I learnt and prepare this informal tutorial for my colleagues, which I presented on Match 10th, 2020. This is not supposed to be taken as a formal guide to linear mixed-effects models, but rather as a semi-coherent compilation of notes and self-suggestions that I considered worth sharing with my lab mates during my early stages of in the PhD.</description>
+    </item>
+    
+  </channel>
+</rss>
