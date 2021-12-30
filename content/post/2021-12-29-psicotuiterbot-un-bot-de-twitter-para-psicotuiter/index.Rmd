@@ -16,9 +16,9 @@ images: ~
 
 <a href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="es" data-show-count="false">Follow @psicotuiterbot</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Este es el timeline de [@psicotuiterbot](https://twitter.com/psicotuiterbot):
-
-<a class="twitter-timeline" href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw">Tweets by psicotuiterbot</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div style="float:right">
+<a class="twitter-timeline" data-width="220" data-height="400" href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw">Tweets by psicotuiterbot</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 
 # La comunidad de Psicotuiter
 
