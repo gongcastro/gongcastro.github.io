@@ -15,7 +15,8 @@
       
       <guid>http://gongcastro.github.io/2021/12/29/psicotuiterbot-un-bot-de-twitter-para-psicotuiter/</guid>
       <description>TL;DR: He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que ejecuta el código cada 15 usando CRON, haciendo las veces de servidor.
-La comunidad de PsicotuiterPsicotuiter (aka. Psicotwitter) es una comunidad de perfiles de Twitter que hablan de Psicología (entre otras cosas) en Twitter.</description>
+Follow @psicotuiterbotEste es el timeline de [@psicotuiterbot](https://twitter.com/psicotuiterbot):
+Tweets by psicotuiterbotLa comunidad de PsicotuiterPsicotuiter (aka.</description>
     </item>
     
   </channel>

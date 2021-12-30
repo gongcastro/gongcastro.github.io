@@ -14,6 +14,12 @@ images: ~
 
 > **TL;DR**: He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que ejecuta el código cada 15 usando CRON, haciendo las veces de servidor.
 
+<a href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="es" data-show-count="false">Follow @psicotuiterbot</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Este es el timeline de [@psicotuiterbot](https://twitter.com/psicotuiterbot):
+
+<a class="twitter-timeline" href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw">Tweets by psicotuiterbot</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 # La comunidad de Psicotuiter
 
 **Psicotuiter** (aka. Psicotwitter) es una comunidad de perfiles de Twitter que hablan de Psicología (entre otras cosas) en Twitter. No se trata de un grupo cerrado, sino de una etiqueta útil para mencionar a esta comunidad. Aunque sus límites son algo difusos (y sería absolutamente innecesario precisarlos), se podría considerar que esta comunidad existe de manera relativamente formal desde 2015 (aproximadamente).
@@ -236,6 +242,7 @@ Tras varios problemas en la ejecución del bot a través de GitHub Actions, deci
 
 
 Tener una Raspberry Pi funcionando todo el día **apenas tiene impacto sobre el consumo de luz**. Primero instalé el código en la Raspberry con sus dependencias: básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejcutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado **CRON**. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos [ejemplos](https://crontab.guru/examples.html). Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):
+
 
 ```sh
 # descarga el código de GitHub, por si ha habido cambios
