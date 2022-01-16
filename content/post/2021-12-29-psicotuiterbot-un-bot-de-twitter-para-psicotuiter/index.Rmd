@@ -93,10 +93,14 @@ Luego **extraemos los tweets** usando rtweet, filtramos los que sean relevantes 
 
 
 ```r
+library(dplyr)
+
 # define hashtags
 hashtags_vct <- c("#psicotuiter", "#psicotwitter", "#Psicotuiter", "#Psicotwitter", "#PsicoTuiter", "#PsicoTwitter")
 hashtags <- paste(hashtags_vct, collapse = " OR ")
 hate_words <- unlist(strsplit(Sys.getenv("HATE_WORDS"), " ")) # words banned from psicotuiterbot (separated by a space)
+blocked_accounts <- unlist(strsplit(Sys.getenv("BLOCKED_ACCOUNTS"), " ")) # accounts banned from psicotuiterbot (separated by a space)
+
 time_interval <- lubridate::now(tzone = "UCT")-lubridate::minutes(120)
 
 # get mentions to #psicotuiter and others
@@ -110,11 +114,14 @@ all_tweets <- rtweet::search_tweets(
 
 status_ids <- all_tweets %>% 
     filter(
-        created_at >=  time_interval, # 15 min
+        !(screen_name %in% gsub("@", "", blocked_accounts)),
+        created_at >= time_interval, # 15 min
         !grepl(paste(hate_words, collapse = "|"), text), # filter out hate words
-        stringr::str_count(text, "#") < 4 # no more than 3 hashtags
+        stringr::str_count(text, "#") < 4, # no more than 3 hashtags
+        lang %in% c("es", "und") # in Spanish or undefined language
     ) %>% 
     pull(status_id)
+
 
 
 # get request ID
@@ -264,6 +271,52 @@ git push
 ```
 
 Estos comandos se ejecutan en este orden cada 15 minutos. 
+
+
+# Bloqueando usuarios de forma remota
+
+Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite **bloquear usuarios que con tan sólo enviar al bot un mensaje directo** de Twitter. El script **R/block.R** accede a los 10 últimos mensajes recibidos por parte de usuaries "VIP" (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el **que el propio bot modifique los archivos locales** a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo **cargar ese vector sin desvelar us contenidos**, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código:
+
+```r
+vip_users <- unlist(strsplit(Sys.getenv("VIP_USERS"), " "))
+blocked_accounts <- Sys.getenv("BLOCKED_ACCOUNTS")
+blocked_accounts_vct <- unlist(strsplit(blocked_accounts, split = " "))
+
+# get DMs
+msg <- rtweet::direct_messages(n = 10, token = my_token)$events
+
+# if new DMs have been received
+if (nrow(msg) > 0){
+    # for each received DM
+    for (i in 1:nrow(msg)){
+        msg_text <- msg$message_create$message_data$text[i]
+        is_block <- grepl("block|block|bloquea", tolower(msg_text))
+        sender_name <- rtweet::lookup_users(msg$message_create$sender_id[i], token = my_token)$screen_name
+        
+        # if message is sent by VIP user and contains keyword "block"
+        if (is_block & (paste0("@", sender_name) %in% vip_users)){
+            msg_text_vct <- unlist(strsplit(msg_text, " "))
+            target_users <- msg_text_vct[grepl("@", msg_text_vct)]
+            
+            # if at least one targeted users has not been blocked yet
+            if (!all(target_users %in% blocked_accounts_vct)){
+                target_users_str <- paste0(target_users, collapse = " ")
+                blocked_accounts_new <- paste0(blocked_accounts, " ", target_users_str)
+                renviron_text <- paste0('BLOCKED_ACCOUNTS = "', blocked_accounts_new, '"')
+                write(renviron_text, ".Renviron", append = TRUE)
+                message(paste0("User(s) ", paste0(target_users_str, collapse = " "), " is now blocked"))
+                
+            } else {
+                repeated_target <- target_users[which(target_users %in% blocked_accounts_vct)]
+                message(paste0("User(s) ", paste0(repeated_target, collapse = " "), " has already been blocked"))
+            }
+        } else {
+            message(paste0("Message from a non-VIP: ", paste0("@", sender_name)))
+        }
+    }
+}
+
+```
 
 # Conclusiones
 

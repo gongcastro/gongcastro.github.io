@@ -76,10 +76,14 @@ my_token &lt;- rtweet::create_token(
     set_renv = FALSE
 )</code></pre>
 <p>Luego <strong>extraemos los tweets</strong> usando rtweet, filtramos los que sean relevantes y no contengan posible contenido ofensivo (y algún otro filtro más).</p>
-<pre class="r"><code># define hashtags
+<pre class="r"><code>library(dplyr)
+
+# define hashtags
 hashtags_vct &lt;- c(&quot;#psicotuiter&quot;, &quot;#psicotwitter&quot;, &quot;#Psicotuiter&quot;, &quot;#Psicotwitter&quot;, &quot;#PsicoTuiter&quot;, &quot;#PsicoTwitter&quot;)
 hashtags &lt;- paste(hashtags_vct, collapse = &quot; OR &quot;)
 hate_words &lt;- unlist(strsplit(Sys.getenv(&quot;HATE_WORDS&quot;), &quot; &quot;)) # words banned from psicotuiterbot (separated by a space)
+blocked_accounts &lt;- unlist(strsplit(Sys.getenv(&quot;BLOCKED_ACCOUNTS&quot;), &quot; &quot;)) # accounts banned from psicotuiterbot (separated by a space)
+
 time_interval &lt;- lubridate::now(tzone = &quot;UCT&quot;)-lubridate::minutes(120)
 
 # get mentions to #psicotuiter and others
@@ -93,11 +97,14 @@ all_tweets &lt;- rtweet::search_tweets(
 
 status_ids &lt;- all_tweets %&gt;% 
     filter(
-        created_at &gt;=  time_interval, # 15 min
+        !(screen_name %in% gsub(&quot;@&quot;, &quot;&quot;, blocked_accounts)),
+        created_at &gt;= time_interval, # 15 min
         !grepl(paste(hate_words, collapse = &quot;|&quot;), text), # filter out hate words
-        stringr::str_count(text, &quot;#&quot;) &lt; 4 # no more than 3 hashtags
+        stringr::str_count(text, &quot;#&quot;) &lt; 4, # no more than 3 hashtags
+        lang %in% c(&quot;es&quot;, &quot;und&quot;) # in Spanish or undefined language
     ) %&gt;% 
     pull(status_id)
+
 
 
 # get request ID
@@ -222,6 +229,48 @@ git commit -m &quot;Update repository&quot;
 git push</code></pre>
 <p>Estos comandos se ejecutan en este orden cada 15 minutos.</p>
 </div>
+</div>
+<div id="bloqueando-usuarios-de-forma-remota" class="section level1">
+<h1>Bloqueando usuarios de forma remota</h1>
+<p>Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite <strong>bloquear usuarios que con tan sólo enviar al bot un mensaje directo</strong> de Twitter. El script <strong>R/block.R</strong> accede a los 10 últimos mensajes recibidos por parte de usuaries “VIP” (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el <strong>que el propio bot modifique los archivos locales</strong> a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo <strong>cargar ese vector sin desvelar us contenidos</strong>, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código:</p>
+<pre class="r"><code>vip_users &lt;- unlist(strsplit(Sys.getenv(&quot;VIP_USERS&quot;), &quot; &quot;))
+blocked_accounts &lt;- Sys.getenv(&quot;BLOCKED_ACCOUNTS&quot;)
+blocked_accounts_vct &lt;- unlist(strsplit(blocked_accounts, split = &quot; &quot;))
+
+# get DMs
+msg &lt;- rtweet::direct_messages(n = 10, token = my_token)$events
+
+# if new DMs have been received
+if (nrow(msg) &gt; 0){
+    # for each received DM
+    for (i in 1:nrow(msg)){
+        msg_text &lt;- msg$message_create$message_data$text[i]
+        is_block &lt;- grepl(&quot;block|block|bloquea&quot;, tolower(msg_text))
+        sender_name &lt;- rtweet::lookup_users(msg$message_create$sender_id[i], token = my_token)$screen_name
+        
+        # if message is sent by VIP user and contains keyword &quot;block&quot;
+        if (is_block &amp; (paste0(&quot;@&quot;, sender_name) %in% vip_users)){
+            msg_text_vct &lt;- unlist(strsplit(msg_text, &quot; &quot;))
+            target_users &lt;- msg_text_vct[grepl(&quot;@&quot;, msg_text_vct)]
+            
+            # if at least one targeted users has not been blocked yet
+            if (!all(target_users %in% blocked_accounts_vct)){
+                target_users_str &lt;- paste0(target_users, collapse = &quot; &quot;)
+                blocked_accounts_new &lt;- paste0(blocked_accounts, &quot; &quot;, target_users_str)
+                renviron_text &lt;- paste0(&#39;BLOCKED_ACCOUNTS = &quot;&#39;, blocked_accounts_new, &#39;&quot;&#39;)
+                write(renviron_text, &quot;.Renviron&quot;, append = TRUE)
+                message(paste0(&quot;User(s) &quot;, paste0(target_users_str, collapse = &quot; &quot;), &quot; is now blocked&quot;))
+                
+            } else {
+                repeated_target &lt;- target_users[which(target_users %in% blocked_accounts_vct)]
+                message(paste0(&quot;User(s) &quot;, paste0(repeated_target, collapse = &quot; &quot;), &quot; has already been blocked&quot;))
+            }
+        } else {
+            message(paste0(&quot;Message from a non-VIP: &quot;, paste0(&quot;@&quot;, sender_name)))
+        }
+    }
+}
+</code></pre>
 </div>
 <div id="conclusiones" class="section level1">
 <h1>Conclusiones</h1>

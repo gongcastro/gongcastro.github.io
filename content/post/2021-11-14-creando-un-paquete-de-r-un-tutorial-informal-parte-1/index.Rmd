@@ -41,20 +41,7 @@ library(psicotuiteR)
 
 En este tutorial en colaboración con Alicia Franco-Martínez  @[AliciaFrancoXVE](https://twitter.com/AliciaFrancoXVE)^[Merece la pena seguir a Alicia en Twitter: hace muy buena divulgación sobre psicometría, estadística y R.], explicaremos cómo se ha creado el paquete de R **{psicotuiteR}**. En el canal de Twitch de Alicia, [Psicometries](https://t.co/JtxXtTszGi?amp=1) (al que también debéis suscribiros), hicimos un [directo](https://www.twitch.tv/videos/1202539110) en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.
 
-<!-- Add a placeholder for the Twitch embed -->
-<div id="twitch-embed"></div>
-
-<!-- Load the Twitch embed script -->
-<script src="https://player.twitch.tv/js/embed/v1.js"></script>
-
-<!-- Create a Twitch.Player object. This will render within the placeholder div -->
-<script type="text/javascript">
-  new Twitch.Player("twitch-embed", {
-    video: "1202539110",
-    width: 550,
-    height: 300
-  });
-</script>
+<iframe width="550" height="300" src="https://www.youtube.com/watch?v=1NLaPcHUJP0"></iframe>
 
 
 ## ¿Qué es el paquete {psicotuiteR}?
