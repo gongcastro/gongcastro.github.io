@@ -48,9 +48,6 @@ Si accedes al primer directorio que muestra `.libPaths()` verás que **cada paqu
 Hemos visto que esto no es ideal. ¿No será mejor tener una carpeta diferente para cada proyecto en la que instalamos sus paquetes de forma independente, sin afectar a los paquetes de otros proyectos? Sí. De hecho este procedimiento es estándar en otros lenguajes de programación como JavaScript^[Echa un vistazo a este post de Nikola Đuza: [Ride Down Into JavaScript Dependency Hell](https://blog.appsignal.com/2020/04/09/ride-down-the-javascript-dependency-hell.html)] o Julia ^[Echa un vistazo a este post de Bogumił Kamiński: [My practices for managing project dependencies in Julia](https://bkamins.github.io/julialang/2020/05/18/project-workflow.html)]. Existe un paquete de R que nos permite hacer esto: [**renv**](https://github.com/rstudio/renv/). Veamos cómo funciona.
 
 
-![](https://www.youtube.com/watch?v=yjlEbIDevOs)
-
-
 # Usando renv
 
 Primero hay que **instalar renv**. Como está incluido en el CRAN, podemos hacerlo usando `install.packages()`:
