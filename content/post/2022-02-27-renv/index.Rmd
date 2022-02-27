@@ -42,12 +42,13 @@ Este comando te mostrará el directorio o **directorios donde R instala sus paqu
 
 Si accedes al primer directorio que muestra `.libPaths()` verás que **cada paquete tiene una carpeta**. Cada carpeta incluye el código de R, los datos y la documentación asociada a cada paquete (entre otras cosas). Cada vez que instalamos o actualizamos un paquete, se crea o reemplaza su carpeta correspondiente en nuestro directorio, es decir, en nuestra "biblioteca global" de paquetes de R.
 
-![Así es como tienes tu carpeta de paquetes de R. Que lo sé yo. Que te he visto. Vergüenza me daría a mí.](/img/boxes.jpeg)
+![Así es como tienes tu carpeta de paquetes de R. Que lo sé yo. Que te he visto. Vergüenza me daría a mí.](/img/boxes.jpg)
 
 
 Hemos visto que esto no es ideal. ¿No será mejor tener una carpeta diferente para cada proyecto en la que instalamos sus paquetes de forma independente, sin afectar a los paquetes de otros proyectos? Sí. De hecho este procedimiento es estándar en otros lenguajes de programación como JavaScript^[Echa un vistazo a este post de Nikola Đuza: [Ride Down Into JavaScript Dependency Hell](https://blog.appsignal.com/2020/04/09/ride-down-the-javascript-dependency-hell.html)] o Julia ^[Echa un vistazo a este post de Bogumił Kamiński: [My practices for managing project dependencies in Julia](https://bkamins.github.io/julialang/2020/05/18/project-workflow.html)]. Existe un paquete de R que nos permite hacer esto: [**renv**](https://github.com/rstudio/renv/). Veamos cómo funciona.
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=yjlEbIDevOs" frameborder="0" allowfullscreen></iframe>
+
+![](https://www.youtube.com/watch?v=yjlEbIDevOs)
 
 
 # Usando renv
@@ -101,24 +102,24 @@ renv
 renv.lock
 ```
 
-No necesitaremos modificar ni consultar nunca ningunos de los archivos creados, pero vamos a curiosear un poco. Al usar `init()`, renv ha echado un vistazo a los scripts de R de la carpeta (achivos con la extensión .R, como `main.R` y `functions.R`), y ha detectado los paquetes que necesita nuestro código para ejecutarse (puedes consultar las dependencias de tu proyecto usando `renv::dependencies()`). Por ejemplo, si `main.R` incluye `library(dplyr)` o `dplyr::mutate()`, detectará el paquete dplyr como una dependencia.
+No necesitaremos modificar ni consultar nunca ningunos de los archivos creados, pero vamos a curiosear un poco. Al usar `init()`, renv ha echado un vistazo a los scripts de R de la carpeta (achivos con la extensión .R, como `main.R` y `functions.R`), y **ha detectado los paquetes que necesita nuestro código para ejecutarse** (puedes consultar las dependencias de tu proyecto usando `renv::dependencies()`). Por ejemplo, si `main.R` incluye `library(dplyr)` o `dplyr::mutate()`, detectará el paquete dplyr como una dependencia.
 
 ![renv detectando tus dependencias.](/img/detector.gif)
 
 
-A continuación, renv ha instalado todas los paquetes necesarios en `renv/library/`. Si comparas esa carpeta con el directorio mostrado en `.libPaths()` (como hicimos hace un momento), verás que ambas carpetas son muy parecidas. Eso es porque ahora R buscará los paquetes que necesites en esa carpeta, y no en la "biblioteca global" de paquetes de R. Esa es la magia de renv: podrás instalar y actualizar paquetes de R de forma independiente para cada uno de tus proyectos. Para instalar nuevos paquetes deberás hacerlo usando la función `renv::install()`. Por ejemplo:
+A continuación, renv ha **instalado todas los paquetes necesarios** en `renv/library/`. Si comparas esa carpeta con el directorio mostrado en `.libPaths()` (como hicimos hace un momento), verás que ambas carpetas son muy parecidas. Eso es porque ahora R buscará los paquetes que necesites en esa carpeta, y no en la "biblioteca global" de paquetes de R. Esa es la magia de renv: podrás **instalar y actualizar paquetes de R de forma independiente** para cada uno de tus proyectos. Para instalar nuevos paquetes deberás hacerlo usando la función `renv::install()`. Por ejemplo:
 
 ```r
 renv::install("tidyr")
 ```
 
-Esta función es el equivalente a `install.packages()` en renv. esta función asumirá que el paquete que quieres se encuentra en CRAN y será allí donde lo buscará. Si el paquete que quieres instalar se eneucntra alojado en otro sitio (o quieres instalar una versión experimental del mismo, en un repositorio de GitHub, por ejemplo), puedes indicar el repositorio de la siguiente forma:
+Esta función es el **equivalente a `install.packages()`** en renv. esta función asumirá que el paquete que quieres se encuentra en CRAN y será allí donde lo buscará. Si el paquete que quieres instalar se encuentra alojado en otro sitio (o quieres instalar una versión experimental del mismo, en un repositorio de GitHub, por ejemplo), puedes indicar el repositorio de la siguiente forma:
 
 ```r
 renv::install("crsh/papaja")
 ```
 
-Si echas un vistazo a `renv.lock` verás que incluye una lista de todas las dependencias de tu proyecto, en un formato un poco raro, con muchos paréntesis. No necesitas entender este archivo, sólo que sigue un formato parecido al que usan otros leguajes de programación para hacer lo mismo. Es el equivalente al archivo `package-lock.json` de un proyecto de JavaScript o al archivo `Manifest.toml` de un proyecto de Julia. Si te fijas, verás que simplemente incluye información mínima para cada paquete: nombre, versión, origen y un código que lo identifica. Por ejemplo, el `renv.lock` de nuestro proyecto incluye lo siguiente:
+Si echas un vistazo a `renv.lock` verás que incluye una **lista de todas las dependencias de tu proyecto**, en un formato un poco raro, con muchos paréntesis, y la extensión `.lock`. No necesitas entender este archivo, sólo que sigue un formato parecido al que usan otros leguajes de programación para hacer lo mismo. Es el equivalente al archivo `package-lock.json` de un proyecto de JavaScript o al archivo `Manifest.toml` de un proyecto de Julia. Si te fijas, verás que simplemente incluye **información mínima para cada paquete**: nombre, versión, origen y un código que lo identifica. Por ejemplo, el `renv.lock` de nuestro proyecto incluye lo siguiente:
 
 ```json
 {
