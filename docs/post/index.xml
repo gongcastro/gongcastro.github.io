@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://gongcastro.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://gongcastro.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>renv (o cómo usar paquetes de R sin ataques de pánico)</title>
+      <link>http://gongcastro.github.io/2022/02/27/renv/</link>
+      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://gongcastro.github.io/2022/02/27/renv/</guid>
+      <description>A veces necesitamos instalar versiones diferentes del mismo paquete de R en proyectos diferentes. El paquete {renv} nos permite almacenar los paquetes de R de cada proyecto de forma independiente, evitando posibles conflictos entre proyectos. De paso, incrementará la reproducibilidad computacional de nuestro código.
+El problemaPonte en la siguiente situación: tienes entre manos un proyecto de R que necesita varios paquetes. Cada uno de estos paquetes depende, a su vez, de terceros paquetes.</description>
+    </item>
+    
     <item>
       <title>@psicotuiterbot: Un bot de Twitter para Psicotuiter</title>
       <link>http://gongcastro.github.io/2021/12/29/psicotuiterbot-un-bot-de-twitter-para-psicotuiter/</link>

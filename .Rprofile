@@ -1,3 +1,4 @@
+source("renv/activate.R")
 # REMEMBER to restart R after you modify and save this file!
 
 library(blogdown)

@@ -7,3 +7,9 @@ blockquote {
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
 }
+
+
+p.caption {
+  font-size: 0.6em;
+  font-style: italic;
+}

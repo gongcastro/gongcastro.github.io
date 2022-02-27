@@ -1,0 +1,34 @@
+---
+title: Una sugerencia de *setup* para trabajar en R
+author: Gonzalo García-Castro
+date: '2022-02-19'
+slug: una-sugerencia-de-setup-para-trabajar-en-r
+categories:
+  - r
+  - rstats
+tags:
+  - r
+  - rstats
+comments: no
+images: ~
+draft: true
+---
+
+# TL;DR
+
+
+# RStudio: trabajando con proyectos
+
+
+# Carpetas y repositorios: los nombres importan
+
+
+# Nombres de archivos: si me queréis, ser consistentes
+
+
+# .Rprofile y .Renviron: 
+
+
+# renv o cómo actualizar y usar paquetes sin ataques de ansiedad
+
+

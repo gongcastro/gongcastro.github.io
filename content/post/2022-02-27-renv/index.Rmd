@@ -1,0 +1,183 @@
+---
+title: renv (o cómo usar paquetes de R sin ataques de pánico)
+author: Gonzalo Garcia-Castro
+date: '2022-02-27'
+slug: renv
+categories:
+  - rstats
+  - r
+tags:
+  - r
+  - reproducibility
+comments: no
+images: ~
+---
+
+
+A veces necesitamos instalar versiones diferentes del mismo paquete de R en proyectos diferentes. El paquete **{renv}** nos permite **almacenar los paquetes de R de cada proyecto de forma independiente**, evitando posibles conflictos entre proyectos. De paso, incrementará la **reproducibilidad computacional** de nuestro código.
+
+
+![](/img/containers.jpg)
+
+
+# El problema
+
+Ponte en la siguiente situación: tienes entre manos un proyecto de R que necesita varios paquetes. Cada uno de estos paquetes depende, a su vez, de terceros paquetes. De hecho, dos paquetes pueden depender del mismo paquete, o incluso de **versiones diferentes** del mismo paquete. Si hay mala suerte, una de las versiones no será lo suficientemente reciente como para funcionar correctamente con ambos paquetes. Resultado: uno de los dos paquetes no funcionará.
+
+![Usuarie de R promedio después de tirar dos horas a la basura intentando instalar los paquetes que necesita para trabajar en un proyecto de R que no tocaba desde hacía cuatro meses.](/img/panic.gif)
+
+Este problema se extiende al caso de que necesitemos versiones diferentes del mismo paquete en proyectos de R diferentes en los que estamos trabajando de forma simultánea en el mismo ordenador. Para hacerlos funcionar necesitaríamos instalar de nuevo la versión correspondiente del mismo paquete cada vez que cambiemos de proyecto.
+
+
+# Instalando paquetes de R
+
+En resumidas cuentas, cada vez que instalamos o actualizamos un paquete de R, lo hacemos para todos nuestros proyectos de R de forma *global*. Esto se debe a que por defecto R busca todos los paquete de R en la misma carpeta. Para ver dónde instala R tus paquetes puedes ejecutar el siguiente comando:
+
+```
+.libPaths()
+```
+
+Este comando te mostrará el directorio o **directorios donde R instala sus paquetes por defecto**. Si hay más de un directorio significa que, en caso de que no sea posible encontrar un paquete en el primer directorio, R lo buscará en el segundo, tercero, etc., hasta que te devuelva un error indicando que no has instalado ese paquete.
+
+
+Si accedes al primer directorio que muestra `.libPaths()` verás que **cada paquete tiene una carpeta**. Cada carpeta incluye el código de R, los datos y la documentación asociada a cada paquete (entre otras cosas). Cada vez que instalamos o actualizamos un paquete, se crea o reemplaza su carpeta correspondiente en nuestro directorio, es decir, en nuestra "biblioteca global" de paquetes de R.
+
+![*Así es como tienes tu carpeta de paquetes de R. Vergüenza me daría a mí.*](/img/boxes.jpg)
+
+
+Hemos visto que esto no es ideal. ¿No será mejor tener una carpeta diferente para cada proyecto en la que instalamos sus paquetes de forma independente, sin afectar a los paquetes de otros proyectos? Sí. De hecho este procedimiento es estándar en otros lenguajes de programación como JavaScript^[Echa un vistazo a este post de Nikola Đuza: [Ride Down Into JavaScript Dependency Hell](https://blog.appsignal.com/2020/04/09/ride-down-the-javascript-dependency-hell.html)] o Julia ^[Echa un vistazo a este post de Bogumił Kamiński: [My practices for managing project dependencies in Julia](https://bkamins.github.io/julialang/2020/05/18/project-workflow.html)]. Existe un paquete de R que nos permite hacer esto: [**renv**](https://github.com/rstudio/renv/). Veamos cómo funciona.
+
+
+# Usando renv
+
+Primero hay que **instalar renv**. Como está incluido en el CRAN, podemos hacerlo usando `install.packages()`:
+
+```r
+install.packages("renv")
+```
+
+Ahora abrimos una sesión de R en la carpeta de nuestro proyecto. Digamos que nuestra carpeta tiene la siguiente estructura:
+
+```
+data
+ |-some-data.csv
+docs
+ |-index.Rmd
+ |-index.html
+R
+ |-main.R
+ |-functions.R
+.Rprofile
+```
+
+Así es la estructura de la mayoría de carpetas de mis proyectos de R. Tiene su razón de ser, pero eso es material para otro post. Lo importante es cómo cambiará esta estructura en unos momentos. La [documentación de renv](https://rstudio.github.io/renv/articles/renv.html) incluye los pasos para usar renv, pero explicaré los principales. Primero inicializaremos renv en nuestra consola de R:
+
+```r
+renv::init()
+```
+
+Esto creará una carpeta (`renv`) y un archivo (`renv.lock`) nuevos en nuestro directorio:
+
+```
+.Rprofile
+data
+    |-some-data.csv
+docs
+    |-index.Rmd
+    |-index.html
+R
+    |-main.R
+    |-functions.R
+renv
+    |-.gitignore
+    |-activate.R
+    |-library
+        |-...
+    |-local
+        |-...
+    |-settings.dcf
+renv.lock
+```
+
+No necesitaremos modificar ni consultar nunca ningunos de los archivos creados, pero vamos a curiosear un poco. Al usar `init()`, renv ha echado un vistazo a los scripts de R de la carpeta (achivos con la extensión .R, como `main.R` y `functions.R`), y ha detectado los paquetes que necesita nuestro código para ejecutarse (puedes consultar las dependencias de tu proyecto usando `renv::dependencies()`). Por ejemplo, si `main.R` incluye `library(dplyr)` o `dplyr::mutate()`, detectará el paquete dplyr como una dependencia.
+
+A continuación, renv ha instalado todas los paquetes necesarios en `renv/library/`. Si comparas esa carpeta con el directorio mostrado en `.libPaths()` (como hicimos hace un momento), verás que ambas carpetas son muy parecidas. Eso es porque ahora R buscará los paquetes que necesites en esa carpeta, y no en la "biblioteca global" de paquetes de R. Esa es la magia de renv: podrás instalar y actualizar paquetes de R de forma independiente para cada uno de tus proyectos. Para instalar nuevos paquetes deberás hacerlo usando la función `renv::install()`. Por ejemplo:
+
+```r
+renv::install("tidyr")
+```
+
+Esta función es el equivalente a `install.packages()` en renv. esta función asumirá que el paquete que quieres se encuentra en CRAN y será allí donde lo buscará. Si el paquete que quieres instalar se eneucntra alojado en otro sitio (o quieres instalar una versión experimental del mismo, en un repositorio de GitHub, por ejemplo), puedes indicar el repositorio de la siguiente forma:
+
+```r
+renv::install("crsh/papaja")
+```
+
+Si echas un vistazo a `renv.lock` verás que incluye una lista de todas las dependencias de tu proyecto, en un formato un poco raro, con muchos paréntesis. No necesitas entender este archivo, sólo que sigue un formato parecido al que usan otros leguajes de programación para hacer lo mismo. Es el equivalente al archivo `package-lock.json` de un proyecto de JavaScript o al archivo `Manifest.toml` de un proyecto de Julia. Si te fijas, verás que simplemente incluye información mínima para cada paquete: nombre, versión, origen y un código que lo identifica. Por ejemplo, el `renv.lock` de nuestro proyecto incluye lo siguiente:
+
+```json
+{
+  "R": {
+    "Version": "4.0.4",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cran.rstudio.com"
+      }
+    ]
+  },
+  "Packages": {
+    "dplyr": {
+      "Package": "dplyr",
+      "Version": "1.0.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ef47665e64228a17609d6df877bf86f2"
+    },
+    "papaja": {
+      "Package": "papaja",
+      "Version": "0.1.0.9997",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "crsh",
+      "RemoteRepo": "papaja",
+      "RemoteRef": "master",
+      "RemoteSha": "a231c3628ccf24359cc17f11a5bbc743e3fed920",
+      "Remotes": "tidymodels/broom",
+      "Hash": "3df0637229690f807616c46d3ff77113"
+    },
+    "tidyr": {
+      "Package": "tidyr",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d8b95b7fee945d7da6888cf7eb71a49c"
+    },
+  }
+}
+```
+
+Una ventaja enorme de usar renv es que si descargas o copias y pegas esta carpeta en un ordenador diferente (en el que posiblemente tengas una colección de paquetes diferente a la del ordenador donde trabajaste con el proyecto por última vez), **renv podrá consultar este archivo para instalar por tí los paquetes necesarios en sus versiones correspondientes**. Esto se puede hacer usando el comando:
+
+```r
+renv::restore()
+```
+
+***Importante***: cuando instales nuevos paquetes usando `renv::install()`, el archivo `renv.lock` no se actualizará de forma automática. Para incluir los nuevos paquetes en este archivo, tendremos que usar el siguiente comando:
+
+```r
+renv::snapshot()
+```
+
+Como podrás imaginar, poder instalar los paquetes que necesita un proyecto en su versión adecuada resuelve uno de los problemas más frecuentes que amenazan la **reproducibilidad computacional** de nuestros proyectos.
+
+
+# Conclusiones
+
+Te recomiendo empezar a usar renv en algún proyecto"de juguete" con el que puedas experiumentar, e ir poco a poco incorporando esta rutina en tus proyectos por el bien de tu salud mental y de la de les demás. :smile:
+
+
+
+
+
