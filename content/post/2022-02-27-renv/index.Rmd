@@ -14,7 +14,7 @@ images: ~
 ---
 
 
-A veces necesitamos instalar versiones diferentes del mismo paquete de R en proyectos diferentes. El paquete **{renv}** nos permite **almacenar los paquetes de R de cada proyecto de forma independiente**, evitando posibles conflictos entre proyectos. De paso, incrementará la **reproducibilidad computacional** de nuestro código.
+> A veces necesitamos instalar versiones diferentes del mismo paquete de R en proyectos diferentes. El paquete **{renv}** nos permite **almacenar los paquetes de R de cada proyecto de forma independiente**, evitando posibles conflictos entre proyectos. De paso, incrementará la **reproducibilidad computacional** de nuestro código.
 
 
 ![](/img/containers.jpg)

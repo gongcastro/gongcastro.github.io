@@ -15,7 +15,7 @@
       
       <guid>http://gongcastro.github.io/2022/02/27/renv/</guid>
       <description>A veces necesitamos instalar versiones diferentes del mismo paquete de R en proyectos diferentes. El paquete {renv} nos permite almacenar los paquetes de R de cada proyecto de forma independiente, evitando posibles conflictos entre proyectos. De paso, incrementará la reproducibilidad computacional de nuestro código.
-El problemaPonte en la siguiente situación: tienes entre manos un proyecto de R que necesita varios paquetes. Cada uno de estos paquetes depende, a su vez, de terceros paquetes.</description>
+El problemaPonte en la siguiente situación: tienes entre manos un proyecto de R que necesita varios paquetes. Cada uno de estos paquetes depende, a su vez, de terceros paquetes.</description>
     </item>
     
     <item>
