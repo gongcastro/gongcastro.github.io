@@ -15,7 +15,7 @@ title: CV
 
 October 2018 - Present
 
-**PhD, Biomedecine**; Pompeu Fabra University (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
+**PhD, Biomedicine**; Pompeu Fabra University (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
 
 October 2017 - July 2018
 

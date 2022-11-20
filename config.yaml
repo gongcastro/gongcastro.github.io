@@ -61,6 +61,8 @@ params:
       url: https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro
     - name: twitch
       url: https://www.twitch.tv/gongcastro
+    - name: mastodon
+      url: https://fediscience.org/@gongcastro
   themeColor: "#fcba03"
   highlightjsVersion: "11.3.1"
   highlightjsLang: ["r", "yaml", "julia", "bash", "python"]
@@ -79,8 +81,9 @@ params:
 languages:
   en:
     copyright: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
-    subtitle: "Developmental sycholinguistics and R"
+    subtitle: "Developmental psycholinguistics and R"
     weight: 1
+    mastodon-validation: <a rel="me" href="https://fediscience.org/@gongcastro"></a>
   es:
     copyright: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
     subtitle: "Psicolingüística evolutiva y R"
