@@ -30,7 +30,7 @@ $teal:    #20c997 !default;
 $cyan:    #6cc3d5 !default;
 $lightsalmon: #ffa07a !default;
 
-$primary:       $gray-400 !default;
+$primary:       $gray-200 !default;
 $secondary:     $lightsalmon !default;
 $success:       $green !default;
 $info:          $cyan !default;
@@ -42,12 +42,10 @@ $dark:          $gray-800 !default;
 $min-contrast-ratio:   1.45 !default;
 
 // Body
-
 $body-color:                $black !default;
 $color-contrast-dark:       $body-color !default; // Prefer $body-color over $black inside color-contrast()
 
 // Components
-
 $border-radius:               .4rem !default;
 $border-radius-lg:            .6rem !default;
 $border-radius-sm:            .3rem !default;
@@ -79,7 +77,7 @@ $table-bg-scale:              0 !default;
 
 // Dropdowns
 $dropdown-link-hover-color:         $black !default;
-$dropdown-link-hover-bg:            $secondary !default;
+$dropdown-link-hover-bg:            $black !default;
 
 // Navbar
 $navbar-light-color:                $black !default;
@@ -87,18 +85,17 @@ $navbar-light-hover-color:          $black !default;
 $navbar-light-active-color:         $black !default;
 $navbar-light-disabled-color:       $black !default;
 
-
 // Pagination
-$pagination-color:                  $white !default;
+$pagination-color:                  $black !default;
 $pagination-bg:                     $primary !default;
 $pagination-border-color:           $primary !default;
-$pagination-hover-color:            $white !default;
-$pagination-hover-bg:               $secondary !default;
+$pagination-hover-color:            $black !default;
+$pagination-hover-bg:               $black !default;
 $pagination-hover-border-color:     $pagination-hover-bg !default;
-$pagination-active-bg:              $secondary !default;
+$pagination-active-bg:              $black !default;
 $pagination-active-border-color:    $pagination-active-bg !default;
-$pagination-disabled-color:         $white !default;
-$pagination-disabled-bg:            #cce8e0 !default;
+$pagination-disabled-color:         $black !default;
+$pagination-disabled-bg:            $black !default;
 $pagination-disabled-border-color:  $pagination-disabled-bg !default;
 
 // Alerts
@@ -109,7 +106,7 @@ $alert-bg-scale:                    0 !default;
 $breadcrumb-padding-y:              .375rem !default;
 $breadcrumb-padding-x:              .75rem !default;
 $breadcrumb-bg:                     $primary !default;
-$breadcrumb-divider-color:          $white !default;
+$breadcrumb-divider-color:          $black !default;
 $breadcrumb-active-color:           $breadcrumb-divider-color !default;
 $breadcrumb-border-radius:          .25rem !default;
 
@@ -133,7 +130,23 @@ p.caption {
 .navbar {
   font-family: $headings-font-family;
   font-weight: bold;
-  color: black;
+  color: $black;
+}
+
+.navbar-title {
+    color: $black;
+}
+
+.menu-text {
+    color: $black;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: $black;
+}
+
+a {
+  color: #0314fc;
 }
 
 .bg-dark {
@@ -165,7 +178,7 @@ legend {
   }
 
   a:hover {
-    color: $white;
+    color: $black;
     text-decoration: none;
   }
 }

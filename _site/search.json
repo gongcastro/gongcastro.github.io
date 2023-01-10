@@ -4,14 +4,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I am a PhD student at the Center for Brain and Cognition, at Universitat Pompeu Fabra (Barcelona, Spain). I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. Learning new things about programming languages brings me joy. I mainly use Twitter for sharing research outputs, programming tips or data visualisations. Don’t hesitate to get in touch on Twitter ((gongcastro?)) or at gonzalo.garciadecastro@upf.edu!"
+    "text": "I am a PhD student at the Center for Brain and Cognition, at Universitat Pompeu Fabra (Barcelona, Spain). I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. Learning new things about programming languages brings me joy. I mainly use Twitter for sharing research outputs, programming tips or data visualisations. Don’t hesitate to get in touch on Twitter (@gongcastro) or at gonzalo.garciadecastro@upf.edu!"
   },
   {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "A primer on Mixed-Effects Models: Theory and practice\n\n\n\n\n\nSlides from a tutorial on mixed-effects models I presented to my research group.\n\n\n\n\n\n\nMar 31, 2020\n\n\n\n\n\n\n  \n\n\n\n\nHow similar is the word “mask” across languages?\n\n\n\n\n\nUsing the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word mask across multiple languages.\n\n\n\n\n\n\nNov 20, 2020\n\n\n\n\n\n\n  \n\n\n\n\nImporting data from multiple files simultaneously in R\n\n\n\n\n\nAn comparison between base R and Tidyverse methods for importing data from multiple files\n\n\n\n\n\n\nJul 5, 2020\n\n\n\n\n\n\n  \n\n\n\n\nrenv (o cómo usar paquetes de R sin ataques de pánico)\n\n\n\n\n\nrenv es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aqui resumo para qué se utiliza y cómo funciona.\n\n\n\n\n\n\nFeb 27, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "A primer on Mixed-Effects Models: Theory and practice\n\n\n\n\n\nSlides from a tutorial on mixed-effects models I presented to my research group.\n\n\n\n\n\n\nMar 31, 2020\n\n\n\n\n\n\n  \n\n\n\n\nHow similar is the word “mask” across languages?\n\n\n\n\n\nUsing the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word mask across multiple languages.\n\n\n\n\n\n\nNov 20, 2020\n\n\n\n\n\n\n  \n\n\n\n\nImporting data from multiple files simultaneously in R\n\n\n\n\n\nA comparison between base R and Tidyverse methods for importing data from multiple files\n\n\n\n\n\n\nJul 5, 2020\n\n\n\n\n\n\n  \n\n\n\n\nrenv (o cómo usar paquetes de R sin ataques de pánico)\n\n\n\n\n\nrenv es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aqui resumo para qué se utiliza y cómo funciona.\n\n\n\n\n\n\nFeb 27, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "cv.html",
@@ -65,9 +65,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "¡Hola!",
+    "title": "Language, reproducibility, and R",
     "section": "",
-    "text": "A primer on Mixed-Effects Models: Theory and practice\n\n\n\n\n\nSlides from a tutorial on mixed-effects models I presented to my research group.\n\n\n\n\n\n\nMar 31, 2020\n\n\n\n\n\n\n  \n\n\n\n\nHow similar is the word “mask” across languages?\n\n\n\n\n\nUsing the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word mask across multiple languages.\n\n\n\n\n\n\nNov 20, 2020\n\n\n\n\n\n\n  \n\n\n\n\nImporting data from multiple files simultaneously in R\n\n\n\n\n\nAn comparison between base R and Tidyverse methods for importing data from multiple files\n\n\n\n\n\n\nJul 5, 2020\n\n\n\n\n\n\n  \n\n\n\n\nrenv (o cómo usar paquetes de R sin ataques de pánico)\n\n\n\n\n\nrenv es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aqui resumo para qué se utiliza y cómo funciona.\n\n\n\n\n\n\nFeb 27, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "A primer on Mixed-Effects Models: Theory and practice\n\n\n\n\n\nSlides from a tutorial on mixed-effects models I presented to my research group.\n\n\n\n\n\n\nMar 31, 2020\n\n\n\n\n\n\n  \n\n\n\n\nHow similar is the word “mask” across languages?\n\n\n\n\n\nUsing the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word mask across multiple languages.\n\n\n\n\n\n\nNov 20, 2020\n\n\n\n\n\n\n  \n\n\n\n\nImporting data from multiple files simultaneously in R\n\n\n\n\n\nA comparison between base R and Tidyverse methods for importing data from multiple files\n\n\n\n\n\n\nJul 5, 2020\n\n\n\n\n\n\n  \n\n\n\n\nrenv (o cómo usar paquetes de R sin ataques de pánico)\n\n\n\n\n\nrenv es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aqui resumo para qué se utiliza y cómo funciona.\n\n\n\n\n\n\nFeb 27, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/importing-data-multiple/importing-data-multiple.html#tldr",

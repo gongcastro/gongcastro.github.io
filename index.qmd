@@ -1,10 +1,10 @@
 ---
-title: "¡Hola!"
+title: "**Language, reproducibility, and R**"
 pagetitle: "{{< meta website.title >}}"
 title-block-banner: "lightsalmon"
 
 links:
-  - icon: twitter
+  - icon: twitter text-danger
     text: twitter
     href: https://twitter.com/gongcastro
   - icon: github

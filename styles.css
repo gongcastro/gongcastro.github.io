@@ -16,6 +16,11 @@ body {
     color: black;
 }
 
+.nav-link {
+    color: black !important;
+}
+
+
 .navbar a:hover {
   border-bottom: 3px solid salmon;
 }

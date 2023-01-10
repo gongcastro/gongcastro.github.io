@@ -1,6 +1,6 @@
 ---
 title: Importing data from multiple files simultaneously in R
-description: "An comparison between base R and Tidyverse methods for importing data from multiple files"
+description: "A comparison between base R and Tidyverse methods for importing data from multiple files"
 date: 2020-07-05
 image: traffic-jam.jpg
 echo: false
