@@ -1,6 +1,6 @@
 ---
 title: "**Language, reproducibility, and R**"
-pagetitle: "{{< meta website.title >}}"
+pagetitle: "Language, reproducibility, and R"
 title-block-banner: "lightsalmon"
 
 links:

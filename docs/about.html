@@ -9,7 +9,7 @@
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="Gonzalo Garcia-Castro’s personal website and blog">
 
-<title>Language, reproducibility, and R</title>
+<title>Gonzalo Garcia-Castro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -28,13 +28,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <link href="./assets/media/favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -55,42 +52,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<style>
-    .quarto-title-block .quarto-title-banner {
-      background: lightsalmon;
-    }
-    </style>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
@@ -105,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -122,11 +84,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="./index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
+    <a class="nav-link active" href="./about.html" aria-current="page">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -170,145 +132,49 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title"><strong>Language, reproducibility, and R</strong></h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<div class="quarto-about-solana column-body">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">About</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header> <div class="about-links">
+  <a href="https://twitter.com/gongcastro" class="about-link">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">Twitter</span>
+  </a>
+  <a href="https://github.com/gongcastro" class="about-link">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+  <a href="https://fediscience.org/@gongcastro" class="about-link">
+    <i class="bi bi-mastodon"></i>
+     <span class="about-link-text">Mastodon</span>
+  </a>
+  <a href="https://www.linkedin.com/in/gongcastro/" class="about-link">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+</div>
+      <div class="about-contents"><main class="content" id="quarto-document-content">
+<p>I am a PhD student at the <a href="https://www.upf.edu/web/cbc">Center for Brain and Cognition</a>, at Universitat Pompeu Fabra (Barcelona, Spain). I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. Learning new things about programming languages brings me joy. I mainly use Twitter for sharing research outputs, programming tips or data visualisations. Don’t hesitate to get in touch on Twitter (<a href="https://twitter.com/gongcastro">@gongcastro</a>) or at <a href="mailto:gonzalo.garciadecastro@upf.edu">gonzalo.garciadecastro@upf.edu</a>!</p>
 
 
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1673371785526" data-listing-reading-time-sort="1.49">
-<div class="thumbnail">
-<p><a href="./posts/primer-linear-mixed-models/primer-linear-mixed-models.html"> <img src="./posts/primer-linear-mixed-models/laces.jpg" class="thumnail-image"> </a></p>
+</main></div>
+    </div>
+    <img src="assets/media/profile.jpg" class="about-image
+  rounded " style="width: 15em;">
+  </div>
 </div>
-<div class="body">
-<a href="./posts/primer-linear-mixed-models/primer-linear-mixed-models.html">
-<h3 class="no-anchor listing-title">
-A primer on Mixed-Effects Models: Theory and practice
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>Slides from a tutorial on mixed-effects models I presented to my research group.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/primer-linear-mixed-models/primer-linear-mixed-models.html">
-<div class="listing-date">
-Mar 31, 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1673371785471" data-listing-reading-time-sort="8.545">
-<div class="thumbnail">
-<p><a href="./posts/mask-similarity-across-languages/mask-similarity-across-languages.html"> <img src="./posts/mask-similarity-across-languages/masks-ort.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/mask-similarity-across-languages/mask-similarity-across-languages.html">
-<h3 class="no-anchor listing-title">
-How similar is the word “mask” across languages?
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word <em>mask</em> across multiple languages.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/mask-similarity-across-languages/mask-similarity-across-languages.html">
-<div class="listing-date">
-Nov 20, 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1673374271121" data-listing-reading-time-sort="10.715">
-<div class="thumbnail">
-<p><a href="./posts/importing-data-multiple/importing-data-multiple.html"> <img src="./posts/importing-data-multiple/traffic-jam.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/importing-data-multiple/importing-data-multiple.html">
-<h3 class="no-anchor listing-title">
-Importing data from multiple files simultaneously in R
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>A comparison between base R and Tidyverse methods for importing data from multiple files</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/importing-data-multiple/importing-data-multiple.html">
-<div class="listing-date">
-Jul 5, 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1673371785573" data-listing-reading-time-sort="6.97">
-<div class="thumbnail">
-<p><a href="./posts/renv-package/renv-package.html"> <img src="./posts/renv-package/containers.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/renv-package/renv-package.html">
-<h3 class="no-anchor listing-title">
-renv (o cómo usar paquetes de R sin ataques de pánico)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p><code>renv</code> es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aqui resumo para qué se utiliza y cómo funciona.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/renv-package/renv-package.html">
-<div class="listing-date">
-Feb 27, 2022
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -329,13 +195,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;

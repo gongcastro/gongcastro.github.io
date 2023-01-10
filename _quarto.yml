@@ -5,6 +5,7 @@ project:
     browser: true
     watch-inputs: true
     navigate: true
+  output-dir: docs
   render:
     - "*.qmd"
   resources:
