@@ -1,0 +1,22 @@
+---
+title: "¡Hola!"
+pagetitle: "{{< meta website.title >}}"
+title-block-banner: "lightsalmon"
+
+links:
+  - icon: twitter
+    text: twitter
+    href: https://twitter.com/gongcastro
+  - icon: github
+    text: Github
+    href: https://github.com/gongcastro
+  - icon: mastodon 
+    href: https://fediscience.org/@gongcastro
+    text: Mastodon
+  - icon: linkedin 
+    href: https://www.linkedin.com/in/gongcastro/
+    text: LinkedIn
+listing:
+  contents: posts
+---
+

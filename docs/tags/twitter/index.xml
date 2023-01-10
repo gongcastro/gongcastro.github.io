@@ -1,22 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>twitter on Gonzalo García-Castro</title>
-    <link>http://gongcastro.github.io/tags/twitter/</link>
-    <description>Recent content in twitter on Gonzalo García-Castro</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://gongcastro.github.io/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>@psicotuiterbot: Un bot de Twitter para Psicotuiter</title>
-      <link>http://gongcastro.github.io/2021/12/29/psicotuiterbot-un-bot-de-twitter-para-psicotuiter/</link>
-      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://gongcastro.github.io/2021/12/29/psicotuiterbot-un-bot-de-twitter-para-psicotuiter/</guid>
-      <description>TL;DR: He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON.
-Follow @psicotuiterbotTweets by psicotuiterbotLa comunidad de PsicotuiterPsicotuiter (aka.</description>
-    </item>
-    
-  </channel>
-</rss>

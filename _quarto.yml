@@ -1,0 +1,95 @@
+project:
+  type: website
+  preview: 
+    port: 5555
+    browser: true
+    watch-inputs: true
+    navigate: true
+  render:
+    - "*.qmd"
+  resources:
+    - "assets/**/**"
+    
+execute:
+  freeze: auto
+
+# metadata  
+pagetitle: "Gonzalo Garcia-Castro"
+description-meta: "Gonzalo Garcia-Castro's personal website and blog"
+author-meta: "Gonzalo Garcia-Castro"
+
+website:
+  title: "Gonzalo García-Castro"
+  description: "Gonzalo Garcia-Castro's personal website and blog"
+  image: "assets/media/wallpaper.jpg"
+  favicon: "assets/media/favicon.ico"
+  repo-url: https://github.com/gongcastro/gongcastro.github.io
+  repo-actions: [edit, issue]
+  search: false
+  
+  open-graph:
+    title: "Gonzalo Garcia-Castro"
+    description: "Gonzalo Garcia-Castro's personal website and blog"
+    image: "assets/media/wallpaper.jpg"
+
+  twitter-card: 
+    title: "Gonzalo Garcia-Castro"
+    card-style: summary_large_image
+    description: "Gonzalo Garcia-Castro's personal website and blog"
+    creator: "@gongcastro"
+    site: "@gongcastro"
+    image: "assets/media/wallpaper.jpg"
+    
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - cv.qmd
+      - blog.qmd
+    right: 
+      - icon: github
+        href: https://github.com/gongcastro
+        aria-label: GitHub
+      - icon: twitter 
+        href: https://twitter.com/gongcastro
+        aria-label: Twitter
+      - icon: mastodon 
+        href: https://fediscience.org/@gongcastro
+        aria-label: Mastodon
+      - icon: linkedin 
+        href: https://www.linkedin.com/in/gongcastro/
+        aria-label: LinkedIn
+      - icon: envelope
+        href: mailto:adamjnafa@gmail.com
+    
+    page-footer:
+      left: |
+        <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Gonzalo Garcia-Castro</span>
+        <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
+      center: |
+        <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
+      right: |
+        <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
+        <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-url >}})</span>
+
+format:
+  html:
+    theme:
+      - minty-modified.scss
+    css: styles.css
+    toc: true
+    citations-hover: true
+    code-link: true
+    code-block-bg: grey
+    highlight-style: monokai
+    code-fold: show
+    html-math-method: mathjax
+    linestretch: 1.25
+    
+# Bibliography settings
+bibliography: "assets/bib/references.bib"
+csl: "assets/bib/apa7.csl"
+
+

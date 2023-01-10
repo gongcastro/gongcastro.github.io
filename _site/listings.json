@@ -1,0 +1,20 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/primer-linear-mixed-models/primer-linear-mixed-models.html",
+      "/posts/mask-similarity-across-languages/mask-similarity-across-languages.html",
+      "/posts/importing-data-multiple/importing-data-multiple.html",
+      "/posts/renv-package/renv-package.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/primer-linear-mixed-models/primer-linear-mixed-models.html",
+      "/posts/mask-similarity-across-languages/mask-similarity-across-languages.html",
+      "/posts/importing-data-multiple/importing-data-multiple.html",
+      "/posts/renv-package/renv-package.html"
+    ]
+  }
+]
