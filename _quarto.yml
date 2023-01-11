@@ -43,6 +43,7 @@ website:
     
   navbar:
     background: primary
+    collapse: false
     left:
       - href: index.qmd
         text: Home
@@ -83,8 +84,8 @@ format:
     toc: true
     citations-hover: true
     code-link: true
-    code-block-bg: grey
-    highlight-style: monokai
+    code-block-bg: "#fcd8ca"
+    highlight-style: stackoverflow-light
     code-fold: show
     html-math-method: mathjax
     linestretch: 1.25

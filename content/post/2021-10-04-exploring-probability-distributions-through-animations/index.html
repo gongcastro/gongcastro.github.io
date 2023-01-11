@@ -1,0 +1,207 @@
+---
+title: Exploring probability distributions through animations in Julia
+author: Gonzalo Garcia-Castro
+date: '2021-10-04'
+slug: exploring-probability-distributions-through-animations-in-julia
+categories: []
+tags:
+  - julia
+  - statistics
+  - dataviz
+comments: no
+images: ~
+draft: false
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<blockquote>
+<p><strong><em>TLDR</em></strong>; visualising what different <strong>probability distributions</strong> look like under different parameters can be helpful when picking a likelihood function for you Bayesian analysis. I present some <strong>animations</strong> generated with Julia using Distributions.jl.</p>
+</blockquote>
+<p>In the last couple of years I went down the rabbit hole of <strong>Bayesian statistics</strong>. Although I’ve made considerable progress, as compared to where I started, I still (and will) struggle understand some basic concepts beyond some shallow, abstract idea about what they mean. One of the first challenges I encountered in my first steps was becoming aware of how many <strong>probability distributions</strong> there are, and the fact that one should pick one should carefully chose which one to use when trying to estimate some parameter.</p>
+<p>Ben Lambert’s excellent book <a href="https://www.amazon.co.uk/Students-Guide-Bayesian-Statistics/dp/1473916364/"><em>A Student’s Guide to Bayesian Statistics</em></a> offers a chart showing many of the most popular distributions, and how they relate to each other (pp. 145, see <em>Figure 1</em> below for a similar chart). They then describe each distributions very plain terms, which is to be grateful for (many introductory books get lost in the details when describing likelihood distributions). However, when the moment arrives to pick a distribution in practice, I still struggle to see the risks and benefits of using each distribution. Will it adequately cover the sampling space of my parameter? Can I parameterise it so it allocates most of the probability around the regions I consider more likely? Am I actually able to interpret the values of the parameters of the distribution and map them to my research question?</p>
+<div class="figure">
+<img src="/img/distributions.jpg" alt="" />
+<p class="caption"><strong>Figure 1</strong>. An incomplete but representative chart of the vavilable likelihood functions and their relationship</p>
+</div>
+<p>My first step to answer these questions is to explore <strong>what a given distribution looks like under different parameters</strong>. This might give us a hint on the range of values it covers and the “shape” of the likelihood function. As I mentioned in previous posts, I struggle to grasp statistical/mathematical concepts in absence of a good visualisation. I generated some animations in Julia using the <a href="https://juliastats.org/Distributions.jl/stable/"><strong>Distributions.jl</strong></a> package, which provides a substantial amount of implemented likelihood functions. The only reason I chose <strong>Julia</strong> is that I’m trying to learn it step by step and I found this silly project a nice opportunity to do so. You can see the code at the end of this article or on the accompanying <a href="https://github.com/gongcastro/animated-distributions">GitHub repository</a>. I posted this one Twitter (see below) and got a good response, so I decided to extend a bit the contents. Enjoy! :)</p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+When specifying priors for a Bayesian analysis, it's easy to get lost in the vast family of likelihood functions!<br><br>I generated some animations in <a href="https://twitter.com/hashtag/JuliaLang?src=hash&amp;ref_src=twsrc%5Etfw">#JuliaLang</a> <a href="https://twitter.com/JuliaLanguage?ref_src=twsrc%5Etfw"><span class="citation">@JuliaLanguage</span></a> to help me see how some distributions look like under different parameters (using Distributions.jl ). 🧵 <a href="https://t.co/8i1wces4oi">pic.twitter.com/8i1wces4oi</a>
+</p>
+— Gon García-Castro (<span class="citation">@gongcastro</span>) <a href="https://twitter.com/gongcastro/status/1433726224828882944?ref_src=twsrc%5Etfw">September 3, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div id="normal-distribution" class="section level2">
+<h2>Normal distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia</a></p>
+<p>Well, we all know this one. This is a <strong>continuous distribution that covers the whole range of real numbers</strong>. Why is it used so often? Because most data we find in real life are frequently quite plausible under a normal distribution. Critically, the normal distributions makes very few assumptions about the data we are trying to model. Why is it so? As Richard McElreath explains in <a href="https://xcelab.net/rm/statistical-rethinking/"><em>Statistical Rethinking</em></a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> (section 4.1), there are many ways a data generating mechanism might spit out normal data, even when each of the individual observations are not drawn from a normal distribution. This is because <strong>when the data are the result of adding (or multiplying), the resulting distribution tends to converge to a normal one</strong>. As McElreath points out, many phenomena we observe in nature is the result of <strong>adding multiple small factors together</strong> (e.g., someone´s height is the result of adding multiple genetic and environmental factors together). Basically, whenever you are not sure about what distribution suits your data better, the normal distribution might be a good first approximation.</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\big(\frac{x-\mu}{\sigma}\big)^2}
+\]</span></p>
+<p>Where <span class="math inline">\(f(x)\)</span> us the probability density function, is the standard deviation, and is the mean.</p>
+<div class="figure">
+<img src="/img/normal.gif" alt="" />
+<p class="caption"><strong>Figure 2</strong>. The normal distribution.</p>
+</div>
+</div>
+<div id="gamma-distribution" class="section level2">
+<h2>Gamma distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Gama_distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \frac{\lambda(\lambda x)^{\alpha - 1}  \;e^{-\lambda x}}{\Gamma(\alpha)}
+\]</span></p>
+<div class="figure">
+<img src="/img/gamma.gif" alt="" />
+<p class="caption"><strong>Figure 3</strong>. The Gamma distribution.</p>
+</div>
+</div>
+<div id="inverse-gamma-distribution" class="section level2">
+<h2>Inverse-gamma distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Inverse-gamma_distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{-\alpha-1}  \;exp\Bigg(-\frac{\beta}{x}\Bigg)
+\]</span></p>
+<div class="figure">
+<img src="/img/inverse-gamma.gif" alt="" />
+<p class="caption"><strong>Figure 4</strong>. The inverse-gamma distribution.</p>
+</div>
+</div>
+<div id="exponential-distribution" class="section level2">
+<h2>Exponential distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Exponential_distribution">Wikipedia</a></p>
+<p>This distribution is continuous and cover only positive values. It places most of the likelihood around zero, which makes it very convenient for modelling small positive quantities such as small distances or time intervals or standard deviations. Its shape depends on only one parameter, <span class="math inline">\(\lambda\)</span>, which makes it simpler to parameterise (as compared to others like the Beta distribution). It has an inconvenient, though: it is a bit difficult to interpret what the value of this parameter means in the context of our research question (i.e., theory). While one can interpret the mean and standard deviation of the normal distribution as where the most likely value of the distribution lies and its associated uncertainty, respectively, the <span class="math inline">\(\lambda\)</span> parameter is not that trial to interpret: it doesn’t relate to the most likely values of the distribution linearly, and it cannot be interpreted a a rate or any other occurrence metric. What works for me is to take a look at the resulting distribution and see whether it captures my expectations about the data I’m about to observe.</p>
+<p><span class="math display">\[
+f(x) = \lambda e^{-\lambda x}
+\]</span></p>
+<div class="figure">
+<img src="/img/exponential.gif" alt="" />
+<p class="caption"><strong>Figure 5</strong>. The exponential distribution.</p>
+</div>
+</div>
+<div id="student-t-distribution" class="section level2">
+<h2>Student-<em>t</em> distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Student&#39;s_t-distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \frac{\Gamma((\upsilon+1)/2)}{\sqrt{\upsilon \pi}  \;\Gamma (\upsilon /2)}
+\]</span></p>
+<div class="figure">
+<img src="/img/t-student.gif" alt="" />
+<p class="caption"><strong>Figure 6</strong>. The Student’s <em>t</em> distribution.</p>
+</div>
+</div>
+<div id="beta-distribution" class="section level2">
+<h2>Beta distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Beta_distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \frac{x^{\alpha-1} \;(1-x) \;x^{\beta - 1}}{B(\alpha, \beta)}
+\]</span></p>
+<div class="figure">
+<img src="/img/beta.gif" alt="" />
+<p class="caption"><strong>Figure 7</strong>. The Beta distribution.</p>
+</div>
+</div>
+<div id="cauchy-distribution" class="section level2">
+<h2>Cauchy distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Cauchy_distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\pi \gamma \Bigg[1 + \big( \frac{x-x_0}{\gamma} \big)^2 \Bigg]}
+\]</span></p>
+<div class="figure">
+<img src="/img/cauchy.gif" alt="" />
+<p class="caption"><strong>Figure 8</strong>. The Cauchy distribution.</p>
+</div>
+</div>
+<div id="frechet-distribution" class="section level2">
+<h2>Frechet distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Frechet_distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \alpha \; x^{-1-\alpha} e^{-x^{-\alpha}}
+\]</span></p>
+<div class="figure">
+<img src="/img/frechet.gif" alt="" />
+<p class="caption"><strong>Figure 9</strong>. The Frechet distribution.</p>
+</div>
+</div>
+<div id="pareto-distribution" class="section level2">
+<h2>Pareto distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Pareto_distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \frac{\alpha  \;x_{m}^{\alpha}}{x^{\alpha+1}}  \;\text{for}  \; x &gt; x_m
+\]</span></p>
+<div class="figure">
+<img src="/img/pareto.gif" alt="" />
+<p class="caption"><strong>Figure 10</strong>. The pareto distribution.</p>
+</div>
+</div>
+<div id="weibull-distribution" class="section level2">
+<h2>Weibull distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Weibull_distribution">Wikipedia</a></p>
+<p><span class="math display">\[
+f(x) = \lambda \alpha(\lambda x)^{\alpha-1} \; e^{-(\lambda x)^{\alpha}}
+\]</span></p>
+<div class="figure">
+<img src="/img/weibull.gif" alt="" />
+<p class="caption"><strong>Figure 11</strong>. The Weibull distribution.</p>
+</div>
+</div>
+<div id="tri-weight-distribution" class="section level2">
+<h2>Tri-weight distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Tri-weight_distribution">Wikipedia</a></p>
+<div class="figure">
+<img src="/img/triweight.gif" alt="" />
+<p class="caption"><strong>Figure 11</strong>. The tri-weight distribution.</p>
+</div>
+</div>
+<div id="rayleigh-distribution" class="section level2">
+<h2>Rayleigh distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia</a></p>
+<p>Similar to Gamma or Poisson, the Rayleigh likelihood function covers all positive values and relies on only one parameter, <span class="math inline">\(\sigma\)</span>, to determine its shape and location. Lower values of <span class="math inline">\(\sigma\)</span> make the distribution lie closer to zero and be less disperse. Despite its seemingly less interesting appearance, this distributions is extensively used for modelling <strong>vibrational data</strong> such as water displacement, assessing the quality of railroads, or analysing MRI data<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p><span class="math display">\[
+f(x) = \frac{x}{\sigma^2} \; e^{-\frac{x^2}{2\sigma^2}}
+\]</span></p>
+<div class="figure">
+<img src="/img/rayleigh.gif" alt="" />
+<p class="caption"><strong>Figure 12</strong>. The Rayleigh distribution.</p>
+</div>
+</div>
+<div id="wigner-semi-circle-distribution" class="section level2">
+<h2>Wigner semi-circle distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia</a></p>
+<p>This distribution is, well, a semicircle when <span class="math inline">\(R = 1\)</span>, were <span class="math inline">\(R\)</span> is the radius of the semi-circle. All values of the sampling space outside the [-R, R] interval have zero probability. I can’t say much more than that. I have no idea why this distribution even exists, and I have struggled to find documentation about it in the reasonably long period of time I searched for it. I suspect this distribution might be useful for geo-spatial modelling, where one wants to actually model the shape of an object. Otherwise, I’m lost.</p>
+<p><span class="math display">\[
+f(x) = \frac{2}{\pi R^2} \; \sqrt{R^2 - x^2} \\ \text{where} \; \pi \; \text{is the actual number } \pi \text{, not a parameter}
+\]</span></p>
+<div class="figure">
+<img src="/img/semi-circle.gif" alt="" />
+<p class="caption"><strong>Figure 13</strong>. Wiener’s semicircle distribution.</p>
+</div>
+<p>Interestingly, this distribution can be considered a particular case<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> of the <strong>Beta distribution</strong>, so that where <span class="math inline">\(\alpha = \beta = 3/2\)</span>, then <span class="math inline">\(X = 2RY – R\)</span>.</p>
+</div>
+<div id="triangular-distribution" class="section level2">
+<h2>Triangular distribution</h2>
+<p><a href="https://en.wikipedia.org/wiki/Triangular_distribution">Wikipedia</a></p>
+<p>As a curiosity, there is such thing as a triangular distribution. It does look triangular, as can be seen in the Wikipedia article linked above. This distribution is not implemented yet in Distributions.jl. As with the semi-circle distribution, I struggle to see any context where this distribution might be useful beyond geo-spatial modelling.</p>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+    0  &amp; \text{for}  \; x &lt; \alpha, \\
+    \frac{2(x-a)}{(b-a)(c-a)} &amp; \text{for} \; a \leq x &lt; c, \\
+    \frac{2}{b-a} &amp;  \text{for} \; x = c, \\
+    \frac{2(b-x)}{(b-a)(b-c)} &amp; \text{for} \; c &lt; x \leq b, \\
+    0 &amp; \text{for} \; b &lt; x
+  \end{cases}
+\]</span></p>
+</div>
+<div id="some-final-remarks" class="section level2">
+<h2>Some final remarks</h2>
+<p>Some well-known distributions are missing (e.g., Dirichlet, Wishart, Beta-binomial). This is because they have not yet been implemented in Distributions.jl, and I sadly lack the knowledge to contribute on this. Still feel free to explore the Wikipedia or other resources to get an idea of how these distributions look like in what contexts they are useful!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>You can also take a look a his excellent lecture on his <a href="https://www.youtube.com/channel/UCNJK6_DZvcMqNSzQdEkzvzA">YouTube channel</a>, which cover much of the contents in the book!<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>See <a href="https://www.sciencedirect.com/topics/engineering/rayleigh-distribution" class="uri">https://www.sciencedirect.com/topics/engineering/rayleigh-distribution</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>See <a href="https://handwiki.org/wiki/Wigner_semicircle_distribution" class="uri">https://handwiki.org/wiki/Wigner_semicircle_distribution</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
