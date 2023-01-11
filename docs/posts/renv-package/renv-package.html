@@ -207,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/posts/renv-package/renv-package.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Este problema se extiende al caso de que necesitemos versiones diferentes del mismo paquete en proyectos de R diferentes en los que estamos trabajando de forma simultánea en el mismo ordenador. Para hacerlos funcionar necesitaríamos instalar de nuevo la versión correspondiente del mismo paquete cada vez que cambiemos de proyecto.</p>
 </section>
-<section id="instalando-paquetes-de-r" class="level1">
+<section id="instalando-paquetes-de-r" class="level1 page-columns page-full">
 <h1>Instalando paquetes de R</h1>
 <p>En resumidas cuentas, cada vez que instalamos o actualizamos un paquete de R, lo hacemos para todos nuestros proyectos de R de forma <em>global</em>. Esto se debe a que por defecto R busca todos los paquete de R en la misma carpeta. Para ver dónde instala R tus paquetes puedes ejecutar el siguiente comando:</p>
 <pre><code>.libPaths()</code></pre>
@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">Así es como tienes tu carpeta de paquetes de R. Que lo sé yo. Que te he visto. Vergüenza me daría a mí.</figcaption><p></p>
 </figure>
 </div>
-<p>Hemos visto que esto no es ideal. ¿No será mejor tener una carpeta diferente para cada proyecto en la que instalamos sus paquetes de forma independente, sin afectar a los paquetes de otros proyectos? Sí. De hecho este procedimiento es estándar en otros lenguajes de programación como JavaScript<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> o Julia <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Existe un paquete de R que nos permite hacer esto: <a href="https://github.com/rstudio/renv/"><strong>renv</strong></a>. Veamos cómo funciona.</p>
+<div class="page-columns page-full"><p>Hemos visto que esto no es ideal. ¿No será mejor tener una carpeta diferente para cada proyecto en la que instalamos sus paquetes de forma independente, sin afectar a los paquetes de otros proyectos? Sí. De hecho este procedimiento es estándar en otros lenguajes de programación como JavaScript<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> o Julia <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Existe un paquete de R que nos permite hacer esto: <a href="https://github.com/rstudio/renv/"><strong>renv</strong></a>. Veamos cómo funciona.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Echa un vistazo a este post de Nikola Đuza: <a href="https://blog.appsignal.com/2020/04/09/ride-down-the-javascript-dependency-hell.html">Ride Down Into JavaScript Dependency Hell</a></p></li><li id="fn2"><p><sup>2</sup>&nbsp;Echa un vistazo a este post de Bogumił Kamiński: <a href="https://bkamins.github.io/julialang/2020/05/18/project-workflow.html">My practices for managing project dependencies in Julia</a></p></li></div></div>
 </section>
 <section id="usando-renv" class="level1">
 <h1>Usando renv</h1>
@@ -373,13 +373,7 @@ renv.lock</code></pre>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Echa un vistazo a este post de Nikola Đuza: <a href="https://blog.appsignal.com/2020/04/09/ride-down-the-javascript-dependency-hell.html">Ride Down Into JavaScript Dependency Hell</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Echa un vistazo a este post de Bogumił Kamiński: <a href="https://bkamins.github.io/julialang/2020/05/18/project-workflow.html">My practices for managing project dependencies in Julia</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

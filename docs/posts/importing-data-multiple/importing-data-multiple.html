@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/posts/importing-data-multiple/importing-data-multiple.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -190,10 +190,10 @@ ul.task-list li input[type="checkbox"] {
 <p>We need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using <code>purrr::map</code> in combination with <code>do.call</code> or <code>dplyr::bind_rows</code> is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to <em>for loops</em> (~220ms) or using <code>lapply</code> (~123 ms). <code>data.table::fread</code> is the fastest function for importing data. Importing TXT files is slightly faster than importing CSV files.</p>
 </blockquote>
 </section>
-<section id="why-this-post" class="level2">
+<section id="why-this-post" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="why-this-post">Why this post</h2>
 <p>To analyse data in any programming environment, one must first import some data. Sometimes, the data we want to analyse are distributed across several files in the same folder. I work with eye-tracking data from toddlers. This means that I work with multiple files that have many rows. At 120 Hz sampling frequency, we take ~8.33 samples per second. A session for one participants can take up to 10 minutes. So these files are somewhat big. These data also tend to be messy, requiring a lot of preprocessing. This means that I need to import the same large files many times during the same R session when wrangling my way through the data, which takes a few seconds. After some iterations, it can be annoying. I have decided to invest all my lost time into analysing what method for importing and merging large files is the fastest in R so that the universe and I are even again.</p>
-<p>Below I provide several options for importing data from the different files, using base R and tidyverse, among other tools. I will compare how long it takes to import and merge data using each method under different circumstances. You can find the whole code here in case you want to take a look, reproduce it or play with it<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="page-columns page-full"><p>Below I provide several options for importing data from the different files, using base R and tidyverse, among other tools. I will compare how long it takes to import and merge data using each method under different circumstances. You can find the whole code here in case you want to take a look, reproduce it or play with it<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Ironically, this code is super inefficient and messy. It takes ages to run, and has been written by copy-pasting multiple times. I didn’t feel like doing anything more elegant. Also, I don’t know how. Help yourself.</p></li></div></div>
 </section>
 <section id="how-can-i-import-large-files-and-merge-them" class="level2">
 <h2 class="anchored" data-anchor-id="how-can-i-import-large-files-and-merge-them">How can I import large files and merge them?</h2>
@@ -889,12 +889,7 @@ loaded via a namespace (and not attached):
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Ironically, this code is super inefficient and messy. It takes ages to run, and has been written by copy-pasting multiple times. I didn’t feel like doing anything more elegant. Also, I don’t know how. Help yourself.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

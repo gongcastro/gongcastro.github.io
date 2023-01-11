@@ -4,6 +4,8 @@
     "items": [
       "/posts/renv-package/renv-package.html",
       "/posts/psicotuiterbot/psicotuiterbot.html",
+      "/posts/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html",
+      "/posts/visualising-polynomial-regression/visualising-polynomial-regression.html",
       "/posts/mask-similarity-across-languages/mask-similarity-across-languages.html",
       "/posts/importing-data-multiple/importing-data-multiple.html",
       "/posts/primer-linear-mixed-models/primer-linear-mixed-models.html"
@@ -14,6 +16,9 @@
     "items": [
       "/posts/renv-package/renv-package.html",
       "/posts/psicotuiterbot/psicotuiterbot.html",
+      "/posts/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html",
+      "/posts/animated-distributions/animated-distributions.html",
+      "/posts/visualising-polynomial-regression/visualising-polynomial-regression.html",
       "/posts/mask-similarity-across-languages/mask-similarity-across-languages.html",
       "/posts/importing-data-multiple/importing-data-multiple.html",
       "/posts/primer-linear-mixed-models/primer-linear-mixed-models.html"

@@ -119,6 +119,11 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Inter&display=swap" !d
     @import url($web-font-path);
 }
 
+$web-font-path-mono: "https://fonts.googleapis.com/css2?family=Roboto+Mono&display" !default;
+
+@if $web-font-path-mono {
+    @import url($web-font-path-mono);
+}
 
 /* css styles */
 p.caption {
@@ -131,6 +136,7 @@ p.caption {
   font-family: $headings-font-family;
   font-weight: bold;
   color: $black;
+  border-bottom: 6px solid salmon;
 }
 
 .navbar-title {
@@ -143,6 +149,12 @@ p.caption {
 
 .nav.navbar-nav.navbar-right li a {
     color: $black;
+}
+
+
+
+.sourceCode {
+    font-family: Roboto Mono;   
 }
 
 a {

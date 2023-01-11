@@ -1,8 +1,4 @@
 ---
-title: "**Language, reproducibility, and R**"
-pagetitle: "Language, reproducibility, and R"
-title-block-banner: "lightsalmon"
-
 links:
   - icon: twitter text-danger
     text: twitter

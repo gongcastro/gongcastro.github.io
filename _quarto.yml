@@ -84,11 +84,13 @@ format:
     toc: true
     citations-hover: true
     code-link: true
-    code-block-bg: "#fcd8ca"
+    code-block-bg: "#e6e6e6"
     highlight-style: stackoverflow-light
     code-fold: show
     html-math-method: mathjax
     linestretch: 1.25
+    footnotes-hover: true
+    reference-location: margin
     
 # Bibliography settings
 bibliography: "assets/bib/references.bib"
