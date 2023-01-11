@@ -16,30 +16,30 @@ execute:
 
 # metadata  
 pagetitle: "Gonzalo Garcia-Castro"
-description-meta: "Gonzalo Garcia-Castro's personal website and blog"
+description-meta: "Language, stats, R"
 author-meta: "Gonzalo Garcia-Castro"
 
 website:
   title: "Gonzalo García-Castro"
-  description: "Gonzalo Garcia-Castro's personal website and blog"
-  image: "assets/media/wallpaper.jpg"
-  favicon: "assets/media/favicon.ico"
+  description: "Language, stats, R"
+  image: "/assets/media/wallpaper.jpg"
+  favicon: "/assets/media/favicon.ico"
   repo-url: https://github.com/gongcastro/gongcastro.github.io
   repo-actions: [edit, issue]
   search: false
   
   open-graph:
     title: "Gonzalo Garcia-Castro"
-    description: "Gonzalo Garcia-Castro's personal website and blog"
-    image: "assets/media/wallpaper.jpg"
+    description: "Language, stats, R"
+    image: "/assets/media/favicon.jpeg"
 
   twitter-card: 
     title: "Gonzalo Garcia-Castro"
-    card-style: summary_large_image
-    description: "Gonzalo Garcia-Castro's personal website and blog"
+    card-style: summary
+    description: "Language, stats, R"
     creator: "@gongcastro"
-    site: "@gongcastro"
-    image: "assets/media/wallpaper.jpg"
+    site: "@cbcUPF"
+    image: "assets/media/favicon.jpeg"
     
   navbar:
     background: primary
