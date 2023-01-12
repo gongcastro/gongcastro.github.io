@@ -18,26 +18,27 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$blue:    #007bff !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #ff7851 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffce67 !default;
-$green:   #56cc9d !default;
-$teal:    #20c997 !default;
-$cyan:    #6cc3d5 !default;
+$blue:        #007bff !default;
+$indigo:      #6610f2 !default;
+$purple:      #6f42c1 !default;
+$pink:        #e83e8c !default;
+$red:         #ff7851 !default;
+$orange:      #fd7e14 !default;
+$yellow:      #ffce67 !default;
+$green:       #56cc9d !default;
+$teal:        #20c997 !default;
+$cyan:        #6cc3d5 !default;
 $lightsalmon: #ffa07a !default;
+$salmon:      salmon  !default;
 
-$primary:       $gray-200 !default;
-$secondary:     $lightsalmon !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-800 !default;
+$primary:     $lightsalmon !default;
+$secondary:   $gray-200 !default;
+$success:     $green !default;
+$info:        $cyan !default;
+$warning:     $yellow !default;
+$danger:      $red !default;
+$light:       $gray-100 !default;
+$dark:        $gray-800 !default;
 
 $min-contrast-ratio:   1.45 !default;
 
@@ -84,6 +85,7 @@ $navbar-light-color:                $black !default;
 $navbar-light-hover-color:          $black !default;
 $navbar-light-active-color:         $black !default;
 $navbar-light-disabled-color:       $black !default;
+$navbar-light-bg:                   $white !default;
 
 // Pagination
 $pagination-color:                  $black !default;
@@ -136,9 +138,21 @@ p.caption {
   font-family: $headings-font-family;
   font-weight: bold;
   color: $black;
-  border-bottom: 6px solid salmon;
+  border-bottom: 6px solid $salmon;
+  background-color: $white;
 }
 
+.navbar-light .navbar-toggler-icon {
+  background-color: $lightsalmon;
+}
+// this is a white icon with 50% opacity
+.navbar-dark .navbar-toggler-icon {
+  background-color: $lightsalmon;
+}
+
+.navbar-collapse {
+    background-color: $secondary;
+}
 .navbar-title {
     color: $black;
 }
@@ -150,8 +164,6 @@ p.caption {
 .nav.navbar-nav.navbar-right li a {
     color: $black;
 }
-
-
 
 .sourceCode {
     font-family: Roboto Mono;   
@@ -262,4 +274,44 @@ p code:not(.sourceCode), li code:not(.sourceCode) {
 }
 
 
+body {
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  font-style: normal;
+  font-size: 13pt;
+  text-align: left;
+  font-family: Inter;
+  color: black
+}
+
+.navbar {
+    height: 100px;
+    color: black;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+
+.navbar a:hover {
+  border-bottom: 3px solid salmon;
+}
+
+.navbar a.active {
+  border-bottom: 3px solid salmon;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  border-bottom: 3px solid transparent;
+}
 
