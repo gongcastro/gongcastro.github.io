@@ -26,8 +26,7 @@ website:
   favicon: "/assets/media/favicon.ico"
   repo-url: https://github.com/gongcastro/gongcastro.github.io
   repo-actions: [edit, issue]
-  search: false
-  
+
   open-graph:
     title: "Gonzalo Garcia-Castro"
     description: "Language, stats, R"
@@ -43,7 +42,6 @@ website:
     
   navbar:
     background: primary
-    collapse: false
     left:
       - href: index.qmd
         text: Home
