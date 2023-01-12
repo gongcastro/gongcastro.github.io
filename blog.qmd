@@ -4,6 +4,7 @@ listing:
   contents:
     - posts
     - "!posts/animated-distributions"
+  categories: true
   sort:
     - "date desc"
 ---

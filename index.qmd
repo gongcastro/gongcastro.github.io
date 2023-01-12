@@ -1,4 +1,6 @@
 ---
+title: "Language, statistics, R"
+title-block-banner: false
 links:
   - icon: twitter text-danger
     text: twitter
@@ -12,9 +14,19 @@ links:
   - icon: linkedin 
     href: https://www.linkedin.com/in/gongcastro/
     text: LinkedIn
+
 listing:
   contents: posts
+  type: grid
   sort:
     - "date desc"
+toc: false
 ---
 
+<br>
+
+::: {.center}
+
+## Blog
+
+:::
