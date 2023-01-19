@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Gonzalo Garcia-Castro">
+<meta name="description" content="Language, stats, R">
+<title>Gonzalo Garcia-Castro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//assets/media/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Gonzalo Garcia-Castro">
+<meta property="og:description" content="Language, stats, R">
+<meta property="og:image" content="/assets/media/favicon.jpeg">
+<meta property="og:site-name" content="Gonzalo García-Castro">
+<meta name="twitter:title" content="Gonzalo Garcia-Castro">
+<meta name="twitter:description" content="Language, stats, R">
+<meta name="twitter:image" content="../../assets/media/favicon.jpeg">
+<meta name="twitter:creator" content="@gongcastro">
+<meta name="twitter:site" content="@cbcUPF">
+<meta name="twitter:card" content="summary">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Gonzalo García-Castro</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gongcastro"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/gongcastro"><i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fediscience.org/@gongcastro"><i class="bi bi-mastodon" role="img" aria-label="Mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/gongcastro/"><i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:adamjnafa@gmail.com"><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#the-logistic-function" id="toc-the-logistic-function" class="nav-link active" data-scroll-target="#the-logistic-function">The logistic function</a></li>
+  <li><a href="#the-logit-function" id="toc-the-logit-function" class="nav-link" data-scroll-target="#the-logit-function">The logit function</a></li>
+  <li><a href="#our-dataset" id="toc-our-dataset" class="nav-link" data-scroll-target="#our-dataset">Our dataset</a></li>
+  <li><a href="#fitting-the-model" id="toc-fitting-the-model" class="nav-link" data-scroll-target="#fitting-the-model">Fitting the model</a></li>
+  <li><a href="#interpreting-the-coefficients" id="toc-interpreting-the-coefficients" class="nav-link" data-scroll-target="#interpreting-the-coefficients">Interpreting the coefficients</a></li>
+  <li>
+<a href="#the-probability-scale" id="toc-the-probability-scale" class="nav-link" data-scroll-target="#the-probability-scale">The probability scale</a>
+  <ul class="collapse">
+<li>
+<a href="#marginal-effects" id="toc-marginal-effects" class="nav-link" data-scroll-target="#marginal-effects">Marginal effects</a>
+  <ul class="collapse">
+<li><a href="#what-marginal-effects-translate-to-for-logistic-regression" id="toc-what-marginal-effects-translate-to-for-logistic-regression" class="nav-link" data-scroll-target="#what-marginal-effects-translate-to-for-logistic-regression">What marginal effects translate to for logistic regression</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
+  <li>
+<a href="#combining-our-findings" id="toc-combining-our-findings" class="nav-link" data-scroll-target="#combining-our-findings">Combining our findings</a>
+  <ul class="collapse">
+<li><a href="#centering-a-predictor" id="toc-centering-a-predictor" class="nav-link" data-scroll-target="#centering-a-predictor">Centering a predictor</a></li>
+  <li><a href="#standardising-a-predictor" id="toc-standardising-a-predictor" class="nav-link" data-scroll-target="#standardising-a-predictor">Standardising a predictor</a></li>
+  <li><a href="#multiple-predictors" id="toc-multiple-predictors" class="nav-link" data-scroll-target="#multiple-predictors">Multiple predictors</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/posts/logistic-regression/logistic-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Getting the most out of logistic regression</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mjskay.github.io/ggdist/">ggdist</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>                  axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.65</span><span class="op">)</span>,</span>
+<span>                  panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>              <span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">clrs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#003f5c"</span>, <span class="st">"#58508d"</span>, <span class="st">"#bc5090"</span>, <span class="st">"#ff6361"</span>, <span class="st">"#ffa600"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="the-logistic-function" class="level1"><h1>The logistic function</h1>
+<p>The logistic function is a mathematical function that defines how the values of an input variable <span class="math inline">\(x\)</span> that spans the range of real values (<span class="math inline">\(x \in (-\infty, +\infty)\)</span>) are associated to an output variable <span class="math inline">\(y\)</span> that spans an interval of real values contained between the <span class="math inline">\([0, 1]\)</span> interval or narrower. This function is monotonic: for all values of <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases for negative values of <span class="math inline">\(x\)</span> and increases for positive values of <span class="math inline">\(x\)</span>, or the other way around. This functions takes the general form:</p>
+<p><span class="math display">\[
+\text{logistic(x)} = \frac{L}{1 + e^{(-\beta \ · \ (x-x_0))}}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>
+<span class="math inline">\(L\)</span> is the upper limit of <span class="math inline">\(y\)</span>, which is commonly assumed to be 1, where <span class="math inline">\(L \in (0, +\infty)\)</span>)</li>
+<li>
+<span class="math inline">\(\beta\)</span> is a coefficient that indicates the steepness of the logistic curve, or how fast the curve grows, where <span class="math inline">\(\beta \in (-\infty, +\infty)\)</span>. Positive values of this coefficient lead to the logistic curve growing as <span class="math inline">\(x\)</span> gets more positive, to the logistic curve decays when <span class="math inline">\(x\)</span> gets more negative.</li>
+<li>
+<span class="math inline">\(x_0\)</span> is the mid-point of the logistic curve, indicating the value of <span class="math inline">\(x\)</span> where the maximum of <span class="math inline">\(\beta\)</span> is found, that is, when the logistic curve is steepest</li>
+</ul>
+<p>I first learnt about the logistic function and its parameters in <a href="https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/">this blog post by TJ Mahr</a>, in which he describes the different parameters of the function, and how they relate to its behaviour. Let’s take a look at how the logistic curve looks like for different values of these parameters. We can implement the logistic curve like this:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logistic</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">slope</span>, <span class="va">mid</span>, <span class="va">upper</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">upper</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">slope</span> <span class="op">*</span> <span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">mid</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we generate a logistic curve by applying <code>logistic()</code> to a vector of values <code>x</code>. We will set the steepness (<span class="math inline">\(\beta\)</span>, <code>slope</code>), mid-point (<span class="math inline">\(x_0\)</span>, <code>mid</code>), and upper limit (<span class="math inline">\(L\)</span>, <code>upper</code>) at different values for illustration.</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.1</span><span class="op">)</span></span>
+<span><span class="va">slope</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">mid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">upper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">0.9</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">logistic_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">slope</span>, <span class="va">mid</span>, <span class="va">upper</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu">logistic</span><span class="op">(</span><span class="va">x</span>, <span class="va">slope</span>, <span class="va">mid</span>, <span class="va">upper</span><span class="op">)</span>,</span>
+<span>           values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"slope = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">slope</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                           <span class="st">", mid = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">mid</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">logistic_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, colour <span class="op">=</span> <span class="va">values</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">upper</span>, labeller <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labeller.html">labeller</a></span><span class="op">(</span>upper <span class="op">=</span> <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"upper = "</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1.25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"Parameter values"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"dotted"</span>, colour <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-logistic-simulation" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-logistic-simulation-1.png" class="img-fluid figure-img" width="5400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You might seem the logistic function in different forms. This might be because it can parametrised in slightly different ways (as we’ll see later), or because someone decided to pick different symbols for the same parameters. parametrised in many ways. Sometimes, you might even find a formula for the logistic form that includes less parameters. This is because it is common to assume that some of the parameters we have seen are constant. For instance, whenever we assume that <span class="math inline">\(y\)</span> ranges from 0 to 1 (e.g., we are modelling proportions or probabilities), <span class="math inline">\(L\)</span>, or the upper limit, can be assumed to be 1 (see <strong>?@eq-up</strong> and note how we have replaced <span class="math inline">\(L\)</span> with 1).</p>
+<p><span id="eq-upper"><span class="math display">\[
+\text{logistic(x)} = \frac{1}{1 + e^{(-\beta \ · \ (x-x_0))}}
+\tag{1}\]</span></span></p>
+<p>We may also assume that <span class="math inline">\(x_0\)</span>, the mid-point of the logistic curve, equals zero. This means that we assume that the steepness of the curve will be maximum, and therefore its inflection point, when <span class="math inline">\(x = 0\)</span> (see <a href="#eq-mid">Equation&nbsp;2</a> and note how <span class="math inline">\(x_0\)</span> is no longer there after replacing it with 0).</p>
+<p><span id="eq-mid"><span class="math display">\[
+\begin{aligned}
+\text{logistic(x)} &amp;= \frac{1}{1 + e^{(-\beta x)}}
+\end{aligned}
+\tag{2}\]</span></span></p>
+<p>This is called the one-parameter regression logistic function because, effectively, we only one parameter is left to be estimated: the steepness of the curve, or <span class="math inline">\(\beta\)</span>. The one-parameter logistic regression function is the one we usually encounter in logistic regression. The more general cases of the two-parameter (<a href="#eq-mid">Equation&nbsp;2</a>) and three-parameter (<a href="#eq-upper">Equation&nbsp;1</a>) logistic regression functions are more flexible and are used when one is particularly interested in estimating them explicitly in a statistical model. This <a href="https://en.wikipedia.org/wiki/Logistic_function">Wikipedia article</a> suggests some historical uses of these functions. Perhaps importantly for Psychology and Cognitive Science is the use of the two- and three-parameters logistic functions in Item Response Theory (IRT).</p>
+</section><section id="the-logit-function" class="level1 page-columns page-full"><h1>The logit function</h1>
+<p>The <em>logit</em> scale, created by Joseph Berkson in 1944 as a solution to apply linear regression to a variable whose values ranged from 0 to 1 (e.g., proportions). The name <em>logit</em> scale was derived from <em><strong>log</strong>istic un<strong>it</strong></em>. The rationale behind this function was to transform the original variable contained in the <span class="math inline">\([0, 1]\)</span> interval, to a set of values ranging from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>. This way, it was possible to use linear regression to the transformed variable, and therefore hold its assumptions. You will frequently see the logit function expressed as in <a href="#eq-logit">Equation&nbsp;3</a> next to the clarification that <span class="math inline">\(p\)</span> is a value comprehended between <span class="math inline">\([0, 1]\)</span>, and that this function is the the inverse of the logistic function.</p>
+<p><span id="eq-logit"><span class="math display">\[
+logit(x) = \text{ln} \bigg( \frac{p}{1-p} \bigg)
+\tag{3}\]</span></span></p>
+<div class="page-columns page-full"><p>It can be a bit unclear how we ended up with this formula. Let’s try to reconstruct the process<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The logistic function can be expressed in a slightly different way, from which the logit function, its inverse function, is derived. This is how this alternative parametrisation can be found:</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;For a more detailed description of the derivation of the logit function from the logistic function—and also for a exhaustive explanation of logistic regression, see <a href="https://hausetutorials.netlify.app/posts/2019-04-13-logistic-regression/">this tutorial by Hause Lin</a>.</p></li></div></div>
+<p><span id="eq-logistic-alternative"><span class="math display">\[
+\begin{aligned}
+\text{logistic}(x) &amp;= \frac{1}{1 + e^{-\beta x}} \\
+&amp;= \frac{1}{1+e^{-x}} \\
+&amp;= \bigg(\frac{1}{1+e^{-\beta x}} \bigg) · \bigg( \frac{e^{\beta x}}{e^{\beta x}} \bigg) \\
+&amp; =\frac{e^{\beta x}}{e^{\beta x}+1} \\
+&amp;= \frac{e^{-\beta x}}{e^{-\beta x} + 1} \\
+\end{aligned}
+\tag{4}\]</span></span></p>
+<p>The inverse of <span class="math inline">\(e^{\beta x}\)</span> is the natural logarithm of <span class="math inline">\(\beta x\)</span>, that is, <span class="math inline">\(\text{ln}(\beta x)\)</span>. The inverse of the logistic function as expressed in <a href="#eq-logistic-alternative">Equation&nbsp;4</a>, and therefore the logit function, is:</p>
+<p><span id="eq-logistic-inverse"><span class="math display">\[
+\text{logit}(x) = \text{logistic}^{-1}(x) = \text{ln} \bigg( \frac{p}{1-p} \bigg)
+\tag{5}\]</span></span></p>
+<p>Here, <span class="math inline">\(p\)</span> is the outcome of the logistic function, or a value in the <span class="math inline">\([0, 1]\)</span> interval:</p>
+<p><span id="eq-logistic-logit"><span class="math display">\[
+p = \text{logistic}(x) = \frac{1}{1 + e^{-\beta x}}
+\tag{6}\]</span></span></p>
+<p>There are more transformations available to make variables in the <span class="math inline">\([0, 1]\)</span> interval suitable for linear regression, like <em>probit</em> or <em>cloglog</em>. We won’t get into them, since they fall out of the scope of this blog post. Let’s see how this takes the form of logistic regression in real data.</p>
+</section><section id="our-dataset" class="level1"><h1>Our dataset</h1>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">species</span><span class="op">==</span><span class="st">"Adelie"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sex</span>, <span class="va">flipper_length_mm</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sex</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>           flipper_length_std <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">sex</span>, colour <span class="op">=</span> <span class="va">sex</span>, fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="http://mjskay.github.io/ggdist/reference/stat_slab.html">stat_slab</a></span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span>, colour <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>              position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_nudge.html">position_nudge</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, scale <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.1</span>, fill <span class="op">=</span> <span class="st">"white"</span>, colour <span class="op">=</span> <span class="st">"black"</span>, size  <span class="op">=</span> <span class="fl">0.75</span>,</span>
+<span>                 outlier.colour <span class="op">=</span> <span class="cn">NA</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_nudge.html">position_nudge</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, stroke <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">2.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitter.html">position_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>, y <span class="op">=</span> <span class="st">"Sex"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"none"</span>, fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-descriptives" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-descriptives-1.png" class="img-fluid figure-img" width="4200"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="fitting-the-model" class="level1"><h1>Fitting the model</h1>
+<p><span id="eq-linear-regression"><span class="math display">\[
+\frac{p}{1-p} = \beta_{0} + \beta_{1} \times \text{Flipper length}
+\tag{7}\]</span></span></p>
+<p>Following <a href="#eq-logistic-logit">Equation&nbsp;6</a>, we can express this regression model in the probability scale by using the logistic function and replacing the exponential bit in the denominator with our regression model:</p>
+<p><span id="eq-logistic-regression"><span class="math display">\[
+p = \text{logistic}(x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \times \ \text{Flipper length)}}}
+\tag{8}\]</span></span></p>
+<p>We can implement this model using the base R function <code>glm(..., family = binomial("logit"))</code> in which the <code>family</code> argument tells the function what type of generalised regression family we are interesting in using, and where <code>binomial("logit")</code> indicates that we want the logistic function to be used with the logit link transformation (as opposed to probit).</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>, data <span class="op">=</span> <span class="va">my_data</span>, family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="interpreting-the-coefficients" class="level1"><h1>Interpreting the coefficients</h1>
+<p>We have first fitted a binomial logit regression model in which we estimate the probability of a given penguin being female or male, adjusting for their flipper length in millimetres. This is a generalised linear model (GLM): after we transform the response variable (sex, coded as 0s and 1s) to the logit scale, the resulting response variable is modelled as a conventional linear model. This means that we can interpret the coefficients of this model the same way we would in a linear model. These are our coefficients:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      (Intercept) flipper_length_mm 
+      -24.1696179         0.1271495 </code></pre>
+</div>
+</div>
+<p>We can generate and visualise the predictions of our model using the <code>predict</code> function. By setting <code>type = "link"</code>, we are asking the function to return the predictions in the function-link scale, which in our case is the logit function.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># model predictions (on the probability scale by default)</span></span>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">my_data</span>, sex_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit</span>, type <span class="op">=</span> <span class="st">"link"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#fig-predictions-natural-logit">Figure&nbsp;3</a> shows the predictions of the model in the logit scale. The intercept informs us of the probability of an average penguin being male (<code>sex = 1</code>) in the logit scale when all predictors are set at zero: in our case, when <code>flipper_lenght_mm</code> = 0. The value of the intercept -24.17 is somewhat difficult to interpret for two reasons.</p>
+<p>First, it’s in the logit scale, which is not interpretable by itself, as opposed to the probability scale. For instance, it is easy to understand what a 50% probability of a penguin being male means: if we pick one penguin at random from our population of penguins of interest, the chances of it being male is roughly the same as flipping a coin and getting tails. It is not possible to determine what a 0 logit (equivalent to 50% in the probability scale) of a penguin being male means if not by transforming it to the probability scale. For now, let’s just agree that negative values on the logit scale indicate that the chance of a penguin being male is lower than it being female, that positive values on the logit scale mean that the chance of a penguin being male is higher than it being female, and than a logit of 0 indicates that a penguin is equally likely to be male or female. With this information, we can conclude that a penguin with 0mm flipper length is extremely likely to be female (-24.17 is a very large negative number in the logit scale).</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># predictions of model with unstandardised age</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">sex_pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>               colour <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">sex_pred</span><span class="op">)</span>,</span>
+<span>              size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>              colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="st">"Male more likely"</span>, x <span class="op">=</span> <span class="fl">170</span>, y <span class="op">=</span> <span class="fl">2.2</span>,</span>
+<span>             angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"segment"</span>, y <span class="op">=</span> <span class="fl">0.75</span>, yend <span class="op">=</span> <span class="fl">2.2</span>, x <span class="op">=</span> <span class="fl">171</span>, xend <span class="op">=</span> <span class="fl">171</span>,</span>
+<span>             size <span class="op">=</span> <span class="fl">1</span>, arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="st">"Female more likely"</span>, x <span class="op">=</span> <span class="fl">170</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">2.2</span>,</span>
+<span>             angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"segment"</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, yend <span class="op">=</span> <span class="op">-</span><span class="fl">2.2</span>, x <span class="op">=</span> <span class="fl">171</span>, xend <span class="op">=</span> <span class="fl">171</span>,</span>
+<span>             size <span class="op">=</span> <span class="fl">1</span>, arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"P(male) [logit scale]"</span>,</span>
+<span>         title <span class="op">=</span> <span class="st">"&lt;span style = 'color:#003f5c;'&gt;Slope (logit scale)&lt;/span&gt;"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-predictions-natural-logit" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-predictions-natural-logit-1.png" class="img-fluid figure-img" width="4200"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A second reason why interpreting the intercept of this model is troublesome stems precisely in that this value corresponds to the likelihood of a penguin being male <strong>when flipper length is 0mm</strong>. This value is uninterpretable because a flipper length of 0mm would mean that the penguin has no flippers. We are not really interested in finding out the probability of a penguin with no flippers being male. I’m not expert, but I assume that such a penguin would likely not be part of our population of interest here. Rather, we might be interested in getting the probability of being male of a penguin with some interesting flipper length, such as the <strong>average flipper length</strong> (190.1 in our sample). We will address how to do this later.</p>
+<p>Interpreting the slope of <code>flipper_length_mm</code> is also daunting. On the logit scale, its interpretation is fairly straightforward: the value of this coefficient (0.13) indicates how much the chance of a penguin being male increases for every unit increase in flipper length in the logit scale. Since <code>flipper_lenght_mm</code> is expressed in millimetres, we can conclude that for every millimetre increment in flipper length, the chance of the measure penguin being male increases in (0.13) logits. Again, we are not sure how to interpret this quantity, since the logit scale is not interpretable by itself. We need to transform the coefficient of <code>flipper_length_mm</code> to the probability scale to get a grasp on the actual meaning in a theoretically meaningful way.</p>
+</section><section id="the-probability-scale" class="level1 page-columns page-full"><h1>The probability scale</h1>
+<div class="page-columns page-full"><p>We previously tried to interpret the coefficients of a binomial logit regression model, and encountered some difficulties. One of them related to the fact that coefficients are expressed in the logit scale. We can solve this by transforming these values—in our case the intercept and the coefficient of <code>flipper_length_mm</code>—to the probability scale. This way, the intercept will indicate the probability of a penguin being male when their flipper is 0mm long<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The coefficient of <code>flipper_length_mm</code> will tell us how much such probability increases for every millimetre increase in flipper length.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;As we have already discussed, such penguin is unlikely to exist, and therefore this quantity will be uninteresting, but we will address this issue later.</p></li></div></div>
+<p>Transforming values from the logit to the probability scale, however, is not very straightforward. This is because the relationship between probabilities and logits is non-linear. If you remember, we had transformed probabilities to logits for this reason precisely! In order to fit a linear model in a sensible way, we to transform our response variable (probabilities) to a scale with the right properties. One of such transformations was the logit function, which we employed. Now we have to deal with its consequences.</p>
+<p>To transform logits to probabilities we can use the inverse logit function (see <a href="#eq-inv-logit">Equation&nbsp;9</a>).</p>
+<p><span id="eq-inv-logit"><span class="math display">\[
+\text{logit}^{-1}(x) = \frac{e^x}{1 + e^x}
+\tag{9}\]</span></span></p>
+<p>Base R conveniently offers the function <code><a href="https://rdrr.io/r/stats/Logistic.html">plogis()</a></code>, which we can use to transform the intercept of the model to an interpretable probability value:</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> (Intercept) 
+3.186166e-11 </code></pre>
+</div>
+</div>
+<p>This quantity tells us that the probability of a penguin with flipper length equal 0mm (remember that the intercept tells us the value of the response variable when predictors are set at 0). This value, as we suspected is very close to zero: <code>percent(plogis(coef(fit)["(Intercept)"]))</code>. Obviously, if male penguins tend to have longer flippers, the model will predict that penguins with zero-length flippers as extremely likely to be female! (see <strong>?@fig-logit-prob-interecept</strong>). But aside from this issue that we’ll deal with later, transforming the intercept from a logit model to the probability scale seems fairly simple.</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.001</span><span class="op">)</span></span>
+<span><span class="va">logit_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">prob</span>, logit <span class="op">=</span> <span class="fu">logit_fun</span><span class="op">(</span><span class="va">prob</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">txt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_wrap.html">str_wrap</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<span>        <span class="st">"The intercept in our model is "</span>, </span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>        <span class="st">" in the logit scale, which translates to an extremely "</span>,</span>
+<span>        <span class="st">"low value in the probability scale, very close to zero!"</span><span class="op">)</span>,</span>
+<span>    width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">d</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">logit</span>, <span class="va">prob</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"segment"</span>, x <span class="op">=</span> <span class="op">-</span><span class="fl">6</span>, xend <span class="op">=</span> <span class="op">-</span><span class="fl">7.5</span>, y <span class="op">=</span> <span class="fl">0.2</span>, yend <span class="op">=</span> <span class="fl">0.2</span>, size <span class="op">=</span> <span class="fl">0.75</span>,</span>
+<span>             arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="va">txt</span>,</span>
+<span>             x <span class="op">=</span> <span class="op">-</span><span class="fl">7.5</span>, y <span class="op">=</span> <span class="fl">0.5</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Logit"</span>, y <span class="op">=</span> <span class="st">"Probability"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="va">percent</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-logit-prob-intercept" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-logit-prob-intercept-1.png" class="img-fluid figure-img" width="4200"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Doing the same with the coefficient of its predictors is a different story. This is because the intercept of the model maps into a single point in the logit scale, and therefore it does in the probability scale. There is a one-to-one correspondence between each value of the logit and the probability scales. But a regression coefficient does not refer to a value in either scale, but to a <em>difference in values</em>. Specifically, a regression coefficient tells us the estimated increase in the response variable for every unit increment in the predictor—while any other predictor is set at zero. This is true for any linear regression model, including ours. As long as we remain in the logit scale, the coefficient of the <code>flipper_length_mm</code> predictor will inform us of the increase in logits of being male for every millimetre increment in flipper length. But as soon as we move to the probability scale, this stops being true. This is because of the non-linear relationship between logits and probabilities: a difference of one logit of being male is not the same for the entire range of flipper lengths. Take a look at <a href="#fig-logit-prob-slope">Figure&nbsp;5</a>.</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.001</span><span class="op">)</span></span>
+<span><span class="va">logit_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">prob</span>, logit <span class="op">=</span> <span class="fu">logit_fun</span><span class="op">(</span><span class="va">prob</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># model predictions (on the probability scale by default)</span></span>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">my_data</span>, </span>
+<span>                  sex_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, </span>
+<span>                  sex_pred_logit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit</span>, type <span class="op">=</span> <span class="st">"link"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">point_preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>flipper_length_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">180</span>, <span class="fl">185</span>, <span class="fl">190</span>, <span class="fl">195</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># predictions of model with unstandardised age</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">sex_pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># plot observations</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, </span>
+<span>               shape <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>               stroke <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitter.html">position_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>               alpha <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>               colour <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">sex_pred</span><span class="op">)</span>,</span>
+<span>              size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>              colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># plot intercept (y when x = 0)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dashed"</span>,</span>
+<span>               colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, </span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">-</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span>, <span class="st">" increment"</span><span class="op">)</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, </span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span><span class="op">-</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span>, <span class="st">" increment"</span><span class="op">)</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"P(male)"</span>,</span>
+<span>         title <span class="op">=</span> <span class="st">"&lt;span style = 'color:#003f5c;'&gt;Logistic curve&lt;/span&gt;,</span></span>
+<span><span class="st">        &lt;span style = 'color:#ff6361;'&gt;intercept&lt;/span&gt;"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="va">percent</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-logit-prob-slope" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-logit-prob-slope-1.png" class="img-fluid figure-img" width="4200"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As you can see, a difference in the logit scale does not scale linearly to the probability scale. The difference in probability of being male between a penguin with 185mm-long flipper and a penguin with 190mm-long flipper is 0, whereas the difference in probability of being male between a penguin with 190 mm-long flipper and a penguin with 195 mm-long flipper is 0. In both cases, the difference in flipper length is the same (5 mm), but the estimated difference in the probability of being male is different!</p>
+<p>This non-linearity in the relationship between logits and probabilities should be considered when interpreting the coefficients of a logistic regression model and, more generally, whenever the response variable has been transformed before entering the model. One strategy to ease the regression coefficients is to calculate the marginal effects of the model for specific values of the predictor.</p>
+<section id="marginal-effects" class="level2"><h2 class="anchored" data-anchor-id="marginal-effects">Marginal effects</h2>
+<p>Defining <em>marginal effect</em> is tricky. As it happens with many concepts and labels in statistics, the same label may be used to refer to different concepts, and several labels may be used interchangeably to refer to the same concept. Each subfield seems of science seems to use a somewhat intrinsic lexicon, which sometimes leads to some confusion. I will adopt the terminology in the documentation of the <code>marginaleffects</code> R package <span class="citation" data-cites="arel-bundock2023marginaleffects">(<a href="#ref-arel-bundock2023marginaleffects" role="doc-biblioref"><strong>arel-bundock2023marginaleffects?</strong></a>)</span>, in which a marginal effect is defined in the context of regression as:</p>
+<blockquote class="blockquote">
+<p>[…] the association between a change in a regressor <span class="math inline">\(x\)</span> and a change in the response <span class="math inline">\(y\)</span>. Put differently, the marginal effect is the slope of the prediction function, measured at a specific value of the regressor <span class="math inline">\(x\)</span>.</p>
+</blockquote>
+<p>According to this definition, calculating the marginal effect of our predictor of interest <code>flipper_length_mm</code> means extracting its slope for a specific value of the predictor. For linear regression models, this is trivial: since the relationship between the predictor and the response variable is assumed linear, the slope is considered constant across the whole range of the values of the predictor, and therefore the its marginal effect is identical for all of them. We can prove this by taking a look at the estimates of our model in the logit scale, which is linear. Let’s say that we are interested in finding out the slope of <code>flipper_length_mm</code> for its average, 190.1027397. A slope is just a difference. And a difference is a derivative. And the linear regression function, <span class="math inline">\(y = \beta_0 + \beta_1 x\)</span>, is a function that can be derived (see <a href="#eq-linear-derivative">Equation&nbsp;10</a>).</p>
+<p><span id="eq-linear-derivative"><span class="math display">\[
+\begin{aligned}
+y &amp;= \beta_0 + \beta_1 \times \text{Flipper length} \\
+y' &amp;= \beta_1 &amp; \text{First derivative}
+\end{aligned}
+\tag{10}\]</span></span></p>
+<p>The derivative of the linear regression equation is a constant! This constant corresponds to the regression coefficient of <code>flipper_length_mm</code>. This means that the difference in probability of being a male penguin is going to be same for two penguins whose flippers are 180 mm and 185 mm, respectively, and for two penguins whose flippers are 190 and 195 mm, respectively. Take a look at <a href="#fig-linear-derivative">Figure&nbsp;6</a>. The difference in chances of being male between each pair of penguins, in the logit scale, is the same: 0.64, which corresponds to five times the <code>flipper_length_mm</code> regression coefficient because in both cases the difference in flipper length is not 1 mm but 5 mm (<span class="math inline">\(5 \times 0.1271 = 0.635\)</span>). but, again, any value in the logit scale is difficult to interpret by itself, so we are interested in translating this to the scale of probabilities.</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># predictions of model with unstandardised age</span></span>
+<span><span class="va">point_preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>flipper_length_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">180</span>, <span class="fl">185</span>, <span class="fl">190</span>, <span class="fl">195</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">.</span>, type <span class="op">=</span> <span class="st">"link"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">sex_pred_logit</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>               colour <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">sex_pred_logit</span><span class="op">)</span>,</span>
+<span>              size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>              colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, </span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">-</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">" increment"</span><span class="op">)</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, </span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span><span class="op">-</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">" increment"</span><span class="op">)</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"P(male) [logit scale]"</span>,</span>
+<span>         title <span class="op">=</span> <span class="st">"&lt;span style = 'color:#003f5c;'&gt;Slope (logit scale)&lt;/span&gt;"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">sex_pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"flipper_length_mm"</span><span class="op">]</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"#ffa600"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"Slope of flipper length [logit scale])"</span>,</span>
+<span>         title <span class="op">=</span> <span class="st">"&lt;span style = 'color:#ffa600;'&gt;Derivative (logit scale)&lt;/span&gt;"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html">plot_layout</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>    <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation</a></span><span class="op">(</span>tag_levels <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-linear-derivative" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-linear-derivative-1.png" class="img-fluid figure-img" width="4200"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="what-marginal-effects-translate-to-for-logistic-regression" class="level3"><h3 class="anchored" data-anchor-id="what-marginal-effects-translate-to-for-logistic-regression">What marginal effects translate to for logistic regression</h3>
+<p>We have seen that regression coefficients do not behave identically for different values of their predictors when transformed to probabilities. The exact point of <code>flipper_length_mm</code> at which we calculate its marginal effect matters. This is because the derivative of the logistic function, which describes the behaviour of the probability scale we just moved to, is no longer a constant. See <a href="#eq-logistic-derivative">Equation&nbsp;11</a>.</p>
+<p><span id="eq-logistic-derivative"><span class="math display">\[
+\begin{aligned}
+y &amp;= \frac{1}{1 + e^{(-\beta x)}} &amp; \text{Logistic function} \\
+y' &amp;= \frac{\beta_1 · e^{\beta_0 + \beta_1 · \ \text{Flipper length}} }{(1 + e^{-(\beta_0 + \beta_1 · \ \text{Flipper length})})^2} &amp; \text{Derivative}
+\end{aligned}
+\tag{11}\]</span></span></p>
+<p>The derivative of the logistic function still considers the value of the predictor (<span class="math inline">\(\text{Flipper length}\)</span>), which means that the value of the derivative changes depending on such value. Let’s try to visualise this. First, we are going to implement the derivative of the logistic function as an R function that computes it for the <code>fit</code> model:</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logistic_derivative</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">x</span>, <span class="va">value</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">slope</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">[</span><span class="va">x</span><span class="op">]</span></span>
+<span>    <span class="va">intercept</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span></span>
+<span>    <span class="va">numerator</span> <span class="op">&lt;-</span> <span class="va">slope</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="va">intercept</span> <span class="op">+</span> <span class="op">(</span><span class="va">slope</span> <span class="op">*</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="va">denominator</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="va">intercept</span> <span class="op">+</span> <span class="op">(</span><span class="va">slope</span> <span class="op">*</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span>    <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">numerator</span><span class="op">/</span><span class="va">denominator</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><a href="#fig-logistic-derivative">Figure&nbsp;7</a> shows how the derivative changes for each value of the predictor. As you can see, the difference in probability of being male is largest at around 190 mm, while such difference decreases as <code>flipper_length_mm</code> shifts away from 190 mm.</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># model predictions (on the probability scale by default)</span></span>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">my_data</span>,</span>
+<span>                  derivative <span class="op">=</span> <span class="fu">logistic_derivative</span><span class="op">(</span><span class="va">fit</span>, <span class="st">"flipper_length_mm"</span>, <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">point_preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>flipper_length_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">180</span>, <span class="fl">185</span>, <span class="fl">190</span>, <span class="fl">195</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>           derivate <span class="op">=</span> <span class="fu">logistic_derivative</span><span class="op">(</span><span class="va">fit</span>, <span class="st">"flipper_length_mm"</span>, <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># predictions of model with unstandardised age</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">sex_pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># plot observations</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, </span>
+<span>               shape <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>               stroke <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitter.html">position_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>               alpha <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>               colour <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">sex_pred</span><span class="op">)</span>,</span>
+<span>              size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>              colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># plot intercept (y when x = 0)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dashed"</span>,</span>
+<span>               colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, </span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">-</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span>, <span class="st">" increment"</span><span class="op">)</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">point_preds</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, xend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, </span>
+<span>                     y <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span>, yend <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"text"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span><span class="op">-</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span>, <span class="st">" increment"</span><span class="op">)</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">point_preds</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">point_preds</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"P(male)"</span>,</span>
+<span>         title <span class="op">=</span> <span class="st">"&lt;span style = 'color:#003f5c;'&gt;Logistic curve&lt;/span&gt;,</span></span>
+<span><span class="st">        &lt;span style = 'color:#ff6361;'&gt;intercept&lt;/span&gt;"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="va">percent</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, </span>
+<span>                        <span class="fu">logistic_derivative</span><span class="op">(</span><span class="va">fit</span>, <span class="st">"flipper_length_mm"</span>, value <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"#ffa600"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">derivative</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>                     xend <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">derivative</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>                     y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">derivative</span><span class="op">)</span>, yend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">derivative</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                 colour <span class="op">=</span> <span class="st">"grey"</span>, linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"label"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Max = "</span>, <span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">$</span><span class="va">derivative</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>             fill <span class="op">=</span> <span class="st">"#ffa600"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, colour <span class="op">=</span> <span class="st">"black"</span>, label.size <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">my_data</span><span class="op">$</span><span class="va">flipper_length_mm</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">$</span><span class="va">derivative</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>             y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">$</span><span class="va">derivative</span><span class="op">)</span><span class="op">*</span><span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"Slope of flipper length [logit scale])"</span>,</span>
+<span>         title <span class="op">=</span> <span class="st">"&lt;span style = 'color:#ffa600;'&gt;Derivative&lt;/span&gt;"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="va">percent</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html">plot_layout</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>    <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation</a></span><span class="op">(</span>tag_levels <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-logistic-derivative" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-logistic-derivative-1.png" class="img-fluid figure-img" width="4200"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The maximum change in male probability is 3%, which occurs at around 190 mm flipper length. There is a smarter way of calculating the maximum slope of <code>flipper_length_mm</code>. This value will always occur at the mid-point of the logistic curve, and it turns out that to find the derivative of the logistic function at the mid-point (i.e., for <span class="math inline">\(x = x_0\)</span>, go back to <strong>?@eq-logistic</strong> for a reminder), we only need to find <span class="math inline">\(\beta /4\)</span>, where <span class="math inline">\(\beta\)</span> is the regression coefficient of our predictor of interest! This is called the divide-by-four-rule, and is a simple trick to report the coefficients of a logistic regression model in the scale of probabilities, and for meaningful values of the predictors (the value at which the slope is maximum). This way, we could just divide the regression coefficient of <code>flipper_length_mm</code> by four to get the maximum probability difference of being male between two penguins with flipper lengths <span class="math inline">\(x\)</span> and <span class="math inline">\(x + 1\)</span>.</p>
+<div class="callout-info callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+The divide-by-four rule
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have seen that dividing the coefficients of a logistic regression model (in the logit scale) gets us the maximum slope of the predictor in the probability scape. We mentioned that this has to do with the derivative of the logistic function at the mid-point. But since we dropped that term some equations ago after setting it at zero, it is no longer clear how one would derive the logistic function in such way that the divide-by-four-rule holds. Let’s go back to <a href="#eq-upper">Equation&nbsp;1</a>, when the mid-point still appeared in our equation. We derive this formula:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{logistic(x)} &amp;= \frac{1}{1 + e^{(-\beta \ · \ (x-x_0))}} &amp; \text{Logistic function}\\
+\text{logistic'(x)} &amp;= \frac{\beta · e^{-\beta (x-x_0)}}{(1 + e^{-\beta (x-x_0)})^2} &amp; \text{Derivative}
+\end{aligned}
+\]</span></p>
+<p>And since <span class="math inline">\(x = x_0\)</span>, <span class="math inline">\(x-x_0 = 0\)</span>. We can simplify the derivative now, knowing that <span class="math inline">\(e^0 = 1\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{logistic'(x)} &amp;= \frac{\beta · e^0}{(1 + e^0)^2} \\
+&amp;= \frac{\beta}{(1 + 1)^2} \\
+&amp;= \frac{\beta}{4} \\
+\end{aligned}
+\]</span></p>
+<p>Take a look at the previously cited <a href="https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/">blog post by TJ Mahr</a> for a derivation that also includes the asymptote term in the logistic function.</p>
+</div>
+</div>
+<p>Let’s put the divide-by-four rule. The output of the <code>logistic_derivative()</code> that we defined before should, when solved for the mid-point of the logistic curve, return an equivalent value to <span class="math inline">\(\beta_1 / 4\)</span>, where <span class="math inline">\(\beta_1 = 0.1271495\)</span>, and therefore return something close to 0.0317874. We don’t know what value of <code>flipper_length_mm</code> corresponds to the mid-point. In <a href="#fig-logistic-derivative">Figure&nbsp;7</a> A, we calculated it my finding the value of <code>flipper_length_mm</code> for which <code>logistic_derivative()</code> returned the maximum value:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">derivative_values</span> <span class="op">&lt;-</span> <span class="fu">logistic_derivative</span><span class="op">(</span><span class="va">fit</span>, <span class="st">"flipper_length_mm"</span>, <span class="va">my_data</span><span class="op">$</span><span class="va">flipper_length_mm</span><span class="op">)</span></span>
+<span><span class="va">my_data</span><span class="op">$</span><span class="va">flipper_length_mm</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">derivative_values</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 190</code></pre>
+</div>
+</div>
+<p>From our data, we find that the maximum slope of <code>flipper_length_mm</code> occurs at 190. But finding the mid-point this way requires us to have already calculated the derivative of the logistic function. There is an alternative way to compute this mid-point from the estimated coefficients of the regression model. An additional benefit of computing the mid-point this way, is that we are doing so by relying on model-projections, and therefore in a way that does not entirely rely on the range of values of the predictor for which we have computed the derivative of the logistic function. This method consists in <strong>?@eq-midpoint-coefs</strong>.</p>
+<p><span class="math display">\[
+x_0 = -\beta_0 / \beta_1
+\]</span></p>
+<p>Where <span class="math inline">\(\beta\)</span> is the intercept of the regression model, and <span class="math inline">\(\beta_1\)</span> is the regression coefficient of the predictor we are calculating the mid-point for. We can implement this formula in R as:</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># get point in x at the inflection point (where y = 0.5)</span></span>
+<span><span class="va">get_mid</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="va">mid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">/</span><span class="op">-</span><span class="va">coefs</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">mid</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept) 
+   190.0882 </code></pre>
+</div>
+</div>
+<p>Using this function, we find that the mid-point is located at flipper length 190.0882 mm, pretty close to what we had estimated from our data. This value can sometimes be extremely interesting! A personal experience: in my PhD, I investigated how the age at which children learn particular words is affected by participant-level and word-level characteristics. I used logistic regression to model the probability of a given child having learnt a word, adjusting for my predictors of interest, the most important of them being the age of the child. Older children are more likely to have lear a given word than younger children. My model returned, among others, a coefficient for <code>age</code> in the logit scale, but I wasn’t specially intersted in it, even after having transformed it to the probability scale. I was, however, more interested in finding the value of age at which most children were learning each word, which corresponded to the mid-point of the logistic curve for the age predictor!</p>
+<p>Now that we have calculated the mid-point of our logistic function, we can finally compare the divide-by-four rule against the actual value of the derivative of the logistic function. If we solve <a href="#eq-logistic-derivative">Equation&nbsp;11</a> for <span class="math inline">\(x_0 = 190.0882\)</span> using <code>logistic_derivative(fit, "flipper_length_mm", 190.0882)</code>, we get that the mid-point is located at 0.0317874. If we use the divide-by-four rule, we get that <code>coef(fit)["flipper_length_mm"] / 4</code>. Exactly the same!</p>
+</section></section></section><section id="combining-our-findings" class="level1"><h1>Combining our findings</h1>
+<p>We have learnt how logistic regression exploits the numerical properties of the logit function to use a simple linear regression model to model probabilities, or any other variable spanning the <span class="math inline">\([0, 1]\)</span> interval. We have learnt that due to the non-linear relationship between probabilities and logits, we need to be careful when interpreting the outcome of the model. We have found that depending on the value of the predictor for which we find the slope in the probabilty scale, we may find effects of different sizes, and that we can use the divide-by-four rule to report the maximum change in probabilities associated with any change in the predictor. We have also considered how to estimate the mid-point of the logistic curve. We can express all those interested values in the following graph:</p>
+<div class="cell">
+<details><summary>Code</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># get point in x at the intercept of a line with slope beta/4 that passes through 0.5</span></span>
+<span><span class="co"># this function assumes that lower and upper bounds of the logistic curve are 0 and 1</span></span>
+<span><span class="co"># under these conditions, 0.5 will always be the inflection point of the logistic curve</span></span>
+<span><span class="va">get_mid_intercept</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">mid</span> <span class="op">&lt;-</span> <span class="fu">get_mid</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>    <span class="va">slope</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">/</span><span class="fl">4</span></span>
+<span>    <span class="va">mid_intercept</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="op">-</span><span class="va">slope</span><span class="op">*</span><span class="va">mid</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.5</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">mid_intercept</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># predictions of model with unstandardised age</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">sex_pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># plot observations</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, </span>
+<span>               shape <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>               stroke <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitter.html">position_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>               alpha <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>               colour <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">sex_pred</span><span class="op">)</span>,</span>
+<span>              size <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>              colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># plot intercept (y when x = 0)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dashed"</span>,</span>
+<span>               colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>    <span class="co"># plot mid point (x when y = 0.5)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>,</span>
+<span>               linetype <span class="op">=</span> <span class="st">"dashed"</span>,</span>
+<span>               colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># plot slope when x = mid point (approximated derivative of the logistic curve)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span></span>
+<span>        slope <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"flipper_length_mm"</span><span class="op">]</span> <span class="op">/</span> <span class="fl">4</span>,</span>
+<span>        intercept <span class="op">=</span> <span class="fu">get_mid_intercept</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">0.75</span>,</span>
+<span>        colour <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"label"</span>, label <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"flipper_length_mm"</span><span class="op">]</span> <span class="op">/</span> <span class="fl">4</span><span class="op">)</span>,</span>
+<span>             fill <span class="op">=</span> <span class="st">"#ffa600"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, colour <span class="op">=</span> <span class="st">"black"</span>, label.size <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>             x <span class="op">=</span> <span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">+</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">0.5</span>, label.r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"label"</span>, label <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>             fill <span class="op">=</span> <span class="st">"#ff6361"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, colour <span class="op">=</span> <span class="st">"black"</span>, label.size <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>             x <span class="op">=</span> <span class="fl">200</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span>,</span>
+<span>             label.r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"label"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>             fill <span class="op">=</span> <span class="st">"#58508d"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, colour <span class="op">=</span> <span class="st">"black"</span>, label.size <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>             x <span class="op">=</span> <span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span>, y <span class="op">=</span> <span class="fl">0.6</span>, hjust <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>             label.r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"Sex"</span>,</span>
+<span>         title <span class="op">=</span> <span class="st">"&lt;span style = 'color:#003f5c;'&gt;Logistic curve&lt;/span&gt;,</span></span>
+<span><span class="st">&lt;span style = 'color:#ff6361;'&gt;intercept&lt;/span&gt;,</span></span>
+<span><span class="st">&lt;span style = 'color:#58508d;'&gt;mid-point&lt;/span&gt;,</span></span>
+<span><span class="st">&lt;span style = 'color:#ffa600;'&gt;derivative at mid-point&lt;/span&gt;"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="va">percent</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<p><img src="logistic-regression_files/figure-html/predictions-natural-probability-1.png" class="img-fluid" width="4200"></p>
+</div>
+</div>
+<section id="centering-a-predictor" class="level2"><h2 class="anchored" data-anchor-id="centering-a-predictor">Centering a predictor</h2>
+</section><section id="standardising-a-predictor" class="level2"><h2 class="anchored" data-anchor-id="standardising-a-predictor">Standardising a predictor</h2>
+</section><section id="multiple-predictors" class="level2"><h2 class="anchored" data-anchor-id="multiple-predictors">Multiple predictors</h2>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
