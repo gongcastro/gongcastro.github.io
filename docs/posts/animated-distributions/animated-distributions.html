@@ -27,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -177,7 +176,14 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Exploring probability distributions through animations in Julia</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">julia</div>
+    <div class="quarto-category">distribution</div>
+    <div class="quarto-category">animation</div>
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">probability</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
@@ -202,9 +208,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<blockquote class="blockquote">
-<p>Visualising what different <strong>probability distributions</strong> look like under different parameters can be helpful when picking a likelihood function for you Bayesian analysis. I present some <strong>animations</strong> generated with Julia using Distributions.jl.</p>
-</blockquote>
 <p>In the last couple of years I went down the rabbit hole of <strong>Bayesian statistics</strong>. Although I’ve made considerable progress, as compared to where I started, I still (and will) struggle understand some basic concepts beyond some shallow, abstract idea about what they mean. One of the first challenges I encountered in my first steps was becoming aware of how many <strong>probability distributions</strong> there are, and the fact that one should pick one should carefully chose which one to use when trying to estimate some parameter.</p>
 <p>Ben Lambert’s excellent book <a href="https://www.amazon.co.uk/Students-Guide-Bayesian-Statistics/dp/1473916364/"><em>A Student’s Guide to Bayesian Statistics</em></a> offers a chart showing many of the most popular distributions, and how they relate to each other (pp.&nbsp;145, see <a href="#fig-distributions">Figure&nbsp;1</a> below for a similar chart). They then describe each distributions very plain terms, which is to be grateful for (many introductory books get lost in the details when describing likelihood distributions). However, when the moment arrives to pick a distribution in practice, I still struggle to see the risks and benefits of using each distribution. Will it adequately cover the sampling space of my parameter? Can I parameterise it so it allocates most of the probability around the regions I consider more likely? Am I actually able to interpret the values of the parameters of the distribution and map them to my research question?</p>
 <div id="fig-distributions" class="quarto-figure quarto-figure-center anchored">
@@ -552,6 +555,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br>
+</div>   
+      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
+    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+  </div>
+</footer>
 
 
 

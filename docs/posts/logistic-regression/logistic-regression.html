@@ -5,6 +5,7 @@
 <meta name="generator" content="quarto-1.2.269">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Gonzalo Garcia-Castro">
+<meta name="dcterms.date" content="2023-01-22">
 <meta name="description" content="Language, stats, R">
 <title>Gonzalo Garcia-Castro</title>
 <style>
@@ -85,7 +86,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -207,34 +207,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li>
 <a href="#the-probability-scale" id="toc-the-probability-scale" class="nav-link" data-scroll-target="#the-probability-scale">The probability scale</a>
   <ul class="collapse">
-<li>
-<a href="#marginal-effects" id="toc-marginal-effects" class="nav-link" data-scroll-target="#marginal-effects">Marginal effects</a>
-  <ul class="collapse">
-<li><a href="#what-marginal-effects-translate-to-for-logistic-regression" id="toc-what-marginal-effects-translate-to-for-logistic-regression" class="nav-link" data-scroll-target="#what-marginal-effects-translate-to-for-logistic-regression">What marginal effects translate to for logistic regression</a></li>
+<li><a href="#marginal-effects" id="toc-marginal-effects" class="nav-link" data-scroll-target="#marginal-effects">Marginal effects</a></li>
   </ul>
 </li>
-  </ul>
-</li>
-  <li>
-<a href="#combining-our-findings" id="toc-combining-our-findings" class="nav-link" data-scroll-target="#combining-our-findings">Combining our findings</a>
-  <ul class="collapse">
-<li><a href="#centering-a-predictor" id="toc-centering-a-predictor" class="nav-link" data-scroll-target="#centering-a-predictor">Centering a predictor</a></li>
-  <li><a href="#standardising-a-predictor" id="toc-standardising-a-predictor" class="nav-link" data-scroll-target="#standardising-a-predictor">Standardising a predictor</a></li>
-  <li><a href="#multiple-predictors" id="toc-multiple-predictors" class="nav-link" data-scroll-target="#multiple-predictors">Multiple predictors</a></li>
-  </ul>
-</li>
+  <li><a href="#combining-our-findings" id="toc-combining-our-findings" class="nav-link" data-scroll-target="#combining-our-findings">Combining our findings</a></li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/posts/logistic-regression/logistic-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Getting the most out of logistic regression</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">r</div>
+    <div class="quarto-category">tidyverse</div>
+    <div class="quarto-category">regression</div>
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">logistic</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Logistic regression models provide information way beyond a <em>p</em>-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how it relates to the outputs of a binomial regression model with an emphasis on marginal effects.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gonzalo Garcia-Castro </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 22, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -254,15 +266,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mjskay.github.io/ggdist/">ggdist</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
-<span>                  axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.65</span><span class="op">)</span>,</span>
-<span>                  panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>              <span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>            axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.65</span><span class="op">)</span>,</span>
+<span>            panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>        <span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">clrs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#003f5c"</span>, <span class="st">"#58508d"</span>, <span class="st">"#bc5090"</span>, <span class="st">"#ff6361"</span>, <span class="st">"#ffa600"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<blockquote class="blockquote">
+<p>Logistic regression models provide information way beyond a <em>p</em>-value. In this post, I review the relationship between the logistic and the logit functions, and how it relates to the outputs of a binomial regression model with an emphasis on marginal effects.</p>
+</blockquote>
 <section id="the-logistic-function" class="level1"><h1>The logistic function</h1>
 <p>The logistic function is a mathematical function that defines how the values of an input variable <span class="math inline">\(x\)</span> that spans the range of real values (<span class="math inline">\(x \in (-\infty, +\infty)\)</span>) are associated to an output variable <span class="math inline">\(y\)</span> that spans an interval of real values contained between the <span class="math inline">\([0, 1]\)</span> interval or narrower. This function is monotonic: for all values of <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases for negative values of <span class="math inline">\(x\)</span> and increases for positive values of <span class="math inline">\(x\)</span>, or the other way around. This functions takes the general form:</p>
 <p><span class="math display">\[
@@ -300,10 +316,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1.25</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"Parameter values"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">clrs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"dotted"</span>, colour <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"dotted"</span>, colour <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span>,</span>
+<span>          legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>          legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span>,</span>
+<span>          legend.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="cn">NA</span>, fill <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span>,</span>
+<span>          legend.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, unit <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div id="fig-logistic-simulation" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-logistic-simulation-1.png" class="img-fluid figure-img" width="5400"></p>
+<figure class="figure"><p><img src="logistic-regression_files/figure-html/fig-logistic-simulation-1.png" class="img-fluid figure-img" width="3600"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
@@ -311,39 +332,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>You might seem the logistic function in different forms. This might be because it can parametrised in slightly different ways (as we’ll see later), or because someone decided to pick different symbols for the same parameters. parametrised in many ways. Sometimes, you might even find a formula for the logistic form that includes less parameters. This is because it is common to assume that some of the parameters we have seen are constant. For instance, whenever we assume that <span class="math inline">\(y\)</span> ranges from 0 to 1 (e.g., we are modelling proportions or probabilities), <span class="math inline">\(L\)</span>, or the upper limit, can be assumed to be 1 (see <strong>?@eq-up</strong> and note how we have replaced <span class="math inline">\(L\)</span> with 1).</p>
 <p><span id="eq-upper"><span class="math display">\[
-\text{logistic(x)} = \frac{1}{1 + e^{(-\beta \ · \ (x-x_0))}}
+\text{logistic(x)} = \frac{1}{1 + e^{(-\beta \ (x-x_0))}}
 \tag{1}\]</span></span></p>
-<p>We may also assume that <span class="math inline">\(x_0\)</span>, the mid-point of the logistic curve, equals zero. This means that we assume that the steepness of the curve will be maximum, and therefore its inflection point, when <span class="math inline">\(x = 0\)</span> (see <a href="#eq-mid">Equation&nbsp;2</a> and note how <span class="math inline">\(x_0\)</span> is no longer there after replacing it with 0).</p>
+<p>It is still not clear how <a href="#eq-upper">Equation&nbsp;2</a> relates to a regression model, right? The coefficients returned by our regression model—the intercept and the slope of <code>flipper_length_mm</code>—do not map perfectly into the coefficients of the logistic function in <a href="#eq-upper">Equation&nbsp;2</a>. These regression coefficients are meant to be in the exponential of <span class="math inline">\(e\)</span>, which is <span class="math inline">\(-\beta \ (x-x_0)\)</span>, but we must first make a simple change:</p>
+<p><span class="math display">\[
+\begin{aligned}
+-\beta \ (x-x_0) = -(-\beta x_0 + \beta x) = -(\beta_0 + \beta_1x)
+\end{aligned}
+\]</span></p>
+<p>We substitute this element in <a href="#eq-upper">Equation&nbsp;2</a>, and we get:</p>
+<p><span id="eq-upper"><span class="math display">\[
+\text{logistic(x)} = \frac{1}{1 + e^{-(\beta_0 + \beta_1x)}}
+\tag{2}\]</span></span></p>
+<p>Here, <span class="math inline">\(\beta_0 = -kx_0\)</span> and <span class="math inline">\(\beta_1 = k\)</span>. This is how the intercept and the slope of the predictors map into the logistic regression function! The intercept indicates</p>
 <p><span id="eq-mid"><span class="math display">\[
 \begin{aligned}
-\text{logistic(x)} &amp;= \frac{1}{1 + e^{(-\beta x)}}
+\text{logistic(x)} &amp;= \frac{1}{1 + e^{-(\beta_0 + \beta_1x)}}
 \end{aligned}
-\tag{2}\]</span></span></p>
-<p>This is called the one-parameter regression logistic function because, effectively, we only one parameter is left to be estimated: the steepness of the curve, or <span class="math inline">\(\beta\)</span>. The one-parameter logistic regression function is the one we usually encounter in logistic regression. The more general cases of the two-parameter (<a href="#eq-mid">Equation&nbsp;2</a>) and three-parameter (<a href="#eq-upper">Equation&nbsp;1</a>) logistic regression functions are more flexible and are used when one is particularly interested in estimating them explicitly in a statistical model. This <a href="https://en.wikipedia.org/wiki/Logistic_function">Wikipedia article</a> suggests some historical uses of these functions. Perhaps importantly for Psychology and Cognitive Science is the use of the two- and three-parameters logistic functions in Item Response Theory (IRT).</p>
-</section><section id="the-logit-function" class="level1 page-columns page-full"><h1>The logit function</h1>
-<p>The <em>logit</em> scale, created by Joseph Berkson in 1944 as a solution to apply linear regression to a variable whose values ranged from 0 to 1 (e.g., proportions). The name <em>logit</em> scale was derived from <em><strong>log</strong>istic un<strong>it</strong></em>. The rationale behind this function was to transform the original variable contained in the <span class="math inline">\([0, 1]\)</span> interval, to a set of values ranging from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>. This way, it was possible to use linear regression to the transformed variable, and therefore hold its assumptions. You will frequently see the logit function expressed as in <a href="#eq-logit">Equation&nbsp;3</a> next to the clarification that <span class="math inline">\(p\)</span> is a value comprehended between <span class="math inline">\([0, 1]\)</span>, and that this function is the the inverse of the logistic function.</p>
-<p><span id="eq-logit"><span class="math display">\[
-logit(x) = \text{ln} \bigg( \frac{p}{1-p} \bigg)
 \tag{3}\]</span></span></p>
+<p>This is called the one-parameter regression logistic function because, effectively, we only one parameter is left to be estimated: the steepness of the curve, or <span class="math inline">\(\beta\)</span>. The one-parameter logistic regression function is the one we usually encounter in logistic regression. The more general cases of the two-parameter (<a href="#eq-mid">Equation&nbsp;3</a>) and three-parameter (<a href="#eq-upper">Equation&nbsp;2</a>) logistic regression functions are more flexible and are used when one is particularly interested in estimating them explicitly in a statistical model. This <a href="https://en.wikipedia.org/wiki/Logistic_function">Wikipedia article</a> suggests some historical uses of these functions. Perhaps importantly for Psychology and Cognitive Science is the use of the two- and three-parameters logistic functions in Item Response Theory (IRT).</p>
+</section><section id="the-logit-function" class="level1 page-columns page-full"><h1>The logit function</h1>
+<p>The <em>logit</em> scale, or the <em>log odds</em> scale, was created by Joseph Berkson in 1944 as a solution to apply linear regression to a variable whose values ranged from 0 to 1 (e.g., proportions). The name <em>logit</em> scale was derived from <em><strong>log</strong>istic un<strong>it</strong></em>. The rationale behind this function was to transform the original variable contained in the <span class="math inline">\([0, 1]\)</span> interval, to a set of values ranging from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>. This way, it was possible to use linear regression to the transformed variable, and therefore hold its assumptions. You will frequently see the logit function expressed as in <a href="#eq-logit">Equation&nbsp;4</a> next to the clarification that <span class="math inline">\(p\)</span> is a value comprehended between <span class="math inline">\([0, 1]\)</span>, and that this function is the the inverse of the logistic function.</p>
+<p><span id="eq-logit"><span class="math display">\[
+\text{logit(x)} = \text{ln} \bigg( \frac{p}{1-p} \bigg)
+\tag{4}\]</span></span></p>
 <div class="page-columns page-full"><p>It can be a bit unclear how we ended up with this formula. Let’s try to reconstruct the process<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The logistic function can be expressed in a slightly different way, from which the logit function, its inverse function, is derived. This is how this alternative parametrisation can be found:</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;For a more detailed description of the derivation of the logit function from the logistic function—and also for a exhaustive explanation of logistic regression, see <a href="https://hausetutorials.netlify.app/posts/2019-04-13-logistic-regression/">this tutorial by Hause Lin</a>.</p></li></div></div>
 <p><span id="eq-logistic-alternative"><span class="math display">\[
 \begin{aligned}
-\text{logistic}(x) &amp;= \frac{1}{1 + e^{-\beta x}} \\
-&amp;= \frac{1}{1+e^{-x}} \\
-&amp;= \bigg(\frac{1}{1+e^{-\beta x}} \bigg) · \bigg( \frac{e^{\beta x}}{e^{\beta x}} \bigg) \\
-&amp; =\frac{e^{\beta x}}{e^{\beta x}+1} \\
-&amp;= \frac{e^{-\beta x}}{e^{-\beta x} + 1} \\
+\text{logistic}(x) &amp;= \frac{1}{1 + e^{-(\beta_0 + \beta_1x)}} \\
+&amp;= \bigg(\frac{1}{1+e^{-\beta x}} \bigg) · \bigg( \frac{e^{\beta_0 + \beta_1x}}{e^{\beta_0 + \beta_1x}} \bigg) \\
+&amp; =\frac{e^{\beta_0 + \beta_1x}}{e^{\beta_0 + \beta_1x}+1} \\
+&amp;= \frac{e^{-(\beta_0 + \beta_1x)}}{e^{-(\beta_0 + \beta_1x)} + 1} \\
 \end{aligned}
-\tag{4}\]</span></span></p>
-<p>The inverse of <span class="math inline">\(e^{\beta x}\)</span> is the natural logarithm of <span class="math inline">\(\beta x\)</span>, that is, <span class="math inline">\(\text{ln}(\beta x)\)</span>. The inverse of the logistic function as expressed in <a href="#eq-logistic-alternative">Equation&nbsp;4</a>, and therefore the logit function, is:</p>
+\tag{5}\]</span></span></p>
+<p>The inverse of <span class="math inline">\(e^{\beta_0 + \beta_1x}\)</span> is the natural logarithm of <span class="math inline">\(\beta_0 + \beta_1x\)</span>, that is, <span class="math inline">\(\text{ln}(\beta_0 + \beta_1x)\)</span>. The inverse of the logistic function as expressed in <a href="#eq-logistic-alternative">Equation&nbsp;5</a>, and therefore the logit function, is:</p>
 <p><span id="eq-logistic-inverse"><span class="math display">\[
 \text{logit}(x) = \text{logistic}^{-1}(x) = \text{ln} \bigg( \frac{p}{1-p} \bigg)
-\tag{5}\]</span></span></p>
+\tag{6}\]</span></span></p>
 <p>Here, <span class="math inline">\(p\)</span> is the outcome of the logistic function, or a value in the <span class="math inline">\([0, 1]\)</span> interval:</p>
 <p><span id="eq-logistic-logit"><span class="math display">\[
-p = \text{logistic}(x) = \frac{1}{1 + e^{-\beta x}}
-\tag{6}\]</span></span></p>
-<p>There are more transformations available to make variables in the <span class="math inline">\([0, 1]\)</span> interval suitable for linear regression, like <em>probit</em> or <em>cloglog</em>. We won’t get into them, since they fall out of the scope of this blog post. Let’s see how this takes the form of logistic regression in real data.</p>
+p = \text{logistic}(x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x)}}
+\tag{7}\]</span></span></p>
+<p>There are more transformations available to make variables in the <span class="math inline">\([0, 1]\)</span> interval suitable for linear regression, like <em>probit</em>. We won’t get into them, since they fall out of the scope of this blog post. Let’s see how this takes the form of logistic regression in real data.</p>
 </section><section id="our-dataset" class="level1"><h1>Our dataset</h1>
 <div class="cell">
 <details><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -379,15 +409,17 @@ p = \text{logistic}(x) = \frac{1}{1 + e^{-\beta x}}
 </div>
 </section><section id="fitting-the-model" class="level1"><h1>Fitting the model</h1>
 <p><span id="eq-linear-regression"><span class="math display">\[
-\frac{p}{1-p} = \beta_{0} + \beta_{1} \times \text{Flipper length}
-\tag{7}\]</span></span></p>
-<p>Following <a href="#eq-logistic-logit">Equation&nbsp;6</a>, we can express this regression model in the probability scale by using the logistic function and replacing the exponential bit in the denominator with our regression model:</p>
-<p><span id="eq-logistic-regression"><span class="math display">\[
-p = \text{logistic}(x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \times \ \text{Flipper length)}}}
+\ln \bigg( \frac{p}{1-p} \bigg) = \beta_{0} + \beta_{1} \times \text{Flipper length}
 \tag{8}\]</span></span></p>
+<p>Following <a href="#eq-logistic-logit">Equation&nbsp;7</a>, we can express this regression model in the probability scale by using the logistic function and replacing the exponential bit in the denominator with our regression model:</p>
+<p><span id="eq-logistic-regression"><span class="math display">\[
+p = \text{logistic}(x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 · \ \text{Flipper length)}}}
+\tag{9}\]</span></span></p>
 <p>We can implement this model using the base R function <code>glm(..., family = binomial("logit"))</code> in which the <code>family</code> argument tells the function what type of generalised regression family we are interesting in using, and where <code>binomial("logit")</code> indicates that we want the logistic function to be used with the logit link transformation (as opposed to probit).</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>, data <span class="op">=</span> <span class="va">my_data</span>, family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>, </span>
+<span>           data <span class="op">=</span> <span class="va">my_data</span>, </span>
+<span>           family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="interpreting-the-coefficients" class="level1"><h1>Interpreting the coefficients</h1>
 <p>We have first fitted a binomial logit regression model in which we estimate the probability of a given penguin being female or male, adjusting for their flipper length in millimetres. This is a generalised linear model (GLM): after we transform the response variable (sex, coded as 0s and 1s) to the logit scale, the resulting response variable is modelled as a conventional linear model. This means that we can interpret the coefficients of this model the same way we would in a linear model. These are our coefficients:</p>
@@ -441,10 +473,10 @@ p = \text{logistic}(x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \times \ \text{Flip
 </section><section id="the-probability-scale" class="level1 page-columns page-full"><h1>The probability scale</h1>
 <div class="page-columns page-full"><p>We previously tried to interpret the coefficients of a binomial logit regression model, and encountered some difficulties. One of them related to the fact that coefficients are expressed in the logit scale. We can solve this by transforming these values—in our case the intercept and the coefficient of <code>flipper_length_mm</code>—to the probability scale. This way, the intercept will indicate the probability of a penguin being male when their flipper is 0mm long<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The coefficient of <code>flipper_length_mm</code> will tell us how much such probability increases for every millimetre increase in flipper length.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;As we have already discussed, such penguin is unlikely to exist, and therefore this quantity will be uninteresting, but we will address this issue later.</p></li></div></div>
 <p>Transforming values from the logit to the probability scale, however, is not very straightforward. This is because the relationship between probabilities and logits is non-linear. If you remember, we had transformed probabilities to logits for this reason precisely! In order to fit a linear model in a sensible way, we to transform our response variable (probabilities) to a scale with the right properties. One of such transformations was the logit function, which we employed. Now we have to deal with its consequences.</p>
-<p>To transform logits to probabilities we can use the inverse logit function (see <a href="#eq-inv-logit">Equation&nbsp;9</a>).</p>
+<p>To transform logits to probabilities we can use the inverse logit function (see <a href="#eq-inv-logit">Equation&nbsp;10</a>).</p>
 <p><span id="eq-inv-logit"><span class="math display">\[
 \text{logit}^{-1}(x) = \frac{e^x}{1 + e^x}
-\tag{9}\]</span></span></p>
+\tag{10}\]</span></span></p>
 <p>Base R conveniently offers the function <code><a href="https://rdrr.io/r/stats/Logistic.html">plogis()</a></code>, which we can use to transform the intercept of the model to an interpretable probability value:</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -554,13 +586,13 @@ p = \text{logistic}(x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \times \ \text{Flip
 <blockquote class="blockquote">
 <p>[…] the association between a change in a regressor <span class="math inline">\(x\)</span> and a change in the response <span class="math inline">\(y\)</span>. Put differently, the marginal effect is the slope of the prediction function, measured at a specific value of the regressor <span class="math inline">\(x\)</span>.</p>
 </blockquote>
-<p>According to this definition, calculating the marginal effect of our predictor of interest <code>flipper_length_mm</code> means extracting its slope for a specific value of the predictor. For linear regression models, this is trivial: since the relationship between the predictor and the response variable is assumed linear, the slope is considered constant across the whole range of the values of the predictor, and therefore the its marginal effect is identical for all of them. We can prove this by taking a look at the estimates of our model in the logit scale, which is linear. Let’s say that we are interested in finding out the slope of <code>flipper_length_mm</code> for its average, 190.1027397. A slope is just a difference. And a difference is a derivative. And the linear regression function, <span class="math inline">\(y = \beta_0 + \beta_1 x\)</span>, is a function that can be derived (see <a href="#eq-linear-derivative">Equation&nbsp;10</a>).</p>
+<p>According to this definition, calculating the marginal effect of our predictor of interest <code>flipper_length_mm</code> means extracting its slope for a specific value of the predictor. For linear regression models, this is trivial: since the relationship between the predictor and the response variable is assumed linear, the slope is considered constant across the whole range of the values of the predictor, and therefore the its marginal effect is identical for all of them. We can prove this by taking a look at the estimates of our model in the logit scale, which is linear. Let’s say that we are interested in finding out the slope of <code>flipper_length_mm</code> for its average, 190.1027397. A slope is just a difference. And a difference is a derivative. And the linear regression function, <span class="math inline">\(y = \beta_0 + \beta_1 x\)</span>, is a function that can be derived (see <a href="#eq-linear-derivative">Equation&nbsp;11</a>).</p>
 <p><span id="eq-linear-derivative"><span class="math display">\[
 \begin{aligned}
 y &amp;= \beta_0 + \beta_1 \times \text{Flipper length} \\
 y' &amp;= \beta_1 &amp; \text{First derivative}
 \end{aligned}
-\tag{10}\]</span></span></p>
+\tag{11}\]</span></span></p>
 <p>The derivative of the linear regression equation is a constant! This constant corresponds to the regression coefficient of <code>flipper_length_mm</code>. This means that the difference in probability of being a male penguin is going to be same for two penguins whose flippers are 180 mm and 185 mm, respectively, and for two penguins whose flippers are 190 and 195 mm, respectively. Take a look at <a href="#fig-linear-derivative">Figure&nbsp;6</a>. The difference in chances of being male between each pair of penguins, in the logit scale, is the same: 0.64, which corresponds to five times the <code>flipper_length_mm</code> regression coefficient because in both cases the difference in flipper length is not 1 mm but 5 mm (<span class="math inline">\(5 \times 0.1271 = 0.635\)</span>). but, again, any value in the logit scale is difficult to interpret by itself, so we are interested in translating this to the scale of probabilities.</p>
 <div class="cell">
 <details><summary>Code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># predictions of model with unstandardised age</span></span>
@@ -614,14 +646,13 @@ y' &amp;= \beta_1 &amp; \text{First derivative}
 </div>
 </div>
 </div>
-<section id="what-marginal-effects-translate-to-for-logistic-regression" class="level3"><h3 class="anchored" data-anchor-id="what-marginal-effects-translate-to-for-logistic-regression">What marginal effects translate to for logistic regression</h3>
-<p>We have seen that regression coefficients do not behave identically for different values of their predictors when transformed to probabilities. The exact point of <code>flipper_length_mm</code> at which we calculate its marginal effect matters. This is because the derivative of the logistic function, which describes the behaviour of the probability scale we just moved to, is no longer a constant. See <a href="#eq-logistic-derivative">Equation&nbsp;11</a>.</p>
+<p>We have seen that regression coefficients do not behave identically for different values of their predictors when transformed to probabilities. The exact point of <code>flipper_length_mm</code> at which we calculate its marginal effect matters. This is because the derivative of the logistic function, which describes the behaviour of the probability scale we just moved to, is no longer a constant. See <a href="#eq-logistic-derivative">Equation&nbsp;12</a>.</p>
 <p><span id="eq-logistic-derivative"><span class="math display">\[
 \begin{aligned}
 y &amp;= \frac{1}{1 + e^{(-\beta x)}} &amp; \text{Logistic function} \\
 y' &amp;= \frac{\beta_1 · e^{\beta_0 + \beta_1 · \ \text{Flipper length}} }{(1 + e^{-(\beta_0 + \beta_1 · \ \text{Flipper length})})^2} &amp; \text{Derivative}
 \end{aligned}
-\tag{11}\]</span></span></p>
+\tag{12}\]</span></span></p>
 <p>The derivative of the logistic function still considers the value of the predictor (<span class="math inline">\(\text{Flipper length}\)</span>), which means that the value of the derivative changes depending on such value. Let’s try to visualise this. First, we are going to implement the derivative of the logistic function as an R function that computes it for the <code>fit</code> model:</p>
 <div class="cell">
 <details><summary>Code</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logistic_derivative</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">x</span>, <span class="va">value</span><span class="op">)</span> <span class="op">{</span></span>
@@ -725,7 +756,7 @@ The divide-by-four rule
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We have seen that dividing the coefficients of a logistic regression model (in the logit scale) gets us the maximum slope of the predictor in the probability scape. We mentioned that this has to do with the derivative of the logistic function at the mid-point. But since we dropped that term some equations ago after setting it at zero, it is no longer clear how one would derive the logistic function in such way that the divide-by-four-rule holds. Let’s go back to <a href="#eq-upper">Equation&nbsp;1</a>, when the mid-point still appeared in our equation. We derive this formula:</p>
+<p>We have seen that dividing the coefficients of a logistic regression model (in the logit scale) gets us the maximum slope of the predictor in the probability scape. We mentioned that this has to do with the derivative of the logistic function at the mid-point. But since we dropped that term some equations ago after setting it at zero, it is no longer clear how one would derive the logistic function in such way that the divide-by-four-rule holds. Let’s go back to <a href="#eq-upper">Equation&nbsp;2</a>, when the mid-point still appeared in our equation. We derive this formula:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \text{logistic(x)} &amp;= \frac{1}{1 + e^{(-\beta \ · \ (x-x_0))}} &amp; \text{Logistic function}\\
@@ -770,10 +801,11 @@ x_0 = -\beta_0 / \beta_1
    190.0882 </code></pre>
 </div>
 </div>
-<p>Using this function, we find that the mid-point is located at flipper length 190.0882 mm, pretty close to what we had estimated from our data. This value can sometimes be extremely interesting! A personal experience: in my PhD, I investigated how the age at which children learn particular words is affected by participant-level and word-level characteristics. I used logistic regression to model the probability of a given child having learnt a word, adjusting for my predictors of interest, the most important of them being the age of the child. Older children are more likely to have lear a given word than younger children. My model returned, among others, a coefficient for <code>age</code> in the logit scale, but I wasn’t specially intersted in it, even after having transformed it to the probability scale. I was, however, more interested in finding the value of age at which most children were learning each word, which corresponded to the mid-point of the logistic curve for the age predictor!</p>
-<p>Now that we have calculated the mid-point of our logistic function, we can finally compare the divide-by-four rule against the actual value of the derivative of the logistic function. If we solve <a href="#eq-logistic-derivative">Equation&nbsp;11</a> for <span class="math inline">\(x_0 = 190.0882\)</span> using <code>logistic_derivative(fit, "flipper_length_mm", 190.0882)</code>, we get that the mid-point is located at 0.0317874. If we use the divide-by-four rule, we get that <code>coef(fit)["flipper_length_mm"] / 4</code>. Exactly the same!</p>
-</section></section></section><section id="combining-our-findings" class="level1"><h1>Combining our findings</h1>
-<p>We have learnt how logistic regression exploits the numerical properties of the logit function to use a simple linear regression model to model probabilities, or any other variable spanning the <span class="math inline">\([0, 1]\)</span> interval. We have learnt that due to the non-linear relationship between probabilities and logits, we need to be careful when interpreting the outcome of the model. We have found that depending on the value of the predictor for which we find the slope in the probabilty scale, we may find effects of different sizes, and that we can use the divide-by-four rule to report the maximum change in probabilities associated with any change in the predictor. We have also considered how to estimate the mid-point of the logistic curve. We can express all those interested values in the following graph:</p>
+<p>Using this function, we find that the mid-point is located at flipper length 190.0882 mm, pretty close to what we had estimated from our data. This value can sometimes be extremely interesting! A personal experience: in my PhD, I investigated how the age at which children learn particular words is affected by participant-level and word-level characteristics. I used logistic regression to model the probability of a given child having learnt a word, adjusting for my predictors of interest, the most important of them being the age of the child. Older children are more likely to have learnt a given word than younger children. My model returned, among others, a coefficient for <code>age</code> in the logit scale, but I wasn’t specially interested in it, even after having transformed it to the probability scale. I was, however, more interested in finding the value of age at which most children were learning each word, which corresponded to the mid-point of the logistic curve for the age predictor!</p>
+<p>Now that we have calculated the mid-point of our logistic function, we can finally compare the divide-by-four rule against the actual value of the derivative of the logistic function. If we solve <a href="#eq-logistic-derivative">Equation&nbsp;12</a> for <span class="math inline">\(x_0 = 190.0882\)</span> using <code>logistic_derivative(fit, "flipper_length_mm", 190.0882)</code>, we get that the mid-point is located at 0.0317874. If we use the divide-by-four rule, we get that <code>coef(fit)["flipper_length_mm"] / 4</code>. Exactly the same!</p>
+<p>So far, we have seen that the divide-by-four rule is a simple way to obtain the slope at the mid-point, which is a meaningful value: it tells us the upper limit of the distribution of the regression slope of the predictor. However, there might be other values of the predictor for which we might be interested in finding the slope of the coefficient. We might even want to compute the average of all slopes! These, an others, are different perspectives to adopt when thinking, computing, and reporting marginal effects. I cannot say anything that has not already been explained better by Andrew Heiss in his blog post: <a href="https://www.andrewheiss.com/blog/2022/05/20/marginalia/">Marginalia: A guide to figuring out what the heck marginal effects, marginal slopes, average marginal effects, marginal effects at the mean, and all these other marginal things are</a>. I will only mention that to compute the marginal effects of your model, regardless of your strategy towards reporting marginal effects (maximum slope, average marginal effects, marginal effects at specific points), or the characteristics of your model (Gaussian or binomial, logit or probit, Bayesian or frequentist, etc.), chances are that the <code>marginaleffects</code> R package will be useful. Take a look at its documentation and functions, and play with them.</p>
+</section></section><section id="combining-our-findings" class="level1"><h1>Combining our findings</h1>
+<p>We have learnt how logistic regression exploits the numerical properties of the logit function to use a simple linear regression model to model probabilities, or any other variable spanning the <span class="math inline">\([0, 1]\)</span> interval. We have learnt that due to the non-linear relationship between probabilities and logits, we need to be careful when interpreting the outcome of the model. We have found that depending on the value of the predictor for which we find the slope in the probability scale, we may find effects of different sizes, and that we can use the divide-by-four rule to report the maximum change in probabilities associated with any change in the predictor. We have also considered how to estimate the mid-point of the logistic curve. We can express all those interested values in the following graph:</p>
 <div class="cell">
 <details><summary>Code</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># get point in x at the intercept of a line with slope beta/4 that passes through 0.5</span></span>
 <span><span class="co"># this function assumes that lower and upper bounds of the logistic curve are 0 and 1</span></span>
@@ -822,7 +854,7 @@ x_0 = -\beta_0 / \beta_1
 <span>             fill <span class="op">=</span> <span class="st">"#ff6361"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, colour <span class="op">=</span> <span class="st">"black"</span>, label.size <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>             x <span class="op">=</span> <span class="fl">200</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span>,</span>
 <span>             label.r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"label"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"label"</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>,</span>
 <span>             fill <span class="op">=</span> <span class="st">"#58508d"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, colour <span class="op">=</span> <span class="st">"black"</span>, label.size <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>             x <span class="op">=</span> <span class="fu">get_mid</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span>, y <span class="op">=</span> <span class="fl">0.6</span>, hjust <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>             label.r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -840,12 +872,9 @@ x_0 = -\beta_0 / \beta_1
 <p><img src="logistic-regression_files/figure-html/predictions-natural-probability-1.png" class="img-fluid" width="4200"></p>
 </div>
 </div>
-<section id="centering-a-predictor" class="level2"><h2 class="anchored" data-anchor-id="centering-a-predictor">Centering a predictor</h2>
-</section><section id="standardising-a-predictor" class="level2"><h2 class="anchored" data-anchor-id="standardising-a-predictor">Standardising a predictor</h2>
-</section><section id="multiple-predictors" class="level2"><h2 class="anchored" data-anchor-id="multiple-predictors">Multiple predictors</h2>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -979,7 +1008,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br></div>   
+      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
+    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+  </div>
+</footer>
 
 
 </body></html>
