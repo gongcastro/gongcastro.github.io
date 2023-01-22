@@ -23,7 +23,6 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -137,8 +136,7 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#why-polynomials" id="toc-why-polynomials" class="nav-link active" data-scroll-target="#why-polynomials">Why polynomials</a></li>
-  <li><a href="#intercept" id="toc-intercept" class="nav-link" data-scroll-target="#intercept">Intercept</a></li>
+<li><a href="#intercept" id="toc-intercept" class="nav-link active" data-scroll-target="#intercept">Intercept</a></li>
   <li><a href="#linear-term-adding-a-1st-order-polynomial" id="toc-linear-term-adding-a-1st-order-polynomial" class="nav-link" data-scroll-target="#linear-term-adding-a-1st-order-polynomial">Linear term: adding a 1st-order polynomial</a></li>
   <li><a href="#quadratic-adding-a-2nd-order-polynomial" id="toc-quadratic-adding-a-2nd-order-polynomial" class="nav-link" data-scroll-target="#quadratic-adding-a-2nd-order-polynomial">Quadratic: adding a 2nd-order polynomial</a></li>
   <li><a href="#cubic-adding-a-3rd-order-polynomial" id="toc-cubic-adding-a-3rd-order-polynomial" class="nav-link" data-scroll-target="#cubic-adding-a-3rd-order-polynomial">Cubic: adding a 3rd-order polynomial</a></li>
@@ -150,7 +148,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Visualising polynomial regression</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">r</div>
+    <div class="quarto-category">statistic</div>
+    <div class="quarto-category">regression</div>
+    <div class="quarto-category">animation</div>
+    <div class="quarto-category">ggplot</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
@@ -161,6 +166,12 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gonzalo Garcia-Castro </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -173,11 +184,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header><blockquote class="blockquote">
-<p>The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.</p>
-</blockquote>
-<section id="why-polynomials" class="level2"><h2 class="anchored" data-anchor-id="why-polynomials">Why polynomials</h2>
-<p>When modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation</p>
+</header><p>When modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation</p>
 <p><span class="math display">\[y_i = \beta_{0} + \beta_{1}x_{i}\]</span></p>
 <p>where <span class="math inline">\(\beta_{0}\)</span> is the <strong>intercept</strong> (the value of the input variable <span class="math inline">\(x\)</span> where the output variable <span class="math inline">\(y=0\)</span>), and where <span class="math inline">\(\beta_{1}\)</span> is the <strong>coefficient</strong> of the input variable (how much <span class="math inline">\(y\)</span> increases for every unit increase in <span class="math inline">\(x\)</span>). To illustrate this, let’s imagine we are curious abut what proportion of the students in a classroom are paying attention, and how this proportion changes as minutes pass. We could formalise our model as</p>
 <p><span class="math inline">\(y_i = \beta_{0} + \beta_{1} Time_i\)</span></p>
@@ -189,7 +196,7 @@ y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3
 \]</span></p>
 <p>Adding polynomial terms to our regression offers much flexibility to researchers when modelling this kind of associations between input and output variables. This practice is, for example, common in Cognitive Science when analysing <strong>repeated measures</strong> data such as eye-tracking data, where we register what participants fixated in a screen during a trial under several conditions. Polynomial regression could be considered as of the main techniques in the more general category of <strong>Growth Curve Analyis</strong> (GCA) methods. If you are interested in learning GCA, you should take a look at Daniel Mirman’s “Growth Curve Analysis and Visualization Using R” [<a href="https://www.routledge.com/Growth-Curve-Analysis-and-Visualization-Using-R/Mirman/p/book/9781466584327">book</a>].</p>
 <p>Powerful as this technique is, it presents some pitfalls, especially to newbies like me. For instance, <strong>interpreting the outputs</strong> of a regression model that includes polynomials can tricky. In our example, depending on the values of the coefficients <span class="math inline">\(\beta_{1}\)</span>, <span class="math inline">\(\beta_2\)</span> and <span class="math inline">\(\beta_3\)</span>–the first-degree and second-degree polynomials of <span class="math inline">\(Time\)</span>–the shape of the resulting curve will be different. The combination of values that these two coefficient can take is infinite, and so is the number of potential shapes our curve can adopt. Interpreting how the values of these coefficients affect the shape of our model, and more importantly, their interaction with other predictors of interest in the model can be difficult without any kind of <strong>visualisation.</strong> The aim of this post is to visualise how the regression lines of a regression model changes with the degree of its polynomials. For computational constraints, and to make visualisation easier, I will only cover one, two, and three-degree polynomials. I will generate plots for multiple combinations of the coefficients of these polynomials using the base R function <code><a href="https://rdrr.io/r/stats/poly.html">poly()</a></code> to generate polynomials, the R package <code>ggplot2()</code> to generate plots, and the <code>gganimate</code> R package to animate the plots. I will briefly describe what is going on in each plot, but I hope the figures are themselves more informative than anything I can say about them!</p>
-</section><section id="intercept" class="level2"><h2 class="anchored" data-anchor-id="intercept">Intercept</h2>
+<section id="intercept" class="level2"><h2 class="anchored" data-anchor-id="intercept">Intercept</h2>
 <p>First, let’s start with how the value of the <strong>intercept</strong> (<span class="math inline">\(\beta_0\)</span>) changes the regression line for polynomials of different degree (1st, 2nd, and 3rd). I set the rest of the coefficients to arbitrary values for simplicity (<span class="math inline">\(\beta_1 = \beta_2 = \beta_3 = 1\)</span>). As you can see, regardless of the order of the polynomials involved in the model, increasing the intercept makes the line be higher in the Y-axis, and decreasing the value of the intercept makes the line be lower in the Y-axis. Simple as that.</p>
 <p><img src="intercept.gif" class="img-fluid"></p>
 <p>The interpretation of the intercept is similar to how we interpret it in standard linear regression models. It tells us the value of <span class="math inline">\(y\)</span> when all predictors are set to 0 (in our case <span class="math inline">\(Time = 0\)</span>). As we will discuss later, what that means in practice depends on what that zero means for the other coefficients, that is, how we coded them. For now, let’s continue adding more terms to the equation.</p>
@@ -374,7 +381,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br></div>   
+      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
+    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+  </div>
+</footer>
 
 
 </body></html>
