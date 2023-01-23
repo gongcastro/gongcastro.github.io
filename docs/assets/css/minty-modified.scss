@@ -31,7 +31,7 @@ $cyan:        #6cc3d5 !default;
 $lightsalmon: #ffa07a !default;
 $salmon:      salmon  !default;
 
-$primary:     $lightsalmon !default;
+$primary:     $salmon !default;
 $secondary:   $gray-200 !default;
 $success:     $green !default;
 $info:        $cyan !default;
@@ -111,7 +111,7 @@ $breadcrumb-bg:                     $primary !default;
 $breadcrumb-divider-color:          $black !default;
 $breadcrumb-active-color:           $breadcrumb-divider-color !default;
 $breadcrumb-border-radius:          .25rem !default;
-
+$description-color:                 $black;
 
 /*-- scss:rules --*/
 
@@ -142,20 +142,33 @@ p.caption {
   background-color: $white;
 }
 
-.description.p {
+.description {
+    color: $black;
+    padding-top: 3%;
+}
+
+#quarto-code-tools-source {
     color: $black;
 }
 
-.quarto-category.a {
+.quarto-categories {
+    color: $black;
+}
+
+.quarto-category {
+    color: $black;
+}
+
+.bi {
     color: $black;
 }
 
 .navbar-light .navbar-toggler-icon {
-  background-color: $lightsalmon;
+  background-color: $salmon;
 }
 // this is a white icon with 50% opacity
 .navbar-dark .navbar-toggler-icon {
-  background-color: $lightsalmon;
+  background-color: $salmon;
 }
 
 .navbar-collapse {
