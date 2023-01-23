@@ -16,8 +16,11 @@ execute:
 
 # metadata  
 pagetitle: "Gonzalo Garcia-Castro"
-description-meta: "Language, stats, R"
 author-meta: "Gonzalo Garcia-Castro"
+
+# bibliography settings
+bibliography: assets/bib/references.bib
+csl: assets/bib/apa7.csl
 
 website:
   title: "Gonzalo García-Castro"
@@ -26,8 +29,7 @@ website:
   favicon: "/assets/media/favicon.ico"
   repo-url: https://github.com/gongcastro/gongcastro.github.io
   repo-actions: [edit, issue]
-  search: false
-  
+
   open-graph:
     title: "Gonzalo Garcia-Castro"
     description: "Language, stats, R"
@@ -42,14 +44,15 @@ website:
     image: "assets/media/favicon.jpeg"
     
   navbar:
+    pinned: true
     background: primary
-    collapse: false
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-      - cv.qmd
-      - blog.qmd
+      - href: cv.qmd
+        text: CV   
+      - href: blog.qmd
+        text: Blog
     right: 
       - icon: github
         href: https://github.com/gongcastro
@@ -65,26 +68,25 @@ website:
         aria-label: LinkedIn
       - icon: envelope
         href: mailto:adamjnafa@gmail.com
-    
-    page-footer:
-      left: |
-        <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Gonzalo Garcia-Castro</span>
-        <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
-      center: |
-        <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
-      right: |
-        <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
-        <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-url >}})</span>
-
+        
+  page-footer:
+    left: |
+      <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Gonzalo Garcia-Castro</span>
+      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
+    center: |
+      <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
+    right: |
+      <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
+      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-url >}})</span>
 format:
   html:
-    theme:
-      - minty-modified.scss
-    css: styles.css
+    anchor-sections: true
+    theme: assets/css/minty-modified.scss
+    css:  assets/css/styles.css
     toc: true
     citations-hover: true
     code-link: true
-    code-block-bg: "#e6e6e6"
+    code-block-bg: "#f7f7f9"
     highlight-style: stackoverflow-light
     code-fold: show
     html-math-method: mathjax
@@ -92,8 +94,5 @@ format:
     footnotes-hover: true
     reference-location: margin
     
-# Bibliography settings
-bibliography: "assets/bib/references.bib"
-csl: "assets/bib/apa7.csl"
 
 

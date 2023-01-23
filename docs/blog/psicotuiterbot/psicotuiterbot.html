@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gonzalo Garcia-Castro">
+<meta name="description" content="He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON.">
+
+<title>Gonzalo Garcia-Castro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//assets/media/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #ffa07a;
+    }
+    </style>
+
+
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<meta property="og:title" content="Gonzalo Garcia-Castro">
+<meta property="og:description" content="Language, stats, R">
+<meta property="og:image" content="/assets/media/favicon.jpeg">
+<meta property="og:site-name" content="Gonzalo García-Castro">
+<meta name="twitter:title" content="Gonzalo Garcia-Castro">
+<meta name="twitter:description" content="Language, stats, R">
+<meta name="twitter:image" content="../../assets/media/favicon.jpeg">
+<meta name="twitter:creator" content="@gongcastro">
+<meta name="twitter:site" content="@cbcUPF">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Gonzalo García-Castro</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gongcastro"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/gongcastro"><i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fediscience.org/@gongcastro"><i class="bi bi-mastodon" role="img" aria-label="Mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/gongcastro/"><i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:adamjnafa@gmail.com"><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">@psicotuiterbot: Un bot de Twitter para Psicotuiter</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                  <div>
+        <div class="description">
+          He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">r</div>
+                <div class="quarto-category">rtweet</div>
+                <div class="quarto-category">twitter</div>
+                <div class="quarto-category">raspberry pi</div>
+                <div class="quarto-category">bot</div>
+                <div class="quarto-category">github</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Gonzalo Garcia-Castro <a href="https://orcid.org/0000-0002-8553-4209" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">Wednesday, December 29, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#la-comunidad-de-psicotuiter" id="toc-la-comunidad-de-psicotuiter" class="nav-link active" data-scroll-target="#la-comunidad-de-psicotuiter">La comunidad de Psicotuiter</a></li>
+  <li><a href="#por-qué-un-bot" id="toc-por-qué-un-bot" class="nav-link" data-scroll-target="#por-qué-un-bot">Por qué un bot</a></li>
+  <li><a href="#creando-el-bot" id="toc-creando-el-bot" class="nav-link" data-scroll-target="#creando-el-bot">Creando el bot</a>
+  <ul class="collapse">
+  <li><a href="#escribiendo-el-código" id="toc-escribiendo-el-código" class="nav-link" data-scroll-target="#escribiendo-el-código">Escribiendo el código</a></li>
+  <li><a href="#ejecutando-el-código" id="toc-ejecutando-el-código" class="nav-link" data-scroll-target="#ejecutando-el-código">Ejecutando el código</a>
+  <ul class="collapse">
+  <li><a href="#primer-intento-sale-mal-github-actions" id="toc-primer-intento-sale-mal-github-actions" class="nav-link" data-scroll-target="#primer-intento-sale-mal-github-actions">Primer intento (sale mal): GitHub actions</a></li>
+  </ul></li>
+  <li><a href="#segundo-intento-sale-bien-raspberry-pi" id="toc-segundo-intento-sale-bien-raspberry-pi" class="nav-link" data-scroll-target="#segundo-intento-sale-bien-raspberry-pi">Segundo intento (sale bien): Raspberry Pi</a></li>
+  </ul></li>
+  <li><a href="#bloqueando-usuarios-de-forma-remota" id="toc-bloqueando-usuarios-de-forma-remota" class="nav-link" data-scroll-target="#bloqueando-usuarios-de-forma-remota">Bloqueando usuarios de forma remota</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">Conclusiones</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/psicotuiterbot/psicotuiterbot.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<a href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="es" data-show-count="false">Follow @psicotuiterbot</a>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div style="float:right">
+<a class="twitter-timeline" data-width="220" data-height="400" href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw">Tweets by psicotuiterbot</a>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<section id="la-comunidad-de-psicotuiter" class="level1">
+<h1>La comunidad de Psicotuiter</h1>
+<p><strong>Psicotuiter</strong> (aka. Psicotwitter) es una comunidad de perfiles de Twitter que hablan de Psicología, entre otras cosas. No se trata de un grupo cerrado, sino de una etiqueta útil para mencionar a esta comunidad. Aunque sus límites son algo difusos (y sería absolutamente innecesario precisarlos), se podría considerar que esta comunidad existe de manera relativamente formal desde 2015, aproximadamente.</p>
+</section>
+<section id="por-qué-un-bot" class="level1">
+<h1>Por qué un bot</h1>
+<p>Uno de los problemas que muchas personas de esta comunidad verbalizaba durante los últimos meses (aunque probablemente se trate de un fenómeno cíclico) es <strong>lo fácilmente que un debate acalorado o incluso irrespetuoso entre dos personas o grupos de personas podía afecta al clima general de la comunidad</strong>. Independientemente de la legitimidad de la discusión en curso, no es ideal que la experiencia en Twitter de una persona promedio en el día a día sea dependiente de un número de interacciones tan reducidas. Alicia Franco hizo es su momento una encuesta capturando el <strong>clima general de Psicotuiter</strong> en su momento (los resultados están disponibles también en un paquete de R que desarrollamos, llamado <a href="https://gongcastro.github.io/2021/11/14/creando-un-paquete-de-r-una-guia-informal-i/">{psicotuiteR}</a>, disponible en <a href="https://github.com/gongcastro/psicotuiteR">GitHub</a>):</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="es" dir="ltr">
+¡Hola, hola!🌿 <br>¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter”?<br>👇¡Pues ya tenemos los resultados!👇 <a href="https://t.co/RbDM78LA0k">pic.twitter.com/RbDM78LA0k</a>
+</p>
+— Ali ☻︎ (<span class="citation" data-cites="AliciaFrancoXVE">(<a href="#ref-AliciaFrancoXVE" role="doc-biblioref"><strong>AliciaFrancoXVE?</strong></a>)</span>) <a href="https://twitter.com/AliciaFrancoXVE/status/1352342172750786560?ref_src=twsrc%5Etfw">January 21, 2021</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Lo mucho que este clima se extiende a través de toda la comunidad puede deberse en parte a la propia estructura de redes de amistad entre los diferentes perfiles. Mi opinión y la de más personas (aun no hemos mirado los datos, pero en algún momento nos gustaría hacerlo), es que <strong>la estructura de esta comunidad está muy centralizada</strong>: muchas personas con relativamente pocos seguidores (0-400) siguen a unas pocas personas con relativamente muchos seguidores (5.000-20.000). Esto convertiría a las segundas en poseedoras de una parte substancial del espacio de la comunidad. Recientemente hice un pequeño hilo ampliando esta reflexión:</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="es" dir="ltr">
+Yo tengo una experiencia parecida a la de <a href="https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw"><span class="citation" data-cites="IreneFPinto">(</span></a><a href="#ref-IreneFPinto" role="doc-biblioref"><strong>IreneFPinto?</strong></a>). Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es <em>mi</em> experiencia.<br><br>Ahora bien, tengo una pequeña reflexión sobre la estructura de <a href="https://twitter.com/hashtag/psicotuiter?src=hash&amp;ref_src=twsrc%5Etfw">#psicotuiter</a> (importantes las aclaraciones al final): 🧵 <a href="https://t.co/G77h8YRQdZ">https://t.co/G77h8YRQdZ</a>
+</p>
+— Gon García-Castro (<span class="citation" data-cites="gongcastro">(<a href="#ref-gongcastro" role="doc-biblioref"><strong>gongcastro?</strong></a>)</span>) <a href="https://twitter.com/gongcastro/status/1472157574522888192?ref_src=twsrc%5Etfw">December 18, 2021</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Una de las consecuencias inmediatas de esto es que el contenido del timeline (TL) de la mayoría de Psicotuiter dependería de las <strong>interacciones entre un pequeño grupo de personas con muchos seguidores</strong>. Teniendo en cuenta que las interacciones negativas tienden a extenderse más rápido y llevarse más atención que las positivas o neutras (ej. <a href="https://psyarxiv.com/2er67/">Bellovary et al., 2021</a>), el impacto de la estructura centralizada de la comunidad sobre el clima del TL de la persona promedio en Psicotuiter es importante.</p>
+<p>Otra consecuencia posiblemente menos comentada, y sin embargo más importante en mi opinión, es que para la persona promedio también <strong>es más difícil acceder a al resto de la comunidad</strong> (es decir, a conocer e interactuar con otras cuentas) si no es a través de la mediación de cuentas más grandes que amplifiquen sus mensajes y los hagan llegar a otras cuentas pequeñas que también les siguen. Creo que esto puede ser frustrante si utilizas Twitter no sólo para leer contenido sino también para generarlo o extender tus redes de apoyo (muy importantes en muchos casos).</p>
+<p>A principios de Octubre de 2021 se me ocurrió posible forma de <strong>reducir el peso de las cuentas grandes sobre cómo se distribuyen las interacciones en Psicotuiter</strong>: un <strong>bot que amplifica todos los mensajes potencialmente relevantes para la comunidad</strong>, sin atender al número de seguidores de la cuenta que lo ha escrito, ni a qué otras cuentas siguien a esa cuenta. Esto, en combinación con que una parte relevante de Psicotuiter siga al bot, podría permitir que cuentas pequeñas accedan a una comunidad más grande sin mediación de otras cuentas.</p>
+</section>
+<section id="creando-el-bot" class="level1">
+<h1>Creando el bot</h1>
+<section id="escribiendo-el-código" class="level2">
+<h2 class="anchored" data-anchor-id="escribiendo-el-código">Escribiendo el código</h2>
+<p>Un bot de Twitter no es más que un <strong>código que se ejecuta automáticamente de forma periódica</strong> (ej., cada 15 minutos) y realiza una acción en Twitter a través de una cuenta (hacer un RT o responder a un tweet). Para poder realizar esta acción a través del código, es necesario tener acceso a la <strong><a href="https://developer.twitter.com/en/portal/dashboard">API de Twitter</a></strong>. API es un acrónimo para <em>Application Programming Interface</em> y como dice su nombre, es una plataforma desde la que podemos interactuar con una aplicación (en este caso Twitter) a través de programación con una serie de comandos que el equipo de Twitter ha diseñado la API ha definido.</p>
+<p>Nunca había hecho un bot de Twitter, pero sabía de la existencia de bastantes tutoriales para hacerlo. La mayoría de los bots de Twitter (y por tanto de los tutoriales) están escritos en Python y JavaScript, pero yo me encuentro algo más cómodo con R. Además gran parte de Psicotuiter (especialmente quienes están relacionades con la metodología) también está más familiarizado con R. Mi intención era hacer el bot lo más <strong>trasparente y accesible</strong> para la comunidad, así que me decanté por R. En un pricipio seguí el <a href="https://www.rostrum.blog/2020/09/21/londonmapbot/">tutorial de Matt Dray</a>, en el que utiliza el paquete de R <a href="https://docs.ropensci.org/rtweet/9">{rtweet}</a> para interactuar con la API de Twitter. Hay más tutoriales que usan rtweet para crear un bot con R. Pero a diferencia de otros, este tutorial explicaba cómo usar GitHub actions para ejecutar el código de forma periódica. Ahora explico esto último. Mientras tanto, vamos al código de R.</p>
+<p>Primero creé un <strong><a href="https://github.com/gongcastro/psicotuiterbot">repositorio de GitHub</a></strong> donde alojar el código (GitHub es como un Google Drive especializado en código donde además podemos hacer control de versiones de los archivos que subimos). Puedes echar un vistazo al código de R en la carpeta R/. El código principalmente recoge los <strong>últimos tweets que se han escrito en las últimos 6 horas mencionando <a href="https://twitter.com/hashtag/psicotuiter?src=hashtag_click&amp;f=live">#psicotuiter</a> o <a href="https://twitter.com/search?q=%23psicotwitter&amp;src=typed_query&amp;f=live">#psicotwitter</a> y los retuitea</strong>. No me meteré en detalle a explicar cómo funciona el código, pero aquí va un pequeño resumen del programa. Si tienes curiosidad te recomiendo explorar el repositorio de GitHub, que contiene todo lo necesario para hacer funcionar el bot:</p>
+<p>Primero cargamos el paquete de R <a href="https://dplyr.tidyverse.org/">{dplyr}</a>, que utilizamos en bastantes ocasiones en el programa, ajustamos un pequeño detalle relacionado con el comportamiento de la API de Twitter, e instalamos los paquetes necesarios (en caso de que hayan cambiado) usando el pqeute de R <a href="https://rstudio.github.io/renv/articles/renv.html">{renv}</a> (si no lo conoces y te interesa la reproducibilidad computacional tienes que echarle un vistazo).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bot R code</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">httr_oob_default =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># restore packages</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A continuación extraemos las <strong>credenciales</strong> que necesitamos para acceder a la API de Twitter (las paso a como variables de entorno para evitar hacerlas públicas, ya que eso dería acceso a cualquiera a la cuenta de Twitter del bot).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># authenticate Twitter API</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my_token <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">create_token</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">app =</span> <span class="st">"psicotuiterbot"</span>,  <span class="co"># the name of the Twitter app</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">consumer_key =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_CONSUMER_API_KEY"</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">consumer_secret =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_CONSUMER_API_KEY_SECRET"</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">access_token =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_ACCESS_TOKEN"</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">access_secret =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_ACCESS_TOKEN_SECRET"</span>), </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">set_renv =</span> <span class="cn">FALSE</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Luego <strong>extraemos los tweets</strong> usando rtweet, filtramos los que sean relevantes y no contengan posible contenido ofensivo (y algún otro filtro más).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define hashtags</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>hashtags_vct <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#psicotuiter"</span>, <span class="st">"#psicotwitter"</span>, <span class="st">"#Psicotuiter"</span>, <span class="st">"#Psicotwitter"</span>, <span class="st">"#PsicoTuiter"</span>, <span class="st">"#PsicoTwitter"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>hashtags <span class="ot">&lt;-</span> <span class="fu">paste</span>(hashtags_vct, <span class="at">collapse =</span> <span class="st">" OR "</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>hate_words <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"HATE_WORDS"</span>), <span class="st">" "</span>)) <span class="co"># words banned from psicotuiterbot (separated by a space)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>blocked_accounts <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"BLOCKED_ACCOUNTS"</span>), <span class="st">" "</span>)) <span class="co"># accounts banned from psicotuiterbot (separated by a space)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>time_interval <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"UCT"</span>)<span class="sc">-</span>lubridate<span class="sc">::</span><span class="fu">minutes</span>(<span class="dv">120</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># get mentions to #psicotuiter and others</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>all_tweets <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    hashtags, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"recent"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">token =</span> my_token, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">include_rts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">tzone =</span> <span class="st">"CET"</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>status_ids <span class="ot">&lt;-</span> all_tweets <span class="sc">%&gt;%</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span>(screen_name <span class="sc">%in%</span> <span class="fu">gsub</span>(<span class="st">"@"</span>, <span class="st">""</span>, blocked_accounts)),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        created_at <span class="sc">&gt;=</span> time_interval, <span class="co"># 15 min</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span><span class="fu">grepl</span>(<span class="fu">paste</span>(hate_words, <span class="at">collapse =</span> <span class="st">"|"</span>), text), <span class="co"># filter out hate words</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_count</span>(text, <span class="st">"#"</span>) <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="co"># no more than 3 hashtags</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        lang <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"es"</span>, <span class="st">"und"</span>) <span class="co"># in Spanish or undefined language</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(status_id)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># get request ID</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>request_tweets <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">get_mentions</span>(</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">token =</span> my_token, </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">tzone =</span> <span class="st">"CET"</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finalmente, <strong>hacemos RT</strong> uno a uno usando rtweet (si ya habíamos hecho RT a uno de ellos simplemente se ignora).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(request_tweets) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    request_ids <span class="ot">&lt;-</span> request_tweets <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            created_at <span class="sc">&gt;=</span> time_interval, <span class="co"># 15 min</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">grepl</span>(<span class="st">"@psicotuiterbot"</span>, text),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">grepl</span>(<span class="st">"rt|RT|Rt"</span>, text),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="sc">!</span><span class="fu">grepl</span>(<span class="fu">paste</span>(hate_words, <span class="at">collapse =</span> <span class="st">"|"</span>), text) <span class="co"># filter out hate words</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(status_in_reply_to_status_id)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get requested IDS</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(request_ids) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        requested_ids <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">lookup_statuses</span>(request_ids, <span class="at">token =</span> my_token) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                <span class="sc">!</span><span class="fu">grepl</span>(<span class="fu">paste</span>(hate_words, <span class="at">collapse =</span> <span class="st">"|"</span>), text) <span class="co"># filter out hate words</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">pull</span>(status_id)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        requested_ids <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    requested_ids <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># RT all IDs</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(status_ids) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(status_ids)){</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        rtweet<span class="sc">::</span><span class="fu">post_tweet</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">retweet_id =</span> <span class="fu">unique</span>(status_ids)[i], <span class="co"># vector with IDs</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">token =</span> my_token</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">length</span>(status_ids), <span class="st">" RT(s): "</span>, <span class="fu">paste</span>(status_ids, <span class="at">collapse =</span> <span class="st">", "</span>)))</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"No tweets to RT"</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Recientemente incluí un pequeño bloque de código para permitir que la gente solicitase un <strong>RT para tuits que no mencionaban #psicotuiter</strong>, pero podrían ser de interés para la comunidad. Para hacerlo solo hay que responder al tuit en cuestión mencionando a @psicotuiterbot junto con la palabra RT (ej., “RT @psicotuiterbot por favor”).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tweet requests</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(requested_ids) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(requested_ids)){</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        rtweet<span class="sc">::</span><span class="fu">post_tweet</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">retweet_id =</span> <span class="fu">unique</span>(requested_ids)[i], <span class="co"># vector with IDs</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">token =</span> my_token</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">length</span>(requested_ids), <span class="st">" request(s) posted: "</span>, <span class="fu">paste</span>(requested_ids, <span class="at">collapse =</span> <span class="st">", "</span>)))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"No requests"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejecutando-el-código" class="level2">
+<h2 class="anchored" data-anchor-id="ejecutando-el-código">Ejecutando el código</h2>
+<p>Lo que hace “bot” a un bot es que <strong>no requiere intervención manual</strong> para que realice la acción que deseamos. Hay muchas opciones para conseguir esto, pero casi todas tienen un inconveniente: necesitamos que una máquina (ordenador/servidor, móvil, etc.) esté encendido en el momento en el que queremos ejecutar nuestro código. En nuestro caso necesitamos que se ejecute cada 15 minutos, lo que implica que deberíamos tener un dispositivo conectado a la corrriente y funcionando todo el día. Tener mi ordenador personal haciendo esto no es una opción viable. Me encontré con dos alternativas.</p>
+<section id="primer-intento-sale-mal-github-actions" class="level3">
+<h3 class="anchored" data-anchor-id="primer-intento-sale-mal-github-actions">Primer intento (sale mal): GitHub actions</h3>
+<p>Como mencioné antes, en el tutorial de Matt Dray se ilustra cómo usar <a href="https://github.com/features/actions"><strong>GitHub Actions</strong></a> para ejecutar nuestro código una vez está alojado en un repositorio de GitHub. GitHub Actions es un servicio que ofrece GitHub que permite ejecutar ciertos comandos en determinadas condiciones o cada cierto tiempo usando un servidor que ponen a nuestra disposición (con ciertos límites). Este grupo de comandos se denominan <em>workflows</em> o flujos de trabajo, y si los incluimos en una carpeta de nuestro repositorio llamada .github/workflows/ siguiendo cierto formato en un archivo YAML (.yml), GitHub se encargará de ejecutarlo sin nuestra intervención. Hay buenos <a href="https://www.youtube.com/watch?v=R8_veQiYBjI">tutoriales</a> sobre cómo y cuándo escribir <em>workflows</em> para GutHub Actions. El <em>workflow</em> principal era inicialmente este:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> bot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> main</span><span class="co"> # run every time there is a push to main branch</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> test</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">psicotuiterbot-post</span><span class="kw">:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> macOS-latest</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env</span><span class="kw">:</span><span class="co"> #  twitter API keys (used to authenticate) defined in the gh actions environment</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_CONSUMER_API_KEY</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_CONSUMER_API_KEY }}</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_CONSUMER_API_KEY_SECRET</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_CONSUMER_API_KEY_SECRET }}</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_ACCESS_TOKEN</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_ACCESS_TOKEN }}</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_ACCESS_TOKEN_SECRET</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v2</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-r@v1</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-renv@v1</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">cache-version</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Restore packages using renv</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">shell</span><span class="kw">:</span><span class="at"> Rscript {0}</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>          renv::restore()</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Create and post tweet</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> Rscript R/bot.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La gran ventaja de usar este sistema es que <strong>no necesitamos usar nuestro ordenador personal, ya que usamos el que que GitHub nos asigna</strong> (un servidor no deja de ser un ordenador). Pero tiene varios inconvenientes. El primero es que el proceso de establecer un <em>workflow</em> en GitHub Actions suele requerir varios intentos (en mi caso muchos). Esto suele deberse a problemas de reproducibilidad computacional: el código funciona correctamente en mi ordenador porque en él tengo instalado todo el sofware del que depende. Cuando uso el servidor de GitHub, el sistema operativo suele necesitar que instalemos estas <strong>dependencias</strong> antes de ejecutar el código. GitHub Actions permite cierta flexibilidad a la hora de seleccionar el software que viene instalado en el sistema operativo que vamos a usar (ej., R, compiladores de C++, dependencias de Linux, etc.). El problema es que muchas veces ni siquiera somos conscientes de cuántas dependencias requiere nuestro código. Con paciencia y muchas búsquedas de Google es posible solventar este problema.</p>
+<p>Un segundo inconveniente que encontré a la hora de implementar el bot en GitHub Actions tiene que ver con los tiempos: instalar todas las dependencias del código en el servidor cada 15 minutos (la configuración se pierde casi totalmente tras cada ejecución) es <strong>poco eficiente</strong>. Instalar las dependencias puede tardar más de 10 minutos (en el caso de este bot). Esto puede además hacer fallar en ocasiones el flujo de trabajo. GitHub Actions tampoco es lo más consistente del mundo, aunque no deja de ser gratis.</p>
+</section>
+</section>
+<section id="segundo-intento-sale-bien-raspberry-pi" class="level2">
+<h2 class="anchored" data-anchor-id="segundo-intento-sale-bien-raspberry-pi">Segundo intento (sale bien): Raspberry Pi</h2>
+<p>Tras varios problemas en la ejecución del bot a través de GitHub Actions, decidí cambiar de método. Por razones ajenas al bot, hacía unos meses que tenía muerta de aburrimiento una <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"><strong>Raspberry Pi 4</strong></a> que compré con un amigo para jugar con ella. Este dispositivo es un mini-ordenador relativamente barato (~40€) que salió al mercado como herramienta educativa para enseñar a programar (ej., róbotica para niñes) pero que poco a poco ha ido tomando espacio en lugares de producción. Tiene mil posibilidades por su simplicidad y, en nuestro caso, por su bajo consumo: tener una Raspberry Pi funcionando todo el día <strong>apenas tiene impacto sobre el consumo de luz</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="raspberry.jfif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Aquí está alojado el @psicotuiterbot</figcaption><p></p>
+</figure>
+</div>
+<p>Primero instalé el código en la Raspberry con sus dependencias: básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado <strong>CRON</strong>. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos <a href="https://crontab.guru/examples.html">ejemplos</a>. Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># descarga el código de GitHub, por si ha habido cambios</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ejecuta el código principal del bot</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="va">TZ</span><span class="op">=</span><span class="st">"Spain/Madrid"</span> <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'source("R/bot.R")'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># guarda los tweets detectados en un archivo y crea un gráfico</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'source("R/counts.R")'</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> Rplots.pdf</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># sube los nuevos datos a GitHub</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update repository"</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Estos comandos se ejecutan en este orden cada 15 minutos.</p>
+</section>
+</section>
+<section id="bloqueando-usuarios-de-forma-remota" class="level1">
+<h1>Bloqueando usuarios de forma remota</h1>
+<p>Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite <strong>bloquear usuarios que con tan sólo enviar al bot un mensaje directo</strong> de Twitter. El script <strong>R/block.R</strong> accede a los 10 últimos mensajes recibidos por parte de usuaries “VIP” (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el <strong>que el propio bot modifique los archivos locales</strong> a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo <strong>cargar ese vector sin desvelar us contenidos</strong>, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vip_users <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"VIP_USERS"</span>), <span class="st">" "</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>blocked_accounts <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"BLOCKED_ACCOUNTS"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>blocked_accounts_vct <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(blocked_accounts, <span class="at">split =</span> <span class="st">" "</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get DMs</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">direct_messages</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">token =</span> my_token)<span class="sc">$</span>events</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># if new DMs have been received</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(msg) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for each received DM</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(msg)){</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        msg_text <span class="ot">&lt;-</span> msg<span class="sc">$</span>message_create<span class="sc">$</span>message_data<span class="sc">$</span>text[i]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        is_block <span class="ot">&lt;-</span> <span class="fu">grepl</span>(<span class="st">"block|block|bloquea"</span>, <span class="fu">tolower</span>(msg_text))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        sender_name <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">lookup_users</span>(msg<span class="sc">$</span>message_create<span class="sc">$</span>sender_id[i], <span class="at">token =</span> my_token)<span class="sc">$</span>screen_name</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if message is sent by VIP user and contains keyword "block"</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (is_block <span class="sc">&amp;</span> (<span class="fu">paste0</span>(<span class="st">"@"</span>, sender_name) <span class="sc">%in%</span> vip_users)){</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            msg_text_vct <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(msg_text, <span class="st">" "</span>))</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            target_users <span class="ot">&lt;-</span> msg_text_vct[<span class="fu">grepl</span>(<span class="st">"@"</span>, msg_text_vct)]</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if at least one targeted users has not been blocked yet</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(target_users <span class="sc">%in%</span> blocked_accounts_vct)){</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                target_users_str <span class="ot">&lt;-</span> <span class="fu">paste0</span>(target_users, <span class="at">collapse =</span> <span class="st">" "</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                blocked_accounts_new <span class="ot">&lt;-</span> <span class="fu">paste0</span>(blocked_accounts, <span class="st">" "</span>, target_users_str)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                renviron_text <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">'BLOCKED_ACCOUNTS = "'</span>, blocked_accounts_new, <span class="st">'"'</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">write</span>(renviron_text, <span class="st">".Renviron"</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>                <span class="fu">message</span>(<span class="fu">paste0</span>(<span class="st">"User(s) "</span>, <span class="fu">paste0</span>(target_users_str, <span class="at">collapse =</span> <span class="st">" "</span>), <span class="st">" is now blocked"</span>))</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>            } <span class="cf">else</span> {</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>                repeated_target <span class="ot">&lt;-</span> target_users[<span class="fu">which</span>(target_users <span class="sc">%in%</span> blocked_accounts_vct)]</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>                <span class="fu">message</span>(<span class="fu">paste0</span>(<span class="st">"User(s) "</span>, <span class="fu">paste0</span>(repeated_target, <span class="at">collapse =</span> <span class="st">" "</span>), <span class="st">" has already been blocked"</span>))</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>            <span class="fu">message</span>(<span class="fu">paste0</span>(<span class="st">"Message from a non-VIP: "</span>, <span class="fu">paste0</span>(<span class="st">"@"</span>, sender_name)))</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conclusiones" class="level1">
+<h1>Conclusiones</h1>
+<p>De momento, el bot está funcionando bastante bien y se le está dando bastante uso, especialmente por parte de cuentas pequeñas. Aún tengo pendiente hacer un análisis más profundo de qué tipo de actividad tiene lugar en el bot, pero mi impresión es que la mayoría de usos consisten en petitiones de referencias de profesionales de psicología en poblaciones concretas o de referencias bilbiográficas.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="gongcastro/gongcastro.github.io" data-repo-id="R_kgDOGJ9lfQ" data-category="Blog comments" data-category-id="R_kgDOGJ9lfQ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> '\@psicotuiterbot: Un bot de Twitter para Psicotuiter'</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2021-12-29'</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON."</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> raspberry.jfif</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - r</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - rtweet</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - twitter</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - raspberry pi</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - bot</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - github</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="an">echo:</span><span class="co"> false</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="an">message:</span><span class="co"> false</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="an">warning:</span><span class="co"> false</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="an">fig-dpi:</span><span class="co"> 1000</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-follow-button"</span> <span class="er">data-size</span><span class="ot">=</span><span class="st">"large"</span> <span class="er">data-lang</span><span class="ot">=</span><span class="st">"es"</span> <span class="er">data-show-count</span><span class="ot">=</span><span class="st">"false"</span><span class="kw">&gt;</span>Follow \@psicotuiterbot<span class="kw">&lt;/a&gt;&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">style</span><span class="ot">=</span><span class="st">"float:right"</span><span class="kw">&gt;</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-timeline"</span> <span class="er">data-width</span><span class="ot">=</span><span class="st">"220"</span> <span class="er">data-height</span><span class="ot">=</span><span class="st">"400"</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>Tweets by psicotuiterbot<span class="kw">&lt;/a&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># La comunidad de Psicotuiter</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>**Psicotuiter** (aka. Psicotwitter) es una comunidad de perfiles de Twitter que hablan de Psicología, entre otras cosas. No se trata de un grupo cerrado, sino de una etiqueta útil para mencionar a esta comunidad. Aunque sus límites son algo difusos (y sería absolutamente innecesario precisarlos), se podría considerar que esta comunidad existe de manera relativamente formal desde 2015, aproximadamente.</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># Por qué un bot</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Uno de los problemas que muchas personas de esta comunidad verbalizaba durante los últimos meses (aunque probablemente se trate de un fenómeno cíclico) es **lo fácilmente que un debate acalorado o incluso irrespetuoso entre dos personas o grupos de personas podía afecta al clima general de la comunidad**. Independientemente de la legitimidad de la discusión en curso, no es ideal que la experiencia en Twitter de una persona promedio en el día a día sea dependiente de un número de interacciones tan reducidas. Alicia Franco hizo es su momento una encuesta capturando el **clima general de Psicotuiter** en su momento (los resultados están disponibles también en un paquete de R que desarrollamos, llamado <span class="co">[</span><span class="ot">{psicotuiteR}</span><span class="co">](https://gongcastro.github.io/2021/11/14/creando-un-paquete-de-r-una-guia-informal-i/)</span>, disponible en <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/gongcastro/psicotuiteR)</span>):</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-tweet"</span><span class="kw">&gt;&lt;p</span> <span class="er">lang</span><span class="ot">=</span><span class="st">"es"</span> <span class="er">dir</span><span class="ot">=</span><span class="st">"ltr"</span><span class="kw">&gt;</span>¡Hola, hola!🌿 <span class="kw">&lt;br&gt;</span>¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter<span class="dv">&amp;quot;</span>?<span class="kw">&lt;br&gt;</span>👇¡Pues ya tenemos los resultados!👇 <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://t.co/RbDM78LA0k"</span><span class="kw">&gt;</span>pic.twitter.com/RbDM78LA0k<span class="kw">&lt;/a&gt;&lt;/p&gt;</span><span class="dv">&amp;mdash;</span> Ali ☻︎ (@AliciaFrancoXVE) <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/AliciaFrancoXVE/status/1352342172750786560?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>January 21, 2021<span class="kw">&lt;/a&gt;&lt;/blockquote&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>Lo mucho que este clima se extiende a través de toda la comunidad puede deberse en parte a la propia estructura de redes de amistad entre los diferentes perfiles. Mi opinión y la de más personas (aun no hemos mirado los datos, pero en algún momento nos gustaría hacerlo), es que **la estructura de esta comunidad está muy centralizada**: muchas personas con relativamente pocos seguidores (0-400) siguen a unas pocas personas con relativamente muchos seguidores (5.000-20.000). Esto convertiría a las segundas en poseedoras de una parte substancial del espacio de la comunidad. Recientemente hice un pequeño hilo ampliando esta reflexión:</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-tweet"</span><span class="kw">&gt;&lt;p</span> <span class="er">lang</span><span class="ot">=</span><span class="st">"es"</span> <span class="er">dir</span><span class="ot">=</span><span class="st">"ltr"</span><span class="kw">&gt;</span>Yo tengo una experiencia parecida a la de <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>@IreneFPinto<span class="kw">&lt;/a&gt;</span>. Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es *mi* experiencia.<span class="kw">&lt;br&gt;&lt;br&gt;</span>Ahora bien, tengo una pequeña reflexión sobre la estructura de <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/hashtag/psicotuiter?src=hash</span><span class="dv">&amp;amp;</span><span class="st">ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>#psicotuiter<span class="kw">&lt;/a&gt;</span> (importantes las aclaraciones al final): 🧵 <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://t.co/G77h8YRQdZ"</span><span class="kw">&gt;</span>https://t.co/G77h8YRQdZ<span class="kw">&lt;/a&gt;&lt;/p&gt;</span><span class="dv">&amp;mdash;</span> Gon García-Castro (@gongcastro) <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/gongcastro/status/1472157574522888192?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>December 18, 2021<span class="kw">&lt;/a&gt;&lt;/blockquote&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>Una de las consecuencias inmediatas de esto es que el contenido del timeline (TL) de la mayoría de Psicotuiter dependería de las **interacciones entre un pequeño grupo de personas con muchos seguidores**. Teniendo en cuenta que las interacciones negativas tienden a extenderse más rápido y llevarse más atención que las positivas o neutras (ej. <span class="co">[</span><span class="ot">Bellovary et al., 2021</span><span class="co">](https://psyarxiv.com/2er67/)</span>), el impacto de la estructura centralizada de la comunidad sobre el clima del TL de la persona promedio en Psicotuiter es importante.</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>Otra consecuencia posiblemente menos comentada, y sin embargo más importante en mi opinión, es que para la persona promedio también **es más difícil acceder a al resto de la comunidad** (es decir, a conocer e interactuar con otras cuentas) si no es a través de la mediación de cuentas más grandes que amplifiquen sus mensajes y los hagan llegar a otras cuentas pequeñas que también les siguen. Creo que esto puede ser frustrante si utilizas Twitter no sólo para leer contenido sino también para generarlo o extender tus redes de apoyo (muy importantes en muchos casos).</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>A principios de Octubre de 2021 se me ocurrió posible forma de **reducir el peso de las cuentas grandes sobre cómo se distribuyen las interacciones en Psicotuiter**: un **bot que amplifica todos los mensajes potencialmente relevantes para la comunidad**, sin atender al número de seguidores de la cuenta que lo ha escrito, ni a qué otras cuentas siguien a esa cuenta. Esto, en combinación con que una parte relevante de Psicotuiter siga al bot, podría permitir que cuentas pequeñas accedan a una comunidad más grande sin mediación de otras cuentas.</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Creando el bot</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Escribiendo el código</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>Un bot de Twitter no es más que un **código que se ejecuta automáticamente de forma periódica** (ej., cada 15 minutos) y realiza una acción en Twitter a través de una cuenta (hacer un RT o responder a un tweet). Para poder realizar esta acción a través del código, es necesario tener acceso a la **[API de Twitter](https://developer.twitter.com/en/portal/dashboard)**. API es un acrónimo para *Application Programming Interface* y como dice su nombre, es una plataforma desde la que podemos interactuar con una aplicación (en este caso Twitter) a través de programación con una serie de comandos que el equipo de Twitter ha diseñado la API ha definido.</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>Nunca había hecho un bot de Twitter, pero sabía de la existencia de bastantes tutoriales para hacerlo. La mayoría de los bots de Twitter (y por tanto de los tutoriales) están escritos en Python y JavaScript, pero yo me encuentro algo más cómodo con R. Además gran parte de Psicotuiter (especialmente quienes están relacionades con la metodología) también está más familiarizado con R. Mi intención era hacer el bot lo más **trasparente y accesible** para la comunidad, así que me decanté por R. En un pricipio seguí el <span class="co">[</span><span class="ot">tutorial de Matt Dray</span><span class="co">](https://www.rostrum.blog/2020/09/21/londonmapbot/)</span>, en el que utiliza el paquete de R <span class="co">[</span><span class="ot">{rtweet}</span><span class="co">](https://docs.ropensci.org/rtweet/9)</span> para interactuar con la API de Twitter. Hay más tutoriales que usan rtweet para crear un bot con R. Pero a diferencia de otros, este tutorial explicaba cómo usar GitHub actions para ejecutar el código de forma periódica. Ahora explico esto último. Mientras tanto, vamos al código de R.</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>Primero creé un **[repositorio de GitHub](https://github.com/gongcastro/psicotuiterbot)** donde alojar el código (GitHub es como un Google Drive especializado en código donde además podemos hacer control de versiones de los archivos que subimos). Puedes echar un vistazo al código de R en la carpeta R/. El código principalmente recoge los **últimos tweets que se han escrito en las últimos 6 horas mencionando [#psicotuiter](https://twitter.com/hashtag/psicotuiter?src=hashtag_click&amp;f=live) o [#psicotwitter](https://twitter.com/search?q=%23psicotwitter&amp;src=typed_query&amp;f=live) y los retuitea**. No me meteré en detalle a explicar cómo funciona el código, pero aquí va un pequeño resumen del programa. Si tienes curiosidad te recomiendo explorar el repositorio de GitHub, que contiene todo lo necesario para hacer funcionar el bot:</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>Primero cargamos el paquete de R <span class="co">[</span><span class="ot">{dplyr}</span><span class="co">](https://dplyr.tidyverse.org/)</span>, que utilizamos en bastantes ocasiones en el programa, ajustamos un pequeño detalle relacionado con el comportamiento de la API de Twitter, e instalamos los paquetes necesarios (en caso de que hayan cambiado) usando el pqeute de R <span class="co">[</span><span class="ot">{renv}</span><span class="co">](https://rstudio.github.io/renv/articles/renv.html)</span> (si no lo conoces y te interesa la reproducibilidad computacional tienes que echarle un vistazo).</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a><span class="co"># bot R code</span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">httr_oob_default =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a><span class="co"># restore packages</span></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>A continuación extraemos las **credenciales** que necesitamos para acceder a la API de Twitter (las paso a como variables de entorno para evitar hacerlas públicas, ya que eso dería acceso a cualquiera a la cuenta de Twitter del bot). </span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="co"># authenticate Twitter API</span></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>my_token <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">create_token</span>(</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">app =</span> <span class="st">"psicotuiterbot"</span>,  <span class="co"># the name of the Twitter app</span></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">consumer_key =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_CONSUMER_API_KEY"</span>),</span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">consumer_secret =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_CONSUMER_API_KEY_SECRET"</span>),</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">access_token =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_ACCESS_TOKEN"</span>),</span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">access_secret =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_ACCESS_TOKEN_SECRET"</span>), </span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">set_renv =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>Luego **extraemos los tweets** usando rtweet, filtramos los que sean relevantes y no contengan posible contenido ofensivo (y algún otro filtro más).</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a><span class="co"># define hashtags</span></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>hashtags_vct <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#psicotuiter"</span>, <span class="st">"#psicotwitter"</span>, <span class="st">"#Psicotuiter"</span>, <span class="st">"#Psicotwitter"</span>, <span class="st">"#PsicoTuiter"</span>, <span class="st">"#PsicoTwitter"</span>)</span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>hashtags <span class="ot">&lt;-</span> <span class="fu">paste</span>(hashtags_vct, <span class="at">collapse =</span> <span class="st">" OR "</span>)</span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>hate_words <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"HATE_WORDS"</span>), <span class="st">" "</span>)) <span class="co"># words banned from psicotuiterbot (separated by a space)</span></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>blocked_accounts <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"BLOCKED_ACCOUNTS"</span>), <span class="st">" "</span>)) <span class="co"># accounts banned from psicotuiterbot (separated by a space)</span></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>time_interval <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"UCT"</span>)<span class="sc">-</span>lubridate<span class="sc">::</span><span class="fu">minutes</span>(<span class="dv">120</span>)</span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a><span class="co"># get mentions to #psicotuiter and others</span></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>all_tweets <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>    hashtags, </span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"recent"</span>, </span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">token =</span> my_token, </span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">include_rts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">tzone =</span> <span class="st">"CET"</span></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>status_ids <span class="ot">&lt;-</span> all_tweets <span class="sc">%&gt;%</span> </span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span>(screen_name <span class="sc">%in%</span> <span class="fu">gsub</span>(<span class="st">"@"</span>, <span class="st">""</span>, blocked_accounts)),</span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>        created_at <span class="sc">&gt;=</span> time_interval, <span class="co"># 15 min</span></span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span><span class="fu">grepl</span>(<span class="fu">paste</span>(hate_words, <span class="at">collapse =</span> <span class="st">"|"</span>), text), <span class="co"># filter out hate words</span></span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_count</span>(text, <span class="st">"#"</span>) <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="co"># no more than 3 hashtags</span></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>        lang <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"es"</span>, <span class="st">"und"</span>) <span class="co"># in Spanish or undefined language</span></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(status_id)</span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a><span class="co"># get request ID</span></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>request_tweets <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">get_mentions</span>(</span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>    <span class="at">token =</span> my_token, </span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>    <span class="at">tzone =</span> <span class="st">"CET"</span></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>Finalmente, **hacemos RT** uno a uno usando rtweet (si ya habíamos hecho RT a uno de ellos simplemente se ignora). </span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(request_tweets) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>    request_ids <span class="ot">&lt;-</span> request_tweets <span class="sc">%&gt;%</span> </span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>            created_at <span class="sc">&gt;=</span> time_interval, <span class="co"># 15 min</span></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>            <span class="fu">grepl</span>(<span class="st">"@psicotuiterbot"</span>, text),</span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>            <span class="fu">grepl</span>(<span class="st">"rt|RT|Rt"</span>, text),</span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a>            <span class="sc">!</span><span class="fu">grepl</span>(<span class="fu">paste</span>(hate_words, <span class="at">collapse =</span> <span class="st">"|"</span>), text) <span class="co"># filter out hate words</span></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(status_in_reply_to_status_id)</span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get requested IDS</span></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(request_ids) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>        requested_ids <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">lookup_statuses</span>(request_ids, <span class="at">token =</span> my_token) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(</span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>                <span class="sc">!</span><span class="fu">grepl</span>(<span class="fu">paste</span>(hate_words, <span class="at">collapse =</span> <span class="st">"|"</span>), text) <span class="co"># filter out hate words</span></span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>            <span class="fu">pull</span>(status_id)</span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a>        requested_ids <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>    requested_ids <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="co"># RT all IDs</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(status_ids) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(status_ids)){</span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>        rtweet<span class="sc">::</span><span class="fu">post_tweet</span>(</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>            <span class="at">retweet_id =</span> <span class="fu">unique</span>(status_ids)[i], <span class="co"># vector with IDs</span></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>            <span class="at">token =</span> my_token</span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">length</span>(status_ids), <span class="st">" RT(s): "</span>, <span class="fu">paste</span>(status_ids, <span class="at">collapse =</span> <span class="st">", "</span>)))</span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"No tweets to RT"</span>)</span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>Recientemente incluí un pequeño bloque de código para permitir que la gente solicitase un **RT para tuits que no mencionaban #psicotuiter**, pero podrían ser de interés para la comunidad. Para hacerlo solo hay que responder al tuit en cuestión mencionando a \@psicotuiterbot junto con la palabra RT (ej., "RT \@psicotuiterbot por favor").</span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a><span class="co"># tweet requests</span></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(requested_ids) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(requested_ids)){</span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>        rtweet<span class="sc">::</span><span class="fu">post_tweet</span>(</span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a>            <span class="at">retweet_id =</span> <span class="fu">unique</span>(requested_ids)[i], <span class="co"># vector with IDs</span></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a>            <span class="at">token =</span> my_token</span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">length</span>(requested_ids), <span class="st">" request(s) posted: "</span>, <span class="fu">paste</span>(requested_ids, <span class="at">collapse =</span> <span class="st">", "</span>)))</span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"No requests"</span>)</span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejecutando el código</span></span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a>Lo que hace "bot" a un bot es que **no requiere intervención manual** para que realice la acción que deseamos. Hay muchas opciones para conseguir esto, pero casi todas tienen un inconveniente: necesitamos que una máquina (ordenador/servidor, móvil, etc.) esté encendido en el momento en el que queremos ejecutar nuestro código. En nuestro caso necesitamos que se ejecute cada 15 minutos, lo que implica que deberíamos tener un dispositivo conectado a la corrriente y funcionando todo el día. Tener mi ordenador personal haciendo esto no es una opción viable. Me encontré con dos alternativas.</span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="fu">### Primer intento (sale mal): GitHub actions</span></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a>Como mencioné antes, en el tutorial de Matt Dray se ilustra cómo usar <span class="co">[</span><span class="ot">**GitHub Actions**</span><span class="co">](https://github.com/features/actions)</span> para ejecutar nuestro código una vez está alojado en un repositorio de GitHub. GitHub Actions es un servicio que ofrece GitHub que permite ejecutar ciertos comandos en determinadas condiciones o cada cierto tiempo usando un servidor que ponen a nuestra disposición (con ciertos límites). Este grupo de comandos se denominan *workflows* o flujos de trabajo, y si los incluimos en una carpeta de nuestro repositorio llamada .github/workflows/ siguiendo cierto formato en un archivo YAML (.yml), GitHub se encargará de ejecutarlo sin nuestra intervención. Hay buenos [tutoriales](https://www.youtube.com/watch?v=R8_veQiYBjI) sobre cómo y cuándo escribir *workflows* para GutHub Actions. El *workflow* principal era inicialmente este:</span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a><span class="in">```yml</span></span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> bot</span></span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span></span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span>main<span class="co"> # run every time there is a push to main branch</span></span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span>test</span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">psicotuiterbot-post</span><span class="kw">:</span></span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> macOS-latest</span></span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env</span><span class="kw">:</span><span class="co"> #  twitter API keys (used to authenticate) defined in the gh actions environment</span></span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_CONSUMER_API_KEY</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_CONSUMER_API_KEY }}</span></span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_CONSUMER_API_KEY_SECRET</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_CONSUMER_API_KEY_SECRET }}</span></span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_ACCESS_TOKEN</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_ACCESS_TOKEN }}</span></span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">TWITTER_ACCESS_TOKEN_SECRET</span><span class="kw">:</span><span class="at"> ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}</span></span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v2</span></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-r@v1</span></span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-renv@v1</span></span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">cache-version</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Restore packages using renv</span></span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">shell</span><span class="kw">:</span><span class="at"> Rscript {0}</span></span>
+<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a>          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")</span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a>          renv::restore()</span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Create and post tweet</span></span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> Rscript R/bot.R</span></span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a><span class="fu">La gran ventaja de usar este sistema es que **no necesitamos usar nuestro ordenador personal, ya que usamos el que que GitHub nos asigna** (un servidor no deja de ser un ordenador). Pero tiene varios inconvenientes. El primero es que el proceso de establecer un *workflow* en GitHub Actions suele requerir varios intentos (en mi caso muchos). Esto suele deberse a problemas de reproducibilidad computacional</span><span class="kw">:</span><span class="at"> el código funciona correctamente en mi ordenador porque en él tengo instalado todo el sofware del que depende. Cuando uso el servidor de GitHub, el sistema operativo suele necesitar que instalemos estas **dependencias** antes de ejecutar el código. GitHub Actions permite cierta flexibilidad a la hora de seleccionar el software que viene instalado en el sistema operativo que vamos a usar (ej., R, compiladores de C++, dependencias de Linux, etc.). El problema es que muchas veces ni siquiera somos conscientes de cuántas dependencias requiere nuestro código. Con paciencia y muchas búsquedas de Google es posible solventar este problema.</span></span>
+<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a><span class="fu">Un segundo inconveniente que encontré a la hora de implementar el bot en GitHub Actions tiene que ver con los tiempos</span><span class="kw">:</span><span class="at"> instalar todas las dependencias del código en el servidor cada 15 minutos (la configuración se pierde casi totalmente tras cada ejecución) es **poco eficiente**. Instalar las dependencias puede tardar más de 10 minutos (en el caso de este bot). Esto puede además hacer fallar en ocasiones el flujo de trabajo. GitHub Actions tampoco es lo más consistente del mundo, aunque no deja de ser gratis.</span></span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a><span class="co">## Segundo intento (sale bien): Raspberry Pi</span></span>
+<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>Tras<span class="at"> </span>varios<span class="at"> </span>problemas<span class="at"> </span>en<span class="at"> </span>la<span class="at"> </span>ejecución<span class="at"> </span>del<span class="at"> </span>bot<span class="at"> </span>a<span class="at"> </span>través<span class="at"> </span>de<span class="at"> </span>GitHub<span class="at"> </span>Actions,<span class="at"> </span>decidí<span class="at"> </span>cambiar<span class="at"> </span>de<span class="at"> </span>método.<span class="at"> </span>Por<span class="at"> </span>razones<span class="at"> </span>ajenas<span class="at"> </span>al<span class="at"> </span>bot,<span class="at"> </span>hacía<span class="at"> </span>unos<span class="at"> </span>meses<span class="at"> </span>que<span class="at"> </span>tenía<span class="at"> </span>muerta<span class="at"> </span>de<span class="at"> </span>aburrimiento<span class="at"> </span>una<span class="at"> </span>[**Raspberry<span class="at"> </span>Pi<span class="at"> </span>4**](https<span class="fu">://www.raspberrypi.com/products/raspberry-pi-4-model-b/) que compré con un amigo para jugar con ella. Este dispositivo es un mini-ordenador relativamente barato (~40€) que salió al mercado como herramienta educativa para enseñar a programar (ej., róbotica para niñes) pero que poco a poco ha ido tomando espacio en lugares de producción. Tiene mil posibilidades por su simplicidad y, en nuestro caso, por su bajo consumo</span><span class="kw">:</span><span class="at"> tener una Raspberry Pi funcionando todo el día **apenas tiene impacto sobre el consumo de luz**.</span></span>
+<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a>![Aquí<span class="at"> </span>está<span class="at"> </span>alojado<span class="at"> </span>el<span class="at"> </span>\@psicotuiterbot](raspberry.jfif)</span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a><span class="fu">Primero instalé el código en la Raspberry con sus dependencias</span><span class="kw">:</span><span class="at"> básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado **CRON**. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos [ejemplos](https://crontab.guru/examples.html). Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</span></span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a>```sh</span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a><span class="co"># descarga el código de GitHub, por si ha habido cambios</span></span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>pull<span class="at"> </span>origin<span class="at"> </span>main</span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a><span class="co"># ejecuta el código principal del bot</span></span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a>TZ="Spain/Madrid"<span class="at"> </span>Rscript<span class="at"> </span>-e<span class="at"> </span>'source("R/bot.R")'</span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a><span class="co"># guarda los tweets detectados en un archivo y crea un gráfico</span></span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a>Rscript<span class="at"> </span>-e<span class="at"> </span>'source("R/counts.R")'</span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a>rm<span class="at"> </span>Rplots.pdf</span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a><span class="co"># sube los nuevos datos a GitHub</span></span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>add<span class="at"> </span>.</span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>commit<span class="at"> </span>-m<span class="at"> </span>"Update<span class="at"> </span>repository"</span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>push</span>
+<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a>Estos<span class="at"> </span>comandos<span class="at"> </span>se<span class="at"> </span>ejecutan<span class="at"> </span>en<span class="at"> </span>este<span class="at"> </span>orden<span class="at"> </span>cada<span class="at"> </span>15<span class="at"> </span>minutos.<span class="at"> </span></span>
+<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a><span class="co"># Bloqueando usuarios de forma remota</span></span>
+<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a><span class="fu">Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite **bloquear usuarios que con tan sólo enviar al bot un mensaje directo** de Twitter. El script **R/block.R** accede a los 10 últimos mensajes recibidos por parte de usuaries "VIP" (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el **que el propio bot modifique los archivos locales** a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo **cargar ese vector sin desvelar us contenidos**, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código</span><span class="kw">:</span></span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a>```r</span>
+<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a>vip_users<span class="at"> </span>&lt;-<span class="at"> </span>unlist(strsplit(Sys.getenv("VIP_USERS"),<span class="at"> </span>"<span class="at"> </span>"))</span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>blocked_accounts<span class="at"> </span>&lt;-<span class="at"> </span>Sys.getenv("BLOCKED_ACCOUNTS")</span>
+<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a>blocked_accounts_vct<span class="at"> </span>&lt;-<span class="at"> </span>unlist(strsplit(blocked_accounts,<span class="at"> </span>split<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>"))</span>
+<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a><span class="co"># get DMs</span></span>
+<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a>msg<span class="at"> </span>&lt;-<span class="at"> </span>rtweet::direct_messages(n<span class="at"> </span>=<span class="at"> </span>10,<span class="at"> </span>token<span class="at"> </span>=<span class="at"> </span>my_token)$events</span>
+<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a><span class="co"># if new DMs have been received</span></span>
+<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>if<span class="at"> </span>(nrow(msg)<span class="at"> </span>&gt;<span class="at"> </span>0){</span>
+<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a><span class="co">    # for each received DM</span></span>
+<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a><span class="at">    </span>for<span class="at"> </span>(i<span class="at"> </span>in<span class="at"> </span>1:nrow(msg)){</span>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>msg_text<span class="at"> </span>&lt;-<span class="at"> </span>msg$message_create$message_data$text[i]</span>
+<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>is_block<span class="at"> </span>&lt;-<span class="at"> </span>grepl("block|block|bloquea",<span class="at"> </span>tolower(msg_text))</span>
+<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>sender_name<span class="at"> </span>&lt;-<span class="at"> </span>rtweet::lookup_users(msg$message_create$sender_id[i],<span class="at"> </span>token<span class="at"> </span>=<span class="at"> </span>my_token)$screen_name</span>
+<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a><span class="at">        </span></span>
+<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a><span class="co">        # if message is sent by VIP user and contains keyword "block"</span></span>
+<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>if<span class="at"> </span>(is_block<span class="at"> </span>&amp;<span class="at"> </span>(paste0("@",<span class="at"> </span>sender_name)<span class="at"> </span>%in%<span class="at"> </span>vip_users)){</span>
+<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>msg_text_vct<span class="at"> </span>&lt;-<span class="at"> </span>unlist(strsplit(msg_text,<span class="at"> </span>"<span class="at"> </span>"))</span>
+<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>target_users<span class="at"> </span>&lt;-<span class="at"> </span>msg_text_vct[grepl("@",<span class="at"> </span>msg_text_vct)]</span>
+<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a><span class="at">            </span></span>
+<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a><span class="co">            # if at least one targeted users has not been blocked yet</span></span>
+<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>if<span class="at"> </span>(!all(target_users<span class="at"> </span>%in%<span class="at"> </span>blocked_accounts_vct)){</span>
+<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>target_users_str<span class="at"> </span>&lt;-<span class="at"> </span>paste0(target_users,<span class="at"> </span>collapse<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>")</span>
+<span id="cb9-288"><a href="#cb9-288" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>blocked_accounts_new<span class="at"> </span>&lt;-<span class="at"> </span>paste0(blocked_accounts,<span class="at"> </span>"<span class="at"> </span>",<span class="at"> </span>target_users_str)</span>
+<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>renviron_text<span class="at"> </span>&lt;-<span class="at"> </span>paste0('BLOCKED_ACCOUNTS<span class="at"> </span>=<span class="at"> </span>"',<span class="at"> </span>blocked_accounts_new,<span class="at"> </span>'"')</span>
+<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>write(renviron_text,<span class="at"> </span>".Renviron",<span class="at"> </span>append<span class="at"> </span>=<span class="at"> </span>TRUE)</span>
+<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>message(paste0("User(s)<span class="at"> </span>",<span class="at"> </span>paste0(target_users_str,<span class="at"> </span>collapse<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>"),<span class="at"> </span>"<span class="at"> </span>is<span class="at"> </span>now<span class="at"> </span>blocked"))</span>
+<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a><span class="at">                </span></span>
+<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>}<span class="at"> </span>else<span class="at"> </span>{</span>
+<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>repeated_target<span class="at"> </span>&lt;-<span class="at"> </span>target_users[which(target_users<span class="at"> </span>%in%<span class="at"> </span>blocked_accounts_vct)]</span>
+<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>message(paste0("User(s)<span class="at"> </span>",<span class="at"> </span>paste0(repeated_target,<span class="at"> </span>collapse<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>"),<span class="at"> </span>"<span class="at"> </span>has<span class="at"> </span>already<span class="at"> </span>been<span class="at"> </span>blocked"))</span>
+<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>}</span>
+<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>}<span class="at"> </span>else<span class="at"> </span>{</span>
+<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">message(paste0("Message from a non-VIP</span><span class="kw">:</span><span class="at"> </span><span class="st">", paste0("</span><span class="er">@",</span><span class="at"> </span><span class="er">sender_name)))</span></span>
+<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>}</span>
+<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a><span class="at">    </span>}</span>
+<span id="cb9-301"><a href="#cb9-301" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb9-303"><a href="#cb9-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a><span class="co"># Conclusiones</span></span>
+<span id="cb9-305"><a href="#cb9-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a>De<span class="at"> </span>momento,<span class="at"> </span>el<span class="at"> </span>bot<span class="at"> </span>está<span class="at"> </span>funcionando<span class="at"> </span>bastante<span class="at"> </span>bien<span class="at"> </span>y<span class="at"> </span>se<span class="at"> </span>le<span class="at"> </span>está<span class="at"> </span>dando<span class="at"> </span>bastante<span class="at"> </span>uso,<span class="at"> </span>especialmente<span class="at"> </span>por<span class="at"> </span>parte<span class="at"> </span>de<span class="at"> </span>cuentas<span class="at"> </span>pequeñas.<span class="at"> </span>Aún<span class="at"> </span>tengo<span class="at"> </span>pendiente<span class="at"> </span>hacer<span class="at"> </span>un<span class="at"> </span>análisis<span class="at"> </span>más<span class="at"> </span>profundo<span class="at"> </span>de<span class="at"> </span>qué<span class="at"> </span>tipo<span class="at"> </span>de<span class="at"> </span>actividad<span class="at"> </span>tiene<span class="at"> </span>lugar<span class="at"> </span>en<span class="at"> </span>el<span class="at"> </span>bot,<span class="at"> </span>pero<span class="at"> </span>mi<span class="at"> </span>impresión<span class="at"> </span>es<span class="at"> </span>que<span class="at"> </span>la<span class="at"> </span>mayoría<span class="at"> </span>de<span class="at"> </span>usos<span class="at"> </span>consisten<span class="at"> </span>en<span class="at"> </span>petitiones<span class="at"> </span>de<span class="at"> </span>referencias<span class="at"> </span>de<span class="at"> </span>profesionales<span class="at"> </span>de<span class="at"> </span>psicología<span class="at"> </span>en<span class="at"> </span>poblaciones<span class="at"> </span>concretas<span class="at"> </span>o<span class="at"> </span>de<span class="at"> </span>referencias<span class="at"> </span>bilbiográficas.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br>
+</div>   
+      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
+    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+  </div>
+</footer>
+
+
+
+</body></html>

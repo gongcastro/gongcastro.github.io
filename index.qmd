@@ -1,20 +1,105 @@
 ---
-links:
-  - icon: twitter text-danger
-    text: twitter
-    href: https://twitter.com/gongcastro
-  - icon: github
-    text: Github
-    href: https://github.com/gongcastro
-  - icon: mastodon 
-    href: https://fediscience.org/@gongcastro
-    text: Mastodon
-  - icon: linkedin 
-    href: https://www.linkedin.com/in/gongcastro/
-    text: LinkedIn
+title-block-banner: false
+main-photo: /assets/media/profile.jpg
+main-photo-square: /assets/media/profile.jpg
+format:
+  html:
+    quarto-template-params:
+      banner-header-class: "home"
+
 listing:
-  contents: posts
+  contents:
+    - home
+    - blog
+  type: grid
   sort:
     - "date desc"
+  fields: [image, date, title, categories]
+
+toc: false
 ---
 
+<br>
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-sm-4}
+
+```{=html}
+<div class="grid" style="--bs-columns: 5; row-gap: 0;">
+  <div class="g-col-1 g-col-sm-0"></div>
+  <div class="g-col-3 g-col-sm-5">
+    <picture>
+      <source media="(max-width: 576px)" srcset="{{< meta main-photo-square >}}">
+      <source media="(min-width: 576px)" srcset="{{< meta main-photo >}}">
+      <img class="img-fluid" src="{{< meta main-photo >}}" alt="{{< meta author-meta >}}">
+    </picture>
+  </div>
+  <div class="g-col-1 g-col-sm-0"></div>
+</div>
+```
+
+:::
+
+::: {.g-col-12 .g-col-sm-8}
+
+I am a PhD student in Biomedicine at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc), at Universitat Pompeu Fabra (Barcelona, Spain). I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I am particularly interested in making my research as reproducible as possible. I use R to collect and analyse my data, and to generate reports. I love sharing my work and, especially my learning progress, in my [blog](blog.qmd). You will mostly find Bayesian stuff, tutorials on statistics, and some experiences as an R and Julia user.
+
+:::
+
+:::
+
+<br>
+
+::: {.grid}
+
+::: {.g-col-1}
+:::
+
+::: {.g-col-1}
+[{{< fa brands twitter size=3x >}}](https://twitter.com/gongcastro)
+:::
+
+::: {.g-col-1}
+[{{< fa brands mastodon size=3x >}}](https://fediscience.org/@gongcastro)
+:::
+
+::: {.g-col-1}
+[{{< fa brands github size=3x >}}](https://github.com/gongcastro)
+:::
+
+::: {.g-col-1}
+[{{< fa brands gitlab size=3x >}}](https://gitlab.com/gongcastro)
+:::
+
+::: {.g-col-1}
+[{{< ai google-scholar size=3x color=black >}}](https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en)
+:::
+
+::: {.g-col-1}
+[{{< fa brands linkedin size=3x >}}](https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en)
+:::
+
+::: {.g-col-1}
+[{{< ai researchgate size=3x >}}](https://www.researchgate.net/profile/Gonzalo-Garcia-Castro?ev=hdr_xprf&_sg=puVFExF9XjOZI3cyxfTj8ZdVL808fCBXB29ZrwyUPgYMdcAvSqs0IvaqWjKc4jhF1-_wTOVnJ6BgevzQD3a2YWjH)
+:::
+
+::: {.g-col-1}
+[{{< ai osf size=3x >}}](https://osf.io/w465d)
+:::
+
+::: {.g-col-1}
+[{{< ai orcid size=3x >}}](https://orcid.org/0000-0002-8553-4209)
+:::
+
+::: {.g-col-1}
+[{{< ai stackoverflow size=3x >}}](https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro)
+:::
+
+::: {.g-col-2}
+:::
+
+:::
+
+
+## Blog

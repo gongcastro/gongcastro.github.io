@@ -2,7 +2,7 @@
 title: "About"
 about:
   image: assets/media/profile.jpg
-  template: solana
+  template: jolla
   links:
     - icon: twitter
       text: Twitter
