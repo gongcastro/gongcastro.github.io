@@ -15,21 +15,23 @@ quarto_push <- function(branch_name,
     cli::cli_progress_step(paste0("Staging files..."))
     gert::git_add(".")
     
-    cli::cli_progress_step(paste0("Creating commit", branch, "..."))
+    cli::cli_progress_step("Creating commit in {.field {branch_name}}...")
     if (is.null(commit_message)) {
         cli::cli_alert_warning("Commit message is empty")
-        commit_message <- readline("Add a commit message: \n")
+        commit_message <- readline("Add a commit message: ")
     }
     commit_tag <- gert::git_commit(commit_message)
     
     if (push) {
-        cli::cli_progress_step(paste0("Pushing to ", branch, " branch..."))
-        gert::git_push()
+        cli::cli_progress_step("Pushing to branch {.field {branch_name}}...")
+        gert::git_push(verbose = FALSE)
     } else {
         cli::cli_progress_done()
     }
     
     if (push & pull_request) {
+        cli::cli_progress_step("Opening PR from {.field {branch_name}} to {.field main}...")
+        cli::cli_alert_info("Check {.url https://github.com/gongcastro/gongcastro.github.io}")
         usethis::pr_push()
     }
     
