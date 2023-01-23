@@ -57,18 +57,8 @@ website:
       - icon: github
         href: https://github.com/gongcastro
         aria-label: GitHub
-      - icon: twitter 
-        href: https://twitter.com/gongcastro
-        aria-label: Twitter
-      - icon: mastodon 
-        href: https://fediscience.org/@gongcastro
-        aria-label: Mastodon
-      - icon: linkedin 
-        href: https://www.linkedin.com/in/gongcastro/
-        aria-label: LinkedIn
-      - icon: envelope
-        href: mailto:adamjnafa@gmail.com
-        
+    search: false
+    
   page-footer:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Gonzalo Garcia-Castro</span>
