@@ -133,6 +133,11 @@ p.caption {
   font-style: italic;
 }
 
+.code {
+    color: $black;
+    background-color: $gray-200;
+}
+
 // Navbar
 .navbar {
   font-family: $headings-font-family;

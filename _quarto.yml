@@ -77,10 +77,11 @@ format:
     citations-hover: true
     code-link: true
     code-block-bg: "#f7f7f9"
-    highlight-style: Tomorrow
+    highlight-style: ayu
     code-fold: show
     html-math-method: mathjax
     linestretch: 1.25
+    code-block-border-left: "#31BAE9"
     footnotes-hover: true
     reference-location: margin
     
