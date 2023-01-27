@@ -40,13 +40,12 @@ site_push <- function(branch_name,
         cli::cli_alert_warning("Commit message is empty")
         commit_message <- readline("Add a commit message: ")
     }
+    commit_tag <- gert::git_commit(commit_message)
+    cli::cli_alert_info("Commit hash: {.field {commit_tag}}...")
     
     # create new branch
     cli::cli_progress_step("Creating new branch {.field {branch_name}}")
     usethis::pr_init(branch_name)
-    
-    commit_tag <- gert::git_commit(commit_message)
-    cli::cli_progress_info("Commit hash: {.field {commit_tag}}...")
     
     # push changes to new branch
     if (push) {
