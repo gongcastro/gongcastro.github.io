@@ -61,4 +61,6 @@ site_push <- function(branch_name,
         cli::cli_alert_info("Check {.url https://github.com/gongcastro/gongcastro.github.io}")
         usethis::pr_push()
     }
+    
+    git_delete_branch(branch_name)
 }
