@@ -20,6 +20,7 @@ listing:
 toc: false
 ---
 
+
 <br>
 
 ::: {.grid}
@@ -52,55 +53,62 @@ I am a PhD student in Biomedicine at the [Center for Brain and Cognition](https:
 
 <br>
 
-::: {.grid}
+:::{.column-body-outset}
 
-::: {.g-col-1}
+```{=html}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+<div class="grid-container" style="align-items: center; margin-left: 20%; margin-right: 20%; padding: 5%; background: #eceeef; align-items: center">
+
+
+<div class="grid" style="--bs-rows: 2; --bs-columns: 5; gap: 10px;">
+
+  <a href="https://twitter.com/gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-twitter fa-3x"></i>
+  </a>
+  
+  <a href="https://fediscience.org/@gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-mastodon fa-3x"></i>
+  </a>
+  
+  <a href="https://github.com/gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-github fa-3x"></i>
+  </a>
+  
+  <a href="https://gitlab.com/gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-gitlab fa-3x"></i>
+  </a>
+  
+  <a href="https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en" style="color:black;"> 
+    <i class="ai ai-google-scholar ai-3x"></i>
+  </a>
+  
+  <a href="https://osf.io/w465d" style="color:black;"> 
+    <i class="ai ai-osf ai-3x"></i>
+  </a>
+  
+  <a href="https://orcid.org/0000-0002-8553-4209" style="color:black;"> 
+    <i class="ai ai-orcid ai-3x"></i>
+  </a>
+  
+  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
+    <i class="ai ai-stackoverflow ai-3x"></i>
+  </a>
+  
+  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
+    <i class="fa-brands fa-linkedin fa-3x"></i>
+  </a>
+  
+  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
+    <i class="ai ai-researchgate ai-3x"></i>
+  </a>
+
+</div>
+
+</div>
+```
+
 :::
-
-::: {.g-col-1}
-[{{< fa brands twitter size=3x >}}](https://twitter.com/gongcastro)
-:::
-
-::: {.g-col-1}
-[{{< fa brands mastodon size=3x >}}](https://fediscience.org/@gongcastro)
-:::
-
-::: {.g-col-1}
-[{{< fa brands github size=3x >}}](https://github.com/gongcastro)
-:::
-
-::: {.g-col-1}
-[{{< fa brands gitlab size=3x >}}](https://gitlab.com/gongcastro)
-:::
-
-::: {.g-col-1}
-[{{< ai google-scholar size=3x color=black >}}](https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en)
-:::
-
-::: {.g-col-1}
-[{{< fa brands linkedin size=3x >}}](https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en)
-:::
-
-::: {.g-col-1}
-[{{< ai researchgate size=3x >}}](https://www.researchgate.net/profile/Gonzalo-Garcia-Castro?ev=hdr_xprf&_sg=puVFExF9XjOZI3cyxfTj8ZdVL808fCBXB29ZrwyUPgYMdcAvSqs0IvaqWjKc4jhF1-_wTOVnJ6BgevzQD3a2YWjH)
-:::
-
-::: {.g-col-1}
-[{{< ai osf size=3x >}}](https://osf.io/w465d)
-:::
-
-::: {.g-col-1}
-[{{< ai orcid size=3x >}}](https://orcid.org/0000-0002-8553-4209)
-:::
-
-::: {.g-col-1}
-[{{< ai stackoverflow size=3x >}}](https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro)
-:::
-
-::: {.g-col-2}
-:::
-
-:::
-
 
 ## Blog

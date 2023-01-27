@@ -5,8 +5,8 @@ git_new_branch <- function(branch_name) {
 }
 
 git_delete_branch <- function(delete_branch, checkout_branch = "main") {
-    git_branch_checkout(checkout_branch)
-    git_branch_delete(delete_branch)
+    gert::git_branch_checkout(checkout_branch)
+    gert::git_branch_delete(delete_branch)
 }
 
 quarto_push <- function(branch_name, 
@@ -46,4 +46,6 @@ quarto_push <- function(branch_name,
         cli::cli_alert_info("Check {.url https://github.com/gongcastro/gongcastro.github.io}")
         usethis::pr_push()
     }
+    
+    git_delete_branch(branch_name)
 }
