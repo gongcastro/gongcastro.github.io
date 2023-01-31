@@ -92,6 +92,11 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      color: #fcc203;
+    }
+    </style>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -150,12 +155,29 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default home page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Gonzalo García-Castro</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
 
 
 
@@ -175,7 +197,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="g-col-12 g-col-sm-8">
-<p>I am a PhD student in Biomedicine at the <a href="https://www.upf.edu/web/cbc">Center for Brain and Cognition</a>, at Universitat Pompeu Fabra (Barcelona, Spain). I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I am particularly interested in making my research as reproducible as possible. I use R to collect and analyse my data, and to generate reports. I love sharing my work and, especially my learning progress, in my <a href="./blog.html">blog</a>. You will mostly find Bayesian stuff, tutorials on statistics, and some experiences as an R and Julia user.</p>
+<p>I am a PhD student in Biomedicine at the <a href="https://www.upf.edu/web/cbc">Center for Brain and Cognition</a>, at Universitat Pompeu Fabra (Barcelona, Spain).</p>
+<p>I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I am particularly interested in making my research as reproducible as possible. I use R to collect and analyse my data, and to generate reports.</p>
+<p>I love sharing my work and, especially my learning progress, in my <a href="./blog.html">blog</a>. You will mostly find Bayesian stuff, tutorials on statistics, and some experiences as an R and Julia user.</p>
 </div>
 </div>
 <p><br></p>
@@ -224,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
     <i class="fa-brands fa-linkedin fa-3x"></i>
   </a>
   
-  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
+  <a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro" style="color:black;"> 
     <i class="ai ai-researchgate ai-3x"></i>
   </a>
 
@@ -232,6 +256,7 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 </div>
+<p><br></p>
 <section id="blog" class="level2">
 <h2 class="anchored" data-anchor-id="blog">Blog</h2>
 
@@ -662,6 +687,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->

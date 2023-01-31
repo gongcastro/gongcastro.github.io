@@ -77,6 +77,7 @@ format:
     citations-hover: true
     code-link: true
     code-block-bg: "#f7f7f9"
+    link-external-newwindow: true
     highlight-style: ayu
     code-fold: show
     html-math-method: mathjax
@@ -84,6 +85,7 @@ format:
     code-block-border-left: "#31BAE9"
     footnotes-hover: true
     reference-location: margin
+    citation-location: margin
     
 
 

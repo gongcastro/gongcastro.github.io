@@ -1,6 +1,7 @@
 ---
 title: "CV"
 ---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
 [Click here for **PDF**](https://github.com/gongcastro/cv/raw/master/cv.pdf)
 
@@ -24,25 +25,36 @@ ___
 
 ### Articles
 
-Santolin, C., **García-Castro, G.**, Zettersten, M., Sebastian-Galles, N., Saffran, J. (2020). Experience with research paradigms relates to infants' direction of preference. Infancy, 00, 1–8. https://doi.org/10.1111/infa.12372 [[preprint](https://psyarxiv.com/xgvbh/)] [[OSF](https://osf.io/g95ub/)]  [[code](https://github.com/gongcastro/Flip)] 
+Santolin, C., **García-Castro, G.**, Zettersten, M., Sebastian-Galles, N., Saffran, J. (2020). Experience with research paradigms relates to infants' direction of preference. Infancy, 00, 1–8.  <a href="https://onlinelibrary.wiley.com/doi/10.1111/infa.12372"><i class="fa fa-link"> URL</i></a> <a href="https://osf.io/g95ub/"><i class="ai ai-osf"></i> OSF</a> <a href="https://psyarxiv.com/xgvbh/"><i class="ai ai-psyarxiv"></i> PsyArxiv</a> <a href="https://doi.org/10.1111/infa.12372"><i class="ai ai-doi"> </i> DOI</a> <a href="https://github.com/gongcastro/Flip"><i class="fa-brands fa-github"></i> GitHub</a>
 
-Sampedro-Piquero, P., Álvarez-Suárez, P., Moreno-Fernández, R., **García-Castro, G.**, Cuesta, M., Begega, A. (2018). Environmental enrichment results in both brain connectivity efficiency and selective improvement in different behavioral tasks. Neuroscience, 388, 374-383. https://doi.org/10.1016/j.neuroscience.2018.07.036
+Sampedro-Piquero, P., Álvarez-Suárez, P., Moreno-Fernández, R., **García-Castro, G.**, Cuesta, M., Begega, A. (2018). Environmental enrichment results in both brain connectivity efficiency and selective improvement in different behavioral tasks. Neuroscience, 388, 374-383. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306452218305116"><i class="fa fa-link"> URL</i></a> <a href="https://doi.org/10.1016/j.neuroscience.2018.07.036"><i class="ai ai-doi"> </i> Google Scholar</a>
 
-### Preprints
+## Conference presentations
 
-Santolin, C., **García-Castro, G.**, Zettersten, M., Sebastian-Galles, N., & Saffran, J. (2020, March 4). Experience with research paradigms relates to infants’ direction of preference. https://doi.org/10.31234/osf.io/xgvbh
+Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Sebastian-Galles, N., Plunkett, K. (2022). A longitudinal exploration of bilingual toddler's processing of cognates. Presented at the *International Congress on Infant Studies*. <a href="https://infantstudies.org/wp-content/uploads/2022/07/ICIS-2022-Abstract-ProceedingsJuly07.pdf"><i class="fa fa-link"> URL</i></a>
+
+**Garcia-Castro, G.**, Franco-Martínez, A., Rodríguez-Prada, C., Castillejo, I., Sebastian-Galles, N. (2022). Estimando curvas de adquisición léxica en la infancia mediante un modelo de bayesiano de TRI. Presented at the *XVII Congreso de Metodología de las Ciencias Sociales y de la Salud*. <a href="https://eventos.unizar.es/file_manager/getFile/118143.html"><i class="fa fa-link"> URL</i></a>
 
 ## Proceedings
 
-Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Sebastian-Galles, N., Plunkett, K. (Sempember, 2021). A study of lingusitic distance and infant vocabulary trajectories using bilingual CDIs of English and one additional language. Presented at the *Boston University Conference in Language Development*, held online (Boston, United States).
+Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Sebastian-Galles, N., Plunkett, K. (2022). An alternative approach to defining cross-linguistic phonological similarity using a model of monolingual speech recognition. *Proceedings of the 46th annual Boston University Conference on Language Development*. <a href="http://www.lingref.com/bucld/46/BUCLD46-56.pdf"><i class="fa fa-link"> URL</i></a> <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=fHetiuQAAAAJ&citation_for_view=fHetiuQAAAAJ:UeHWp8X0CEIC"><i class="ai ai-google-scholar"> </i> DOI</a>
+
+Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Sebastian-Galles, N., Plunkett, K. (2021). A study of linguistic distance and infant vocabulary trajectories using bilingual CDIs of English and one additional language. Presented at the *Boston University Conference in Language Development*, held online (Boston, United States).
 
 
-Siow, S., **Garcia-Castro, G.**, Sebastian-Galles, N., Plunkett, K. (September, 2021). An alternative approach to defining cross-linguistic phonological similarity using a model of monolingual speech recognition. Presentation at the *Architectures and Mechanisms for Language Processing* conference, held online (Paris, France). [pdf](https://amlap2021.github.io/program/23.pdf) [scholar](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=fHetiuQAAAAJ&citation_for_view=fHetiuQAAAAJ:2osOgNQ5qMEC)
+Siow, S., **Garcia-Castro, G.**, Sebastian-Galles, N., Plunkett, K. (2021). An alternative approach to defining cross-linguistic phonological similarity using a model of monolingual speech recognition. Presentation at the *Architectures and Mechanisms for Language Processing* conference, held online (Paris, France). <a href="https://amlap2021.github.io/program/23.pdf"><i class="fa fa-link"> URL</i></a> <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=fHetiuQAAAAJ&citation_for_view=fHetiuQAAAAJ:2osOgNQ5qMEC"><i class="ai ai-google-scholar"> </i> DOI</a>
 
 
 ### Posters
 
-Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Sebastian-Galles, N., Plunkett, K. (August, 2021). A study of linguistic distance and infant vocabulary trajectories using bilingual CDIs of English and one additional language. Presentation at the *Lancaster Conference on Infant and Early Child Development*, held online (Lancaster, United Kingdom).se
+**Garcia-Castro, G.**, Siow, S., Lepadatu, I., Guillen, N., Avila-Varela, D. S., Sebastian-Galles, N., Plunkett, K. (August, 2021). The emergence of inhibitory links in the developing lexicon: insights from bilingual participants. Poster presented at the *Workshop in Infant Language Development* (San Sebastián/Donostia, Spain). <a href="https://www.bcbl.eu/events/files/galeria/files/wild/Bookofabstracts.pdf"><i class="fa fa-link"> URL</i></a>
+
+Zacharaki, K. E., **Garcia-Castro, G.**, Sebastian-Galles, N. (June, 2022). Selective attention to the mouth of signing faces. Poster presented at the *Workshop in Infant Language Development* (San Sebastián/Donostia, Spain). <a href="https://www.bcbl.eu/events/files/galeria/files/wild/Bookofabstracts.pdf"><i class="fa fa-link"> URL</i></a>
+
+Zacharaki, K. E., **Garcia-Castro, G.**, Sebastian-Galles, N. (June, 2022). Selective attention to the mouth of signing faces. Poster presented at the *Workshop in Infant Language Development* (San Sebastián/Donostia, Spain). <a href="https://www.bcbl.eu/events/files/galeria/files/wild/Bookofabstracts.pdf"><i class="fa fa-link"> URL</i></a>
+
+
+Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D. S., Sebastian-Galles, N., Plunkett, K. (August, 2021). A study of linguistic distance and infant vocabulary trajectories using bilingual CDIs of English and one additional language. Presentation at the *Lancaster Conference on Infant and Early Child Development*, held online (Lancaster, United Kingdom).
 
 **Garcia-Castro, G.**, Siow, S., Sebastian-Galles, N., Plunkett, K. (August, 2021). The impact of cognateness on bilingual lexical access: a longitudinal priming study. Poster presented at the *Lancaster Conference on Infant and Early Child Development*, held online (Lancaster, United Kingdom).
 
@@ -51,7 +63,7 @@ Siow, S., Guillen, N., Lepadatu, I., **Garcia-Castro, G.**, Avila-Varela, D., Se
 
 **Garcia-Castro, G.**, Siow, S., Sebastian-Galles, N. and Plunkett, Kim (July, 2020). The role of lexical similarity on bilingual parallel activation: A priming study in toddlers. Poster presented at the *International Congress on Infant Studies* (Edimburgh, United Kingdom, held online). proceedings
 
-**Garcia-Castro, G.**, Avila-Varela, D., and Sebastian-Galles, N. (July, 2020). Does phonological overlap across translation equivalents predict earlier age of acquisition?. Poster presented at the *International Congress on Infant Studies* (Edimburgh, United Kingdom, held online). proceedings
+**Garcia-Castro, G.**, Avila-Varela, D. S., and Sebastian-Galles, N. (July, 2020). Does phonological overlap across translation equivalents predict earlier age of acquisition?. Poster presented at the *International Congress on Infant Studies* (Edimburgh, United Kingdom, held online). proceedings
 
 Siow, S., **Garcia-Castro, G.**, Sebastian-Galles, N., and Plunkett, K. (August, 2019). The impact of phonology (cognateness) on the bilingual lexicon: Parallel cross-language phonological priming. Poster presented at the *Lancaster Conference on Infant and Early Child Development* (Lancaster, United Kingdom).
 
@@ -60,6 +72,12 @@ Siow, S., **Garcia-Castro, G.**, Sebastian-Galles, N., and Plunkett, K. (August,
 **García-Castro, G.**, Álvarez-Suárez, P., García-Abad, N., Cuesta, M., and Begega, A. (June, 2017). Pro-cognitive effects of environmental enrichment on attention and spatial memory: hippocampal metabolic activity in a Wistar rat model. Poster presented at the *4th International Congress on Health and Aging Research* (Murcia, Spain).
 
 García-Abad, N., Santirso, M., **García-Castro, G.**, and Álvarez-Suárez, P. (June, 2017). Efectos del omega-3 en las redes implicadas en la memoria de trabajo espacial en ratas Wistar. Poster presented at the *3rd National Congress of Psychology* (Oviedo, Spain)
+
+### Invited talks
+
+**Garcia-Castro, G.**, Siow, S., Sebastian-Galles, N., and Plunkett, K. (March, 2022). The role of cognateness during word recognition in a non-native language. Talk given at the Psycholinguistics Coffee (University of Edinburgh, held online). <a href="https://blogs.ed.ac.uk/psycholingcoffee/past-meetings/2021-22/"><i class="fa fa-link"> URL</i></a>
+
+**Garcia-Castro, G.**, Siow, S., Lepadatu, I., Guillen, N., Avila-Varela, D., Sebastian-Galles, N. y Plunkett, K. (January 2022). Parallel activation and the developing bilingual lexicon: a longitudinal study on word recognition. Talk given at the LACRE research group (Cardiff University, held online).
 
 ### Scientific dissemination
 
