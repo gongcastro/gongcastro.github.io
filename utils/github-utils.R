@@ -7,8 +7,8 @@ git_new_branch <- function(branch_name) {
 
 # delete git branch (for internal use in site_push)
 git_delete_branch <- function(delete_branch, checkout_branch = "main") {
-    git_branch_checkout(checkout_branch)
-    git_branch_delete(delete_branch)
+    gert::git_branch_checkout(checkout_branch)
+    gert::git_branch_delete(delete_branch)
     cli::cli_alert_info("Branch {.field {delete_branch}}")
 }
 
