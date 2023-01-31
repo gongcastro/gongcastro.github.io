@@ -2,7 +2,7 @@
 date-format: "dddd, MMMM D, YYYY"
 
 # Enable banner style title blocks
-title-block-banner: "salmon"
+title-block-banner: "#2DC9D2"
 
 # Add blog-post class to the banner header area
 format: 
@@ -21,6 +21,11 @@ format:
 toc: true
 toc-title: Contents
 toc-location: left
+# Default fields for citation
+citation: true
+
+# Enable CC licence appendix
+license: "CC BY"
 
 freeze: true
 
