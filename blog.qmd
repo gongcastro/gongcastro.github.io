@@ -1,11 +1,10 @@
 ---
 title: "Blog"
 description-meta: "{{< meta website.description >}}"
-title-block-banner: "salmon"
+title-block-banner: "#fcc203"
 listing:
   contents:
     - blog
-    - "!blog/logistic-regression"
   categories: true
   sort:
     - "date desc"

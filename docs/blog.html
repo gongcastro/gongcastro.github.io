@@ -39,6 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
@@ -94,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <style>
     .quarto-title-block .quarto-title-banner {
-      background: salmon;
+      background: #fcc203;
     }
     </style>
 
@@ -176,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="animation">animation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="animations">animations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="base">base <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bot">bot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="distribution">distribution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot">ggplot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="github">github <span class="quarto-category-count">(1)</span></div><div class="category" data-category="import">import <span class="quarto-category-count">(1)</span></div><div class="category" data-category="julia">julia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="linguistics">linguistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mixed models">mixed models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="multilevel">multilevel <span class="quarto-category-count">(1)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="phonology">phonology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="probability">probability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="purrr">purrr <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(7)</span></div><div class="category" data-category="raspberry pi">raspberry pi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="regression">regression <span class="quarto-category-count">(1)</span></div><div class="category" data-category="renv">renv <span class="quarto-category-count">(1)</span></div><div class="category" data-category="reproducibility">reproducibility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rtweet">rtweet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistic">statistic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistics">statistics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(1)</span></div><div class="category" data-category="translation">translation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(1)</span></div><div class="category" data-category="twitter">twitter <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="animation">animation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="animations">animations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="base">base <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bot">bot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="distribution">distribution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot">ggplot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="github">github <span class="quarto-category-count">(1)</span></div><div class="category" data-category="import">import <span class="quarto-category-count">(1)</span></div><div class="category" data-category="julia">julia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="linguistics">linguistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="logistic">logistic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mixed models">mixed models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="multilevel">multilevel <span class="quarto-category-count">(1)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="phonology">phonology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="probability">probability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="purrr">purrr <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(8)</span></div><div class="category" data-category="raspberry pi">raspberry pi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="regression">regression <span class="quarto-category-count">(2)</span></div><div class="category" data-category="renv">renv <span class="quarto-category-count">(1)</span></div><div class="category" data-category="reproducibility">reproducibility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rtweet">rtweet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistic">statistic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistics">statistics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="translation">translation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(1)</span></div><div class="category" data-category="twitter">twitter <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -189,7 +190,54 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="r,package,reproducibility,renv" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1674467449260" data-listing-reading-time-sort="6.965">
+<div class="quarto-post image-right" data-index="0" data-categories="r,tidyverse,regression,statistics,logistic" data-listing-date-sort="1674342000000" data-listing-file-modified-sort="1675184191263" data-listing-reading-time-sort="43.39">
+<div class="thumbnail">
+<p><a href="./blog/logistic-regression/logistic-regression.html"> <img src="./blog/logistic-regression/predictions-natural-probability-1.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./blog/logistic-regression/logistic-regression.html">
+<h3 class="no-anchor listing-title">
+Getting the most out of logistic regression
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
+tidyverse
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('regression'); return false;">
+regression
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
+statistics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('logistic'); return false;">
+logistic
+</div>
+</div>
+<a href="./blog/logistic-regression/logistic-regression.html">
+<div class="listing-description">
+<p>Logistic regression models provide information way beyond a <em>p</em>-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how it relates to the outputs of a binomial regression model with an emphasis on marginal effects.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./blog/logistic-regression/logistic-regression.html">
+<div class="listing-date">
+Jan 22, 2023
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="r,package,reproducibility,renv" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1674467449260" data-listing-reading-time-sort="6.965">
 <div class="thumbnail">
 <p><a href="./blog/renv-package/renv-package.html"> <img src="./blog/renv-package/containers.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -233,7 +281,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="r,rtweet,twitter,raspberry pi,bot,github" data-listing-date-sort="1640732400000" data-listing-file-modified-sort="1674467449311" data-listing-reading-time-sort="17.88">
+<div class="quarto-post image-right" data-index="2" data-categories="r,rtweet,twitter,raspberry pi,bot,github" data-listing-date-sort="1640732400000" data-listing-file-modified-sort="1674467449311" data-listing-reading-time-sort="17.88">
 <div class="thumbnail">
 <p><a href="./blog/psicotuiterbot/psicotuiterbot.html"> <img src="./blog/psicotuiterbot/raspberry.jfif" class="thumnail-image"> </a></p>
 </div>
@@ -283,7 +331,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="r,package,twitter,tutorial" data-listing-date-sort="1636844400000" data-listing-file-modified-sort="1674467449403" data-listing-reading-time-sort="27.12">
+<div class="quarto-post image-right" data-index="3" data-categories="r,package,twitter,tutorial" data-listing-date-sort="1636844400000" data-listing-file-modified-sort="1674467449403" data-listing-reading-time-sort="27.12">
 <div class="thumbnail">
 <p><a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html"> <img src="./blog/creando-paquete-r-psicotuiter/psicotuiter.png" class="thumnail-image"> </a></p>
 </div>
@@ -327,7 +375,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="julia,distribution,animation,statistics,probability" data-listing-date-sort="1633298400000" data-listing-file-modified-sort="1674467450508" data-listing-reading-time-sort="7.2">
+<div class="quarto-post image-right" data-index="4" data-categories="julia,distribution,animation,statistics,probability" data-listing-date-sort="1633298400000" data-listing-file-modified-sort="1674467450508" data-listing-reading-time-sort="7.2">
 <div class="thumbnail">
 <p><a href="./blog/animated-distributions/animated-distributions.html"> <img src="./blog/animated-distributions/cover.gif" class="thumnail-image"> </a></p>
 </div>
@@ -374,7 +422,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="r,statistic,regression,animation,ggplot" data-listing-date-sort="1611183600000" data-listing-file-modified-sort="1674467449199" data-listing-reading-time-sort="7.225">
+<div class="quarto-post image-right" data-index="5" data-categories="r,statistic,regression,animation,ggplot" data-listing-date-sort="1611183600000" data-listing-file-modified-sort="1674467449199" data-listing-reading-time-sort="7.225">
 <div class="thumbnail">
 <p><a href="./blog/visualising-polynomial-regression/visualising-polynomial-regression.html"> <img src="./blog/visualising-polynomial-regression/quadratic.gif" class="thumnail-image"> </a></p>
 </div>
@@ -421,7 +469,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="r,linguistics,phonology,ggplot2,translation" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1674467449392" data-listing-reading-time-sort="8.545">
+<div class="quarto-post image-right" data-index="6" data-categories="r,linguistics,phonology,ggplot2,translation" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1674467449392" data-listing-reading-time-sort="8.545">
 <div class="thumbnail">
 <p><a href="./blog/mask-similarity-across-languages/mask-similarity-across-languages.html"> <img src="./blog/mask-similarity-across-languages/masks-ort.png" class="thumnail-image"> </a></p>
 </div>
@@ -468,7 +516,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="r,tidyverse,base,purrr,import" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1674467449396" data-listing-reading-time-sort="10.715">
+<div class="quarto-post image-right" data-index="7" data-categories="r,tidyverse,base,purrr,import" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1674467449396" data-listing-reading-time-sort="10.715">
 <div class="thumbnail">
 <p><a href="./blog/importing-data-multiple/importing-data-multiple.html"> <img src="./blog/importing-data-multiple/traffic-jam.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -515,7 +563,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="r,statistics,multilevel,mixed models,animations" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1674467449328" data-listing-reading-time-sort="1.49">
+<div class="quarto-post image-right" data-index="8" data-categories="r,statistics,multilevel,mixed models,animations" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1674467449328" data-listing-reading-time-sort="1.49">
 <div class="thumbnail">
 <p><a href="./blog/primer-linear-mixed-models/primer-linear-mixed-models.html"> <img src="./blog/primer-linear-mixed-models/laces.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -698,6 +746,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->

@@ -1,12 +1,13 @@
 ---
-title-block-banner: false
+title: Gonzalo García-Castro
+title-block-banner: true
+title-block-banner-color: "#fcc203"
 main-photo: /assets/media/profile.jpg
 main-photo-square: /assets/media/profile.jpg
 format:
   html:
     quarto-template-params:
       banner-header-class: "home"
-
 listing:
   contents:
     - home
@@ -19,7 +20,6 @@ listing:
 
 toc: false
 ---
-
 
 <br>
 
@@ -45,7 +45,11 @@ toc: false
 
 ::: {.g-col-12 .g-col-sm-8}
 
-I am a PhD student in Biomedicine at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc), at Universitat Pompeu Fabra (Barcelona, Spain). I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I am particularly interested in making my research as reproducible as possible. I use R to collect and analyse my data, and to generate reports. I love sharing my work and, especially my learning progress, in my [blog](blog.qmd). You will mostly find Bayesian stuff, tutorials on statistics, and some experiences as an R and Julia user.
+I am a PhD student in Biomedicine at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc), at Universitat Pompeu Fabra (Barcelona, Spain).
+
+I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I am particularly interested in making my research as reproducible as possible. I use R to collect and analyse my data, and to generate reports.
+
+I love sharing my work and, especially my learning progress, in my [blog](blog.qmd). You will mostly find Bayesian stuff, tutorials on statistics, and some experiences as an R and Julia user.
 
 :::
 
@@ -100,7 +104,7 @@ I am a PhD student in Biomedicine at the [Center for Brain and Cognition](https:
     <i class="fa-brands fa-linkedin fa-3x"></i>
   </a>
   
-  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
+  <a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro" style="color:black;"> 
     <i class="ai ai-researchgate ai-3x"></i>
   </a>
 
@@ -110,5 +114,7 @@ I am a PhD student in Biomedicine at the [Center for Brain and Cognition](https:
 ```
 
 :::
+
+<br>
 
 ## Blog

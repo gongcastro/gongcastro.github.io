@@ -18,21 +18,23 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$blue:        #007bff !default;
-$indigo:      #6610f2 !default;
-$purple:      #6f42c1 !default;
-$pink:        #e83e8c !default;
-$red:         #ff7851 !default;
-$orange:      #fd7e14 !default;
-$yellow:      #ffce67 !default;
-$green:       #56cc9d !default;
-$teal:        #20c997 !default;
-$cyan:        #6cc3d5 !default;
-$lightsalmon: #ffa07a !default;
-$salmon:      salmon  !default;
+$blue:              #007bff !default;
+$indigo:            #6610f2 !default;
+$purple:            #6f42c1 !default;
+$pink:              #e83e8c !default;
+$red:               #ff7851 !default;
+$orange:            #fd7e14 !default;
+$yellow:            #ffce67 !default;
+$green:             #56cc9d !default;
+$teal:              #20c997 !default;
+$cyan:              #6cc3d5 !default;
+$lightsalmon:       #ffa07a !default;
+$salmon:            salmon  !default;
+$yellow-main:       #fcc203 !default;
+$blue-main:         #2DC9D2 !default;
 
-$primary:     $salmon !default;
-$secondary:   $gray-200 !default;
+$primary:     $yellow-main !default;
+$secondary:   $blue-main !default;
 $success:     $green !default;
 $info:        $cyan !default;
 $warning:     $yellow !default;
@@ -116,16 +118,26 @@ $description-color:                 $black;
 /*-- scss:rules --*/
 
 $web-font-path: "https://fonts.googleapis.com/css2?family=Inter&display=swap" !default;
-
 @if $web-font-path {
     @import url($web-font-path);
 }
 
 $web-font-path-mono: "https://fonts.googleapis.com/css2?family=Roboto+Mono&display" !default;
-
 @if $web-font-path-mono {
     @import url($web-font-path-mono);
 }
+
+$web-font-path-serif: "https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" !default;
+@if $web-font-path-serif {
+    @import url($web-font-path-serif);
+}
+
+.figure-caption {
+    font-family: Old Standard TT;
+    font-style: italic;
+    text-align: right;
+}
+
 
 /* css styles */
 p.caption {
@@ -133,12 +145,17 @@ p.caption {
   font-style: italic;
 }
 
+.code {
+    color: $black;
+    background-color: $gray-200;
+}
+
 // Navbar
 .navbar {
   font-family: $headings-font-family;
   font-weight: bold;
   color: $black;
-  border-bottom: 6px solid $salmon;
+  border-bottom: 6px solid primary;
   background-color: $white;
 }
 
@@ -164,15 +181,15 @@ p.caption {
 }
 
 .navbar-light .navbar-toggler-icon {
-  background-color: $salmon;
+  background-color: $primary;
 }
 // this is a white icon with 50% opacity
 .navbar-dark .navbar-toggler-icon {
-  background-color: $salmon;
+  background-color: $primary;
 }
 
 .navbar-collapse {
-    background-color: $secondary;
+    background-color: $gray-200;
 }
 
 .navbar-title {
@@ -281,9 +298,9 @@ legend {
 }
 
 .blockquote {
-    background-color: lightsalmon;
+    background-color: $yellow;
     color: $black;
-    border-left: 10px solid salmon;
+    border-left: 10px solid $yellow-main;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
@@ -323,17 +340,17 @@ body {
 
 
 .navbar a:hover {
-  border-bottom: 3px solid salmon;
+  border-bottom: 3px solid $primary;
 }
 
 .navbar a.active {
-  border-bottom: 3px solid salmon;
+  border-bottom: 3px solid $primary;
 }
 
 .navbar a {
   float: left;
   display: block;
-  color: black;
+  color: $black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
