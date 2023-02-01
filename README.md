@@ -1,2 +1,2 @@
 # gongcastro.github.io
-My personal webiste.
+My personal website.
