@@ -16,6 +16,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/logistic-regression/logistic-regression.html",
       "/blog/renv-package/renv-package.html",
       "/blog/psicotuiterbot/psicotuiterbot.html",
       "/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html",

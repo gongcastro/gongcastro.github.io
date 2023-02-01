@@ -1,6 +1,6 @@
 ---
 title: "Getting the most out of logistic regression"
-description: "Logistic regression models provide information way beyond a *p*-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how it relates to the outputs of a binomial regression model with an emphasis on marginal effects."
+description: "Logistic regression models provide information way beyond a *p*-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how to interpret the coefficients of a logistic regression model, capitalising on marginal effects."
 date: 2023-01-22
 image: predictions-natural-probability-1.png
 categories:
@@ -46,7 +46,7 @@ clrs <- c("#003f5c", "#58508d", "#bc5090", "#ff6361", "#ffa600")
 
 ![Some Adelie penguins ready to be logisticised.](penguins.jpg)
 
-> **Logistic regression** is a conventional way to model binary outcomes. This post is an attempt to summarise my recent learning progress on this topic, addressed to my previous self who knew how to *use* logistic regression but had very superficial knowledge of what happens under the hood. Not to mention writing this post has been a fantastic learning experience. I hope its useful. :plant:
+> **Logistic regression** is a conventional way to model binary outcomes. This post is an attempt to summarise my recent learning progress on this topic, addressed to my previous self who knew how to *use* logistic regression but had very superficial knowledge of what happens under the hood. Not to mention writing this post has been a fantastic learning experience. I hope its useful.
 
 # The logistic function
 
@@ -576,9 +576,9 @@ ggplot(my_data, aes(flipper_length_mm, sex_pred)) +
           plot.title = element_markdown())
 ```
 
-The maximum change in the probability of being male is `r percent(max(my_data$derivative))`, which occurs at around 190 mm flipper length. There is a smarter way of calculating the maximum slope of `flipper_length_mm`. This value will always occur at the mid-point of the logistic curve, and it turns out that to find the derivative of the logistic function at the mid-point (i.e., for $x = x_0$, go back to @eq-logistic for a reminder), we only need to find $\beta /4$, where $\beta$ is the regression coefficient of our predictor of interest! This is called the divide-by-four-rule, and is a simple trick to report the coefficients of a logistic regression model in the scale of probabilities, and for meaningful values of the predictors (the value at which the slope is maximum). This way, we could just divide the regression coefficient of `flipper_length_mm` by four to get the maximum probability difference of being male between two penguins with flipper lengths $x$ and $x + 1$.
+The maximum change in the probability of being male is `r percent(max(my_data$derivative))`, which occurs at around 190 mm flipper length. There is a smarter way of calculating the maximum slope of `flipper_length_mm`. This value will always occur at the mid-point of the logistic curve, and it turns out that to find the derivative of the logistic function at the mid-point (i.e., for $x = x_0$), we only need to find $\beta /4$, where $\beta$ is the regression coefficient of our predictor of interest! This is called the divide-by-four-rule, and is a simple trick to report the coefficients of a logistic regression model in the scale of probabilities, and for meaningful values of the predictors (the value at which the slope is maximum). This way, we could just divide the regression coefficient of `flipper_length_mm` by four to get the maximum probability difference of being male between two penguins with flipper lengths $x$ and $x + 1$.
 
-::: {.callout-info}
+::: {.callout-tip}
 
 ## The divide-by-four rule
 
@@ -633,7 +633,7 @@ get_mid(fit)
 ```
 Using this function, we find that the mid-point is located at flipper length `r round(get_mid(fit), 4)` mm, pretty close to what we had estimated from our data. This value can sometimes be extremely interesting!
 
-::: {.callout-info}
+::: {.callout-tip}
 
 ## A personal experience
 
@@ -725,6 +725,7 @@ ggplot(my_data, aes(flipper_length_mm, sex_pred)) +
 :::{.callout-tip collapse="true"}
 
 ## Expand for Session Info
+
 ```{r, echo = FALSE}
 # from https://themockup.blog/posts/2022-04-18-session-info/
 

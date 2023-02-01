@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.2.269">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Gonzalo Garcia-Castro">
-<meta name="description" content="Logistic regression models provide information way beyond a p-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how it relates to the outputs of a binomial regression model with an emphasis on marginal effects.">
+<meta name="description" content="Logistic regression models provide information way beyond a p-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how to interpret the coefficients of a logistic regression model, capitalising on marginal effects.">
 <title>Gonzalo Garcia-Castro</title>
 <style>
 code{white-space: pre-wrap;}
@@ -197,7 +197,7 @@ div.csl-indent {
       <div class="quarto-title-block"><div><h1 class="title">Getting the most out of logistic regression</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                   <div>
         <div class="description">
-          Logistic regression models provide information way beyond a <em>p</em>-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how it relates to the outputs of a binomial regression model with an emphasis on marginal effects.
+          Logistic regression models provide information way beyond a <em>p</em>-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how to interpret the coefficients of a logistic regression model, capitalising on marginal effects.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -281,7 +281,7 @@ div.csl-indent {
 </figure>
 </div>
 <blockquote class="blockquote">
-<p><strong>Logistic regression</strong> is a conventional way to model binary outcomes. This post is an attempt to summarise my recent learning progress on this topic, addressed to my previous self who knew how to <em>use</em> logistic regression but had very superficial knowledge of what happens under the hood. Not to mention writing this post has been a fantastic learning experience. I hope its useful. :plant:</p>
+<p><strong>Logistic regression</strong> is a conventional way to model binary outcomes. This post is an attempt to summarise my recent learning progress on this topic, addressed to my previous self who knew how to <em>use</em> logistic regression but had very superficial knowledge of what happens under the hood. Not to mention writing this post has been a fantastic learning experience. I hope its useful.</p>
 </blockquote>
 <section id="the-logistic-function" class="level1"><h1>The logistic function</h1>
 <p>The <strong>logistic function</strong> is a mathematical function that defines how the values of an input variable <span class="math inline">\(x\)</span> that span the range of real values (<span class="math inline">\(x \in (-\infty, +\infty)\)</span>) are associated to an output variable <span class="math inline">\(y\)</span> that spans an interval of real values contained within the <span class="math inline">\([0, 1]\)</span> interval or narrower. This function is <strong>monotonic</strong>: <span class="math inline">\(y\)</span> increases or decreases for all negative values of <span class="math inline">\(x\)</span> and increases or decreases for all positive values of <span class="math inline">\(x\)</span>. This function takes the general form shown in <a href="#eq-logistic-three">Equation&nbsp;1</a>:</p>
@@ -770,11 +770,11 @@ y' &amp;= \frac{\beta_1 · e^{\beta_0 + \beta_1 · \ \text{Flipper length}} }{(1
 </div>
 </div>
 </div>
-<p>The maximum change in the probability of being male is 3%, which occurs at around 190 mm flipper length. There is a smarter way of calculating the maximum slope of <code>flipper_length_mm</code>. This value will always occur at the mid-point of the logistic curve, and it turns out that to find the derivative of the logistic function at the mid-point (i.e., for <span class="math inline">\(x = x_0\)</span>, go back to <strong>?@eq-logistic</strong> for a reminder), we only need to find <span class="math inline">\(\beta /4\)</span>, where <span class="math inline">\(\beta\)</span> is the regression coefficient of our predictor of interest! This is called the divide-by-four-rule, and is a simple trick to report the coefficients of a logistic regression model in the scale of probabilities, and for meaningful values of the predictors (the value at which the slope is maximum). This way, we could just divide the regression coefficient of <code>flipper_length_mm</code> by four to get the maximum probability difference of being male between two penguins with flipper lengths <span class="math inline">\(x\)</span> and <span class="math inline">\(x + 1\)</span>.</p>
-<div class="callout-info callout callout-style-default no-icon callout-captioned">
+<p>The maximum change in the probability of being male is 3%, which occurs at around 190 mm flipper length. There is a smarter way of calculating the maximum slope of <code>flipper_length_mm</code>. This value will always occur at the mid-point of the logistic curve, and it turns out that to find the derivative of the logistic function at the mid-point (i.e., for <span class="math inline">\(x = x_0\)</span>), we only need to find <span class="math inline">\(\beta /4\)</span>, where <span class="math inline">\(\beta\)</span> is the regression coefficient of our predictor of interest! This is called the divide-by-four-rule, and is a simple trick to report the coefficients of a logistic regression model in the scale of probabilities, and for meaningful values of the predictors (the value at which the slope is maximum). This way, we could just divide the regression coefficient of <code>flipper_length_mm</code> by four to get the maximum probability difference of being male between two penguins with flipper lengths <span class="math inline">\(x\)</span> and <span class="math inline">\(x + 1\)</span>.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
 The divide-by-four rule
@@ -823,10 +823,10 @@ x_0 = -\beta_0 / \beta_1
 </div>
 </div>
 <p>Using this function, we find that the mid-point is located at flipper length 190.0882 mm, pretty close to what we had estimated from our data. This value can sometimes be extremely interesting!</p>
-<div class="callout-info callout callout-style-default no-icon callout-captioned">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
 A personal experience
@@ -932,7 +932,7 @@ Expand for Session Info
  collate  Spanish_Spain.utf8
  ctype    Spanish_Spain.utf8
  tz       Europe/Paris
- date     2023-01-31
+ date     2023-02-01
  pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
  quarto   1.2.269 @ C:\\PROGRA~1\\RStudio\\RESOUR~1\\app\\bin\\quarto\\bin\\quarto.exe
 
@@ -954,7 +954,7 @@ Expand for Session Info
  P tidyr          * 1.2.1   2022-09-08 [?] CRAN (R 4.2.2)
 
  [1] C:/Users/gonza/Documents/gongcastro.github.io/renv/library/R-4.2/x86_64-w64-mingw32
- [2] C:/Users/gonza/AppData/Local/Temp/Rtmpkjkug2/renv-system-library
+ [2] C:/Users/gonza/AppData/Local/Temp/RtmpeymbIj/renv-system-library
 
  P ── Loaded and on-disk path mismatch.
 
@@ -1179,7 +1179,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Getting the most out of logistic regression"</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Logistic regression models provide information way beyond a *p*-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how it relates to the outputs of a binomial regression model with an emphasis on marginal effects."</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Logistic regression models provide information way beyond a *p*-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how to interpret the coefficients of a logistic regression model, capitalising on marginal effects."</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-01-22</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> predictions-natural-probability-1.png</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
@@ -1225,7 +1225,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="al">![Some Adelie penguins ready to be logisticised.](penguins.jpg)</span></span>
 <span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Logistic regression** is a conventional way to model binary outcomes. This post is an attempt to summarise my recent learning progress on this topic, addressed to my previous self who knew how to *use* logistic regression but had very superficial knowledge of what happens under the hood. Not to mention writing this post has been a fantastic learning experience. I hope its useful. :plant:</span></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Logistic regression** is a conventional way to model binary outcomes. This post is an attempt to summarise my recent learning progress on this topic, addressed to my previous self who knew how to *use* logistic regression but had very superficial knowledge of what happens under the hood. Not to mention writing this post has been a fantastic learning experience. I hope its useful.</span></span>
 <span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="fu"># The logistic function</span></span>
 <span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a></span>
@@ -1755,9 +1755,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-608"><a href="#cb26-608" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.title =</span> <span class="fu">element_markdown</span>())</span>
 <span id="cb26-609"><a href="#cb26-609" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-610"><a href="#cb26-610" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-611"><a href="#cb26-611" aria-hidden="true" tabindex="-1"></a>The maximum change in the probability of being male is <span class="in">`r percent(max(my_data$derivative))`</span>, which occurs at around 190 mm flipper length. There is a smarter way of calculating the maximum slope of <span class="in">`flipper_length_mm`</span>. This value will always occur at the mid-point of the logistic curve, and it turns out that to find the derivative of the logistic function at the mid-point (i.e., for $x = x_0$, go back to @eq-logistic for a reminder), we only need to find $\beta /4$, where $\beta$ is the regression coefficient of our predictor of interest! This is called the divide-by-four-rule, and is a simple trick to report the coefficients of a logistic regression model in the scale of probabilities, and for meaningful values of the predictors (the value at which the slope is maximum). This way, we could just divide the regression coefficient of <span class="in">`flipper_length_mm`</span> by four to get the maximum probability difference of being male between two penguins with flipper lengths $x$ and $x + 1$.</span>
+<span id="cb26-611"><a href="#cb26-611" aria-hidden="true" tabindex="-1"></a>The maximum change in the probability of being male is <span class="in">`r percent(max(my_data$derivative))`</span>, which occurs at around 190 mm flipper length. There is a smarter way of calculating the maximum slope of <span class="in">`flipper_length_mm`</span>. This value will always occur at the mid-point of the logistic curve, and it turns out that to find the derivative of the logistic function at the mid-point (i.e., for $x = x_0$), we only need to find $\beta /4$, where $\beta$ is the regression coefficient of our predictor of interest! This is called the divide-by-four-rule, and is a simple trick to report the coefficients of a logistic regression model in the scale of probabilities, and for meaningful values of the predictors (the value at which the slope is maximum). This way, we could just divide the regression coefficient of <span class="in">`flipper_length_mm`</span> by four to get the maximum probability difference of being male between two penguins with flipper lengths $x$ and $x + 1$.</span>
 <span id="cb26-612"><a href="#cb26-612" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-613"><a href="#cb26-613" aria-hidden="true" tabindex="-1"></a>::: {.callout-info}</span>
+<span id="cb26-613"><a href="#cb26-613" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
 <span id="cb26-614"><a href="#cb26-614" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-615"><a href="#cb26-615" aria-hidden="true" tabindex="-1"></a><span class="fu">## The divide-by-four rule</span></span>
 <span id="cb26-616"><a href="#cb26-616" aria-hidden="true" tabindex="-1"></a></span>
@@ -1812,7 +1812,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-669"><a href="#cb26-669" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-670"><a href="#cb26-670" aria-hidden="true" tabindex="-1"></a>Using this function, we find that the mid-point is located at flipper length <span class="in">`r round(get_mid(fit), 4)`</span> mm, pretty close to what we had estimated from our data. This value can sometimes be extremely interesting!</span>
 <span id="cb26-671"><a href="#cb26-671" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-672"><a href="#cb26-672" aria-hidden="true" tabindex="-1"></a>::: {.callout-info}</span>
+<span id="cb26-672"><a href="#cb26-672" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
 <span id="cb26-673"><a href="#cb26-673" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-674"><a href="#cb26-674" aria-hidden="true" tabindex="-1"></a><span class="fu">## A personal experience</span></span>
 <span id="cb26-675"><a href="#cb26-675" aria-hidden="true" tabindex="-1"></a></span>
@@ -1904,28 +1904,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-763"><a href="#cb26-763" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip collapse="true"}</span>
 <span id="cb26-764"><a href="#cb26-764" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-765"><a href="#cb26-765" aria-hidden="true" tabindex="-1"></a><span class="fu">## Expand for Session Info</span></span>
-<span id="cb26-766"><a href="#cb26-766" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
-<span id="cb26-767"><a href="#cb26-767" aria-hidden="true" tabindex="-1"></a><span class="co"># from https://themockup.blog/posts/2022-04-18-session-info/</span></span>
-<span id="cb26-768"><a href="#cb26-768" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-769"><a href="#cb26-769" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sessioninfo)</span>
-<span id="cb26-770"><a href="#cb26-770" aria-hidden="true" tabindex="-1"></a><span class="co"># save the session info as an object</span></span>
-<span id="cb26-771"><a href="#cb26-771" aria-hidden="true" tabindex="-1"></a>pkg_sesh <span class="ot">&lt;-</span> <span class="fu">session_info</span>(<span class="at">pkgs =</span> <span class="st">"attached"</span>)</span>
-<span id="cb26-772"><a href="#cb26-772" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-773"><a href="#cb26-773" aria-hidden="true" tabindex="-1"></a><span class="co"># get the quarto version</span></span>
-<span id="cb26-774"><a href="#cb26-774" aria-hidden="true" tabindex="-1"></a>quarto_version <span class="ot">&lt;-</span> <span class="fu">system</span>(<span class="st">"quarto --version"</span>, <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb26-775"><a href="#cb26-775" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-776"><a href="#cb26-776" aria-hidden="true" tabindex="-1"></a><span class="co"># inject the quarto info</span></span>
-<span id="cb26-777"><a href="#cb26-777" aria-hidden="true" tabindex="-1"></a>pkg_sesh<span class="sc">$</span>platform<span class="sc">$</span>quarto <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
-<span id="cb26-778"><a href="#cb26-778" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system</span>(<span class="st">"quarto --version"</span>, <span class="at">intern =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb26-779"><a href="#cb26-779" aria-hidden="true" tabindex="-1"></a>  <span class="st">"@"</span>, </span>
-<span id="cb26-780"><a href="#cb26-780" aria-hidden="true" tabindex="-1"></a>  quarto<span class="sc">::</span><span class="fu">quarto_path</span>()</span>
-<span id="cb26-781"><a href="#cb26-781" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb26-782"><a href="#cb26-782" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-783"><a href="#cb26-783" aria-hidden="true" tabindex="-1"></a><span class="co"># print it out</span></span>
-<span id="cb26-784"><a href="#cb26-784" aria-hidden="true" tabindex="-1"></a>pkg_sesh</span>
-<span id="cb26-785"><a href="#cb26-785" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-786"><a href="#cb26-786" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-787"><a href="#cb26-787" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb26-766"><a href="#cb26-766" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-767"><a href="#cb26-767" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb26-768"><a href="#cb26-768" aria-hidden="true" tabindex="-1"></a><span class="co"># from https://themockup.blog/posts/2022-04-18-session-info/</span></span>
+<span id="cb26-769"><a href="#cb26-769" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-770"><a href="#cb26-770" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sessioninfo)</span>
+<span id="cb26-771"><a href="#cb26-771" aria-hidden="true" tabindex="-1"></a><span class="co"># save the session info as an object</span></span>
+<span id="cb26-772"><a href="#cb26-772" aria-hidden="true" tabindex="-1"></a>pkg_sesh <span class="ot">&lt;-</span> <span class="fu">session_info</span>(<span class="at">pkgs =</span> <span class="st">"attached"</span>)</span>
+<span id="cb26-773"><a href="#cb26-773" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-774"><a href="#cb26-774" aria-hidden="true" tabindex="-1"></a><span class="co"># get the quarto version</span></span>
+<span id="cb26-775"><a href="#cb26-775" aria-hidden="true" tabindex="-1"></a>quarto_version <span class="ot">&lt;-</span> <span class="fu">system</span>(<span class="st">"quarto --version"</span>, <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-776"><a href="#cb26-776" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-777"><a href="#cb26-777" aria-hidden="true" tabindex="-1"></a><span class="co"># inject the quarto info</span></span>
+<span id="cb26-778"><a href="#cb26-778" aria-hidden="true" tabindex="-1"></a>pkg_sesh<span class="sc">$</span>platform<span class="sc">$</span>quarto <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb26-779"><a href="#cb26-779" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system</span>(<span class="st">"quarto --version"</span>, <span class="at">intern =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb26-780"><a href="#cb26-780" aria-hidden="true" tabindex="-1"></a>  <span class="st">"@"</span>, </span>
+<span id="cb26-781"><a href="#cb26-781" aria-hidden="true" tabindex="-1"></a>  quarto<span class="sc">::</span><span class="fu">quarto_path</span>()</span>
+<span id="cb26-782"><a href="#cb26-782" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-783"><a href="#cb26-783" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-784"><a href="#cb26-784" aria-hidden="true" tabindex="-1"></a><span class="co"># print it out</span></span>
+<span id="cb26-785"><a href="#cb26-785" aria-hidden="true" tabindex="-1"></a>pkg_sesh</span>
+<span id="cb26-786"><a href="#cb26-786" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-787"><a href="#cb26-787" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-788"><a href="#cb26-788" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

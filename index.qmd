@@ -12,7 +12,6 @@ listing:
   contents:
     - home
     - blog
-    - "!blog/logistic-regression"
   type: grid
   sort:
     - "date desc"
