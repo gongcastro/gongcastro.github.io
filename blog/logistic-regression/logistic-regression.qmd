@@ -50,7 +50,7 @@ clrs <- c("#003f5c", "#58508d", "#bc5090", "#ff6361", "#ffa600")
 
 # The logistic function
 
-The **logistic function** is a mathematical function that defines how the values of an input variable $x$ that span the range of real values ($x \in (-\infty, +\infty)$) are associated to an output variable $y$ that spans an interval of real values contained within the $[0, 1]$ interval or narrower. This function is **monotonic**: $y$ increases or decreases for all negative values of $x$ and increases or decreases for all positive values of $x$. This function takes the general form shown in @eq-logistic-three:
+The **logistic function** is a mathematical function that defines how the values of an input variable $x$ that span the range of real values $x \in (-\infty, +\infty)$ are associated to an output variable $y$ that spans an interval of real values contained within the $[0, 1]$ interval or narrower. This function is **monotonic**: $y$ increases for $x > 0$ and increases for $x < 0$, or decreases for $x > 0$ and increases for $x < 0$. This function takes the general form shown in @eq-logistic-three:
 
 $$
 \text{Logistic(x)} = \frac{L}{1 + e^{(-\beta \ · \ (x-x_0))}}
@@ -58,11 +58,11 @@ $$ {#eq-logistic-three}
 
 Where:
 
-* $L$ is the **upper limit** of $y$, which is commonly assumed to be 1, where $L \in (0, +\infty)$)
+* $L$ is the **upper limit** of $y$, which is commonly assumed to be 1, where $L \in (0, +\infty)$.
 * $\beta$ is a coefficient that indicates the **steepness** of the logistic curve, or how fast the curve grows, where $\beta \in (-\infty, +\infty)$. Positive values of this coefficient lead to the logistic curve growing as $x$ increases, to the logistic curve decays when $x$ decreases.
 * $x_0$ is the **mid-point** of the logistic curve, indicating the value of $x$ where the maximum of $\beta$ is found, that is, when the logistic curve is steepest 
 
-I first learnt about the logistic function and its parameters in [this blog post by TJ Mahr](https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/), in which he describes the different parameters of the function, and how they relate to its behaviour. Let's take a look at how the logistic curve looks like for different values of these parameters. We can implement the logistic function in R like this:
+I first learnt about the logistic function and its parameters in [this blog post by TJ Mahr](https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/) [@mahr2019anatomy], in which he describes the different parameters of the function, and how they relate to its behaviour. Let's take a look at how the logistic curve looks like for different values of these parameters. We can implement the logistic function in R like this:
 
 ```{r}
 #| label: fig-logistic-curve
@@ -111,7 +111,7 @@ $$
 \text{Logistic(x)} = \frac{1}{1 + e^{(-\beta \ (x-x_0))}}
 $$ {#eq-upper}
 
-This is called the **two-parameter logistic function** because, effectively, only two parameters are left to be estimated: the steepness of the curve ($\beta$) and its mid-point ($x_0$). The two-parameter logistic regression function is the one we usually encounter in logistic regression. More general cases like the three-parameter logistic function (@eq-upper) are more flexible and are used when one is particularly interested in estimating them explicitly in a statistical model. This [Wikipedia article](https://en.wikipedia.org/wiki/Logistic_function) suggests some historical uses of these functions, like Item Response Theory (IRT) in Psychology and Cognitive Sciences.
+This is called the **two-parameter logistic function** because, effectively, only two parameters are left to be estimated: the steepness of the curve ($\beta$) and its mid-point ($x_0$). The two-parameter logistic regression function is the one we usually encounter in logistic regression. More general cases like the three-parameter logistic function (@eq-logistic-three) are more flexible and are used when one is particularly interested in estimating them explicitly in a statistical model. This [Wikipedia article](https://en.wikipedia.org/wiki/Logistic_function) suggests some historical uses of these functions, like Item Response Theory (IRT) in Psychology and Cognitive Sciences.
 
 It is still not clear how @eq-upper relates to a regression model, right? The coefficients returned by a conventional linear regression model---the intercept and the slope of each predictor, usually noted as $\beta_0 + \beta_1 x$---do not map perfectly into the coefficients of the logistic function in @eq-upper. These regression coefficients are meant to be in the exponential of $e$, which is $-\beta \ (x-x_0)$, but we must first make a simple change:
 
@@ -139,7 +139,7 @@ $$
 $${#eq-logit}
 
 
-It can be a bit unclear how we ended up with this formula. Let's try to reconstruct this process^[For a more detailed description of the derivation of the logit function from the logistic function---and also for a exhaustive explanation of logistic regression, see [this tutorial by Hause Lin](https://hausetutorials.netlify.app/posts/2019-04-13-logistic-regression/).]. Starting from @eq-logistic-regression:
+It can be a bit unclear how we ended up with this formula. Let's try to reconstruct this process^[For a more detailed description of the derivation of the logit function from the logistic function---and also for a exhaustive explanation of logistic regression, see [this tutorial by Hause Lin](https://hausetutorials.netlify.app/posts/2019-04-13-logistic-regression/).] [@lin2019gentle]. Starting from @eq-logistic-regression:
 
 $$
 \begin{aligned}
@@ -166,7 +166,7 @@ Here, $p$ is the outcome of the logistic function, or a value in the $[0, 1]$ in
 
 :::
 
-We'll be using the `penguins` dataset from the **[{palmerpenguins}](https://allisonhorst.github.io/palmerpenguins/) R package** [@R-palmerpenguins]. This dataset contains anatomical measurements by researchers at Palmer Station in Antarctica, of `r nrow(penguins)` penguins, together with some information about the sex, species, and island (for more details, see `?palmerpenguins::penguins`). Let's first load the data and take a look at them.
+We'll be using the `penguins` dataset from the **[{palmerpenguins}](https://allisonhorst.github.io/palmerpenguins/) R package** [@horst2020palmerpenguins]. This dataset contains anatomical measurements by researchers at Palmer Station in Antarctica, of `r nrow(penguins)` penguins, together with some information about the sex, species, and island (for more details, see `?palmerpenguins::penguins`). Let's first load the data and take a look at them.
 
 ```{r}
 #| label: load-data
@@ -192,7 +192,7 @@ my_data <- penguins %>%
 ```
 
 Now let's do some exploratory visualisation on the data (see @fig-descriptives). We can see that male penguins have slightly longer flippers. We will now model the association between both variables and perform some statistical inference on it. We will use logistic regression using the `glm()` function in base R.
- 
+
 ```{r}
 #| label: fig-descriptives
 #| fig-cap: "Flipper length for female and male penguins in the `penguins` dataset from the {palmerpenguins} R package."
@@ -259,21 +259,23 @@ my_data <- mutate(my_data, sex_pred = predict(fit, type = "link"))
 ```{r}
 #| label: fig-predictions-natural-logit
 #| fig-cap: "Predictions of the logistic regression model in the logit scale."
+#| fig-width: 6
+#| fig-height: 5
 # predictions of model with unstandardised age
 ggplot(my_data, aes(flipper_length_mm, sex_pred)) +
-    geom_hline(yintercept = 0.5,
+    geom_hline(yintercept = 0,
                colour = "grey",
                linetype = "dotted") +
     geom_line(aes(x = flipper_length_mm, y = sex_pred),
-              size = 1,
+              linewidth = 2,
               colour = clrs[1]) +
     annotate(geom = "text", label = "Male more likely", x = 170, y = 2.2,
              angle = 90, hjust = 1) +
-    annotate(geom = "segment", y = 0.75, yend = 2.2, x = 171, xend = 171,
+    annotate(geom = "segment", y = 0.75, yend = 2.2, x = 172, xend = 172,
              size = 1, arrow = arrow(length = unit(0.2, "cm"))) +
     annotate(geom = "text", label = "Female more likely", x = 170, y = -2.2,
              angle = 90, hjust = 0) +
-    annotate(geom = "segment", y = -0.5, yend = -2.2, x = 171, xend = 171,
+    annotate(geom = "segment", y = -0.5, yend = -2.2, x = 172, xend = 172,
              size = 1, arrow = arrow(length = unit(0.2, "cm"))) +
     labs(x = "Flipper length (mm)",
          y = "P(male) [logit scale]",
@@ -309,11 +311,13 @@ Base R conveniently offers the function `plogis()`, which we can use to transfor
 plogis(coef(fit)["(Intercept)"])
 ```
 
-This quantity tells us that the probability of a penguin with flipper length of 0 mm being male (remember that the intercept tells us the value of the response variable when predictors are set at 0). As we suspected, this value is extremely close to zero: `r percent(plogis(coef(fit)["(Intercept)"]))`. Obviously, if male penguins tend to have longer flippers, the model will predict that penguins with zero-length flippers as extremely likely to be female! (see @fig-logit-prob-intercept). But aside from this issue that we'll deal with later, transforming the intercept from a logit model to the probability scale seems fairly simple.
+This quantity tells us that the probability of a penguin with flipper length of 0 mm being male (remember that the intercept tells us the value of the response variable when predictors are set at 0). As we suspected, this value is extremely close to zero: `r percent(plogis(coef(fit)["(Intercept)"]), accuracy = 0.000000001)`. Obviously, if male penguins tend to have longer flippers, the model will predict that penguins with zero-length flippers as extremely likely to be female! (see @fig-logit-prob-intercept). But aside from this issue that we'll deal with later, transforming the intercept from a logit model to the probability scale seems fairly simple.
 
 ```{r}
 #| label: fig-logit-prob-intercept
 #| fig-cap: "The relationship between logits and probabilities."
+#| fig-width: 6
+#| fig-height: 5
 prob <- seq(0, 1, 0.001)
 logit_fun <- function(x) log(x / (1 - x))
 
@@ -325,16 +329,16 @@ txt <- str_wrap(
         round(coef(fit)["(Intercept)"], 2),
         " in the logit scale, which translates to an extremely ",
         "low value in the probability scale, very close to zero!"),
-    width = 20)
+    width = 30)
 
 ggplot(d, aes(logit, prob)) +
-    annotate(geom = "segment", x = -6, xend = -7.5, y = 0.2, yend = 0.2, size = 0.75,
-             arrow = arrow(length = unit(0.2, "cm"))) +
+    annotate(geom = "curve", x = -5, xend = -7.5, y = 0.35, yend = 0.05, size = 0.75,
+             arrow = arrow(length = unit(0.2, "cm")), curvature = -0.45, ncp = 20) +
     annotate(geom = "text", label = txt,
-             x = -7.5, y = 0.5, hjust = -0.1) +
-    geom_line(colour = clrs[1], size = 1) +
+             x = -7.5, y = 0.5, hjust = 0) +
+    geom_line(colour = clrs[1], linewidth = 2) +
     labs(x = "Logit", y = "Probability") +
-    scale_y_continuous(labels = percent) 
+    scale_y_continuous(labels = percent)
 ```
 
 Doing the same with the **coefficients of the predictors** is a different story. This is because the intercept of the model maps onto a single point in the logit scale, and so it does in the probability scale too. There is a one-to-one correspondence between each value of the logit and the probability scales. But **a regression coefficient does not refer to single value** in either scale, but to a **difference in values**.
@@ -344,6 +348,8 @@ A regression coefficient tells us the **estimated increase in the response varia
 ```{r}
 #| label: fig-logit-prob-slope
 #| fig-cap: "The coefficients of a logistic regression model scale differently for different values of their predictors."
+#| fig-width: 6
+#| fig-height: 6
 prob <- seq(0, 1, 0.001)
 logit_fun <- function(x) log(x / (1 - x))
 
@@ -370,25 +376,47 @@ ggplot(my_data, aes(flipper_length_mm, sex_pred)) +
                colour = "grey",
                linetype = "dotted") +
     geom_line(aes(x = flipper_length_mm, y = sex_pred),
-              size = 1,
+              linewidth = 1.5,
               colour = clrs[1]) +
     # plot intercept (y when x = 0)
     geom_hline(yintercept = plogis(coef(fit)["(Intercept)"]),
                linetype = "dashed",
                colour = clrs[4])  +
-    geom_segment(aes(x = point_preds[1,1], xend = point_preds[2,1],
-                     y = point_preds[1,2], yend = point_preds[1,2])) +
-    geom_segment(aes(x = point_preds[2,1], xend = point_preds[2,1], 
-                     y = point_preds[1,2], yend = point_preds[2,2])) +
-    annotate(geom = "text", label = paste0(percent(point_preds[2,2]-point_preds[1,2]), " increment"),
-             x = point_preds[2,1], y = mean(c(point_preds[1,2], point_preds[2,2])), hjust = -0.1) +
+    geom_segment(aes(x = point_preds[1, 1], xend = point_preds[2, 1],
+                     y = point_preds[1, 2], yend = point_preds[1, 2]),
+                 linetype = "dashed") +
+    geom_segment(aes(x = point_preds[2, 1], xend = point_preds[2, 1], 
+                     y = point_preds[1, 2], yend = point_preds[2, 2]),
+                 linetype = "dashed") +
+    annotate(geom = "text",
+             label = paste0(percent(point_preds[2,2]-point_preds[1, 2]), " increment"),
+             x = point_preds[2, 1], 
+             y = mean(c(point_preds[1, 2], point_preds[2,2])), 
+             hjust = -0.1) +
+    annotate(geom = "text", 
+             label = "5 cm difference",
+             x = point_preds[1, 1], 
+             y = point_preds[1, 2], 
+             hjust = -0.1,
+             vjust = 1.5) +
     
-    geom_segment(aes(x = point_preds[3,1], xend = point_preds[4,1],
-                     y = point_preds[3,2], yend = point_preds[3,2])) +
-    geom_segment(aes(x = point_preds[4,1], xend = point_preds[4,1], 
-                     y = point_preds[3,2], yend = point_preds[4,2])) +
-    annotate(geom = "text", label = paste0(percent(point_preds[4,2]-point_preds[3,2]), " increment"),
-             x = point_preds[4,1], y = mean(c(point_preds[4,2], point_preds[3,2])), hjust = -0.1) +
+    geom_segment(aes(x = point_preds[3, 1], xend = point_preds[4, 1],
+                     y = point_preds[3, 2], yend = point_preds[3, 2]),
+                 linetype = "dashed") +
+    geom_segment(aes(x = point_preds[4, 1], xend = point_preds[4, 1], 
+                     y = point_preds[3, 2], yend = point_preds[4, 2]),
+                 linetype = "dashed") +
+    annotate(geom = "text", 
+             label = paste0(percent(point_preds[4, 2]-point_preds[3, 2]), " increment"),
+             x = point_preds[4, 1], 
+             y = mean(c(point_preds[4, 2], point_preds[3, 2])),
+             hjust = -0.1) +
+    annotate(geom = "text", 
+             label = "5 cm difference",
+             x = point_preds[3, 1], 
+             y = point_preds[3, 2], 
+             hjust = -0.1,
+             vjust = 1.5) +
     labs(x = "Flipper length (mm)",
          y = "P(male)",
          title = "<span style = 'color:#003f5c;'>Logistic curve</span>,
@@ -405,7 +433,14 @@ This non-linearity in the relationship between logits and probabilities should b
 
 ## Marginal effects
 
-Defining ***marginal effect*** is tricky. As it happens with many concepts and labels in statistics, the same label may be used to refer to different concepts, and several labels may be used interchangeably to refer to the same concept. Each subfield of science seems to use a somewhat intrinsic lexicon, which sometimes leads to confusion. I will adopt the terminology in the documentation of the **{marginaleffects}** R package [@R-marginaleffects], in which a marginal effect is defined in the context of regression as:
+Defining ***marginal effect*** is tricky. As it happens with many concepts and labels in statistics, the same label may be used to refer to different concepts, and several labels may be used interchangeably to refer to the same concept. Each subfield of science seems to use a somewhat intrinsic lexicon, which sometimes leads to confusion. I will adopt the terminology in the documentation of the **{marginaleffects}** R package [@arel-bundock2022marginaleffects], in which a marginal effect is defined in the context of regression as:
+
+::: {.column-margin}
+
+[![The **{marginaleffects}** R package](https://user-images.githubusercontent.com/987057/134899484-e3392510-2e94-4c39-9830-53356fa5feed.png){width=100px}](https://user-images.githubusercontent.com/987057/134899484-e3392510-2e94-4c39-9830-53356fa5feed.png)
+
+:::
+
 
 > [...] the association between a change in a regressor $x$ and a change in the response $y$. Put differently, the marginal effect is the slope of the prediction function, measured at a specific value of the regressor $x$.
 
@@ -427,7 +462,8 @@ Take a look at @fig-linear-derivative. The difference in chances of being male b
 ```{r}
 #| label: fig-linear-derivative
 #| fig-cap: "The derivative of a linear regression equation is a constant."
-#| fig-height: 4
+#| fig-height: 5
+#| fig-width: 8
 # predictions of model with unstandardised age
 point_preds <- data.frame(flipper_length_mm = c(180, 185, 190, 195)) %>% 
     mutate(sex_pred = predict(fit, ., type = "link"))
@@ -440,30 +476,62 @@ ggplot(my_data, aes(flipper_length_mm, sex_pred_logit)) +
               size = 1,
               colour = clrs[1]) +
     geom_segment(aes(x = point_preds[1,1], xend = point_preds[2,1],
-                     y = point_preds[1,2], yend = point_preds[1,2])) +
+                     y = point_preds[1,2], yend = point_preds[1,2]),
+                 linetype = "dashed") +
     geom_segment(aes(x = point_preds[2,1], xend = point_preds[2,1], 
-                     y = point_preds[1,2], yend = point_preds[2,2])) +
-    annotate(geom = "text", label = paste0(round(point_preds[2,2]-point_preds[1,2], 3), " increment"),
-             x = point_preds[2,1], y = mean(c(point_preds[1,2], point_preds[2,2])), hjust = -0.1) +
-    
+                     y = point_preds[1,2], yend = point_preds[2,2]),
+                 linetype = "dashed") +
+    annotate(geom = "text",
+             label = paste0(round(point_preds[2,2]-point_preds[1,2], 3), " increment"),
+             x = point_preds[2,1],
+             y = mean(c(point_preds[1,2], point_preds[2,2])),
+             hjust = -0.1) +
+    annotate(geom = "text", 
+             label = "5 cm difference",
+             x = point_preds[3, 1], 
+             y = point_preds[3, 2], 
+             hjust = -0.1,
+             vjust = 1.5) +
     geom_segment(aes(x = point_preds[3,1], xend = point_preds[4,1],
-                     y = point_preds[3,2], yend = point_preds[3,2])) +
+                     y = point_preds[3,2], yend = point_preds[3,2]),
+                 linetype = "dashed") +
     geom_segment(aes(x = point_preds[4,1], xend = point_preds[4,1], 
-                     y = point_preds[3,2], yend = point_preds[4,2])) +
-    annotate(geom = "text", label = paste0(round(point_preds[4,2]-point_preds[3,2], 3), " increment"),
-             x = point_preds[4,1], y = mean(c(point_preds[4,2], point_preds[3,2])), hjust = -0.1) +
+                     y = point_preds[3,2], yend = point_preds[4,2]),
+                 linetype = "dashed") +
+    annotate(geom = "text", 
+             label = paste0(percent(point_preds[4, 2]-point_preds[3, 2]), " increment"),
+             x = point_preds[4, 1], 
+             y = mean(c(point_preds[4, 2], point_preds[3, 2])),
+             hjust = -0.1) +
+    annotate(geom = "text", 
+             label = "5 cm difference",
+             x = point_preds[3, 1], 
+             y = point_preds[3, 2], 
+             hjust = -0.1,
+             vjust = 1.5) +
+    annotate(geom = "text", 
+             label = "5 cm difference",
+             x = point_preds[1, 1], 
+             y = point_preds[1, 2], 
+             hjust = -0.1,
+             vjust = 1.5) +
     labs(x = "Flipper length (mm)",
          y = "P(male) [logit scale]",
          title = "<span style = 'color:#003f5c;'>Slope (logit scale)</span>") +
     guides(linetype = "none") +
     
-    
     ggplot(my_data, aes(flipper_length_mm, sex_pred)) +
     geom_point(colour = NA) +
     geom_hline(yintercept = coef(fit)["flipper_length_mm"],
                size = 1, colour = "#ffa600") +
+    annotate(geom = "label", 
+             label = paste0("Constant = ", round(coef(fit)["flipper_length_mm"], 2)),
+             fill = "#ffa600", alpha = 0.5, colour = "black", label.size = 0,
+             x = my_data$flipper_length_mm[which.max(my_data$derivative)],
+             y = round(coef(fit)["flipper_length_mm"], 2),
+             vjust = -1.25) +
     labs(x = "Flipper length (mm)",
-         y = "Slope of flipper length [logit scale])",
+         y = "Slope of flipper length (logit scale)",
          title = "<span style = 'color:#ffa600;'>Derivative (logit scale)</span>") +
     scale_y_continuous(limits = c(0.05, 0.2)) +
     
@@ -504,10 +572,17 @@ logistic_derivative <- function(object, x, value) {
 ```{r}
 #| label: fig-logistic-derivative
 #| fig-cap: "The derivative of a non-linear regression equation is not constant."
-#| fig-height: 4
+#| fig-height: 5
+#| fig-width: 9
 # model predictions (on the probability scale by default)
-my_data <- mutate(my_data,
-                  derivative = logistic_derivative(fit, "flipper_length_mm", flipper_length_mm))
+my_data <- mutate(
+    my_data,
+    derivative = logistic_derivative(
+        fit, 
+        "flipper_length_mm",
+        flipper_length_mm
+    )
+)
 
 point_preds <- data.frame(flipper_length_mm = c(180, 185, 190, 195)) %>% 
     mutate(sex_pred = plogis(predict(fit, .)),
@@ -533,18 +608,38 @@ ggplot(my_data, aes(flipper_length_mm, sex_pred)) +
                linetype = "dashed",
                colour = clrs[4])  +
     geom_segment(aes(x = point_preds[1,1], xend = point_preds[2,1],
-                     y = point_preds[1,2], yend = point_preds[1,2])) +
+                     y = point_preds[1,2], yend = point_preds[1,2]),
+                 linetype = "dashed") +
     geom_segment(aes(x = point_preds[2,1], xend = point_preds[2,1], 
-                     y = point_preds[1,2], yend = point_preds[2,2])) +
-    annotate(geom = "text", label = paste0(percent(point_preds[2,2]-point_preds[1,2]), " increment"),
-             x = point_preds[2,1], y = mean(c(point_preds[1,2], point_preds[2,2])), hjust = -0.1) +
-    
+                     y = point_preds[1,2], yend = point_preds[2,2]),
+                 linetype = "dashed") +
+    annotate(geom = "text", 
+             label = paste0(percent(point_preds[2,2]-point_preds[1,2]), " increment"),
+             x = point_preds[2,1],
+             y = mean(c(point_preds[1,2], point_preds[2,2])), hjust = -0.1) +
+    annotate(geom = "text", 
+             label = "5 cm difference",
+             x = point_preds[1, 1], 
+             y = point_preds[1, 2], 
+             hjust = -0.1,
+             vjust = 1.5) +
     geom_segment(aes(x = point_preds[3,1], xend = point_preds[4,1],
-                     y = point_preds[3,2], yend = point_preds[3,2])) +
+                     y = point_preds[3,2], yend = point_preds[3,2]),
+                 linetype = "dashed") +
     geom_segment(aes(x = point_preds[4,1], xend = point_preds[4,1], 
-                     y = point_preds[3,2], yend = point_preds[4,2])) +
-    annotate(geom = "text", label = paste0(percent(point_preds[4,2]-point_preds[3,2]), " increment"),
-             x = point_preds[4,1], y = mean(c(point_preds[4,2], point_preds[3,2])), hjust = -0.1) +
+                     y = point_preds[3,2], yend = point_preds[4,2]),
+                 linetype = "dashed") +
+    annotate(geom = "text",
+             label = paste0(percent(point_preds[4,2]-point_preds[3,2]), " increment"),
+             x = point_preds[4,1],
+             y = mean(c(point_preds[4,2], point_preds[3,2])), 
+             hjust = -0.1) +
+    annotate(geom = "text", 
+             label = "5 cm difference",
+             x = point_preds[3, 1], 
+             y = point_preds[3, 2], 
+             hjust = -0.1,
+             vjust = 1.5) +
     labs(x = "Flipper length (mm)",
          y = "P(male)",
          title = "<span style = 'color:#003f5c;'>Logistic curve</span>,
@@ -564,9 +659,8 @@ ggplot(my_data, aes(flipper_length_mm, sex_pred)) +
              fill = "#ffa600", alpha = 0.5, colour = "black", label.size = 0,
              x = my_data$flipper_length_mm[which.max(my_data$derivative)],
              y = max(my_data$derivative)*0.5) +
-    
     labs(x = "Flipper length (mm)",
-         y = "Slope of flipper length [logit scale])",
+         y = "Slope of flipper length  (probability scale)",
          title = "<span style = 'color:#ffa600;'>Derivative</span>") +
     scale_y_continuous(labels = percent) +
     
@@ -582,7 +676,9 @@ The maximum change in the probability of being male is `r percent(max(my_data$de
 
 ## The divide-by-four rule
 
-We have seen that dividing the coefficients of a logistic regression model (in the logit scale) gets us the maximum slope of the predictor in the probability scale. We mentioned that this has to do with the derivative of the logistic function at the mid-point. But since we dropped that term some equations ago after setting it at zero, it is no longer clear how one would derive the logistic function in such way that the divide-by-four-rule holds. Let's go back to @eq-upper, when the mid-point still appeared in our equation. We derive this formula:
+Dividing the coefficients of a logistic regression model (in the logit scale) gets us the maximum slope of the predictor in the probability scale. We mentioned that this has to do with the derivative of the logistic function at the mid-point.
+
+But since we dropped that term some equations ago after setting it at zero, it is no longer clear how one would derive the logistic function in such way that the divide-by-four rule holds. Let's go back to @eq-upper, when the mid-point still appeared in our equation. We derive this formula:
 
 $$
 \begin{aligned}
@@ -647,7 +743,7 @@ Now that we have calculated the mid-point of our logistic function, we can final
 
 So far, we have seen that the divide-by-four rule is a simple way to obtain the slope at the mid-point, which is a meaningful value: it tells us the upper limit of the distribution of the regression slope of the predictor. However, there might be other values of the predictor for which we might be interested in finding the slope of the coefficient. We might even want to compute the average of all slopes! These, an others, are different perspectives to adopt when thinking, computing, and reporting marginal effects.
 
-I cannot say anything that has not already been explained better by Andrew Heiss in his blog post: [Marginalia: A guide to figuring out what the heck marginal effects, marginal slopes, average marginal effects, marginal effects at the mean, and all these other marginal things are](https://www.andrewheiss.com/blog/2022/05/20/marginalia/). I will only mention that to compute the marginal effects of your model, regardless of your strategy towards reporting marginal effects (maximum slope, average marginal effects, marginal effects at specific points), or the characteristics of your model (Gaussian vs. binomial, logit vs. probit, Bayesian vs. frequentist, etc.), the `marginaleffects` R package will be useful. Take a look at its documentation and functions, and play with them.
+I cannot say anything that has not already been explained better by Andrew Heiss in his blog post: [Marginalia: A guide to figuring out what the heck marginal effects, marginal slopes, average marginal effects, marginal effects at the mean, and all these other marginal things are](https://www.andrewheiss.com/blog/2022/05/20/marginalia/) [@heiss2022marginalia]. I will only mention that to compute the marginal effects of your model, regardless of your strategy towards reporting marginal effects (maximum slope, average marginal effects, marginal effects at specific points), or the characteristics of your model (Gaussian vs. binomial, logit vs. probit, Bayesian vs. frequentist, etc.), the `marginaleffects` R package will be useful. Take a look at its documentation and functions, and play with them.
 
 
 
@@ -657,7 +753,9 @@ We have learnt how logistic regression exploits the numerical properties of the 
 
 ```{r}
 #| label: predictions-natural-probability
-
+#| fig-height: 6
+#| fig-width: 8
+#| fig-cap: "Intercept, mid-point, and derivative at mid-point of the logistic function, drawn with the parameters estimated by a logistic regression model on the {palmerpenguins} dataset."
 # get point in x at the intercept of a line with slope beta/4 that passes through 0.5
 # this function assumes that lower and upper bounds of the logistic curve are 0 and 1
 # under these conditions, 0.5 will always be the inflection point of the logistic curve
@@ -738,10 +836,10 @@ quarto_version <- system("quarto --version", intern = TRUE)
 
 # inject the quarto info
 pkg_sesh$platform$quarto <- paste(
-  system("quarto --version", intern = TRUE), 
-  "@", 
-  quarto::quarto_path()
-  )
+    system("quarto --version", intern = TRUE), 
+    "@", 
+    quarto::quarto_path()
+)
 
 # print it out
 pkg_sesh
