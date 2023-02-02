@@ -1,0 +1,42 @@
+# Date format
+date-format: "dddd, MMMM D, YYYY"
+
+# Enable banner style title blocks
+title-block-banner: "#2DC9D2"
+
+# Add blog-post class to the banner header area
+format: 
+  html:
+    code-tools: true
+    comments:
+      giscus: 
+        repo: gongcastro/gongcastro.github.io
+        category: Blog comments
+        category-id: R_kgDOGJ9lfQ
+        mapping: pathname
+    quarto-template-params:
+      banner-header-class: "blog-post"
+
+# Default for table of contents
+toc: true
+toc-title: Contents
+toc-location: left
+# Default fields for citation
+citation: true
+
+# Enable CC licence appendix
+license: "CC BY"
+
+freeze: true
+
+# Default knitr options
+execute:
+  echo: true
+  message: true
+  warning: true
+
+# Default author
+author:
+  - name: Gonzalo Garcia-Castro
+    url: https://www.gongcastro.github.io/
+    orcid: "{{< var orcid >}}"

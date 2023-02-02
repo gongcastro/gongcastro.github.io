@@ -1,10 +1,13 @@
 ---
 title: "Blog"
+description-meta: "{{< meta website.description >}}"
+title-block-banner: "#fcc203"
 listing:
   contents:
-    - posts
-    - "!posts/animated-distributions"
+    - blog
+  categories: true
   sort:
     - "date desc"
 ---
+
 

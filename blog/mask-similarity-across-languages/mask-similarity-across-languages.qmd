@@ -1,0 +1,212 @@
+---
+title: 'How similar is the word "mask" across languages?'
+description: "Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word *mask* across multiple languages."
+date: '2020-11-20'
+categories:
+  - r
+  - linguistics
+  - phonology
+  - ggplot2
+  - translation
+image: masks-ort.png
+fig-align: center
+code-fold: true
+echo: false
+warning: false
+message: false
+---
+
+![](masks.jpg)
+
+The ubiquity of **masks** has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. I gathered a big-ish dataset with translation equivalents of the word mask across ~110 languages. I tweeted about this today, and wanted to dedicate some more lines to nuance.
+
+<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=twsrc%5Etfw">#masks</a>😷 has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. 🌐<br>Here&#39;s how orthographically similar (the romanisations of) the translations of MASK are (N=110 pairs): <a href="https://t.co/KMMdJke9SG">pic.twitter.com/KMMdJke9SG</a></p>&mdash; Gon García-Castro (\@gongcastro) <a href="https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw">November 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Here's the data:
+
+```{r}
+#| label: tbl-data
+# import packages
+library(tidyverse)
+library(readxl)
+library(gt)
+library(knitr)
+library(kableExtra)
+library(htmltools)
+
+
+dat <- read_xlsx(path = "mask.xlsx") %>% 
+    mutate(roman = as.logical(roman),
+           romanisation = str_to_lower(romanisation),
+           label = paste0(language, ": ", form, " (", romanisation, ")"),
+           label_phon =  paste0(language, ": ", form,  " /", ipa_flat, "/"))  %>% 
+    drop_na(form) %>% 
+    filter(
+        # other regions only provide missing values
+        region %in% c("Europe", "Asia", "Africa", "Oceania"),
+        # outlier, makes any other scores seem too close to each other (see masks.xlsx)
+        language != "Hmong"
+    ) %>% 
+    as_tibble()
+
+data_link <- "https://drive.google.com/file/d/18SeJTiM2-JXR9SOqEg22wdkvNL3OxG3u/view?usp=sharing"
+
+t <- dat %>% 
+    select(language, form, romanisation, ipa) %>% 
+    mutate(ipa = ifelse(!is.na(ipa), paste0("/", ipa, "/"), ipa)) %>% 
+    gt() %>% 
+    sub_missing(columns = everything(), missing_text = "-") %>% 
+    tab_source_note(source_note = html(data_link)) %>% 
+    cols_label(
+        language = md("**Language**"),
+        form = md("**Orthography**"),
+        romanisation = md("**Orthography**<br>(romanisation)"),
+        ipa = md("**Phonology** (IPA)")
+    ) %>% 
+    tab_style(
+        style = list(
+            cell_fill(color = "transparent"),
+            cell_text(color = "black")
+        ),
+        locations = cells_body()
+    ) %>% 
+    tab_options(
+        container.overflow.y = TRUE
+    )
+div(style='height:600px; overflow-y: scroll', t)
+```
+
+
+To compute the similarity of each pair of translation equivalents, I followed Floccia et al.'s ([2018](https://srcd.onlinelibrary.wiley.com/doi/10.1111/mono.12349)) procedure. For each pair of translation equivalents, I computed their Levenshtein distance as the number of insertions, deletions and replacements a string character has to go through to become identical to the other, and then divided this value by the number of characters of the longest of the two strings, so that all values range between 0 and 1. To compute the Levenshtein distance, I used the `stringdist()` function of the `stringdist` R package.
+
+
+## Orthographic distance
+
+I first computed the orthographic distance between each pair of translation equivalents. Since some word forms make use of different alphabets, I first romanised all word forms. By *romanised*,  I mean that I searched for the transcription of each word form in the Roman alphabet, and used it as input to compute the Levenshtein distance for each pair of translation equivalents. Here's how orthographically similar (the romanisations of) the translations of *mask* are (*N* = 110 pairs):
+
+```{r}
+#| label: orthography
+# generate all pairwise combinations of orthographic forms and compute their Levenshtein distance
+expanded_ort <- expand_grid(label1 = dat$label,
+                            label2 = dat$label) %>%
+    left_join(., {
+        dat %>%
+            select(label, romanisation) %>%
+            drop_na(romanisation) %>%
+            rename_all(function(x)
+                paste0(x, "1"))
+    }) %>%
+    left_join(., {
+        dat %>%
+            select(label, romanisation) %>%
+            drop_na(romanisation) %>%
+            rename_all(function(x)
+                paste0(x, "2"))
+    }) %>%
+    rowwise() %>%
+    mutate(
+        n = ifelse(
+            nchar(romanisation1) > nchar(romanisation2),
+            nchar(romanisation1),
+            nchar(romanisation2)
+        ),
+        lv = stringdist::stringdist(romanisation1, romanisation2, method = "lv"),
+        lv_norm = lv / n
+    ) %>%
+    ungroup() 
+```
+
+![](masks-ort.png)
+
+## Phonological distance
+
+The phonological similarity/distance may be more informative. This time I searched for or generated with the help of a native speaker a phonological IPA transcription of each word-form. I then used this transcription as input to compute the phonological similarity of each pair of translation equivalents. A pitfall in this process is the fact that phonemes are almost never identical across languages, so even the common phoneme /m/ could vary slightly on its pronunciation in two languages. If this difference is encoded in the IPA transcription (as different characters), the Levenshtein distance will be inflated. For this reason, I simplified some IPA transcriptions to preserve this similarity. I also removed tones. This is terribly wrong from a linguistics perspective, but it's the only way I see to be able to play with some reliable data. Also I'm no linguist, so you have no power here.
+
+
+![](power.gif)
+
+Here's the same analysis performed on phonological transcriptions of a subset of those languages (*N* = 75 pairs, those I could find a reliable IPA transcription for or could find help from a native speaker):
+
+
+```{r}
+#| label: phonology
+expanded_phon <- expand_grid(label_phon1 = dat$label_phon,
+                             label_phon2 = dat$label_phon) %>%
+    left_join(., {
+        dat %>%
+            select(label_phon, ipa_flat) %>%
+            drop_na(ipa_flat) %>%
+            rename_all(function(x)
+                paste0(x, "1"))
+    }) %>%
+    left_join(., {
+        dat %>%
+            select(label_phon, ipa_flat) %>%
+            drop_na(ipa_flat) %>%
+            rename_all(function(x)
+                paste0(x, "2"))
+    }) %>%
+    rowwise() %>%
+    mutate(
+        n = ifelse(
+            nchar(ipa_flat1) > nchar(ipa_flat2),
+            nchar(ipa_flat1),
+            nchar(ipa_flat2)
+        ),
+        lv_phon = stringdist::stringdist(ipa_flat1, ipa_flat2, method = "lv"),
+        lv_phon_norm = lv_phon / n
+    ) %>%
+    ungroup() %>%
+    drop_na(lv_phon_norm)
+```
+
+![](masks-phon.png)
+
+## Onsets
+
+Most of the times, the phonological overlap comes from onset graphemes/phonemes. This is how many word-forms start with each onset:
+
+```{r}
+#| label: onset
+# compute how many orthographic/phonological forms share onset
+onsets <- list(
+    Orthography = dat %>%
+        mutate(onset = as.factor(substr(romanisation, 1, 1))) %>%
+        count(onset) %>%
+        mutate(prop = n / sum(.$n)),
+    Phonology =  dat %>%
+        drop_na(ipa_flat) %>%
+        mutate(onset = as.factor(substr(ipa_flat, 1, 1))) %>%
+        count(onset) %>%
+        mutate(prop = n / sum(.$n),
+               onset = paste0("/", onset, "/"))
+) %>%
+    bind_rows(.id = "type") %>%
+    mutate(type = ifelse(
+        type == "Orthography",
+        paste0(type, " (N = ", sum(!is.na(dat$romanisation), na.rm = TRUE), ")"),
+        paste0(type, " (N = ", sum(!is.na(dat$ipa_flat), na.rm = TRUE), ")")
+    )) %>%
+    group_by(type) %>%
+    arrange(desc(prop)) %>%
+    mutate(index = row_number()) %>%
+    ungroup()
+```
+
+![](masks-onset.png)
+
+## Some disclaimers:
+
+I tried ensuring that words referred to *surgical* masks (instead of other types of masks) with help from native speakers. Wrong translations may still have slipped in (or be just wrong). I wish I had time to double-check all of them (I did this for fun).
+
+This analysis is probably affected by selection bias. I suspect many dissimilar translations are missing due to not being included in the translation apps I used (e.g. Google Translate). Feel free to contribute missing entries or make corrections!
+
+## Code and data
+
+<script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"></script>
+
+## Session info
+
+```{r}
+sessionInfo()
+```

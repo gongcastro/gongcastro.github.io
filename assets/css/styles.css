@@ -1,0 +1,12 @@
+.center {
+  display: grid;
+  width: 50%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.icon-grid grid {
+  display: grid;
+  grid-template-columns: 10%;
+  gap: 10px;
+}

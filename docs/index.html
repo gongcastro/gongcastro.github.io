@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gonzalo Garcia-Castro">
-<meta name="description" content="Language, stats, R">
 
 <title>Gonzalo Garcia-Castro</title>
 <style>
@@ -26,22 +25,32 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
 <link href=".//assets/media/favicon.ico" rel="icon">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -64,9 +73,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -83,10 +92,15 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      color: #fcc203;
+    }
+    </style>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
 <meta property="og:image" content="/assets/media/favicon.jpeg">
@@ -99,25 +113,25 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand navbar-dark ">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
   </div>
-          <ul class="navbar-nav navbar-nav-scroll me-auto">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html">
- <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html">
@@ -128,253 +142,450 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-          <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gongcastro"><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/gongcastro"><i class="bi bi-twitter" role="img" aria-label="Twitter">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://fediscience.org/@gongcastro"><i class="bi bi-mastodon" role="img" aria-label="Mastodon">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/gongcastro/"><i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="mailto:adamjnafa@gmail.com"><i class="bi bi-envelope" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
 </ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default home page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Gonzalo García-Castro</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1673444612193" data-listing-reading-time-sort="6.97">
-<div class="thumbnail">
-<p><a href="./posts/renv-package/renv-package.html"> <img src="./posts/renv-package/containers.jpg" class="thumnail-image"> </a></p>
+<p><br></p>
+<div class="grid">
+<div class="g-col-12 g-col-sm-4">
+<div class="grid" style="--bs-columns: 5; row-gap: 0;">
+  <div class="g-col-1 g-col-sm-0"></div>
+  <div class="g-col-3 g-col-sm-5">
+    <picture>
+      <source media="(max-width: 576px)" srcset="/assets/media/profile.jpg">
+      <source media="(min-width: 576px)" srcset="/assets/media/profile.jpg">
+      <img class="img-fluid" src="./assets/media/profile.jpg" alt="Gonzalo Garcia-Castro">
+    </picture>
+  </div>
+  <div class="g-col-1 g-col-sm-0"></div>
 </div>
-<div class="body">
-<a href="./posts/renv-package/renv-package.html">
-<h3 class="no-anchor listing-title">
-renv (o cómo usar paquetes de R sin ataques de pánico)
-</h3>
-<div class="listing-subtitle">
+</div>
+<div class="g-col-12 g-col-sm-8">
+<p>I am a PhD student in Biomedicine at the <a href="https://www.upf.edu/web/cbc">Center for Brain and Cognition</a>, at Universitat Pompeu Fabra (Barcelona, Spain).</p>
+<p>I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I am particularly interested in making my research as reproducible as possible. I use R to collect and analyse my data, and to generate reports.</p>
+<p>I love sharing my work and, especially my learning progress, in my <a href="./blog.html">blog</a>. You will mostly find Bayesian stuff, tutorials on statistics, and some experiences as an R and Julia user.</p>
+</div>
+</div>
+<p><br></p>
+<div class="column-body-outset">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+<div class="grid-container" style="align-items: center; margin-left: 20%; margin-right: 20%; padding: 5%; background: #eceeef; align-items: center">
+
+
+<div class="grid" style="--bs-rows: 2; --bs-columns: 5; gap: 10px;">
+
+  <a href="https://twitter.com/gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-twitter fa-3x"></i>
+  </a>
+  
+  <a href="https://fediscience.org/@gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-mastodon fa-3x"></i>
+  </a>
+  
+  <a href="https://github.com/gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-github fa-3x"></i>
+  </a>
+  
+  <a href="https://gitlab.com/gongcastro" style="color:black;"> 
+    <i class="fa-brands fa-gitlab fa-3x"></i>
+  </a>
+  
+  <a href="https://scholar.google.com/citations?user=fHetiuQAAAAJ&amp;hl=en" style="color:black;"> 
+    <i class="ai ai-google-scholar ai-3x"></i>
+  </a>
+  
+  <a href="https://osf.io/w465d" style="color:black;"> 
+    <i class="ai ai-osf ai-3x"></i>
+  </a>
+  
+  <a href="https://orcid.org/0000-0002-8553-4209" style="color:black;"> 
+    <i class="ai ai-orcid ai-3x"></i>
+  </a>
+  
+  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
+    <i class="ai ai-stackoverflow ai-3x"></i>
+  </a>
+  
+  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
+    <i class="fa-brands fa-linkedin fa-3x"></i>
+  </a>
+  
+  <a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro" style="color:black;"> 
+    <i class="ai ai-researchgate ai-3x"></i>
+  </a>
 
 </div>
-<div class="listing-description">
-<p><code>renv</code> es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aqui resumo para qué se utiliza y cómo funciona.</p>
+
+</div>
+</div>
+<p><br></p>
+<section id="blog" class="level2">
+<h2 class="anchored" data-anchor-id="blog">Blog</h2>
+
+
+
+</section>
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="r,tidyverse,regression,statistics,logistic" data-listing-date-sort="1674342000000" data-listing-file-modified-sort="1675334734149" data-listing-reading-time-sort="49.615">
+<a href="./blog/logistic-regression/logistic-regression.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/logistic-regression/predictions-natural-probability-1.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Getting the most out of logistic regression
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
+tidyverse
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('regression'); return false;">
+regression
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
+statistics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('logistic'); return false;">
+logistic
+</div>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jan 22, 2023
+</div>
+</div>
+</div>
 </div>
 </a>
 </div>
-<div class="metadata">
-<a href="./posts/renv-package/renv-package.html">
+<div class="g-col-1" data-index="1" data-categories="r,package,reproducibility,renv" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1675330517693" data-listing-reading-time-sort="6.965">
+<a href="./blog/renv-package/renv-package.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/renv-package/containers.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+renv (o cómo usar paquetes de R sin ataques de pánico)
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('package'); return false;">
+package
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('reproducibility'); return false;">
+reproducibility
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('renv'); return false;">
+renv
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Feb 27, 2022
 </div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1640732400000" data-listing-file-modified-sort="1673449048234" data-listing-reading-time-sort="18.14">
-<div class="thumbnail">
-<p><a href="./posts/psicotuiterbot/psicotuiterbot.html"> <img src="./posts/psicotuiterbot/raspberry.jfif" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/psicotuiterbot/psicotuiterbot.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="2" data-categories="r,rtweet,twitter,raspberry pi,bot,github" data-listing-date-sort="1640732400000" data-listing-file-modified-sort="1675330517728" data-listing-reading-time-sort="17.88">
+<a href="./blog/psicotuiterbot/psicotuiterbot.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/psicotuiterbot/raspberry.jfif" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 @psicotuiterbot: Un bot de Twitter para Psicotuiter
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
 </div>
-<div class="listing-description">
-<p>He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON.</p>
+<div class="listing-category" onclick="window.quartoListingCategory('rtweet'); return false;">
+rtweet
 </div>
-</a>
+<div class="listing-category" onclick="window.quartoListingCategory('twitter'); return false;">
+twitter
 </div>
-<div class="metadata">
-<a href="./posts/psicotuiterbot/psicotuiterbot.html">
+<div class="listing-category" onclick="window.quartoListingCategory('raspberry pi'); return false;">
+raspberry pi
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bot'); return false;">
+bot
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('github'); return false;">
+github
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Dec 29, 2021
 </div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1636844400000" data-listing-file-modified-sort="1673454515466" data-listing-reading-time-sort="27.125">
-<div class="thumbnail">
-<p><a href="./posts/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html"> <img src="./posts/creando-paquete-r-psicotuiter/psicotuiter.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html">
-<h3 class="no-anchor listing-title">
-Creando un paquete de R: una guía informal (I)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>En el canal de Twitch de Alicia, <span>Psicometries</span> hicimos un <span>directo</span> en el que explicamos cómo se ha creado el paquete de R <strong>{psicotuiteR}</strong>, indicando cada paso lo mejor que hemos podido para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</p>
 </div>
 </a>
 </div>
-<div class="metadata">
-<a href="./posts/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html">
+<div class="g-col-1" data-index="3" data-categories="r,package,twitter,tutorial" data-listing-date-sort="1636844400000" data-listing-file-modified-sort="1675330517788" data-listing-reading-time-sort="27.12">
+<a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/creando-paquete-r-psicotuiter/psicotuiter.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Creando un paquete de R: una guía informal
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('package'); return false;">
+package
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('twitter'); return false;">
+twitter
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
+tutorial
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Nov 14, 2021
 </div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1633298400000" data-listing-file-modified-sort="1673451831906" data-listing-reading-time-sort="7.355">
-<div class="thumbnail">
-<p><a href="./posts/animated-distributions/animated-distributions.html"> <img src="./posts/animated-distributions/cover.gif" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/animated-distributions/animated-distributions.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="4" data-categories="julia,distribution,animation,statistics,probability" data-listing-date-sort="1633298400000" data-listing-file-modified-sort="1675330518701" data-listing-reading-time-sort="7.2">
+<a href="./blog/animated-distributions/animated-distributions.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/animated-distributions/cover.gif" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Exploring probability distributions through animations in Julia
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('julia'); return false;">
+julia
 </div>
-<div class="listing-description">
-<p>Visualising what different <strong>probability distributions</strong> look like under different parameters can be helpful when picking a likelihood function for you Bayesian analysis. I present some <strong>animations</strong> generated with Julia using Distributions.jl</p>
+<div class="listing-category" onclick="window.quartoListingCategory('distribution'); return false;">
+distribution
 </div>
-</a>
+<div class="listing-category" onclick="window.quartoListingCategory('animation'); return false;">
+animation
 </div>
-<div class="metadata">
-<a href="./posts/animated-distributions/animated-distributions.html">
+<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
+statistics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('probability'); return false;">
+probability
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Oct 4, 2021
 </div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1611183600000" data-listing-file-modified-sort="1673452129718" data-listing-reading-time-sort="7.395">
-<div class="thumbnail">
-<p><a href="./posts/visualising-polynomial-regression/visualising-polynomial-regression.html"> <img src="./posts/visualising-polynomial-regression/quadratic.gif" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/visualising-polynomial-regression/visualising-polynomial-regression.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="5" data-categories="r,statistic,regression,animation,ggplot" data-listing-date-sort="1611183600000" data-listing-file-modified-sort="1675330517650" data-listing-reading-time-sort="7.225">
+<a href="./blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/visualising-polynomial-regression/quadratic.gif" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Visualising polynomial regression
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
 </div>
-<div class="listing-description">
-<p>The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.</p>
+<div class="listing-category" onclick="window.quartoListingCategory('statistic'); return false;">
+statistic
 </div>
-</a>
+<div class="listing-category" onclick="window.quartoListingCategory('regression'); return false;">
+regression
 </div>
-<div class="metadata">
-<a href="./posts/visualising-polynomial-regression/visualising-polynomial-regression.html">
+<div class="listing-category" onclick="window.quartoListingCategory('animation'); return false;">
+animation
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ggplot'); return false;">
+ggplot
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jan 21, 2021
 </div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1673450046693" data-listing-reading-time-sort="8.545">
-<div class="thumbnail">
-<p><a href="./posts/mask-similarity-across-languages/mask-similarity-across-languages.html"> <img src="./posts/mask-similarity-across-languages/masks-ort.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/mask-similarity-across-languages/mask-similarity-across-languages.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="6" data-categories="r,linguistics,phonology,ggplot2,translation" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1675330517783" data-listing-reading-time-sort="8.545">
+<a href="./blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/mask-similarity-across-languages/masks-ort.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 How similar is the word “mask” across languages?
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
 </div>
-<div class="listing-description">
-<p>Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word <em>mask</em> across multiple languages.</p>
+<div class="listing-category" onclick="window.quartoListingCategory('linguistics'); return false;">
+linguistics
 </div>
-</a>
+<div class="listing-category" onclick="window.quartoListingCategory('phonology'); return false;">
+phonology
 </div>
-<div class="metadata">
-<a href="./posts/mask-similarity-across-languages/mask-similarity-across-languages.html">
+<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
+ggplot2
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('translation'); return false;">
+translation
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Nov 20, 2020
 </div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1673444612144" data-listing-reading-time-sort="10.715">
-<div class="thumbnail">
-<p><a href="./posts/importing-data-multiple/importing-data-multiple.html"> <img src="./posts/importing-data-multiple/traffic-jam.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/importing-data-multiple/importing-data-multiple.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="7" data-categories="r,tidyverse,base,purrr,import" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1675330517785" data-listing-reading-time-sort="10.715">
+<a href="./blog/importing-data-multiple/importing-data-multiple.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/importing-data-multiple/traffic-jam.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Importing data from multiple files simultaneously in R
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
 </div>
-<div class="listing-description">
-<p>A comparison between base R and Tidyverse methods for importing data from multiple files</p>
+<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
+tidyverse
 </div>
-</a>
+<div class="listing-category" onclick="window.quartoListingCategory('base'); return false;">
+base
 </div>
-<div class="metadata">
-<a href="./posts/importing-data-multiple/importing-data-multiple.html">
+<div class="listing-category" onclick="window.quartoListingCategory('purrr'); return false;">
+purrr
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('import'); return false;">
+import
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jul 5, 2020
 </div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1673450095702" data-listing-reading-time-sort="1.49">
-<div class="thumbnail">
-<p><a href="./posts/primer-linear-mixed-models/primer-linear-mixed-models.html"> <img src="./posts/primer-linear-mixed-models/laces.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/primer-linear-mixed-models/primer-linear-mixed-models.html">
-<h3 class="no-anchor listing-title">
-A primer on Mixed-Effects Models: Theory and practice
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>Slides from a tutorial on mixed-effects models I presented to my research group.</p>
 </div>
 </a>
 </div>
-<div class="metadata">
-<a href="./posts/primer-linear-mixed-models/primer-linear-mixed-models.html">
+<div class="g-col-1" data-index="8" data-categories="r,statistics,multilevel,mixed models,animations" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1675330517740" data-listing-reading-time-sort="1.49">
+<a href="./blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./blog/primer-linear-mixed-models/laces.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+A primer on mixed-effects Models: theory and practice
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
+r
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
+statistics
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('multilevel'); return false;">
+multilevel
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('mixed models'); return false;">
+mixed models
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('animations'); return false;">
+animations
+</div>
+</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Mar 31, 2020
 </div>
-</a>
 </div>
+</div>
+</div>
+</a>
 </div>
 </div>
 <div class="listing-no-matching d-none">
@@ -512,9 +723,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br>
+</div>   
+      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
+    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+  </div>
+</footer>
 
 
 
