@@ -59,8 +59,8 @@ $$ {#eq-logistic-three}
 Where:
 
 * $L$ is the **upper limit** of $y$, which is commonly assumed to be 1, where $L \in (0, +\infty)$.
-* $\beta$ is a coefficient that indicates the **steepness** of the logistic curve, or how fast the curve grows, where $\beta \in (-\infty, +\infty)$. Positive values of this coefficient lead to the logistic curve growing as $x$ increases, to the logistic curve decays when $x$ decreases.
-* $x_0$ is the **mid-point** of the logistic curve, indicating the value of $x$ where the maximum of $\beta$ is found, that is, when the logistic curve is steepest 
+* $\beta$ is a coefficient that indicates the **steepness** of the logistic curve, or how fast the curve grows, where $\beta \in (-\infty, +\infty)$. Positive values of this coefficient lead to the logistic curve growing as $x$ increases, and to the logistic curve decaying as $x$ increases.
+* $x_0$ is the **mid-point** of the logistic curve, indicating the value of $x$ where the maximum of $\beta$ is found, that is, when the logistic curve is steepest.
 
 I first learnt about the logistic function and its parameters in [this blog post by TJ Mahr](https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/) [@mahr2019anatomy], in which he describes the different parameters of the function, and how they relate to its behaviour. Let's take a look at how the logistic curve looks like for different values of these parameters. We can implement the logistic function in R like this:
 
