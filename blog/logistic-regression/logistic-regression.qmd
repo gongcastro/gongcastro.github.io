@@ -50,7 +50,7 @@ clrs <- c("#003f5c", "#58508d", "#bc5090", "#ff6361", "#ffa600")
 
 # The logistic function
 
-The **logistic function** is a mathematical function that defines how the values of an input variable $x$ that span the range of real values $x \in (-\infty, +\infty)$ are associated to an output variable $y$ that spans an interval of real values contained within the $[0, 1]$ interval or narrower. This function is **monotonic**: $y$ increases for $x > 0$ and increases for $x < 0$, or decreases for $x > 0$ and increases for $x < 0$. This function takes the general form shown in @eq-logistic-three:
+The **logistic function** is a mathematical function that defines how the values of an input variable $x$ that span the range of real values $x \in (-\infty, +\infty)$ are associated to an output variable $y$ that spans an interval of real values contained within the $[0, 1]$ interval or narrower. This function is **monotonic**: $y$ increases for $x > 0$ and decreases for $x < 0$, or decreases for $x > 0$ and increases for $x < 0$. This function takes the general form shown in @eq-logistic-three:
 
 $$
 \text{Logistic(x)} = \frac{L}{1 + e^{(-\beta \ · \ (x-x_0))}}
