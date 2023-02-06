@@ -25,7 +25,7 @@ csl: assets/bib/apa7.csl
 website:
   title: "Gonzalo García-Castro"
   description: "Language, stats, R"
-  image: "/assets/media/wallpaper.jpg"
+  image: "/assets/media/wallpaper.png"
   favicon: "/assets/media/favicon.ico"
   repo-url: https://github.com/gongcastro/gongcastro.github.io
   repo-actions: [edit, issue]
@@ -33,7 +33,7 @@ website:
   open-graph:
     title: "Gonzalo Garcia-Castro"
     description: "Language, stats, R"
-    image: "/assets/media/favicon.jpeg"
+    image: "/assets/media/favicon.png"
 
   twitter-card: 
     title: "Gonzalo Garcia-Castro"
@@ -41,7 +41,7 @@ website:
     description: "Language, stats, R"
     creator: "@gongcastro"
     site: "@cbcUPF"
-    image: "assets/media/favicon.jpeg"
+    image: "assets/media/favicon.png"
     
   navbar:
     pinned: true
