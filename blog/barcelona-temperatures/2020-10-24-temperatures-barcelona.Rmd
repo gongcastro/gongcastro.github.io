@@ -1,0 +1,25 @@
+---
+title: Using Stan and R to model the unfolding increase in temperatura in Barcelona
+author: Gonzalo Garcia-Castro
+date: '2020-12-24'
+slug: 2020-10-24-temperatures-barcelona
+categories:
+  - R
+  - stats
+tags:
+  - stan
+  - R
+  - rstats
+  - stats
+comments: no
+images: ~
+draft: true
+---
+
+```{r prepare, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+
+# load packages
+library(tidyverse)
+library(rstan)
+
+```

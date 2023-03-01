@@ -3,7 +3,7 @@ title: "CV"
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-[Click here for **PDF**](https://github.com/gongcastro/cv/raw/master/cv.pdf)
+[Industry CV (**PDF**)](https://gongcastro.github.io/cv/cv.pdf)
 
 ## Education
 
