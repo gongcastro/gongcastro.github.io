@@ -44,15 +44,20 @@ toc: false
 
 ::: {.g-col-12 .g-col-sm-8}
 
-I am a PhD student in Biomedicine at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc), at Universitat Pompeu Fabra (Barcelona, Spain).
-
-I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I am particularly interested in making my research as reproducible as possible. I use R to collect and analyse my data, and to generate reports.
-
-I love sharing my work and, especially my learning progress, in my [blog](blog.qmd). You will mostly find Bayesian stuff, tutorials on statistics, and some experiences as an R and Julia user.
+> I am a cognitive scientist interested in the application of Bayesian modelling in the
+investigation of early language acquisition. As part of my PhD in Biomedicine at at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc) at Universitat Pompeu Fabra (Barcelona, Spain), I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques.
 
 :::
 
 :::
+
+---
+
+You can also follow me on GitHub for some portfolio projects like:
+
+* [{multilex}](https://github.com/gongcastro/multilex): R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain) [[website](https://gongcastro.github.io/multilex/)]
+* [{comidistar}](https://github.com/gongcastro/comidistar): R package containing the scores given to products in the blind taste tests of [El Comidista](https://elcomidista.elpais.com/)
+* [psicotuiterbot](https://github.com/gongcastro/psicotuiterbot): A Twitter [bot](https://twitter.com/psicotuiterbot) programmed in R using {rtweet} that automatically retweets mentions of the hasthtags #psicotuiter or #psicotwitter in Spanish
 
 <br>
 

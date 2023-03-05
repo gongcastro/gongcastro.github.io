@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I am a PhD student at the Center for Brain and Cognition, at Universitat Pompeu Fabra (Barcelona, Spain). I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. Learning new things about programming languages brings me joy. I mainly use Twitter for sharing research outputs, programming tips or data visualisations. Don’t hesitate to get in touch on Twitter (@gongcastro) or at gonzalo.garciadecastro@upf.edu!"
+    "text": "I am a cognitive scientist interested in the application of Bayesian modelling in the investigation of early language acquisition. As part of my PhD in Biomedicine at at the Center for Brain and Cognition at Universitat Pompeu Fabra (Barcelona, Spain), I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I particularly enjoy building code-based workflows, ensuring that my projects can be run by others and my future self, from data collection to visualisation and reporting. I mainly use Twitter (@gongcastro) for sharing research outputs, programming tips or data visualisations. You can also follow me on GitHub for some portfolio projects like:\n\n{multilex}: R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain) [website]\n{comidistar}: R package containing the scores given to products in the blind taste tests of El Comidista\npsicotuiterbot: A Twitter bot programmed in R using {rtweet} that automatically retweets mentions of the hasthtags #psicotuiter or #psicotwitter in Spanish"
   },
   {
     "objectID": "blog.html",
@@ -474,6 +474,13 @@
     "title": "CV",
     "section": "Short courses",
     "text": "Short courses\nAugust 2018\n\nData Science: Multiple imputation in practice, Utrecht Summer School, Utrecht University. Introduction to Multiple Imputation as a powerful tool for dealing with missing data in experimental studies.\n\nAugust 2018\n\nData Science: Statistical Programming with R, Utrecht Summer School, Utrecht University.\n\nAugust 2016\n\nIntroduction to Neuroscience: From Molecule to Behavior, Radboud Summer School, Radboud University Nijmegen. Hands-on training at research labs of the Donders Institute for Brain and Cognition.\n\nAugust 2016\n\nHow to Improve the Quality and Translatability of Preclinical Animal Studies, Radboud Summer School, Radboud University Nijmegen. Course organized by SYRCLE institute, Radboud University Nijmegen and Radboud University Medical Centre. Theory and hands-on experience on Systematic Reviews and Meta-Analysis in preclinical animal studies. Overview of the main software available to conduct a Meta-Analysis and basic formation on academic reading and writing."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Gonzalo García-Castro",
+    "section": "",
+    "text": "You can also follow me on GitHub for some portfolio projects like:"
   },
   {
     "objectID": "index.html#blog",
