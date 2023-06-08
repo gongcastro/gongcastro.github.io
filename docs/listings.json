@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
       "/blog/logistic-regression/logistic-regression.html",
       "/blog/renv-package/renv-package.html",
       "/blog/psicotuiterbot/psicotuiterbot.html",
@@ -16,6 +17,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
       "/blog/logistic-regression/logistic-regression.html",
       "/blog/renv-package/renv-package.html",
       "/blog/psicotuiterbot/psicotuiterbot.html",

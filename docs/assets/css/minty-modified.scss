@@ -297,7 +297,7 @@ legend {
   margin-bottom: 0.75em;
 }
 
-.blockquote {
+.blockquote, .box {
     background-color: $yellow;
     color: $black;
     border-left: 10px solid $yellow-main;
@@ -358,3 +358,12 @@ body {
   border-bottom: 3px solid transparent;
 }
 
+.mainpic {
+  img {
+    margin: 10pt 10pt 10pt 10pt;
+    width: 120%;
+  }
+  p {
+    margin: 20pt;
+  }
+}
