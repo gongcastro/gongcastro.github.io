@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -126,10 +97,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
-      background: #2DC9D2;
-    }
-    </style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #2DC9D2;
+      }
+</style>
 
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
@@ -139,7 +111,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta property="og:site-name" content="Gonzalo García-Castro">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="../../assets/media/favicon.png">
+<meta name="twitter:image" content="assets/media/favicon.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
@@ -156,32 +128,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
  <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gongcastro"><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/gongcastro" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -213,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Gonzalo Garcia-Castro <a href="https://orcid.org/0000-0002-8553-4209" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p><a href="https://www.gongcastro.github.io/">Gonzalo Garcia-Castro</a> <a href="https://orcid.org/0000-0002-8553-4209" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
             </div>
     </div>
       
@@ -230,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contents</h2>
    
@@ -251,6 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/psicotuiterbot/psicotuiterbot.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
@@ -439,7 +414,7 @@ Yo tengo una experiencia parecida a la de <a href="https://twitter.com/IreneFPin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="raspberry.jfif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Aquí está alojado el @psicotuiterbot</figcaption><p></p>
+<figcaption class="figure-caption">Aquí está alojado el @psicotuiterbot</figcaption>
 </figure>
 </div>
 <p>Primero instalé el código en la Raspberry con sus dependencias: básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado <strong>CRON</strong>. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos <a href="https://crontab.guru/examples.html">ejemplos</a>. Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</p>
@@ -505,16 +480,16 @@ Yo tengo una experiencia parecida a la de <a href="https://twitter.com/IreneFPin
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
-  author = {Gonzalo Garcia-Castro},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
+  author = {Garcia-Castro, Gonzalo},
   title = {\textbackslash@Psicotuiterbot: {Un} Bot de {Twitter} Para
     {Psicotuiter}},
   date = {2021-12-29},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2021" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Gonzalo Garcia-Castro. (2021, December 29). <em>\@psicotuiterbot: Un bot
-de Twitter para Psicotuiter</em>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2021" class="csl-entry quarto-appendix-citeas" role="listitem">
+Garcia-Castro, G. (2021, December 29). <em>\@psicotuiterbot: Un bot de
+Twitter para Psicotuiter</em>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -543,9 +518,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -661,6 +650,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -704,7 +779,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -941,94 +1016,94 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a>          renv::restore()</span>
 <span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Create and post tweet</span></span>
 <span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> Rscript R/bot.R</span></span>
-<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a><span class="fu">La gran ventaja de usar este sistema es que **no necesitamos usar nuestro ordenador personal, ya que usamos el que que GitHub nos asigna** (un servidor no deja de ser un ordenador). Pero tiene varios inconvenientes. El primero es que el proceso de establecer un *workflow* en GitHub Actions suele requerir varios intentos (en mi caso muchos). Esto suele deberse a problemas de reproducibilidad computacional</span><span class="kw">:</span><span class="at"> el código funciona correctamente en mi ordenador porque en él tengo instalado todo el sofware del que depende. Cuando uso el servidor de GitHub, el sistema operativo suele necesitar que instalemos estas **dependencias** antes de ejecutar el código. GitHub Actions permite cierta flexibilidad a la hora de seleccionar el software que viene instalado en el sistema operativo que vamos a usar (ej., R, compiladores de C++, dependencias de Linux, etc.). El problema es que muchas veces ni siquiera somos conscientes de cuántas dependencias requiere nuestro código. Con paciencia y muchas búsquedas de Google es posible solventar este problema.</span></span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>La gran ventaja de usar este sistema es que **no necesitamos usar nuestro ordenador personal, ya que usamos el que que GitHub nos asigna** (un servidor no deja de ser un ordenador). Pero tiene varios inconvenientes. El primero es que el proceso de establecer un *workflow* en GitHub Actions suele requerir varios intentos (en mi caso muchos). Esto suele deberse a problemas de reproducibilidad computacional: el código funciona correctamente en mi ordenador porque en él tengo instalado todo el sofware del que depende. Cuando uso el servidor de GitHub, el sistema operativo suele necesitar que instalemos estas **dependencias** antes de ejecutar el código. GitHub Actions permite cierta flexibilidad a la hora de seleccionar el software que viene instalado en el sistema operativo que vamos a usar (ej., R, compiladores de C++, dependencias de Linux, etc.). El problema es que muchas veces ni siquiera somos conscientes de cuántas dependencias requiere nuestro código. Con paciencia y muchas búsquedas de Google es posible solventar este problema.</span>
 <span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a><span class="fu">Un segundo inconveniente que encontré a la hora de implementar el bot en GitHub Actions tiene que ver con los tiempos</span><span class="kw">:</span><span class="at"> instalar todas las dependencias del código en el servidor cada 15 minutos (la configuración se pierde casi totalmente tras cada ejecución) es **poco eficiente**. Instalar las dependencias puede tardar más de 10 minutos (en el caso de este bot). Esto puede además hacer fallar en ocasiones el flujo de trabajo. GitHub Actions tampoco es lo más consistente del mundo, aunque no deja de ser gratis.</span></span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a>Un segundo inconveniente que encontré a la hora de implementar el bot en GitHub Actions tiene que ver con los tiempos: instalar todas las dependencias del código en el servidor cada 15 minutos (la configuración se pierde casi totalmente tras cada ejecución) es **poco eficiente**. Instalar las dependencias puede tardar más de 10 minutos (en el caso de este bot). Esto puede además hacer fallar en ocasiones el flujo de trabajo. GitHub Actions tampoco es lo más consistente del mundo, aunque no deja de ser gratis.</span>
 <span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a><span class="co">## Segundo intento (sale bien): Raspberry Pi</span></span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a><span class="fu">## Segundo intento (sale bien): Raspberry Pi</span></span>
 <span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>Tras<span class="at"> </span>varios<span class="at"> </span>problemas<span class="at"> </span>en<span class="at"> </span>la<span class="at"> </span>ejecución<span class="at"> </span>del<span class="at"> </span>bot<span class="at"> </span>a<span class="at"> </span>través<span class="at"> </span>de<span class="at"> </span>GitHub<span class="at"> </span>Actions,<span class="at"> </span>decidí<span class="at"> </span>cambiar<span class="at"> </span>de<span class="at"> </span>método.<span class="at"> </span>Por<span class="at"> </span>razones<span class="at"> </span>ajenas<span class="at"> </span>al<span class="at"> </span>bot,<span class="at"> </span>hacía<span class="at"> </span>unos<span class="at"> </span>meses<span class="at"> </span>que<span class="at"> </span>tenía<span class="at"> </span>muerta<span class="at"> </span>de<span class="at"> </span>aburrimiento<span class="at"> </span>una<span class="at"> </span>[**Raspberry<span class="at"> </span>Pi<span class="at"> </span>4**](https<span class="fu">://www.raspberrypi.com/products/raspberry-pi-4-model-b/) que compré con un amigo para jugar con ella. Este dispositivo es un mini-ordenador relativamente barato (~40€) que salió al mercado como herramienta educativa para enseñar a programar (ej., róbotica para niñes) pero que poco a poco ha ido tomando espacio en lugares de producción. Tiene mil posibilidades por su simplicidad y, en nuestro caso, por su bajo consumo</span><span class="kw">:</span><span class="at"> tener una Raspberry Pi funcionando todo el día **apenas tiene impacto sobre el consumo de luz**.</span></span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>Tras varios problemas en la ejecución del bot a través de GitHub Actions, decidí cambiar de método. Por razones ajenas al bot, hacía unos meses que tenía muerta de aburrimiento una <span class="co">[</span><span class="ot">**Raspberry Pi 4**</span><span class="co">](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)</span> que compré con un amigo para jugar con ella. Este dispositivo es un mini-ordenador relativamente barato (~40€) que salió al mercado como herramienta educativa para enseñar a programar (ej., róbotica para niñes) pero que poco a poco ha ido tomando espacio en lugares de producción. Tiene mil posibilidades por su simplicidad y, en nuestro caso, por su bajo consumo: tener una Raspberry Pi funcionando todo el día **apenas tiene impacto sobre el consumo de luz**.</span>
 <span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a>![Aquí<span class="at"> </span>está<span class="at"> </span>alojado<span class="at"> </span>el<span class="at"> </span>\@psicotuiterbot](raspberry.jfif)</span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a><span class="al">![Aquí está alojado el \@psicotuiterbot](raspberry.jfif)</span></span>
 <span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a><span class="fu">Primero instalé el código en la Raspberry con sus dependencias</span><span class="kw">:</span><span class="at"> básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado **CRON**. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos [ejemplos](https://crontab.guru/examples.html). Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</span></span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a>Primero instalé el código en la Raspberry con sus dependencias: básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado **CRON**. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos <span class="co">[</span><span class="ot">ejemplos</span><span class="co">](https://crontab.guru/examples.html)</span>. Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</span>
 <span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a>```sh</span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
 <span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a><span class="co"># descarga el código de GitHub, por si ha habido cambios</span></span>
-<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>pull<span class="at"> </span>origin<span class="at"> </span>main</span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span>
 <span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a><span class="co"># ejecuta el código principal del bot</span></span>
-<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a>TZ="Spain/Madrid"<span class="at"> </span>Rscript<span class="at"> </span>-e<span class="at"> </span>'source("R/bot.R")'</span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a><span class="va">TZ</span><span class="op">=</span><span class="st">"Spain/Madrid"</span> <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'source("R/bot.R")'</span></span>
 <span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a><span class="co"># guarda los tweets detectados en un archivo y crea un gráfico</span></span>
-<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a>Rscript<span class="at"> </span>-e<span class="at"> </span>'source("R/counts.R")'</span>
-<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a>rm<span class="at"> </span>Rplots.pdf</span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'source("R/counts.R")'</span></span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> Rplots.pdf</span>
 <span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a><span class="co"># sube los nuevos datos a GitHub</span></span>
-<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>add<span class="at"> </span>.</span>
-<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>commit<span class="at"> </span>-m<span class="at"> </span>"Update<span class="at"> </span>repository"</span>
-<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>git<span class="at"> </span>push</span>
-<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update repository"</span></span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span>
+<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a>Estos<span class="at"> </span>comandos<span class="at"> </span>se<span class="at"> </span>ejecutan<span class="at"> </span>en<span class="at"> </span>este<span class="at"> </span>orden<span class="at"> </span>cada<span class="at"> </span>15<span class="at"> </span>minutos.<span class="at"> </span></span>
+<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a>Estos comandos se ejecutan en este orden cada 15 minutos. </span>
 <span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a><span class="co"># Bloqueando usuarios de forma remota</span></span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a><span class="fu"># Bloqueando usuarios de forma remota</span></span>
 <span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a><span class="fu">Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite **bloquear usuarios que con tan sólo enviar al bot un mensaje directo** de Twitter. El script **R/block.R** accede a los 10 últimos mensajes recibidos por parte de usuaries "VIP" (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el **que el propio bot modifique los archivos locales** a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo **cargar ese vector sin desvelar us contenidos**, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código</span><span class="kw">:</span></span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite **bloquear usuarios que con tan sólo enviar al bot un mensaje directo** de Twitter. El script **R/block.R** accede a los 10 últimos mensajes recibidos por parte de usuaries "VIP" (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el **que el propio bot modifique los archivos locales** a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo **cargar ese vector sin desvelar us contenidos**, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código:</span>
 <span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a>```r</span>
-<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a>vip_users<span class="at"> </span>&lt;-<span class="at"> </span>unlist(strsplit(Sys.getenv("VIP_USERS"),<span class="at"> </span>"<span class="at"> </span>"))</span>
-<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>blocked_accounts<span class="at"> </span>&lt;-<span class="at"> </span>Sys.getenv("BLOCKED_ACCOUNTS")</span>
-<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a>blocked_accounts_vct<span class="at"> </span>&lt;-<span class="at"> </span>unlist(strsplit(blocked_accounts,<span class="at"> </span>split<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>"))</span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a>vip_users <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"VIP_USERS"</span>), <span class="st">" "</span>))</span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>blocked_accounts <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"BLOCKED_ACCOUNTS"</span>)</span>
+<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a>blocked_accounts_vct <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(blocked_accounts, <span class="at">split =</span> <span class="st">" "</span>))</span>
 <span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a><span class="co"># get DMs</span></span>
-<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a>msg<span class="at"> </span>&lt;-<span class="at"> </span>rtweet::direct_messages(n<span class="at"> </span>=<span class="at"> </span>10,<span class="at"> </span>token<span class="at"> </span>=<span class="at"> </span>my_token)$events</span>
+<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">direct_messages</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">token =</span> my_token)<span class="sc">$</span>events</span>
 <span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a><span class="co"># if new DMs have been received</span></span>
-<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>if<span class="at"> </span>(nrow(msg)<span class="at"> </span>&gt;<span class="at"> </span>0){</span>
-<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a><span class="co">    # for each received DM</span></span>
-<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a><span class="at">    </span>for<span class="at"> </span>(i<span class="at"> </span>in<span class="at"> </span>1:nrow(msg)){</span>
-<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>msg_text<span class="at"> </span>&lt;-<span class="at"> </span>msg$message_create$message_data$text[i]</span>
-<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>is_block<span class="at"> </span>&lt;-<span class="at"> </span>grepl("block|block|bloquea",<span class="at"> </span>tolower(msg_text))</span>
-<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>sender_name<span class="at"> </span>&lt;-<span class="at"> </span>rtweet::lookup_users(msg$message_create$sender_id[i],<span class="at"> </span>token<span class="at"> </span>=<span class="at"> </span>my_token)$screen_name</span>
-<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a><span class="at">        </span></span>
-<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a><span class="co">        # if message is sent by VIP user and contains keyword "block"</span></span>
-<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>if<span class="at"> </span>(is_block<span class="at"> </span>&amp;<span class="at"> </span>(paste0("@",<span class="at"> </span>sender_name)<span class="at"> </span>%in%<span class="at"> </span>vip_users)){</span>
-<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>msg_text_vct<span class="at"> </span>&lt;-<span class="at"> </span>unlist(strsplit(msg_text,<span class="at"> </span>"<span class="at"> </span>"))</span>
-<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>target_users<span class="at"> </span>&lt;-<span class="at"> </span>msg_text_vct[grepl("@",<span class="at"> </span>msg_text_vct)]</span>
-<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a><span class="at">            </span></span>
-<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a><span class="co">            # if at least one targeted users has not been blocked yet</span></span>
-<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>if<span class="at"> </span>(!all(target_users<span class="at"> </span>%in%<span class="at"> </span>blocked_accounts_vct)){</span>
-<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>target_users_str<span class="at"> </span>&lt;-<span class="at"> </span>paste0(target_users,<span class="at"> </span>collapse<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>")</span>
-<span id="cb9-288"><a href="#cb9-288" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>blocked_accounts_new<span class="at"> </span>&lt;-<span class="at"> </span>paste0(blocked_accounts,<span class="at"> </span>"<span class="at"> </span>",<span class="at"> </span>target_users_str)</span>
-<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>renviron_text<span class="at"> </span>&lt;-<span class="at"> </span>paste0('BLOCKED_ACCOUNTS<span class="at"> </span>=<span class="at"> </span>"',<span class="at"> </span>blocked_accounts_new,<span class="at"> </span>'"')</span>
-<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>write(renviron_text,<span class="at"> </span>".Renviron",<span class="at"> </span>append<span class="at"> </span>=<span class="at"> </span>TRUE)</span>
-<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>message(paste0("User(s)<span class="at"> </span>",<span class="at"> </span>paste0(target_users_str,<span class="at"> </span>collapse<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>"),<span class="at"> </span>"<span class="at"> </span>is<span class="at"> </span>now<span class="at"> </span>blocked"))</span>
-<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a><span class="at">                </span></span>
-<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>}<span class="at"> </span>else<span class="at"> </span>{</span>
-<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>repeated_target<span class="at"> </span>&lt;-<span class="at"> </span>target_users[which(target_users<span class="at"> </span>%in%<span class="at"> </span>blocked_accounts_vct)]</span>
-<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a><span class="at">                </span>message(paste0("User(s)<span class="at"> </span>",<span class="at"> </span>paste0(repeated_target,<span class="at"> </span>collapse<span class="at"> </span>=<span class="at"> </span>"<span class="at"> </span>"),<span class="at"> </span>"<span class="at"> </span>has<span class="at"> </span>already<span class="at"> </span>been<span class="at"> </span>blocked"))</span>
-<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a><span class="at">            </span>}</span>
-<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>}<span class="at"> </span>else<span class="at"> </span>{</span>
-<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">message(paste0("Message from a non-VIP</span><span class="kw">:</span><span class="at"> </span><span class="st">", paste0("</span><span class="er">@",</span><span class="at"> </span><span class="er">sender_name)))</span></span>
-<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a><span class="at">        </span>}</span>
-<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a><span class="at">    </span>}</span>
+<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(msg) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for each received DM</span></span>
+<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(msg)){</span>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>        msg_text <span class="ot">&lt;-</span> msg<span class="sc">$</span>message_create<span class="sc">$</span>message_data<span class="sc">$</span>text[i]</span>
+<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a>        is_block <span class="ot">&lt;-</span> <span class="fu">grepl</span>(<span class="st">"block|block|bloquea"</span>, <span class="fu">tolower</span>(msg_text))</span>
+<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a>        sender_name <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">lookup_users</span>(msg<span class="sc">$</span>message_create<span class="sc">$</span>sender_id[i], <span class="at">token =</span> my_token)<span class="sc">$</span>screen_name</span>
+<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if message is sent by VIP user and contains keyword "block"</span></span>
+<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (is_block <span class="sc">&amp;</span> (<span class="fu">paste0</span>(<span class="st">"@"</span>, sender_name) <span class="sc">%in%</span> vip_users)){</span>
+<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a>            msg_text_vct <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(msg_text, <span class="st">" "</span>))</span>
+<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a>            target_users <span class="ot">&lt;-</span> msg_text_vct[<span class="fu">grepl</span>(<span class="st">"@"</span>, msg_text_vct)]</span>
+<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if at least one targeted users has not been blocked yet</span></span>
+<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(target_users <span class="sc">%in%</span> blocked_accounts_vct)){</span>
+<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a>                target_users_str <span class="ot">&lt;-</span> <span class="fu">paste0</span>(target_users, <span class="at">collapse =</span> <span class="st">" "</span>)</span>
+<span id="cb9-288"><a href="#cb9-288" aria-hidden="true" tabindex="-1"></a>                blocked_accounts_new <span class="ot">&lt;-</span> <span class="fu">paste0</span>(blocked_accounts, <span class="st">" "</span>, target_users_str)</span>
+<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a>                renviron_text <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">'BLOCKED_ACCOUNTS = "'</span>, blocked_accounts_new, <span class="st">'"'</span>)</span>
+<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a>                <span class="fu">write</span>(renviron_text, <span class="st">".Renviron"</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a>                <span class="fu">message</span>(<span class="fu">paste0</span>(<span class="st">"User(s) "</span>, <span class="fu">paste0</span>(target_users_str, <span class="at">collapse =</span> <span class="st">" "</span>), <span class="st">" is now blocked"</span>))</span>
+<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a>            } <span class="cf">else</span> {</span>
+<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a>                repeated_target <span class="ot">&lt;-</span> target_users[<span class="fu">which</span>(target_users <span class="sc">%in%</span> blocked_accounts_vct)]</span>
+<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a>                <span class="fu">message</span>(<span class="fu">paste0</span>(<span class="st">"User(s) "</span>, <span class="fu">paste0</span>(repeated_target, <span class="at">collapse =</span> <span class="st">" "</span>), <span class="st">" has already been blocked"</span>))</span>
+<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a>            <span class="fu">message</span>(<span class="fu">paste0</span>(<span class="st">"Message from a non-VIP: "</span>, <span class="fu">paste0</span>(<span class="st">"@"</span>, sender_name)))</span>
+<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb9-301"><a href="#cb9-301" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-303"><a href="#cb9-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a><span class="co"># Conclusiones</span></span>
+<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusiones</span></span>
 <span id="cb9-305"><a href="#cb9-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a>De<span class="at"> </span>momento,<span class="at"> </span>el<span class="at"> </span>bot<span class="at"> </span>está<span class="at"> </span>funcionando<span class="at"> </span>bastante<span class="at"> </span>bien<span class="at"> </span>y<span class="at"> </span>se<span class="at"> </span>le<span class="at"> </span>está<span class="at"> </span>dando<span class="at"> </span>bastante<span class="at"> </span>uso,<span class="at"> </span>especialmente<span class="at"> </span>por<span class="at"> </span>parte<span class="at"> </span>de<span class="at"> </span>cuentas<span class="at"> </span>pequeñas.<span class="at"> </span>Aún<span class="at"> </span>tengo<span class="at"> </span>pendiente<span class="at"> </span>hacer<span class="at"> </span>un<span class="at"> </span>análisis<span class="at"> </span>más<span class="at"> </span>profundo<span class="at"> </span>de<span class="at"> </span>qué<span class="at"> </span>tipo<span class="at"> </span>de<span class="at"> </span>actividad<span class="at"> </span>tiene<span class="at"> </span>lugar<span class="at"> </span>en<span class="at"> </span>el<span class="at"> </span>bot,<span class="at"> </span>pero<span class="at"> </span>mi<span class="at"> </span>impresión<span class="at"> </span>es<span class="at"> </span>que<span class="at"> </span>la<span class="at"> </span>mayoría<span class="at"> </span>de<span class="at"> </span>usos<span class="at"> </span>consisten<span class="at"> </span>en<span class="at"> </span>petitiones<span class="at"> </span>de<span class="at"> </span>referencias<span class="at"> </span>de<span class="at"> </span>profesionales<span class="at"> </span>de<span class="at"> </span>psicología<span class="at"> </span>en<span class="at"> </span>poblaciones<span class="at"> </span>concretas<span class="at"> </span>o<span class="at"> </span>de<span class="at"> </span>referencias<span class="at"> </span>bilbiográficas.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a>De momento, el bot está funcionando bastante bien y se le está dando bastante uso, especialmente por parte de cuentas pequeñas. Aún tengo pendiente hacer un análisis más profundo de qué tipo de actividad tiene lugar en el bot, pero mi impresión es que la mayoría de usos consisten en petitiones de referencias de profesionales de psicología en poblaciones concretas o de referencias bilbiográficas.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br>
 </div>   
-      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
+    <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
     <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
   </div>
 </footer>

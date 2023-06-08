@@ -1,5 +1,4 @@
 ---
-title: Gonzalo García-Castro
 title-block-banner: true
 title-block-banner-color: "#fcc203"
 main-photo: /assets/media/profile.jpg
@@ -22,42 +21,39 @@ toc: false
 
 <br>
 
-::: {.grid}
+<div class="mainpic">
 
-::: {.g-col-12 .g-col-sm-4}
+::: box
 
-```{=html}
-<div class="grid" style="--bs-columns: 5; row-gap: 0;">
-  <div class="g-col-1 g-col-sm-0"></div>
-  <div class="g-col-3 g-col-sm-5">
-    <picture>
-      <source media="(max-width: 576px)" srcset="{{< meta main-photo-square >}}">
-      <source media="(min-width: 576px)" srcset="{{< meta main-photo >}}">
-      <img class="img-fluid" src="{{< meta main-photo >}}" alt="{{< meta author-meta >}}">
-    </picture>
-  </div>
-  <div class="g-col-1 g-col-sm-0"></div>
-</div>
-```
+:::: columns
 
-:::
+::::: {.column width="40%"}
 
-::: {.g-col-12 .g-col-sm-8}
 
-> I am a cognitive scientist interested in the application of Bayesian modelling in the
+<img class="img-fluid" src="{{< meta main-photo >}}" alt="{{< meta author-meta >}}">
+
+:::::
+
+::::: {.column width="60%"}
+
+I am a cognitive scientist interested in the application of Bayesian modelling in the
 investigation of early language acquisition. As part of my PhD in Biomedicine at at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc) at Universitat Pompeu Fabra (Barcelona, Spain), I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques.
 
-:::
+:::::
+
+::::
 
 :::
+
+</div>
 
 ---
 
 You can also follow me on GitHub for some portfolio projects like:
 
-* [{multilex}](https://github.com/gongcastro/multilex): R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain) [[website](https://gongcastro.github.io/multilex/)]
-* [{comidistar}](https://github.com/gongcastro/comidistar): R package containing the scores given to products in the blind taste tests of [El Comidista](https://elcomidista.elpais.com/)
-* [psicotuiterbot](https://github.com/gongcastro/psicotuiterbot): A Twitter [bot](https://twitter.com/psicotuiterbot) programmed in R using {rtweet} that automatically retweets mentions of the hasthtags #psicotuiter or #psicotwitter in Spanish
+* [bvq](https://gongcastro.github.io/bvq): R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain). <a href="https://github.com/gongcastro/bvq"><i class="fa-brands fa-github"></i></a> <a href="https://gongcastro.r-universe.dev/bvq"><i class="fa fa-rocket"></i></a>
+* [comidistar](https://github.com/gongcastro/comidistar): R package containing the scores given to products in the blind taste tests of [El Comidista](https://elcomidista.elpais.com/). <a href="https://github.com/ropenspain/comidistar"><i class="fa-brands fa-github"></i></a> <a href="https://ropenspain.r-universe.dev/bvq"><i class="fa fa-rocket"></i></a>
+* [psicotuiterbot](https://github.com/gongcastro/psicotuiterbot): A Twitter [bot](https://twitter.com/psicotuiterbot) programmed in R using {rtweet} that automatically retweets mentions of the hasthtags #psicotuiter or #psicotwitter in Spanish. <a href="https://github.com/gongcastro/psicotuiterbot"><i class="fa-brands fa-github"></i></a>
 
 <br>
 
