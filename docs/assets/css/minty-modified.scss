@@ -297,13 +297,40 @@ legend {
   margin-bottom: 0.75em;
 }
 
-.blockquote .box {
+.blockquote {
     background-color: $yellow;
     color: $black;
     border-left: 10px solid $yellow-main;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
+}
+
+.box {
+    width: 100%;
+    top: 100px;
+    height: 300px;
+    padding: 10px;
+    margin: 0;
+    left: 0%;
+    align-items: center;
+    background-color: $yellow;
+    background: $yellow;
+    border: solid 3px $yellow;
+    
+    p {
+        position: relative;
+        color: black;
+        text-align: left;
+        font-size: 20px;
+    }
+    
+    img {
+        left: 100px;
+        float: left;
+        width: 250px;
+        margin: 2.5%;
+    }
 }
   
 // Listings
@@ -358,16 +385,54 @@ body {
   border-bottom: 3px solid transparent;
 }
 
-.mainpic {
-  .img-fluid {
-    margin: 10pt 10pt 10pt 10pt;
-    width: 120%;
-  }
-  img {
-    margin: 10pt 10pt 10pt 10pt;
-    width: 120%;
-  }
-  p {
-    margin: 20pt;
-  }
+.profile-card {
+    text-align: center;
+    img {
+      position: relative;
+      top: 20%;
+      border-radius: 50%;
+      width: 200px;
+    }
+    p {
+      text-align: center;  
+    }
+}
+
+.social-container{
+  text-align: true;
+  display:grid;
+  grid-template-columns: repeat(9, 4.125em);
+  height: 2.5%;
+}
+
+.social {
+  margin: .125em;
+  font-size: 3em;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  display: grid;
+  place-items:center;
+   i, a {
+       color: $black;
+   }
+   a:hover {
+       color: $yellow-main;
+   }
+
+}
+
+   
+@media only screen and (max-device-width: 640px) {
+    .profilepic {
+        position: relative;
+    }
+    .social-container {
+        left: 0;
+        grid-template-columns: repeat(5, 4.125em);
+        grid-template-row: repeat(2, 3.125em);
+    }
+    .social {
+        font-size: 1.5em;
+    }
 }
