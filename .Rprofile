@@ -1,3 +1,3 @@
 source("renv/activate.R")
-source("utils/github-utils.R")
+source("R/github-utils.R")
 library(quarto)

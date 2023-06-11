@@ -21,99 +21,34 @@ toc: false
 
 <br>
 
-<div class="mainpic">
+::: profile-card
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-::: box
+<img class="profilepic" src="{{< meta main-photo >}}" alt="{{< meta author-meta >}}">
 
-:::: columns
-
-::::: {.column width="40%"}
-
-
-<img class="img-fluid" src="{{< meta main-photo >}}" alt="{{< meta author-meta >}}">
-
-:::::
-
-::::: {.column width="60%"}
-
-I am a cognitive scientist interested in the application of Bayesian modelling in the
-investigation of early language acquisition. As part of my PhD in Biomedicine at at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc) at Universitat Pompeu Fabra (Barcelona, Spain), I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques.
-
-:::::
-
-::::
+>I am a **cognitive scientist** interested in the application of **Bayesian modelling** in the
+investigation of **early language acquisition**. As part of my PhD in Biomedicine at at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc) at Universitat Pompeu Fabra (Barcelona, Spain), I study how **bilingual toddlers** develop their **vocabulary**, using both experimental and observational techniques. 
 
 :::
-
-</div>
-
----
-
-You can also follow me on GitHub for some portfolio projects like:
-
-* [bvq](https://gongcastro.github.io/bvq): R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain). <a href="https://github.com/gongcastro/bvq"><i class="fa-brands fa-github"></i></a> <a href="https://gongcastro.r-universe.dev/bvq"><i class="fa fa-rocket"></i></a>
-* [comidistar](https://github.com/gongcastro/comidistar): R package containing the scores given to products in the blind taste tests of [El Comidista](https://elcomidista.elpais.com/). <a href="https://github.com/ropenspain/comidistar"><i class="fa-brands fa-github"></i></a> <a href="https://ropenspain.r-universe.dev/bvq"><i class="fa fa-rocket"></i></a>
-* [psicotuiterbot](https://github.com/gongcastro/psicotuiterbot): A Twitter [bot](https://twitter.com/psicotuiterbot) programmed in R using {rtweet} that automatically retweets mentions of the hasthtags #psicotuiter or #psicotwitter in Spanish. <a href="https://github.com/gongcastro/psicotuiterbot"><i class="fa-brands fa-github"></i></a>
 
 <br>
 
-:::{.column-body-outset}
+::: social-container
 
-```{=html}
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-
-<div class="grid-container" style="align-items: center; margin-left: 20%; margin-right: 20%; padding: 5%; background: #eceeef; align-items: center">
-
-
-<div class="grid" style="--bs-rows: 2; --bs-columns: 5; gap: 10px;">
-
-  <a href="https://twitter.com/gongcastro" style="color:black;"> 
-    <i class="fa-brands fa-twitter fa-3x"></i>
-  </a>
-  
-  <a href="https://fediscience.org/@gongcastro" style="color:black;"> 
-    <i class="fa-brands fa-mastodon fa-3x"></i>
-  </a>
-  
-  <a href="https://github.com/gongcastro" style="color:black;"> 
-    <i class="fa-brands fa-github fa-3x"></i>
-  </a>
-  
-  <a href="https://gitlab.com/gongcastro" style="color:black;"> 
-    <i class="fa-brands fa-gitlab fa-3x"></i>
-  </a>
-  
-  <a href="https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en" style="color:black;"> 
-    <i class="ai ai-google-scholar ai-3x"></i>
-  </a>
-  
-  <a href="https://osf.io/w465d" style="color:black;"> 
-    <i class="ai ai-osf ai-3x"></i>
-  </a>
-  
-  <a href="https://orcid.org/0000-0002-8553-4209" style="color:black;"> 
-    <i class="ai ai-orcid ai-3x"></i>
-  </a>
-  
-  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
-    <i class="ai ai-stackoverflow ai-3x"></i>
-  </a>
-  
-  <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro" style="color:black;"> 
-    <i class="fa-brands fa-linkedin fa-3x"></i>
-  </a>
-  
-  <a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro" style="color:black;"> 
-    <i class="ai ai-researchgate ai-3x"></i>
-  </a>
-
-</div>
-
-</div>
-```
+<div class="social"><a href="https://github.com/gongcastro"><i class="fa-brands fa-github"></i></a></div>
+<div class="social"><a href="https://twitter.com/gongcastro"><i class="fa-brands fa-twitter"></i></a></div>
+<div class="social"><a href="https://fediscience.org/@gongcastro"><i class="fa-brands fa-mastodon"></i></a></div>
+<div class="social"><a href="https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en"><i class="ai ai-google-scholar"></i></a></div>
+<div class="social"><a href="https://osf.io/w465d"><i class="ai ai-osf"></i></a></div>
+<div class="social"><a href="https://orcid.org/0000-0002-8553-4209"><i class="ai ai-orcid"></i></a></div>
+<div class="social"><a href="https://www.linkedin.com/in/gongcastro/"><i class="fa-brands fa-linkedin"></i></a></div>
+<div class="social"><a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro"><i class="ai ai-researchgate"></i></a></div>
+<div class="social"><a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro"><i class="ai ai-stackoverflow"></i></a></div>
 
 :::
+
+<br>
+
 
 <br>
 

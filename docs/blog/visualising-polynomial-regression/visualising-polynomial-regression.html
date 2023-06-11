@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.3.340" />
 
-<meta name="author" content="Gonzalo Garcia-Castro">
-<meta name="description" content="The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
-<title>Gonzalo Garcia-Castro</title>
+<meta name="author" content="Gonzalo Garcia-Castro" />
+<meta name="description" content="The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials." />
+
+<title>Gonzalo García-Castro – Gonzalo Garcia-Castro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,25 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../..//assets/media/favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<!-- htmldependencies:E3FAD763 -->
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,52 +90,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Gonzalo Garcia-Castro">
-<meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="/assets/media/favicon.png">
-<meta property="og:site-name" content="Gonzalo García-Castro">
-<meta name="twitter:title" content="Gonzalo Garcia-Castro">
-<meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="assets/media/favicon.png">
-<meta name="twitter:creator" content="@gongcastro">
-<meta name="twitter:site" content="@cbcUPF">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/styles.css" />
 </head>
 
-<body class="floating nav-fixed">
+<body>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="/index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+    <a class="nav-link" href="/index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html" rel="" target="">
+    <a class="nav-link" href="/cv.html" rel="" target="">
  <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
+    <a class="nav-link" href="/blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gongcastro" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/gongcastro" rel="" target=""><i 
+  class="bi bi-github" 
+  role="img" 
+  aria-label="GitHub" 
+>
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -163,10 +143,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div id="quarto-toc-target"></div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" ></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default blog-post">
+  <div class="quarto-title-banner">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Visualising polynomial regression</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <h1 class="title">Visualising polynomial regression</h1>
                   <div>
         <div class="description">
           The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.
@@ -203,39 +196,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+  </header>
+<nav id="TOC" role="doc-toc">
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#intercept" id="toc-intercept" class="nav-link active" data-scroll-target="#intercept">Intercept</a></li>
-  <li><a href="#linear-term-adding-a-1st-order-polynomial" id="toc-linear-term-adding-a-1st-order-polynomial" class="nav-link" data-scroll-target="#linear-term-adding-a-1st-order-polynomial">Linear term: adding a 1st-order polynomial</a></li>
-  <li><a href="#quadratic-adding-a-2nd-order-polynomial" id="toc-quadratic-adding-a-2nd-order-polynomial" class="nav-link" data-scroll-target="#quadratic-adding-a-2nd-order-polynomial">Quadratic: adding a 2nd-order polynomial</a></li>
-  <li><a href="#cubic-adding-a-3rd-order-polynomial" id="toc-cubic-adding-a-3rd-order-polynomial" class="nav-link" data-scroll-target="#cubic-adding-a-3rd-order-polynomial">Cubic: adding a 3rd-order polynomial</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  <li><a href="#just-the-code" id="toc-just-the-code" class="nav-link" data-scroll-target="#just-the-code">Just the code</a></li>
-  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
+  <li><a href="#intercept" id="toc-intercept">Intercept</a></li>
+  <li><a href="#linear-term-adding-a-1st-order-polynomial" id="toc-linear-term-adding-a-1st-order-polynomial">Linear term: adding a 1st-order polynomial</a></li>
+  <li><a href="#quadratic-adding-a-2nd-order-polynomial" id="toc-quadratic-adding-a-2nd-order-polynomial">Quadratic: adding a 2nd-order polynomial</a></li>
+  <li><a href="#cubic-adding-a-3rd-order-polynomial" id="toc-cubic-adding-a-3rd-order-polynomial">Cubic: adding a 3rd-order polynomial</a></li>
+  <li><a href="#conclusion" id="toc-conclusion">Conclusion</a></li>
+  <li><a href="#just-the-code" id="toc-just-the-code">Just the code</a></li>
+  <li><a href="#session-info" id="toc-session-info">Session info</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/visualising-polynomial-regression/visualising-polynomial-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    </div>
-<!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
 <p>When modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation</p>
 <p><span class="math display">\[y_i = \beta_{0} + \beta_{1}x_{i}\]</span></p>
 <p>where <span class="math inline">\(\beta_{0}\)</span> is the <strong>intercept</strong> (the value of the input variable <span class="math inline">\(x\)</span> where the output variable <span class="math inline">\(y=0\)</span>), and where <span class="math inline">\(\beta_{1}\)</span> is the <strong>coefficient</strong> of the input variable (how much <span class="math inline">\(y\)</span> increases for every unit increase in <span class="math inline">\(x\)</span>). To illustrate this, let’s imagine we are curious abut what proportion of the students in a classroom are paying attention, and how this proportion changes as minutes pass. We could formalise our model as</p>
 <p><span class="math inline">\(y_i = \beta_{0} + \beta_{1} Time_i\)</span></p>
 <p>Let’s generate some data to illustrate this example. Let’s say that, at the beginning of the lesson, almost 100% of the students are paying attention, but that after some time stop paying attention. Right before the end of the class, students start paying attention again.</p>
-<p><img src="attention.png" class="img-fluid"></p>
+<p><img src="attention.png" class="img-fluid" /></p>
 <p>The attention paid by the students did not decay linearly, but first dropped and rose up again, following a curvilinear trend. In these cases, we may want to perform some transformation on some input variables to account for this non-linear relationship. One of these transformations are <strong>polynomial transformations</strong>. In this context, when we talk about applying a polynomial function to a set of values, we usually mean exponentiating it by a positive number larger than 1. The power by which we exponentiate our variable defines the degree of the polynomial we are obtaining. Exponentiating our variable to the power of 2 will give us its second-degree polynomial. Exponentiating it by 3 will give us its third-degree polynomial, and so on. Back to our classroom example, we could add a new term to our regression equation: the second-degree polynomial of the input variable <span class="math inline">\(Time\)</span>, or even a third degree polynomial if we wanted to test to what extend our model follows a more complex pattern. Our regression trend will not be linear any more, but curvilinear. Let’s take a look at the anatomy of polynomials from a visual (and very informal perspective). Our model would look like this:</p>
 <p><span class="math display">\[
 y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3
@@ -243,39 +223,39 @@ y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3
 <p>Adding polynomial terms to our regression offers much flexibility to researchers when modelling this kind of associations between input and output variables. This practice is, for example, common in Cognitive Science when analysing <strong>repeated measures</strong> data such as eye-tracking data, where we register what participants fixated in a screen during a trial under several conditions. Polynomial regression could be considered as of the main techniques in the more general category of <strong>Growth Curve Analyis</strong> (GCA) methods. If you are interested in learning GCA, you should take a look at Daniel Mirman’s “Growth Curve Analysis and Visualization Using R” [<a href="https://www.routledge.com/Growth-Curve-Analysis-and-Visualization-Using-R/Mirman/p/book/9781466584327">book</a>].</p>
 <p>Powerful as this technique is, it presents some pitfalls, especially to newbies like me. For instance, <strong>interpreting the outputs</strong> of a regression model that includes polynomials can tricky. In our example, depending on the values of the coefficients <span class="math inline">\(\beta_{1}\)</span>, <span class="math inline">\(\beta_2\)</span> and <span class="math inline">\(\beta_3\)</span>–the first-degree and second-degree polynomials of <span class="math inline">\(Time\)</span>–the shape of the resulting curve will be different. The combination of values that these two coefficient can take is infinite, and so is the number of potential shapes our curve can adopt. Interpreting how the values of these coefficients affect the shape of our model, and more importantly, their interaction with other predictors of interest in the model can be difficult without any kind of <strong>visualisation.</strong> The aim of this post is to visualise how the regression lines of a regression model changes with the degree of its polynomials. For computational constraints, and to make visualisation easier, I will only cover one, two, and three-degree polynomials. I will generate plots for multiple combinations of the coefficients of these polynomials using the base R function <code>poly()</code> to generate polynomials, the R package <code>ggplot2()</code> to generate plots, and the <code>gganimate</code> R package to animate the plots. I will briefly describe what is going on in each plot, but I hope the figures are themselves more informative than anything I can say about them!</p>
 <section id="intercept" class="level2">
-<h2 class="anchored" data-anchor-id="intercept">Intercept</h2>
+<h2>Intercept</h2>
 <p>First, let’s start with how the value of the <strong>intercept</strong> (<span class="math inline">\(\beta_0\)</span>) changes the regression line for polynomials of different degree (1st, 2nd, and 3rd). I set the rest of the coefficients to arbitrary values for simplicity (<span class="math inline">\(\beta_1 = \beta_2 = \beta_3 = 1\)</span>). As you can see, regardless of the order of the polynomials involved in the model, increasing the intercept makes the line be higher in the Y-axis, and decreasing the value of the intercept makes the line be lower in the Y-axis. Simple as that.</p>
-<p><img src="intercept.gif" class="img-fluid"></p>
+<p><img src="intercept.gif" class="img-fluid" /></p>
 <p>The interpretation of the intercept is similar to how we interpret it in standard linear regression models. It tells us the value of <span class="math inline">\(y\)</span> when all predictors are set to 0 (in our case <span class="math inline">\(Time = 0\)</span>). As we will discuss later, what that means in practice depends on what that zero means for the other coefficients, that is, how we coded them. For now, let’s continue adding more terms to the equation.</p>
 </section>
 <section id="linear-term-adding-a-1st-order-polynomial" class="level2">
-<h2 class="anchored" data-anchor-id="linear-term-adding-a-1st-order-polynomial">Linear term: adding a 1st-order polynomial</h2>
+<h2>Linear term: adding a 1st-order polynomial</h2>
 <p>Now let’s see how a linear model (with only a 1st degree polynomial) changes as we vary the value of <span class="math inline">\(\beta_1\)</span>, the coefficient of the linear term <span class="math inline">\(Time\)</span>. As you can see, nothing special happens, the line just gets steeper, meaning that for every unit increase in <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases (or decreases, depending on the sign) in <span class="math inline">\(\beta_1\)</span> units. When the coefficient equals zero, there is no increase nor decrease in <span class="math inline">\(y\)</span> for any change in <span class="math inline">\(x\)</span>.</p>
-<p><img src="linear.gif" class="img-fluid"></p>
+<p><img src="linear.gif" class="img-fluid" /></p>
 <p>When <span class="math inline">\(\beta_1=0\)</span>, the resulting line is completely horizontal, parallel to the X-axis. This is what a model with just an intercept (<span class="math inline">\(y = \beta_{0}\)</span>) would look like. We generalise this to say that the linear model we just visualised is exactly the same as adding a 2nd and a 3rd degree polynomial to the model with their correspondent coefficients set to zero (<span class="math inline">\(\beta_2 = 0\)</span> and <span class="math inline">\(\beta_3 = 0\)</span>, respectively).</p>
 </section>
 <section id="quadratic-adding-a-2nd-order-polynomial" class="level2">
-<h2 class="anchored" data-anchor-id="quadratic-adding-a-2nd-order-polynomial">Quadratic: adding a 2nd-order polynomial</h2>
+<h2>Quadratic: adding a 2nd-order polynomial</h2>
 <p>Now things get a bit more interesting. When we add a second degree polynomial (<span class="math inline">\(Time^2\)</span>), the line is not linear any more. If the coefficient of the 2nd-order polynomial (<span class="math inline">\(\beta_2\)</span>) is positive, the curve will go down and up in that order. When <span class="math inline">\(\beta_2 &lt; 0\)</span>, the curve goes up and then down. When <span class="math inline">\(\beta_2 = 0\)</span>, the curve turns out the be a line whose slope is defined by <span class="math inline">\(\beta_1\)</span>, just like in the previous example.</p>
-<p><img src="quadratic.gif" class="img-fluid"></p>
+<p><img src="quadratic.gif" class="img-fluid" /></p>
 <p>Importantly, varying the value of the coefficient of 1st-order polynomials (<span class="math inline">\(\beta_1\)</span>) also changes the shape of the curve: more positive values of <span class="math inline">\(\beta_1\)</span> make the curve “fold” at higher values of <span class="math inline">\(x\)</span>. As you can see, when <span class="math inline">\(\beta_1 &lt; 0\)</span> (left panel, in blue), the point at which the curve starts increasing or decreasing occurs more to the left. When <span class="math inline">\(\beta_2 &gt; 0\)</span>, this change occurs more to the right.</p>
 </section>
 <section id="cubic-adding-a-3rd-order-polynomial" class="level2">
-<h2 class="anchored" data-anchor-id="cubic-adding-a-3rd-order-polynomial">Cubic: adding a 3rd-order polynomial</h2>
+<h2>Cubic: adding a 3rd-order polynomial</h2>
 <p>Finally, let’s complicate things a bit more by adding a third-order polynomial. Now the curve will “fold” two times. The magnitude of <span class="math inline">\(\beta_3\)</span> (the coefficient of the 3rd-degree polynomial) determines how distant both folding points are in the y-axis. When <span class="math inline">\(\beta_3\)</span> is close to zero, both folding points get closer, resembling the shape we’ve seen in a model with just a 2nd-degree polynomial. In fact, when <span class="math inline">\(\beta_3 = 0\)</span>, we get the same plot (compare the panel to the right-upper corner to the plot in the previous section). The sign of <span class="math inline">\(\beta_3\)</span> also determines whether the curve goes down-up-down or up-down-up: <em>down-up-down</em> if <span class="math inline">\(\beta_3 &lt; 0\)</span>, and <em>up-down-up</em> if <span class="math inline">\(\beta_3 &gt; 0\)</span>.</p>
 <p>The magnitude of <span class="math inline">\(\beta_2\)</span> (the coefficient of the 2rd-degree polynomial) determines the location of the mid-point between both folding points. For more positive values of <span class="math inline">\(\beta_2\)</span> this point is located higher in the y-axis, while for more negative values of <span class="math inline">\(\beta_2\)</span>, this point is located lower in the y-axis. This value is a bit difficult to put in perspective in our practical example. Probably <span class="math inline">\(\beta_1\)</span> is more informative: <span class="math inline">\(\beta_1\)</span> changes the value of <span class="math inline">\(x\)</span> at which the curve folds. More negative values of <span class="math inline">\(\beta_1\)</span> make the curve fold at lower values of <span class="math inline">\(x\)</span>, while more positive values of <span class="math inline">\(\beta_1\)</span> make the curve fold at higher values of <span class="math inline">\(x\)</span>.</p>
-<p><img src="cubic.gif" class="img-fluid"></p>
+<p><img src="cubic.gif" class="img-fluid" /></p>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2>Conclusion</h2>
 <p>There are way more things to say about polynomial regression, and it’s more than likely that I sacrifice accuracy for simplicity. After all, the aim of generating these animations was helping myself understand the outputs of polynomial models a bit more easily in the future. I hope it helps others too. If you consider something is misleading or inaccurate, please let me know! I’m the first interested in getting it right. Cheers!</p>
 </section>
 <section id="just-the-code" class="level2">
-<h2 class="anchored" data-anchor-id="just-the-code">Just the code</h2>
+<h2>Just the code</h2>
 <script src="https://gist.github.com/gongcastro/9eb9e0c7e7502b48514514fef83fc509.js"></script>
 </section>
 <section id="session-info" class="level2">
-<h2 class="anchored" data-anchor-id="session-info">Session info</h2>
+<h2>Session info</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.2.2 (2022-10-31 ucrt)
@@ -305,23 +285,117 @@ loaded via a namespace (and not attached):
 [25] knitr_1.41     </code></pre>
 </div>
 </div>
-
-
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Gonzalo García-Castro</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Gonzalo García-Castro</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:CV">CV</span> <span class="hidden" data-render-id="quarto-int-navbar:/cv.html">/cv.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Blog">Blog</span> <span class="hidden" data-render-id="quarto-int-navbar:/blog.html">/blog.html</span> <span class="hidden" data-render-id="quarto-int-navbar:https://github.com/gongcastro">https://github.com/gongcastro</span> <span class="hidden" data-render-id="footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br />
+</span> <span class="hidden" data-render-id="footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></span> <span class="hidden" data-render-id="footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">Gonzalo Garcia-Castro</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Gonzalo Garcia-Castro</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Gonzalo Garcia-Castro</span> <span class="hidden" data-render-id="quarto-metasitename">Gonzalo García-Castro</span> <span class="hidden" data-render-id="quarto-twittercarddesc">Language, stats, R</span> <span class="hidden" data-render-id="quarto-ogcardddesc">Language, stats, R</span></p>
+</div>
 <!-- -->
-
+<div class="quarto-embedded-source-code">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Visualising polynomial regression</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> &#39;2021-01-21&#39;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> &quot;The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> quadratic.gif</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - r</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - statistic</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - regression</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - animation</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - ggplot</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="an">echo:</span><span class="co"> false</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="an">warning:</span><span class="co"> false</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="an">message:</span><span class="co"> false</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>When modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>$$y_i = \beta_{0} + \beta_{1}x_{i}$$</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>where $\beta_{0}$ is the **intercept** (the value of the input variable $x$ where the output variable $y=0$), and where $\beta_{1}$ is the **coefficient** of the input variable (how much $y$ increases for every unit increase in $x$). To illustrate this, let&#39;s imagine we are curious abut what proportion of the students in a classroom are paying attention, and how this proportion changes as minutes pass. We could formalise our model as</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>$y_i = \beta_{0} + \beta_{1} Time_i$</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>Let&#39;s generate some data to illustrate this example. Let&#39;s say that, at the beginning of the lesson, almost 100% of the students are paying attention, but that after some time stop paying attention. Right before the end of the class, students start paying attention again.</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="al">![](attention.png)</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>The attention paid by the students did not decay linearly, but first dropped and rose up again, following a curvilinear trend. In these cases, we may want to perform some transformation on some input variables to account for this non-linear relationship. One of these transformations are **polynomial transformations**. In this context, when we talk about applying a polynomial function to a set of values, we usually mean exponentiating it by a positive number larger than 1. The power by which we exponentiate our variable defines the degree of the polynomial we are obtaining. Exponentiating our variable to the power of 2 will give us its second-degree polynomial. Exponentiating it by 3 will give us its third-degree polynomial, and so on. Back to our classroom example, we could add a new term to our regression equation: the second-degree polynomial of the input variable $Time$, or even a third degree polynomial if we wanted to test to what extend our model follows a more complex pattern. Our regression trend will not be linear any more, but curvilinear. Let&#39;s take a look at the anatomy of polynomials from a visual (and very informal perspective). Our model would look like this: </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Adding polynomial terms to our regression offers much flexibility to researchers when modelling this kind of associations between input and output variables. This practice is, for example, common in Cognitive Science when analysing **repeated measures** data such as eye-tracking data, where we register what participants fixated in a screen during a trial under several conditions. Polynomial regression could be considered as of the main techniques in the more general category of **Growth Curve Analyis** (GCA) methods. If you are interested in learning GCA, you should take a look at Daniel Mirman&#39;s &quot;Growth Curve Analysis and Visualization Using R&quot; [<span class="co">[</span><span class="ot">book</span><span class="co">](https://www.routledge.com/Growth-Curve-Analysis-and-Visualization-Using-R/Mirman/p/book/9781466584327)</span>].</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>Powerful as this technique is, it presents some pitfalls, especially to newbies like me. For instance, **interpreting the outputs** of a regression model that includes polynomials can tricky. In our example, depending on the values of the coefficients $\beta_{1}$, $\beta_2$ and $\beta_3$--the first-degree and second-degree polynomials of $Time$--the shape of the resulting curve will be different. The combination of values that these two coefficient can take is infinite, and so is the number of potential shapes our curve can adopt. Interpreting how the values of these coefficients affect the shape of our model, and more importantly, their interaction with other predictors of interest in the model can be difficult without any kind of **visualisation.** The aim of this post is to visualise how the regression lines of a regression model changes with the degree of its polynomials. For computational constraints, and to make visualisation easier, I will only cover one, two, and three-degree polynomials. I will generate plots for multiple combinations of the coefficients of these polynomials using the base R function <span class="in">`poly()`</span> to generate polynomials, the R package <span class="in">`ggplot2()`</span> to generate plots, and the <span class="in">`gganimate`</span> R package to animate the plots. I will briefly describe what is going on in each plot, but I hope the figures are themselves more informative than anything I can say about them! </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Intercept</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>First, let&#39;s start with how the value of the **intercept** ($\beta_0$) changes the regression line for polynomials of different degree (1st, 2nd, and 3rd). I set the rest of the coefficients to arbitrary values for simplicity ($\beta_1 = \beta_2 = \beta_3 = 1$). As you can see, regardless of the order of the polynomials involved in the model, increasing the intercept makes the line be higher in the Y-axis, and decreasing the value of the intercept makes the line be lower in the Y-axis. Simple as that.</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="al">![](intercept.gif)</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>The interpretation of the intercept is similar to how we interpret it in standard linear regression models. It tells us the value of $y$ when all predictors are set to 0 (in our case $Time = 0$). As we will discuss later, what that means in practice depends on what that zero means for the other coefficients, that is, how we coded them. For now, let&#39;s continue adding more terms to the equation.</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## Linear term: adding a 1st-order polynomial</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>Now let&#39;s see how a linear model (with only a 1st degree polynomial) changes as we vary the value of $\beta_1$, the coefficient of the linear term $Time$. As you can see, nothing special happens, the line just gets steeper, meaning that for every unit increase in $x$, $y$ increases (or decreases, depending on the sign) in $\beta_1$ units. When the coefficient equals zero, there is no increase nor decrease in $y$ for any change in $x$.</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="al">![](linear.gif)</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>When $\beta_1=0$, the resulting line is completely horizontal, parallel to the X-axis. This is what a model with just an intercept ($y = \beta_{0}$) would look like. We generalise this to say that the linear model we just visualised is exactly the same as adding a 2nd and a 3rd degree polynomial to the model with their correspondent coefficients set to zero ($\beta_2 = 0$ and $\beta_3 = 0$, respectively).</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quadratic: adding a 2nd-order polynomial</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>Now things get a bit more interesting. When we add a second degree polynomial ($Time^2$), the line is not linear any more. If the coefficient of the 2nd-order polynomial ($\beta_2$) is positive, the curve will go down and up in that order. When $\beta_2 &lt; 0$, the curve goes up and then down. When $\beta_2 = 0$, the curve turns out the be a line whose slope is defined by $\beta_1$, just like in the previous example.</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="al">![](quadratic.gif)</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>Importantly, varying the value of the coefficient of 1st-order polynomials ($\beta_1$) also changes the shape of the curve: more positive values of $\beta_1$ make the curve &quot;fold&quot; at higher values of $x$. As you can see, when $\beta_1 &lt; 0$ (left panel, in blue), the point at which the curve starts increasing or decreasing occurs more to the left. When $\beta_2 &gt; 0$, this change occurs more to the right.</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cubic: adding a 3rd-order polynomial</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>Finally, let&#39;s complicate things a bit more by adding a third-order polynomial. Now the curve will &quot;fold&quot; two times. The magnitude of $\beta_3$ (the coefficient of the 3rd-degree polynomial) determines how distant both folding points are in the y-axis. When $\beta_3$ is close to zero, both folding points get closer, resembling the shape we&#39;ve seen in a model with just a 2nd-degree polynomial. In fact, when $\beta_3 = 0$, we get the same plot (compare the panel to the right-upper corner to the plot in the previous section). The sign of $\beta_3$ also determines whether the curve goes down-up-down or up-down-up: *down-up-down* if $\beta_3 &lt; 0$, and *up-down-up* if $\beta_3 &gt; 0$.</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>The magnitude of $\beta_2$ (the coefficient of the 2rd-degree polynomial) determines the location of the mid-point between both folding points. For more positive values of $\beta_2$ this point is located higher in the y-axis, while for more negative values of $\beta_2$, this point is located lower in the y-axis. This value is a bit difficult to put in perspective in our practical example. Probably $\beta_1$ is more informative: $\beta_1$ changes the value of $x$ at which the curve folds. More negative values of $\beta_1$ make the curve fold at lower values of $x$, while more positive values of $\beta_1$ make the curve fold at higher values of $x$.</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="al">![](cubic.gif)</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>There are way more things to say about polynomial regression, and it&#39;s more than likely that I sacrifice accuracy for simplicity. After all, the aim of generating these animations was helping myself understand the outputs of polynomial models a bit more easily in the future. I hope it helps others too. If you consider something is misleading or inaccurate, please let me know! I&#39;m the first interested in getting it right. Cheers!</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just the code</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;https://gist.github.com/gongcastro/9eb9e0c7e7502b48514514fef83fc509.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session info</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>quarto-executable-code-5450563D</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+</div>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
-  author = {Garcia-Castro, Gonzalo},
-  title = {Visualising Polynomial Regression},
-  date = {2021-01-21},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2021" class="csl-entry quarto-appendix-citeas" role="listitem">
-Garcia-Castro, G. (2021, January 21). <em>Visualising polynomial
-regression</em>.
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -619,115 +693,40 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
-<script src="https://giscus.app/client.js" data-repo="gongcastro/gongcastro.github.io" data-repo-id="R_kgDOGJ9lfQ" data-category="Blog comments" data-category-id="R_kgDOGJ9lfQ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Visualising polynomial regression</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2021-01-21'</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials."</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> quadratic.gif</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - r</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - statistic</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - regression</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - animation</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - ggplot</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="an">echo:</span><span class="co"> false</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="an">warning:</span><span class="co"> false</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="an">message:</span><span class="co"> false</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>When modelling data using regression, sometimes the relationship between input variables and output variables is not very well captured by a straight line. A standard linear model is defined by the equation </span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>$$y_i = \beta_{0} + \beta_{1}x_{i}$$</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>where $\beta_{0}$ is the **intercept** (the value of the input variable $x$ where the output variable $y=0$), and where $\beta_{1}$ is the **coefficient** of the input variable (how much $y$ increases for every unit increase in $x$). To illustrate this, let's imagine we are curious abut what proportion of the students in a classroom are paying attention, and how this proportion changes as minutes pass. We could formalise our model as</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>$y_i = \beta_{0} + \beta_{1} Time_i$</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>Let's generate some data to illustrate this example. Let's say that, at the beginning of the lesson, almost 100% of the students are paying attention, but that after some time stop paying attention. Right before the end of the class, students start paying attention again.</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="al">![](attention.png)</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>The attention paid by the students did not decay linearly, but first dropped and rose up again, following a curvilinear trend. In these cases, we may want to perform some transformation on some input variables to account for this non-linear relationship. One of these transformations are **polynomial transformations**. In this context, when we talk about applying a polynomial function to a set of values, we usually mean exponentiating it by a positive number larger than 1. The power by which we exponentiate our variable defines the degree of the polynomial we are obtaining. Exponentiating our variable to the power of 2 will give us its second-degree polynomial. Exponentiating it by 3 will give us its third-degree polynomial, and so on. Back to our classroom example, we could add a new term to our regression equation: the second-degree polynomial of the input variable $Time$, or even a third degree polynomial if we wanted to test to what extend our model follows a more complex pattern. Our regression trend will not be linear any more, but curvilinear. Let's take a look at the anatomy of polynomials from a visual (and very informal perspective). Our model would look like this: </span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>y_i = \beta_{0} + \beta_{1} Time_i + \beta_{2} Time_{i}^2 + \beta_{3} Time_{i}^3</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Adding polynomial terms to our regression offers much flexibility to researchers when modelling this kind of associations between input and output variables. This practice is, for example, common in Cognitive Science when analysing **repeated measures** data such as eye-tracking data, where we register what participants fixated in a screen during a trial under several conditions. Polynomial regression could be considered as of the main techniques in the more general category of **Growth Curve Analyis** (GCA) methods. If you are interested in learning GCA, you should take a look at Daniel Mirman's "Growth Curve Analysis and Visualization Using R" [<span class="co">[</span><span class="ot">book</span><span class="co">](https://www.routledge.com/Growth-Curve-Analysis-and-Visualization-Using-R/Mirman/p/book/9781466584327)</span>].</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>Powerful as this technique is, it presents some pitfalls, especially to newbies like me. For instance, **interpreting the outputs** of a regression model that includes polynomials can tricky. In our example, depending on the values of the coefficients $\beta_{1}$, $\beta_2$ and $\beta_3$--the first-degree and second-degree polynomials of $Time$--the shape of the resulting curve will be different. The combination of values that these two coefficient can take is infinite, and so is the number of potential shapes our curve can adopt. Interpreting how the values of these coefficients affect the shape of our model, and more importantly, their interaction with other predictors of interest in the model can be difficult without any kind of **visualisation.** The aim of this post is to visualise how the regression lines of a regression model changes with the degree of its polynomials. For computational constraints, and to make visualisation easier, I will only cover one, two, and three-degree polynomials. I will generate plots for multiple combinations of the coefficients of these polynomials using the base R function <span class="in">`poly()`</span> to generate polynomials, the R package <span class="in">`ggplot2()`</span> to generate plots, and the <span class="in">`gganimate`</span> R package to animate the plots. I will briefly describe what is going on in each plot, but I hope the figures are themselves more informative than anything I can say about them! </span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Intercept</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>First, let's start with how the value of the **intercept** ($\beta_0$) changes the regression line for polynomials of different degree (1st, 2nd, and 3rd). I set the rest of the coefficients to arbitrary values for simplicity ($\beta_1 = \beta_2 = \beta_3 = 1$). As you can see, regardless of the order of the polynomials involved in the model, increasing the intercept makes the line be higher in the Y-axis, and decreasing the value of the intercept makes the line be lower in the Y-axis. Simple as that.</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="al">![](intercept.gif)</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>The interpretation of the intercept is similar to how we interpret it in standard linear regression models. It tells us the value of $y$ when all predictors are set to 0 (in our case $Time = 0$). As we will discuss later, what that means in practice depends on what that zero means for the other coefficients, that is, how we coded them. For now, let's continue adding more terms to the equation.</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## Linear term: adding a 1st-order polynomial</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>Now let's see how a linear model (with only a 1st degree polynomial) changes as we vary the value of $\beta_1$, the coefficient of the linear term $Time$. As you can see, nothing special happens, the line just gets steeper, meaning that for every unit increase in $x$, $y$ increases (or decreases, depending on the sign) in $\beta_1$ units. When the coefficient equals zero, there is no increase nor decrease in $y$ for any change in $x$.</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="al">![](linear.gif)</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>When $\beta_1=0$, the resulting line is completely horizontal, parallel to the X-axis. This is what a model with just an intercept ($y = \beta_{0}$) would look like. We generalise this to say that the linear model we just visualised is exactly the same as adding a 2nd and a 3rd degree polynomial to the model with their correspondent coefficients set to zero ($\beta_2 = 0$ and $\beta_3 = 0$, respectively).</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quadratic: adding a 2nd-order polynomial</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>Now things get a bit more interesting. When we add a second degree polynomial ($Time^2$), the line is not linear any more. If the coefficient of the 2nd-order polynomial ($\beta_2$) is positive, the curve will go down and up in that order. When $\beta_2 &lt; 0$, the curve goes up and then down. When $\beta_2 = 0$, the curve turns out the be a line whose slope is defined by $\beta_1$, just like in the previous example.</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="al">![](quadratic.gif)</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>Importantly, varying the value of the coefficient of 1st-order polynomials ($\beta_1$) also changes the shape of the curve: more positive values of $\beta_1$ make the curve "fold" at higher values of $x$. As you can see, when $\beta_1 &lt; 0$ (left panel, in blue), the point at which the curve starts increasing or decreasing occurs more to the left. When $\beta_2 &gt; 0$, this change occurs more to the right.</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cubic: adding a 3rd-order polynomial</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>Finally, let's complicate things a bit more by adding a third-order polynomial. Now the curve will "fold" two times. The magnitude of $\beta_3$ (the coefficient of the 3rd-degree polynomial) determines how distant both folding points are in the y-axis. When $\beta_3$ is close to zero, both folding points get closer, resembling the shape we've seen in a model with just a 2nd-degree polynomial. In fact, when $\beta_3 = 0$, we get the same plot (compare the panel to the right-upper corner to the plot in the previous section). The sign of $\beta_3$ also determines whether the curve goes down-up-down or up-down-up: *down-up-down* if $\beta_3 &lt; 0$, and *up-down-up* if $\beta_3 &gt; 0$.</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>The magnitude of $\beta_2$ (the coefficient of the 2rd-degree polynomial) determines the location of the mid-point between both folding points. For more positive values of $\beta_2$ this point is located higher in the y-axis, while for more negative values of $\beta_2$, this point is located lower in the y-axis. This value is a bit difficult to put in perspective in our practical example. Probably $\beta_1$ is more informative: $\beta_1$ changes the value of $x$ at which the curve folds. More negative values of $\beta_1$ make the curve fold at lower values of $x$, while more positive values of $\beta_1$ make the curve fold at higher values of $x$.</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="al">![](cubic.gif)</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>There are way more things to say about polynomial regression, and it's more than likely that I sacrifice accuracy for simplicity. After all, the aim of generating these animations was helping myself understand the outputs of polynomial models a bit more easily in the future. I hope it helps others too. If you consider something is misleading or inaccurate, please let me know! I'm the first interested in getting it right. Cheers!</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just the code</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://gist.github.com/gongcastro/9eb9e0c7e7502b48514514fef83fc509.js"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session info</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+<script src="https://giscus.app/client.js"
+        data-repo="gongcastro/gongcastro.github.io"
+        data-repo-id="R_kgDOGJ9lfQ"
+        data-category="Blog comments"
+        data-category-id="R_kgDOGJ9lfQ"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br>
-</div>   
-    <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+    <div class="nav-footer-left">
+      <div class='footer-contents'><span class="faux-block"> 2020–2023 Gonzalo Garcia-Castro</span>
+<span class="faux-block">All content licensed under<br>[   Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
+</div>  
+    </div>   
+    <div class="nav-footer-center">
+      <div class='footer-contents'><span class="faux-block"> <strong>ORCID</strong> [0000-0002-8553-4209](https://orcid.org/0000-0002-8553-4209)</span>
+</div>  
+    </div>
+    <div class="nav-footer-right">
+      <div class='footer-contents'><span class="faux-block">Made with  and [Quarto](https://quarto.org/)</span>
+<span class="faux-block">[View the source at  GitHub](https://github.com/gongcastro/gongcastro.github.io)</span>
+</div>  
+    </div>
   </div>
 </footer>
 
+</body>
 
-
-</body></html>
+</html>
