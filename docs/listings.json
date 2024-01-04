@@ -1,7 +1,8 @@
 [
   {
-    "listing": "/blog.html",
+    "listing": "/index.html",
     "items": [
+      "/blog/upfthesis/upfthesis.html",
       "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
       "/blog/logistic-regression/logistic-regression.html",
       "/blog/renv-package/renv-package.html",
@@ -15,8 +16,9 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/blog.html",
     "items": [
+      "/blog/upfthesis/upfthesis.html",
       "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
       "/blog/logistic-regression/logistic-regression.html",
       "/blog/renv-package/renv-package.html",
