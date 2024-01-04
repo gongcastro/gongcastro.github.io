@@ -218,17 +218,17 @@ ggplot(posterior_random, aes(.value, mes, colour = mes, fill = mes)) +
         legend.position = "none") 
 
 #### posterior predictions #####################################################
-posterior_preds <- expand.grid(any1 = seq(min(dat$any1), max(dat$any1), by = 0.25),
-                               any2 = seq(min(dat$any2), max(dat$any2), by = 0.25),
-                               mes = unique(dat$mes)) %>% 
-  add_fitted_draws(fit3, n = 10) %>% 
-  ungroup() %>% 
-  left_join(select(dat, any, mes, temperatura) 
-            mutate(intercept = fixef(fit3)$Estimate[1])
-            rowwise(y = fixef(fit3)[1,1] + any2)
-            ggplot(posterior_preds, aes(any1, .value, colour = any1, group = interaction(any2, .draw))) +
-              facet_wrap(~mes) +
-              geom_point(size = 0.1)
+#posterior_preds <- expand.grid(any1 = seq(min(dat$any1), max(dat$any1), by = 0.25),
+#                               any2 = seq(min(dat$any2), max(dat$any2), by = 0.25),
+#                               mes = unique(dat$mes)) %>% 
+#  add_fitted_draws(fit3, n = 10) %>% 
+#  ungroup() %>% 
+#  left_join(select(dat, any, mes, temperatura) 
+#            mutate(intercept = fixef(fit3)$Estimate[1])
+#            rowwise(y = fixef(fit3)[1,1] + any2)
+#            ggplot(posterior_preds, aes(any1, .value, colour = any1, group = interaction(any2, .draw))) +
+#              facet_wrap(~mes) +
+#              geom_point(size = 0.1)
             
             
             

@@ -142,84 +142,20 @@ if (nrow(request_tweets) > 0) {
     # get requested IDS
     if (length(request_ids) > 0) {
         requested_ids <- rtweet::lookup_statuses(request_ids, token = my_token) %>% 
-            filter(
-                !grepl(paste(hate_words, collapse = "|"), text) # filter out hate words
-            ) %>% 
-            pull(status_id)
-    } else {
-        requested_ids <- NULL
-    }
-} else {
-    requested_ids <- NULL
-}
-# RT all IDs
-if (length(status_ids) > 0){
-    for (i in 1:length(status_ids)){
-        rtweet::post_tweet(
-            retweet_id = unique(status_ids)[i], # vector with IDs
-            token = my_token
-        )
-    }
-    print(paste0(length(status_ids), " RT(s): ", paste(status_ids, collapse = ", ")))
-} else {
-    print("No tweets to RT")
-}
-```
-
-
-Recientemente incluí un pequeño bloque de código para permitir que la gente solicitase un **RT para tuits que no mencionaban #psicotuiter**, pero podrían ser de interés para la comunidad. Para hacerlo solo hay que responder al tuit en cuestión mencionando a \@psicotuiterbot junto con la palabra RT (ej., "RT \@psicotuiterbot por favor").
-
-```r
-# tweet requests
-if (length(requested_ids) > 0){
-    for (i in 1:length(requested_ids)){
-        rtweet::post_tweet(
-            retweet_id = unique(requested_ids)[i], # vector with IDs
-            token = my_token
-        )
-    }
-    print(paste0(length(requested_ids), " request(s) posted: ", paste(requested_ids, collapse = ", ")))
-} else {
-    print("No requests")
-}
-```
-
-
-## Ejecutando el código
-
-Lo que hace "bot" a un bot es que **no requiere intervención manual** para que realice la acción que deseamos. Hay muchas opciones para conseguir esto, pero casi todas tienen un inconveniente: necesitamos que una máquina (ordenador/servidor, móvil, etc.) esté encendido en el momento en el que queremos ejecutar nuestro código. En nuestro caso necesitamos que se ejecute cada 15 minutos, lo que implica que deberíamos tener un dispositivo conectado a la corrriente y funcionando todo el día. Tener mi ordenador personal haciendo esto no es una opción viable. Me encontré con dos alternativas.
-
-
-### Primer intento (sale mal): GitHub actions
-
-Como mencioné antes, en el tutorial de Matt Dray se ilustra cómo usar [**GitHub Actions**](https://github.com/features/actions) para ejecutar nuestro código una vez está alojado en un repositorio de GitHub. GitHub Actions es un servicio que ofrece GitHub que permite ejecutar ciertos comandos en determinadas condiciones o cada cierto tiempo usando un servidor que ponen a nuestra disposición (con ciertos límites). Este grupo de comandos se denominan *workflows* o flujos de trabajo, y si los incluimos en una carpeta de nuestro repositorio llamada .github/workflows/ siguiendo cierto formato en un archivo YAML (.yml), GitHub se encargará de ejecutarlo sin nuestra intervención. Hay buenos [tutoriales](https://www.youtube.com/watch?v=R8_veQiYBjI) sobre cómo y cuándo escribir *workflows* para GutHub Actions. El *workflow* principal era inicialmente este:
-
-```yml
-name: bot
-on:
-  push:
-    branches:
-      - main # run every time there is a push to main branch
-      - test
-jobs:
-  psicotuiterbot-post:
-    runs-on: macOS-latest
-    env: #  twitter API keys (used to authenticate) defined in the gh actions environment
-      TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
-      TWITTER_CONSUMER_API_KEY_SECRET: ${{ secrets.TWITTER_CONSUMER_API_KEY_SECRET }}
-      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
-      
-    steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-renv@v1
-        with:
-          cache-version: 1
-      - name: Restore packages using renv
-        shell: Rscript {0}
-        run: |
-          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+posterior_preds <- expand.grid(any1 = seq(min(dat$any1), max(dat$any1), by = 0.25),
+                               any2 = seq(min(dat$any2), max(dat$any2), by = 0.25),
+                               mes = unique(dat$mes)) %>% 
+  add_fitted_draws(fit3, n = 10) %>% 
+  ungroup() %>% 
+  left_join(select(dat, any, mes, temperatura) 
+            mutate(intercept = fixef(fit3)$Estimate[1])
+            rowwise(y = fixef(fit3)[1,1] + any2)
+            ggplot(posterior_preds, aes(any1, .value, colour = any1, group = interaction(any2, .draw))) +
+              facet_wrap(~mes) +
+              geom_point(size = 0.1)
+            
+            
+                     if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
       - name: Create and post tweet
         run: Rscript R/bot.R
