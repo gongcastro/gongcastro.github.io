@@ -22,7 +22,7 @@ date: 2024-01-10
 
 ![](upfthesis.png){width=80% fig-align=center}
 
-So I submitted my thesis (:tada:). As anticipated, the submission process was frustrating---this is a cannonic event. Though, it was less of a pain thanks **Quarto**, which took care of the formatting. I spent a considerable amount of time preparing this template, which was a risky move, given the tight schedule I was on^[I wrote 80% of my thesis in less than two months, depite having been working for five years on my PhD, I am embarrased to confess. Luckily, the rest of the time was wisely spent in other projects.], but it paid off in the end.
+So I submitted my thesis (:tada:). As anticipated, the submission process was frustrating---this is a canonical event. Though, it was less of a pain thanks **Quarto**, which took care of the formatting. I spent a considerable amount of time preparing this template, which was a risky move, given the tight schedule I was on^[I wrote 80% of my thesis in less than two months, depite having been working for five years on my PhD, I am embarrased to confess. Luckily, the rest of the time was wisely spent in other projects.], but it paid off in the end.
 
 In this post, I describe how the *upfthesis* Quarto template works, and perhaps more importantly, how it can be adjusted to align with the dissertation format required by other universities. First, take a look at how it looks once rendered [[link here]([here](https://github.com/gongcastro/upfthesis/blob/main/_thesis/thesis.pdf):), in case it does not show up]:
 

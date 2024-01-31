@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -107,14 +114,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="/assets/media/favicon.png">
-<meta property="og:site-name" content="Gonzalo García-Castro">
+<meta property="og:image" content="cover.gif">
+<meta property="og:site_name" content="Gonzalo García-Castro">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="assets/media/favicon.png">
+<meta name="twitter:image" content="cover.gif">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
@@ -123,10 +157,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -138,28 +172,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html" rel="" target="">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gongcastro" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -206,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contents</h2>
    
@@ -227,9 +261,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#triangular-distribution" id="toc-triangular-distribution" class="nav-link" data-scroll-target="#triangular-distribution">Triangular distribution</a></li>
   <li><a href="#some-final-remarks" id="toc-some-final-remarks" class="nav-link" data-scroll-target="#some-final-remarks">Some final remarks</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/animated-distributions/animated-distributions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/animated-distributions/animated-distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
@@ -239,12 +273,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <p>In the last couple of years I went down the rabbit hole of <strong>Bayesian statistics</strong>. Although I’ve made considerable progress, as compared to where I started, I still (and will) struggle understand some basic concepts beyond some shallow, abstract idea about what they mean. One of the first challenges I encountered in my first steps was becoming aware of how many <strong>probability distributions</strong> there are, and the fact that one should pick one should carefully chose which one to use when trying to estimate some parameter.</p>
-<p>Ben Lambert’s excellent book <a href="https://www.amazon.co.uk/Students-Guide-Bayesian-Statistics/dp/1473916364/"><em>A Student’s Guide to Bayesian Statistics</em></a> offers a chart showing many of the most popular distributions, and how they relate to each other (pp.&nbsp;145, see <a href="#fig-distributions">Figure&nbsp;1</a> below for a similar chart). They then describe each distributions very plain terms, which is to be grateful for (many introductory books get lost in the details when describing likelihood distributions). However, when the moment arrives to pick a distribution in practice, I still struggle to see the risks and benefits of using each distribution. Will it adequately cover the sampling space of my parameter? Can I parameterise it so it allocates most of the probability around the regions I consider more likely? Am I actually able to interpret the values of the parameters of the distribution and map them to my research question?</p>
-<div id="fig-distributions" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html"><img src="distributions.png" class="img-fluid figure-img"></a></p>
-<figcaption class="figure-caption">Figure&nbsp;1: An incomplete but representative chart of the available likelihood functions and their relationship. From http://www.math.wm.edu/~leemis/chart/UDR/UDR.html</figcaption>
+<p>Ben Lambert’s excellent book <a href="https://www.amazon.co.uk/Students-Guide-Bayesian-Statistics/dp/1473916364/"><em>A Student’s Guide to Bayesian Statistics</em></a> offers a chart showing many of the most popular distributions, and how they relate to each other (pp.&nbsp;145, see <a href="#fig-distributions" class="quarto-xref">Figure&nbsp;1</a> below for a similar chart). They then describe each distributions very plain terms, which is to be grateful for (many introductory books get lost in the details when describing likelihood distributions). However, when the moment arrives to pick a distribution in practice, I still struggle to see the risks and benefits of using each distribution. Will it adequately cover the sampling space of my parameter? Can I parameterise it so it allocates most of the probability around the regions I consider more likely? Am I actually able to interpret the values of the parameters of the distribution and map them to my research question?</p>
+<div id="fig-distributions" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html"><img src="distributions.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: An incomplete but representative chart of the available likelihood functions and their relationship. From http://www.math.wm.edu/~leemis/chart/UDR/UDR.html
+</figcaption>
 </figure>
 </div>
 <p>My first step to answer these questions is to explore <strong>what a given distribution looks like under different parameters</strong>. This might give us a hint on the range of values it covers and the “shape” of the likelihood function. As I mentioned in previous posts, I struggle to grasp statistical/mathematical concepts in absence of a good visualisation. I generated some animations in Julia using the <a href="https://juliastats.org/Distributions.jl/stable/"><strong>Distributions.jl</strong></a> package, which provides a substantial amount of implemented likelihood functions. The only reason I chose <strong>Julia</strong> is that I’m trying to learn it step by step and I found this silly project a nice opportunity to do so. You can see the code at the end of this article or on the accompanying <a href="https://github.com/gongcastro/animated-distributions">GitHub repository</a>. I posted this one Twitter (see below) and got a good response, so I decided to extend a bit the contents. Enjoy! :)</p>
@@ -258,15 +297,19 @@ When specifying priors for a Bayesian analysis, it's easy to get lost in the vas
 <section id="normal-distribution" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="normal-distribution">Normal distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia</a></p>
-<div class="page-columns page-full"><p>Well, we all know this one. This is a <strong>continuous distribution that covers the whole range of real numbers</strong>. Why is it used so often? Because most data we find in real life are frequently quite plausible under a normal distribution. Critically, the normal distributions makes very few assumptions about the data we are trying to model. Why is it so? As Richard McElreath explains in <a href="https://xcelab.net/rm/statistical-rethinking/"><em>Statistical Rethinking</em></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (section 4.1), there are many ways a data generating mechanism might spit out normal data, even when each of the individual observations are not drawn from a normal distribution. This is because <strong>when the data are the result of adding (or multiplying), the resulting distribution tends to converge to a normal one</strong>. As McElreath points out, many phenomena we observe in nature is the result of <strong>adding multiple small factors together</strong> (e.g., someone´s height is the result of adding multiple genetic and environmental factors together). Basically, whenever you are not sure about what distribution suits your data better, the normal distribution might be a good first approximation.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;You can also take a look a his excellent lecture on his <a href="https://www.youtube.com/channel/UCNJK6_DZvcMqNSzQdEkzvzA">YouTube channel</a>, which cover much of the contents in the book!</p></li></div></div>
-<p><span class="math display">\[
+<p>Well, we all know this one. This is a <strong>continuous distribution that covers the whole range of real numbers</strong>. Why is it used so often? Because most data we find in real life are frequently quite plausible under a normal distribution. Critically, the normal distributions makes very few assumptions about the data we are trying to model. Why is it so? As Richard McElreath explains in <a href="https://xcelab.net/rm/statistical-rethinking/"><em>Statistical Rethinking</em></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (section 4.1), there are many ways a data generating mechanism might spit out normal data, even when each of the individual observations are not drawn from a normal distribution. This is because <strong>when the data are the result of adding (or multiplying), the resulting distribution tends to converge to a normal one</strong>. As McElreath points out, many phenomena we observe in nature is the result of <strong>adding multiple small factors together</strong> (e.g., someone´s height is the result of adding multiple genetic and environmental factors together). Basically, whenever you are not sure about what distribution suits your data better, the normal distribution might be a good first approximation.</p>
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;You can also take a look a his excellent lecture on his <a href="https://www.youtube.com/channel/UCNJK6_DZvcMqNSzQdEkzvzA">YouTube channel</a>, which cover much of the contents in the book!</p></div><p><span class="math display">\[
 f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\big(\frac{x-\mu}{\sigma}\big)^2}
 \]</span></p>
 <p>Where <span class="math inline">\(f(x)\)</span> us the probability density function, is the standard deviation, and is the mean.</p>
-<div id="fig-normal" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="normal.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: The normal distribution.</figcaption>
+<div id="fig-normal" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The normal distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -277,10 +320,14 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\big(\frac{x-\mu}{\sigma}\big
 f(x) = \frac{\lambda(\lambda x)^{\alpha - 1}  \;e^{-\lambda x}}{\Gamma(\alpha)}
 \]</span></p>
 <p>This distribution only covers positive values, and has two parameters. It is in important one, as many other distribution, like the exponential, are specific cases of this one. In applied contexts, this distribution is used to model waiting times, and the incidence of some diseases, among others. In general, any continuous variable whose mode is expected to be closer rather than farther from zero can potentially be modelled by a Gamma distribution.</p>
-<div id="fig-gamma" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="gamma.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: The Gamma distribution.</figcaption>
+<div id="fig-gamma" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gamma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="gamma.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gamma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The Gamma distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -291,10 +338,14 @@ f(x) = \frac{\lambda(\lambda x)^{\alpha - 1}  \;e^{-\lambda x}}{\Gamma(\alpha)}
 <p><span class="math display">\[
 f(x) = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{-\alpha-1}  \;exp\Bigg(-\frac{\beta}{x}\Bigg)
 \]</span></p>
-<div id="fig-inv-gamma" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="inverse-gamma.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: The inverse-gamma distribution.</figcaption>
+<div id="fig-inv-gamma" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inv-gamma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="inverse-gamma.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inv-gamma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The inverse-gamma distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -305,10 +356,14 @@ f(x) = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{-\alpha-1}  \;exp\Bigg(-\frac{\b
 <p><span class="math display">\[
 f(x) = \lambda e^{-\lambda x}
 \]</span></p>
-<div id="fig-exponential" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="exponential.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: The exponential distribution.</figcaption>
+<div id="fig-exponential" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exponential-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="exponential.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exponential-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: The exponential distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -318,10 +373,14 @@ f(x) = \lambda e^{-\lambda x}
 <p><span class="math display">\[
 f(x) = \frac{\Gamma((\upsilon+1)/2)}{\sqrt{\upsilon \pi}  \;\Gamma (\upsilon /2)}
 \]</span></p>
-<div id="fig-t-student" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="t-student.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6: The Student’s <em>t</em> distribution.</figcaption>
+<div id="fig-t-student" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t-student-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="t-student.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-student-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: The Student’s <em>t</em> distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -331,10 +390,14 @@ f(x) = \frac{\Gamma((\upsilon+1)/2)}{\sqrt{\upsilon \pi}  \;\Gamma (\upsilon /2)
 <p><span class="math display">\[
 f(x) = \frac{x^{\alpha-1} \;(1-x) \;x^{\beta - 1}}{B(\alpha, \beta)}
 \]</span></p>
-<div id="fig-beta" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="beta.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;7: The Beta distribution.</figcaption>
+<div id="fig-beta" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="beta.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: The Beta distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -344,10 +407,14 @@ f(x) = \frac{x^{\alpha-1} \;(1-x) \;x^{\beta - 1}}{B(\alpha, \beta)}
 <p><span class="math display">\[
 f(x) = \frac{1}{\pi \gamma \Bigg[1 + \big( \frac{x-x_0}{\gamma} \big)^2 \Bigg]}
 \]</span></p>
-<div id="fig-cauchy" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="cauchy.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;8: The Cauchy distribution.</figcaption>
+<div id="fig-cauchy" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cauchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cauchy.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cauchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: The Cauchy distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -357,10 +424,14 @@ f(x) = \frac{1}{\pi \gamma \Bigg[1 + \big( \frac{x-x_0}{\gamma} \big)^2 \Bigg]}
 <p><span class="math display">\[
 f(x) = \alpha \; x^{-1-\alpha} e^{-x^{-\alpha}}
 \]</span></p>
-<div id="fig-frechet" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="frechet.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9: The Frechet distribution.</figcaption>
+<div id="fig-frechet" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-frechet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="frechet.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frechet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: The Frechet distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -370,10 +441,14 @@ f(x) = \alpha \; x^{-1-\alpha} e^{-x^{-\alpha}}
 <p><span class="math display">\[
 f(x) = \frac{\alpha  \;x_{m}^{\alpha}}{x^{\alpha+1}}  \;\text{for}  \; x &gt; x_m
 \]</span></p>
-<div id="fig-pareto" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="pareto.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;10: The pareto distribution.</figcaption>
+<div id="fig-pareto" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pareto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pareto.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pareto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: The pareto distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -383,34 +458,46 @@ f(x) = \frac{\alpha  \;x_{m}^{\alpha}}{x^{\alpha+1}}  \;\text{for}  \; x &gt; x_
 <p><span class="math display">\[
 f(x) = \lambda \alpha(\lambda x)^{\alpha-1} \; e^{-(\lambda x)^{\alpha}}
 \]</span></p>
-<div id="fig-weibull" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="weibull.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;11: The Weibull distribution.</figcaption>
+<div id="fig-weibull" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-weibull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="weibull.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weibull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: The Weibull distribution.
+</figcaption>
 </figure>
 </div>
 </section>
 <section id="tri-weight-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="tri-weight-distribution">Tri-weight distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Tri-weight_distribution">Wikipedia</a></p>
-<div id="fig-tri-weight" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="triweight.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;12: The tri-weight distribution.</figcaption>
+<div id="fig-tri-weight" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tri-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="triweight.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tri-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: The tri-weight distribution.
+</figcaption>
 </figure>
 </div>
 </section>
 <section id="rayleigh-distribution" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="rayleigh-distribution">Rayleigh distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Rayleigh_distribution">Wikipedia</a></p>
-<div class="page-columns page-full"><p>Similar to Gamma or Poisson, the Rayleigh likelihood function covers all positive values and relies on only one parameter, <span class="math inline">\(\sigma\)</span>, to determine its shape and location. Lower values of <span class="math inline">\(\sigma\)</span> make the distribution lie closer to zero and be less disperse. Despite its seemingly less interesting appearance, this distributions is extensively used for modelling <strong>vibrational data</strong> such as water displacement, assessing the quality of railroads, or analysing MRI data<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;See https://www.sciencedirect.com/topics/engineering/rayleigh-distribution</p></li></div></div>
-<p><span class="math display">\[
+<p>Similar to Gamma or Poisson, the Rayleigh likelihood function covers all positive values and relies on only one parameter, <span class="math inline">\(\sigma\)</span>, to determine its shape and location. Lower values of <span class="math inline">\(\sigma\)</span> make the distribution lie closer to zero and be less disperse. Despite its seemingly less interesting appearance, this distributions is extensively used for modelling <strong>vibrational data</strong> such as water displacement, assessing the quality of railroads, or analysing MRI data<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><p><sup>2</sup>&nbsp;See https://www.sciencedirect.com/topics/engineering/rayleigh-distribution</p></div><p><span class="math display">\[
 f(x) = \frac{x}{\sigma^2} \; e^{-\frac{x^2}{2\sigma^2}}
 \]</span></p>
-<div id="fig-rayleight" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="rayleigh.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;13: The Rayleigh distribution.</figcaption>
+<div id="fig-rayleight" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rayleight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="rayleigh.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rayleight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: The Rayleigh distribution.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -421,14 +508,18 @@ f(x) = \frac{x}{\sigma^2} \; e^{-\frac{x^2}{2\sigma^2}}
 <p><span class="math display">\[
 f(x) = \frac{2}{\pi R^2} \; \sqrt{R^2 - x^2} \\ \text{where} \; \pi \; \text{is the actual number } \pi \text{, not a parameter}
 \]</span></p>
-<div id="fig-wigner" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="semi-circle.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;14: Wigner’s semicircle distribution.</figcaption>
+<div id="fig-wigner" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wigner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="semi-circle.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wigner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Wigner’s semicircle distribution.
+</figcaption>
 </figure>
 </div>
-<div class="page-columns page-full"><p>Interestingly, this distribution can be considered a particular case<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> of the <strong>Beta distribution</strong>, so that where <span class="math inline">\(\alpha = \beta = 3/2\)</span>, then <span class="math inline">\(X = 2RY – R\)</span>.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;See https://handwiki.org/wiki/Wigner_semicircle_distribution</p></li></div></div>
-</section>
+<p>Interestingly, this distribution can be considered a particular case<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> of the <strong>Beta distribution</strong>, so that where <span class="math inline">\(\alpha = \beta = 3/2\)</span>, then <span class="math inline">\(X = 2RY – R\)</span>.</p>
+<div class="no-row-height column-margin column-container"><p><sup>3</sup>&nbsp;See https://handwiki.org/wiki/Wigner_semicircle_distribution</p></div></section>
 <section id="triangular-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="triangular-distribution">Triangular distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Triangular_distribution">Wikipedia</a></p>
@@ -453,7 +544,7 @@ f(x) = \begin{cases}
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
   author = {Garcia-Castro, Gonzalo},
   title = {Exploring Probability Distributions Through Animations in
     {Julia}},
@@ -594,10 +685,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -607,8 +715,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -621,6 +738,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -664,6 +900,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -689,6 +926,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -746,24 +1009,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 <script src="https://giscus.app/client.js" data-repo="gongcastro/gongcastro.github.io" data-repo-id="R_kgDOGJ9lfQ" data-category="Blog comments" data-category-id="R_kgDOGJ9lfQ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Exploring probability distributions through animations in Julia</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2021-10-04'</span></span>
@@ -790,7 +1041,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>My first step to answer these questions is to explore **what a given distribution looks like under different parameters**. This might give us a hint on the range of values it covers and the "shape" of the likelihood function. As I mentioned in previous posts, I struggle to grasp statistical/mathematical concepts in absence of a good visualisation. I generated some animations in Julia using the [**Distributions.jl**](https://juliastats.org/Distributions.jl/stable/) package, which provides a substantial amount of implemented likelihood functions. The only reason I chose **Julia** is that I'm trying to learn it step by step and I found this silly project a nice opportunity to do so. You can see the code at the end of this article or on the accompanying <span class="co">[</span><span class="ot">GitHub repository</span><span class="co">](https://github.com/gongcastro/animated-distributions)</span>. I posted this one Twitter (see below) and got a good response, so I decided to extend a bit the contents. Enjoy! :)</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-tweet"</span><span class="kw">&gt;&lt;p</span> <span class="er">lang</span><span class="ot">=</span><span class="st">"en"</span> <span class="er">dir</span><span class="ot">=</span><span class="st">"ltr"</span><span class="kw">&gt;</span>When specifying priors for a Bayesian analysis, it<span class="dv">&amp;#39;</span>s easy to get lost in the vast family of likelihood functions!<span class="kw">&lt;br&gt;&lt;br&gt;</span>I generated some animations in <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/hashtag/JuliaLang?src=hash</span><span class="dv">&amp;amp;</span><span class="st">ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>#JuliaLang<span class="kw">&lt;/a&gt;</span> <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/JuliaLanguage?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>@JuliaLanguage<span class="kw">&lt;/a&gt;</span> to help me see how some distributions look like under different parameters (using Distributions.jl ). 🧵 <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://t.co/8i1wces4oi"</span><span class="kw">&gt;</span>pic.twitter.com/8i1wces4oi<span class="kw">&lt;/a&gt;&lt;/p&gt;</span><span class="dv">&amp;mdash;</span> Gon García-Castro (@gongcastro) <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/gongcastro/status/1433726224828882944?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>September 3, 2021<span class="kw">&lt;/a&gt;&lt;/blockquote&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span> </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;When specifying priors for a Bayesian analysis, it<span class="dv">&amp;#39;</span>s easy to get lost in the vast family of likelihood functions!&lt;br&gt;&lt;br&gt;I generated some animations in &lt;a href="https://twitter.com/hashtag/JuliaLang?src=hash<span class="dv">&amp;amp;</span>ref_src=twsrc%5Etfw"&gt;#JuliaLang&lt;/a&gt; &lt;a href="https://twitter.com/JuliaLanguage?ref_src=twsrc%5Etfw"&gt;@JuliaLanguage&lt;/a&gt; to help me see how some distributions look like under different parameters (using Distributions.jl ). 🧵 &lt;a href="https://t.co/8i1wces4oi"&gt;pic.twitter.com/8i1wces4oi&lt;/a&gt;&lt;/p&gt;<span class="dv">&amp;mdash;</span> Gon García-Castro (@gongcastro) &lt;a href="https://twitter.com/gongcastro/status/1433726224828882944?ref_src=twsrc%5Etfw"&gt;September 3, 2021&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt; </span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
@@ -978,12 +1229,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br>
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
-    <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/animated-distributions/animated-distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
+
 
 
 

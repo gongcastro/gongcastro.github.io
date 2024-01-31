@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -108,11 +115,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="/assets/media/favicon.png">
-<meta property="og:site-name" content="Gonzalo García-Castro">
+<meta property="og:image" content="raspberry.jfif">
+<meta property="og:site_name" content="Gonzalo García-Castro">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="assets/media/favicon.png">
+<meta name="twitter:image" content="raspberry.jfif">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
@@ -121,10 +128,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -136,28 +143,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html" rel="" target="">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gongcastro" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -205,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contents</h2>
    
@@ -220,14 +227,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#bloqueando-usuarios-de-forma-remota" id="toc-bloqueando-usuarios-de-forma-remota" class="nav-link" data-scroll-target="#bloqueando-usuarios-de-forma-remota">Bloqueando usuarios de forma remota</a></li>
   <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">Conclusiones</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/psicotuiterbot/psicotuiterbot.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/psicotuiterbot/psicotuiterbot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -357,7 +365,7 @@ Yo tengo una experiencia parecida a la de <a href="https://twitter.com/IreneFPin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="raspberry.jfif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Aquí está alojado el @psicotuiterbot</figcaption>
+<figcaption>Aquí está alojado el @psicotuiterbot</figcaption>
 </figure>
 </div>
 <p>Primero instalé el código en la Raspberry con sus dependencias: básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado <strong>CRON</strong>. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos <a href="https://crontab.guru/examples.html">ejemplos</a>. Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</p>
@@ -423,7 +431,7 @@ Yo tengo una experiencia parecida a la de <a href="https://twitter.com/IreneFPin
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
   author = {Garcia-Castro, Gonzalo},
   title = {\textbackslash@Psicotuiterbot: {Un} Bot de {Twitter} Para
     {Psicotuiter}},
@@ -564,10 +572,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -577,8 +602,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -591,6 +625,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -634,6 +787,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -659,6 +813,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -716,24 +896,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 <script src="https://giscus.app/client.js" data-repo="gongcastro/gongcastro.github.io" data-repo-id="R_kgDOGJ9lfQ" data-category="Blog comments" data-category-id="R_kgDOGJ9lfQ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> '\@psicotuiterbot: Un bot de Twitter para Psicotuiter'</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2021-12-29'</span></span>
@@ -754,12 +922,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-follow-button"</span> <span class="er">data-size</span><span class="ot">=</span><span class="st">"large"</span> <span class="er">data-lang</span><span class="ot">=</span><span class="st">"es"</span> <span class="er">data-show-count</span><span class="ot">=</span><span class="st">"false"</span><span class="kw">&gt;</span>Follow \@psicotuiterbot<span class="kw">&lt;/a&gt;&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>&lt;a href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="es" data-show-count="false"&gt;Follow \@psicotuiterbot&lt;/a&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">style</span><span class="ot">=</span><span class="st">"float:right"</span><span class="kw">&gt;</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-timeline"</span> <span class="er">data-width</span><span class="ot">=</span><span class="st">"220"</span> <span class="er">data-height</span><span class="ot">=</span><span class="st">"400"</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>Tweets by psicotuiterbot<span class="kw">&lt;/a&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>&lt;div style="float:right"&gt;</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>&lt;a class="twitter-timeline" data-width="220" data-height="400" href="https://twitter.com/psicotuiterbot?ref_src=twsrc%5Etfw"&gt;Tweets by psicotuiterbot&lt;/a&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>&lt;/div&gt;</span>
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># La comunidad de Psicotuiter</span></span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
@@ -771,13 +939,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>Uno de los problemas que muchas personas de esta comunidad verbalizaba durante los últimos meses (aunque probablemente se trate de un fenómeno cíclico) es **lo fácilmente que un debate acalorado o incluso irrespetuoso entre dos personas o grupos de personas podía afecta al clima general de la comunidad**. Independientemente de la legitimidad de la discusión en curso, no es ideal que la experiencia en Twitter de una persona promedio en el día a día sea dependiente de un número de interacciones tan reducidas. Alicia Franco hizo es su momento una encuesta capturando el **clima general de Psicotuiter** en su momento (los resultados están disponibles también en un paquete de R que desarrollamos, llamado <span class="co">[</span><span class="ot">{psicotuiteR}</span><span class="co">](https://gongcastro.github.io/2021/11/14/creando-un-paquete-de-r-una-guia-informal-i/)</span>, disponible en <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/gongcastro/psicotuiteR)</span>):</span>
 <span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-tweet"</span><span class="kw">&gt;&lt;p</span> <span class="er">lang</span><span class="ot">=</span><span class="st">"es"</span> <span class="er">dir</span><span class="ot">=</span><span class="st">"ltr"</span><span class="kw">&gt;</span>¡Hola, hola!🌿 <span class="kw">&lt;br&gt;</span>¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter<span class="dv">&amp;quot;</span>?<span class="kw">&lt;br&gt;</span>👇¡Pues ya tenemos los resultados!👇 <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://t.co/RbDM78LA0k"</span><span class="kw">&gt;</span>pic.twitter.com/RbDM78LA0k<span class="kw">&lt;/a&gt;&lt;/p&gt;</span><span class="dv">&amp;mdash;</span> Ali ☻︎ (@AliciaFrancoXVE) <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/AliciaFrancoXVE/status/1352342172750786560?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>January 21, 2021<span class="kw">&lt;/a&gt;&lt;/blockquote&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="es" dir="ltr"&gt;¡Hola, hola!🌿 &lt;br&gt;¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter<span class="dv">&amp;quot;</span>?&lt;br&gt;👇¡Pues ya tenemos los resultados!👇 &lt;a href="https://t.co/RbDM78LA0k"&gt;pic.twitter.com/RbDM78LA0k&lt;/a&gt;&lt;/p&gt;<span class="dv">&amp;mdash;</span> Ali ☻︎ (@AliciaFrancoXVE) &lt;a href="https://twitter.com/AliciaFrancoXVE/status/1352342172750786560?ref_src=twsrc%5Etfw"&gt;January 21, 2021&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span>
 <span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>Lo mucho que este clima se extiende a través de toda la comunidad puede deberse en parte a la propia estructura de redes de amistad entre los diferentes perfiles. Mi opinión y la de más personas (aun no hemos mirado los datos, pero en algún momento nos gustaría hacerlo), es que **la estructura de esta comunidad está muy centralizada**: muchas personas con relativamente pocos seguidores (0-400) siguen a unas pocas personas con relativamente muchos seguidores (5.000-20.000). Esto convertiría a las segundas en poseedoras de una parte substancial del espacio de la comunidad. Recientemente hice un pequeño hilo ampliando esta reflexión:</span>
 <span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-tweet"</span><span class="kw">&gt;&lt;p</span> <span class="er">lang</span><span class="ot">=</span><span class="st">"es"</span> <span class="er">dir</span><span class="ot">=</span><span class="st">"ltr"</span><span class="kw">&gt;</span>Yo tengo una experiencia parecida a la de <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>@IreneFPinto<span class="kw">&lt;/a&gt;</span>. Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es *mi* experiencia.<span class="kw">&lt;br&gt;&lt;br&gt;</span>Ahora bien, tengo una pequeña reflexión sobre la estructura de <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/hashtag/psicotuiter?src=hash</span><span class="dv">&amp;amp;</span><span class="st">ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>#psicotuiter<span class="kw">&lt;/a&gt;</span> (importantes las aclaraciones al final): 🧵 <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://t.co/G77h8YRQdZ"</span><span class="kw">&gt;</span>https://t.co/G77h8YRQdZ<span class="kw">&lt;/a&gt;&lt;/p&gt;</span><span class="dv">&amp;mdash;</span> Gon García-Castro (@gongcastro) <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/gongcastro/status/1472157574522888192?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>December 18, 2021<span class="kw">&lt;/a&gt;&lt;/blockquote&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="es" dir="ltr"&gt;Yo tengo una experiencia parecida a la de &lt;a href="https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw"&gt;@IreneFPinto&lt;/a&gt;. Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es *mi* experiencia.&lt;br&gt;&lt;br&gt;Ahora bien, tengo una pequeña reflexión sobre la estructura de &lt;a href="https://twitter.com/hashtag/psicotuiter?src=hash<span class="dv">&amp;amp;</span>ref_src=twsrc%5Etfw"&gt;#psicotuiter&lt;/a&gt; (importantes las aclaraciones al final): 🧵 &lt;a href="https://t.co/G77h8YRQdZ"&gt;https://t.co/G77h8YRQdZ&lt;/a&gt;&lt;/p&gt;<span class="dv">&amp;mdash;</span> Gon García-Castro (@gongcastro) &lt;a href="https://twitter.com/gongcastro/status/1472157574522888192?ref_src=twsrc%5Etfw"&gt;December 18, 2021&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span>
 <span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>Una de las consecuencias inmediatas de esto es que el contenido del timeline (TL) de la mayoría de Psicotuiter dependería de las **interacciones entre un pequeño grupo de personas con muchos seguidores**. Teniendo en cuenta que las interacciones negativas tienden a extenderse más rápido y llevarse más atención que las positivas o neutras (ej. <span class="co">[</span><span class="ot">Bellovary et al., 2021</span><span class="co">](https://psyarxiv.com/2er67/)</span>), el impacto de la estructura centralizada de la comunidad sobre el clima del TL de la persona promedio en Psicotuiter es importante.</span>
@@ -980,12 +1148,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br>
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
-    <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/psicotuiterbot/psicotuiterbot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
+
 
 
 

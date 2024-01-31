@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word mask across multiple languages.">
+
 <title>Gonzalo Garcia-Castro</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -55,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -72,13 +76,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -87,33 +98,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><style>
+}</script>
+<style>
 
       .quarto-title-block .quarto-title-banner {
         background: #2DC9D2;
       }
 </style>
+
+
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="/assets/media/favicon.png">
-<meta property="og:site-name" content="Gonzalo García-Castro">
+<meta property="og:image" content="masks-ort.png">
+<meta property="og:site_name" content="Gonzalo García-Castro">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="assets/media/favicon.png">
+<meta name="twitter:image" content="masks-ort.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
 </head>
+
 <body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -124,31 +142,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html" rel="" target="">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gongcastro" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">How similar is the word “mask” across languages?</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                   <div>
@@ -189,22 +211,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
-<li><a href="#orthographic-distance" id="toc-orthographic-distance" class="nav-link active" data-scroll-target="#orthographic-distance">Orthographic distance</a></li>
+  <li><a href="#orthographic-distance" id="toc-orthographic-distance" class="nav-link active" data-scroll-target="#orthographic-distance">Orthographic distance</a></li>
   <li><a href="#phonological-distance" id="toc-phonological-distance" class="nav-link" data-scroll-target="#phonological-distance">Phonological distance</a></li>
   <li><a href="#onsets" id="toc-onsets" class="nav-link" data-scroll-target="#onsets">Onsets</a></li>
   <li><a href="#some-disclaimers" id="toc-some-disclaimers" class="nav-link" data-scroll-target="#some-disclaimers">Some disclaimers:</a></li>
   <li><a href="#code-and-data" id="toc-code-and-data" class="nav-link" data-scroll-target="#code-and-data">Code and data</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
-  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/mask-similarity-across-languages/mask-similarity-across-languages.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/mask-similarity-across-languages/mask-similarity-across-languages.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="masks.jpg" class="img-fluid"></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p><img src="masks.jpg" class="img-fluid"></p>
 <p>The ubiquity of <strong>masks</strong> has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. I gathered a big-ish dataset with translation equivalents of the word mask across ~110 languages. I tweeted about this today, and wanted to dedicate some more lines to nuance.</p>
 <blockquote class="twitter-tweet blockquote" data-theme="light">
 <p lang="en" dir="ltr">
@@ -212,14 +244,10 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
 </p>
 — Gon García-Castro (@gongcastro) <a href="https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw">November 24, 2020</a>
 </blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>Here’s the data:</p>
-<div id="tbl-data" class="cell tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p><strong>?(caption)</strong></p>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Here’s the data:</p>
+<div id="tbl-data" class="cell anchored">
+<div class="cell-output-display">
 <div style="height:600px; overflow-y: scroll">
 <div id="sqdiiokmxu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
@@ -632,10 +660,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   text-indent: 25px;
 }
 </style>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+
 <table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 25%">
@@ -643,708 +668,717 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
 <col style="width: 25%">
 <col style="width: 25%">
 </colgroup>
-<thead class="gt_col_headings"><tr class="header">
-<th id="<strong>Language</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><strong>Language</strong></th>
-<th id="<strong>Orthography</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><strong>Orthography</strong></th>
-<th id="<strong>Orthography</strong><br>(romanisation)" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col">
-<strong>Orthography</strong><br>
+<thead class="gt_col_headings">
+<tr class="header">
+<th id="<strong>Language</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Language</strong></th>
+<th id="<strong>Orthography</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Orthography</strong></th>
+<th id="<strong>Orthography</strong><br>(romanisation)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Orthography</strong><br>
 (romanisation)</th>
-<th id="<strong>Phonology</strong> (IPA)" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col">
-<strong>Phonology</strong> (IPA)</th>
-</tr></thead>
+<th id="<strong>Phonology</strong> (IPA)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Phonology</strong> (IPA)</th>
+</tr>
+</thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Afrikaans</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɑːsk/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Afrikaans</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɑːsk/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Albanian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskë</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskë</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskaɾiʝa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Albanian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskë</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskë</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskaɾiʝa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Amharic</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ጭምብል</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ch'imibili</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/tʃ'imibili/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Amharic</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ጭምብል</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">ch'imibili</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/tʃ'imibili/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Arabic</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">قناع</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">qunae</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/qinaːʕ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Arabic</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">قناع</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">qunae</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/qinaːʕ/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Armenian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">դիմակ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">dimak</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/dimɑk/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Armenian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">դիմակ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">dimak</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/dimɑk/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Azerbaijani</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Azerbaijani</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Bangla</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">মুখোশ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mukhosh</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Bangla</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">মুখোশ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mukhosh</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Basque</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskaɾa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Basque</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskaɾa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Belarusian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маска</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Belarusian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маска</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Bengali</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">মাস্ক</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">māska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mask/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Bengali</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">মাস্ক</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">māska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mask/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Bosnian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Bosnian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Bulgarian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маска</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskə/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Bulgarian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маска</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskə/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Catalan</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mascareta</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mascareta</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/məskəɾɛtə/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Catalan</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mascareta</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mascareta</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/məskəɾɛtə/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Cebuano</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskaɾa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Cebuano</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskaɾa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Chichewa</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">amabisa</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">amabisa</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/amaɓisa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Chichewa</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">amabisa</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">amabisa</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/amaɓisa/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Chinese Simplified</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">手术口罩</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">shǒushù kǒuzhào</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/ʂə̌uʂʷù kʰə̌uʈʂàu/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Chinese Simplified</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">手术口罩</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">shǒushù kǒuzhào</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/ʂə̌uʂʷù kʰə̌uʈʂàu/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Chinese Traditional</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">手術口罩</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">shǒushù kǒuzhào</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/ʂə̌uʂʷù kʰə̌uʈʂàu/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Chinese Traditional</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">手術口罩</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">shǒushù kǒuzhào</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/ʂə̌uʂʷù kʰə̌uʈʂàu/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Corsican</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maschera</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maschera</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskeɾa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Corsican</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maschera</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maschera</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskeɾa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Croatian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/màska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Croatian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/màska/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Czech</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Czech</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Danish</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maske</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maske</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/masgə &nbsp;/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Danish</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maske</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maske</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/masgə &nbsp;/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Dutch</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɑskər/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Dutch</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɑskər/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">English</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɑːsk/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">English</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɑːsk/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Esperanto</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masko</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masko</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/masko/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Esperanto</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masko</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masko</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/masko/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Estonian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">naamio</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">naamio</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/naːmio/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Estonian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">naamio</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">naamio</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/naːmio/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Tagalog (Filipino)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskaɾa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Tagalog (Filipino)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskaɾa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Finnish (Suomi)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">naamio</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">naamio</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/nɑːmio/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Finnish (Suomi)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">naamio</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">naamio</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/nɑːmio/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Finnish (Suomi)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɑskɑrɑ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Finnish (Suomi)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɑskɑrɑ/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Finnish (Suomi)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ripsiväri</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ripsiväri</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/ripsiˌʋæri/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Finnish (Suomi)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ripsiväri</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">ripsiväri</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/ripsiˌʋæri/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">French</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masque</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masque</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɑːsk/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">French</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masque</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masque</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɑːsk/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Frisian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/masker/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Frisian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/masker/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Galician</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">máscara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">máscara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskaɾa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Galician</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">máscara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">máscara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskaɾa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Georgian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ნიღაბი</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">nighabi</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/niɣɑbi/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Georgian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ნიღაბი</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">nighabi</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/niɣɑbi/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">German</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Maske</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maske</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskə/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">German</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">Maske</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maske</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskə/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Greek</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">μάσκα</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">máska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Greek</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">μάσκα</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">máska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Gujarati</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">મહોરું</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mahorũ</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Gujarati</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">મહોરું</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mahorũ</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Hausa</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">abin rufe fuska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">abin rufe fuska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Hausa</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">abin rufe fuska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">abin rufe fuska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Hawaiian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">pale maka</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">pale maka</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Hawaiian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">pale maka</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">pale maka</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Hebrew</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">מסכה</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masekháh</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Hebrew</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">מסכה</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masekháh</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Hindi</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">मुखौटा</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mukhauta</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Hindi</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">मुखौटा</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mukhauta</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Hungarian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maszk</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maszk</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɒsk/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Hungarian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maszk</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maszk</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɒsk/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Icelandic</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">gríma</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">gríma</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/kriːma/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Icelandic</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">gríma</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">gríma</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/kriːma/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Igbo</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mkpu</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mkpu</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mkk͡p~ɓ̥u/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Igbo</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mkpu</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mkpu</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mkk͡p~ɓ̥u/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Indonesian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">topeng</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">topeng</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/topɛŋ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Indonesian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">topeng</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">topeng</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/topɛŋ/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Indonesian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masker</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskər/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Indonesian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masker</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskər/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Irish</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masc</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masc</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɑːsk/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Irish</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masc</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masc</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɑːsk/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Italian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maschera</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mascherina</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskeɾina/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Italian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maschera</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mascherina</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskeɾina/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Japanese</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">マスク</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masuku</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/masɯkɯ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Japanese</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">マスク</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masuku</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/masɯkɯ/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Javanese</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Javanese</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Kannada</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ಮಸುಕು</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mukhavāḍa</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Kannada</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ಮಸುಕು</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mukhavāḍa</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Kazakh</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маска</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Kazakh</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маска</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Khmer</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">របាំង</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">rbang</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Khmer</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">របាំង</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">rbang</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Kinyarwanda</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">agapfukamunwa</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">agapfukamunwa</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/agapfukamuŋwa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Kinyarwanda</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">agapfukamunwa</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">agapfukamunwa</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/agapfukamuŋwa/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Korean</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">마스크</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maseukeu</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/ma̠sʰɯkxɯ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Korean</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">마스크</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maseukeu</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/ma̠sʰɯkxɯ/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Kurdish (Kurmanji)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">berrû</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">berrû</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/beru/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Kurdish (Kurmanji)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">berrû</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">berrû</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/beru/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Kyrgyz</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маска</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Kyrgyz</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маска</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Lao</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ຫນ້າກາກ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">nā kāk</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Lao</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ຫນ້າກາກ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">nā kāk</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Latvian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Latvian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Lithuanian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">kaukė</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">kaukė</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/kâˑʊ̯ke/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Lithuanian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">kaukė</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">kaukė</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/kâˑʊ̯ke/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Luxembourgish</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mask/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Luxembourgish</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mask/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Macedonian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маска</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Macedonian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маска</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Malay</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">topeng</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">topeng</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/topɛŋ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Malay</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">topeng</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">topeng</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/topɛŋ/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Malay</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">کدوق</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">kedok</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/kedok/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Malay</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">کدوق</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">kedok</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/kedok/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Malayalam</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">മാസ്ക്</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">māsk</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Malayalam</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">മാസ്ക്</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">māsk</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Maltese</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskra</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskra</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskra/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Maltese</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskra</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskra</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskra/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Māori&nbsp;</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maruhā</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maruhā</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maɾuha/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Māori&nbsp;</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maruhā</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maruhā</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maɾuha/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Marathi</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">लपवू</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">lapavū</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Marathi</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">लपवू</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">lapavū</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Mongolian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маск</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mask/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Mongolian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маск</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mask/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Myanmar (Burmese)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">မျက်နှာဖုံး</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">myakhnahpum</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mjɛʔn̥əpʰóʊɴ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Myanmar (Burmese)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">မျက်နှာဖုံး</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">myakhnahpum</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mjɛʔn̥əpʰóʊɴ/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Nepali</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">मुखवटा</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mukhavaṭā</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Nepali</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">मुखवटा</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mukhavaṭā</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Norwegian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskara/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Norwegian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskara/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Odia</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ମାସ୍କ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">māska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Odia</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ମାସ୍କ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">māska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Pashto</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ماسک</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mâsk-hâ</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Pashto</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ماسک</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mâsk-hâ</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Persian (Farsi)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">نقاب زدن</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mask/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Persian (Farsi)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">نقاب زدن</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mask/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Polish</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskɔ̃/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Polish</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskɔ̃/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Portuguese</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">máscara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">máscara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskaɾa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Portuguese</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">máscara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">máscara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskaɾa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Punjabi</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ਮਾਸਕ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">māsaka</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Punjabi</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ਮਾਸਕ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">māsaka</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Romanian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masca</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masca</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Romanian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masca</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masca</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Russian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маскировать</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskirovat'</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/məskʲɪrɐˈvatʲ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Russian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маскировать</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskirovat'</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/məskʲɪrɐˈvatʲ/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Samoan</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ufimata</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ufimata</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Samoan</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ufimata</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">ufimata</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Scots Gaelic</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masg</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">masg</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/masɡ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Scots Gaelic</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">masg</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">masg</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/masɡ/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Serbian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маскa</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Serbian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маскa</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Sesotho</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">pata</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">pata</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Sesotho</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">pata</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">pata</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Shona</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">chifukidzo</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">chifukidzo</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Shona</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">chifukidzo</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">chifukidzo</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Sindhi</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ماسڪ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">nutarian</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Sindhi</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ماسڪ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">nutarian</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Sinhala</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">වෙස්මුහුණ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">vesmuhuṇa</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Sinhala</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">වෙස්මුහුණ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">vesmuhuṇa</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Slovak</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskovať</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskovať</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskovat/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Slovak</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maskovať</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskovať</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskovat/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Slovenian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Slovenian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Somali</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maaskaro</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maaskaro</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Somali</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maaskaro</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maaskaro</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Spanish</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">máscara</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">máscara</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maskaɾa/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Spanish</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">máscara</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">máscara</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maskaɾa/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Sundanese</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">topéng</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">topéng</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/topɛŋ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Sundanese</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">topéng</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">topéng</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/topɛŋ/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Swahili</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mask/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Swahili</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mask/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Swedish (Svenska)</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mask/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Swedish (Svenska)</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mask/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Tajik</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ниқоб</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">niqoʙ</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Tajik</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ниқоб</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">niqoʙ</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Tamil</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">முகமூடி</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mukamūṭi</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Tamil</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">முகமூடி</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mukamūṭi</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Tatar</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маска</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/maska/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Tatar</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маска</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/maska/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Telugu</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ముసుగు</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">musugu</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Telugu</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ముసుగు</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">musugu</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Thai</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">หน้ากาก</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">nâakàak</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/naː˥˩kaːk̚˨˩/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Thai</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">หน้ากาก</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">nâakàak</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/naː˥˩kaːk̚˨˩/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Turkish</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maske</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maske</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mask̟ʰe/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Turkish</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maske</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maske</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mask̟ʰe/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Turkmen</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maska</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Turkmen</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maska</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Ukrainian</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">маскувати</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maskuvaty</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mɑskɐ/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Ukrainian</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">маскувати</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maskuvaty</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mɑskɐ/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Urdu</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">ماسک</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Urdu</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">ماسک</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Uyghur</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mask</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Uyghur</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mask</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Uzbek</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">niqob</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">niqob</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Uzbek</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">niqob</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">niqob</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Vietnamese</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">khẩu trang</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">khẩu trang</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/kʰəw˨˩˦ ʈaːŋ˧˧/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Vietnamese</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">khẩu trang</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">khẩu trang</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/kʰəw˨˩˦ ʈaːŋ˧˧/</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Welsh</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mwgwd</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">mwgwd</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">/mʊɡʊd/</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Welsh</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">mwgwd</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">mwgwd</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">/mʊɡʊd/</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Xhosa</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">imaski</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">imaski</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Xhosa</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">imaski</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">imaski</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Yiddish</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">מאַסקע</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">maske</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Yiddish</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">מאַסקע</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">maske</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Yoruba</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">boju-abẹ</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">boju-abẹ</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Yoruba</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">boju-abẹ</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">boju-abẹ</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="language" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">Zulu</td>
-<td class="gt_row gt_left" headers="form" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">imaski</td>
-<td class="gt_row gt_left" headers="romanisation" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">imaski</td>
-<td class="gt_row gt_left" headers="ipa" style="text-align: left; background-color: rgba(255,255,255,0); color: #000000;">-</td>
+<td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Zulu</td>
+<td class="gt_row gt_left" headers="form" style="background-color: rgba(255,255,255,0); color: #000000">imaski</td>
+<td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">imaski</td>
+<td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
-</tbody>
-<tfoot class="gt_sourcenotes"><tr class="odd">
-<td colspan="4" class="gt_sourcenote" style="text-align: left;">https://drive.google.com/file/d/18SeJTiM2-JXR9SOqEg22wdkvNL3OxG3u/view?usp=sharing</td>
-</tr></tfoot>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="4" class="gt_sourcenote">https://drive.google.com/file/d/18SeJTiM2-JXR9SOqEg22wdkvNL3OxG3u/view?usp=sharing</td>
+</tr>
+</tfoot>
+
 </table>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 
 </div>
 </div>
 </div>
 </div>
-</div>
 <p>To compute the similarity of each pair of translation equivalents, I followed Floccia et al.’s (<a href="https://srcd.onlinelibrary.wiley.com/doi/10.1111/mono.12349">2018</a>) procedure. For each pair of translation equivalents, I computed their Levenshtein distance as the number of insertions, deletions and replacements a string character has to go through to become identical to the other, and then divided this value by the number of characters of the longest of the two strings, so that all values range between 0 and 1. To compute the Levenshtein distance, I used the <code>stringdist()</code> function of the <code>stringdist</code> R package.</p>
-<section id="orthographic-distance" class="level2"><h2 class="anchored" data-anchor-id="orthographic-distance">Orthographic distance</h2>
+<section id="orthographic-distance" class="level2">
+<h2 class="anchored" data-anchor-id="orthographic-distance">Orthographic distance</h2>
 <p>I first computed the orthographic distance between each pair of translation equivalents. Since some word forms make use of different alphabets, I first romanised all word forms. By <em>romanised</em>, I mean that I searched for the transcription of each word form in the Roman alphabet, and used it as input to compute the Levenshtein distance for each pair of translation equivalents. Here’s how orthographically similar (the romanisations of) the translations of <em>mask</em> are (<em>N</em> = 110 pairs):</p>
 <p><img src="masks-ort.png" class="img-fluid"></p>
-</section><section id="phonological-distance" class="level2"><h2 class="anchored" data-anchor-id="phonological-distance">Phonological distance</h2>
+</section>
+<section id="phonological-distance" class="level2">
+<h2 class="anchored" data-anchor-id="phonological-distance">Phonological distance</h2>
 <p>The phonological similarity/distance may be more informative. This time I searched for or generated with the help of a native speaker a phonological IPA transcription of each word-form. I then used this transcription as input to compute the phonological similarity of each pair of translation equivalents. A pitfall in this process is the fact that phonemes are almost never identical across languages, so even the common phoneme /m/ could vary slightly on its pronunciation in two languages. If this difference is encoded in the IPA transcription (as different characters), the Levenshtein distance will be inflated. For this reason, I simplified some IPA transcriptions to preserve this similarity. I also removed tones. This is terribly wrong from a linguistics perspective, but it’s the only way I see to be able to play with some reliable data. Also I’m no linguist, so you have no power here.</p>
 <p><img src="power.gif" class="img-fluid"></p>
 <p>Here’s the same analysis performed on phonological transcriptions of a subset of those languages (<em>N</em> = 75 pairs, those I could find a reliable IPA transcription for or could find help from a native speaker):</p>
 <p><img src="masks-phon.png" class="img-fluid"></p>
-</section><section id="onsets" class="level2"><h2 class="anchored" data-anchor-id="onsets">Onsets</h2>
+</section>
+<section id="onsets" class="level2">
+<h2 class="anchored" data-anchor-id="onsets">Onsets</h2>
 <p>Most of the times, the phonological overlap comes from onset graphemes/phonemes. This is how many word-forms start with each onset:</p>
 <p><img src="masks-onset.png" class="img-fluid"></p>
-</section><section id="some-disclaimers" class="level2"><h2 class="anchored" data-anchor-id="some-disclaimers">Some disclaimers:</h2>
+</section>
+<section id="some-disclaimers" class="level2">
+<h2 class="anchored" data-anchor-id="some-disclaimers">Some disclaimers:</h2>
 <p>I tried ensuring that words referred to <em>surgical</em> masks (instead of other types of masks) with help from native speakers. Wrong translations may still have slipped in (or be just wrong). I wish I had time to double-check all of them (I did this for fun).</p>
 <p>This analysis is probably affected by selection bias. I suspect many dissimilar translations are missing due to not being included in the translation apps I used (e.g.&nbsp;Google Translate). Feel free to contribute missing entries or make corrections!</p>
-</section><section id="code-and-data" class="level2"><h2 class="anchored" data-anchor-id="code-and-data">Code and data</h2>
-<script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"></script></section><section id="session-info" class="level2"><h2 class="anchored" data-anchor-id="session-info">Session info</h2>
+</section>
+<section id="code-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="code-and-data">Code and data</h2>
+<script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"></script>
+</section>
+<section id="session-info" class="level2">
+<h2 class="anchored" data-anchor-id="session-info">Session info</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.2.2 (2022-10-31 ucrt)
@@ -1396,7 +1430,9 @@ loaded via a namespace (and not attached):
 
 <!-- -->
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
   author = {Garcia-Castro, Gonzalo},
   title = {How Similar Is the Word “Mask” Across Languages?},
   date = {2020-11-20},
@@ -1405,7 +1441,8 @@ loaded via a namespace (and not attached):
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2020" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2020, November 20). <em>How similar is the word
 <span>“mask”</span> across languages?</em>
-</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1535,10 +1572,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1548,8 +1602,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1562,6 +1625,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1605,6 +1787,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1630,6 +1813,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1687,23 +1896,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
-</script><script src="https://giscus.app/client.js" data-repo="gongcastro/gongcastro.github.io" data-repo-id="R_kgDOGJ9lfQ" data-category="Blog comments" data-category-id="R_kgDOGJ9lfQ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script>
+<script src="https://giscus.app/client.js" data-repo="gongcastro/gongcastro.github.io" data-repo-id="R_kgDOGJ9lfQ" data-category="Blog comments" data-category-id="R_kgDOGJ9lfQ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 'How similar is the word "mask" across languages?'</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word *mask* across multiple languages."</span></span>
@@ -1726,7 +1924,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>The ubiquity of **masks** has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. I gathered a big-ish dataset with translation equivalents of the word mask across ~110 languages. I tweeted about this today, and wanted to dedicate some more lines to nuance.</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-tweet"</span> <span class="er">data-theme</span><span class="ot">=</span><span class="st">"light"</span><span class="kw">&gt;&lt;p</span> <span class="er">lang</span><span class="ot">=</span><span class="st">"en"</span> <span class="er">dir</span><span class="ot">=</span><span class="st">"ltr"</span><span class="kw">&gt;</span>The ubiquity of <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/hashtag/masks?src=hash</span><span class="dv">&amp;amp;</span><span class="st">ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>#masks<span class="kw">&lt;/a&gt;</span>😷 has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. 🌐<span class="kw">&lt;br&gt;</span>Here<span class="dv">&amp;#39;</span>s how orthographically similar (the romanisations of) the translations of MASK are (N=110 pairs): <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://t.co/KMMdJke9SG"</span><span class="kw">&gt;</span>pic.twitter.com/KMMdJke9SG<span class="kw">&lt;/a&gt;&lt;/p&gt;</span><span class="dv">&amp;mdash;</span> Gon García-Castro (\@gongcastro) <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>November 24, 2020<span class="kw">&lt;/a&gt;&lt;/blockquote&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>&lt;blockquote class="twitter-tweet" data-theme="light"&gt;&lt;p lang="en" dir="ltr"&gt;The ubiquity of &lt;a href="https://twitter.com/hashtag/masks?src=hash<span class="dv">&amp;amp;</span>ref_src=twsrc%5Etfw"&gt;#masks&lt;/a&gt;😷 has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. 🌐&lt;br&gt;Here<span class="dv">&amp;#39;</span>s how orthographically similar (the romanisations of) the translations of MASK are (N=110 pairs): &lt;a href="https://t.co/KMMdJke9SG"&gt;pic.twitter.com/KMMdJke9SG&lt;/a&gt;&lt;/p&gt;<span class="dv">&amp;mdash;</span> Gon García-Castro (\@gongcastro) &lt;a href="https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw"&gt;November 24, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>Here's the data:</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
@@ -1909,7 +2107,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code and data</span></span>
 <span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>&lt;script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"&gt;&lt;/script&gt;</span>
 <span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session info</span></span>
 <span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a></span>
@@ -1919,12 +2117,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span><br></div>   
-    <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/mask-similarity-across-languages/mask-similarity-across-languages.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
+
+
 
 
 </body></html>
