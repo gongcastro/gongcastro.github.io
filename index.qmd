@@ -24,7 +24,7 @@ toc: false
 ::: profile-card
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-<img class="profilepic" src="{{< meta main-photo >}}" alt="{{< meta author-meta >}}">
+<img class="profilepic" src="assets/media/profile.jpg">
 
 >I am a **cognitive scientist** interested in the application of **Bayesian modelling** in the
 investigation of **early language acquisition**. As part of my PhD in Biomedicine at at the [Center for Brain and Cognition](https://www.upf.edu/web/cbc) at Universitat Pompeu Fabra (Barcelona, Spain), I study how **bilingual toddlers** develop their **vocabulary**, using both experimental and observational techniques. 
