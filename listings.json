@@ -1,0 +1,36 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/dpf-scholkmann/dpf-scholkmann.html",
+      "/blog/upfthesis/upfthesis.html",
+      "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
+      "/blog/logistic-regression/logistic-regression.html",
+      "/blog/renv-package/renv-package.html",
+      "/blog/psicotuiterbot/psicotuiterbot.html",
+      "/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html",
+      "/blog/animated-distributions/animated-distributions.html",
+      "/blog/visualising-polynomial-regression/visualising-polynomial-regression.html",
+      "/blog/mask-similarity-across-languages/mask-similarity-across-languages.html",
+      "/blog/importing-data-multiple/importing-data-multiple.html",
+      "/blog/primer-linear-mixed-models/primer-linear-mixed-models.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/blog/dpf-scholkmann/dpf-scholkmann.html",
+      "/blog/upfthesis/upfthesis.html",
+      "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
+      "/blog/logistic-regression/logistic-regression.html",
+      "/blog/renv-package/renv-package.html",
+      "/blog/psicotuiterbot/psicotuiterbot.html",
+      "/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html",
+      "/blog/animated-distributions/animated-distributions.html",
+      "/blog/visualising-polynomial-regression/visualising-polynomial-regression.html",
+      "/blog/mask-similarity-across-languages/mask-similarity-across-languages.html",
+      "/blog/importing-data-multiple/importing-data-multiple.html",
+      "/blog/primer-linear-mixed-models/primer-linear-mixed-models.html"
+    ]
+  }
+]
