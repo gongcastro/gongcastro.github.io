@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="Visualising what different probability distributions look like under different parameters can be helpful when picking a likelihood function for you Bayesian analysis. I present some animations generated with Julia using Distributions.jl">
 
-<title>Gonzalo Garcia-Castro</title>
+<title>Gonzalo García-Castro – Gonzalo Garcia-Castro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
 </style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -166,7 +166,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -192,7 +192,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -265,7 +265,7 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
@@ -276,7 +276,7 @@ window.Quarto = {
 
 <p>In the last couple of years I went down the rabbit hole of <strong>Bayesian statistics</strong>. Although I’ve made considerable progress, as compared to where I started, I still (and will) struggle understand some basic concepts beyond some shallow, abstract idea about what they mean. One of the first challenges I encountered in my first steps was becoming aware of how many <strong>probability distributions</strong> there are, and the fact that one should pick one should carefully chose which one to use when trying to estimate some parameter.</p>
 <p>Ben Lambert’s excellent book <a href="https://www.amazon.co.uk/Students-Guide-Bayesian-Statistics/dp/1473916364/"><em>A Student’s Guide to Bayesian Statistics</em></a> offers a chart showing many of the most popular distributions, and how they relate to each other (pp.&nbsp;145, see <a href="#fig-distributions" class="quarto-xref">Figure&nbsp;1</a> below for a similar chart). They then describe each distributions very plain terms, which is to be grateful for (many introductory books get lost in the details when describing likelihood distributions). However, when the moment arrives to pick a distribution in practice, I still struggle to see the risks and benefits of using each distribution. Will it adequately cover the sampling space of my parameter? Can I parameterise it so it allocates most of the probability around the regions I consider more likely? Am I actually able to interpret the values of the parameters of the distribution and map them to my research question?</p>
-<div id="fig-distributions" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-distributions" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-distributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html"><img src="distributions.png" class="img-fluid figure-img"></a>
@@ -298,11 +298,11 @@ When specifying priors for a Bayesian analysis, it's easy to get lost in the vas
 <h2 class="anchored" data-anchor-id="normal-distribution">Normal distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia</a></p>
 <p>Well, we all know this one. This is a <strong>continuous distribution that covers the whole range of real numbers</strong>. Why is it used so often? Because most data we find in real life are frequently quite plausible under a normal distribution. Critically, the normal distributions makes very few assumptions about the data we are trying to model. Why is it so? As Richard McElreath explains in <a href="https://xcelab.net/rm/statistical-rethinking/"><em>Statistical Rethinking</em></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (section 4.1), there are many ways a data generating mechanism might spit out normal data, even when each of the individual observations are not drawn from a normal distribution. This is because <strong>when the data are the result of adding (or multiplying), the resulting distribution tends to converge to a normal one</strong>. As McElreath points out, many phenomena we observe in nature is the result of <strong>adding multiple small factors together</strong> (e.g., someone´s height is the result of adding multiple genetic and environmental factors together). Basically, whenever you are not sure about what distribution suits your data better, the normal distribution might be a good first approximation.</p>
-<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;You can also take a look a his excellent lecture on his <a href="https://www.youtube.com/channel/UCNJK6_DZvcMqNSzQdEkzvzA">YouTube channel</a>, which cover much of the contents in the book!</p></div><p><span class="math display">\[
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;You can also take a look a his excellent lecture on his <a href="https://www.youtube.com/channel/UCNJK6_DZvcMqNSzQdEkzvzA">YouTube channel</a>, which cover much of the contents in the book!</p></div></div><p><span class="math display">\[
 f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\big(\frac{x-\mu}{\sigma}\big)^2}
 \]</span></p>
 <p>Where <span class="math inline">\(f(x)\)</span> us the probability density function, is the standard deviation, and is the mean.</p>
-<div id="fig-normal" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="normal.gif" class="img-fluid figure-img">
@@ -320,7 +320,7 @@ Figure&nbsp;2: The normal distribution.
 f(x) = \frac{\lambda(\lambda x)^{\alpha - 1}  \;e^{-\lambda x}}{\Gamma(\alpha)}
 \]</span></p>
 <p>This distribution only covers positive values, and has two parameters. It is in important one, as many other distribution, like the exponential, are specific cases of this one. In applied contexts, this distribution is used to model waiting times, and the incidence of some diseases, among others. In general, any continuous variable whose mode is expected to be closer rather than farther from zero can potentially be modelled by a Gamma distribution.</p>
-<div id="fig-gamma" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-gamma" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gamma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="gamma.gif" class="img-fluid figure-img">
@@ -338,7 +338,7 @@ Figure&nbsp;3: The Gamma distribution.
 <p><span class="math display">\[
 f(x) = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{-\alpha-1}  \;exp\Bigg(-\frac{\beta}{x}\Bigg)
 \]</span></p>
-<div id="fig-inv-gamma" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-inv-gamma" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-inv-gamma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="inverse-gamma.gif" class="img-fluid figure-img">
@@ -356,7 +356,7 @@ Figure&nbsp;4: The inverse-gamma distribution.
 <p><span class="math display">\[
 f(x) = \lambda e^{-\lambda x}
 \]</span></p>
-<div id="fig-exponential" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-exponential" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-exponential-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="exponential.gif" class="img-fluid figure-img">
@@ -373,7 +373,7 @@ Figure&nbsp;5: The exponential distribution.
 <p><span class="math display">\[
 f(x) = \frac{\Gamma((\upsilon+1)/2)}{\sqrt{\upsilon \pi}  \;\Gamma (\upsilon /2)}
 \]</span></p>
-<div id="fig-t-student" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-t-student" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-t-student-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="t-student.gif" class="img-fluid figure-img">
@@ -390,7 +390,7 @@ Figure&nbsp;6: The Student’s <em>t</em> distribution.
 <p><span class="math display">\[
 f(x) = \frac{x^{\alpha-1} \;(1-x) \;x^{\beta - 1}}{B(\alpha, \beta)}
 \]</span></p>
-<div id="fig-beta" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-beta" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-beta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="beta.gif" class="img-fluid figure-img">
@@ -407,7 +407,7 @@ Figure&nbsp;7: The Beta distribution.
 <p><span class="math display">\[
 f(x) = \frac{1}{\pi \gamma \Bigg[1 + \big( \frac{x-x_0}{\gamma} \big)^2 \Bigg]}
 \]</span></p>
-<div id="fig-cauchy" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-cauchy" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cauchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="cauchy.gif" class="img-fluid figure-img">
@@ -424,7 +424,7 @@ Figure&nbsp;8: The Cauchy distribution.
 <p><span class="math display">\[
 f(x) = \alpha \; x^{-1-\alpha} e^{-x^{-\alpha}}
 \]</span></p>
-<div id="fig-frechet" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-frechet" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-frechet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="frechet.gif" class="img-fluid figure-img">
@@ -441,7 +441,7 @@ Figure&nbsp;9: The Frechet distribution.
 <p><span class="math display">\[
 f(x) = \frac{\alpha  \;x_{m}^{\alpha}}{x^{\alpha+1}}  \;\text{for}  \; x &gt; x_m
 \]</span></p>
-<div id="fig-pareto" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-pareto" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pareto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pareto.gif" class="img-fluid figure-img">
@@ -458,7 +458,7 @@ Figure&nbsp;10: The pareto distribution.
 <p><span class="math display">\[
 f(x) = \lambda \alpha(\lambda x)^{\alpha-1} \; e^{-(\lambda x)^{\alpha}}
 \]</span></p>
-<div id="fig-weibull" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-weibull" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-weibull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="weibull.gif" class="img-fluid figure-img">
@@ -472,7 +472,7 @@ Figure&nbsp;11: The Weibull distribution.
 <section id="tri-weight-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="tri-weight-distribution">Tri-weight distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Tri-weight_distribution">Wikipedia</a></p>
-<div id="fig-tri-weight" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-tri-weight" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tri-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="triweight.gif" class="img-fluid figure-img">
@@ -487,10 +487,10 @@ Figure&nbsp;12: The tri-weight distribution.
 <h2 class="anchored" data-anchor-id="rayleigh-distribution">Rayleigh distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Rayleigh_distribution">Wikipedia</a></p>
 <p>Similar to Gamma or Poisson, the Rayleigh likelihood function covers all positive values and relies on only one parameter, <span class="math inline">\(\sigma\)</span>, to determine its shape and location. Lower values of <span class="math inline">\(\sigma\)</span> make the distribution lie closer to zero and be less disperse. Despite its seemingly less interesting appearance, this distributions is extensively used for modelling <strong>vibrational data</strong> such as water displacement, assessing the quality of railroads, or analysing MRI data<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><p><sup>2</sup>&nbsp;See https://www.sciencedirect.com/topics/engineering/rayleigh-distribution</p></div><p><span class="math display">\[
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;See https://www.sciencedirect.com/topics/engineering/rayleigh-distribution</p></div></div><p><span class="math display">\[
 f(x) = \frac{x}{\sigma^2} \; e^{-\frac{x^2}{2\sigma^2}}
 \]</span></p>
-<div id="fig-rayleight" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-rayleight" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rayleight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="rayleigh.gif" class="img-fluid figure-img">
@@ -508,7 +508,7 @@ Figure&nbsp;13: The Rayleigh distribution.
 <p><span class="math display">\[
 f(x) = \frac{2}{\pi R^2} \; \sqrt{R^2 - x^2} \\ \text{where} \; \pi \; \text{is the actual number } \pi \text{, not a parameter}
 \]</span></p>
-<div id="fig-wigner" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wigner" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wigner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="semi-circle.gif" class="img-fluid figure-img">
@@ -519,7 +519,7 @@ Figure&nbsp;14: Wigner’s semicircle distribution.
 </figure>
 </div>
 <p>Interestingly, this distribution can be considered a particular case<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> of the <strong>Beta distribution</strong>, so that where <span class="math inline">\(\alpha = \beta = 3/2\)</span>, then <span class="math inline">\(X = 2RY – R\)</span>.</p>
-<div class="no-row-height column-margin column-container"><p><sup>3</sup>&nbsp;See https://handwiki.org/wiki/Wigner_semicircle_distribution</p></div></section>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;See https://handwiki.org/wiki/Wigner_semicircle_distribution</p></div></div></section>
 <section id="triangular-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="triangular-distribution">Triangular distribution</h2>
 <p><a href="https://en.wikipedia.org/wiki/Triangular_distribution">Wikipedia</a></p>
@@ -590,18 +590,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -633,7 +622,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -692,10 +703,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -737,7 +753,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1224,7 +1244,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>Some well-known distributions are missing (e.g., Dirichlet, Wishart, Beta-binomial). This is because they have not yet been implemented in Distributions.jl, and I sadly lack the knowledge to contribute on this. Still feel free to explore the Wikipedia or other resources to get an idea of how these distributions look like in what contexts they are useful!</span>
 <span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

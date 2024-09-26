@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gonzalo Garcia-Castro">
 
-<title>Gonzalo Garcia-Castro</title>
+<title>Gonzalo García-Castro – Gonzalo Garcia-Castro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-jolla content">
+<div class="quarto-about-jolla">
   <img src="assets/media/profile.jpg" class="about-image
   round " style="height: 15em; width: 15em;">
  <header id="title-block-header" class="quarto-title-block default">
@@ -142,9 +142,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
   </div>
 </header><main class="content" id="quarto-document-content">
-<p>I am a cognitive scientist interested in the application of Bayesian modelling in the investigation of early language acquisition. As part of my PhD in Biomedicine at at the <a href="https://www.upf.edu/web/cbc">Center for Brain and Cognition</a> at Universitat Pompeu Fabra (Barcelona, Spain), I study how bilingual toddlers develop their vocabulary, using both experimental and observational techniques. I particularly enjoy building code-based workflows, ensuring that my projects can be run by others and my future self, from data collection to visualisation and reporting. I mainly use Twitter (<a href="https://twitter.com/gongcastro">@gongcastro</a>) for sharing research outputs, programming tips or data visualisations. You can also follow me on GitHub for some portfolio projects like:</p>
+<p>I am a cognitive scientist interested in the application of Bayesian modelling in the investigation of early language acquisition and its evolutionary roots. I am currently working as a post-doctoral researcher at the <a href="https://www.irsjd.org/en/">Institut de Rercerca Sant Joan de Déu</a> (Barcelona, Spain), were I use brain imaging (fNIRS), behavioural, and computational techniques to study how newborns, infants, and non-human animals perceive speech.</p>
+<p>I particularly enjoy building code-based workflows, ensuring that my projects can be run by others and my future self, from data collection to visualisation and reporting. I mainly use Twitter (<a href="https://twitter.com/gongcastro">@gongcastro</a>) for sharing research outputs, programming tips or data visualisations. You can also follow me on GitHub for some portfolio projects like:</p>
 <ul>
-<li><a href="https://github.com/gongcastro/multilex">{multilex}</a>: R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain) [<a href="https://gongcastro.github.io/multilex/">website</a>]</li>
+<li><a href="https://github.com/gongcastro/bvq">{bvq}</a>: R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain) [<a href="https://gongcastro.github.io/bvq/">website</a>]</li>
 <li><a href="https://github.com/gongcastro/comidistar">{comidistar}</a>: R package containing the scores given to products in the blind taste tests of <a href="https://elcomidista.elpais.com/">El Comidista</a></li>
 <li><a href="https://github.com/gongcastro/psicotuiterbot">psicotuiterbot</a>: A Twitter <a href="https://twitter.com/psicotuiterbot">bot</a> programmed in R using {rtweet} that automatically retweets mentions of the hasthtags #psicotuiter or #psicotwitter in Spanish</li>
 </ul>
@@ -200,18 +201,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -243,7 +233,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -251,10 +263,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -296,7 +313,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

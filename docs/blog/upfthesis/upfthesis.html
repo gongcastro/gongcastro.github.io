@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="I wrote my thesis dissertation in Quarto, using a custom template. Here I illustrate how it works and some tips.">
 
-<title>Gonzalo Garcia-Castro</title>
+<title>Gonzalo García-Castro – Gonzalo Garcia-Castro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -137,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
@@ -242,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>So I submitted my thesis (<span class="emoji" data-emoji="tada">🎉</span>). As anticipated, the submission process was frustrating—this is a canonical event. Though, it was less of a pain thanks <strong>Quarto</strong>, which took care of the formatting. I spent a considerable amount of time preparing this template, which was a risky move, given the tight schedule I was on<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, but it paid off in the end.</p>
-<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;I wrote 80% of my thesis in less than two months, depite having been working for five years on my PhD, I am embarrased to confess. Luckily, the rest of the time was wisely spent in other projects.</p></div><p>In this post, I describe how the <em>upfthesis</em> Quarto template works, and perhaps more importantly, how it can be adjusted to align with the dissertation format required by other universities. First, take a look at how it looks once rendered [<a href="[here](https://github.com/gongcastro/upfthesis/blob/main/_thesis/thesis.pdf):">link here</a>, in case it does not show up]:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;I wrote 80% of my thesis in less than two months, depite having been working for five years on my PhD, I am embarrased to confess. Luckily, the rest of the time was wisely spent in other projects.</p></div></div><p>In this post, I describe how the <em>upfthesis</em> Quarto template works, and perhaps more importantly, how it can be adjusted to align with the dissertation format required by other universities. First, take a look at how it looks once rendered [<a href="[here](https://github.com/gongcastro/upfthesis/blob/main/_thesis/thesis.pdf):">link here</a>, in case it does not show up]:</p>
 <p><object data="thesis.pdf" type="application/pdf" width="100%" height="800"><p>Unable to display PDF file. <a href="thesis.pdf">Download</a> instead.</p></object></p>
 <section id="the-format" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-format">The format</h2>
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Bibliography</li>
 <li>Glossary (optional)</li>
 </ul>
-<div class="no-row-height column-margin column-container"><p><sup>2</sup>&nbsp;Mind that they take from two to five working days to send it over.</p></div><p>The guide also specifies the accepted formats (A4 or B5), fonts (Times New Roman, Arial, or Garamond), font size, and margins. Whenever possible, the <em>upfthesis</em> extension allows the user to choose between the options. Since my LaTeX skills are limited, I constrained some other options for convenience, but help is welcome making the template more flexible.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Mind that they take from two to five working days to send it over.</p></div></div><p>The guide also specifies the accepted formats (A4 or B5), fonts (Times New Roman, Arial, or Garamond), font size, and margins. Whenever possible, the <em>upfthesis</em> extension allows the user to choose between the options. Since my LaTeX skills are limited, I constrained some other options for convenience, but help is welcome making the template more flexible.</p>
 <p>The main workhorse behind the <em>upfthesis</em> template is the <strong><a href="https://quarto.org/docs/books/">Quarto books</a></strong> format, to which I added some tweaks adjust to the required format taking advantage of the <strong><a href="https://guiesbibtic.upf.edu/ld.php?content_id=31967549">LaTeX template</a></strong> offered by the secretariat. In addition, I used some LaTeX packages to define useful functions (I’ll dig into this later).</p>
 <p>The default output format of the <em>upfthesis</em> template is a PDF (<code>upfthesis-pdf</code>), which is the end product required by the thesis secretatiat. It is also possible to render the dissertation in Microsoft Word format (<code>upfthesis-docx</code>), Open Document format (<code>upfthesis-odt</code>), and HTML (<code>upfthesis-html</code>). While the <em>upfthesis</em> output in <code>.docx</code> and <code>.odt</code> formats is not submission-ready yet (word in progress), I found it useful for having my supervisor adding comments and for tracking changes across versions. The HTML format might be useful for publishing the dissertation as a website (work in progress).</p>
 </section>
@@ -393,18 +393,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -436,7 +425,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -495,10 +506,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -540,7 +556,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -961,7 +981,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Enough Markdown to Write a Thesis</span><span class="co">](https://biostats-r.github.io/biostats/quarto/)</span> by Richard J Telford</span>
 <span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Writing a dissertation in Quarto</span><span class="co">](https://blog.posertinlab.com/posts/2023-06-09-writing-a-dissertation-in-quarto/)</span> by rich Posert</span>
 <span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Some Quarto PDF formatting tips, with particular reference to thesis writing</span><span class="co">](https://cameronpatrick.com/post/2023/07/quarto-thesis-formatting/)</span></span>
-<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Monash Quarto Template</span><span class="co">](https://robjhyndman.com/hyndsight/quarto_templates.html)</span> by Rob J Hyndman</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Monash Quarto Template</span><span class="co">](https://robjhyndman.com/hyndsight/quarto_templates.html)</span> by Rob J Hyndman</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

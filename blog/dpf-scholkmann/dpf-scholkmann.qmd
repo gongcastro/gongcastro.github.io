@@ -1,0 +1,164 @@
+---
+title: "Implementing the Differential Pathlength Factor (DPF) in Python: the Scholkmann method"
+format: html
+bibliography: references.bib
+---
+
+I have news! I'm starting my postdoc at the Institut de Recerca Hospital Sant Joan de Déu (Barcelona, Spain) in September, joining Chiara Santolin's new research group. We will be carrying out experimental series as part of [Chiara's ERC project GaLa (Gates to Language)](https://www.upf.edu/web/mdm-dtic/news/-/asset_publisher/Q8isUSRyuEXA/content/chiara-santolin-obtains-an-erc-starting-grant-for-her-gala-project/maximized). This project involves newborns, infants, rats, and some computational modelling to investigate early language acquisition and its evolutionary roots. I'll be mostly involved with the neonates branch of the project, using fNIRS (functional near-infrared spectroscopy) to measure neocates' brain response to different audio stimuli.
+
+I'm new to fNIRS, so I was very lucky to be able to spend two months at the [Center of Brain and Cognitive Development (CBCD)](https://cbcd.bbk.ac.uk/) at Birkbeck University (London, UK). Folks at CBCD were extremely generous with their time and knowledge, and after coming back from my research stay, I feel like returning some of my time to the fNIRS community. I will dedicate some upcoming blog posts to some of my progress in learning fNIRS and the underlying theory and associated preprocessing piplines, with the aim of making the learning curve a bit less steep for future newcomers. In this blog post, I will provide a very simple Python function to calculate the Differential Pathlength Factor (DPF) for a participant, given their age and the NIR wavelength used, following Scholkman's method [@scholkmann2013general].
+
+Briefly, NIRS is an imaging technique that takes advantage of the fact that different biological tissues absorb light differently. Biological tissues are made of molecules, some of which absorb light (i.e., chromophors). Some chromophores absorb more light at specific frequencies than others. The idea is that, by measuring how light travels through tissue, we may be able to get an idea of the composition of that tissue. Haemoglobin is one of the chromophores that has received the most attention in NIRS. This is because the oxygenated (oxy-haemoglobin, HbO) and deoxygenated (deoxy-haemoglobin, HbR) forms of haemoglobin absorb light at different extremes of the near-infrared (NIR) frequency spectrum. This has two consequences of interest: (1) most biological tissues are transparent (do not absorb) NIR light, which means that NIR light will not be affected by tissues other than haemoglobin, and (2) te fact that HbO and HbR absorb light at two different extremes of the NIR spectrum means that we can estimate how much HbO there is in the lit tissue, relative to HbR, by quantifying the frequency of the light that we can capture after the light has traveled through the tissue (a technique called *spectroscopy*, therefore the *S* in NIRS). The proportion of HbO over HbR can be interpreted as a proxy of metabolic activity in the tissue. In the case of neuroimaging, it provies an estimation of neural activity in certain brain areas.
+
+NIRS devices shine a light into a tissue from a source. The light travels through the tissue and is received by a detector. By estimating how much of the light gets attenuated, and by observing the spectral properties of the received light, NIRS provides an estimation of the presence of certain chromophores in the tissue. The modified Beer-Lambert Law (mBBL) (see @eq-1) describes how the light attenuation ($A$) changes for a particular wave length ($\lambda$):
+
+$$
+\Delta A = \varepsilon(\lambda) \cdot \Delta c \cdot d \cdot \text{DPF}(\lambda)
+$$ {#eq-1}
+
+where $\varepsilon$ is the extinction coefficient of a molecule at a certain wavelength, $\lambda$ is the wavelength of the inyected light, $c$ is the change in molecule concentration, $d$ is the source-detector distance, and $\text{DPF}$ is the differential pathlength factor. The DPF specifies the increment in photon path length due to scattering: sometimes, photons "bounce" against other molecules, which increases the distance they travel thorugh the biological tissues, ultimately influencing the amount of light that the detected receives at a particular wavelength.  The DPF parameter takes a numeric value specified a priori by the researcher, based on prior knowledge about the properties of the tissue. 
+
+
+It is generally not possible to determine exactly the true DPF, as this value is dependent on many factors outside the control or reach of the researcher. But there are some formulas to get a reasonable approximation. One of them was presented by [@scholkmann2013general]. The authors came up with an equation that takes into account the **age** of the participant, and the **wavelength** of the NIR light. These variables are then introduced in @eq-2:
+
+$$
+\text{DPF} (\lambda, A)= \alpha + \beta A ^{\gamma} + \delta \lambda ^{3} + \varepsilon \lambda ^{2} + \zeta \lambda
+$$
+
+where $\lambda$ is the wavelength, $A$ is the age of the participant, and $\alpha$, $\beta$, $\delta$, $\varepsilon$, and $\zeta$ are the certain coefficients that were empirically estimated by @scholkmann2013general useing a robust nonlinear least squares method, based on previously published datasets. The result is a formula in which one can introduce the age of the participant and the wavelength of interest, and obtain the estimated DPF:
+
+$$
+\text{DPF} (\lambda, A)= 223.3 + 0.05624 A ^{0.8493} + −5.723 \times 10^{−7} \lambda ^{3} + 0.001245 \lambda ^{2} + −0.9025 \lambda
+$$
+
+I made a simple Python function to implement the equation:
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib as mpl
+
+
+def dpf_scholkman(
+    age: float or np.ndarray = 0.583, wavelength: float or np.ndarray = 760
+) -> float or np.ndarray:
+    coefs = {
+        "alpha": 223.3,
+        "beta": 0.05624,
+        "gamma": 0.8493,
+        "delta": -5.723e-7,
+        "epsilon": 0.001245,
+        "zeta": -0.9025,
+    }
+    dpf = (
+        coefs["alpha"]
+        + coefs["beta"] * (age ** coefs["gamma"])
+        + coefs["delta"] * wavelength**3
+        + coefs["epsilon"] * wavelength**2
+        + coefs["zeta"] * wavelength
+    )
+    return dpf
+```
+
+Let's try it out:
+
+```{python}
+age = 24  # years
+wl = 760  # wavelength
+dpf_scholkman(age, wl)
+```
+
+
+Let's reproduce some of the figures in @scholkmann2013general.
+
+
+```{python}
+# | label: fig-1a
+# | fig-cap: "Reproduction of Figure 1A in Scholkmann et al. Differential pathlength as a function of the age of the participant  (X-axis) and the wavelength (Y-axis)."
+# | code-fold: true
+age = np.linspace(0, 50, 100)
+wavelengths = np.linspace(690, 832, 100)
+dpf = np.vstack([dpf_scholkman(age, w) for w in wavelengths])
+fig, ax = plt.subplots(layout="constrained")
+norm = mpl.colors.Normalize(vmin=np.min(wavelengths), vmax=np.max(wavelengths))
+cycler = plt.cycler("color", plt.cm.autumn(np.linspace(0, 1, 100)))
+x = np.vstack(np.array([age] * len(age))).transpose()
+fig.colorbar(
+    mpl.cm.ScalarMappable(norm=norm, cmap="autumn"),
+    ax=ax,
+    orientation="horizontal",
+    location="top",
+    label="Wavelength (nm)",
+    aspect=30,
+)
+plt.rcParams["axes.prop_cycle"] = cycler
+ax.plot(x, dpf.transpose())
+ax.set_xlabel("Age (years)")
+ax.set_ylabel("DPF")
+ax.set_axisbelow(False)
+ax.grid(color="gray", alpha=0.1)
+```
+
+
+```{python}
+# | label: fig-1b
+# | fig-cap: "Reproduction of Figure 1B in Scholkmann et al. Differential pathlength as a function of the wavelength (X-axis) and the age of the participant (Y-axis)."
+# | code-fold: true
+fig, ax = plt.subplots(layout="constrained")
+norm = mpl.colors.Normalize(vmin=np.min(age), vmax=np.max(age))
+cycler = plt.cycler("color", plt.cm.autumn(np.linspace(0, 1, 100)))
+x = np.vstack(np.array([wavelengths] * len(wavelengths))).transpose()
+fig.colorbar(
+    mpl.cm.ScalarMappable(norm=norm, cmap="autumn"),
+    ax=ax,
+    orientation="horizontal",
+    location="top",
+    label="Age (years)",
+    aspect=30,
+)
+plt.rcParams["axes.prop_cycle"] = cycler
+ax.plot(x, dpf)
+ax.set_xlabel("Wavelength (nm)")
+ax.set_ylabel("DPF")
+ax.set_axisbelow(False)
+ax.grid(color="gray", alpha=0.1)
+```
+
+
+We can also visualise the behaviour of the DPF across ages and wavelengths as a 2D heatmap in @fig-2:
+
+```{python}
+# | label: fig-2
+# | fig-cap: "DPF as a function of participant age and wavelengths."
+# | code-fold: true
+norm = mpl.colors.Normalize(vmin=np.min(dpf), vmax=np.max(dpf))
+
+fig, ax = plt.subplots(layout="constrained")
+ax.imshow(dpf.transpose(), cmap="autumn", aspect="auto")
+ax.set_yticks(
+    np.linspace(0, len(wavelengths), 10, dtype=int),
+    labels=np.linspace(min(wavelengths), max(wavelengths), 10, dtype=int),
+)
+ax.set_xticks(
+    np.linspace(0, len(age), 10, dtype=int),
+    labels=np.linspace(min(age), max(age), 10, dtype=int),
+)
+fig.colorbar(
+    mpl.cm.ScalarMappable(norm=norm, cmap="autumn"),
+    ax=ax,
+    orientation="horizontal",
+    location="top",
+    label="DPF",
+    aspect=30,
+)
+ax.set_ylabel("Wavelength (nm)")
+ax.set_xlabel("Age (years)")
+ax.invert_yaxis()
+ax.set_axisbelow(False)
+ax.grid(color="gray", alpha=0.1)
+
+plt.show()
+```
+
+
+
