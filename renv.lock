@@ -419,6 +419,17 @@
       "Hash": "8ee9ac56ef633d0c7cab8b2ca87d683e",
       "Requirements": []
     },
+    "data.tree": {
+      "Package": "data.tree",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d7602f0f55e0335b83f2353337848d6f",
+      "Requirements": [
+        "R6",
+        "stringi"
+      ]
+    },
     "dbplyr": {
       "Package": "dbplyr",
       "Version": "2.5.0",
@@ -1461,6 +1472,30 @@
       "Hash": "878b467580097e9c383acbb16adab57a",
       "Requirements": []
     },
+    "psicotuiteR": {
+      "Package": "psicotuiteR",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "gongcastro",
+      "RemoteRepo": "psicotuiteR",
+      "RemoteRef": "master",
+      "RemoteSha": "3b4b54cc9f41dba75d4abf1a69b3cb933c6582d6",
+      "Hash": "d1f24e6f9ebb8addb53d26b581d7dcd5",
+      "Requirements": [
+        "data.tree",
+        "dplyr",
+        "fs",
+        "ggplot2",
+        "janitor",
+        "magrittr",
+        "patchwork",
+        "tibble",
+        "tidyr",
+        "wesanderson"
+      ]
+    },
     "purrr": {
       "Package": "purrr",
       "Version": "1.0.2",
@@ -2117,6 +2152,14 @@
         "vctrs",
         "withr"
       ]
+    },
+    "wesanderson": {
+      "Package": "wesanderson",
+      "Version": "0.3.7",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Hash": "f0d5ebcc72b5d6d2f338be8d80d39004",
+      "Requirements": []
     },
     "whisker": {
       "Package": "whisker",
