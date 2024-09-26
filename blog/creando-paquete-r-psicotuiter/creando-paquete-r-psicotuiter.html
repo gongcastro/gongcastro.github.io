@@ -310,7 +310,7 @@ Important
 <p>Pues bien: técnicamente, ¡ya tenemos un paquete de R! Si ejecutamos el código de abajo, el paquete se instalará como si fuera uno más en nuestro directorio de paquetes de R.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Encontrarás la carpeta de instalación junto a la de los demás paquetes que hays instalado en tu ordenador. Puedes consultar dónde se instalan tus paquetes de R ejecutando <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> en tu consola. La primera ruta que aparezca será donde encontrarás tu paquete instalado (en mi caso, encontraré la carpeta <code>~/Documents/R/win-library/4.0/psicotuiteR</code>).</p>
-<p>La función que hemos ejecutado, <strong><code>install()</code></strong> del paquete devtools simula lo que otra persona haría al ejecutar la función <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> si nuestro paquete estuviera disponible en CRAN. Ahora mismo, podríamos cargar nuestro paquete con <code><a href="https://rdrr.io/r/base/library.html">library(psicotuiteR)</a></code> y trabajar con él. Por supuesto, nuestro paquete aún está vacío. En las próximas secciones veremos cómo añadir funciones, entre otras cosas, a nuestro paquete.</p>
+<p>La función que hemos ejecutado, <strong><code>install()</code></strong> del paquete devtools simula lo que otra persona haría al ejecutar la función <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> si nuestro paquete estuviera disponible en CRAN. Ahora mismo, podríamos cargar nuestro paquete con <code><a href="https://gongcastro.github.io/psicotuiter/">library(psicotuiteR)</a></code> y trabajar con él. Por supuesto, nuestro paquete aún está vacío. En las próximas secciones veremos cómo añadir funciones, entre otras cosas, a nuestro paquete.</p>
 <p>Antes de hacer eso, ahí va un truco: cuando añadimos o hacemos cambios en el paquete, necesitaremos actualizar nuestra sesión y cargar el paquete de nuevo y volver a ejecutar las funciones para comprobar que todo funciona correctamente. En lugar de ejecutar <code>install()</code> cada vez que queremos ver si nuestro paquete funciona, podemos ejecutar <strong><code>load_all()</code></strong> (también del paquete devtools) sin siquera reiniciar la sesión y así cargar de nuevo el paquete actualizado como si alguien hubiera cargado el paquete usando <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Los contenidos del paquete que se cargarán usando <code>load_all()</code> son los que hay en el nuestro repositorio (desde el que estamos desarrollando el paquete), y no desde el directorio en el que se instala el paquete si ejecutamos <code>install()</code>. ¡Esto es mucho más rápido y eficiente!</p>
 <p>Otro truco: puesto que vamos a utilizar las funciones de los paquetes devtools y usethis a menudo–y por lo tanto vamos a necesitar cargar estos paquetes mediante <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code> y <code><a href="https://usethis.r-lib.org">library(usethis)</a></code> cada vez que iniciemos una sesión de R– podría ser recomendable añadir esos dos comandos a nuestro archivo <strong>.Rprofile</strong> (ver esta <a href="https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf">guía</a> para más información sobre .Rprofile. Las líneas de código que contenga ese archivo serán ejecutadas en cada inicio de sesión que hagamos en nuestro proyecto de RStudio. Podemos hacer esto usando las siguientes funciones de usethis:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span>
@@ -419,17 +419,16 @@ Important
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 14
-  name         height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
-  &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
-1 Luke Skywal…    172    77 blond   fair    blue       19   male  mascu… Tatooi…
-2 C-3PO           167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…
-3 R2-D2            96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  
-4 Darth Vader     202   136 none    white   yellow     41.9 male  mascu… Tatooi…
-5 Leia Organa     150    49 brown   light   brown      19   fema… femin… Aldera…
-6 Owen Lars       178   120 brown,… light   blue       52   male  mascu… Tatooi…
-# … with 4 more variables: species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
-#   starships &lt;list&gt;, and abbreviated variable names ¹​hair_color, ²​skin_color,
-#   ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+  name      height  mass hair_color skin_color eye_color birth_year sex   gender
+  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
+2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
+5 Leia Org…    150    49 brown      light      brown           19   fema… femin…
+6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…
+# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 </div>
 </div>
 <p>Este objeto está documentado: si ejecutamos <code><a href="https://dplyr.tidyverse.org/reference/starwars.html">?dplyr::starwars</a></code> se abrirá el <strong>panel de documentación de RStudio</strong>. Este tipo de objetos son muy útiles para mostrar ejemplos de uso de las funciones de un paquete. Algunos paquetes incluso han sido diseñados con el único propósito de <strong>compartir una base de datos documentada</strong>, como por ejemplo el paquete <a href="https://allisonhorst.github.io/palmerpenguins/">{palmerpenguins}</a>, que apenas contiene el objeto <code>penguins</code>: una base de datos sobre la anatomía demlos pingüinos de la Isla de Palmer. En esta sección veremos cómo incluir una base de datos como ésta en nuestro paqeute de R y cómo documentarla.</p>
@@ -439,15 +438,15 @@ Important
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 37
-     id lugar  genero   psico1 psico2 psico3 tw1   tw2   tw_pers tw_di…¹ tw_an…²
-  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
-1     1 Europa Mujer    Posgr…      3      4 Mas … Vari…       4       3       0
-2     2 Europa Hombre   Posgr…      1      5 Mas … Vari…       4       2       3
-3     3 Europa No bina… Posgr…      4      3 Meno… Vari…       4       2       1
-4     4 Europa Hombre   Posgr…      4      3 Mas … Vari…       5       5       0
-5     5 Europa Hombre   Posgr…      5      1 Mas … Vari…       4       2       3
-6     6 Europa Hombre   Profe…      5      3 Mas … Vari…       1       4       0
-# … with 26 more variables: tw_tuits &lt;int&gt;, tw_hilos_div &lt;int&gt;,
+     id lugar  genero     psico1    psico2 psico3 tw1    tw2   tw_pers tw_divulg
+  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;int&gt;     &lt;int&gt;
+1     1 Europa Mujer      Posgrado       3      4 Mas d… Vari…       4         3
+2     2 Europa Hombre     Posgrado       1      5 Mas d… Vari…       4         2
+3     3 Europa No binarie Posgrado       4      3 Menos… Vari…       4         2
+4     4 Europa Hombre     Posgrado       4      3 Mas d… Vari…       5         5
+5     5 Europa Hombre     Posgrado       5      1 Mas d… Vari…       4         2
+6     6 Europa Hombre     Profesion      5      3 Mas d… Vari…       1         4
+# ℹ 27 more variables: tw_anonim &lt;int&gt;, tw_tuits &lt;int&gt;, tw_hilos_div &lt;int&gt;,
 #   tw_hilos_ot &lt;int&gt;, tw_rt &lt;int&gt;, tw_like &lt;int&gt;, tw_resp &lt;int&gt;,
 #   exp_tw1 &lt;int&gt;, exp_tw2 &lt;int&gt;, exp_tw3 &lt;int&gt;, exp_tw4 &lt;int&gt;, comp1 &lt;chr&gt;,
 #   comp2_verg &lt;int&gt;, comp2_quediran &lt;int&gt;, comp2_calidad &lt;int&gt;,

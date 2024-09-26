@@ -297,7 +297,7 @@ window.Quarto = {
 <p><strong>Logistic regression</strong> is a conventional way to model binary outcomes. This post is an attempt to summarise my recent learning progress on this topic, addressed to my previous self who knew how to <em>use</em> logistic regression but had very superficial knowledge of what happens under the hood. Not to mention writing this post has been a fantastic learning experience. I hope its useful.</p>
 </blockquote>
 <section id="the-logistic-function" class="level1 page-columns page-full"><h1>The logistic function</h1>
-<p>The <strong>logistic function</strong> is a mathematical function that defines how the values of an input variable <span class="math inline">\(x\)</span> that span the range of real values <span class="math inline">\(x \in (-\infty, +\infty)\)</span> are associated to an output variable <span class="math inline">\(y\)</span> that spans an interval of real values contained within the <span class="math inline">\([0, 1]\)</span> interval or narrower. This function is <strong>monotonic</strong>: <span class="math inline">\(y\)</span> increases for <span class="math inline">\(x &gt; 0\)</span> and increases for <span class="math inline">\(x &lt; 0\)</span>, or decreases for <span class="math inline">\(x &gt; 0\)</span> and increases for <span class="math inline">\(x &lt; 0\)</span>. This function takes the general form shown in <a href="#eq-logistic-three" class="quarto-xref">Equation&nbsp;1</a>:</p>
+<p>The <strong>logistic function</strong> is a mathematical function that defines how the values of an input variable <span class="math inline">\(x\)</span> that span the range of real values <span class="math inline">\(x \in (-\infty, +\infty)\)</span> are associated to an output variable <span class="math inline">\(y\)</span> that spans an interval of real values contained within the <span class="math inline">\([0, 1]\)</span> interval or narrower. This function is <strong>monotonic</strong>: <span class="math inline">\(y\)</span> increases for <span class="math inline">\(x &gt; 0\)</span> and decreases for <span class="math inline">\(x &lt; 0\)</span>, or decreases for <span class="math inline">\(x &gt; 0\)</span> and increases for <span class="math inline">\(x &lt; 0\)</span>. This function takes the general form shown in <a href="#eq-logistic-three" class="quarto-xref">Equation&nbsp;1</a>:</p>
 <p><span id="eq-logistic-three"><span class="math display">\[
 \text{Logistic(x)} = \frac{L}{1 + e^{(-\beta \ · \ (x-x_0))}}
 \tag{1}\]</span></span></p>
@@ -306,9 +306,9 @@ window.Quarto = {
 <li>
 <span class="math inline">\(L\)</span> is the <strong>upper limit</strong> of <span class="math inline">\(y\)</span>, which is commonly assumed to be 1, where <span class="math inline">\(L \in (0, +\infty)\)</span>.</li>
 <li>
-<span class="math inline">\(\beta\)</span> is a coefficient that indicates the <strong>steepness</strong> of the logistic curve, or how fast the curve grows, where <span class="math inline">\(\beta \in (-\infty, +\infty)\)</span>. Positive values of this coefficient lead to the logistic curve growing as <span class="math inline">\(x\)</span> increases, to the logistic curve decays when <span class="math inline">\(x\)</span> decreases.</li>
+<span class="math inline">\(\beta\)</span> is a coefficient that indicates the <strong>steepness</strong> of the logistic curve, or how fast the curve grows, where <span class="math inline">\(\beta \in (-\infty, +\infty)\)</span>. Positive values of this coefficient lead to the logistic curve growing as <span class="math inline">\(x\)</span> increases, and to the logistic curve decaying as <span class="math inline">\(x\)</span> increases.</li>
 <li>
-<span class="math inline">\(x_0\)</span> is the <strong>mid-point</strong> of the logistic curve, indicating the value of <span class="math inline">\(x\)</span> where the maximum of <span class="math inline">\(\beta\)</span> is found, that is, when the logistic curve is steepest</li>
+<span class="math inline">\(x_0\)</span> is the <strong>mid-point</strong> of the logistic curve, indicating the value of <span class="math inline">\(x\)</span> where the maximum of <span class="math inline">\(\beta\)</span> is found, that is, when the logistic curve is steepest.</li>
 </ul>
 <p>I first learnt about the logistic function and its parameters in <a href="https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/">this blog post by TJ Mahr</a> <span class="citation" data-cites="mahr2019anatomy">(<a href="#ref-mahr2019anatomy" role="doc-biblioref">Mahr, 2019</a>)</span>, in which he describes the different parameters of the function, and how they relate to its behaviour. Let’s take a look at how the logistic curve looks like for different values of these parameters. We can implement the logistic function in R like this:</p>
 <div class="no-row-height column-margin column-container"><div id="ref-mahr2019anatomy" class="csl-entry" role="listitem">
@@ -1050,37 +1050,37 @@ Expand for Session Info
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.2.2 (2022-10-31 ucrt)
- os       Windows 10 x64 (build 19045)
+ version  R version 4.3.3 (2024-02-29 ucrt)
+ os       Windows 11 x64 (build 22631)
  system   x86_64, mingw32
  ui       RTerm
  language (EN)
  collate  English_United Kingdom.utf8
  ctype    English_United Kingdom.utf8
- tz       Europe/Paris
- date     2023-02-02
- pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
- quarto   1.2.269 @ C:\\PROGRA~1\\RStudio\\RESOUR~1\\app\\bin\\quarto\\bin\\quarto.exe
+ tz       Europe/Berlin
+ date     2024-09-26
+ pandoc   3.2 @ C:\\Users\\Gonzalo\\AppData\\Local\\Programs\\Quarto\\bin\\tools/ (via rmarkdown)
+ quarto   1.5.43 @ C:\\Users\\Gonzalo\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  ! package        * version date (UTC) lib source
- P dplyr          * 1.0.10  2022-09-01 [?] CRAN (R 4.2.2)
- P ggdist         * 3.2.1   2023-01-18 [?] CRAN (R 4.2.2)
- P ggplot2        * 3.4.0   2022-11-04 [?] CRAN (R 4.2.2)
- P ggtext         * 0.1.2   2022-09-16 [?] CRAN (R 4.2.2)
- P glue           * 1.6.2   2022-02-24 [?] CRAN (R 4.2.2)
- P palmerpenguins * 0.1.1   2022-08-15 [?] CRAN (R 4.2.2)
- P patchwork      * 1.1.2   2022-08-19 [?] CRAN (R 4.2.2)
- P purrr          * 1.0.0   2022-12-20 [?] CRAN (R 4.2.2)
- P quarto         * 1.2     2022-07-06 [?] CRAN (R 4.2.2)
- P scales         * 1.2.1   2022-08-20 [?] CRAN (R 4.2.2)
- P sessioninfo    * 1.2.2   2021-12-06 [?] CRAN (R 4.2.2)
- P stringr        * 1.5.0   2022-12-02 [?] CRAN (R 4.2.2)
- P tibble         * 3.1.8   2022-07-22 [?] CRAN (R 4.2.2)
- P tidyr          * 1.2.1   2022-09-08 [?] CRAN (R 4.2.2)
+ P dplyr          * 1.1.4   2023-11-17 [?] CRAN (R 4.3.3)
+ P ggdist         * 3.3.2   2024-03-05 [?] CRAN (R 4.3.3)
+ P ggplot2        * 3.5.1   2024-04-23 [?] RSPM
+ P ggtext         * 0.1.2   2022-09-16 [?] CRAN (R 4.3.3)
+ P glue           * 1.7.0   2024-01-09 [?] CRAN (R 4.3.3)
+ P palmerpenguins * 0.1.1   2022-08-15 [?] CRAN (R 4.3.3)
+ P patchwork      * 1.2.0   2024-01-08 [?] CRAN (R 4.3.3)
+ P purrr          * 1.0.2   2023-08-10 [?] CRAN (R 4.3.3)
+ P quarto         * 1.4     2024-03-06 [?] CRAN (R 4.3.3)
+ P scales         * 1.3.0   2023-11-28 [?] CRAN (R 4.3.3)
+ P sessioninfo    * 1.2.2   2021-12-06 [?] CRAN (R 4.3.3)
+ P stringr        * 1.5.1   2023-11-14 [?] CRAN (R 4.3.3)
+ P tibble         * 3.2.1   2023-03-20 [?] CRAN (R 4.3.3)
+ P tidyr          * 1.3.1   2024-01-24 [?] CRAN (R 4.3.3)
 
- [1] C:/Users/u155880/Documents/gongcastro.github.io/renv/library/R-4.2/x86_64-w64-mingw32
- [2] C:/Users/u155880/AppData/Local/Temp/RtmpUPUz5H/renv-system-library
+ [1] C:/Users/Gonzalo/Documents/gongcastro.github.io/renv/library/R-4.3/x86_64-w64-mingw32
+ [2] C:/Users/Gonzalo/AppData/Local/Temp/RtmpOEle6V/renv-system-library
 
  P ── Loaded and on-disk path mismatch.
 
