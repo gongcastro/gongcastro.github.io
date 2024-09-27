@@ -1,2 +1,4 @@
-render:
-	quarto render
+update:
+	quarto publish gh-pages --no-prompt
+	
+

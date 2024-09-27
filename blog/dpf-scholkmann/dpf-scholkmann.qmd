@@ -2,6 +2,7 @@
 title: "Implementing the Differential Pathlength Factor (DPF) in Python: the Scholkmann method"
 format: html
 bibliography: references.bib
+image: scholkmann.png
 ---
 
 I have news! I'm starting my postdoc at the Institut de Recerca Hospital Sant Joan de Déu (Barcelona, Spain) in September, joining Chiara Santolin's new research group. We will be carrying out experimental series as part of [Chiara's ERC project GaLa (Gates to Language)](https://www.upf.edu/web/mdm-dtic/news/-/asset_publisher/Q8isUSRyuEXA/content/chiara-santolin-obtains-an-erc-starting-grant-for-her-gala-project/maximized). This project involves newborns, infants, rats, and some computational modelling to investigate early language acquisition and its evolutionary roots. I'll be mostly involved with the neonates branch of the project, using fNIRS (functional near-infrared spectroscopy) to measure neonates' brain response to different audio stimuli.
