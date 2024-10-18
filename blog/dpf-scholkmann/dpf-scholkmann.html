@@ -259,7 +259,7 @@ window.Quarto = {
 
 
 
-<div id="15718465" class="cell" data-execution_count="1">
+<div id="d1b83200" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -269,17 +269,16 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"axes.prop_cycle"</span>] <span class="op">=</span> cycler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="**TLDR**: there you go">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+<strong>TLDR</strong>: there you go
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>TLDR</strong>: there you go.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dpf_scholkman(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    age: <span class="bu">float</span> <span class="kw">or</span> np.ndarray <span class="op">=</span> <span class="fl">0.583</span>, wavelength: <span class="bu">float</span> <span class="kw">or</span> np.ndarray <span class="op">=</span> <span class="dv">760</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="bu">float</span> <span class="kw">or</span> np.ndarray:</span>
@@ -302,22 +301,11 @@ Tip
 </div>
 </div>
 <p>I have news! I’m starting my postdoc at the Institut de Recerca Hospital Sant Joan de Déu (Barcelona, Spain) in September, joining Chiara Santolin’s new research group. We will be carrying out experimental series as part of <a href="https://www.upf.edu/web/mdm-dtic/news/-/asset_publisher/Q8isUSRyuEXA/content/chiara-santolin-obtains-an-erc-starting-grant-for-her-gala-project/maximized">Chiara’s ERC project GaLa (Gates to Language)</a>. This project involves newborns, infants, rats, and some computational modelling to investigate early language acquisition and its evolutionary roots. I’ll be mostly involved with the neonates branch of the project, using fNIRS (functional near-infrared spectroscopy) to measure neonates’ brain response to different audio stimuli.</p>
-<div id="fig-sjd" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sjd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<img src="logo-sjd.jpg" class="img-fluid figure-img">
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sjd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: <img src="hsjd.jpg" class="img-fluid figure-img">
-</figcaption>
-</figure>
-</div>
-<p>I’m new to fNIRS, so I was very lucky to spend two months at Prof.&nbsp;Emily Jones’ group at the <a href="https://cbcd.bbk.ac.uk/">Center of Brain and Cognitive Development (CBCD)</a> at Birkbeck University (London, UK), and two weeks at Prof.&nbsp;Judit Gervain’s lab at Università di Padova. Folks at CBCD and in Padova were extremely generous with their time and knowledge, and after coming back from these research stays I feel like returning some of my time to the fNIRS community. I will dedicate some upcoming blog posts to some of my progress in learning fNIRS and the underlying theory and associated preprocessing piplines, with the aim of making the learning curve a bit less steep for future newcomers. In this blog post, I will provide a very simple Python function to calculate the <strong>Differential Pathlength Factor (DPF)</strong> for an individual, given their age and the specific wavelength used, following Scholkman’s method <span class="citation" data-cites="scholkmann2013general">(<a href="#ref-scholkmann2013general" role="doc-biblioref">Scholkmann &amp; Wolf, 2013</a>)</span>.</p>
-<div class="no-row-height column-margin column-container"></div><p>To estimate <strong>relative changes in concentration of HbO and HbR</strong>, most NIRS devices—particularly those that use a <strong>continuous wave (CW)</strong> system—shine a light into some tissue of interest at two wavelengths: one is more sensitive to changes in concentration of HbO, the other is more sensitive to changes in concentration of HbR. Light is shone from a <strong>source</strong>, travels through the tissue and is received by a <strong>detector</strong>. By estimating how much of the light gets attenuated, and by observing the spectral properties of the received light, NIRS provides an estimation of the presence of certain chromophores in the tissue (in our case, HbO and HbR). The <strong>modified Beer-Lambert Law (mBBL)</strong> (see <a href="#eq-1" class="quarto-xref">Equation&nbsp;1</a>) describes how the light attenuation (<span class="math inline">\(A\)</span>) changes for a particular wave length (<span class="math inline">\(\lambda\)</span>):</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="hsjd.jpg" class="img-fluid"></p>
+</div></div><p>I’m new to fNIRS, so I was very lucky to spend two months at Prof.&nbsp;Emily Jones’ group at the <a href="https://cbcd.bbk.ac.uk/">Center of Brain and Cognitive Development (CBCD)</a> at Birkbeck University (London, UK), and two weeks at Prof.&nbsp;Judit Gervain’s lab at Università di Padova. Folks at CBCD and in Padova were extremely generous with their time and knowledge, and after coming back from these research stays I feel like returning some of my time to the fNIRS community. I will dedicate some upcoming blog posts to some of my progress in learning fNIRS and the underlying theory and associated preprocessing piplines, with the aim of making the learning curve a bit less steep for future newcomers. In this blog post, I will provide a very simple Python function to calculate the <strong>Differential Pathlength Factor (DPF)</strong> for an individual, given their age and the specific wavelength used, following Scholkman’s method <span class="citation" data-cites="scholkmann2013general">(<a href="#ref-scholkmann2013general" role="doc-biblioref">Scholkmann &amp; Wolf, 2013</a>)</span>.</p>
+<p>To estimate <strong>relative changes in concentration of HbO and HbR</strong>, most NIRS devices—particularly those that use a <strong>continuous wave (CW)</strong> system—shine a light into some tissue of interest at two wavelengths: one is more sensitive to changes in concentration of HbO, the other is more sensitive to changes in concentration of HbR. Light is shone from a <strong>source</strong>, travels through the tissue and is received by a <strong>detector</strong>. By estimating how much of the light gets attenuated, and by observing the spectral properties of the received light, NIRS provides an estimation of the presence of certain chromophores in the tissue (in our case, HbO and HbR). The <strong>modified Beer-Lambert Law (mBBL)</strong> (see <a href="#eq-1" class="quarto-xref">Equation&nbsp;1</a>) describes how the light attenuation (<span class="math inline">\(A\)</span>) changes for a particular wave length (<span class="math inline">\(\lambda\)</span>):</p>
 <p><span id="eq-1"><span class="math display">\[
 \Delta A = \varepsilon(\lambda) \cdot \Delta c \cdot d \cdot \text{DPF}(\lambda)
 \tag{1}\]</span></span></p>
@@ -331,7 +319,7 @@ Figure&nbsp;1: <img src="hsjd.jpg" class="img-fluid figure-img">
 \text{DPF} (\lambda, A)= 223.3 + 0.05624 A ^{0.8493} + −5.723 \times 10^{−7} \lambda ^{3} + 0.001245 \lambda ^{2} + −0.9025 \lambda
 \]</span></p>
 <p>I made a simple Python function to implement the equation:</p>
-<div id="8badf145" class="cell" data-execution_count="2">
+<div id="3f27b142" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -361,7 +349,7 @@ Figure&nbsp;1: <img src="hsjd.jpg" class="img-fluid figure-img">
 </details>
 </div>
 <p>Let’s try it out:</p>
-<div id="7166ee3e" class="cell" data-execution_count="3">
+<div id="0cb4cd23" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">24</span>  <span class="co"># years</span></span>
@@ -407,7 +395,7 @@ Scholkmann, F., &amp; Wolf, M. (2013). General equation for the differential pat
 <img src="dpf-scholkmann_files/figure-html/fig-1a-output-1.png" width="683" height="490" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Reproduction of Figure 1A in Scholkmann et al.&nbsp;Differential pathlength as a function of the age of the participant (X-axis) and the wavelength (Y-axis).
+Figure&nbsp;1: Reproduction of Figure 1A in Scholkmann et al.&nbsp;Differential pathlength as a function of the age of the participant (X-axis) and the wavelength (Y-axis).
 </figcaption>
 </figure>
 </div>
@@ -442,13 +430,13 @@ Figure&nbsp;2: Reproduction of Figure 1A in Scholkmann et al.&nbsp;Differential 
 <img src="dpf-scholkmann_files/figure-html/fig-1b-output-1.png" width="683" height="490" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Reproduction of Figure 1B in Scholkmann et al.&nbsp;Differential pathlength as a function of the wavelength (X-axis) and the age of the participant (Y-axis).
+Figure&nbsp;2: Reproduction of Figure 1B in Scholkmann et al.&nbsp;Differential pathlength as a function of the wavelength (X-axis) and the age of the participant (Y-axis).
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>We can also visualise the behaviour of the DPF across ages and wavelengths as a 2D heatmap in <a href="#fig-2" class="quarto-xref">Figure&nbsp;4</a>:</p>
+<p>We can also visualise the behaviour of the DPF across ages and wavelengths as a 2D heatmap in <a href="#fig-2" class="quarto-xref">Figure&nbsp;3</a>:</p>
 <div id="cell-fig-2" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
@@ -487,7 +475,7 @@ Figure&nbsp;3: Reproduction of Figure 1B in Scholkmann et al.&nbsp;Differential 
 <img src="dpf-scholkmann_files/figure-html/fig-2-output-1.png" width="683" height="490" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: DPF as a function of participant age and wavelengths.
+Figure&nbsp;3: DPF as a function of participant age and wavelengths.
 </figcaption>
 </figure>
 </div>
