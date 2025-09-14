@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="En el canal de Twitch de Psicometries hicimos un directo en el que explicamos cómo se ha creado el paquete de R {psicotuiteR}, indicando cada paso lo mejor que hemos podido para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.">
+
 <title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -65,16 +69,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../..//assets/media/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c10b30eb894da51f146a98bd36b89e1d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7e67543a9d595d1046b6f788c20a10ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -100,33 +106,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><style>
+}</script>
+<style>
 
       .quarto-title-block .quarto-title-banner {
         background: #2DC9D2;
       }
 </style>
+
+
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/creando-paquete-r-psicotuiter/psicotuiter.png">
+<meta property="og:image" content="https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/psicotuiter.png">
 <meta property="og:site_name" content="Gonzalo García-Castro">
 <meta property="og:image:height" content="278">
 <meta property="og:image:width" content="240">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/creando-paquete-r-psicotuiter/psicotuiter.png">
+<meta name="twitter:image" content="https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/psicotuiter.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="278">
 <meta name="twitter:image-width" content="240">
 </head>
+
 <body class="floating nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -136,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -149,18 +163,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Creando un paquete de R: una guía informal</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                   <div>
@@ -200,48 +218,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
-<li><a href="#qu%C3%A9-es-el-paquete-psicotuiter" id="toc-qué-es-el-paquete-psicotuiter" class="nav-link active" data-scroll-target="#qu%C3%A9-es-el-paquete-psicotuiter">¿Qué es el paquete {psicotuiteR}?</a></li>
-  <li><a href="#qu%C3%A9-es-un-paquete-de-r" id="toc-qué-es-un-paquete-de-r" class="nav-link" data-scroll-target="#qu%C3%A9-es-un-paquete-de-r">¿Qué es un paquete de R?</a></li>
-  <li><a href="#por-qu%C3%A9-hacer-un-paquete-de-r" id="toc-por-qué-hacer-un-paquete-de-r" class="nav-link" data-scroll-target="#por-qu%C3%A9-hacer-un-paquete-de-r">¿Por qué hacer un paquete de R?</a></li>
-  <li><a href="#qu%C3%A9-necesito-para-hacer-un-paquete-de-r" id="toc-qué-necesito-para-hacer-un-paquete-de-r" class="nav-link" data-scroll-target="#qu%C3%A9-necesito-para-hacer-un-paquete-de-r">¿Qué necesito para hacer un paquete de R?</a></li>
+  <li><a href="#qué-es-el-paquete-psicotuiter" id="toc-qué-es-el-paquete-psicotuiter" class="nav-link active" data-scroll-target="#qué-es-el-paquete-psicotuiter">¿Qué es el paquete {psicotuiteR}?</a></li>
+  <li><a href="#qué-es-un-paquete-de-r" id="toc-qué-es-un-paquete-de-r" class="nav-link" data-scroll-target="#qué-es-un-paquete-de-r">¿Qué es un paquete de R?</a></li>
+  <li><a href="#por-qué-hacer-un-paquete-de-r" id="toc-por-qué-hacer-un-paquete-de-r" class="nav-link" data-scroll-target="#por-qué-hacer-un-paquete-de-r">¿Por qué hacer un paquete de R?</a></li>
+  <li><a href="#qué-necesito-para-hacer-un-paquete-de-r" id="toc-qué-necesito-para-hacer-un-paquete-de-r" class="nav-link" data-scroll-target="#qué-necesito-para-hacer-un-paquete-de-r">¿Qué necesito para hacer un paquete de R?</a></li>
   <li><a href="#inicializando-el-paquete" id="toc-inicializando-el-paquete" class="nav-link" data-scroll-target="#inicializando-el-paquete">Inicializando el paquete</a></li>
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">DESCRIPTION</a></li>
   <li><a href="#funciones-en-r" id="toc-funciones-en-r" class="nav-link" data-scroll-target="#funciones-en-r">Funciones en R</a></li>
-  <li>
-<a href="#documentaci%C3%B3n" id="toc-documentación" class="nav-link" data-scroll-target="#documentaci%C3%B3n">Documentación</a>
+  <li><a href="#documentación" id="toc-documentación" class="nav-link" data-scroll-target="#documentación">Documentación</a>
   <ul class="collapse">
-<li><a href="#vi%C3%B1etas-y-art%C3%ADculos" id="toc-viñetas-y-artículos" class="nav-link" data-scroll-target="#vi%C3%B1etas-y-art%C3%ADculos">Viñetas y artículos</a></li>
-  </ul>
-</li>
+  <li><a href="#viñetas-y-artículos" id="toc-viñetas-y-artículos" class="nav-link" data-scroll-target="#viñetas-y-artículos">Viñetas y artículos</a></li>
+  </ul></li>
   <li><a href="#dependencias-y-otras-pesadillas" id="toc-dependencias-y-otras-pesadillas" class="nav-link" data-scroll-target="#dependencias-y-otras-pesadillas">Dependencias y otras pesadillas</a></li>
-  <li>
-<a href="#datos-internos-datos-externos-datos-brutos" id="toc-datos-internos-datos-externos-datos-brutos" class="nav-link" data-scroll-target="#datos-internos-datos-externos-datos-brutos">Datos internos, datos externos, datos brutos</a>
+  <li><a href="#datos-internos-datos-externos-datos-brutos" id="toc-datos-internos-datos-externos-datos-brutos" class="nav-link" data-scroll-target="#datos-internos-datos-externos-datos-brutos">Datos internos, datos externos, datos brutos</a>
   <ul class="collapse">
-<li><a href="#datos-internos-y-externos" id="toc-datos-internos-y-externos" class="nav-link" data-scroll-target="#datos-internos-y-externos">Datos internos y externos</a></li>
+  <li><a href="#datos-internos-y-externos" id="toc-datos-internos-y-externos" class="nav-link" data-scroll-target="#datos-internos-y-externos">Datos internos y externos</a></li>
   <li><a href="#datos-brutos" id="toc-datos-brutos" class="nav-link" data-scroll-target="#datos-brutos">Datos brutos</a></li>
   <li><a href="#archivos-externos-e-inst" id="toc-archivos-externos-e-inst" class="nav-link" data-scroll-target="#archivos-externos-e-inst">Archivos externos e inst/</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#manteniendo-y-compartiendo-el-paquete" id="toc-manteniendo-y-compartiendo-el-paquete" class="nav-link" data-scroll-target="#manteniendo-y-compartiendo-el-paquete">Manteniendo y compartiendo el paquete</a>
+  </ul></li>
+  <li><a href="#manteniendo-y-compartiendo-el-paquete" id="toc-manteniendo-y-compartiendo-el-paquete" class="nav-link" data-scroll-target="#manteniendo-y-compartiendo-el-paquete">Manteniendo y compartiendo el paquete</a>
   <ul class="collapse">
-<li><a href="#git-y-github" id="toc-git-y-github" class="nav-link" data-scroll-target="#git-y-github">Git y GitHub</a></li>
+  <li><a href="#git-y-github" id="toc-git-y-github" class="nav-link" data-scroll-target="#git-y-github">Git y GitHub</a></li>
   <li><a href="#poniendo-a-prueba-el-paquete-con-testthat-y-test" id="toc-poniendo-a-prueba-el-paquete-con-testthat-y-test" class="nav-link" data-scroll-target="#poniendo-a-prueba-el-paquete-con-testthat-y-test">Poniendo a prueba el paquete con {testthat} y test()</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><p>En este tutorial en colaboración con Alicia Franco-Martínez <a href="https://twitter.com/AliciaFrancoXVE"><i class="fa-brands fa-twitter"></i></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, explicaremos cómo se ha creado el paquete de R <strong>{psicotuiteR}</strong>. En el canal de Twitch de Alicia, <a href="https://t.co/JtxXtTszGi?amp=1">Psicometries</a> (al que también debéis suscribiros), hicimos un <a href="https://www.twitch.tv/videos/1202539110">directo</a> en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</p>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+
+<p>En este tutorial en colaboración con Alicia Franco-Martínez <a href="https://twitter.com/AliciaFrancoXVE"><i class="fa-brands fa-twitter"></i></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, explicaremos cómo se ha creado el paquete de R <strong>{psicotuiteR}</strong>. En el canal de Twitch de Alicia, <a href="https://t.co/JtxXtTszGi?amp=1">Psicometries</a> (al que también debéis suscribiros), hicimos un <a href="https://www.twitch.tv/videos/1202539110">directo</a> en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Merece la pena seguir a Alicia en Twitter: hace muy buena divulgación sobre psicometría, estadística y R.</p></div></div><iframe width="560" height="315" src="https://www.youtube.com/embed/1NLaPcHUJP0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
 </iframe>
-<section id="qué-es-el-paquete-psicotuiter" class="level2"><h2 class="anchored" data-anchor-id="qué-es-el-paquete-psicotuiter">¿Qué es el paquete {psicotuiteR}?</h2>
+<section id="qué-es-el-paquete-psicotuiter" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-el-paquete-psicotuiter">¿Qué es el paquete {psicotuiteR}?</h2>
 <div class="grid">
 <div class="g-col-7">
 <p>El paquete <a href="https://gongcastro.github.io/psicotuiterR/"><strong>psicotuiteR</strong></a> es un paquete muy simple que hemos creado para que la gente de la comunidad de <a href="https://twitter.com/search?q=%23psicotuiter&amp;src=typed_query">#psicotuiter</a>, en Twitter, pudiera experimentar con él añadiendo funciones o jugando con los datos que incluye. Podéis ver más información sobre el paquete en su página web. La comunidad es psicotuiter es un grupo de castellanoparlantes que hablan, entre otras cosas, sobre psicología y salud mental en Twitter.</p>
@@ -250,28 +273,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://gongcastro.github.io/psicotuiterR/"><img src="psicotuiter.png" class="img-fluid"></a></p>
 </div>
 </div>
-</section><section id="qué-es-un-paquete-de-r" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="qué-es-un-paquete-de-r">¿Qué es un paquete de R?</h2>
+</section>
+<section id="qué-es-un-paquete-de-r" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="qué-es-un-paquete-de-r">¿Qué es un paquete de R?</h2>
 <p>En el manual <a href="https://r-pkgs.org/"><strong>R packages</strong></a> de Hadley Wickham y Jenny Bryan, se describe un paquete de R así:</p>
 <blockquote class="blockquote">
 <p>In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others.</p>
 </blockquote>
 <p>A mí me gusta definirlo como un grupo de funciones documentadas que se agrupan siguiendo el formato que el alto consejo jedi<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> ha dictado.</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;La gente que gestiona CRAN, vaya. Tienen cierta fama de <em>boomers</em>.</p></div></div><p>Por cierto, <strong>R packages</strong> es el mejor recurso que existe en este momento para aprender a hacer paquetes de R. No hay nada en este tutorial que no esté incluido ahí–incluso mejor explicado–a excepción de algún que otro comentario autodespectivo al pie de página.</p>
-</section><section id="por-qué-hacer-un-paquete-de-r" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="por-qué-hacer-un-paquete-de-r">¿Por qué hacer un paquete de R?</h2>
+</section>
+<section id="por-qué-hacer-un-paquete-de-r" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="por-qué-hacer-un-paquete-de-r">¿Por qué hacer un paquete de R?</h2>
 <p>Cuando programamos, es común que necesitemos ejecutar la misma línea de código varias veces. Cuando esto ocurre, en lugar de escribir y ejecutar la misma línea de código una y otra vez en la consola de R, podemos escribir un <em>script</em>. Un script de R es un archivo con la extensión <code>.R</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> que contiene las diferentes líneas de código que queremos ejecutar.</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Por convención se suele usar la “R” mayúscula, aunque la mayoría de los sistemas operativos son indiferentes a que escribamos las extensiones en mayúsculas o minúsculas. Hagas lo que hagas, trata de ser consistente.</p></div></div><p>A veces el mismo script contiene líneas de código muy parecidas que ejecutamos para aplicar, por ejemplo, la misma función sobre objetos diferentes. Por ejemplo:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">x</span> <span class="op">~</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">df1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">x</span> <span class="op">~</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">df2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(x <span class="sc">~</span> y, <span class="at">data =</span> df1)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(x <span class="sc">~</span> y, <span class="at">data =</span> df2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>En el bloque de código de arriba, <code>df1</code> y <code>df2</code> son objetos de tipo <em>data.frame</em> con variables similares pero diferentes observaciones. Idealmente, <strong>no deberíamos repetir la misma línea de código más de una vez</strong>. Digo idealmente porque la alternativa es escribir una función. No siempre merece la pena hacer una función, por mucho que la gente más purista insista. Si estás leyendo esto doy por hecho que te interesa hacer tu código más conciso y replicable.</p>
 <p>En todo caso es generalmente recomendable definir una serie de <strong>funciones</strong> antes de trabajar sobre tus datos. Una <strong>función</strong> es un conjunto de comandos que se ejecutan en orden cuando damos la orden<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Estos comandos se agrupan bajo el nombre que asignemos a la función. Así podemos condensar nuestro código en funciones para que sea más conciso.</p>
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Definición mediocre pero obligada. Lo siento.</p></div></div><p>En un último nivel de abstracción, nivel cerebro galáctico, está <strong>agrupar nuestras funciones en un paquete</strong>. Hacer esto tiene unos cuantos beneficios:</p>
 <ul>
 <li>No tendremos que definir las funciones cada vez que abramos un script: bastará con cargar el paquete y sus funciones estarán disponibles para usarlas.</li>
 <li>Será más fácil compartir nuestro código con otras personas: es común que nuestras funciones requieran, tener instalados ciertos paquetes externos. Por ejemplo, si mi función usa la función <code>mutate</code> del paquete dplyr, quien quiera usar mi función deberá tener instalado dplyr (a veces es inluso necesario tener instalada la misma versión del paquete). Este es uno de las principales amenazas a la reproducibilidad de nuestro código. Un paquete de R, sin embargo, se asegura que, durante la instalación, se instalen las dependencias necesarias en el ordenador de la otra persona,</li>
-<li>Podremos documentar las funciones fácilmente (se acabaron los comentarios escuestos e indescifrables en nuestros scripts) y hacer esta documentación accesible a quien use nuestro paquete al ejecutar <code>?mifuncion</code> (puedes ejecutar <code><a href="https://rdrr.io/r/base/mean.html">?mean</a></code> para ver un ejemplo de cómo se verá nuestra documentación).</li>
+<li>Podremos documentar las funciones fácilmente (se acabaron los comentarios escuestos e indescifrables en nuestros scripts) y hacer esta documentación accesible a quien use nuestro paquete al ejecutar <code>?mifuncion</code> (puedes ejecutar <code>?mean</code> para ver un ejemplo de cómo se verá nuestra documentación).</li>
 </ul>
 <p>Hay más motivos por los que puede ser buena idea crear un paquete de R, como por ejemplo trabajar con tu propio código de forma más <strong>cómoda y reproducible</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, para compartir y <strong>documentar bases de datos</strong> (a veces nuestro paquete no incluirá ninguna función, sino únicamente unos datos y su documentación) o para <strong>aprender R más a fondo</strong> y sus entresijos. Yo he aprendido más intentando hacer paquetes de R que en cualquer tutorial.</p>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Tu <em>yo</em> futuro te lo agradecerá y si algún día se puede viajar en el tiempo lo harás para darte un beso en la frente por ello.</p></div></div></section><section id="qué-necesito-para-hacer-un-paquete-de-r" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="qué-necesito-para-hacer-un-paquete-de-r">¿Qué necesito para hacer un paquete de R?</h2>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Tu <em>yo</em> futuro te lo agradecerá y si algún día se puede viajar en el tiempo lo harás para darte un beso en la frente por ello.</p></div></div></section>
+<section id="qué-necesito-para-hacer-un-paquete-de-r" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="qué-necesito-para-hacer-un-paquete-de-r">¿Qué necesito para hacer un paquete de R?</h2>
 <p>Para seguir este tutorial, y en general para crear un paquete de R necesitaremos instalar en nuestro ordenador<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>:</p>
 <div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;En el momento de escribir este tutorial yo estoy usando R 4.0.4, RStudio 1.4.1103, rmarkdown 2.11.1, devtools 2.4.2 y usethis 2.0.1. Echa un vistazo a esta <a href="https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages">guía</a> para ver cómo instalar una versión específica de un paquete de R.</p></div></div><ul>
 <li><a href="https://ftp.cixug.es/CRAN/">R</a></li>
@@ -279,21 +308,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Los siguientes paquetes de R: <a href="https://github.com/r-lib/devtools">devtools</a>, <a href="https://usethis.r-lib.org/">usethis</a> y <a href="https://rmarkdown.rstudio.com/">rmarkdown</a>.</li>
 </ul>
 <p>Puedes instalar estos paquetes así:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span>, <span class="st">"usethis"</span>, <span class="st">"rmarkdown"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>, <span class="st">"usethis"</span>, <span class="st">"rmarkdown"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Cuando tengamos todo instalado, reiniciaremos nuestra sesión de RStudio y después cargaremos devtools y usethis (usaremos rmarkdown más adelante):</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="inicializando-el-paquete" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="inicializando-el-paquete">Inicializando el paquete</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="inicializando-el-paquete" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="inicializando-el-paquete">Inicializando el paquete</h2>
 <p>Salvo contadas excepciones<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, las personas de bien utilizaremos <strong>RStudio</strong> para programar en R, en lugar de usar únicamente la consola como hacen les psicópatas. Trabajar en un proyecto de RStudio nos facilitará mucho la vida al hacer un paquete de R y deberías hacerlo casi siempre que programas en R (como mínimo, te ahorrará mucho tiempo buscando documentos dentro de carpetas)<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
 <div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;Por ejemplo, si tienes el suficiente tiempo libre como para configurar una sesión de R medianamente funcional en Visual Studio Code.</p></div><div id="fn8"><p><sup>8</sup>&nbsp;Nunca está demás ver este <a href="https://slides.djnavarro.net/project-structure/#1">tutorial</a> de Danielle Navarro sobre cómo organizar un repositorio</p></div></div><p>Para crear un paquete tenemos dos opciones: hacerlo a través de <strong>RStudio</strong> (ver <a href="https://support.rstudio.com/hc/en-us/articles/200486488-Developing-Packages-with-the-RStudio-IDE">tutorial</a>) o usando <strong>usethis</strong> en nuestra consola. A mi me gusta la segunda opción:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">create_package</span><span class="op">(</span>path <span class="op">=</span> <span class="st">"psicotuiteR"</span><span class="op">)</span> <span class="co"># abre nueva ventana</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Este comando creará una <strong>nueva carpeta</strong>. Lo hará dentro de tu repositorio de inicio, el cual puedes consultar ejecutando <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> en tu consola (asumiendo que nos has cambiado el directorio por tu cuenta previamente). Esta carpeta contendrá varios archivos y una carpeta:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.gitignore</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_package</span>(<span class="at">path =</span> <span class="st">"psicotuiteR"</span>) <span class="co"># abre nueva ventana</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Este comando creará una <strong>nueva carpeta</strong>. Lo hará dentro de tu repositorio de inicio, el cual puedes consultar ejecutando <code>getwd()</code> en tu consola (asumiendo que nos has cambiado el directorio por tu cuenta previamente). Esta carpeta contendrá varios archivos y una carpeta:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.gitignore</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.Rbuildignore</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">DESCRIPTION</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">NAMESPACE</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">psicotuiteR.Rproj</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -309,114 +340,126 @@ Important
 </div>
 <p>Uno de los archivos en la carpeta tiene el mismo nombre que el paquete y la extensión <code>.Rproj</code>. Cada vez que queramos trabajar en nuestro paquete es recomendable abrir la sesión de RStudio haciendo doble click sobre el archivo <code>.Rproj</code>. Veremos qué son el resto de archivos más adelante.</p>
 <p>Pues bien: técnicamente, ¡ya tenemos un paquete de R! Si ejecutamos el código de abajo, el paquete se instalará como si fuera uno más en nuestro directorio de paquetes de R.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Encontrarás la carpeta de instalación junto a la de los demás paquetes que hays instalado en tu ordenador. Puedes consultar dónde se instalan tus paquetes de R ejecutando <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> en tu consola. La primera ruta que aparezca será donde encontrarás tu paquete instalado (en mi caso, encontraré la carpeta <code>~/Documents/R/win-library/4.0/psicotuiteR</code>).</p>
-<p>La función que hemos ejecutado, <strong><code>install()</code></strong> del paquete devtools simula lo que otra persona haría al ejecutar la función <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> si nuestro paquete estuviera disponible en CRAN. Ahora mismo, podríamos cargar nuestro paquete con <code><a href="https://rdrr.io/r/base/library.html">library(psicotuiteR)</a></code> y trabajar con él. Por supuesto, nuestro paquete aún está vacío. En las próximas secciones veremos cómo añadir funciones, entre otras cosas, a nuestro paquete.</p>
-<p>Antes de hacer eso, ahí va un truco: cuando añadimos o hacemos cambios en el paquete, necesitaremos actualizar nuestra sesión y cargar el paquete de nuevo y volver a ejecutar las funciones para comprobar que todo funciona correctamente. En lugar de ejecutar <code>install()</code> cada vez que queremos ver si nuestro paquete funciona, podemos ejecutar <strong><code>load_all()</code></strong> (también del paquete devtools) sin siquera reiniciar la sesión y así cargar de nuevo el paquete actualizado como si alguien hubiera cargado el paquete usando <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Los contenidos del paquete que se cargarán usando <code>load_all()</code> son los que hay en el nuestro repositorio (desde el que estamos desarrollando el paquete), y no desde el directorio en el que se instala el paquete si ejecutamos <code>install()</code>. ¡Esto es mucho más rápido y eficiente!</p>
-<p>Otro truco: puesto que vamos a utilizar las funciones de los paquetes devtools y usethis a menudo–y por lo tanto vamos a necesitar cargar estos paquetes mediante <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code> y <code><a href="https://usethis.r-lib.org">library(usethis)</a></code> cada vez que iniciemos una sesión de R– podría ser recomendable añadir esos dos comandos a nuestro archivo <strong>.Rprofile</strong> (ver esta <a href="https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf">guía</a> para más información sobre .Rprofile. Las líneas de código que contenga ese archivo serán ejecutadas en cada inicio de sesión que hagamos en nuestro proyecto de RStudio. Podemos hacer esto usando las siguientes funciones de usethis:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span>
-<span><span class="fu">use_usethis</span><span class="op">(</span><span class="op">)</span> </span>
-<span><span class="fu">use_devtools</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Esto creará un archivo llamado <strong>.Rprofile</strong> en nuestro directorio y añadirá, entre otras cosas muy útiles, los comandos <code><a href="https://usethis.r-lib.org">library(usethis)</a></code> y <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code>.</p>
-</section><section id="description" class="level2"><h2 class="anchored" data-anchor-id="description">DESCRIPTION</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Encontrarás la carpeta de instalación junto a la de los demás paquetes que hays instalado en tu ordenador. Puedes consultar dónde se instalan tus paquetes de R ejecutando <code>.libPaths()</code> en tu consola. La primera ruta que aparezca será donde encontrarás tu paquete instalado (en mi caso, encontraré la carpeta <code>~/Documents/R/win-library/4.0/psicotuiteR</code>).</p>
+<p>La función que hemos ejecutado, <strong><code>install()</code></strong> del paquete devtools simula lo que otra persona haría al ejecutar la función <code>install.packages()</code> si nuestro paquete estuviera disponible en CRAN. Ahora mismo, podríamos cargar nuestro paquete con <code>library(psicotuiteR)</code> y trabajar con él. Por supuesto, nuestro paquete aún está vacío. En las próximas secciones veremos cómo añadir funciones, entre otras cosas, a nuestro paquete.</p>
+<p>Antes de hacer eso, ahí va un truco: cuando añadimos o hacemos cambios en el paquete, necesitaremos actualizar nuestra sesión y cargar el paquete de nuevo y volver a ejecutar las funciones para comprobar que todo funciona correctamente. En lugar de ejecutar <code>install()</code> cada vez que queremos ver si nuestro paquete funciona, podemos ejecutar <strong><code>load_all()</code></strong> (también del paquete devtools) sin siquera reiniciar la sesión y así cargar de nuevo el paquete actualizado como si alguien hubiera cargado el paquete usando <code>library()</code>. Los contenidos del paquete que se cargarán usando <code>load_all()</code> son los que hay en el nuestro repositorio (desde el que estamos desarrollando el paquete), y no desde el directorio en el que se instala el paquete si ejecutamos <code>install()</code>. ¡Esto es mucho más rápido y eficiente!</p>
+<p>Otro truco: puesto que vamos a utilizar las funciones de los paquetes devtools y usethis a menudo–y por lo tanto vamos a necesitar cargar estos paquetes mediante <code>library(devtools)</code> y <code>library(usethis)</code> cada vez que iniciemos una sesión de R– podría ser recomendable añadir esos dos comandos a nuestro archivo <strong>.Rprofile</strong> (ver esta <a href="https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf">guía</a> para más información sobre .Rprofile. Las líneas de código que contenga ese archivo serán ejecutadas en cada inicio de sesión que hagamos en nuestro proyecto de RStudio. Podemos hacer esto usando las siguientes funciones de usethis:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_usethis</span>() </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_devtools</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esto creará un archivo llamado <strong>.Rprofile</strong> en nuestro directorio y añadirá, entre otras cosas muy útiles, los comandos <code>library(usethis)</code> y <code>library(devtools)</code>.</p>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">DESCRIPTION</h2>
 <p>El primer archivo que vamos a explicar se llama <strong>DESCRIPTION</strong>. La mayor parte de la <strong>información general</strong> (o meta-información) de nuestro paquete se encuentra en este archivo: autoría, ajustes generales, dependencias, etc. Puedes consultar el <a href="https://github.com/gongcastro/psicotuiteR/blob/2c8c7c47d97f02509dff0e26b42e41f93c88bd64/DESCRIPTION">DESCRIPTION</a> de psicotuiteR para hacerte una idea de cómo se ve cuando está editado. ¡Presta especial atención a cómo hemos indicado la autoría!</p>
 <p>DESCRIPTION es uno de los pocos archivos que tendremos que editar tanto a mano como mediante otras funciones del paquete usethis. Tendremos que cambiar el título, autoría y descripción del paquete a mano (además de algún otro campo), mientras que, por ejemplo, los campos <em>Imports</em>, <em>Depends</em> y <em>Suggests</em> serán rellenados más adelante mediante la función <code>use_package()</code>, de usethis. Cuando hablemos de dependencias, más adelante, comentaremos un par de cosas saobre estos tres campos.</p>
-</section><section id="funciones-en-r" class="level2"><h2 class="anchored" data-anchor-id="funciones-en-r">Funciones en R</h2>
+</section>
+<section id="funciones-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-en-r">Funciones en R</h2>
 <p>Las funciones de R son el cuerpo principal de un paquete de R. Contienen el <strong>código que se ejecutará en nuestras funciones</strong> y su correspondiente <strong>documentación</strong>. Las funciones de por sí no tienen gran misterio. Las puedes hacer más simples o más complejas. Generalmente, por motivos de legibilidad suele ser mejor mantener nuestras funciones lo más simples que podamos. <strong>Es mejor escribir muchas funciones que hacen tareas pequeñas que pocas funciones que lo hacen todo</strong>. No tienes por qué hacer disponibles todas las funciones que escribas: puedes mantener algunas funciones para uso interno dentro de otras funciones que sí están disponibles al público (ahora veremos cómo). Hay muchos tutoriales para aprender a hacer funciones en R. Por ejemplo <a href="https://r-coder.com/function-r/">este</a>. Merece la pena ganar algo de confianza en poder hacer funciones de R: empodera mucho y te hace entender muchos de los errores que te encontrarás a lo largo de tu vida programando en R. Ahí va un ejemplo de función muy simple:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">print_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
-<span>    <span class="va">author</span> <span class="op">=</span> <span class="st">"Gon"</span></span>
-<span><span class="op">)</span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">author</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>print_name <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">author =</span> <span class="st">"Gon"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>){</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(author)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Esas líneas de código definen la función <code>print_name()</code>. Esta función incluye un argumento llamado <em>author</em>, que, por defecto, toma el valor <code>"Gon"</code>. Si definimos la función y ejecutamos <code>print_name()</code> en nuestra consola de R, nos devolverá el valor `“Gon”.</p>
 <p>Guardaremos esta función en un archivo con la extensión .R dentro de la carpeta R/ en nuestro repositorio principal (el nombre que pongamos a este archivo da igual, pero trata de que sea informativo de su contenido). Yo llamaré a este archivo <code>print_name.R</code>. Ahora nuestro directorio se ve así:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.gitignore</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.gitignore</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.Rbuildignore</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">DESCRIPTION</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">NAMESPACE</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">psicotuiteR.Rproj</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span><span class="ex">-print_name.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="documentación" class="level2"><h2 class="anchored" data-anchor-id="documentación">Documentación</h2>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span><span class="ex">-print_name.R</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="documentación" class="level2">
+<h2 class="anchored" data-anchor-id="documentación">Documentación</h2>
 <p>Ahora vamos a <strong>documentar esa función</strong>. R utiliza un tipo de lenguaje parecido a LaTeX para escribir la documentación de un paquete. Este lenguaje se llama <strong>R documentation</strong>. Técnicamente, podríamos escribir toda la documentación de cada función de nuestro paquete en este lenguaje y guardar cada archivo en la carpeta man/ con la extensión .Rd. En esta carpeta es donde R espera encontrar la documentación. Gracias a Dios (y a la buena voluntad de la comunidad de R), podemos incluir los contenidos de esos archivos como si fueran comentarios en nuestros scripts de R, encima de cada función. La función <strong><code>document()</code></strong> de devtools se encargará de generar todos los .Rd necesarios en la carpeta man/ por nosotrxs. Volveremos a esto más adelante. Por ahora, observa un ejemplo de función documentada:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Print author</span></span>
-<span><span class="co">#' @export print_name</span></span>
-<span><span class="co">#' @usage print_author()</span></span>
-<span><span class="co">#' @import dplyr</span></span>
-<span><span class="co">#' @importFrom tidyr drop_na</span></span>
-<span><span class="co">#' @description Print the name of the author of the package we are developing</span></span>
-<span><span class="co">#' @param author Name of the package author</span></span>
-<span><span class="co">#' @author Gonzalo Garcia-Castro</span></span>
-<span><span class="va">print_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
-<span>    <span class="va">author</span> <span class="op">=</span> <span class="st">"Gon"</span></span>
-<span><span class="op">)</span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">author</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Print author</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export print_name</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @usage print_author()</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @import dplyr</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom tidyr drop_na</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @description Print the name of the author of the package we are developing</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param author Name of the package author</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @author Gonzalo Garcia-Castro</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>print_name <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">author =</span> <span class="st">"Gon"</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>){</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(author)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>En la parte de abajo encontramos las mismas líneas de código que hemos visto antes. En la parte de arriba encontramos la documentación de la función. Estas líneas de código están <strong>precedidas por el símbolo <code>#'</code></strong>. La apóstrofe indica que no es un comentario cualquiera, sino parte de la documentación de la función. En la mayoría de estas líneas indicamos mediante el símbolo <strong><code>@</code></strong> qué campo estamos describiendo (autoría, descripción, un argumento, etc.).</p>
 <p>Por ejemplo, la línea de abajo indica que estamos describiendo uno de los argumentos de la función (por alguna razón que desconozco, se ha decidido refererirse a los argumentos como “<code>@param</code>” y no como <code>@arg</code>“). La primera línea se asume que es el título de la función y por eso no hace falta indicar <code>@title</code> antes de <code>"Print author"</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @param author Name of the package author</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param author Name of the package author</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Una vez hayamos rellenado la documentación de nuestra función, ejecutaremos <code>document()</code> y se generará automáticamente un archivo llamado <code>print_name.Rd</code> en la carpeta man/. Podemos comprobar que la documentación se ha guardado correctamente ejecutando <code>?print_name</code>. Se debería abrir la ventana <em>Help</em> en uno de los paneles de RStudio. Algunos consejos cuando rellenes la documentación de tus funciones:</p>
 <ul>
 <li>Explica las cosas con <strong>claridad</strong>, pero no tengas miedo de extenderte o repetir las cosas. <strong>Más documentación siempre es mejor que menos documentación</strong>, siempre que se expliquen las cosas con claridad y se mantenga cierto sistema en la estructura de la documentación.</li>
 <li>Echa un vistazo a la documentación de las funciones princpiales de tus paquetes favoritos. Es la mejor forma de saber cómo documentar un función y qué campos son los más importantes.</li>
 </ul>
-<section id="viñetas-y-artículos" class="level3"><h3 class="anchored" data-anchor-id="viñetas-y-artículos">Viñetas y artículos</h3>
+<section id="viñetas-y-artículos" class="level3">
+<h3 class="anchored" data-anchor-id="viñetas-y-artículos">Viñetas y artículos</h3>
 <p>Una forma más elaborada de documentar un paquete es crear <strong>viñetas</strong>. Una viñeta (o <em>vignette</em>, en inglés) es un documento en el que se explica con detalle cómo se trabaja con el paquete, como si fuera un <strong>tutorial</strong>. Las viñetas son particularmente útiles para quienes usan el paquete por primera vez, y deberían ilustrar, como mínimo, algún ejemplo sobre cómo se usan las funciones. Un buen ejemplo de viñeta es <a href="https://dplyr.tidyverse.org/articles/grouping.html">esta</a>, del paquete {dplyr}, en la que indican cómo usar la función <code>group_by()</code>. Para crear una viñeta ejecutaremos el siguiente comando:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_vignette</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_vignette</span>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"print-name"</span> <span class="co"># así se llamará el archivo,</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Imprimiendo un nombre"</span> <span class="co"># así se titulará la viñeta</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Este comando creará una carpeta llamada <strong>vignettes/</strong> y creará un archivo con la extensión .Rmd (Rmarkdown). Los archivos Rmarkdown son una mezcla entre un archivo <strong>Markdown</strong> (que tienen la extensión .md) y un script de R. Markdown es un lenguaje de edición de textos bastante sencillo (desde luego más sencillo que LaTeX). Rmarkdown permite intercalar bloques de código de R en medio del texto. Cuando renderizamos el documento, esos bloques de código se ejecutan y el resultado se incluye como texto o imagen. Este tipo de documentos son muy útiles para crear informes y actualizar los datos que incluyen con sólo un click. Si quieres aprender a user Rmarkdown (100% recomendado), el manual <a href="https://bookdown.org/yihui/rmarkdown/"><strong>R Markdown: The Definitive Guide</strong></a> de Yihui Xie es el mejor recurso. Una vez escribamos nuestra viñeta podremos incluirla en nuestra documentación ejecutando:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">build_vignettes</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">build_vignettes</span>()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">document</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Como dato curioso, este mismo tutorial que estás leyendo es una viñeta incluida en el paquete psicotuiteR. Muy meta todo, ¿verdad?</p>
-</section></section><section id="dependencias-y-otras-pesadillas" class="level2"><h2 class="anchored" data-anchor-id="dependencias-y-otras-pesadillas">Dependencias y otras pesadillas</h2>
+</section>
+</section>
+<section id="dependencias-y-otras-pesadillas" class="level2">
+<h2 class="anchored" data-anchor-id="dependencias-y-otras-pesadillas">Dependencias y otras pesadillas</h2>
 <p>Con frecuencia nuestras funciones de R dependerán, a su vez, de funciones de otros paquetes. Considera la siguiente función:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Una función que añade una variable</span></span>
-<span><span class="co">#' @param x Una serie de caracteres</span></span>
-<span><span class="co">#' @returns El número incluido en x</span></span>
-<span><span class="va">extrae_numeros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">x</span>, <span class="st">"\\d"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Como indica la documentación, esta función devuelve los números incluidos en <code>x</code>, una serie de caracteres que introducimos como argumento, en formato numérico. Para ello utiliza la función <code>str_extract()</code>. Esta función pertenece al paquete <a href="https://stringr.tidyverse.org/">{stringr}.</a> Tal y como está escrita esta función, cuando instalemos el paquete y la ejecutemos no dará un error: R nos indicará que la función <code>str_extract</code> no existe. Podría ocurrírsenos usar algo como <code><a href="https://stringr.tidyverse.org/reference/str_extract.html">stringr::str_extract</a></code> o <code><a href="https://stringr.tidyverse.org">library(stringr)</a></code> dentro de la función. Pero esto no es buena idea porque muchas veces no funcionará. Necesitamos incluir la función <code>str_extract</code> y stringr como <strong>dependencias</strong> de nuestro paquete, para que cuando alguien instale el paquete esa función se encuentre disponible para el paquete cuando ejecutemos nuestra función <code>extrae_numeros()</code>. Para indicar una dependencia, debemos hacerlo en dos pasos:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Una función que añade una variable</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Una serie de caracteres</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns El número incluido en x</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>extrae_numeros <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(x, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(y)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Como indica la documentación, esta función devuelve los números incluidos en <code>x</code>, una serie de caracteres que introducimos como argumento, en formato numérico. Para ello utiliza la función <code>str_extract()</code>. Esta función pertenece al paquete <a href="https://stringr.tidyverse.org/">{stringr}.</a> Tal y como está escrita esta función, cuando instalemos el paquete y la ejecutemos no dará un error: R nos indicará que la función <code>str_extract</code> no existe. Podría ocurrírsenos usar algo como <code>stringr::str_extract</code> o <code>library(stringr)</code> dentro de la función. Pero esto no es buena idea porque muchas veces no funcionará. Necesitamos incluir la función <code>str_extract</code> y stringr como <strong>dependencias</strong> de nuestro paquete, para que cuando alguien instale el paquete esa función se encuentre disponible para el paquete cuando ejecutemos nuestra función <code>extrae_numeros()</code>. Para indicar una dependencia, debemos hacerlo en dos pasos:</p>
 <ol type="1">
 <li>Ejecutar <strong><code>use_package("stringr")</code></strong> para incluir stringr en la lista de paquetes que deben instalarse junto al nuestro. Al hacerlo, verás que stringr ha sido incluido en el campo <em>Imports</em> del archivo DESCRIPTION.</li>
 <li>Incluir la función <strong><code>str_extract</code></strong> del paquete stringr en la documentación de la función de la siguiente forma:</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @importFrom stringr str_extract</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom stringr str_extract</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ahora nuestra función debería verse así:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Una función que añade una variable</span></span>
-<span><span class="co">#' @param x Una serie de caracteres</span></span>
-<span><span class="co">#' @importFrom stringr str_extract</span></span>
-<span><span class="co">#' @returns El número incluido en x</span></span>
-<span><span class="va">extrae_numeros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">x</span>, <span class="st">"\\d"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Una función que añade una variable</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Una serie de caracteres</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom stringr str_extract</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns El número incluido en x</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>extrae_numeros <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(x, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(y)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>La función <code>str_extract</code> estará disponible y nuestra función podrá ejecutarse sin problemas. Otra opción sería <strong>importar el paquete stringr al completo</strong>, con todas sus funciones. En lugar de indicar <span class="citation" data-cites="importFrom">(<a href="#ref-importFrom" role="doc-biblioref"><strong>importFrom?</strong></a>)</span> con el nombre del paquete y la función que queremos importar, indicaríamos <code>@import</code> y solamente nombre del paquete: <code>#' @import stringr</code>. Sin embargo, <strong>casi siempre es mejor indicar las dependencias una a una</strong>, aunque sea repetitivo: así será más fácil detectar de dónde viene cada función que usamos. Si vamos a usar varias funciones del mismo paquete, podemos indicarlas una debajo de otra:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @importFrom stringr str_extract</span></span>
-<span><span class="co">#' @importFrom stringr str_detect</span></span>
-<span><span class="co">#' @importFrom stringr str_replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom stringr str_extract</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom stringr str_detect</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom stringr str_replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Sólo en el caso de que utilicemos muchísimas funciones del mismo paquete en nuestra función tendrá cierto sentido importar el paquete al completo. <strong>Las dependencias de nuestro paquete sólo estará disponibles cuando ejecutemos <code>document()</code> y se actualice la documentación</strong>. Esto es porque <code>document()</code> no sólo construye la documentación del paquete (los archivos .Rd en man/), sino que también modifica el archivo NAMESPACE para enumerar las dependencias. Echa un vistazo a <a href="https://github.com/gongcastro/psicotuiteR/blob/082bb32fd9bdc95e21414d72a07dd586fd82a37a/NAMESPACE">NAMESPACE</a> de psicotuiteR. Este archivo ha sido generado al ejecutar <code>document()</code>. Una de nuestras funciones incluye <code>#' @import janitor clean_names</code> y por tanto esta función ha sido incluida en el NAMESPACE.</p>
 <p>Hemos aprendido a indicar dependencias de otros paquetes en nuestro código através de la documentación: funciones que nuestras propias funciones necesitan. Para hacer nuestras funciones disponibles en el paquete, necesitaremos incluirlas también en el NAMESPACE, pero no como dependencias, sino como <strong>exportaciones</strong>: en lugar de incluirlas en la documentación usando <code>@importFrom</code>, lo haremos usando <code>#' @export</code>. Volviendo al ejemplo anterior: <code>#' @export extrae_numeros</code>. Nuestra función se ver ahora así:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Una función que añade una variable</span></span>
-<span><span class="co">#' @export extrae_numeros</span></span>
-<span><span class="co">#' @param x Una serie de caracteres</span></span>
-<span><span class="co">#' @importFrom stringr str_extract</span></span>
-<span><span class="co">#' @returns El número incluido en x</span></span>
-<span><span class="va">extrae_numeros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">x</span>, <span class="st">"\\d"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Una función que añade una variable</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export extrae_numeros</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Una serie de caracteres</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom stringr str_extract</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns El número incluido en x</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>extrae_numeros <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(x, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>))</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(y)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>La segunda línea indica que está función debe estar disponible en nuestro paquete con el nombre <code>extrae_numeros</code>. Aunque es posible exportar la función con un nombre diferente al que le hemos asignado en el script (R nos dará un aviso, pero no un error), es importante que así sea.</p>
 <p>Podrías preguntarte: ¿qué sentido tiene crear funciones si no van a estar disponibles para quien use el paquete? Pues porque <strong>a veces es recomendable hacer funciones pequeñas para uso interno</strong> que, aunque su funcion no es de gran interés para el público, ayuden a otras funciones más complejas que sí tienen sentido que use el público. Sea como sea, técnicamente sí se puede acceder a este tipo de funciones usando el operador <code>:::</code>.</p>
-<p>Si quieres hacer la prueba, ve a la consola de R y compara las sugerencias que salen cuando escribes <code>usethis::</code> y <code>usethis:::</code>. Todas esas funciones que salen en el segundo caso no están disponibles cuando cargamos el paquete usando <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> porque las personas que han creado el paquete usethis han considerado que no las necesitamos, aunque sí las necesitan las funciones que <em>sí</em> usamos.</p>
+<p>Si quieres hacer la prueba, ve a la consola de R y compara las sugerencias que salen cuando escribes <code>usethis::</code> y <code>usethis:::</code>. Todas esas funciones que salen en el segundo caso no están disponibles cuando cargamos el paquete usando <code>library()</code> porque las personas que han creado el paquete usethis han considerado que no las necesitamos, aunque sí las necesitan las funciones que <em>sí</em> usamos.</p>
 <p>En resumen, cuando ejecutemos <code>document()</code>, se incluirán en el NAMESPACE las funciones que hayamos indicado en la documentación mediante <code>#' @export</code>. Nunca modificaremos NAMESPACE archivo a mano, sino que cambiaremos sus contenidos modificando la documentación de nuestras funciones en el script de R y luego ejecutaremos <code>document()</code>. Con toda probabilidad, la mayoría de los problemas que vas a encontrar al desarrollar un paquete de R (también los más frustrantes) se deban a sus dependencias. Con el tiempo aprenderás a detectar estos problemas y entender por qué ocurren. Te damos un abrazo por adelantado: <em>been there, done that</em>.</p>
 <p>Hay dos dependencias un poco especiales: si usamos <em>pipes</em>, “pipas”–o como quiera Dios que se traduzca al español–en nuestras funciones, en lugar de indicar <code># @importFrom dplyr %&gt;%</code> en cada función, podremos ejecutar <code>use_pipe()</code> y esta función se encargará de incluir esta dependencia en la documentación por nosotros. Lo hará en un script llamado con el nombre de nuestro paquete, en la carpeta R/, que creará automáticamente. Si alguna de nuestras funciones devuelve un objeto en forma de <code>data.frame</code> y queremos usar la función <code>tibble</code>, del paquete <code>tibble</code> para que quede mejor, también podemos usar la función <code>use_tibble()</code>, que hará lo mismo que <code>use_pipe()</code>, aladiendo <code>tibble</code> a la lista de dependencias.</p>
 <p>Por último, <strong>es recomendable mantener las dependencias de paquetes al mínimo</strong>. Cada vez que incluimos una dependencia corremos el riesgo de que alguno de los paquetes de los que dependemos cambie de versión y nuestro paquete deje de funcionar porque una de las funciones de ese paquete que utilizamos ha cambiado. CRAN impone un límite de dependencias en 20.</p>
-</section><section id="datos-internos-datos-externos-datos-brutos" class="level2"><h2 class="anchored" data-anchor-id="datos-internos-datos-externos-datos-brutos">Datos internos, datos externos, datos brutos</h2>
-<p>Muchos paquetes incluyen objetos del tipo <em>data.frame</em>. Por ejemplo, el paquete {dplyr} contiene el objeto <code>starwars</code>. Este objeto es un data.frame con información sobre muchos personajes del universo de Star Wars. Podemos acceder a este objeto así <code><a href="https://dplyr.tidyverse.org/reference/starwars.html">dplyr::starwars</a></code>.</p>
+</section>
+<section id="datos-internos-datos-externos-datos-brutos" class="level2">
+<h2 class="anchored" data-anchor-id="datos-internos-datos-externos-datos-brutos">Datos internos, datos externos, datos brutos</h2>
+<p>Muchos paquetes incluyen objetos del tipo <em>data.frame</em>. Por ejemplo, el paquete {dplyr} contiene el objeto <code>starwars</code>. Este objeto es un data.frame con información sobre muchos personajes del universo de Star Wars. Podemos acceder a este objeto así <code>dplyr::starwars</code>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 14
@@ -432,8 +475,9 @@ Important
 #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 </div>
 </div>
-<p>Este objeto está documentado: si ejecutamos <code><a href="https://dplyr.tidyverse.org/reference/starwars.html">?dplyr::starwars</a></code> se abrirá el <strong>panel de documentación de RStudio</strong>. Este tipo de objetos son muy útiles para mostrar ejemplos de uso de las funciones de un paquete. Algunos paquetes incluso han sido diseñados con el único propósito de <strong>compartir una base de datos documentada</strong>, como por ejemplo el paquete <a href="https://allisonhorst.github.io/palmerpenguins/">{palmerpenguins}</a>, que apenas contiene el objeto <code>penguins</code>: una base de datos sobre la anatomía demlos pingüinos de la Isla de Palmer. En esta sección veremos cómo incluir una base de datos como ésta en nuestro paqeute de R y cómo documentarla.</p>
-<section id="datos-internos-y-externos" class="level3"><h3 class="anchored" data-anchor-id="datos-internos-y-externos">Datos internos y externos</h3>
+<p>Este objeto está documentado: si ejecutamos <code>?dplyr::starwars</code> se abrirá el <strong>panel de documentación de RStudio</strong>. Este tipo de objetos son muy útiles para mostrar ejemplos de uso de las funciones de un paquete. Algunos paquetes incluso han sido diseñados con el único propósito de <strong>compartir una base de datos documentada</strong>, como por ejemplo el paquete <a href="https://allisonhorst.github.io/palmerpenguins/">{palmerpenguins}</a>, que apenas contiene el objeto <code>penguins</code>: una base de datos sobre la anatomía demlos pingüinos de la Isla de Palmer. En esta sección veremos cómo incluir una base de datos como ésta en nuestro paqeute de R y cómo documentarla.</p>
+<section id="datos-internos-y-externos" class="level3">
+<h3 class="anchored" data-anchor-id="datos-internos-y-externos">Datos internos y externos</h3>
 <p>Podemos incluir un <em>data.frame</em> por defecto en nuestro paquete de dos formas: como un <strong>objeto interno</strong> o como un <strong>objeto externo</strong>. Hacerlo de la primera forma es el equivalente a crear una función sin exportarla al NAMESPACE: nos sirve para utilizarla dentro de las funciones internas del paquete, pero no será inmediatamente visible para quien cargue el paquete usando <code>library</code> (aunque igualmente podrá hacerlo usando el operador <code>:::</code>). Cuando incluimos el data.frame como objeto externo, sí se podrá acceder a él cuando cargemos el paquete (o mediante el operador <code>::</code>).</p>
 <p>Para guardar un <em>data.frame</em> de cualquiera de las dos formas, primero debemos tenerlo <strong>definido entre las variables de nuestra sesión de R</strong>. Por ejemplo, supón que hemos definido el data.frame <code>clima</code> (disponible en el paquete psicotuiteR):</p>
 <div class="cell">
@@ -457,17 +501,21 @@ Important
 </div>
 </div>
 <p>Utilizaremos la función <code>use_data()</code> del paquete usethis para incluirlo en nuestro paquete. Si queremos exportarlo al NAMESPACE especificaremos <code>internal = FALSE</code> en los argumentos de la función (opción por defecto). Si no queremos exportarlo especificaremos <code>internal = TRUE</code>:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">use_data</span><span class="op">(</span><span class="va">clima</span><span class="op">)</span> <span class="co"># objeto externo</span></span>
-<span><span class="fu">use_data</span><span class="op">(</span><span class="va">clima</span>, internal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># objeto interno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_data</span>(clima) <span class="co"># objeto externo</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_data</span>(clima, <span class="at">internal =</span> <span class="cn">TRUE</span>) <span class="co"># objeto interno</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Esta función creará (en caso de que no exita ya) una carpeta en nuestro directorio llamada data/ y guardará el data.frame como un archivo .rds (como un objeto de R), en nuestro caso lo guardará con el nombre <code>clima.rds</code>. En el caso de que el objeto ya exista, debemos incluir <code>overwrite = TRUE</code> en los argumentos para que nos permita sobreescribirlo.</p>
 <p><code>use_data()</code> también creará un archivo llamado <code>clima.R</code> en la carpeta R. Como la extensión indica, este archivo es un script de R como el que usamos para las funciones. Debemos documentar nuestros datos en este archivo usando Roxigen, tal y como hacemos para las funciones. Echa un vistazo al archivo <a href="https://github.com/gongcastro/psicotuiteR/blob/082bb32fd9bdc95e21414d72a07dd586fd82a37a/R/clima.R"><code>clima.R</code></a> del paquete psicotuiteR. Verás que sólo contiene documentación, excepto por la línea final, que contiene <code>"clima"</code>. No necesita nada más que el nombre del objeto bajo el cual exportaremos el <em>data.frame</em>. De lo demás se encargará, como siempre la función <code>document()</code>.</p>
-</section><section id="datos-brutos" class="level3"><h3 class="anchored" data-anchor-id="datos-brutos">Datos brutos</h3>
+</section>
+<section id="datos-brutos" class="level3">
+<h3 class="anchored" data-anchor-id="datos-brutos">Datos brutos</h3>
 <p>Hay una forma más de incluir datos, aun más reproducible que la anterior: <strong>incluir los datos brutos</strong>, como un archivo .csv, .txt, .tsv, .xlsx, etc. También podemos incluir en nuestro paquete el script de R con el código de que hemos usando para <strong>procesar los datos contenidos en el archivo</strong> y para llegar a la forma final del objeto que guaradamos mediante <code>use_data()</code>. La función <code>use_raw_data()</code> del paquete usethis se encarga de esto.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">use_raw_data</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_raw_data</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Esta función creará dos carpetas (en caso de que no existan ya): inst/ y data-raw/. La carpeta inst/ (abreviatura de <em>installation</em>) de un paquete de R <strong>incluye archivos externos</strong> (por ejemplo, .txt, scripts de Python, Stan, C++…) que queremos que estén disponibles cuando alguien cargue el paquete, pero no son archivos que normalmente se incluyan en un paquete. Es recomendable guardar el archivo con nuestros datos brutos en la carpeta inst/. En la carpeta data-raw/ se creará un archivo con la extensión .R. En este archivo (que se abrirá automáticamente cuando ejecutemos <code>use_data_raw()</code>) escribiremos el código que procesa los datos y los deja como queremos que se guarden en el paquete. La última línea del script (incluida por defecto) guarda el objeto resultante como datos externos mediante la función <code>use_data()</code>. Así, cada vez que queramos actualizar el objeto, sólo tendremos que ejecutar este código.</p>
-</section><section id="archivos-externos-e-inst" class="level3"><h3 class="anchored" data-anchor-id="archivos-externos-e-inst">Archivos externos e inst/</h3>
-<p>Como hemos mencionado, <strong>cualquier archivo que queramos incluir en nuestro paquete y no tenga la extensión .R o .rds, debería estar dentro de la carpeta inst/</strong>. Cuando alguien instale el paquete, los archivos de esta carpeta se moverán al directorio principal del paquete. Puedes hacer la prueba ejecutando la función <code>install()</code> de devtools. Cuando lo hayas hecho ve a la carpeta del paquete (recuerda que los paquetes se instalan en la primera ruta que indique <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code>). <strong>Cualquier archivo que hayas dejado en la carpeta inst/ aparecerá en el directorio principal</strong> ahora. A veces querremos acceder a estos archivos dentro de nuestras funciones. Esto puede ser un poco complicado. La práctica más recomendable es hacerlo usando la función:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.file</span>(<span class="st">"clima.csv"</span>, <span class="at">package =</span> <span class="st">"psicotuiteR"</span>)<span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="archivos-externos-e-inst" class="level3">
+<h3 class="anchored" data-anchor-id="archivos-externos-e-inst">Archivos externos e inst/</h3>
+<p>Como hemos mencionado, <strong>cualquier archivo que queramos incluir en nuestro paquete y no tenga la extensión .R o .rds, debería estar dentro de la carpeta inst/</strong>. Cuando alguien instale el paquete, los archivos de esta carpeta se moverán al directorio principal del paquete. Puedes hacer la prueba ejecutando la función <code>install()</code> de devtools. Cuando lo hayas hecho ve a la carpeta del paquete (recuerda que los paquetes se instalan en la primera ruta que indique <code>.libPaths()</code>). <strong>Cualquier archivo que hayas dejado en la carpeta inst/ aparecerá en el directorio principal</strong> ahora. A veces querremos acceder a estos archivos dentro de nuestras funciones. Esto puede ser un poco complicado. La práctica más recomendable es hacerlo usando la función:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.file</span>(<span class="st">"clima.csv"</span>, <span class="at">package =</span> <span class="st">"psicotuiteR"</span>)<span class="st">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>En la línea de código anterior, estaremos accediendo al archivo <code>clima.csv</code>, que hemos incluido en la carpeta inst/, pero que al instalar el paquete se encontrará en <code>~/Documents/R/win-library/4.0</code> (al menos en mi ordenador).</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -480,40 +528,51 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p>Si la función no encuentra ese archivo devolverá <code>""</code>, en lugar de un error. Esto puede llevar a confusión. Si quieres que la función devuelva un error si no encuentra el archivo, añade <code>mustWork = TRUE</code> a los argumentos:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.file</span>(<span class="st">"clima.csv"</span>, <span class="at">package =</span> <span class="st">"psicotuiteR"</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)<span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.file</span>(<span class="st">"clima.csv"</span>, <span class="at">package =</span> <span class="st">"psicotuiteR"</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)<span class="st">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-</section></section><section id="manteniendo-y-compartiendo-el-paquete" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="manteniendo-y-compartiendo-el-paquete">Manteniendo y compartiendo el paquete</h2>
-<section id="git-y-github" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="git-y-github">Git y GitHub</h3>
+</section>
+</section>
+<section id="manteniendo-y-compartiendo-el-paquete" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="manteniendo-y-compartiendo-el-paquete">Manteniendo y compartiendo el paquete</h2>
+<section id="git-y-github" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="git-y-github">Git y GitHub</h3>
 <p>Un paquete de R puede volverse complejo en poco tiempo: scripts con muchas funciones, funciones que dependen de otras funciones, funciones dependen de funciones de otros paquetes… Es fácil liarla. <strong>Git es una buena herramienta para controlar cómo va cambiando el paquete</strong>. Te permite llevar la cuenta de cómo ha cambiado cada archivo dentro del paquete, poder volver a una versión específica del mismo archivo, o tener diferentes versiones del mismo paquete funcionando a la vez de forma independiente. Este último punto es especialmente útil si queremos “jugar” con una versión de prueba del paquete mientras otras personas se pueden descargar una versión estable del mismo. Todas estas utilidades se conocen como <strong><em>control de versiones</em></strong>, una versión sofisticada y menos cortoplacista de crear un millón de archivos de similar contenido y nombres incrementalmente más creativos con el fin de no perder contenido.</p>
 <p>Por otro lado, <strong>GitHub</strong> es una red social que permite almacenar y compartir repositorios mediante control de versiones mediante Git<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. Varias personas pueden acceder al repositorio cuando está alojado en GitHub (un paquete de R, en nuestro caso) y sugerir cambios como si estuvieran trabajando sobre dicho paquete en un sólo ordenador. Por desgracia, el uso de git o GitHub está fuera del alcance de este tutorial por varios motivos<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. El mejor manual que conozco (y también el más accesible) para aprender a usar Git y GitHub (especialmente para quien ya trabaja en R) es <a href="https://happygitwithr.com/index.html"><em>Happy Git and GitHub for the useR</em></a>, de Jenny Bryan. Aprender Git no siempre es fácil pero siempre merece la pena<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>.</p>
 <div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;No es la única plataforma disponible para hacer esto: Gitlab y Bitbucket, entre otras, hacen lo mismo, aunque son menos populares. Además, por si esto calma alguna conciencia inquita, no son propiedad de Microsoft, al contrario de GitHub.</p></div><div id="fn10"><p><sup>10</sup>&nbsp;El primero de todos siendo que no tengo la confianza suficiente como para hacerlo (yo mismo la lío con Git cada día). El segundo es que aunque stuviera esa confianza, me daría infinita pereza hacerlo. Hacedme caso y echad un vistazo el libro que recomiendo.</p></div><div id="fn11"><p><sup>11</sup>&nbsp;En mi honesta, humilde, ignorable opinión.</p></div><div id="fn12"><p><sup>12</sup>&nbsp;Más que un paquete de R, <code>devtools</code> es una collección de funciones de otros paquetes que han sido agrupadas por su utilidad a la hora de desarrollar paquetes (“devtools” es la abreviatura de <em>developer tools</em>). La función <code>install_github</code> pertenece, originalmente, al paquete {remotes}</p></div></div><p>Git y GitHub cumplen una función muy especial para quienes hacemos un paquete en R: la función <code>install_github</code>, del paquete {devtools}<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>, permite <strong>instalar un paquete sin necesidad de que esté publicado en CRAN</strong>. Hablaremos en otro tutorial sobre CRAN, pero por ahora nos interesa saber que podemos compartir cualquier paquete a través de GitHub usando <code>install_github</code>, pero para poder instalarlo usando <code>install.packages</code>, como normalmente hacemos, ese paquete necesita estar publicado en CRAN. Publicar en CRAN requiere un proceso de revisión que en ocasiones es díficil solventar (y a veces innecesario). Para compartir nuestro paquete sin necesidad de pasar por ese calvario, lo haremos a través de <strong>GitHub</strong>.</p>
 <p>Para hacerlo, primero debemos crear un usuario de GitHub, crear un nuevo repositorio, hacer click en el botón verde que dice <strong><em>Code</em></strong> y finalmente copiar el enlace que aparece.</p>
 <p>En nuestra sesión de R, ejecutamos las siguientes líneas de código:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">use_git</span><span class="op">(</span><span class="op">)</span> <span class="co"># esta línea inicializa Git en el repositorio</span></span>
-<span><span class="fu">use_git_remote</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"origin"</span>, url <span class="op">=</span> <span class="st">"https://github.com/gongcastro/psicotuiteR.git"</span><span class="op">)</span> <span class="co"># sustituye ese link por el que hayas copiado de GitHub</span></span>
-<span><span class="fu">use_github_ignore</span><span class="op">(</span><span class="op">)</span> <span class="co"># crea un archivo llamado .gitignore que indica a Git qué archivos ignorar</span></span>
-<span><span class="fu">git_vaccinate</span><span class="op">(</span><span class="op">)</span> <span class="co"># añade más cosas a .gitignore para evitar subir información sensible a GitHub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="poniendo-a-prueba-el-paquete-con-testthat-y-test" class="level3"><h3 class="anchored" data-anchor-id="poniendo-a-prueba-el-paquete-con-testthat-y-test">Poniendo a prueba el paquete con {testthat} y test()</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git</span>() <span class="co"># esta línea inicializa Git en el repositorio</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_remote</span>(<span class="at">name =</span> <span class="st">"origin"</span>, <span class="at">url =</span> <span class="st">"https://github.com/gongcastro/psicotuiteR.git"</span>) <span class="co"># sustituye ese link por el que hayas copiado de GitHub</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_github_ignore</span>() <span class="co"># crea un archivo llamado .gitignore que indica a Git qué archivos ignorar</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git_vaccinate</span>() <span class="co"># añade más cosas a .gitignore para evitar subir información sensible a GitHub</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="poniendo-a-prueba-el-paquete-con-testthat-y-test" class="level3">
+<h3 class="anchored" data-anchor-id="poniendo-a-prueba-el-paquete-con-testthat-y-test">Poniendo a prueba el paquete con {testthat} y test()</h3>
 <p>Los cambios que introducimos en nuestras funciones de R pueden provocar que fallos que a veces no detectamos inmediatamente. Algunos fallos no producen un error, sino que hacen que nuestras <strong>funciones se comporten de forma diferente a la que esperamos</strong>. Por ejemplo, un <em>data.frame</em> que devuelve nuestra función podría contener una variable con una clase <em>character</em> en lugar de <em>logical</em>. Este comportamiento indeseado podría pasar desapercibido cuando probemos las funciones que hemos cambiado. Para detectar estos problemas debemos <strong>poner a prueba todo el código</strong> cada vez que hacemos cambios. Hacer esto de forma manual cada vez puede ser muy tedioso. El paquete <strong>{testthat}</strong> se encarga de hacer esto por nosotros.</p>
 <p>Si ejecutamos <code>use_testhat</code>, se creará una carpeta llamada <em>tests</em> en nuestro repositorio principal. Dentro de esta carpeta, hay otra carpeta llamada <em>testthat</em>. Cualquier script de R que guardemos en esa carpeta se ejecutará automáticamente cuando ejecutemos <code>test()</code> en nuestra consola. Estos scripts deberían seguir tener el siguiente contenido:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"Los datos de clima se cargan correctamente"</span>, <span class="op">{</span><span class="fu">expect_error</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"clima"</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"Los datos de clima se cargan correctamente"</span>, {<span class="fu">expect_error</span>(<span class="fu">data</span>(<span class="st">"clima"</span>), <span class="cn">NA</span>)})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>En esta línea de código estamos creando un test mediante la función <code>test_that</code> (del paquete {testhat}). Primero incluimos un mensaje que indique qué estamos “testeando” en específico (en este caso, que podemos cargar el dataset <code>clima</code> sin error). La función <code>expect_error</code> ejecuta el código de dentro, y evalúa si el resultado se corresponde con lo que indiquemos en el segundo argumento (en nuestro caso <code>NA</code>, que significa que no hay fallo). Para ver con más detalle cómo poner a prueba el paquete que has creado y aprender buenas prácticas en este tema puedes ver la <strong>documentación</strong> del paquete {testhat}.</p>
 
 
 <!-- -->
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2021,
   author = {Garcia-Castro, Gonzalo},
   title = {Creando Un Paquete de {R:} Una Guía Informal},
   date = {2021-11-14},
-  url = {http://github.com/gongcastro/gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html},
+  url = {https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2021" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2021, November 14). <em>Creando un paquete de R: una
-guía informal</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html">http://github.com/gongcastro/gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html</a>
-</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+guía informal</em>. <a href="https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html">https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -564,13 +623,14 @@ guía informal</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -636,7 +696,7 @@ guía informal</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
+        var filterRegex = new RegExp("https:\/\/gongcastro\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -967,7 +1027,10 @@ guía informal</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/
       }
     }
   });
-  </script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><script>
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
   function loadGiscus() {
     // Function to get the theme based on body class
     const getTheme = () => {
@@ -994,7 +1057,7 @@ guía informal</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/
   }
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb27" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Creando un paquete de R: una guía informal"</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2021-11-14</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> Alicia Franco-Martínez</span></span>
@@ -1397,10 +1460,11 @@ guía informal</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/
 <span id="cb27-407"><a href="#cb27-407" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb27-408"><a href="#cb27-408" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-409"><a href="#cb27-409" aria-hidden="true" tabindex="-1"></a>En esta línea de código estamos creando un test mediante la función <span class="in">`test_that`</span> (del paquete {testhat}). Primero incluimos un mensaje que indique qué estamos "testeando" en específico (en este caso, que podemos cargar el dataset <span class="in">`clima`</span> sin error). La función <span class="in">`expect_error`</span> ejecuta el código de dentro, y evalúa si el resultado se corresponde con lo que indiquemos en el segundo argumento (en nuestro caso <span class="in">`NA`</span>, que significa que no hay fallo). Para ver con más detalle cómo poner a prueba el paquete que has creado y aprender buenas prácticas en este tema puedes ver la **documentación** del paquete {testhat}.</span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
@@ -1412,6 +1476,8 @@ guía informal</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

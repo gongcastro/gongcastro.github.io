@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../..//assets/media/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c10b30eb894da51f146a98bd36b89e1d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7e67543a9d595d1046b6f788c20a10ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -117,13 +118,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/upfthesis/upfthesis.png">
+<meta property="og:image" content="https://gongcastro.github.io/blog/upfthesis/upfthesis.png">
 <meta property="og:site_name" content="Gonzalo García-Castro">
 <meta property="og:image:height" content="1240">
 <meta property="og:image:width" content="1748">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/upfthesis/upfthesis.png">
+<meta name="twitter:image" content="https://gongcastro.github.io/blog/upfthesis/upfthesis.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
@@ -138,6 +139,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -273,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="installing" class="level2">
 <h2 class="anchored" data-anchor-id="installing">Installing <span class="emoji" data-emoji="arrow_down">⬇️</span></h2>
 <p>This extension requires <a href="https://quarto.org/docs/get-started/">Quarto</a> to be 1.3.0 or higher. I also recommend an updated version of <a href="https://miktex.org/howto/install-miktex">MikTeX</a> complications during compilation.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> use template gongcastro/upfthesis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> use template gongcastro/upfthesis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will install the extension and create an set up the structure of the project. Take a look at the <strong>source code</strong> in the <a href="[**upfthesis**](https://github.com/gongcastro/upfthesis)">GitHub repository <i class="fa-brands fa-github" aria-label="github"></i></a>. If you are used to working from RStudio, I recommend you create a new RStudio project in the same folder.</p>
 </section>
 <section id="template-structure" class="level2">
@@ -284,14 +287,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/_quarto.yml">_quarto.yml</a>: this is a YAML file with the global settings of the thesis. Here you can change the title, authors, department, etc. You can change most settings as indicated in the <a href="https://quarto.org/docs/reference/projects/books.html">Book Options</a> section of the Quarto reference. Some of these settings are internally set in the <a href="https://github.com/gongcastro/upfthesis/blob/main/_extensions/gongcastro/upfthesis/_extension.yml">_extension.yml</a> file; feel free to change them if you know what you are doing.</li>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/chapters/">chapters/</a> contains the Quarto (<code>.qmd</code>) files with the body of the thesis. Each section embedded in a different file. The chapters included are based on the <a href="https://guiesbibtic.upf.edu/tesis/eng/parts">Theses: Parts and content</a> section of the <a href="https://guiesbibtic.upf.edu/tesis/eng/parts">Guies BibTIC UPF</a> website. Some of these sections might not be required. If so, you may keep them from being included in the rendered output by removing them from the <a href="https://github.com/gongcastro/upfthesis/blob/main/_quarto.yml">_quarto.yml</a> file (<code>chapters:</code>) section. For example, here I am commenting out the <em>Glossary</em> section, which is not required:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chapters</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chapters</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> index.qmd</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chapters/01-introduction.qmd</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chapters/02-chapter-1.qmd</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chapters/03-chapter-2.qmd</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chapters/04-discussion.qmd</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chapters/05-bibliography.qmd</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  #- chapters/06-glossary.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  #- chapters/06-glossary.qmd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p>Note that the numeric prefix in each <code>.qmd</code> file is only there for convenience: the order in which the files appear in the rendered output is determined by the order in which they appear in <code>chapters:</code>. Also, you may place these files wherever you want in the directory (e.g., in the base directory), as long as you indicate their right paths in <code>chapters:</code>.</p>
 </blockquote>
@@ -305,9 +308,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/index.qmd">index.qmd</a> is an empty Quarto document that <em>must</em> be present in the main directory. Do not move or rename it. Any content inside this document will be rendered as a separate chapter right after the Table of Contents, which is usually not what one wants.This file must also be listed in <code>chapters:</code> in the <code>_quarto.yml</code> file.</li>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/references.bib">references.bib</a> contains the BibTex references of the thesis. I you are using a reference manager (I strongly recommend using Zotero) you can export you library and replace this file with you desired references. You can also introduce you references manually in BibTex format (e.g., by copy-pasting them from Google Scholar). If you have more tha one <code>.bib</code> document or your <code>.bib</code> document is named differently, you can do the appropriate changes in the <code>_quarto.yml</code> file. For instance, this is how you can indicate more than one <code>.bib</code> file:</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> references.bib</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> other-references.bib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> other-references.bib</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/.gitignore">.gitignore</a>: if you are a Git users, you might find this file convenient to avoid committing unwanted documents to your Git history.</li>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/apa.csl">apa.csl</a> contains the code necessary to format the citations and bibliography in APA style. You may replace this file by whichever other style you find convenient by replacing <a href="https://github.com/gongcastro/upfthesis/blob/main/apa.csl">apa.csl</a> with the corresponding file from the <a href="https://github.com/citation-style-language/styles/blob/master/apa.csl">citation-style-language</a> repository. Remember to change the path in <a href="_quarto.yml">_quarto.yml</a> if necessary.</li>
@@ -316,16 +319,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-the-template" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-template">Using the template <span class="emoji" data-emoji="rocket">🚀</span></h2>
 <p>To render your dissertation to a PDF, you can use the Quarto command line in your console (Command Prompt/Power Shell in Windows, Terminal in MacOS, and command line in Linux):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will render the thesis in PDF and Word formats by default. You can control in which format the theris is rendered this way:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--to</span> upfthesis-pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--to</span> upfthesis-pdf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you don’t want to render the thesis is either document ever, you can change the default behaviour in the <code>_quarto.yml</code> file, by changing:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">upfthesis-pdf</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">upfthesis-docx</span><span class="kw">:</span><span class="at"> default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">upfthesis-docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">upfthesis-pdf</span><span class="kw">:</span><span class="at"> default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">upfthesis-pdf</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="tricks-and-comments" class="level2">
 <h2 class="anchored" data-anchor-id="tricks-and-comments">Tricks and comments <span class="emoji" data-emoji="bulb">💡</span></h2>
@@ -357,12 +360,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   title = {Upfthesis: A {Quarto} Template for Thesis Dissertations at
     {UPF}},
   date = {2024-01-10},
-  url = {http://github.com/gongcastro/gongcastro.github.io/blog/upfthesis/upfthesis.html},
+  url = {https://gongcastro.github.io/blog/upfthesis/upfthesis.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2024, January 10). <em>upfthesis: a Quarto template
-for thesis dissertations at UPF</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/upfthesis/upfthesis.html">http://github.com/gongcastro/gongcastro.github.io/blog/upfthesis/upfthesis.html</a>
+for thesis dissertations at UPF</em>. <a href="https://gongcastro.github.io/blog/upfthesis/upfthesis.html">https://gongcastro.github.io/blog/upfthesis/upfthesis.html</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -415,13 +418,14 @@ for thesis dissertations at UPF</em>. <a href="http://github.com/gongcastro/gong
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -487,7 +491,7 @@ for thesis dissertations at UPF</em>. <a href="http://github.com/gongcastro/gong
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
+        var filterRegex = new RegExp("https:\/\/gongcastro\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -848,7 +852,7 @@ for thesis dissertations at UPF</em>. <a href="http://github.com/gongcastro/gong
   }
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "upfthesis: a Quarto template for thesis dissertations at UPF"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "I wrote my thesis dissertation in Quarto, using a custom template. Here I illustrate how it works and some tips."</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> upfthesis.png</span></span>
@@ -991,7 +995,7 @@ for thesis dissertations at UPF</em>. <a href="http://github.com/gongcastro/gong
 <span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Enough Markdown to Write a Thesis</span><span class="co">](https://biostats-r.github.io/biostats/quarto/)</span> by Richard J Telford</span>
 <span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Writing a dissertation in Quarto</span><span class="co">](https://blog.posertinlab.com/posts/2023-06-09-writing-a-dissertation-in-quarto/)</span> by rich Posert</span>
 <span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Some Quarto PDF formatting tips, with particular reference to thesis writing</span><span class="co">](https://cameronpatrick.com/post/2023/07/quarto-thesis-formatting/)</span></span>
-<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Monash Quarto Template</span><span class="co">](https://robjhyndman.com/hyndsight/quarto_templates.html)</span> by Rob J Hyndman</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Monash Quarto Template</span><span class="co">](https://robjhyndman.com/hyndsight/quarto_templates.html)</span> by Rob J Hyndman</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

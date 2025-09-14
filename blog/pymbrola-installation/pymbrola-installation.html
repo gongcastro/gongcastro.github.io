@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -89,14 +89,15 @@ div.csl-indent {
 <link href="../..//assets/media/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c10b30eb894da51f146a98bd36b89e1d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7e67543a9d595d1046b6f788c20a10ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -137,13 +138,13 @@ div.csl-indent {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/c3po.png">
+<meta property="og:image" content="https://gongcastro.github.io/blog/pymbrola-installation/c3po.png">
 <meta property="og:site_name" content="Gonzalo García-Castro">
 <meta property="og:image:height" content="2160">
 <meta property="og:image:width" content="3840">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/c3po.png">
+<meta name="twitter:image" content="https://gongcastro.github.io/blog/pymbrola-installation/c3po.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
@@ -158,6 +159,8 @@ div.csl-indent {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -268,12 +271,12 @@ div.csl-indent {
 
 
 <div class="callout callout-style-default callout-tip callout-titled" title="**TLDR**: install MBROLA in your Unix-based instance using this bash script">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>TLDR</strong>: install MBROLA in your Unix-based instance using this bash script
+<span class="screen-reader-only">Tip</span><strong>TLDR</strong>: install MBROLA in your Unix-based instance using this bash script
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -330,27 +333,27 @@ Tip
 <section id="install-system-dependencies" class="level3">
 <h3 class="anchored" data-anchor-id="install-system-dependencies">Install system dependencies</h3>
 <p>MBROLA needs a few system dependencies. These allow to download the necessary code and compile MBROLA from source. We are also installing Python for using pymbrola later. Openthe terminal and run the following lines (if using WSL enter the terminal by running <code>wsl</code> on your command prompt).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> update</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install build-essential curl git gcc python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> update</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install build-essential curl git gcc python3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="download-and-compile-mbrola" class="level3">
 <h3 class="anchored" data-anchor-id="download-and-compile-mbrola">Download and compile MBROLA</h3>
 <p>Currently, MBROLA is only available on the <code>[numediart/MBROLA]()</code> GitHub repository, so we need to download it from there. I recommend you clone the repository using cURL to fetch the latest release:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get latest release of numediart/MBROLA</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get latest release of numediart/MBROLA</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">RELEASE</span><span class="op">=</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">--silent</span> <span class="st">"https://api.github.com/repos/numediart/MBROLA/releases/latest"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-Po</span> <span class="st">"(?&lt;=</span><span class="dt">\"</span><span class="st">tag_name</span><span class="dt">\"</span><span class="st">: </span><span class="dt">\"</span><span class="st">).*(?=</span><span class="dt">\"</span><span class="st">)"</span><span class="va">)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">FNAME</span><span class="op">=</span><span class="st">"mbrola-</span><span class="va">${RELEASE}</span><span class="st">.tar.gz"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> https://github.com/<span class="va">${REPO}</span>/archive/refs/tags/<span class="va">${RELEASE}</span>.tar.gz <span class="op">&gt;</span> <span class="va">${FNAME}</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> <span class="va">${FNAME}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> <span class="va">${FNAME}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now, let’s compile MBROLA:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> MBROLA-<span class="va">${RELEASE}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> MBROLA-<span class="va">${RELEASE}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>MBROLA is now ready to be used, but for convenience, we may want to make the <code>mbrola</code> command available in our session without having to navigate to the MBROLA folder:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp Bin/mbrola /usr/bin/mbrola</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp Bin/mbrola /usr/bin/mbrola</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="download-mbrola-voices" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="download-mbrola-voices">Download MBROLA voices</h3>
 <p>Different MBROLA voices contain different pre-recorded diphones. There are many MBROLA voices available<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. You may want to download all of them, for which I recommend cloning the <code>numediart/MBROLA-voices</code> GitHub repository:</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;see GitHub repository <a href="https://github.com/numediart/MBROLA-voices/blob/master/README.md">README</a> file</p></div></div><div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove voices/ folder if exists</span></span>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;see GitHub repository <a href="https://github.com/numediart/MBROLA-voices/blob/master/README.md">README</a> file</p></div></div><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove voices/ folder if exists</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">VOICES_REPO</span><span class="op">=</span><span class="st">"numediart/MBROLA-voices"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="st">"voices"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span> <span class="at">-rf</span> voices</span>
@@ -359,7 +362,7 @@ Tip
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="st">"https://github.com/</span><span class="va">${VOICES_REPO}</span><span class="st">"</span> voices</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make voices available to MBROLA</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> voices/data/ /usr/share/mbrola/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> voices/data/ /usr/share/mbrola/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here is a bash script that runs all of these steps:</p>
 <script src="https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"></script>
 </section>
@@ -379,12 +382,12 @@ Tip
   author = {Garcia-Castro, Gonzalo},
   title = {Installing the {MBROLA} Speech Synthesiser},
   date = {2025-08-25},
-  url = {http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html},
+  url = {https://gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2025" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2025, August 25). <em>Installing the MBROLA speech
-synthesiser</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html">http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</a>
+synthesiser</em>. <a href="https://gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html">https://gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -437,13 +440,14 @@ synthesiser</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blo
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -509,7 +513,7 @@ synthesiser</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blo
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
+        var filterRegex = new RegExp("https:\/\/gongcastro\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -870,7 +874,7 @@ synthesiser</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blo
   }
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Installing the MBROLA speech synthesiser"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2025-08-25</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> Gonzalo García-Castro</span></span>
@@ -994,7 +998,7 @@ synthesiser</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blo
 <span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a><span class="co">## Docker image</span></span>
 <span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="ex">For</span> convenience, I<span class="st">'ve created a Docker image with an instance of Ubuntu 22.04, packed with a compiled version of MBROLA. This image is available on DockerHub: [https://hub.docker.com/repository/docker/gongcastro/mbrola/general](https://hub.docker.com/repository/docker/gongcastro/mbrola/general).</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="ex">For</span> convenience, I<span class="st">'ve created a Docker image with an instance of Ubuntu 22.04, packed with a compiled version of MBROLA. This image is available on DockerHub: [https://hub.docker.com/repository/docker/gongcastro/mbrola/general](https://hub.docker.com/repository/docker/gongcastro/mbrola/general).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="Using decktape to export my Quarto slides to PDF saved my life right before a submission deadline. I might save yours too.">
+
 <title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -65,16 +69,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../..//assets/media/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c10b30eb894da51f146a98bd36b89e1d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7e67543a9d595d1046b6f788c20a10ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -100,33 +106,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><style>
+}</script>
+<style>
 
       .quarto-title-block .quarto-title-banner {
         background: #2DC9D2;
       }
 </style>
-<script src="../../site_libs/fitvids-2.1.1/fitvids.min.js"></script><link rel="stylesheet" href="../../assets/css/styles.css">
+<script src="../../site_libs/fitvids-2.1.1/fitvids.min.js"></script>
+
+
+<link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.png">
+<meta property="og:image" content="https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.png">
 <meta property="og:site_name" content="Gonzalo García-Castro">
 <meta property="og:image:height" content="1240">
 <meta property="og:image:width" content="1748">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.png">
+<meta name="twitter:image" content="https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1240">
 <meta name="twitter:image-width" content="1748">
 </head>
+
 <body class="floating nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -136,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -149,18 +164,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Using decktape to convert Quarto slides from RevealJS to PDF</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                   <div>
@@ -201,24 +220,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
-<li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
   <li><a href="#some-context" id="toc-some-context" class="nav-link" data-scroll-target="#some-context">Some context</a></li>
   <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem">The problem</a></li>
   <li><a href="#from-revealjs-to-pdf-printing-option-in-chrome" id="toc-from-revealjs-to-pdf-printing-option-in-chrome" class="nav-link" data-scroll-target="#from-revealjs-to-pdf-printing-option-in-chrome">From RevealJS to PDF: printing option in Chrome</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/revaljs-to-pdf/revealjs-to-pdf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/revaljs-to-pdf/revealjs-to-pdf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><section id="tldr" class="level2"><h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+
+<section id="tldr" class="level2">
+<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
 <p>Install <a href="https://github.com/astefanutti/decktape">decktape</a> and adapt this command to download your slides—which should be deployed on GitHub Pages—as PDF in your local machine:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">decktape</span> <span class="op">&lt;</span>slides-url<span class="op">&gt;</span> <span class="op">&lt;</span>slides-file<span class="op">&gt;</span>.pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">decktape</span> <span class="op">&lt;</span>slides-url<span class="op">&gt;</span> <span class="op">&lt;</span>slides-file<span class="op">&gt;</span>.pdf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="revealjs-to-pdf.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figure class="figure">
+<p><img src="revealjs-to-pdf.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 <div class="callout callout-style-simple callout-caution callout-titled" title="An embarrasing confession">
@@ -227,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-An embarrasing confession
+<span class="screen-reader-only">Caution</span>An embarrasing confession
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -235,7 +266,9 @@ An embarrasing confession
 <p>I’m too lazy to re-orient or rewrite this post, so I’ll publish it any way. Read it as if it were the panicky reflections of a sleepless PhD student who got overconfident about their programming skills the night before their conference presentation. decktape might be still a convenient option to do the same job in a programmatic way, so there it goes.</p>
 </div>
 </div>
-</section><section id="some-context" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="some-context">Some context</h2>
+</section>
+<section id="some-context" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="some-context">Some context</h2>
 <p>Last week, I presented an oral communication at the <a href="https://www.ehu.eus/en/web/isp2023">International Symposium of Psycholinguistics</a>. I feel comfortable using <a href="https://quarto.org/">Quarto</a>, and I had already given a couple of presentations generating slides from Quarto before, so I decided to take the next step and use Quarto for this one as well.</p>
 <p>I chose <a href="https://quarto.org/docs/presentations/revealjs/">RevealJS</a> as the output format of my slides: it looks beautiful, you don’t need much knowledge of HTML or CSS to fix the layout of the slides, and it has a nice presenter view mode. In the end this is what my slides looked like:</p>
 <div class="cell">
@@ -250,65 +283,79 @@ An embarrasing confession
 <p>The main inconvenience of RevealJS (or any HTML output format) is that presenting from a computer difference from the one in which you created the slides requires moving a whole folder, as opposed to just moving the <code>.pptx</code> or <code>.pdf</code> file to the new machine.</p>
 <p>If one moves only the resulting <code>index.html</code> that contains the slides, the presentation will lose all of its nice formatting, and won’t show any images or additional resources. From previous (bad) experiences, I knew that this could be a problem, and given that I would certainly have to present from the conference room’s machine, I decided to use GitHub Pages<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to <a href="https://quarto.org/docs/publishing/github-pages.html">deploy my slides</a> on a website.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;<a href="https://rviews.rstudio.com/2021/11/18/deploying-xaringan-slides-a-ten-step-github-pages-workflow/">Here</a> is a nice tutorials on how to deploy your slides on GitHub Pages</p></div></div><p>My plan was to access the URL of the slides whenever I was about to present. But the day before the presentation, I started worrying about the internet not working and the conference venue at the wrong time I needed to export the slides to a PDF. A PDF never (well, rarely) fails.</p>
-</section><section id="the-problem" class="level2"><h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
+</section>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
 <p>Exporting Quarto slides to PDF is not as simple as just adding the <code>pdf: default</code> line to the YAML header of the file, under <code>format:</code>, like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will render the slides as a PDF <em>document</em>, not as <em>slides</em>. Also, much of the nice formatting would be lost, as the <code>.scss</code> file that contained the styling only applies to HTML.</p>
 <p>Quarto offers a PDF output format for slides, <a href="https://ctan.org/pkg/beamer?lang=en">Beamer</a>, which is pretty popular among LaTeX users. But again, <a href="https://quarto.org/docs/presentations/beamer.html">generating the presentation in Beamer</a> format would require re-doing the formatting from scratch, and doing so in LaTeX, which I’m not totally comfortable using. This was not an option. Neither it was to use the <a href="https://quarto.org/docs/presentations/powerpoint.html">Power Point</a> output format, as not only the format was lost, but also prevented any possibility of customising the layout of the slides.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="https://www.overleaf.com/learn/latex/Beamer"><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/1/1b/Beamer-titlepageUpdated.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></a></p>
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.overleaf.com/learn/latex/Beamer"><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/1/1b/Beamer-titlepageUpdated.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></a></p>
 </figure>
 </div>
-<figcaption>You may recognise this aesthetic from Beamer slides. I personally don’t like it a lot, but I acknowledge the convenience of Beamer for LaTeX <em>conoisseurs</em>. I wish I was one of them. I’m not.</figcaption></figure>
+<figcaption>You may recognise this aesthetic from Beamer slides. I personally don’t like it a lot, but I acknowledge the convenience of Beamer for LaTeX <em>conoisseurs</em>. I wish I was one of them. I’m not.</figcaption>
+</figure>
 </div>
-</section><section id="from-revealjs-to-pdf-printing-option-in-chrome" class="level2"><h2 class="anchored" data-anchor-id="from-revealjs-to-pdf-printing-option-in-chrome">From RevealJS to PDF: printing option in Chrome</h2>
+</section>
+<section id="from-revealjs-to-pdf-printing-option-in-chrome" class="level2">
+<h2 class="anchored" data-anchor-id="from-revealjs-to-pdf-printing-option-in-chrome">From RevealJS to PDF: printing option in Chrome</h2>
 <p>I came across the <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf">Print to PDF</a> section of the <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf">Presenting Slides</a> article in the Quarto documentation:</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="print-to-pdf.png" class="img-fluid figure-img"></p>
-<figcaption>A snapshot of the instructions to print a RevealJS presentation to PDF in the Quarto documentation (see Chrome’s printing menu on the right, prompted byu <code>Ctrl + P</code>.</figcaption></figure>
+<figure class="figure">
+<p><img src="print-to-pdf.png" class="img-fluid figure-img"></p>
+<figcaption>A snapshot of the instructions to print a RevealJS presentation to PDF in the Quarto documentation (see Chrome’s printing menu on the right, prompted byu <code>Ctrl + P</code>.</figcaption>
+</figure>
 </div>
 <p>Although this looked promising, the output of this method was not what I expected. The layout had been moved around a bit, and some formatting options were not preserved. I this presentation was aimed at my colleagues, it would have been ok-ish, but it was not for a conference presentation.</p>
 <p>At this point I was already considering staying up all night re-doing the presentation in Power Point, and forgetting about Quarto for a while. In the last minute, when reading the <a href="https://revealjs.com/pdf-export/#alternative-ways-to-export">RevealJS documentation</a>, I found the suggestion of using <strong>decktape</strong>:</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="revealjs-docs.png" class="img-fluid figure-img"></p>
-<figcaption>My salvation</figcaption></figure>
+<figure class="figure">
+<p><img src="revealjs-docs.png" class="img-fluid figure-img"></p>
+<figcaption>My salvation</figcaption>
+</figure>
 </div>
 <p>I was not very hopeful about this. <a href="https://github.com/astefanutti/decktape">decktape</a> is written in JavaScript, which I’m not very familiar with, and I feared wasting too much time trying to make it work instead of just doing everything from scratch in Power Point. <strong>But it worked!</strong>. These are the steps I followed, according to the dektape docs.</p>
 <ol type="1">
-<li>Install <a href="https://nodejs.org/en/download">Node.js</a>
-</li>
+<li>Install <a href="https://nodejs.org/en/download">Node.js</a></li>
 <li>Install <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">npm</a> from the Node.js console:</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>npm install <span class="op">-</span>g npm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>npm install <span class="op">-</span>g npm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then following the instructions in the decktape repository:</p>
 <ol start="3" type="1">
 <li>Install decktape from the Node.js console:</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>npm install <span class="op">-</span>g decktape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>npm install <span class="op">-</span>g decktape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
 <li>Finally, using the <code>decktape</code> command to download my slides deployed on Github Pages as a PDF:</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>decktape https<span class="op">:</span><span class="co">//gongcastro.github.io/ips_2023_trajectories slides.pdf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>decktape https<span class="op">:</span><span class="co">//gongcastro.github.io/ips_2023_trajectories slides.pdf</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>And it did the job, preserving the layout, SCSS formatting, and even the links!</p>
 
 
 <!-- -->
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2023,
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2023,
   author = {Garcia-Castro, Gonzalo},
   title = {Using Decktape to Convert {Quarto} Slides from {RevealJS} to
     {PDF}},
   date = {2023-06-08},
-  url = {http://github.com/gongcastro/gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html},
+  url = {https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2023" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2023, June 8). <em>Using decktape to convert Quarto
-slides from RevealJS to PDF</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html">http://github.com/gongcastro/gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html</a>
-</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+slides from RevealJS to PDF</em>. <a href="https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html">https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -359,13 +406,14 @@ slides from RevealJS to PDF</em>. <a href="http://github.com/gongcastro/gongcast
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -431,7 +479,7 @@ slides from RevealJS to PDF</em>. <a href="http://github.com/gongcastro/gongcast
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
+        var filterRegex = new RegExp("https:\/\/gongcastro\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -762,7 +810,10 @@ slides from RevealJS to PDF</em>. <a href="http://github.com/gongcastro/gongcast
       }
     }
   });
-  </script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><script>
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
   function loadGiscus() {
     // Function to get the theme based on body class
     const getTheme = () => {
@@ -789,7 +840,7 @@ slides from RevealJS to PDF</em>. <a href="http://github.com/gongcastro/gongcast
   }
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Using decktape to convert Quarto slides from RevealJS to PDF"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Using decktape to export my Quarto slides to PDF saved my life right before a submission deadline. I might save yours too."</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> revealjs-to-pdf.png</span></span>
@@ -906,10 +957,11 @@ slides from RevealJS to PDF</em>. <a href="http://github.com/gongcastro/gongcast
 <span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>And it did the job, preserving the layout, SCSS formatting, and even the links! </span>
 <span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
@@ -921,6 +973,8 @@ slides from RevealJS to PDF</em>. <a href="http://github.com/gongcastro/gongcast
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

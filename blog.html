@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,14 +35,15 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-c10b30eb894da51f146a98bd36b89e1d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7e67543a9d595d1046b6f788c20a10ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -122,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -141,13 +142,13 @@ window.Quarto = {
 <link rel="stylesheet" href="assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/assets/media/favicon.png">
+<meta property="og:image" content="https://gongcastro.github.io//assets/media/favicon.png">
 <meta property="og:site_name" content="Gonzalo García-Castro">
 <meta property="og:image:height" content="150">
 <meta property="og:image:width" content="150">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/assets/media/favicon.png">
+<meta name="twitter:image" content="https://gongcastro.github.io/assets/media/favicon.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
@@ -162,6 +163,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -233,7 +236,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cHl0aG9uJTJDcGFja2FnZSUyQ2xpbnV4JTJDd3NsJTJDc3BlZWNoJTIwc3ludGhlc2lzJTJDbGFuZ3VhZ2UlMkNtYnJvbGElMkN0dXRvcmlhbA==" data-listing-date-sort="1756072800000" data-listing-file-modified-sort="1757862207645" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="854">
+<div class="quarto-post image-right" data-index="0" data-categories="cHl0aG9uJTJDcGFja2FnZSUyQ2xpbnV4JTJDd3NsJTJDc3BlZWNoJTIwc3ludGhlc2lzJTJDbGFuZ3VhZ2UlMkNtYnJvbGElMkN0dXRvcmlhbA==" data-listing-date-sort="1756080000000" data-listing-file-modified-sort="1757862552675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="854">
 <div class="thumbnail"><a href="./blog/pymbrola-installation/pymbrola-installation.html" class="no-external">
 
 <img loading="lazy" src="./blog/pymbrola-installation/c3po.png" class="thumbnail-image">
@@ -277,7 +280,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="cHl0aG9uJTJDZm5pcnMlMkNuZXVyb2ltYWdpbmc=" data-listing-date-sort="1732402800000" data-listing-file-modified-sort="1757860285842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1294">
+<div class="quarto-post image-right" data-index="1" data-categories="cHl0aG9uJTJDZm5pcnMlMkNuZXVyb2ltYWdpbmc=" data-listing-date-sort="1732406400000" data-listing-file-modified-sort="1757862552640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1294">
 <div class="thumbnail"><a href="./blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">
 
 <img loading="lazy" src="./blog/dpf-scholkmann/scholkmann.png" class="thumbnail-image">
@@ -311,7 +314,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="ciUyQ3F1YXJ0byUyQ3RoZXNpcyUyQ2Jvb2slMkNwZGY=" data-listing-date-sort="1704841200000" data-listing-file-modified-sort="1757860285871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1365">
+<div class="quarto-post image-right" data-index="2" data-categories="ciUyQ3F1YXJ0byUyQ3RoZXNpcyUyQ2Jvb2slMkNwZGY=" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1757862552687" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1365">
 <div class="thumbnail"><a href="./blog/upfthesis/upfthesis.html" class="no-external">
 
 <img loading="lazy" src="./blog/upfthesis/upfthesis.png" class="thumbnail-image">
@@ -349,7 +352,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="ciUyQ3F1YXJ0byUyQ3JldmVhbGpzJTJDcHJlc2VudGF0aW9uJTJDcGRm" data-listing-date-sort="1686175200000" data-listing-file-modified-sort="1757860285864" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="869">
+<div class="quarto-post image-right" data-index="3" data-categories="ciUyQ3F1YXJ0byUyQ3JldmVhbGpzJTJDcHJlc2VudGF0aW9uJTJDcGRm" data-listing-date-sort="1686182400000" data-listing-file-modified-sort="1757862552685" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="869">
 <div class="thumbnail"><a href="./blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">
 
 <img loading="lazy" src="./blog/revaljs-to-pdf/revealjs-to-pdf.png" class="thumbnail-image">
@@ -387,7 +390,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ3JlZ3Jlc3Npb24lMkNzdGF0aXN0aWNzJTJDbG9naXN0aWM=" data-listing-date-sort="1674342000000" data-listing-file-modified-sort="1757860285854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="50" data-listing-word-count-sort="9922">
+<div class="quarto-post image-right" data-index="4" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ3JlZ3Jlc3Npb24lMkNzdGF0aXN0aWNzJTJDbG9naXN0aWM=" data-listing-date-sort="1674345600000" data-listing-file-modified-sort="1757862552645" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="50" data-listing-word-count-sort="9922">
 <div class="thumbnail"><a href="./blog/logistic-regression/logistic-regression.html" class="no-external">
 
 <img loading="lazy" src="./blog/logistic-regression/predictions-natural-probability-1.png" class="thumbnail-image">
@@ -425,7 +428,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="ciUyQ3BhY2thZ2UlMkNyZXByb2R1Y2liaWxpdHklMkNyZW52" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1727367275087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1393">
+<div class="quarto-post image-right" data-index="5" data-categories="ciUyQ3BhY2thZ2UlMkNyZXByb2R1Y2liaWxpdHklMkNyZW52" data-listing-date-sort="1645920000000" data-listing-file-modified-sort="1757862552684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1393">
 <div class="thumbnail"><a href="./blog/renv-package/renv-package.html" class="no-external">
 
 <img loading="lazy" src="./blog/renv-package/containers.jpg" class="thumbnail-image">
@@ -461,7 +464,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="ciUyQ3J0d2VldCUyQ3R3aXR0ZXIlMkNyYXNwYmVycnklMjBwaSUyQ2JvdCUyQ2dpdGh1Yg==" data-listing-date-sort="1640732400000" data-listing-file-modified-sort="1757862058143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3002">
+<div class="quarto-post image-right" data-index="6" data-categories="ciUyQ3J0d2VldCUyQ3R3aXR0ZXIlMkNyYXNwYmVycnklMjBwaSUyQ2JvdCUyQ2dpdGh1Yg==" data-listing-date-sort="1640736000000" data-listing-file-modified-sort="1757862552667" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3002">
 <div class="thumbnail"><a href="./blog/psicotuiterbot/psicotuiterbot.html" class="no-external">
 
 <img loading="lazy" src="./blog/psicotuiterbot/raspberry.jfif" class="thumbnail-image">
@@ -501,7 +504,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="ciUyQ3BhY2thZ2UlMkN0d2l0dGVyJTJDdHV0b3JpYWw=" data-listing-date-sort="1636844400000" data-listing-file-modified-sort="1757862365347" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="28" data-listing-word-count-sort="5415">
+<div class="quarto-post image-right" data-index="7" data-categories="ciUyQ3BhY2thZ2UlMkN0d2l0dGVyJTJDdHV0b3JpYWw=" data-listing-date-sort="1636848000000" data-listing-file-modified-sort="1757862552640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="28" data-listing-word-count-sort="5415">
 <div class="thumbnail"><a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">
 
 <img loading="lazy" src="./blog/creando-paquete-r-psicotuiter/psicotuiter.png" class="thumbnail-image">
@@ -537,7 +540,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="anVsaWElMkNkaXN0cmlidXRpb24lMkNhbmltYXRpb24lMkNzdGF0aXN0aWNzJTJDcHJvYmFiaWxpdHk=" data-listing-date-sort="1633298400000" data-listing-file-modified-sort="1757862058142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1437">
+<div class="quarto-post image-right" data-index="8" data-categories="anVsaWElMkNkaXN0cmlidXRpb24lMkNhbmltYXRpb24lMkNzdGF0aXN0aWNzJTJDcHJvYmFiaWxpdHk=" data-listing-date-sort="1633305600000" data-listing-file-modified-sort="1757862552290" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1437">
 <div class="thumbnail"><a href="./blog/animated-distributions/animated-distributions.html" class="no-external">
 
 <img loading="lazy" src="./blog/animated-distributions/cover.gif" class="thumbnail-image">
@@ -575,7 +578,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="ciUyQ3N0YXRpc3RpYyUyQ3JlZ3Jlc3Npb24lMkNhbmltYXRpb24lMkNnZ3Bsb3Q=" data-listing-date-sort="1611183600000" data-listing-file-modified-sort="1727367275087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1445">
+<div class="quarto-post image-right" data-index="9" data-categories="ciUyQ3N0YXRpc3RpYyUyQ3JlZ3Jlc3Npb24lMkNhbmltYXRpb24lMkNnZ3Bsb3Q=" data-listing-date-sort="1611187200000" data-listing-file-modified-sort="1757862552703" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1445">
 <div class="thumbnail"><a href="./blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">
 
 <img loading="lazy" src="./blog/visualising-polynomial-regression/quadratic.gif" class="thumbnail-image">
@@ -613,7 +616,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="ciUyQ2xpbmd1aXN0aWNzJTJDcGhvbm9sb2d5JTJDZ2dwbG90MiUyQ3RyYW5zbGF0aW9u" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1727367275080" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1709">
+<div class="quarto-post image-right" data-index="10" data-categories="ciUyQ2xpbmd1aXN0aWNzJTJDcGhvbm9sb2d5JTJDZ2dwbG90MiUyQ3RyYW5zbGF0aW9u" data-listing-date-sort="1605830400000" data-listing-file-modified-sort="1757862552648" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1709">
 <div class="thumbnail"><a href="./blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">
 
 <img loading="lazy" src="./blog/mask-similarity-across-languages/masks-ort.png" class="thumbnail-image">
@@ -651,7 +654,7 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ2Jhc2UlMkNwdXJyciUyQ2ltcG9ydA==" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1727367275080" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2143">
+<div class="quarto-post image-right" data-index="11" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ2Jhc2UlMkNwdXJyciUyQ2ltcG9ydA==" data-listing-date-sort="1593907200000" data-listing-file-modified-sort="1757862552644" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2143">
 <div class="thumbnail"><a href="./blog/importing-data-multiple/importing-data-multiple.html" class="no-external">
 
 <img loading="lazy" src="./blog/importing-data-multiple/traffic-jam.jpg" class="thumbnail-image">
@@ -689,10 +692,10 @@ Gonzalo Garcia-Castro
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="ciUyQ3N0YXRpc3RpY3MlMkNtdWx0aWxldmVsJTJDbWl4ZWQlMjBtb2RlbHMlMkNhbmltYXRpb25z" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1757862058142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="298">
+<div class="quarto-post image-right" data-index="12" data-categories="ciUyQ3N0YXRpc3RpY3MlMkNtdWx0aWxldmVsJTJDbWl4ZWQlMjBtb2RlbHMlMkNhbmltYXRpb25z" data-listing-date-sort="1585612800000" data-listing-file-modified-sort="1757862552663" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="298">
 <div class="thumbnail"><a href="./blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">
 
-<p class="card-img-top"><img src="blog\primer-linear-mixed-models\laces.jpg"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="blog/primer-linear-mixed-models/laces.jpg"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
@@ -781,13 +784,14 @@ Gonzalo Garcia-Castro
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -802,7 +806,7 @@ Gonzalo Garcia-Castro
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
+        var filterRegex = new RegExp("https:\/\/gongcastro\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

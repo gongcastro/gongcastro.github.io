@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../..//assets/media/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c10b30eb894da51f146a98bd36b89e1d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7e67543a9d595d1046b6f788c20a10ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -117,11 +118,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/psicotuiterbot/raspberry.jfif">
+<meta property="og:image" content="https://gongcastro.github.io/blog/psicotuiterbot/raspberry.jfif">
 <meta property="og:site_name" content="Gonzalo García-Castro">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/psicotuiterbot/raspberry.jfif">
+<meta name="twitter:image" content="https://gongcastro.github.io/blog/psicotuiterbot/raspberry.jfif">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
@@ -134,6 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -281,13 +284,13 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 <p>Nunca había hecho un bot de Twitter, pero sabía de la existencia de bastantes tutoriales para hacerlo. La mayoría de los bots de Twitter (y por tanto de los tutoriales) están escritos en Python y JavaScript, pero yo me encuentro algo más cómodo con R. Además gran parte de Psicotuiter (especialmente quienes están relacionades con la metodología) también está más familiarizado con R. Mi intención era hacer el bot lo más <strong>trasparente y accesible</strong> para la comunidad, así que me decanté por R. En un pricipio seguí el <a href="https://www.rostrum.blog/2020/09/21/londonmapbot/">tutorial de Matt Dray</a>, en el que utiliza el paquete de R <a href="https://docs.ropensci.org/rtweet/9">{rtweet}</a> para interactuar con la API de Twitter. Hay más tutoriales que usan rtweet para crear un bot con R. Pero a diferencia de otros, este tutorial explicaba cómo usar GitHub actions para ejecutar el código de forma periódica. Ahora explico esto último. Mientras tanto, vamos al código de R.</p>
 <p>Primero creé un <strong><a href="https://github.com/gongcastro/psicotuiterbot">repositorio de GitHub</a></strong> donde alojar el código (GitHub es como un Google Drive especializado en código donde además podemos hacer control de versiones de los archivos que subimos). Puedes echar un vistazo al código de R en la carpeta R/. El código principalmente recoge los <strong>últimos tweets que se han escrito en las últimos 6 horas mencionando <a href="https://twitter.com/hashtag/psicotuiter?src=hashtag_click&amp;f=live">#psicotuiter</a> o <a href="https://twitter.com/search?q=%23psicotwitter&amp;src=typed_query&amp;f=live">#psicotwitter</a> y los retuitea</strong>. No me meteré en detalle a explicar cómo funciona el código, pero aquí va un pequeño resumen del programa. Si tienes curiosidad te recomiendo explorar el repositorio de GitHub, que contiene todo lo necesario para hacer funcionar el bot:</p>
 <p>Primero cargamos el paquete de R <a href="https://dplyr.tidyverse.org/">{dplyr}</a>, que utilizamos en bastantes ocasiones en el programa, ajustamos un pequeño detalle relacionado con el comportamiento de la API de Twitter, e instalamos los paquetes necesarios (en caso de que hayan cambiado) usando el pqeute de R <a href="https://rstudio.github.io/renv/articles/renv.html">{renv}</a> (si no lo conoces y te interesa la reproducibilidad computacional tienes que echarle un vistazo).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bot R code</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bot R code</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">httr_oob_default =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># restore packages</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A continuación extraemos las <strong>credenciales</strong> que necesitamos para acceder a la API de Twitter (las paso a como variables de entorno para evitar hacerlas públicas, ya que eso dería acceso a cualquiera a la cuenta de Twitter del bot).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># authenticate Twitter API</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># authenticate Twitter API</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my_token <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">create_token</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">app =</span> <span class="st">"psicotuiterbot"</span>,  <span class="co"># the name of the Twitter app</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">consumer_key =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_CONSUMER_API_KEY"</span>),</span>
@@ -295,9 +298,9 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">access_token =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_ACCESS_TOKEN"</span>),</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">access_secret =</span> <span class="fu">Sys.getenv</span>(<span class="st">"TWITTER_ACCESS_TOKEN_SECRET"</span>),</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">set_renv =</span> <span class="cn">FALSE</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Luego <strong>extraemos los tweets</strong> usando rtweet, filtramos los que sean relevantes y no contengan posible contenido ofensivo (y algún otro filtro más).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define hashtags</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>hashtags_vct <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#psicotuiter"</span>, <span class="st">"#psicotwitter"</span>, <span class="st">"#Psicotuiter"</span>, <span class="st">"#Psicotwitter"</span>, <span class="st">"#PsicoTuiter"</span>, <span class="st">"#PsicoTwitter"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>hashtags <span class="ot">&lt;-</span> <span class="fu">paste</span>(hashtags_vct, <span class="at">collapse =</span> <span class="st">" OR "</span>)</span>
@@ -325,9 +328,9 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>request_tweets <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">get_mentions</span>(</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">token =</span> my_token,</span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">tzone =</span> <span class="st">"CET"</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Finalmente, <strong>hacemos RT</strong> uno a uno usando rtweet (si ya habíamos hecho RT a uno de ellos simplemente se ignora).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(request_tweets) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(request_tweets) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    request_ids <span class="ot">&lt;-</span> request_tweets <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            created_at <span class="sc">&gt;=</span> time_interval, <span class="co"># 15 min</span></span>
@@ -356,7 +359,7 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                     <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"renv"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"renv"</span>)</span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>          renv<span class="sc">::</span><span class="fu">restore</span>()</span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> name<span class="sc">:</span> Create and post tweet</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> Rscript R<span class="sc">/</span>bot.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        run<span class="sc">:</span> Rscript R<span class="sc">/</span>bot.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>La gran ventaja de usar este sistema es que <strong>no necesitamos usar nuestro ordenador personal, ya que usamos el que que GitHub nos asigna</strong> (un servidor no deja de ser un ordenador). Pero tiene varios inconvenientes. El primero es que el proceso de establecer un <em>workflow</em> en GitHub Actions suele requerir varios intentos (en mi caso muchos). Esto suele deberse a problemas de reproducibilidad computacional: el código funciona correctamente en mi ordenador porque en él tengo instalado todo el sofware del que depende. Cuando uso el servidor de GitHub, el sistema operativo suele necesitar que instalemos estas <strong>dependencias</strong> antes de ejecutar el código. GitHub Actions permite cierta flexibilidad a la hora de seleccionar el software que viene instalado en el sistema operativo que vamos a usar (ej., R, compiladores de C++, dependencias de Linux, etc.). El problema es que muchas veces ni siquiera somos conscientes de cuántas dependencias requiere nuestro código. Con paciencia y muchas búsquedas de Google es posible solventar este problema.</p>
 <p>Un segundo inconveniente que encontré a la hora de implementar el bot en GitHub Actions tiene que ver con los tiempos: instalar todas las dependencias del código en el servidor cada 15 minutos (la configuración se pierde casi totalmente tras cada ejecución) es <strong>poco eficiente</strong>. Instalar las dependencias puede tardar más de 10 minutos (en el caso de este bot). Esto puede además hacer fallar en ocasiones el flujo de trabajo. GitHub Actions tampoco es lo más consistente del mundo, aunque no deja de ser gratis.</p>
 </section>
@@ -370,7 +373,7 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 </figure>
 </div>
 <p>Primero instalé el código en la Raspberry con sus dependencias: básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado <strong>CRON</strong>. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos <a href="https://crontab.guru/examples.html">ejemplos</a>. Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># descarga el código de GitHub, por si ha habido cambios</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># descarga el código de GitHub, por si ha habido cambios</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ejecuta el código principal del bot</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">TZ</span><span class="op">=</span><span class="st">"Spain/Madrid"</span> <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'source("R/bot.R")'</span></span>
@@ -380,14 +383,14 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># sube los nuevos datos a GitHub</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update repository"</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Estos comandos se ejecutan en este orden cada 15 minutos.</p>
 </section>
 </section>
 <section id="bloqueando-usuarios-de-forma-remota" class="level1">
 <h1>Bloqueando usuarios de forma remota</h1>
 <p>Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite <strong>bloquear usuarios que con tan sólo enviar al bot un mensaje directo</strong> de Twitter. El script <strong>R/block.R</strong> accede a los 10 últimos mensajes recibidos por parte de usuaries “VIP” (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el <strong>que el propio bot modifique los archivos locales</strong> a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo <strong>cargar ese vector sin desvelar us contenidos</strong>, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>vip_users <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"VIP_USERS"</span>), <span class="st">" "</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>vip_users <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">Sys.getenv</span>(<span class="st">"VIP_USERS"</span>), <span class="st">" "</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>blocked_accounts <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"BLOCKED_ACCOUNTS"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>blocked_accounts_vct <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(blocked_accounts, <span class="at">split =</span> <span class="st">" "</span>))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get DMs</span></span>
@@ -421,7 +424,7 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>            <span class="fu">message</span>(<span class="fu">paste0</span>(<span class="st">"Message from a non-VIP: "</span>, <span class="fu">paste0</span>(<span class="st">"@"</span>, sender_name)))</span>
 <span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>        }</span>
 <span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="conclusiones" class="level1">
 <h1>Conclusiones</h1>
@@ -437,12 +440,12 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
   title = {\textbackslash@Psicotuiterbot: {Un} Bot de {Twitter} Para
     {Psicotuiter}},
   date = {2021-12-29},
-  url = {http://github.com/gongcastro/gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html},
+  url = {https://gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2021" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2021, December 29). <em>\@psicotuiterbot: Un bot de
-Twitter para Psicotuiter</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html">http://github.com/gongcastro/gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html</a>
+Twitter para Psicotuiter</em>. <a href="https://gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html">https://gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -495,13 +498,14 @@ Twitter para Psicotuiter</em>. <a href="http://github.com/gongcastro/gongcastro.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -567,7 +571,7 @@ Twitter para Psicotuiter</em>. <a href="http://github.com/gongcastro/gongcastro.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
+        var filterRegex = new RegExp("https:\/\/gongcastro\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -928,7 +932,7 @@ Twitter para Psicotuiter</em>. <a href="http://github.com/gongcastro/gongcastro.
   }
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> '\@psicotuiterbot: Un bot de Twitter para Psicotuiter'</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2021-12-29'</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON."</span></span>
@@ -1169,7 +1173,7 @@ Twitter para Psicotuiter</em>. <a href="http://github.com/gongcastro/gongcastro.
 <span id="cb7-239"><a href="#cb7-239" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-240"><a href="#cb7-240" aria-hidden="true" tabindex="-1"></a><span class="at"># Conclusiones</span></span>
 <span id="cb7-241"><a href="#cb7-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-242"><a href="#cb7-242" aria-hidden="true" tabindex="-1"></a><span class="at">De momento, el bot está funcionando bastante bien y se le está dando bastante uso, especialmente por parte de cuentas pequeñas. Aún tengo pendiente hacer un análisis más profundo de qué tipo de actividad tiene lugar en el bot, pero mi impresión es que la mayoría de usos consisten en petitiones de referencias de profesionales de psicología en poblaciones concretas o de referencias bilbiográficas.</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb7-242"><a href="#cb7-242" aria-hidden="true" tabindex="-1"></a><span class="at">De momento, el bot está funcionando bastante bien y se le está dando bastante uso, especialmente por parte de cuentas pequeñas. Aún tengo pendiente hacer un análisis más profundo de qué tipo de actividad tiene lugar en el bot, pero mi impresión es que la mayoría de usos consisten en petitiones de referencias de profesionales de psicología en poblaciones concretas o de referencias bilbiográficas.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
