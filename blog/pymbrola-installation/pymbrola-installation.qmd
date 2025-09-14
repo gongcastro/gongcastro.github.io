@@ -2,7 +2,7 @@
 title: "Installing the MBROLA speech synthesiser"
 date: 2025-08-25
 authors: Gonzalo García-Castro
-description: "I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to get MBROLA up and running on your Linux or Windows system, so that you can use the pymbrola module (a tutorial in upcoming)."
+description: "I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to set up MBROLA on your Linux or Windows system, so that you can use the pymbrola module (a tutorial in upcoming)."
 image: c3po.png
 categories:
   - python
