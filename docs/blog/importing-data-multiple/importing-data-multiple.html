@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="A comparison between base R and Tidyverse methods for importing data from multiple files">
-
 <title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
 code{white-space: pre-wrap;}
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -76,10 +72,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3e6e4daf0034692c49b30e182b9b7813.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,34 +100,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<style>
+}</script><style>
 
       .quarto-title-block .quarto-title-banner {
         background: #2DC9D2;
       }
 </style>
-
-
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="traffic-jam.jpg">
+<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/importing-data-multiple/traffic-jam.jpg">
 <meta property="og:site_name" content="Gonzalo García-Castro">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="traffic-jam.jpg">
+<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/importing-data-multiple/traffic-jam.jpg">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
 </head>
-
 <body class="floating nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
@@ -143,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -156,22 +145,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Importing data from multiple files simultaneously in R</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                   <div>
@@ -212,96 +197,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TLDR</a></li>
+<li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TLDR</a></li>
   <li><a href="#why-this-post" id="toc-why-this-post" class="nav-link" data-scroll-target="#why-this-post">Why this post</a></li>
-  <li><a href="#how-can-i-import-large-files-and-merge-them" id="toc-how-can-i-import-large-files-and-merge-them" class="nav-link" data-scroll-target="#how-can-i-import-large-files-and-merge-them">How can I import large files and merge them?</a>
+  <li>
+<a href="#how-can-i-import-large-files-and-merge-them" id="toc-how-can-i-import-large-files-and-merge-them" class="nav-link" data-scroll-target="#how-can-i-import-large-files-and-merge-them">How can I import large files and merge them?</a>
   <ul class="collapse">
-  <li><a href="#base-r-for-loops" id="toc-base-r-for-loops" class="nav-link" data-scroll-target="#base-r-for-loops">Base R: for loops</a></li>
+<li><a href="#base-r-for-loops" id="toc-base-r-for-loops" class="nav-link" data-scroll-target="#base-r-for-loops">Base R: for loops</a></li>
   <li><a href="#base-r-lapply" id="toc-base-r-lapply" class="nav-link" data-scroll-target="#base-r-lapply">Base R: <code>lapply</code></a></li>
   <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">Tidyverse</a></li>
   <li><a href="#data.table" id="toc-data.table" class="nav-link" data-scroll-target="#data.table"><code>data.table</code></a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#what-method-is-the-fastest" id="toc-what-method-is-the-fastest" class="nav-link" data-scroll-target="#what-method-is-the-fastest">What method is the fastest?</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/importing-data-multiple/importing-data-multiple.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/importing-data-multiple/importing-data-multiple.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
-
-
-
-
-
-<p><img src="traffic-jam.jpg" class="img-fluid"></p>
-<section id="tldr" class="level2">
-<h2 class="anchored" data-anchor-id="tldr">TLDR</h2>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><p><img src="traffic-jam.jpg" class="img-fluid"></p>
+<section id="tldr" class="level2"><h2 class="anchored" data-anchor-id="tldr">TLDR</h2>
 <blockquote class="blockquote">
-<p>We need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using <code>purrr::map</code> in combination with <code>do.call</code> or <code>dplyr::bind_rows</code> is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to <em>for loops</em> (~220ms) or using <code>lapply</code> (~123 ms). <code>data.table::fread</code> is the fastest function for importing data. Importing TXT files is slightly faster than importing CSV files.</p>
+<p>We need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to <em>for loops</em> (~220ms) or using <code>lapply</code> (~123 ms). <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> is the fastest function for importing data. Importing TXT files is slightly faster than importing CSV files.</p>
 </blockquote>
-</section>
-<section id="why-this-post" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="why-this-post">Why this post</h2>
+</section><section id="why-this-post" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="why-this-post">Why this post</h2>
 <p>To analyse data in any programming environment, one must first import some data. Sometimes, the data we want to analyse are distributed across several files in the same folder. I work with eye-tracking data from toddlers. This means that I work with multiple files that have many rows. At 120 Hz sampling frequency, we take ~8.33 samples per second. A session for one participants can take up to 10 minutes. So these files are somewhat big. These data also tend to be messy, requiring a lot of preprocessing. This means that I need to import the same large files many times during the same R session when wrangling my way through the data, which takes a few seconds. After some iterations, it can be annoying. I have decided to invest all my lost time into analysing what method for importing and merging large files is the fastest in R so that the universe and I are even again.</p>
 <p>Below I provide several options for importing data from the different files, using base R and tidyverse, among other tools. I will compare how long it takes to import and merge data using each method under different circumstances. You can find the whole code here in case you want to take a look, reproduce it or play with it<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Ironically, this code is super inefficient and messy. It takes ages to run, and has been written by copy-pasting multiple times. I didn’t feel like doing anything more elegant. Also, I don’t know how. Help yourself.</p></div></div></section>
-<section id="how-can-i-import-large-files-and-merge-them" class="level2">
-<h2 class="anchored" data-anchor-id="how-can-i-import-large-files-and-merge-them">How can I import large files and merge them?</h2>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Ironically, this code is super inefficient and messy. It takes ages to run, and has been written by copy-pasting multiple times. I didn’t feel like doing anything more elegant. Also, I don’t know how. Help yourself.</p></div></div></section><section id="how-can-i-import-large-files-and-merge-them" class="level2"><h2 class="anchored" data-anchor-id="how-can-i-import-large-files-and-merge-them">How can I import large files and merge them?</h2>
 <p>So we have some files in a folder. All files have the same number of columns, the same column names, and are in the same format. I assume that data are tabular (i.e., in the shape of a rectangle defined by rows and columns). I also assume that data are stored as Comma-Separated Values (.csv) or Tab-separated Text (.txt or .tsv), as these formats are the most reproducible.</p>
 <p>We to import all files and bind their rows together to form a unique long data frame. There are multiple combinations of functions we can use. Each function comes with a different package and does the job in different ways. Next, I will show some suggestions, but first let’s create some data. We are creating 50 datasets with 10 columns and 10,000 rows in .txt format. The variables included are numeric and made of 0s and 1s. There is also a column that identifies the data set. These files are created in a temporary directory using the <code>temp.dir</code> function for reproducibility. After closing you R session, this directory and all of its contents will disappear.</p>
-<section id="base-r-for-loops" class="level3">
-<h3 class="anchored" data-anchor-id="base-r-for-loops">Base R: for loops</h3>
+<section id="base-r-for-loops" class="level3"><h3 class="anchored" data-anchor-id="base-r-for-loops">Base R: for loops</h3>
 <p><em>for loops</em> are one of the fundamental skills in many programming languages. The idea behind <em>for loops</em> is quite intuitive: take a vector or list of length <em>n</em>, and apply a series of functions to each element in order. First, to element 1 and then to element 2, and so on, until we get to element <em>n</em>. Then, the loop ends. We will first make a vector with the paths of our files, and then apply the <code>read.delim</code> function to each element of the vector (i.e., to each path). Every time we import a file, we store the resulting data frame as an element of a list. After the loop finishes, we merge the rows of all element of the list using a combination of the functions <code>do.call</code> and <code>rbind</code>.</p>
-</section>
-<section id="base-r-lapply" class="level3">
-<h3 class="anchored" data-anchor-id="base-r-lapply">Base R: <code>lapply</code></h3>
+</section><section id="base-r-lapply" class="level3"><h3 class="anchored" data-anchor-id="base-r-lapply">Base R: <code>lapply</code>
+</h3>
 <p>We will use the functions <code>read.delim</code> and <code>read.csv</code> in combination with the function <code>lapply</code>. The former are well known. The later is part of a family of functions (together with <code>sapply</code>, <code>mapply</code>, and some others I can’t remember) that take two arguments: a list and a function, which will be applied over each element of the list in parallel (i.e., in a vectorised way).</p>
-</section>
-<section id="tidyverse" class="level3">
-<h3 class="anchored" data-anchor-id="tidyverse">Tidyverse</h3>
+</section><section id="tidyverse" class="level3"><h3 class="anchored" data-anchor-id="tidyverse">Tidyverse</h3>
 <p>The tidyverse is a family of packages that suggests a workflow when working in R. The use of pipes (<code>%&gt;%</code>) is one of its signature moves, which allow you to chain several operations applied on the same object within the same block of code. In contrast, base R makes you choose between applying several functions to the same object in different blocks of code, or applying those functions in a nested way, so that the first functions you read are those applied the last to your object (e.g., <code>do.call(rbind, as.list(data.frame(x = "this is annoying", y = 1:100)))</code>). We will use a combination of the <code>dplyr</code> and <code>purrr</code> packages to import the files listed in a vector, using <code>read.delim</code> and <code>bind_rows</code>.</p>
-</section>
-<section id="data.table" class="level3">
-<h3 class="anchored" data-anchor-id="data.table"><code>data.table</code></h3>
+</section><section id="data.table" class="level3"><h3 class="anchored" data-anchor-id="data.table"><code>data.table</code></h3>
 <p>The function <code>rbindlist</code> function from the package <code>data.table</code> also allows to merge the datasets contained in a list. In combination with <code>fread</code> (from the same package), it can be very fast.</p>
-</section>
-</section>
-<section id="what-method-is-the-fastest" class="level2">
-<h2 class="anchored" data-anchor-id="what-method-is-the-fastest">What method is the fastest?</h2>
+</section></section><section id="what-method-is-the-fastest" class="level2"><h2 class="anchored" data-anchor-id="what-method-is-the-fastest">What method is the fastest?</h2>
 <p>I will compare how long each combination of importing, vectorising, and merging functions needs to import 50 data sets with 10 columns and 10,000 rows each. Additionally, I will compare the performance of each method when working with CSV (.csv) and TSV (.txt) files. For each method, I will repeat the process 100 times, measuring how long it takes from the moment we list the extant files in the folder to the moment we finish merging the data sets. Here are the results:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-times" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="importing-data-multiple_files/figure-html/fig-times-1.png" class="img-fluid figure-img" width="7000">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Mean time (and standard deviation) for each combination of methods and file formats across 100 replications
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>For more detail:</p>
 <div class="cell">
 <div id="tbl-times" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Execution times
-</figcaption>
-<div aria-describedby="tbl-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div id="duwcxwtocd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#duwcxwtocd table {
@@ -743,7 +702,6 @@ Table&nbsp;1: Execution times
   text-indent: 25px;
 }
 </style>
-
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
@@ -943,7 +901,6 @@ Table&nbsp;1: Execution times
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 </div>
@@ -952,24 +909,16 @@ Table&nbsp;1: Execution times
 </div>
 <p><a href="#fig-times" class="quarto-xref">Figure&nbsp;1</a> and Table <a href="#tbl-times" class="quarto-xref">Table&nbsp;1</a> show the detailed timings The grand mean average time taken by all methods is ~2.12 seconds, but there are some differences.</p>
 <ul>
-<li>It doesn’t really matter what function we use to merge data sets: both <code>do.call</code> and <code>dplyr::bind_rows</code> perform roughly similarly.</li>
-<li>What makes the biggest difference is what function we use to vectorise the importing operation across file names to import them. <code>purrr::map</code> is the fastest. Incredibly, is takes less than 0.3 seconds in all conditions. It is also the least sensitive to the format of the files and the function we use to import them.</li>
-<li>The next vectorising function in terms of temporal efficiency is <code>lapply</code>, which takes ~1.5 seconds. It performs slightly better when working with .txt files, in that when working with .csv files its performance depends on what method we use to import them: <code>data.table::fread</code> is much faster than its base and <code>readr</code> competitors. This <a href="https://www.danielecook.com/speeding-up-reading-and-writing-in-r/">post</a> by Daniele Cook sheds some light into the advantage of <code>data.table</code> over other importing functions, also covering the <code>vroom</code> package, which this post doesn’t cover.</li>
-<li>Using <em>for loops</em> looks like the least efficient method for iterating across data sets when importing data. It also shows a similar profile than <code>lapply</code>: <code>data.table::fread</code> performs a bit better than the rest.</li>
-</ul>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Under the scenario under which I have simulated the data, it seems that using <code>purrr::map</code> in combination with <code>do.call</code> or <code>dplyr::bind_rows</code> to merge data sets is the most efficient method in terms of time. When using said combination, it doesn’t matter what function we use to import files, but <code>data.table::fread</code> seems like the best choice, as it is also the most flexible (take a look at the <a href="https://github.com/Rdatatable/data.table">documentation</a> of <code>data.table</code> to see all the features it offers).</p>
+<li>It doesn’t really matter what function we use to merge data sets: both <code>do.call</code> and <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> perform roughly similarly.</li>
+<li>What makes the biggest difference is what function we use to vectorise the importing operation across file names to import them. <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> is the fastest. Incredibly, is takes less than 0.3 seconds in all conditions. It is also the least sensitive to the format of the files and the function we use to import them.</li>
+<li>The next vectorising function in terms of temporal efficiency is <code>lapply</code>, which takes ~1.5 seconds. It performs slightly better when working with .txt files, in that when working with .csv files its performance depends on what method we use to import them: <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> is much faster than its base and <code>readr</code> competitors. This <a href="https://www.danielecook.com/speeding-up-reading-and-writing-in-r/">post</a> by Daniele Cook sheds some light into the advantage of <code>data.table</code> over other importing functions, also covering the <code>vroom</code> package, which this post doesn’t cover.</li>
+<li>Using <em>for loops</em> looks like the least efficient method for iterating across data sets when importing data. It also shows a similar profile than <code>lapply</code>: <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> performs a bit better than the rest.</li>
+</ul></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Under the scenario under which I have simulated the data, it seems that using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> to merge data sets is the most efficient method in terms of time. When using said combination, it doesn’t matter what function we use to import files, but <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> seems like the best choice, as it is also the most flexible (take a look at the <a href="https://github.com/Rdatatable/data.table">documentation</a> of <code>data.table</code> to see all the features it offers).</p>
 <p>If I have time, I may add another two dimensions: number of rows in the files and number of files, although I dare say similar results are to be expected. If anything, I would say that differences may become greater as file size and number of files increase. Also, it would be interesting to test if pre-allocating the elements of the vector in the for loop speeds up the process (see here what I mean). We shall see.</p>
 <p>Hope this was useful, if not interesting!</p>
-</section>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<script src="https://gist.github.com/gongcastro/35aa0ae28380fc0ff48c7df71b387b20.js"></script>
-</section>
-<section id="session-info" class="level2">
-<h2 class="anchored" data-anchor-id="session-info">Session info</h2>
+</section><section id="code" class="level2"><h2 class="anchored" data-anchor-id="code">Code</h2>
+<script src="https://gist.github.com/gongcastro/35aa0ae28380fc0ff48c7df71b387b20.js"></script></section><section id="session-info" class="level2"><h2 class="anchored" data-anchor-id="session-info">Session info</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.3.3 (2024-02-29 ucrt)
@@ -1016,20 +965,17 @@ loaded via a namespace (and not attached):
 
 <!-- -->
 
-</section>
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
   author = {Garcia-Castro, Gonzalo},
   title = {Importing Data from Multiple Files Simultaneously in {R}},
   date = {2020-07-05},
+  url = {http://github.com/gongcastro/gongcastro.github.io/blog/importing-data-multiple/importing-data-multiple.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2020" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2020, July 5). <em>Importing data from multiple files
-simultaneously in R</em>.
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+simultaneously in R</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/importing-data-multiple/importing-data-multiple.html">http://github.com/gongcastro/gongcastro.github.io/blog/importing-data-multiple/importing-data-multiple.html</a>
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1152,7 +1098,7 @@ simultaneously in R</em>.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1483,10 +1429,7 @@ simultaneously in R</em>.
       }
     }
   });
-  </script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
-<script>
+  </script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><script>
   function loadGiscus() {
     // Function to get the theme based on body class
     const getTheme = () => {
@@ -1732,8 +1675,7 @@ simultaneously in R</em>.
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
@@ -1745,8 +1687,6 @@ simultaneously in R</em>.
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

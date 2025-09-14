@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word mask across multiple languages.">
-
 <title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
 code{white-space: pre-wrap;}
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -76,10 +72,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3e6e4daf0034692c49b30e182b9b7813.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-498f47485eb6e3b65f623b75e7ad9843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,34 +100,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<style>
+}</script><style>
 
       .quarto-title-block .quarto-title-banner {
         background: #2DC9D2;
       }
 </style>
-
-
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="masks-ort.png">
+<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/masks-ort.png">
 <meta property="og:site_name" content="Gonzalo García-Castro">
+<meta property="og:image:height" content="5400">
+<meta property="og:image:width" content="4500">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="masks-ort.png">
+<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/masks-ort.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="5400">
+<meta name="twitter:image-width" content="4500">
 </head>
-
 <body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
@@ -143,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -156,22 +149,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">How similar is the word “mask” across languages?</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                   <div>
@@ -212,32 +201,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#orthographic-distance" id="toc-orthographic-distance" class="nav-link active" data-scroll-target="#orthographic-distance">Orthographic distance</a></li>
+<li><a href="#orthographic-distance" id="toc-orthographic-distance" class="nav-link active" data-scroll-target="#orthographic-distance">Orthographic distance</a></li>
   <li><a href="#phonological-distance" id="toc-phonological-distance" class="nav-link" data-scroll-target="#phonological-distance">Phonological distance</a></li>
   <li><a href="#onsets" id="toc-onsets" class="nav-link" data-scroll-target="#onsets">Onsets</a></li>
   <li><a href="#some-disclaimers" id="toc-some-disclaimers" class="nav-link" data-scroll-target="#some-disclaimers">Some disclaimers:</a></li>
   <li><a href="#code-and-data" id="toc-code-and-data" class="nav-link" data-scroll-target="#code-and-data">Code and data</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/mask-similarity-across-languages/mask-similarity-across-languages.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/mask-similarity-across-languages/mask-similarity-across-languages.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<p><img src="masks.jpg" class="img-fluid"></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="masks.jpg" class="img-fluid"></p>
 <p>The ubiquity of <strong>masks</strong> has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. I gathered a big-ish dataset with translation equivalents of the word mask across ~110 languages. I tweeted about this today, and wanted to dedicate some more lines to nuance.</p>
 <blockquote class="twitter-tweet blockquote" data-theme="light">
 <p lang="en" dir="ltr">
@@ -245,15 +224,12 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
 </p>
 — Gon García-Castro (@gongcastro) <a href="https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw">November 24, 2020</a>
 </blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Here’s the data:</p>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>Here’s the data:</p>
 <div class="cell">
 <div id="tbl-data" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1
-</figcaption>
-<div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div style="height:600px; overflow-y: scroll">
 <div id="aqwngssdop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -696,7 +672,6 @@ Table&nbsp;1
   text-indent: 25px;
 }
 </style>
-
 <table class="gt_table do-not-create-environment caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
@@ -704,15 +679,15 @@ Table&nbsp;1
 <col style="width: 25%">
 <col style="width: 25%">
 </colgroup>
-<thead>
-<tr class="gt_col_headings header">
+<thead><tr class="gt_col_headings header">
 <th id="<strong>Language</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Language</strong></th>
 <th id="<strong>Orthography</strong>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Orthography</strong></th>
-<th id="<strong>Orthography</strong><br>(romanisation)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Orthography</strong><br>
+<th id="<strong>Orthography</strong><br>(romanisation)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">
+<strong>Orthography</strong><br>
 (romanisation)</th>
-<th id="<strong>Phonology</strong> (IPA)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Phonology</strong> (IPA)</th>
-</tr>
-</thead>
+<th id="<strong>Phonology</strong> (IPA)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">
+<strong>Phonology</strong> (IPA)</th>
+</tr></thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Afrikaans</td>
@@ -1374,14 +1349,11 @@ Table&nbsp;1
 <td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">imaski</td>
 <td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
-</tbody><tfoot class="gt_sourcenotes">
-<tr class="odd">
+</tbody>
+<tfoot class="gt_sourcenotes"><tr class="odd">
 <td colspan="4" class="gt_sourcenote">https://drive.google.com/file/d/18SeJTiM2-JXR9SOqEg22wdkvNL3OxG3u/view?usp=sharing</td>
-</tr>
-</tfoot>
-
+</tr></tfoot>
 </table>
-
 </div>
 </div>
 </div>
@@ -1390,34 +1362,22 @@ Table&nbsp;1
 </div>
 </div>
 <p>To compute the similarity of each pair of translation equivalents, I followed Floccia et al.’s (<a href="https://srcd.onlinelibrary.wiley.com/doi/10.1111/mono.12349">2018</a>) procedure. For each pair of translation equivalents, I computed their Levenshtein distance as the number of insertions, deletions and replacements a string character has to go through to become identical to the other, and then divided this value by the number of characters of the longest of the two strings, so that all values range between 0 and 1. To compute the Levenshtein distance, I used the <code>stringdist()</code> function of the <code>stringdist</code> R package.</p>
-<section id="orthographic-distance" class="level2">
-<h2 class="anchored" data-anchor-id="orthographic-distance">Orthographic distance</h2>
+<section id="orthographic-distance" class="level2"><h2 class="anchored" data-anchor-id="orthographic-distance">Orthographic distance</h2>
 <p>I first computed the orthographic distance between each pair of translation equivalents. Since some word forms make use of different alphabets, I first romanised all word forms. By <em>romanised</em>, I mean that I searched for the transcription of each word form in the Roman alphabet, and used it as input to compute the Levenshtein distance for each pair of translation equivalents. Here’s how orthographically similar (the romanisations of) the translations of <em>mask</em> are (<em>N</em> = 110 pairs):</p>
 <p><img src="masks-ort.png" class="img-fluid"></p>
-</section>
-<section id="phonological-distance" class="level2">
-<h2 class="anchored" data-anchor-id="phonological-distance">Phonological distance</h2>
+</section><section id="phonological-distance" class="level2"><h2 class="anchored" data-anchor-id="phonological-distance">Phonological distance</h2>
 <p>The phonological similarity/distance may be more informative. This time I searched for or generated with the help of a native speaker a phonological IPA transcription of each word-form. I then used this transcription as input to compute the phonological similarity of each pair of translation equivalents. A pitfall in this process is the fact that phonemes are almost never identical across languages, so even the common phoneme /m/ could vary slightly on its pronunciation in two languages. If this difference is encoded in the IPA transcription (as different characters), the Levenshtein distance will be inflated. For this reason, I simplified some IPA transcriptions to preserve this similarity. I also removed tones. This is terribly wrong from a linguistics perspective, but it’s the only way I see to be able to play with some reliable data. Also I’m no linguist, so you have no power here.</p>
 <p><img src="power.gif" class="img-fluid"></p>
 <p>Here’s the same analysis performed on phonological transcriptions of a subset of those languages (<em>N</em> = 75 pairs, those I could find a reliable IPA transcription for or could find help from a native speaker):</p>
 <p><img src="masks-phon.png" class="img-fluid"></p>
-</section>
-<section id="onsets" class="level2">
-<h2 class="anchored" data-anchor-id="onsets">Onsets</h2>
+</section><section id="onsets" class="level2"><h2 class="anchored" data-anchor-id="onsets">Onsets</h2>
 <p>Most of the times, the phonological overlap comes from onset graphemes/phonemes. This is how many word-forms start with each onset:</p>
 <p><img src="masks-onset.png" class="img-fluid"></p>
-</section>
-<section id="some-disclaimers" class="level2">
-<h2 class="anchored" data-anchor-id="some-disclaimers">Some disclaimers:</h2>
+</section><section id="some-disclaimers" class="level2"><h2 class="anchored" data-anchor-id="some-disclaimers">Some disclaimers:</h2>
 <p>I tried ensuring that words referred to <em>surgical</em> masks (instead of other types of masks) with help from native speakers. Wrong translations may still have slipped in (or be just wrong). I wish I had time to double-check all of them (I did this for fun).</p>
 <p>This analysis is probably affected by selection bias. I suspect many dissimilar translations are missing due to not being included in the translation apps I used (e.g.&nbsp;Google Translate). Feel free to contribute missing entries or make corrections!</p>
-</section>
-<section id="code-and-data" class="level2">
-<h2 class="anchored" data-anchor-id="code-and-data">Code and data</h2>
-<script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"></script>
-</section>
-<section id="session-info" class="level2">
-<h2 class="anchored" data-anchor-id="session-info">Session info</h2>
+</section><section id="code-and-data" class="level2"><h2 class="anchored" data-anchor-id="code-and-data">Code and data</h2>
+<script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"></script></section><section id="session-info" class="level2"><h2 class="anchored" data-anchor-id="session-info">Session info</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.3.3 (2024-02-29 ucrt)
@@ -1465,19 +1425,17 @@ loaded via a namespace (and not attached):
 
 <!-- -->
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
   author = {Garcia-Castro, Gonzalo},
   title = {How Similar Is the Word “Mask” Across Languages?},
   date = {2020-11-20},
+  url = {http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2020" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2020, November 20). <em>How similar is the word
-<span>“mask”</span> across languages?</em>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<span>“mask”</span> across languages?</em> <a href="http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html">http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html</a>
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1600,7 +1558,7 @@ Garcia-Castro, G. (2020, November 20). <em>How similar is the word
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1931,10 +1889,7 @@ Garcia-Castro, G. (2020, November 20). <em>How similar is the word
       }
     }
   });
-  </script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
-<script>
+  </script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><script>
   function loadGiscus() {
     // Function to get the theme based on body class
     const getTheme = () => {
@@ -2176,8 +2131,7 @@ Garcia-Castro, G. (2020, November 20). <em>How similar is the word
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
@@ -2189,8 +2143,6 @@ Garcia-Castro, G. (2020, November 20). <em>How similar is the word
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

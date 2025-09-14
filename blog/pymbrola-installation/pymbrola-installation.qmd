@@ -1,5 +1,5 @@
 ---
-title: "pymbrola: A Python interface to the MBROLA speech synthesiser (I)"
+title: "Installing the MBROLA speech synthesiser"
 date: 2025-08-25
 authors: Gonzalo García-Castro
 description: "I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to get MBROLA up and running on your Linux or Windows system, so that you can use the pymbrola module (a tutorial in upcoming)."
@@ -52,7 +52,7 @@ _ 10
 
 MBROLA is not currently being mantained, and their main website is down. Plus, there aren't many up-to-date resources out there explaining how to use MBROLA. Getting MBROLA to run in your computer can be a bit dounting, so after having gone through it, I hope this small guide can help other people do it in a less painful way.
 
-## Setting up MBROLA 
+## Setting up MBROLA
 
 ### Install the Windows Subsystem for Linux (WSL)
 
@@ -122,5 +122,3 @@ Here is a bash script that runs all of these steps:
 ## Docker image
 
 For convenience, I've created a Docker image with an instance of Ubuntu 22.04, packed with a compiled version of MBROLA. This image is available on DockerHub: [https://hub.docker.com/repository/docker/gongcastro/mbrola/general](https://hub.docker.com/repository/docker/gongcastro/mbrola/general).
-
-

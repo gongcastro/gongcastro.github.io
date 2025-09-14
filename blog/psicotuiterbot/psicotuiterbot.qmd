@@ -35,13 +35,13 @@ fig-align: center
 Uno de los problemas que muchas personas de esta comunidad verbalizaba durante los últimos meses (aunque probablemente se trate de un fenómeno cíclico) es **lo fácilmente que un debate acalorado o incluso irrespetuoso entre dos personas o grupos de personas podía afecta al clima general de la comunidad**. Independientemente de la legitimidad de la discusión en curso, no es ideal que la experiencia en Twitter de una persona promedio en el día a día sea dependiente de un número de interacciones tan reducidas. Alicia Franco hizo es su momento una encuesta capturando el **clima general de Psicotuiter** en su momento (los resultados están disponibles también en un paquete de R que desarrollamos, llamado [{psicotuiteR}](https://gongcastro.github.io/2021/11/14/creando-un-paquete-de-r-una-guia-informal-i/), disponible en [GitHub](https://github.com/gongcastro/psicotuiteR)):
 
 
-<blockquote class="twitter-tweet"><p lang="es" dir="ltr">¡Hola, hola!🌿 <br>¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter&quot;?<br>👇¡Pues ya tenemos los resultados!👇 <a href="https://t.co/RbDM78LA0k">pic.twitter.com/RbDM78LA0k</a></p>&mdash; Ali ☻︎ (@AliciaFrancoXVE) <a href="https://twitter.com/AliciaFrancoXVE/status/1352342172750786560?ref_src=twsrc%5Etfw">January 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="es" dir="ltr">¡Hola, hola!🌿 <br>¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter&quot;?<br>👇¡Pues ya tenemos los resultados!👇 <a href="https://t.co/RbDM78LA0k">pic.twitter.com/RbDM78LA0k</a></p>&mdash; Ali ☻︎ (\@AliciaFrancoXVE) <a href="https://twitter.com/AliciaFrancoXVE/status/1352342172750786560?ref_src=twsrc%5Etfw">January 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 Lo mucho que este clima se extiende a través de toda la comunidad puede deberse en parte a la propia estructura de redes de amistad entre los diferentes perfiles. Mi opinión y la de más personas (aun no hemos mirado los datos, pero en algún momento nos gustaría hacerlo), es que **la estructura de esta comunidad está muy centralizada**: muchas personas con relativamente pocos seguidores (0-400) siguen a unas pocas personas con relativamente muchos seguidores (5.000-20.000). Esto convertiría a las segundas en poseedoras de una parte substancial del espacio de la comunidad. Recientemente hice un pequeño hilo ampliando esta reflexión:
 
 
-<blockquote class="twitter-tweet"><p lang="es" dir="ltr">Yo tengo una experiencia parecida a la de <a href="https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw">@IreneFPinto</a>. Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es *mi* experiencia.<br><br>Ahora bien, tengo una pequeña reflexión sobre la estructura de <a href="https://twitter.com/hashtag/psicotuiter?src=hash&amp;ref_src=twsrc%5Etfw">#psicotuiter</a> (importantes las aclaraciones al final): 🧵 <a href="https://t.co/G77h8YRQdZ">https://t.co/G77h8YRQdZ</a></p>&mdash; Gon García-Castro (@gongcastro) <a href="https://twitter.com/gongcastro/status/1472157574522888192?ref_src=twsrc%5Etfw">December 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="es" dir="ltr">Yo tengo una experiencia parecida a la de <a href="https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw"\>@IreneFPinto</a>. Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es *mi* experiencia.<br><br>Ahora bien, tengo una pequeña reflexión sobre la estructura de <a href="https://twitter.com/hashtag/psicotuiter?src=hash&amp;ref_src=twsrc%5Etfw">#psicotuiter</a> (importantes las aclaraciones al final): 🧵 <a href="https://t.co/G77h8YRQdZ">https://t.co/G77h8YRQdZ</a></p>&mdash; Gon García-Castro (\@gongcastro) <a href="https://twitter.com/gongcastro/status/1472157574522888192?ref_src=twsrc%5Etfw">December 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 Una de las consecuencias inmediatas de esto es que el contenido del timeline (TL) de la mayoría de Psicotuiter dependería de las **interacciones entre un pequeño grupo de personas con muchos seguidores**. Teniendo en cuenta que las interacciones negativas tienden a extenderse más rápido y llevarse más atención que las positivas o neutras (ej. [Bellovary et al., 2021](https://psyarxiv.com/2er67/)), el impacto de la estructura centralizada de la comunidad sobre el clima del TL de la persona promedio en Psicotuiter es importante.
@@ -76,7 +76,7 @@ options(httr_oob_default = TRUE)
 renv::restore()
 ```
 
-A continuación extraemos las **credenciales** que necesitamos para acceder a la API de Twitter (las paso a como variables de entorno para evitar hacerlas públicas, ya que eso dería acceso a cualquiera a la cuenta de Twitter del bot). 
+A continuación extraemos las **credenciales** que necesitamos para acceder a la API de Twitter (las paso a como variables de entorno para evitar hacerlas públicas, ya que eso dería acceso a cualquiera a la cuenta de Twitter del bot).
 
 ```r
 # authenticate Twitter API
@@ -85,7 +85,7 @@ my_token <- rtweet::create_token(
     consumer_key = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
     consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_KEY_SECRET"),
     access_token = Sys.getenv("TWITTER_ACCESS_TOKEN"),
-    access_secret = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET"), 
+    access_secret = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET"),
     set_renv = FALSE
 )
 ```
@@ -103,58 +103,58 @@ blocked_accounts <- unlist(strsplit(Sys.getenv("BLOCKED_ACCOUNTS"), " ")) # acco
 time_interval <- lubridate::now(tzone = "UCT")-lubridate::minutes(120)
 # get mentions to #psicotuiter and others
 all_tweets <- rtweet::search_tweets(
-    hashtags, 
-    type = "recent", 
-    token = my_token, 
-    include_rts = FALSE, 
+    hashtags,
+    type = "recent",
+    token = my_token,
+    include_rts = FALSE,
     tzone = "CET"
-) 
-status_ids <- all_tweets %>% 
+)
+status_ids <- all_tweets %>%
     filter(
         !(screen_name %in% gsub("@", "", blocked_accounts)),
         created_at >= time_interval, # 15 min
         !grepl(paste(hate_words, collapse = "|"), text), # filter out hate words
         stringr::str_count(text, "#") < 4, # no more than 3 hashtags
         lang %in% c("es", "und") # in Spanish or undefined language
-    ) %>% 
+    ) %>%
     pull(status_id)
 # get request ID
 request_tweets <- rtweet::get_mentions(
-    token = my_token, 
+    token = my_token,
     tzone = "CET"
-) 
+)
 ```
 
 
-Finalmente, **hacemos RT** uno a uno usando rtweet (si ya habíamos hecho RT a uno de ellos simplemente se ignora). 
+Finalmente, **hacemos RT** uno a uno usando rtweet (si ya habíamos hecho RT a uno de ellos simplemente se ignora).
 
 ```r
 if (nrow(request_tweets) > 0) {
-    request_ids <- request_tweets %>% 
+    request_ids <- request_tweets %>%
         filter(
             created_at >= time_interval, # 15 min
             grepl("@psicotuiterbot", text),
             grepl("rt|RT|Rt", text),
             !grepl(paste(hate_words, collapse = "|"), text) # filter out hate words
-        ) %>% 
+        ) %>%
         pull(status_in_reply_to_status_id)
-    
+
     # get requested IDS
     if (length(request_ids) > 0) {
-        requested_ids <- rtweet::lookup_statuses(request_ids, token = my_token) %>% 
+        requested_ids <- rtweet::lookup_statuses(request_ids, token = my_token) %>%
 posterior_preds <- expand.grid(any1 = seq(min(dat$any1), max(dat$any1), by = 0.25),
                                any2 = seq(min(dat$any2), max(dat$any2), by = 0.25),
-                               mes = unique(dat$mes)) %>% 
-  add_fitted_draws(fit3, n = 10) %>% 
-  ungroup() %>% 
-  left_join(select(dat, any, mes, temperatura) 
+                               mes = unique(dat$mes)) %>%
+  add_fitted_draws(fit3, n = 10) %>%
+  ungroup() %>%
+  left_join(select(dat, any, mes, temperatura)
             mutate(intercept = fixef(fit3)$Estimate[1])
             rowwise(y = fixef(fit3)[1,1] + any2)
             ggplot(posterior_preds, aes(any1, .value, colour = any1, group = interaction(any2, .draw))) +
               facet_wrap(~mes) +
               geom_point(size = 0.1)
-            
-            
+
+
                      if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
       - name: Create and post tweet
@@ -192,7 +192,7 @@ git commit -m "Update repository"
 git push
 ```
 
-Estos comandos se ejecutan en este orden cada 15 minutos. 
+Estos comandos se ejecutan en este orden cada 15 minutos.
 
 
 # Bloqueando usuarios de forma remota
@@ -212,12 +212,12 @@ if (nrow(msg) > 0){
         msg_text <- msg$message_create$message_data$text[i]
         is_block <- grepl("block|block|bloquea", tolower(msg_text))
         sender_name <- rtweet::lookup_users(msg$message_create$sender_id[i], token = my_token)$screen_name
-        
+
         # if message is sent by VIP user and contains keyword "block"
         if (is_block & (paste0("@", sender_name) %in% vip_users)){
             msg_text_vct <- unlist(strsplit(msg_text, " "))
             target_users <- msg_text_vct[grepl("@", msg_text_vct)]
-            
+
             # if at least one targeted users has not been blocked yet
             if (!all(target_users %in% blocked_accounts_vct)){
                 target_users_str <- paste0(target_users, collapse = " ")
@@ -225,7 +225,7 @@ if (nrow(msg) > 0){
                 renviron_text <- paste0('BLOCKED_ACCOUNTS = "', blocked_accounts_new, '"')
                 write(renviron_text, ".Renviron", append = TRUE)
                 message(paste0("User(s) ", paste0(target_users_str, collapse = " "), " is now blocked"))
-                
+
             } else {
                 repeated_target <- target_users[which(target_users %in% blocked_accounts_vct)]
                 message(paste0("User(s) ", paste0(repeated_target, collapse = " "), " has already been blocked"))
@@ -240,4 +240,3 @@ if (nrow(msg) > 0){
 # Conclusiones
 
 De momento, el bot está funcionando bastante bien y se le está dando bastante uso, especialmente por parte de cuentas pequeñas. Aún tengo pendiente hacer un análisis más profundo de qué tipo de actividad tiene lugar en el bot, pero mi impresión es que la mayoría de usos consisten en petitiones de referencias de profesionales de psicología en poblaciones concretas o de referencias bilbiográficas.
-
