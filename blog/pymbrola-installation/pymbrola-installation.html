@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gonzalo Garcia-Castro">
-<meta name="description" content="I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to get MBROLA up and running on your Linux or Windows system, so that you can use the pymbrola module (a tutorial in upcoming).">
+<meta name="description" content="I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to set up MBROLA on your Linux/MacOS or Windows system, so that you can use the pymbrola module (a tutorial in upcoming).">
 
 <title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
@@ -197,16 +197,17 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">pymbrola: A Python interface to the MBROLA speech synthesiser (I)</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Installing the MBROLA speech synthesiser</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                   <div>
         <div class="description">
-          I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to get MBROLA up and running on your Linux or Windows system, so that you can use the pymbrola module (a tutorial in upcoming).
+          I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to set up MBROLA on your Linux/MacOS or Windows system, so that you can use the pymbrola module (a tutorial in upcoming).
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">python</div>
                 <div class="quarto-category">package</div>
                 <div class="quarto-category">linux</div>
+                <div class="quarto-category">wsl</div>
                 <div class="quarto-category">speech synthesis</div>
                 <div class="quarto-category">language</div>
                 <div class="quarto-category">mbrola</div>
@@ -376,15 +377,14 @@ Tip
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2025,
   author = {Garcia-Castro, Gonzalo},
-  title = {Pymbrola: {A} {Python} Interface to the {MBROLA} Speech
-    Synthesiser {(I)}},
+  title = {Installing the {MBROLA} Speech Synthesiser},
   date = {2025-08-25},
   url = {http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Garcia-Castro, G. (2025, August 25). <em>pymbrola: A Python interface to
-the MBROLA speech synthesiser (I)</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html">http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</a>
+Garcia-Castro, G. (2025, August 25). <em>Installing the MBROLA speech
+synthesiser</em>. <a href="http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html">http://github.com/gongcastro/gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -871,129 +871,130 @@ the MBROLA speech synthesiser (I)</em>. <a href="http://github.com/gongcastro/go
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "pymbrola: A Python interface to the MBROLA speech synthesiser (I)"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Installing the MBROLA speech synthesiser"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2025-08-25</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> Gonzalo García-Castro</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to get MBROLA up and running on your Linux or Windows system, so that you can use the pymbrola module (a tutorial in upcoming)."</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to set up MBROLA on your Linux/MacOS or Windows system, so that you can use the pymbrola module (a tutorial in upcoming)."</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> c3po.png</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - python</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - package</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - linux</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - speech synthesis</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - language</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - mbrola</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">  - tutorial</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="an">echo:</span><span class="co"> false</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="an">warning:</span><span class="co"> false</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="an">message:</span><span class="co"> false</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip title="**TLDR**: install MBROLA in your Unix-based instance using this bash script" collapse="true"}</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - wsl</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - speech synthesis</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - language</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">  - mbrola</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">  - tutorial</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="an">echo:</span><span class="co"> false</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="an">warning:</span><span class="co"> false</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="an">message:</span><span class="co"> false</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip title="**TLDR**: install MBROLA in your Unix-based instance using this bash script" collapse="true"}</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>It's been some time since my <span class="co">[</span><span class="ot">last post</span><span class="co">](http://localhost:5555/blog/dpf-scholkmann/dpf-scholkmann.html)</span>. We've been pretty busy starting the new lab and setting up the new studies of the <span class="co">[</span><span class="ot">NeuroDevCo</span><span class="co">](https://neurodevco.github.io/)</span> group. I hope we can share our progress soon! Meanwhile, I'm here presenting one of the earliest outputs of the GALA project: <span class="co">[</span><span class="ot">**pymbrola**</span><span class="co">](https://pypi.org/project/mbrola/)</span>: **a Python interface to the speech synthesiser MBROLA**. This is a two-part blog post. Here, I provide a detailed guide on how to get MBROLA up and runnig on your machine. This is a pre-requisite for using the **pymbrola** package. In an upcoming post, I'll illustrate how pymbrola works.</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="al">![](c3po.png)</span>{width=100% fig-align=center}</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## About MBROLA</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>MBROLA <span class="co">[</span><span class="ot">@dutoit1996mbrola</span><span class="co">]</span> is a speech synthesis software developed in the 90s by Thierry Dutoit and Vinvent Pagel. Vaguely, it consists on a database of **naturally pre-recorded diphones** (combinations of two phones, like /ke/ or /li/), which are put together according to form the desired string of sounds that the user inputs. The result is an intelligible, yet somewhat robotic synthesised speech in the form of a WAV file. The actual machinery behind MBROLA is much more complex than this, and the particular mechanisms that merge pre-recorded diphones is (*MBROLA* stands for the name of such algorithm, **Multi-Band Resynthesis OverLap Add**), to date, an important breakthrough in linguistics and speech synthesis research.</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>More recent speech synthesisers have been released since MBROLA, most of which produce a much **more natural-sounding output**. These models work very differently compared to MBROLA: they are being trained on massive amounts of text and speech data, and become very good at finding out **how particular combinations of characters are supposed to sound like when read**. This is very convenient when one simply wants some text to be "read" aloud by the machine.</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>MBROLA works in a very different way. First, MBROLA takes phonetic symbols as input. It then looks up which diphones are available in the database of a particular language, and then puts them together to produce the sound using the aforementioned MBROLA algorithm. This is one of the best features of MBROLA: it provides **fine-grained control over the phonology of the output**. The user can also specify the **duration** of each phone, and modulate the **pitch** contour in an almost arbitrary way. Most importantly (IMO), the input consists in **phonetic symbols**, which provides much more control over the phonological features of the segments present in the output. For these reasons, many psycholinguistics researchers have relied on MBROLA to synthesise their auditory speech stimuli for experiments when fine control is required. For instance, this is the input that MBROLA takes to generate the word "caffè" (/kafˈfɛ/) in Italian:</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="in">; caffè</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="in">; first number after the phonetic symbol indicates the duration of the segment</span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="in">; the rest of the numbers indicate F0 contour.</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="in">_ 10</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="in">k 100 200 200</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="in">a 100 200 100 100 200</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="in">f 100 200 200</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>It's been some time since my <span class="co">[</span><span class="ot">last post</span><span class="co">](http://localhost:5555/blog/dpf-scholkmann/dpf-scholkmann.html)</span>. We've been pretty busy starting the new lab and setting up the new studies of the <span class="co">[</span><span class="ot">NeuroDevCo</span><span class="co">](https://neurodevco.github.io/)</span> group. I hope we can share our progress soon! Meanwhile, I'm here presenting one of the earliest outputs of the GALA project: <span class="co">[</span><span class="ot">**pymbrola**</span><span class="co">](https://pypi.org/project/mbrola/)</span>: **a Python interface to the speech synthesiser MBROLA**. This is a two-part blog post. Here, I provide a detailed guide on how to get MBROLA up and runnig on your machine. This is a pre-requisite for using the **pymbrola** package. In an upcoming post, I'll illustrate how pymbrola works.</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="al">![](c3po.png)</span>{width=100% fig-align=center}</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## About MBROLA</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>MBROLA <span class="co">[</span><span class="ot">@dutoit1996mbrola</span><span class="co">]</span> is a speech synthesis software developed in the 90s by Thierry Dutoit and Vinvent Pagel. Vaguely, it consists on a database of **naturally pre-recorded diphones** (combinations of two phones, like /ke/ or /li/), which are put together according to form the desired string of sounds that the user inputs. The result is an intelligible, yet somewhat robotic synthesised speech in the form of a WAV file. The actual machinery behind MBROLA is much more complex than this, and the particular mechanisms that merge pre-recorded diphones is (*MBROLA* stands for the name of such algorithm, **Multi-Band Resynthesis OverLap Add**), to date, an important breakthrough in linguistics and speech synthesis research.</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>More recent speech synthesisers have been released since MBROLA, most of which produce a much **more natural-sounding output**. These models work very differently compared to MBROLA: they are being trained on massive amounts of text and speech data, and become very good at finding out **how particular combinations of characters are supposed to sound like when read**. This is very convenient when one simply wants some text to be "read" aloud by the machine.</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>MBROLA works in a very different way. First, MBROLA takes phonetic symbols as input. It then looks up which diphones are available in the database of a particular language, and then puts them together to produce the sound using the aforementioned MBROLA algorithm. This is one of the best features of MBROLA: it provides **fine-grained control over the phonology of the output**. The user can also specify the **duration** of each phone, and modulate the **pitch** contour in an almost arbitrary way. Most importantly (IMO), the input consists in **phonetic symbols**, which provides much more control over the phonological features of the segments present in the output. For these reasons, many psycholinguistics researchers have relied on MBROLA to synthesise their auditory speech stimuli for experiments when fine control is required. For instance, this is the input that MBROLA takes to generate the word "caffè" (/kafˈfɛ/) in Italian:</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="in">; caffè</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="in">; first number after the phonetic symbol indicates the duration of the segment</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="in">; the rest of the numbers indicate F0 contour.</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="in">_ 10</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="in">k 100 200 200</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="in">a 100 200 100 100 200</span></span>
 <span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="in">f 100 200 200</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="in">E1 100 200 200</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="in">_ 10</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>MBROLA is not currently being mantained, and their main website is down. Plus, there aren't many up-to-date resources out there explaining how to use MBROLA. Getting MBROLA to run in your computer can be a bit dounting, so after having gone through it, I hope this small guide can help other people do it in a less painful way.</span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting up MBROLA</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Install the Windows Subsystem for Linux (WSL)</span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>If already on Ubuntu or macOS, you may skip this step.</span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>I learnt the hard way that compiling stuff on Windows is a bit of a nightmare. For this reason, this guide assumes that you are working on a Unix-based operative system (Ubuntu, macOS, mainly). If you are a Windows user, you will need to install the <span class="co">[</span><span class="ot">Windows Subsystem for Linux (WSL)</span><span class="co">](https://learn.microsoft.com/en-us/windows/wsl/install)</span>.</span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="in">f 100 200 200</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="in">E1 100 200 200</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="in">_ 10</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>MBROLA is not currently being mantained, and their main website is down. Plus, there aren't many up-to-date resources out there explaining how to use MBROLA. Getting MBROLA to run in your computer can be a bit dounting, so after having gone through it, I hope this small guide can help other people do it in a less painful way.</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting up MBROLA</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### Install the Windows Subsystem for Linux (WSL)</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>If already on Ubuntu or macOS, you may skip this step.</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>I learnt the hard way that compiling stuff on Windows is a bit of a nightmare. For this reason, this guide assumes that you are working on a Unix-based operative system (Ubuntu, macOS, mainly). If you are a Windows user, you will need to install the <span class="co">[</span><span class="ot">Windows Subsystem for Linux (WSL)</span><span class="co">](https://learn.microsoft.com/en-us/windows/wsl/install)</span>.</span>
 <span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### Install system dependencies</span></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>MBROLA needs a few system dependencies. These allow to download the necessary code and compile MBROLA from source. We are also installing Python for using pymbrola later. Openthe terminal and run the following lines (if using WSL enter the terminal by running <span class="in">`wsl`</span> on your command prompt).</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> update</span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install build-essential curl git gcc python3</span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download and compile MBROLA</span></span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>Currently, MBROLA is only available on the <span class="in">`[numediart/MBROLA]()`</span> GitHub repository, so we need to download it from there. I recommend you clone the repository using cURL to fetch the latest release:</span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="co"># get latest release of numediart/MBROLA</span></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="va">RELEASE</span><span class="op">=</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">--silent</span> <span class="st">"https://api.github.com/repos/numediart/MBROLA/releases/latest"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-Po</span> <span class="st">"(?&lt;=</span><span class="dt">\"</span><span class="st">tag_name</span><span class="dt">\"</span><span class="st">: </span><span class="dt">\"</span><span class="st">).*(?=</span><span class="dt">\"</span><span class="st">)"</span><span class="va">)</span></span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="va">FNAME</span><span class="op">=</span><span class="st">"mbrola-</span><span class="va">${RELEASE}</span><span class="st">.tar.gz"</span></span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> https://github.com/<span class="va">${REPO}</span>/archive/refs/tags/<span class="va">${RELEASE}</span>.tar.gz <span class="op">&gt;</span> <span class="va">${FNAME}</span></span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> <span class="va">${FNAME}</span></span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>Now, let's compile MBROLA:</span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> MBROLA-<span class="va">${RELEASE}</span></span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>MBROLA is now ready to be used, but for convenience, we may want to make the <span class="in">`mbrola`</span> command available in our session without having to navigate to the MBROLA folder:</span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp Bin/mbrola /usr/bin/mbrola</span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download MBROLA voices</span></span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>Different MBROLA voices contain different pre-recorded diphones. There are many MBROLA voices available^<span class="co">[</span><span class="ot">see GitHub repository [README](https://github.com/numediart/MBROLA-voices/blob/master/README.md) file</span><span class="co">]</span>. You may want to download all of them, for which I recommend cloning the <span class="in">`numediart/MBROLA-voices`</span> GitHub repository:</span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Install system dependencies</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>MBROLA needs a few system dependencies. These allow to download the necessary code and compile MBROLA from source. We are also installing Python for using pymbrola later. Openthe terminal and run the following lines (if using WSL enter the terminal by running <span class="in">`wsl`</span> on your command prompt).</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> update</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install build-essential curl git gcc python3</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download and compile MBROLA</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>Currently, MBROLA is only available on the <span class="in">`[numediart/MBROLA]()`</span> GitHub repository, so we need to download it from there. I recommend you clone the repository using cURL to fetch the latest release:</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="co"># get latest release of numediart/MBROLA</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="va">RELEASE</span><span class="op">=</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">--silent</span> <span class="st">"https://api.github.com/repos/numediart/MBROLA/releases/latest"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-Po</span> <span class="st">"(?&lt;=</span><span class="dt">\"</span><span class="st">tag_name</span><span class="dt">\"</span><span class="st">: </span><span class="dt">\"</span><span class="st">).*(?=</span><span class="dt">\"</span><span class="st">)"</span><span class="va">)</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="va">FNAME</span><span class="op">=</span><span class="st">"mbrola-</span><span class="va">${RELEASE}</span><span class="st">.tar.gz"</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> https://github.com/<span class="va">${REPO}</span>/archive/refs/tags/<span class="va">${RELEASE}</span>.tar.gz <span class="op">&gt;</span> <span class="va">${FNAME}</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> <span class="va">${FNAME}</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>Now, let's compile MBROLA:</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> MBROLA-<span class="va">${RELEASE}</span></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>MBROLA is now ready to be used, but for convenience, we may want to make the <span class="in">`mbrola`</span> command available in our session without having to navigate to the MBROLA folder:</span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp Bin/mbrola /usr/bin/mbrola</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download MBROLA voices</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>Different MBROLA voices contain different pre-recorded diphones. There are many MBROLA voices available^<span class="co">[</span><span class="ot">see GitHub repository [README](https://github.com/numediart/MBROLA-voices/blob/master/README.md) file</span><span class="co">]</span>. You may want to download all of them, for which I recommend cloning the <span class="in">`numediart/MBROLA-voices`</span> GitHub repository:</span>
 <span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a><span class="co"># remove voices/ folder if exists</span></span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="va">VOICES_REPO</span><span class="op">=</span><span class="st">"numediart/MBROLA-voices"</span></span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="st">"voices"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span> <span class="at">-rf</span> voices</span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="st">"https://github.com/</span><span class="va">${VOICES_REPO}</span><span class="st">"</span> voices</span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a><span class="co"># make voices available to MBROLA</span></span>
-<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> voices/data/ /usr/share/mbrola/</span>
-<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span> is a bash script that runs all of these steps:</span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>script <span class="va">src</span><span class="op">=</span><span class="st">"https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"</span><span class="op">&gt;&lt;</span>/script<span class="op">&gt;</span></span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a><span class="co">## Docker image</span></span>
-<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a><span class="ex">For</span> convenience, I<span class="st">'ve created a Docker image with an instance of Ubuntu 22.04, packed with a compiled version of MBROLA. This image is available on DockerHub: [https://hub.docker.com/repository/docker/gongcastro/mbrola/general](https://hub.docker.com/repository/docker/gongcastro/mbrola/general).</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="co"># remove voices/ folder if exists</span></span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a><span class="va">VOICES_REPO</span><span class="op">=</span><span class="st">"numediart/MBROLA-voices"</span></span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="st">"voices"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span> <span class="at">-rf</span> voices</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="st">"https://github.com/</span><span class="va">${VOICES_REPO}</span><span class="st">"</span> voices</span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a><span class="co"># make voices available to MBROLA</span></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> voices/data/ /usr/share/mbrola/</span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span> is a bash script that runs all of these steps:</span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>script <span class="va">src</span><span class="op">=</span><span class="st">"https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"</span><span class="op">&gt;&lt;</span>/script<span class="op">&gt;</span></span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a><span class="co">## Docker image</span></span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="ex">For</span> convenience, I<span class="st">'ve created a Docker image with an instance of Ubuntu 22.04, packed with a compiled version of MBROLA. This image is available on DockerHub: [https://hub.docker.com/repository/docker/gongcastro/mbrola/general](https://hub.docker.com/repository/docker/gongcastro/mbrola/general).</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
