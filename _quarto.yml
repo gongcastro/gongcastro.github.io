@@ -1,6 +1,6 @@
 project:
   type: website
-  preview: 
+  preview:
     port: 5555
     browser: true
     watch-inputs: true
@@ -10,11 +10,11 @@ project:
     - "*.qmd"
   resources:
     - "assets/**/**"
-    
-execute:
-  freeze: false
 
-# metadata  
+execute:
+  freeze: true
+
+# metadata
 pagetitle: "Gonzalo Garcia-Castro"
 author-meta: "Gonzalo Garcia-Castro"
 
@@ -35,34 +35,39 @@ website:
     description: "Language, stats, R"
     image: "/assets/media/favicon.png"
 
-  twitter-card: 
+  twitter-card:
     title: "Gonzalo Garcia-Castro"
     card-style: summary
     description: "Language, stats, R"
     creator: "@gongcastro"
-    site: "@cbcUPF"
     image: "assets/media/favicon.png"
-    
+
   navbar:
     pinned: true
     background: primary
+    logo: /assets/media/favicon.png
+    search: true
+    tools:
+      - icon: twitter
+        href: https://twitter.com/gongcastro
+      - icon: github
+        menu:
+          - text: Source Code
+            href:  https://github.com/gongcastro/gongcastro.github.io
+          - text: Report a Bug
+            href:  https://gongcastro.github.io/issues
     left:
       - href: index.qmd
         text: Home
       - href: cv.qmd
-        text: CV   
+        text: CV
       - href: blog.qmd
         text: Blog
-    right: 
-      - icon: github
-        href: https://github.com/gongcastro
-        aria-label: GitHub
-    search: false
-    
+
   page-footer:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Gonzalo Garcia-Castro</span>
-      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
+      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>
     center: |
       <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
     right: |
@@ -86,6 +91,3 @@ format:
     footnotes-hover: true
     reference-location: margin
     citation-location: margin
-    
-
-
