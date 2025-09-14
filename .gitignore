@@ -42,6 +42,5 @@ vignettes/*.pdf
 /_site/
 /.luarc.json
 /.benchmarks
-/_freeze/
 /docs/
 /.venv/
