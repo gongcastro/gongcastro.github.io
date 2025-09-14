@@ -1,7 +1,8 @@
 [
   {
-    "listing": "/blog.html",
+    "listing": "/index.html",
     "items": [
+      "/blog/pymbrola-installation/pymbrola-installation.html",
       "/blog/dpf-scholkmann/dpf-scholkmann.html",
       "/blog/upfthesis/upfthesis.html",
       "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
@@ -17,8 +18,9 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/blog.html",
     "items": [
+      "/blog/pymbrola-installation/pymbrola-installation.html",
       "/blog/dpf-scholkmann/dpf-scholkmann.html",
       "/blog/upfthesis/upfthesis.html",
       "/blog/revaljs-to-pdf/revealjs-to-pdf.html",
