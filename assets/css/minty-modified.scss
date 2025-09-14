@@ -24,14 +24,14 @@ $purple:            #6f42c1 !default;
 $pink:              #e83e8c !default;
 $red:               #ff7851 !default;
 $orange:            #fd7e14 !default;
-$yellow:            #ffce67 !default;
+$yellow:            #ffe1a0ff !default;
 $green:             #56cc9d !default;
 $teal:              #20c997 !default;
 $cyan:              #6cc3d5 !default;
 $lightsalmon:       #ffa07a !default;
 $salmon:            salmon  !default;
 $yellow-main:       #fcc203 !default;
-$blue-main:         #2DC9D2 !default;
+$blue-main:         #35ccd496 !default;
 
 $primary:     $yellow-main !default;
 $secondary:   $blue-main !default;
@@ -275,6 +275,17 @@ legend {
   }
 }
 
+
+
+.band-text {
+  background-color: $yellow;
+  display: block !important; 
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1em 2em 1em 2em;
+  width: 100%;
+}
+
 // Containers
 .card,
 .list-group-item {
@@ -302,7 +313,7 @@ legend {
     color: $black;
     border-left: 10px solid $yellow-main;
     margin: 1.5em 10px;
-    padding: 0.5em 10px;
+    padding: 0.5em 1em 0.5em 1em;
     quotes: "\201C""\201D""\2018""\2019";
 }
 
@@ -367,11 +378,11 @@ body {
 
 
 .navbar a:hover {
-  border-bottom: 3px solid $primary;
+  border-bottom: 5px solid $blue-main;
 }
 
 .navbar a.active {
-  border-bottom: 3px solid $primary;
+  border-bottom: 5px solid $primary;
 }
 
 .navbar a {
@@ -386,53 +397,63 @@ body {
 }
 
 .profile-card {
-    text-align: center;
     img {
-      position: relative;
-      top: 20%;
+      align-items: center !important;
+      border: 10px solid $yellow-main;
       border-radius: 50%;
-      width: 200px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      float: left;
+      width: 350px;
     }
+
     p {
-      text-align: center;  
+      text-align: left;
+      padding: 1em 2em 1em 2em;  
     }
 }
 
-.social-container{
-  text-align: true;
-  display:grid;
-  grid-template-columns: repeat(9, 4.125em);
-  height: 2.5%;
-}
+.social-grid {
+  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 3px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: 30pt !important;
 
-.social {
-  margin: .125em;
-  font-size: 3em;
-  color: white;
-  border-radius: 50%;
-  text-align: center;
-  display: grid;
-  place-items:center;
-   i, a {
-       color: $black;
-   }
-   a:hover {
-       color: $yellow-main;
-   }
 
+  a {
+    color: black !important;
+    align-items: center !important;
+    align-self: center !important;
+    align-content: center !important;
+  }
 }
 
    
-@media only screen and (max-device-width: 640px) {
+@media only screen and (max-device-width: 1000px) {
     .profilepic {
         position: relative;
     }
-    .social-container {
-        left: 0;
-        grid-template-columns: repeat(5, 4.125em);
-        grid-template-row: repeat(2, 3.125em);
+
+    .social-grid {
+      display: inline-grid;
+      grid-template-rows: 200px 200px 200px;
+      grid-template-columns: 200px 200px 200px;
+      grid-gap: 3px;
     }
-    .social {
-        font-size: 1.5em;
+
+    social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid black;
+      color:rgba(0, 0, 0, .05);
     }
+
 }
+

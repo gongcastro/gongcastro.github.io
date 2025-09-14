@@ -40,3 +40,8 @@ vignettes/*.pdf
 
 /.quarto/
 /_site/
+/.luarc.json
+/.benchmarks
+/_freeze/
+/docs/
+/.venv/

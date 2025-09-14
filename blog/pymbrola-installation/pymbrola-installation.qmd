@@ -1,0 +1,126 @@
+---
+title: "pymbrola: A Python interface to the MBROLA speech synthesiser (I)"
+date: 2025-08-25
+authors: Gonzalo García-Castro
+description: "I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to get MBROLA up and running on your Linux or Windows system, so that you can use the pymbrola module (a tutorial in upcoming)."
+image: c3po.png
+categories:
+  - python
+  - package
+  - linux
+  - speech synthesis
+  - language
+  - mbrola
+  - tutorial
+fig-align: center
+code-fold: true
+echo: false
+warning: false
+message: false
+bibliography: references.bib
+---
+
+::: {.callout-tip title="**TLDR**: install MBROLA in your Unix-based instance using this bash script" collapse="true"}
+<script src="https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"></script>
+:::
+
+
+It's been some time since my [last post](http://localhost:5555/blog/dpf-scholkmann/dpf-scholkmann.html). We've been pretty busy starting the new lab and setting up the new studies of the [NeuroDevCo](https://neurodevco.github.io/) group. I hope we can share our progress soon! Meanwhile, I'm here presenting one of the earliest outputs of the GALA project: [**pymbrola**](https://pypi.org/project/mbrola/): **a Python interface to the speech synthesiser MBROLA**. This is a two-part blog post. Here, I provide a detailed guide on how to get MBROLA up and runnig on your machine. This is a pre-requisite for using the **pymbrola** package. In an upcoming post, I'll illustrate how pymbrola works.
+
+![](c3po.png){width=100% fig-align=center}
+
+## About MBROLA
+
+MBROLA [@dutoit1996mbrola] is a speech synthesis software developed in the 90s by Thierry Dutoit and Vinvent Pagel. Vaguely, it consists on a database of **naturally pre-recorded diphones** (combinations of two phones, like /ke/ or /li/), which are put together according to form the desired string of sounds that the user inputs. The result is an intelligible, yet somewhat robotic synthesised speech in the form of a WAV file. The actual machinery behind MBROLA is much more complex than this, and the particular mechanisms that merge pre-recorded diphones is (*MBROLA* stands for the name of such algorithm, **Multi-Band Resynthesis OverLap Add**), to date, an important breakthrough in linguistics and speech synthesis research.
+
+More recent speech synthesisers have been released since MBROLA, most of which produce a much **more natural-sounding output**. These models work very differently compared to MBROLA: they are being trained on massive amounts of text and speech data, and become very good at finding out **how particular combinations of characters are supposed to sound like when read**. This is very convenient when one simply wants some text to be "read" aloud by the machine.
+
+MBROLA works in a very different way. First, MBROLA takes phonetic symbols as input. It then looks up which diphones are available in the database of a particular language, and then puts them together to produce the sound using the aforementioned MBROLA algorithm. This is one of the best features of MBROLA: it provides **fine-grained control over the phonology of the output**. The user can also specify the **duration** of each phone, and modulate the **pitch** contour in an almost arbitrary way. Most importantly (IMO), the input consists in **phonetic symbols**, which provides much more control over the phonological features of the segments present in the output. For these reasons, many psycholinguistics researchers have relied on MBROLA to synthesise their auditory speech stimuli for experiments when fine control is required. For instance, this is the input that MBROLA takes to generate the word "caffè" (/kafˈfɛ/) in Italian:
+
+```
+; caffè
+; first number after the phonetic symbol indicates the duration of the segment
+; the rest of the numbers indicate F0 contour.
+_ 10
+k 100 200 200
+a 100 200 100 100 200
+f 100 200 200
+f 100 200 200
+E1 100 200 200
+_ 10
+```
+
+MBROLA is not currently being mantained, and their main website is down. Plus, there aren't many up-to-date resources out there explaining how to use MBROLA. Getting MBROLA to run in your computer can be a bit dounting, so after having gone through it, I hope this small guide can help other people do it in a less painful way.
+
+## Setting up MBROLA 
+
+### Install the Windows Subsystem for Linux (WSL)
+
+::: {.callout-tip}
+If already on Ubuntu or macOS, you may skip this step.
+:::
+
+I learnt the hard way that compiling stuff on Windows is a bit of a nightmare. For this reason, this guide assumes that you are working on a Unix-based operative system (Ubuntu, macOS, mainly). If you are a Windows user, you will need to install the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+
+### Install system dependencies
+
+MBROLA needs a few system dependencies. These allow to download the necessary code and compile MBROLA from source. We are also installing Python for using pymbrola later. Openthe terminal and run the following lines (if using WSL enter the terminal by running `wsl` on your command prompt).
+
+```sh
+apt-get update
+apt-get install build-essential curl git gcc python3
+```
+
+### Download and compile MBROLA
+
+Currently, MBROLA is only available on the `[numediart/MBROLA]()` GitHub repository, so we need to download it from there. I recommend you clone the repository using cURL to fetch the latest release:
+
+```sh
+# get latest release of numediart/MBROLA
+RELEASE=$(curl --silent "https://api.github.com/repos/numediart/MBROLA/releases/latest" | grep -Po "(?<=\"tag_name\": \").*(?=\")")
+FNAME="mbrola-${RELEASE}.tar.gz"
+curl -L https://github.com/${REPO}/archive/refs/tags/${RELEASE}.tar.gz > ${FNAME}
+tar -xf ${FNAME}
+```
+
+Now, let's compile MBROLA:
+
+```sh
+cd MBROLA-${RELEASE}
+make
+```
+
+MBROLA is now ready to be used, but for convenience, we may want to make the `mbrola` command available in our session without having to navigate to the MBROLA folder:
+
+```sh
+sudo cp Bin/mbrola /usr/bin/mbrola
+```
+
+### Download MBROLA voices
+
+Different MBROLA voices contain different pre-recorded diphones. There are many MBROLA voices available^[see GitHub repository [README](https://github.com/numediart/MBROLA-voices/blob/master/README.md) file]. You may want to download all of them, for which I recommend cloning the `numediart/MBROLA-voices` GitHub repository:
+
+
+```sh
+# remove voices/ folder if exists
+VOICES_REPO="numediart/MBROLA-voices"
+if [ -d "voices" ]; then
+  rm -rf voices
+fi
+
+git clone "https://github.com/${VOICES_REPO}" voices
+
+# make voices available to MBROLA
+cp -r voices/data/ /usr/share/mbrola/
+```
+
+Here is a bash script that runs all of these steps:
+
+<script src="https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"></script>
+
+## Docker image
+
+For convenience, I've created a Docker image with an instance of Ubuntu 22.04, packed with a compiled version of MBROLA. This image is available on DockerHub: [https://hub.docker.com/repository/docker/gongcastro/mbrola/general](https://hub.docker.com/repository/docker/gongcastro/mbrola/general).
+
+

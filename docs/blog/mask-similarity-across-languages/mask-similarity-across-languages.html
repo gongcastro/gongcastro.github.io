@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.43">
+<meta name="generator" content="quarto-1.7.32">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word mask across multiple languages.">
-<title>Gonzalo García-Castro – Gonzalo Garcia-Castro</title>
+
+<title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +23,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -32,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -55,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -62,17 +67,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../..//assets/media/favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3e6e4daf0034692c49b30e182b9b7813.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,44 +105,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><style>
+}</script>
+<style>
 
       .quarto-title-block .quarto-title-banner {
         background: #2DC9D2;
       }
 </style>
+
+
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
-<meta property="og:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/masks-ort.png">
+<meta property="og:image" content="masks-ort.png">
 <meta property="og:site_name" content="Gonzalo García-Castro">
-<meta property="og:image:height" content="5400">
-<meta property="og:image:width" content="4500">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/masks-ort.png">
+<meta name="twitter:image" content="masks-ort.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:site" content="@cbcUPF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="5400">
-<meta name="twitter:image-width" content="4500">
 </head>
-<body class="floating nav-fixed">
+
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -148,18 +156,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">How similar is the word “mask” across languages?</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                   <div>
@@ -200,22 +212,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
-<li><a href="#orthographic-distance" id="toc-orthographic-distance" class="nav-link active" data-scroll-target="#orthographic-distance">Orthographic distance</a></li>
+  <li><a href="#orthographic-distance" id="toc-orthographic-distance" class="nav-link active" data-scroll-target="#orthographic-distance">Orthographic distance</a></li>
   <li><a href="#phonological-distance" id="toc-phonological-distance" class="nav-link" data-scroll-target="#phonological-distance">Phonological distance</a></li>
   <li><a href="#onsets" id="toc-onsets" class="nav-link" data-scroll-target="#onsets">Onsets</a></li>
   <li><a href="#some-disclaimers" id="toc-some-disclaimers" class="nav-link" data-scroll-target="#some-disclaimers">Some disclaimers:</a></li>
   <li><a href="#code-and-data" id="toc-code-and-data" class="nav-link" data-scroll-target="#code-and-data">Code and data</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/mask-similarity-across-languages/mask-similarity-across-languages.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/blog/mask-similarity-across-languages/mask-similarity-across-languages.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="masks.jpg" class="img-fluid"></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p><img src="masks.jpg" class="img-fluid"></p>
 <p>The ubiquity of <strong>masks</strong> has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. I gathered a big-ish dataset with translation equivalents of the word mask across ~110 languages. I tweeted about this today, and wanted to dedicate some more lines to nuance.</p>
 <blockquote class="twitter-tweet blockquote" data-theme="light">
 <p lang="en" dir="ltr">
@@ -223,27 +245,34 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
 </p>
 — Gon García-Castro (@gongcastro) <a href="https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw">November 24, 2020</a>
 </blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>Here’s the data:</p>
-<div id="tbl-data" class="cell anchored">
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Here’s the data:</p>
+<div class="cell">
+<div id="tbl-data" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1
+</figcaption>
+<div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div style="height:600px; overflow-y: scroll">
-<div id="prvujmgpgv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#prvujmgpgv table {
+<div id="aqwngssdop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aqwngssdop table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#prvujmgpgv thead, #prvujmgpgv tbody, #prvujmgpgv tfoot, #prvujmgpgv tr, #prvujmgpgv td, #prvujmgpgv th {
+#aqwngssdop thead, #aqwngssdop tbody, #aqwngssdop tfoot, #aqwngssdop tr, #aqwngssdop td, #aqwngssdop th {
   border-style: none;
 }
 
-#prvujmgpgv p {
+#aqwngssdop p {
   margin: 0;
   padding: 0;
 }
 
-#prvujmgpgv .gt_table {
+#aqwngssdop .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -269,12 +298,12 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-left-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_caption {
+#aqwngssdop .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#prvujmgpgv .gt_title {
+#aqwngssdop .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -286,7 +315,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-bottom-width: 0;
 }
 
-#prvujmgpgv .gt_subtitle {
+#aqwngssdop .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -298,7 +327,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-top-width: 0;
 }
 
-#prvujmgpgv .gt_heading {
+#aqwngssdop .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -310,13 +339,13 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-right-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_bottom_border {
+#aqwngssdop .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_col_headings {
+#aqwngssdop .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -331,7 +360,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-right-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_col_heading {
+#aqwngssdop .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -351,7 +380,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   overflow-x: hidden;
 }
 
-#prvujmgpgv .gt_column_spanner_outer {
+#aqwngssdop .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -363,15 +392,15 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   padding-right: 4px;
 }
 
-#prvujmgpgv .gt_column_spanner_outer:first-child {
+#aqwngssdop .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#prvujmgpgv .gt_column_spanner_outer:last-child {
+#aqwngssdop .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#prvujmgpgv .gt_column_spanner {
+#aqwngssdop .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -383,11 +412,11 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   width: 100%;
 }
 
-#prvujmgpgv .gt_spanner_row {
+#aqwngssdop .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#prvujmgpgv .gt_group_heading {
+#aqwngssdop .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -413,7 +442,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   text-align: left;
 }
 
-#prvujmgpgv .gt_empty_group_heading {
+#aqwngssdop .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -428,15 +457,15 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   vertical-align: middle;
 }
 
-#prvujmgpgv .gt_from_md > :first-child {
+#aqwngssdop .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#prvujmgpgv .gt_from_md > :last-child {
+#aqwngssdop .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#prvujmgpgv .gt_row {
+#aqwngssdop .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -455,7 +484,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   overflow-x: hidden;
 }
 
-#prvujmgpgv .gt_stub {
+#aqwngssdop .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -468,7 +497,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   padding-right: 5px;
 }
 
-#prvujmgpgv .gt_stub_row_group {
+#aqwngssdop .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -482,15 +511,15 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   vertical-align: top;
 }
 
-#prvujmgpgv .gt_row_group_first td {
+#aqwngssdop .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#prvujmgpgv .gt_row_group_first th {
+#aqwngssdop .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#prvujmgpgv .gt_summary_row {
+#aqwngssdop .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -500,16 +529,16 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   padding-right: 5px;
 }
 
-#prvujmgpgv .gt_first_summary_row {
+#aqwngssdop .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_first_summary_row.thick {
+#aqwngssdop .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#prvujmgpgv .gt_last_summary_row {
+#aqwngssdop .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -519,7 +548,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-bottom-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_grand_summary_row {
+#aqwngssdop .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -529,7 +558,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   padding-right: 5px;
 }
 
-#prvujmgpgv .gt_first_grand_summary_row {
+#aqwngssdop .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -539,7 +568,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-top-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_last_grand_summary_row_top {
+#aqwngssdop .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -549,11 +578,11 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-bottom-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_striped {
+#aqwngssdop .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#prvujmgpgv .gt_table_body {
+#aqwngssdop .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -562,7 +591,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-bottom-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_footnotes {
+#aqwngssdop .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -576,7 +605,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-right-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_footnote {
+#aqwngssdop .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -585,7 +614,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   padding-right: 5px;
 }
 
-#prvujmgpgv .gt_sourcenotes {
+#aqwngssdop .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -599,7 +628,7 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   border-right-color: #D3D3D3;
 }
 
-#prvujmgpgv .gt_sourcenote {
+#aqwngssdop .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -607,82 +636,83 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
   padding-right: 5px;
 }
 
-#prvujmgpgv .gt_left {
+#aqwngssdop .gt_left {
   text-align: left;
 }
 
-#prvujmgpgv .gt_center {
+#aqwngssdop .gt_center {
   text-align: center;
 }
 
-#prvujmgpgv .gt_right {
+#aqwngssdop .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#prvujmgpgv .gt_font_normal {
+#aqwngssdop .gt_font_normal {
   font-weight: normal;
 }
 
-#prvujmgpgv .gt_font_bold {
+#aqwngssdop .gt_font_bold {
   font-weight: bold;
 }
 
-#prvujmgpgv .gt_font_italic {
+#aqwngssdop .gt_font_italic {
   font-style: italic;
 }
 
-#prvujmgpgv .gt_super {
+#aqwngssdop .gt_super {
   font-size: 65%;
 }
 
-#prvujmgpgv .gt_footnote_marks {
+#aqwngssdop .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#prvujmgpgv .gt_asterisk {
+#aqwngssdop .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#prvujmgpgv .gt_indent_1 {
+#aqwngssdop .gt_indent_1 {
   text-indent: 5px;
 }
 
-#prvujmgpgv .gt_indent_2 {
+#aqwngssdop .gt_indent_2 {
   text-indent: 10px;
 }
 
-#prvujmgpgv .gt_indent_3 {
+#aqwngssdop .gt_indent_3 {
   text-indent: 15px;
 }
 
-#prvujmgpgv .gt_indent_4 {
+#aqwngssdop .gt_indent_4 {
   text-indent: 20px;
 }
 
-#prvujmgpgv .gt_indent_5 {
+#aqwngssdop .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+
+<table class="gt_table do-not-create-environment caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
 <col style="width: 25%">
 <col style="width: 25%">
 </colgroup>
-<thead><tr class="header gt_col_headings">
+<thead>
+<tr class="gt_col_headings header">
 <th id="<strong>Language</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Language</strong></th>
 <th id="<strong>Orthography</strong>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Orthography</strong></th>
-<th id="<strong>Orthography</strong><br>(romanisation)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">
-<strong>Orthography</strong><br>
+<th id="<strong>Orthography</strong><br>(romanisation)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Orthography</strong><br>
 (romanisation)</th>
-<th id="<strong>Phonology</strong> (IPA)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">
-<strong>Phonology</strong> (IPA)</th>
-</tr></thead>
+<th id="<strong>Phonology</strong> (IPA)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Phonology</strong> (IPA)</th>
+</tr>
+</thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="language" style="background-color: rgba(255,255,255,0); color: #000000">Afrikaans</td>
@@ -1344,32 +1374,50 @@ The ubiquity of <a href="https://twitter.com/hashtag/masks?src=hash&amp;ref_src=
 <td class="gt_row gt_left" headers="romanisation" style="background-color: rgba(255,255,255,0); color: #000000">imaski</td>
 <td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
-</tbody>
-<tfoot class="gt_sourcenotes"><tr class="odd">
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
 <td colspan="4" class="gt_sourcenote">https://drive.google.com/file/d/18SeJTiM2-JXR9SOqEg22wdkvNL3OxG3u/view?usp=sharing</td>
-</tr></tfoot>
+</tr>
+</tfoot>
+
 </table>
+
 </div>
 </div>
+</div>
+</div>
+</figure>
 </div>
 </div>
 <p>To compute the similarity of each pair of translation equivalents, I followed Floccia et al.’s (<a href="https://srcd.onlinelibrary.wiley.com/doi/10.1111/mono.12349">2018</a>) procedure. For each pair of translation equivalents, I computed their Levenshtein distance as the number of insertions, deletions and replacements a string character has to go through to become identical to the other, and then divided this value by the number of characters of the longest of the two strings, so that all values range between 0 and 1. To compute the Levenshtein distance, I used the <code>stringdist()</code> function of the <code>stringdist</code> R package.</p>
-<section id="orthographic-distance" class="level2"><h2 class="anchored" data-anchor-id="orthographic-distance">Orthographic distance</h2>
+<section id="orthographic-distance" class="level2">
+<h2 class="anchored" data-anchor-id="orthographic-distance">Orthographic distance</h2>
 <p>I first computed the orthographic distance between each pair of translation equivalents. Since some word forms make use of different alphabets, I first romanised all word forms. By <em>romanised</em>, I mean that I searched for the transcription of each word form in the Roman alphabet, and used it as input to compute the Levenshtein distance for each pair of translation equivalents. Here’s how orthographically similar (the romanisations of) the translations of <em>mask</em> are (<em>N</em> = 110 pairs):</p>
 <p><img src="masks-ort.png" class="img-fluid"></p>
-</section><section id="phonological-distance" class="level2"><h2 class="anchored" data-anchor-id="phonological-distance">Phonological distance</h2>
+</section>
+<section id="phonological-distance" class="level2">
+<h2 class="anchored" data-anchor-id="phonological-distance">Phonological distance</h2>
 <p>The phonological similarity/distance may be more informative. This time I searched for or generated with the help of a native speaker a phonological IPA transcription of each word-form. I then used this transcription as input to compute the phonological similarity of each pair of translation equivalents. A pitfall in this process is the fact that phonemes are almost never identical across languages, so even the common phoneme /m/ could vary slightly on its pronunciation in two languages. If this difference is encoded in the IPA transcription (as different characters), the Levenshtein distance will be inflated. For this reason, I simplified some IPA transcriptions to preserve this similarity. I also removed tones. This is terribly wrong from a linguistics perspective, but it’s the only way I see to be able to play with some reliable data. Also I’m no linguist, so you have no power here.</p>
 <p><img src="power.gif" class="img-fluid"></p>
 <p>Here’s the same analysis performed on phonological transcriptions of a subset of those languages (<em>N</em> = 75 pairs, those I could find a reliable IPA transcription for or could find help from a native speaker):</p>
 <p><img src="masks-phon.png" class="img-fluid"></p>
-</section><section id="onsets" class="level2"><h2 class="anchored" data-anchor-id="onsets">Onsets</h2>
+</section>
+<section id="onsets" class="level2">
+<h2 class="anchored" data-anchor-id="onsets">Onsets</h2>
 <p>Most of the times, the phonological overlap comes from onset graphemes/phonemes. This is how many word-forms start with each onset:</p>
 <p><img src="masks-onset.png" class="img-fluid"></p>
-</section><section id="some-disclaimers" class="level2"><h2 class="anchored" data-anchor-id="some-disclaimers">Some disclaimers:</h2>
+</section>
+<section id="some-disclaimers" class="level2">
+<h2 class="anchored" data-anchor-id="some-disclaimers">Some disclaimers:</h2>
 <p>I tried ensuring that words referred to <em>surgical</em> masks (instead of other types of masks) with help from native speakers. Wrong translations may still have slipped in (or be just wrong). I wish I had time to double-check all of them (I did this for fun).</p>
 <p>This analysis is probably affected by selection bias. I suspect many dissimilar translations are missing due to not being included in the translation apps I used (e.g.&nbsp;Google Translate). Feel free to contribute missing entries or make corrections!</p>
-</section><section id="code-and-data" class="level2"><h2 class="anchored" data-anchor-id="code-and-data">Code and data</h2>
-<script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"></script></section><section id="session-info" class="level2"><h2 class="anchored" data-anchor-id="session-info">Session info</h2>
+</section>
+<section id="code-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="code-and-data">Code and data</h2>
+<script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"></script>
+</section>
+<section id="session-info" class="level2">
+<h2 class="anchored" data-anchor-id="session-info">Session info</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.3.3 (2024-02-29 ucrt)
@@ -1396,328 +1444,332 @@ other attached packages:
  [1] htmltools_0.5.8.1 kableExtra_1.4.0  knitr_1.48        gt_0.10.1        
  [5] readxl_1.4.3      lubridate_1.9.3   forcats_1.0.0     stringr_1.5.1    
  [9] dplyr_1.1.4       purrr_1.0.2       readr_2.1.5       tidyr_1.3.1      
-[13] tibble_3.2.1      ggplot2_3.5.1     tidyverse_2.0.0   quarto_1.4       
+[13] tibble_3.2.1      ggplot2_3.5.1     tidyverse_2.0.0  
 
 loaded via a namespace (and not attached):
- [1] sass_0.4.9        utf8_1.2.4        generics_0.1.3    renv_0.16.0      
+ [1] sass_0.4.9        utf8_1.2.4        generics_0.1.3    renv_1.0.5       
  [5] xml2_1.3.6        stringi_1.8.4     hms_1.1.3         digest_0.6.36    
  [9] magrittr_2.0.3    evaluate_0.24.0   grid_4.3.3        timechange_0.3.0 
-[13] fastmap_1.2.0     cellranger_1.1.0  jsonlite_1.8.8    processx_3.8.4   
-[17] ps_1.7.7          fansi_1.0.6       viridisLite_0.4.2 scales_1.3.0     
-[21] stringdist_0.9.12 cli_3.6.3         rlang_1.1.4       commonmark_1.9.1 
-[25] munsell_0.5.1     withr_3.0.0       yaml_2.3.9        parallel_4.3.3   
-[29] tools_4.3.3       tzdb_0.4.0        colorspace_2.1-0  vctrs_0.6.5      
-[33] R6_2.5.1          lifecycle_1.0.4   htmlwidgets_1.6.4 pkgconfig_2.0.3  
-[37] pillar_1.9.0      later_1.3.2       gtable_0.3.5      glue_1.7.0       
-[41] Rcpp_1.0.13       systemfonts_1.1.0 xfun_0.46         tidyselect_1.2.1 
-[45] rstudioapi_0.16.0 svglite_2.1.3     rmarkdown_2.27    compiler_4.3.3   
-[49] markdown_1.13    </code></pre>
+[13] fastmap_1.2.0     cellranger_1.1.0  jsonlite_1.8.8    fansi_1.0.6      
+[17] viridisLite_0.4.2 scales_1.3.0      stringdist_0.9.12 cli_3.6.3        
+[21] rlang_1.1.4       commonmark_1.9.1  munsell_0.5.1     withr_3.0.0      
+[25] yaml_2.3.9        parallel_4.3.3    tools_4.3.3       tzdb_0.4.0       
+[29] colorspace_2.1-0  vctrs_0.6.5       R6_2.5.1          lifecycle_1.0.4  
+[33] htmlwidgets_1.6.4 pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.5     
+[37] glue_1.7.0        systemfonts_1.1.0 xfun_0.46         tidyselect_1.2.1 
+[41] rstudioapi_0.16.0 rmarkdown_2.27    svglite_2.1.3     compiler_4.3.3   
+[45] markdown_1.13    </code></pre>
 </div>
 </div>
 
 
 <!-- -->
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2020,
   author = {Garcia-Castro, Gonzalo},
   title = {How Similar Is the Word “Mask” Across Languages?},
   date = {2020-11-20},
-  url = {http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2020" class="csl-entry quarto-appendix-citeas" role="listitem">
 Garcia-Castro, G. (2020, November 20). <em>How similar is the word
-<span>“mask”</span> across languages?</em> <a href="http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html">http://github.com/gongcastro/gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html</a>
-</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("http:\/\/github\.com\/gongcastro\/gongcastro\.github\.io");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+<span>“mask”</span> across languages?</em>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
         }
-        return container.innerHTML
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1725,186 +1777,190 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "gongcastro/gongcastro.github.io";
+    script.dataset.repoId = "R_kgDOGJ9lfQ";
+    script.dataset.category = "Blog comments";
+    script.dataset.categoryId = "R_kgDOGJ9lfQ";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
   }
-});
-</script><script src="https://giscus.app/client.js" data-repo="gongcastro/gongcastro.github.io" data-repo-id="R_kgDOGJ9lfQ" data-category="Blog comments" data-category-id="R_kgDOGJ9lfQ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+  loadGiscus();
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 'How similar is the word "mask" across languages?'</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word *mask* across multiple languages."</span></span>
@@ -1927,7 +1983,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>The ubiquity of **masks** has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. I gathered a big-ish dataset with translation equivalents of the word mask across ~110 languages. I tweeted about this today, and wanted to dedicate some more lines to nuance.</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>&lt;blockquote class="twitter-tweet" data-theme="light"&gt;&lt;p lang="en" dir="ltr"&gt;The ubiquity of &lt;a href="https://twitter.com/hashtag/masks?src=hash<span class="dv">&amp;amp;</span>ref_src=twsrc%5Etfw"&gt;#masks&lt;/a&gt;😷 has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. 🌐&lt;br&gt;Here<span class="dv">&amp;#39;</span>s how orthographically similar (the romanisations of) the translations of MASK are (N=110 pairs): &lt;a href="https://t.co/KMMdJke9SG"&gt;pic.twitter.com/KMMdJke9SG&lt;/a&gt;&lt;/p&gt;<span class="dv">&amp;mdash;</span> Gon García-Castro (\@gongcastro) &lt;a href="https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw"&gt;November 24, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">blockquote</span><span class="ot"> class</span><span class="op">=</span><span class="st">"twitter-tweet"</span><span class="ot"> data-theme</span><span class="op">=</span><span class="st">"light"</span><span class="dt">&gt;&lt;</span><span class="kw">p</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"en"</span><span class="ot"> dir</span><span class="op">=</span><span class="st">"ltr"</span><span class="dt">&gt;</span>The ubiquity of <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://twitter.com/hashtag/masks?src=hash</span><span class="dv">&amp;amp;</span><span class="st">ref_src=twsrc%5Etfw"</span><span class="dt">&gt;</span>#masks<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span>😷 has given psycholinguists a frequent-ish stimulus to use in experiments. This word is more form-similar across languages than one may think. 🌐<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>Here<span class="dv">&amp;#39;</span>s how orthographically similar (the romanisations of) the translations of MASK are (N=110 pairs): <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://t.co/KMMdJke9SG"</span><span class="dt">&gt;</span>pic.twitter.com/KMMdJke9SG<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span><span class="dv">&amp;mdash;</span> Gon García-Castro (\@gongcastro) <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://twitter.com/gongcastro/status/1331266541560729605?ref_src=twsrc%5Etfw"</span><span class="dt">&gt;</span>November 24, 2020<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">blockquote</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> async src</span><span class="op">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span><span class="ot"> charset</span><span class="op">=</span><span class="st">"utf-8"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>Here's the data:</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
@@ -2110,7 +2166,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code and data</span></span>
 <span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>&lt;script src="https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"&gt;&lt;/script&gt;</span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://gist.github.com/gongcastro/c751a62245b17562e18d8a145d5950c6.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
 <span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session info</span></span>
 <span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a></span>
@@ -2120,7 +2176,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
@@ -2132,6 +2189,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

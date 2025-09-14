@@ -3,13 +3,13 @@ title: "CV"
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-[Industry CV (**PDF**)](https://gongcastro.github.io/cv/cv.pdf)
+[Download PDF](https://raw.githubusercontent.com/gongcastro/cv/refs/heads/main/cv.pdf?raw=true)
 
 ## Education
 
 October 2018 - Present
 
-**PhD, Biomedicine**; Universitat Pompeu Fabra (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
+> **PhD, Biomedicine**; Universitat Pompeu Fabra (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
 
 October 2017 - July 2018
 

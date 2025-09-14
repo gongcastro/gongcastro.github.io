@@ -12,7 +12,7 @@ project:
     - "assets/**/**"
     
 execute:
-  freeze: auto
+  freeze: false
 
 # metadata  
 pagetitle: "Gonzalo Garcia-Castro"
