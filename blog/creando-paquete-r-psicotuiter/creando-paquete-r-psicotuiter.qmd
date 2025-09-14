@@ -44,11 +44,11 @@ El paquete [**psicotuiteR**](https://gongcastro.github.io/psicotuiterR/) es un p
 
 En el manual [**R packages**](https://r-pkgs.org/) de Hadley Wickham y Jenny Bryan, se describe un paquete de R así:
 
-> In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. 
+> In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others.
 
 A mí me gusta definirlo como un grupo de funciones documentadas que se agrupan siguiendo el formato que el alto consejo jedi^[La gente que gestiona CRAN, vaya. Tienen cierta fama de *boomers*.] ha dictado.
 
-Por cierto, **R packages** es el mejor recurso que existe en este momento para aprender a hacer paquetes de R. No hay nada en este tutorial que no esté incluido ahí--incluso mejor explicado--a excepción de algún que otro comentario autodespectivo al pie de página. 
+Por cierto, **R packages** es el mejor recurso que existe en este momento para aprender a hacer paquetes de R. No hay nada en este tutorial que no esté incluido ahí--incluso mejor explicado--a excepción de algún que otro comentario autodespectivo al pie de página.
 
 ## ¿Por qué hacer un paquete de R?
 
@@ -138,7 +138,7 @@ Otro truco: puesto que vamos a utilizar las funciones de los paquetes devtools y
 
 ```r
 library(usethis)
-use_usethis() 
+use_usethis()
 use_devtools()
 ```
 
@@ -269,7 +269,7 @@ extrae_numeros <- function(x){
 }
 ```
 
-La función `str_extract` estará disponible y nuestra función podrá ejecutarse sin problemas. Otra opción sería **importar el paquete stringr al completo**, con todas sus funciones. En lugar de indicar @importFrom con el nombre del paquete y la función que queremos importar, indicaríamos `@import` y solamente nombre del paquete: `#' @import stringr`. Sin embargo, **casi siempre es mejor indicar las dependencias una a una**, aunque sea repetitivo: así será más fácil detectar de dónde viene cada función que usamos. Si vamos a usar varias funciones del mismo paquete, podemos indicarlas una debajo de otra:
+La función `str_extract` estará disponible y nuestra función podrá ejecutarse sin problemas. Otra opción sería **importar el paquete stringr al completo**, con todas sus funciones. En lugar de indicar \@importFrom con el nombre del paquete y la función que queremos importar, indicaríamos `@import` y solamente nombre del paquete: `#' @import stringr`. Sin embargo, **casi siempre es mejor indicar las dependencias una a una**, aunque sea repetitivo: así será más fácil detectar de dónde viene cada función que usamos. Si vamos a usar varias funciones del mismo paquete, podemos indicarlas una debajo de otra:
 
 ```r
 #' @importFrom stringr str_extract
@@ -342,7 +342,7 @@ Esta función creará  (en caso de que no exita ya) una carpeta en nuestro direc
 
 ### Datos brutos
 
-Hay una forma más de incluir datos, aun más reproducible que la anterior: **incluir los datos brutos**, como un archivo .csv, .txt, .tsv, .xlsx, etc. También podemos incluir en nuestro paquete el script de R con el código de que hemos usando para **procesar los datos contenidos en el archivo** y para llegar a la forma final del objeto que guaradamos mediante `use_data()`. La función `use_raw_data()` del paquete usethis se encarga de esto. 
+Hay una forma más de incluir datos, aun más reproducible que la anterior: **incluir los datos brutos**, como un archivo .csv, .txt, .tsv, .xlsx, etc. También podemos incluir en nuestro paquete el script de R con el código de que hemos usando para **procesar los datos contenidos en el archivo** y para llegar a la forma final del objeto que guaradamos mediante `use_data()`. La función `use_raw_data()` del paquete usethis se encarga de esto.
 
 ```r
 use_raw_data()
@@ -359,7 +359,7 @@ Como hemos mencionado, **cualquier archivo que queramos incluir en nuestro paque
 system.file("clima.csv", package = "psicotuiteR")`
 ```
 
-En la línea de código anterior, estaremos accediendo al archivo `clima.csv`, que hemos incluido en la carpeta inst/, pero que al instalar el paquete se encontrará en `~/Documents/R/win-library/4.0` (al menos en mi ordenador). 
+En la línea de código anterior, estaremos accediendo al archivo `clima.csv`, que hemos incluido en la carpeta inst/, pero que al instalar el paquete se encontrará en `~/Documents/R/win-library/4.0` (al menos en mi ordenador).
 
 :::{.callout-important}
 Si la función no encuentra ese archivo devolverá `""`, en lugar de un error. Esto puede llevar a confusión. Si quieres que la función devuelva un error si no encuentra el archivo, añade `mustWork = TRUE` a los argumentos:
@@ -373,7 +373,7 @@ system.file("clima.csv", package = "psicotuiteR", mustWork = TRUE)`
 
 ### Git y GitHub
 
-Un paquete de R puede volverse complejo en poco tiempo: scripts con muchas funciones, funciones que dependen de otras funciones, funciones dependen de funciones de otros paquetes... Es fácil liarla. **Git es una buena herramienta para controlar cómo va cambiando el paquete**. Te permite llevar la cuenta de cómo ha cambiado cada archivo dentro del paquete, poder volver a una versión específica del mismo archivo, o tener diferentes versiones del mismo paquete funcionando a la vez de forma independiente. Este último punto es especialmente útil si queremos "jugar" con una versión de prueba del paquete mientras otras personas se pueden descargar una versión estable del mismo. Todas estas utilidades se conocen como ***control de versiones***, una versión sofisticada y menos cortoplacista de crear un millón de archivos de similar contenido y nombres incrementalmente más creativos con el fin de no perder contenido. 
+Un paquete de R puede volverse complejo en poco tiempo: scripts con muchas funciones, funciones que dependen de otras funciones, funciones dependen de funciones de otros paquetes... Es fácil liarla. **Git es una buena herramienta para controlar cómo va cambiando el paquete**. Te permite llevar la cuenta de cómo ha cambiado cada archivo dentro del paquete, poder volver a una versión específica del mismo archivo, o tener diferentes versiones del mismo paquete funcionando a la vez de forma independiente. Este último punto es especialmente útil si queremos "jugar" con una versión de prueba del paquete mientras otras personas se pueden descargar una versión estable del mismo. Todas estas utilidades se conocen como ***control de versiones***, una versión sofisticada y menos cortoplacista de crear un millón de archivos de similar contenido y nombres incrementalmente más creativos con el fin de no perder contenido.
 
 Por otro lado, **GitHub** es una red social que permite almacenar y compartir repositorios mediante control de versiones mediante Git^[No es la única plataforma disponible para hacer esto: Gitlab y Bitbucket, entre otras, hacen lo mismo, aunque son menos populares. Además, por si esto calma alguna conciencia inquita, no son propiedad de Microsoft, al contrario de GitHub.]. Varias personas pueden acceder al repositorio cuando está alojado en GitHub (un paquete de R, en nuestro caso) y sugerir cambios como si estuvieran trabajando sobre dicho paquete en un sólo ordenador. Por desgracia, el uso de git o GitHub está fuera del alcance de este tutorial por varios motivos^[El primero de todos siendo que no tengo la confianza suficiente como para hacerlo (yo mismo la lío con Git cada día). El segundo es que aunque stuviera esa confianza, me daría infinita pereza hacerlo. Hacedme caso y echad un vistazo el libro que recomiendo.]. El mejor manual que conozco (y también el más accesible) para aprender a usar Git y GitHub (especialmente para quien ya trabaja en R) es [*Happy Git and GitHub for the useR*](https://happygitwithr.com/index.html), de Jenny Bryan. Aprender Git no siempre es fácil pero siempre merece la pena^[En mi honesta, humilde, ignorable opinión.].
 
