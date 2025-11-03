@@ -2,14 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gongcastro.github.io/pages/cv.html</loc>
-    <lastmod>2025-11-03T13:04:44.940Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/index.html</loc>
-    <lastmod>2025-11-03T16:50:21.858Z</lastmod>
+    <lastmod>2025-11-03T16:55:30.404Z</lastmod>
   </url>
   <url>
     <loc>https://gongcastro.github.io/pages/about.html</loc>
-    <lastmod>2025-11-03T13:31:02.684Z</lastmod>
+    <lastmod>2025-11-03T16:55:17.632Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/upfthesis/upfthesis.html</loc>
+    <lastmod>2025-11-03T18:43:51.180Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/renv-package/renv-package.html</loc>
+    <lastmod>2025-11-03T18:45:22.214Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html</loc>
+    <lastmod>2025-11-03T13:04:44.855Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html</loc>
+    <lastmod>2025-11-03T18:45:51.580Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/importing-data-multiple/importing-data-multiple.html</loc>
+    <lastmod>2025-11-03T13:04:44.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html</loc>
+    <lastmod>2025-11-03T13:04:44.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/index.html</loc>
+    <lastmod>2025-11-03T16:58:05.867Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/animated-distributions/animated-distributions.html</loc>
+    <lastmod>2025-11-03T13:04:44.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/dpf-scholkmann/dpf-scholkmann.html</loc>
+    <lastmod>2025-11-03T13:04:44.789Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/logistic-regression/logistic-regression.html</loc>
+    <lastmod>2025-11-03T13:04:44.802Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/primer-linear-mixed-models/primer-linear-mixed-models.html</loc>
+    <lastmod>2025-11-03T13:04:44.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</loc>
+    <lastmod>2025-11-03T13:04:44.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html</loc>
+    <lastmod>2025-11-03T18:44:29.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/visualising-polynomial-regression/visualising-polynomial-regression.html</loc>
+    <lastmod>2025-11-03T18:31:50.140Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/pages/blog.html</loc>
+    <lastmod>2025-11-03T19:27:27.680Z</lastmod>
   </url>
 </urlset>

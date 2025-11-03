@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -238,7 +238,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(14)</span></div><div class="category" data-category="YW5pbWF0aW9u">animation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YW5pbWF0aW9ucw==">animations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmFzZQ==">base <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ym9vaw==">book <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ym90">bot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGlzdHJpYnV0aW9u">distribution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zm5pcnM=">fnirs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90">ggplot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2l0aHVi">github <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW1wb3J0">import <span class="quarto-category-count">(1)</span></div><div class="category" data-category="anVsaWE=">julia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGFuZ3VhZ2U=">language <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGluZ3Vpc3RpY3M=">linguistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGludXg=">linux <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG9naXN0aWM=">logistic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWJyb2xh">mbrola <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWl4ZWQlMjBtb2RlbHM=">mixed models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bXVsdGlsZXZlbA==">multilevel <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV1cm9pbWFnaW5n">neuroimaging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZQ==">package <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cGRm">pdf <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGhvbm9sb2d5">phonology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlc2VudGF0aW9u">presentation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvYmFiaWxpdHk=">probability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHVycnI=">purrr <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(10)</span></div><div class="category" data-category="cmFzcGJlcnJ5JTIwcGk=">raspberry pi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVncmVzc2lvbg==">regression <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cmVudg==">renv <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVwcm9kdWNpYmlsaXR5">reproducibility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmV2ZWFsanM=">revealjs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cnR3ZWV0">rtweet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3BlZWNoJTIwc3ludGhlc2lz">speech synthesis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdGlzdGlj">statistic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdGlzdGljcw==">statistics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dGhlc2lz">thesis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHJhbnNsYXRpb24=">translation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHdpdHRlcg==">twitter <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d3Ns">wsl <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -252,7 +252,519 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1762175084078">
+<div class="thumbnail"><a href="../blog\_footer.qmd" class="no-external">
 
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog\_footer.qmd" class="no-external"></a>
+</h3>
+<div class="delink listing-description"><a href="../blog\_footer.qmd" class="no-external">
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog\_footer.qmd" class="no-external">
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="cHl0aG9uJTJDcGFja2FnZSUyQ2xpbnV4JTJDd3NsJTJDc3BlZWNoJTIwc3ludGhlc2lzJTJDbGFuZ3VhZ2UlMkNtYnJvbGElMkN0dXRvcmlhbA==" data-listing-date-sort="1756072800000" data-listing-file-modified-sort="1762175084875" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="856">
+<div class="thumbnail"><a href="../blog/pymbrola-installation/pymbrola-installation.html" class="no-external">
+
+<img loading="lazy" src="../blog/pymbrola-installation/c3po.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/pymbrola-installation/pymbrola-installation.html" class="no-external">Installing the MBROLA speech synthesiser</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZQ=='); return false;">package</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGludXg='); return false;">linux</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d3Ns'); return false;">wsl</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3BlZWNoJTIwc3ludGhlc2lz'); return false;">speech synthesis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGFuZ3VhZ2U='); return false;">language</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWJyb2xh'); return false;">mbrola</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/pymbrola-installation/pymbrola-installation.html" class="no-external">
+<p>I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to set up MBROLA on your Linux/MacOS or Windows system, so that you can use the pymbrola module (a tutorial in upcoming).</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/pymbrola-installation/pymbrola-installation.html" class="no-external">
+<div class="listing-date">
+Aug 25, 2025
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="cHl0aG9uJTJDZm5pcnMlMkNuZXVyb2ltYWdpbmc=" data-listing-date-sort="1732402800000" data-listing-file-modified-sort="1762175084789" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1294">
+<div class="thumbnail"><a href="../blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">
+
+<img loading="lazy" src="../blog/dpf-scholkmann/scholkmann.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">Implementing the Differential Pathlength Factor (DPF) in Python: the Scholkmann method</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Zm5pcnM='); return false;">fnirs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV1cm9pbWFnaW5n'); return false;">neuroimaging</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">
+I have news! I’m starting my postdoc at the Institut de Recerca Hospital Sant Joan de Déu (Barcelona, Spain) in September, joining Chiara Santolin’s new research group. We…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">
+<div class="listing-date">
+Nov 24, 2024
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="ciUyQ3F1YXJ0byUyQ3RoZXNpcyUyQ2Jvb2slMkNwZGY=" data-listing-date-sort="1704841200000" data-listing-file-modified-sort="1762195431180" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1364">
+<div class="thumbnail"><a href="../blog/upfthesis/upfthesis.html" class="no-external">
+
+<img loading="lazy" src="../blog/upfthesis/upfthesis.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/upfthesis/upfthesis.html" class="no-external">upfthesis: a Quarto template for thesis dissertations at UPF</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cXVhcnRv'); return false;">quarto</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGhlc2lz'); return false;">thesis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ym9vaw=='); return false;">book</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGRm'); return false;">pdf</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/upfthesis/upfthesis.html" class="no-external">
+<p>I wrote my thesis dissertation in Quarto, using a custom template. Here I illustrate how it works and some tips.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/upfthesis/upfthesis.html" class="no-external">
+<div class="listing-date">
+Jan 10, 2024
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="ciUyQ3F1YXJ0byUyQ3JldmVhbGpzJTJDcHJlc2VudGF0aW9uJTJDcGRm" data-listing-date-sort="1686175200000" data-listing-file-modified-sort="1762195469038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="866">
+<div class="thumbnail"><a href="../blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">
+
+<img loading="lazy" src="../blog/revaljs-to-pdf/revealjs-to-pdf.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">Using decktape to convert Quarto slides from RevealJS to PDF</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cXVhcnRv'); return false;">quarto</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmV2ZWFsanM='); return false;">revealjs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJlc2VudGF0aW9u'); return false;">presentation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGRm'); return false;">pdf</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">
+<p>Using decktape to export my Quarto slides to PDF saved my life right before a submission deadline. I might save yours too.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">
+<div class="listing-date">
+Jun 8, 2023
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ3JlZ3Jlc3Npb24lMkNzdGF0aXN0aWNzJTJDbG9naXN0aWM=" data-listing-date-sort="1674342000000" data-listing-file-modified-sort="1762175084802" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="50" data-listing-word-count-sort="9922">
+<div class="thumbnail"><a href="../blog/logistic-regression/logistic-regression.html" class="no-external">
+
+<img loading="lazy" src="../blog/logistic-regression/predictions-natural-probability-1.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/logistic-regression/logistic-regression.html" class="no-external">Getting the most out of logistic regression</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGlkeXZlcnNl'); return false;">tidyverse</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVncmVzc2lvbg=='); return false;">regression</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bG9naXN0aWM='); return false;">logistic</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/logistic-regression/logistic-regression.html" class="no-external">
+<p>Logistic regression models provide information way beyond a <em>p</em>-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how to interpret the coefficients of a logistic regression model, capitalising on marginal effects.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/logistic-regression/logistic-regression.html" class="no-external">
+<div class="listing-date">
+Jan 22, 2023
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="ciUyQ3BhY2thZ2UlMkNyZXByb2R1Y2liaWxpdHklMkNyZW52" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1762195522214" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1392">
+<div class="thumbnail"><a href="../blog/renv-package/renv-package.html" class="no-external">
+
+<img loading="lazy" src="../blog/renv-package/containers.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/renv-package/renv-package.html" class="no-external">renv (o cómo usar paquetes de R sin ataques de pánico)</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZQ=='); return false;">package</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVwcm9kdWNpYmlsaXR5'); return false;">reproducibility</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVudg=='); return false;">renv</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/renv-package/renv-package.html" class="no-external">
+<p>{renv} es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aquí resumo para qué se utiliza y cómo funciona.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/renv-package/renv-package.html" class="no-external">
+<div class="listing-date">
+Feb 27, 2022
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="ciUyQ3J0d2VldCUyQ3R3aXR0ZXIlMkNyYXNwYmVycnklMjBwaSUyQ2JvdCUyQ2dpdGh1Yg==" data-listing-date-sort="1640732400000" data-listing-file-modified-sort="1762175084855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3002">
+<div class="thumbnail"><a href="../blog/psicotuiterbot/psicotuiterbot.html" class="no-external">
+
+<img loading="lazy" src="../blog/psicotuiterbot/raspberry.jfif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/psicotuiterbot/psicotuiterbot.html" class="no-external">@psicotuiterbot: Un bot de Twitter para Psicotuiter</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cnR3ZWV0'); return false;">rtweet</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHdpdHRlcg=='); return false;">twitter</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmFzcGJlcnJ5JTIwcGk='); return false;">raspberry pi</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ym90'); return false;">bot</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2l0aHVi'); return false;">github</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/psicotuiterbot/psicotuiterbot.html" class="no-external">
+<p>He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/psicotuiterbot/psicotuiterbot.html" class="no-external">
+<div class="listing-date">
+Dec 29, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="ciUyQ3BhY2thZ2UlMkN0d2l0dGVyJTJDdHV0b3JpYWw=" data-listing-date-sort="1636844400000" data-listing-file-modified-sort="1762175084786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="28" data-listing-word-count-sort="5415">
+<div class="thumbnail"><a href="../blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">
+
+<img loading="lazy" src="../blog/creando-paquete-r-psicotuiter/psicotuiter.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">Creando un paquete de R: una guía informal</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZQ=='); return false;">package</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHdpdHRlcg=='); return false;">twitter</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">
+</a><p><a href="../blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">En el canal de Twitch de </a><a href="https://t.co/JtxXtTszGi?amp=1">Psicometries</a> hicimos un <a href="https://www.twitch.tv/videos/1202539110">directo</a> en el que explicamos cómo se ha creado el paquete de R <strong>{psicotuiteR}</strong>, indicando cada paso lo mejor que hemos podido para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</p>
+</div>
+</div>
+<div class="metadata">
+<a href="../blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">
+<div class="listing-date">
+Nov 14, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="anVsaWElMkNkaXN0cmlidXRpb24lMkNhbmltYXRpb24lMkNzdGF0aXN0aWNzJTJDcHJvYmFiaWxpdHk=" data-listing-date-sort="1633298400000" data-listing-file-modified-sort="1762175084111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1437">
+<div class="thumbnail"><a href="../blog/animated-distributions/animated-distributions.html" class="no-external">
+
+<img loading="lazy" src="../blog/animated-distributions/cover.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/animated-distributions/animated-distributions.html" class="no-external">Exploring probability distributions through animations in Julia</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('anVsaWE='); return false;">julia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGlzdHJpYnV0aW9u'); return false;">distribution</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5pbWF0aW9u'); return false;">animation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/animated-distributions/animated-distributions.html" class="no-external">
+<p>Visualising what different <strong>probability distributions</strong> look like under different parameters can be helpful when picking a likelihood function for you Bayesian analysis. I present some <strong>animations</strong> generated with Julia using Distributions.jl</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/animated-distributions/animated-distributions.html" class="no-external">
+<div class="listing-date">
+Oct 4, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="ciUyQ3N0YXRpc3RpYyUyQ3JlZ3Jlc3Npb24lMkNhbmltYXRpb24lMkNnZ3Bsb3Q=" data-listing-date-sort="1611183600000" data-listing-file-modified-sort="1762194710140" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1438">
+<div class="thumbnail"><a href="../blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">
+
+<img loading="lazy" src="../blog/visualising-polynomial-regression/quadratic.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">Visualising polynomial regression</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGlj'); return false;">statistic</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVncmVzc2lvbg=='); return false;">regression</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5pbWF0aW9u'); return false;">animation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">ggplot</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">
+<p>The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">
+<div class="listing-date">
+Jan 21, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="ciUyQ2xpbmd1aXN0aWNzJTJDcGhvbm9sb2d5JTJDZ2dwbG90MiUyQ3RyYW5zbGF0aW9u" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1762195551580" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1283">
+<div class="thumbnail"><a href="../blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">
+
+<img loading="lazy" src="../blog/mask-similarity-across-languages/masks-ort.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">How similar is the word “mask” across languages?</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGluZ3Vpc3RpY3M='); return false;">linguistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGhvbm9sb2d5'); return false;">phonology</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNsYXRpb24='); return false;">translation</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">
+<p>Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word <em>mask</em> across multiple languages.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">
+<div class="listing-date">
+Nov 20, 2020
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ2Jhc2UlMkNwdXJyciUyQ2ltcG9ydA==" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1762175084800" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2143">
+<div class="thumbnail"><a href="../blog/importing-data-multiple/importing-data-multiple.html" class="no-external">
+
+<img loading="lazy" src="../blog/importing-data-multiple/traffic-jam.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/importing-data-multiple/importing-data-multiple.html" class="no-external">Importing data from multiple files simultaneously in R</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGlkeXZlcnNl'); return false;">tidyverse</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmFzZQ=='); return false;">base</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHVycnI='); return false;">purrr</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW1wb3J0'); return false;">import</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/importing-data-multiple/importing-data-multiple.html" class="no-external">
+<p>A comparison between base R and Tidyverse methods for importing data from multiple files</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/importing-data-multiple/importing-data-multiple.html" class="no-external">
+<div class="listing-date">
+Jul 5, 2020
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="ciUyQ3N0YXRpc3RpY3MlMkNtdWx0aWxldmVsJTJDbWl4ZWQlMjBtb2RlbHMlMkNhbmltYXRpb25z" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1762175084845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="298">
+<div class="thumbnail"><a href="../blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">
+
+<p class="card-img-top"><img src="..\blog\primer-linear-mixed-models\laces.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">A primer on mixed-effects Models: theory and practice</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bXVsdGlsZXZlbA=='); return false;">multilevel</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWl4ZWQlMjBtb2RlbHM='); return false;">mixed models</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5pbWF0aW9ucw=='); return false;">animations</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">
+<p>Slides from a tutorial on mixed-effects models I presented to my research group.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">
+<div class="listing-date">
+Mar 31, 2020
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
@@ -664,7 +1176,7 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2020–2023 Gonzalo Garcia-Castro</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></p>
