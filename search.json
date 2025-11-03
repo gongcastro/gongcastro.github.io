@@ -63,11 +63,11 @@
     "text": "I am a cognitive scientist interested in the application of Bayesian modelling in the investigation of early language acquisition and its evolutionary roots. I am currently working as a post-doctoral researcher at the Institut de Rercerca Sant Joan de Déu (Barcelona, Spain), were I use brain imaging (fNIRS), behavioural, and computational techniques to study how newborns, infants, and non-human animals perceive speech.\nI particularly enjoy building code-based workflows, ensuring that my projects can be run by others and my future self, from data collection to visualisation and reporting. I mainly use Twitter (@gongcastro) for sharing research outputs, programming tips or data visualisations. You can also follow me on GitHub for some portfolio projects like:\n\n{bvq}: R package for downloading and processing vocabulary data from 10-40 month-old children living in the Metropolitan Area of Barcelona (Spain) [website]\n{comidistar}: R package containing the scores given to products in the blind taste tests of El Comidista\npsicotuiterbot: A Twitter bot programmed in R using {rtweet} that automatically retweets mentions of the hasthtags #psicotuiter or #psicotwitter in Spanish"
   },
   {
-    "objectID": "index.html#blog",
-    "href": "index.html#blog",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Gonzalo García-Castro",
-    "section": "Blog",
-    "text": "Blog"
+    "section": "",
+    "text": "I am a cognitive scientist interested in the application of Bayesian modelling in the investigation of early language acquisition and its evolutionary roots. I am currently working as a post-doctoral researcher at the Institut de Rercerca Sant Joan de Déu (Barcelona, Spain), were I use brain imaging (fNIRS), behavioural, and computational techniques to study how newborns, infants, and non-human animals (Long-Evans rats) perceive and process speech."
   },
   {
     "objectID": "pages/blog.html",
