@@ -1,7 +1,11 @@
 [
   {
     "listing": "/index.html",
-    "items": []
+    "items": [
+      "/pages/about.html",
+      "/pages/blog.html",
+      "/pages/cv.html"
+    ]
   },
   {
     "listing": "/pages/blog.html",
