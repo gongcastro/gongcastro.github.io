@@ -28,7 +28,7 @@ toc: false
 
 ::: {.columns}
 ::: {.column}
-<img class="profilepic" src="assets/media/profile.jpg">
+<img class="profilepic" src="/assets/media/profile.jpg">
 :::
 ::: {.column}
 I am a **cognitive scientist** interested in the application of **Bayesian modelling** in the investigation of **early language acquisition** and its evolutionary roots. I am currently working as a post-doctoral researcher at the [Institut de Rercerca Sant Joan de Déu](https://www.irsjd.org/en/) (Barcelona, Spain), were I use brain imaging (**fNIRS**), behavioural, and computational techniques to study how newborns, infants, and non-human animals (Long-Evans rats) perceive and process speech.

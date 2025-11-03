@@ -10,7 +10,7 @@ project:
     - "index.qmd"
     - "pages/*.qmd"
   resources:
-    - "assets/**/**"
+    - "/assets/**/**"
 
 
 execute:
@@ -22,8 +22,8 @@ pagetitle: "Gonzalo Garcia-Castro"
 author-meta: "Gonzalo Garcia-Castro"
 
 # bibliography settings
-bibliography: assets/bib/references.bib
-csl: assets/bib/apa7.csl
+bibliography: /assets/bib/references.bib
+csl: /assets/bib/apa7.csl
 
 website:
   title: "Gonzalo García-Castro"
@@ -43,7 +43,7 @@ website:
     card-style: summary
     description: "Language, stats, R"
     creator: "@gongcastro"
-    image: "assets/media/favicon.png"
+    image: "/assets/media/favicon.png"
 
 
   navbar:
@@ -86,8 +86,8 @@ website:
 format:
   html:
     anchor-sections: true
-    theme: assets/css/minty-modified.scss
-    css:  assets/css/styles.css
+    theme: /assets/css/minty-modified.scss
+    css:  /assets/css/styles.css
     toc: true
     citations-hover: true
     code-link: true
