@@ -3,7 +3,7 @@ title: "Blog"
 title-block-banner: "#fcc203"
 listing:
   contents:
-    - blog
+    - /blog/*.qmd
   categories: true
   sort:
     - "date desc"

@@ -9,8 +9,7 @@ format:
       banner-header-class: "home"
 listing:
   contents:
-    - home
-    - blog
+    - pages/*
   type: grid
   sort:
     - "date desc"
