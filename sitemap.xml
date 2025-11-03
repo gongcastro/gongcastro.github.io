@@ -1,71 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://gongcastro.github.io/pages/cv.html</loc>
+    <lastmod>2025-11-03T13:04:44.940Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/pages/about.html</loc>
+    <lastmod>2025-11-03T13:04:44.938Z</lastmod>
+  </url>
+  <url>
     <loc>https://gongcastro.github.io/index.html</loc>
-    <lastmod>2025-09-14T15:09:12.703Z</lastmod>
+    <lastmod>2025-11-03T13:06:39.394Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/visualising-polynomial-regression/visualising-polynomial-regression.html</loc>
-    <lastmod>2025-09-14T15:09:12.703Z</lastmod>
+    <loc>https://gongcastro.github.io/pages/404.html</loc>
+    <lastmod>2025-11-03T13:04:44.937Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html</loc>
-    <lastmod>2025-09-14T15:09:12.685Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</loc>
-    <lastmod>2025-09-14T15:09:12.675Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/primer-linear-mixed-models/primer-linear-mixed-models.html</loc>
-    <lastmod>2025-09-14T15:09:12.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/logistic-regression/logistic-regression.html</loc>
-    <lastmod>2025-09-14T15:09:12.645Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/dpf-scholkmann/dpf-scholkmann.html</loc>
-    <lastmod>2025-09-14T15:09:12.640Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/animated-distributions/animated-distributions.html</loc>
-    <lastmod>2025-09-14T15:09:12.290Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/about.html</loc>
-    <lastmod>2025-09-14T15:09:12.268Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog.html</loc>
-    <lastmod>2025-09-14T15:09:12.271Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html</loc>
-    <lastmod>2025-09-14T15:09:12.640Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/importing-data-multiple/importing-data-multiple.html</loc>
-    <lastmod>2025-09-14T15:09:12.644Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html</loc>
-    <lastmod>2025-09-14T15:09:12.648Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html</loc>
-    <lastmod>2025-09-14T15:09:12.667Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/renv-package/renv-package.html</loc>
-    <lastmod>2025-09-14T15:09:12.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/upfthesis/upfthesis.html</loc>
-    <lastmod>2025-09-14T15:09:12.687Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/cv.html</loc>
-    <lastmod>2025-09-14T15:09:12.703Z</lastmod>
+    <loc>https://gongcastro.github.io/pages/blog.html</loc>
+    <lastmod>2025-11-03T13:04:44.939Z</lastmod>
   </url>
 </urlset>

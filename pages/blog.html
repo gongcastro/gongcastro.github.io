@@ -24,27 +24,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href=".//assets/media/favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e3500c2f2914f3609d95765d13147fbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//assets/media/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e3500c2f2914f3609d95765d13147fbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -103,18 +103,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <style>
 
-      .quarto-title-block .quarto-title-banner h1,
-      .quarto-title-block .quarto-title-banner h2,
-      .quarto-title-block .quarto-title-banner h3,
-      .quarto-title-block .quarto-title-banner h4,
-      .quarto-title-block .quarto-title-banner h5,
-      .quarto-title-block .quarto-title-banner h6
-      {
-        color: #fcc203;
-      }
-
       .quarto-title-block .quarto-title-banner {
-        color: #fcc203;
+        background: #fcc203;
       }
 </style>
 
@@ -148,7 +138,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
 <meta property="og:description" content="Language, stats, R">
 <meta property="og:image" content="https://gongcastro.github.io//assets/media/favicon.png">
@@ -157,24 +147,22 @@ window.Quarto = {
 <meta property="og:image:width" content="150">
 <meta name="twitter:title" content="Gonzalo Garcia-Castro">
 <meta name="twitter:description" content="Language, stats, R">
-<meta name="twitter:image" content="https://gongcastro.github.io/assets/media/favicon.png">
+<meta name="twitter:image" content="https://gongcastro.github.io/pages/assets/media/favicon.png">
 <meta name="twitter:creator" content="@gongcastro">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="150">
-<meta name="twitter:image-width" content="150">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/media/favicon.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/media/favicon.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
   </div>
@@ -185,15 +173,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pages/cv.html"> 
+    <a class="nav-link" href="../pages/cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pages/blog.html"> 
+    <a class="nav-link active" href="../pages/blog.html" aria-current="page"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -227,40 +215,41 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block"></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Blog</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<p><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"></p>
-<p><br></p>
-<div class="profile-card">
-<div class="columns">
-<div class="column">
-<p><img class="profilepic" src="assets/media/profile.jpg"></p>
-</div><div class="column">
-<p>I am a <strong>cognitive scientist</strong> interested in the application of <strong>Bayesian modelling</strong> in the investigation of <strong>early language acquisition</strong> and its evolutionary roots. I am currently working as a post-doctoral researcher at the <a href="https://www.irsjd.org/en/">Institut de Rercerca Sant Joan de Déu</a> (Barcelona, Spain), were I use brain imaging (<strong>fNIRS</strong>), behavioural, and computational techniques to study how newborns, infants, and non-human animals (Long-Evans rats) perceive and process speech.</p>
-</div>
-</div>
-<div class="social-grid">
-<p><a href="https://bsky.app/profile/gongcastro.bsky.social"><i class="fa-brands fa-bluesky"></i></a> <a href="https://twitter.com/gongcastro"><i class="fa-brands fa-twitter"></i></a> <a href="https://fediscience.org/@gongcastro"><i class="fa-brands fa-mastodon"></i></a> <a href="https://scholar.google.com/citations?user=fHetiuQAAAAJ&amp;hl=en"><i class="ai ai-google-scholar"></i></a> <a href="https://osf.io/w465d"><i class="ai ai-osf"></i></a> <a href="https://orcid.org/0000-0002-8553-4209"><i class="ai ai-orcid"></i></a> <a href="https://www.linkedin.com/in/gongcastro/"><i class="fa-brands fa-linkedin"></i></a> <a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro"><i class="ai ai-researchgate"></i></a> <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro"><i class="ai ai-stackoverflow"></i></a></p>
-</div>
-</div>
-<p><br></p>
-<section id="blog" class="level2">
-<h2 class="anchored" data-anchor-id="blog">Blog</h2>
 
 
 
-</section>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
 
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -677,7 +666,7 @@ window.Quarto = {
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-8553-4209">0000-0002-8553-4209</a></span></p>
-<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/gongcastro/gongcastro.github.io/edit/main/pages/blog.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gongcastro/gongcastro.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/gongcastro/gongcastro.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
 </div>
