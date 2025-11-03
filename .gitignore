@@ -39,3 +39,9 @@ vignettes/*.pdf
 .Renviron
 
 /.quarto/
+/_site/
+/.luarc.json
+/.benchmarks
+/docs/
+/.venv/
+/resources/

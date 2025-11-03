@@ -3,13 +3,13 @@ title: "CV"
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-[Industry CV (**PDF**)](https://gongcastro.github.io/cv/cv.pdf)
+[Download PDF](https://raw.githubusercontent.com/gongcastro/cv/refs/heads/main/cv.pdf?raw=true)
 
 ## Education
 
 October 2018 - Present
 
-**PhD, Biomedicine**; Universitat Pompeu Fabra (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
+> **PhD, Biomedicine**; Universitat Pompeu Fabra (Barcelona, Spain); Supervisor: Núria Sebastian-Galles.
 
 October 2017 - July 2018
 
@@ -133,4 +133,3 @@ August 2016
 > **How to Improve the Quality and Translatability of Preclinical Animal Studies**, Radboud Summer School, Radboud University Nijmegen. Course organized by SYRCLE institute, Radboud University Nijmegen and Radboud University Medical Centre. Theory and hands-on experience on Systematic Reviews and Meta-Analysis in preclinical animal studies. Overview of the main software available to conduct a Meta-Analysis and basic formation on academic reading and writing.
 
 ___
-
