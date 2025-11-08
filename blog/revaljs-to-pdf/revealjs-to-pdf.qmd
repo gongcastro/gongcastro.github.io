@@ -30,7 +30,6 @@ decktape <slides-url> <slides-file>.pdf
 
 ![](revealjs-to-pdf.png){width=50% fig-align=center}
 
-
 ::: {.callout-caution title="An embarrasing confession" appearance="simple"}
 
 So it turns out one can download their RevealJS slides (in a HTML file) without using decktape, just by following the instructions in the [Quarto documentation](https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf). In my defence, for whatever reason this did not work for me, whereas decktape did the job. I probably skipped a critical step.
@@ -60,7 +59,7 @@ The main inconvenience of RevealJS (or any HTML output format) is that presentin
 
 If one moves only the resulting `index.html` that contains the slides, the presentation will lose all of its nice formatting, and won't show any images or additional resources. From previous (bad) experiences, I knew that this could be a problem, and given that I would certainly have to present from the conference room's machine, I decided to use GitHub Pages^[[Here](https://rviews.rstudio.com/2021/11/18/deploying-xaringan-slides-a-ten-step-github-pages-workflow/) is a nice tutorials on how to deploy your slides on GitHub Pages] to [deploy my slides](https://quarto.org/docs/publishing/github-pages.html) on a website.
 
-My plan was to access the URL of the slides whenever I was about to present. But the day before the presentation, I started worrying about the internet not working and the conference venue at the wrong time I needed to export the slides to a PDF. A PDF never (well, rarely) fails.  
+My plan was to access the URL of the slides whenever I was about to present. But the day before the presentation, I started worrying about the internet not working and the conference venue at the wrong time I needed to export the slides to a PDF. A PDF never (well, rarely) fails.
 
 ## The problem
 
@@ -113,6 +112,4 @@ npm install -g decktape
 decktape https://gongcastro.github.io/ips_2023_trajectories slides.pdf
 ```
 
-And it did the job, preserving the layout, SCSS formatting, and even the links! 
-
-
+And it did the job, preserving the layout, SCSS formatting, and even the links!

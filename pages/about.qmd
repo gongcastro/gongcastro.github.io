@@ -1,7 +1,7 @@
 ---
 title: "About"
 about:
-  image: /assets/media/profile.jpg
+  image: assets/media/profile.jpg
   template: jolla
   links:
     - icon: twitter

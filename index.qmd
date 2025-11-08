@@ -1,20 +1,13 @@
 ---
 title-block-banner: true
 title-block-banner-color: "#fcc203"
-main-photo: /assets/media/profile.jpg
-main-photo-square: /assets/media/profile.jpg
+main-photo: assets/media/profile.jpg
+main-photo-square: assets/media/profile.jpg
 format:
   html:
     quarto-template-params:
-      banner-header-class: "home"
-listing:
-  contents:
-    - pages/*
-  type: grid
-  sort:
-    - "date desc"
-  fields: [image, date, title, categories]
-
+      banner-header-class: home
+freeze: false
 toc: false
 ---
 
@@ -22,19 +15,23 @@ toc: false
 
 <br>
 
-
 ::: profile-card
 
+:::: columns
 
-::: {.columns}
-::: {.column}
+::::: column
+
 <img class="profilepic" src="/assets/media/profile.jpg">
-:::
-::: {.column}
-I am a **cognitive scientist** interested in the application of **Bayesian modelling** in the investigation of **early language acquisition** and its evolutionary roots. I am currently working as a post-doctoral researcher at the [Institut de Rercerca Sant Joan de Déu](https://www.irsjd.org/en/) (Barcelona, Spain), were I use brain imaging (**fNIRS**), behavioural, and computational techniques to study how newborns, infants, and non-human animals (Long-Evans rats) perceive and process speech.
-:::
-:::
 
+:::::
+
+::::: column
+
+I am a **cognitive scientist** interested in the application of **Bayesian modelling** in the investigation of **early language acquisition** and its evolutionary roots. I am currently working as a post-doctoral researcher at the [Institut de Rercerca Sant Joan de Déu](https://www.irsjd.org/en/) (Barcelona, Spain), were I use brain imaging (**fNIRS**), behavioural, and computational techniques to study how newborns, infants, and non-human animals (Long-Evans rats) perceive and process speech.
+
+:::::
+
+::::
 
 <div class="social-grid">
 <a href="https://bsky.app/profile/gongcastro.bsky.social"><i class="fa-brands fa-bluesky"></i></a>
@@ -48,12 +45,4 @@ I am a **cognitive scientist** interested in the application of **Bayesian model
 <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro"><i class="ai ai-stackoverflow"></i></a>
 </div>
 
-
 :::
-
-
-
-
-<br>
-
-## Blog

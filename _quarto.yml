@@ -7,23 +7,22 @@ project:
     navigate: true
   output-dir: docs
   render:
-    - "index.qmd"
-    - "pages/*.qmd"
+    - index.qmd
+    - "*.qmd"
+    - blog/**/*.qmd
   resources:
     - "/assets/**/**"
-
 
 execute:
   freeze: true
 
 # metadata
-# metadata
 pagetitle: "Gonzalo Garcia-Castro"
 author-meta: "Gonzalo Garcia-Castro"
 
 # bibliography settings
-bibliography: /assets/bib/references.bib
-csl: /assets/bib/apa7.csl
+bibliography: assets/bib/references.bib
+csl: assets/bib/apa7.csl
 
 website:
   title: "Gonzalo García-Castro"
@@ -76,7 +75,6 @@ website:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Gonzalo Garcia-Castro</span>
       <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>
-      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>
     center: |
       <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
     right: |
@@ -86,8 +84,8 @@ website:
 format:
   html:
     anchor-sections: true
-    theme: /assets/css/minty-modified.scss
-    css:  /assets/css/styles.css
+    theme: assets/css/minty-modified.scss
+    css:  assets/css/styles.css
     toc: true
     citations-hover: true
     code-link: true

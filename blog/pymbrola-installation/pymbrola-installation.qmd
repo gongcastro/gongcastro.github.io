@@ -3,7 +3,7 @@ title: "Installing the MBROLA speech synthesiser"
 date: 2025-08-25
 authors: Gonzalo García-Castro
 description: "I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to set up MBROLA on your Linux/MacOS or Windows system, so that you can use the pymbrola module (a tutorial in upcoming)."
-image: c3po.png
+image: c3po.jpg
 categories:
   - python
   - package
@@ -25,10 +25,9 @@ bibliography: references.bib
 <script src="https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"></script>
 :::
 
+![](c3po.jpg){width=100% fig-align=center}
 
 It's been some time since my [last post](http://localhost:5555/blog/dpf-scholkmann/dpf-scholkmann.html). We've been pretty busy starting the new lab and setting up the new studies of the [NeuroDevCo](https://neurodevco.github.io/) group. I hope we can share our progress soon! Meanwhile, I'm here presenting one of the earliest outputs of the GALA project: [**pymbrola**](https://pypi.org/project/mbrola/): **a Python interface to the speech synthesiser MBROLA**. This is a two-part blog post. Here, I provide a detailed guide on how to get MBROLA up and runnig on your machine. This is a pre-requisite for using the **pymbrola** package. In an upcoming post, I'll illustrate how pymbrola works.
-
-![](c3po.png){width=100% fig-align=center}
 
 ## About MBROLA
 

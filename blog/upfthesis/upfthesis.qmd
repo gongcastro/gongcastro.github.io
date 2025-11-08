@@ -28,7 +28,6 @@ In this post, I describe how the *upfthesis* Quarto template works, and perhaps 
 
 {{< pdf thesis.pdf width=100% height=800 >}}
 
-
 ## The format
 
 UPF currently requires the following **sections**, according to the guidelines listed by [Guies BibTIC](https://guiesbibtic.upf.edu/tesis/eng/description):
@@ -67,7 +66,7 @@ This will install the extension and create an set up the structure of the projec
 The downloaded directory contains several sub-directories and files:
 
 * [_thesis](https://github.com/gongcastro/upfthesis/blob/main/_thesis/): contains the rendered thesis dissertation in whichever formats you have specified (e.g., [thesis.pdf](https://github.com/gongcastro/upfthesis/blob/main/_thesis/thesis.pdf), [thesis.docx](_thesis/thesis.docx))
-* [_quarto.yml](https://github.com/gongcastro/upfthesis/blob/main/_quarto.yml): this is a YAML file with the global settings of the thesis. Here you can change the title, authors, department, etc. You can change most settings as indicated in the [Book Options](https://quarto.org/docs/reference/projects/books.html) section of the Quarto reference. Some of these settings are internally set in the [_extension.yml](https://github.com/gongcastro/upfthesis/blob/main/_extensions/gongcastro/upfthesis/_extension.yml) file; feel free to change them if you know what you are doing. 
+* [_quarto.yml](https://github.com/gongcastro/upfthesis/blob/main/_quarto.yml): this is a YAML file with the global settings of the thesis. Here you can change the title, authors, department, etc. You can change most settings as indicated in the [Book Options](https://quarto.org/docs/reference/projects/books.html) section of the Quarto reference. Some of these settings are internally set in the [_extension.yml](https://github.com/gongcastro/upfthesis/blob/main/_extensions/gongcastro/upfthesis/_extension.yml) file; feel free to change them if you know what you are doing.
 * [chapters/](https://github.com/gongcastro/upfthesis/blob/main/chapters/) contains the Quarto (`.qmd`) files with the body of the thesis. Each section embedded in a different file. The chapters included are based on the [Theses: Parts and content](https://guiesbibtic.upf.edu/tesis/eng/parts) section of the [Guies BibTIC UPF](https://guiesbibtic.upf.edu/tesis/eng/parts) website. Some of these sections might not be required. If so, you may keep them from being included in the rendered output by removing them from the [_quarto.yml](https://github.com/gongcastro/upfthesis/blob/main/_quarto.yml) file (`chapters:`) section. For example, here I am commenting out the *Glossary* section, which is not required:
 
 ```yaml
