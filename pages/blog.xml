@@ -15,7 +15,453 @@
 <link>https://gongcastro.github.io/pages/blog.html</link>
 </image>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Sun, 24 Aug 2025 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 07 Nov 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>pymbrola: A Python interface to the MBROLA speech synthesiser</title>
+  <dc:creator>Gonzalo Garcia-Castro</dc:creator>
+  <link>https://gongcastro.github.io/blog/pymbrola-using/pymbrola-using.html</link>
+  <description><![CDATA[ <div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://gongcastro.github.io/blog/pymbrola-using/c3po.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<p>In my last blog post <a href="../../blog/pymbrola-installation/pymbrola-installation.html"><em>Installing the MBROLA speech synthesiser</em></a>, I suggested some steps to <strong>install the MBROLA speech synthesiser</strong> in <strong>Ubuntu</strong> and <strong>Windows Subsystem for Linux (WSL)</strong>, together with its available voices. I’ll explain how to use <strong>pymbrola</strong>, a Python module that provides a programmatic interface to MBROLA.</p>
+<p><strong>pymbrola</strong> provides certain benefits, compared to calling MBROLA from the terminal. First, while some Python users are familiar with <a href="https://es.wikipedia.org/wiki/Bash"><strong>bash</strong></a> (the programming language used to interact with the Linux kernel), many other users are not. Getting MBROLA to work using the terminal can take a while, especially if one wants to fine-tune some parameters like phoneme duration or pitch contours. If one needs to generate many audios, calling MBROLA commands for each one of the audios is quite inefficient, but its alternative—calling MBROLA using for loops—requires some bash programming abilities that some may not have the time to acquire.</p>
+<p>I made <strong>pymbrola</strong> with the intention of providing an intermediate point, in which the Python user can call MBROLA commands from the Python console. This way, manipulating parameters or using for loops can be done <strong>within Python</strong>. Here, I will illustrate some use cases for <strong>pymbrola</strong>.</p>
+<section id="installing-pymbrola" class="level2"><h2 class="anchored" data-anchor-id="installing-pymbrola">Installing pymbrola</h2>
+<p>The module <strong>pymbrola</strong> can be installed from <a href="https://pypi.org/project/mbrola/">PyPi</a> under the name <code>mbrola</code>:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">pip</span> install mbrola</span></code></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Remember, I assume that you are using Ubuntu (other Linux distros may be compatible as well, but I have not tested them) or Windows Subsystem for Linux (WSL), and have installed MBROLA in your system (see <a href="../../blog/pymbrola-installation/pymbrola-installation.html">my previous blog post</a>). In case you know your way around Docker, I made a <a href="https://hub.docker.com/repository/docker/gongcastro/mbrola/general">Docker image</a> for convenience.</p>
+</div>
+</div>
+</div>
+</section><section id="phonological-symbols" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="phonological-symbols">Phonological symbols</h2>
+<p>Let’s say we want to synthesise the Italian word <strong><em>caffè</em></strong> using the <code>it4</code> Italian voice. Our first task is to <strong>transcribe the phonological form</strong> of the word into a <strong>phonological transcript</strong> that MBROLA can understand. Each MBROLA voice comes with an associated README file that descibes the voice it self, and also provides the symbols the authors used to transcribe the pre-recorded diphones. This way, using those symbols will result in the appriate diphone being retrieved. Taking a look at the <code>it4</code> voice <a href="https://github.com/numediart/MBROLA-voices/blob/master/data/it4/README.txt">README file</a>:</p>
+<pre><code>i   spinoso     s p i n o1 s o
+e   veloce      v e l o1 tS e
+E   belpaese    b E l p a e1 z e
+a   vaiolo      v a j O1 l o
+o   polsino     p o l s i1 n o
+O   norditalia  n O r d i t a1 l i a
+u   puntale     p u n t a1 l e
+
+i1      così            k o s i1
+e1      mercé           m e r tS e1
+E1      caffè           k a f f E1
+a1      bontà           b o n t a1
+o1  Roma        r o1 m a
+O1      però            p e r O1
+u1      più             p j u1
+
+j   piume       p j u1 m e
+w   quando      k w a1 n d o
+
+p   pera        p e1 r a
+t   torre       t o1 r r e
+k   caldo       k a1 l d o
+b   botte       b o1 t t e
+d   dente       d E1 n t e
+g   gatto       g a1 t t o
+
+f   faro        f a1 r o
+s   sole        s o1 l e
+S   sci     S i1
+v   via     v i1 a
+z   peso        p e1 s o
+Z   garage      g a r a1 Z
+
+ts  pizza       p i1 ts ts a
+tS  pece        p e1 tS e
+dz  zero        dz E1 r o
+dZ  magia       m a dZ i1 a
+
+m   mano        m a1 n o
+n   nave        n a1 v e
+J   legna       l e1 J J a
+nf  anfora      a1 nf f o r a
+ng  ingordo     i ng g o1 r d o
+
+l   palo        p a1 l o
+L   soglia      s O1 L L a
+r   remo        r E1 m o
+
+_   PAUSE</code></pre>
+<p>The authors note that this set of symbols is aligned with the <a href="https://es.wikipedia.org/wiki/SAMPA">SAMPA</a> transcription system, which makes it a bit more predictable. They also provide some nice example to illustrate the phoneme that eah symbol refers to. Now we know we transcibe our word <em>caffè</em> as <code>k a f f E1</code><sup>1</sup>. Let’s now implement this transciption using <strong>pymbrola</strong>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This particular word is one of the examples provided by the authors, which is reassuring</p></div></div></section><section id="mbrola-class" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="mbrola-class">MBROLA class</h2>
+<p>The main feature of the <strong>pymbrola</strong> module is the <code>MBROLA</code> class, which we can call specifying the word label (<code>caffè</code>), the list of phonmees to be played (<code>k a f f E1</code>).</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> mbrola</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create an MBROLA object</span></span>
+<span id="cb3-4">caffe <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mbrola.MBROLA(</span>
+<span id="cb3-5">    word<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffè"</span>,</span>
+<span id="cb3-6">    phon<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"k"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"E1"</span>],</span>
+<span id="cb3-7">)</span>
+<span id="cb3-8"></span>
+<span id="cb3-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Display phoneme sequence</span></span>
+<span id="cb3-10"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(caffe)</span></code></pre></div>
+<p>This is what we get when printing the MBROLA object:</p>
+<pre><code>MBROLA object for word 'caffè':
+; caffè
+_ 1
+k 100 200 200
+a 100 200 200
+f 100 200 200
+f 100 200 200
+E1 100 200 200
+_ 1</code></pre>
+<p>This is a printed representation of the <strong>PHO file</strong> (.pho) which MBROLA will use to synthesise the word under the hood. Normally, one would manually write such a file, but <strong>pymbrola</strong> generates it automatically using the arguments passed to the instance of <code>MBROLA</code>. We can export this PHO file using the <code>export_pho()</code> method:</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Export PHO file</span></span>
+<span id="cb5-2">house.export_pho(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffe.pho"</span>)</span></code></pre></div>
+<p>Inspecting this file, we can see that line <strong>comments are specified with the <code>;</code> character</strong><sup>2</sup>. <strong>pymbrola</strong> prints the word label in this first line, as a comment—it’s easier to read the word label than figuring it out from the phonological symbols that follow.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Weird choice if you ask me. Luckily for you, you did not, in fact, ask me so I won’t say anything.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;I reached this conclusion after unsuccessfully trying to synthesise words in different languages without such silences.</p></div></div><p>In the next few lines, we define the actual <strong>sounds</strong> that MBROLA will synthesise, specified <em>sequentially</em> in different rows. We first have a <strong>pause symbol</strong> (<code>_</code>). This symbol is universal for all MBROLA languages. <strong>MBROLA needs a silence before and after the other symbols</strong><sup>3</sup>. <strong>The first character after each symbol corresponds to the duration of its associated sound in milliseconds</strong>. We are specifying the duration of this onset silence as a default value of 1 millisecond, which is imperceptible by the human ear, making it equivalent to almost no silence at onset. Same goes for the offset silence at the end of the document.</p>
+<p>In the middle, we have several symbols corresponding to the <strong>phonemes</strong> that make up the word <em>caffè</em> in Italian: <code>k</code>, <code>a</code>, <code>f</code>, <code>f</code>, <code>E1</code>. Again, after each symbol we specify its duration. Since we did not specify otherwise, <strong>the duration of each phoneme is assigned 100 milliseconds by default</strong>. In next examples we will adjust this parameter at will. The two numbers that follow indicate the <strong>pitch contour</strong> inside the phoneme—how the pitch increases and decreases within each sound. Again, we are leaving the default options: the pitch starts and ends at 200 Hz with no changes in the middle.</p>
+</section><section id="synthesising-a-sound" class="level2"><h2 class="anchored" data-anchor-id="synthesising-a-sound">Synthesising a sound</h2>
+<p>The resulting MBROLA object we created is all MBROLA needs to synthesise the sounds we want. Let’s do it:</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Synthesize and save audio (WAV file)</span></span>
+<span id="cb6-2">caffe.make_sound(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffe.wav"</span>, voice<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"it4"</span>)</span></code></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<audio controls=""><source src="sounds/caffe.wav" type="audio/wav"></audio>
+</div>
+</div>
+<p>As expected, it sounds quite robotic. But the reason we are interested in using MBROLA is not so much how it sounds (more recent tools produce much more natural results), but the fact that we can manipulate quite flexibly the features of each phoneme. <strong>pymbrola</strong> makes this quite convenient.</p>
+</section><section id="manipulating-duration" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="manipulating-duration">Manipulating duration</h2>
+<p>We can shorten or lengthen the whole audio by a constant (all sounds are modified equally) using the <code>dur_ratio</code> argument in the <code>make_sound()</code> method. A value of <code>1.0</code> leaves the audio unnmodified. Smaller values shorten the audio duration:</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># cut audio duration by half</span></span>
+<span id="cb7-2">caffe.make_sound(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffe-short.wav"</span>, voice<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"it4"</span>, dur_ratio<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span></code></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<audio controls=""><source src="sounds/caffe-short.wav" type="audio/wav"></audio>
+</div>
+</div>
+<p>Meanwhile, larger values lengthen the audio duration:</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># souble audio duration</span></span>
+<span id="cb8-2">caffe.make_sound(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffe-long.wav"</span>, voice<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"it4"</span>, dur_ratio<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.0</span>)</span></code></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<audio controls=""><source src="sounds/caffe-long.wav" type="audio/wav"></audio>
+</div>
+</div>
+<p>To manipulate the individual duration of each phoneme, we need to specify it when create the MBROLA instance. We can do this by specifying a single positive integer in the <code>durations</code> argument, or a list of positive integer with same length as number of phonemes. The former option leads to all phonemes being given that same value. The latter, a list, assigns each duration to each phoneme:</p>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">caffe <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> MBROLA(</span>
+<span id="cb9-2">    word<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffè"</span>,</span>
+<span id="cb9-3">    phon<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"k"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"E1"</span>],</span>
+<span id="cb9-4">    durations<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>] <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># or [100, 120, 100, 110]</span></span>
+<span id="cb9-5">)</span></code></pre></div>
+<p>Let’s inspect the PHO output:</p>
+<pre><code>MBROLA object for word 'caffè':
+; caffè
+_ 1
+k 50 200 200
+a 200 200 200
+f 100 200 200
+f 100 200 200
+E1 200 200 200
+_ 1</code></pre>
+<p>As you see, we have lengthened the two vowels <code>a</code> and <code>E1</code>, shortened the onset phoneme <code>k</code> and left the rest of the phonemes <code>f</code> and <code>f</code> equal<sup>4</sup>. Let’s see how it sounds, can you spot the difference?</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;While we can lengthen or shorten phonemes at will, one should keep in ming that some phonemes, because of their articulatory/phonetic properties, are by nature shorter or longer when produced by a human speaker. In fact speaking about duration virtually only useful when talking about phonemes with high sonority (e.g., vowels, liquids). For instance, lengthening stop-consonants like /k/ and /p/ can lead to weird-sounding outputs. Try to produce a long /k/. Does it feel/sound natural? Make sure the durations you specify are informed by natural patters or by the hypotheses of your study!</p></div></div><div class="cell">
+<div class="cell-output-display">
+<audio controls=""><source src="sounds/caffe-durations.wav" type="audio/wav"></audio>
+</div>
+</div>
+</section><section id="manipulating-pitch" class="level2"><h2 class="anchored" data-anchor-id="manipulating-pitch">Manipulating pitch</h2>
+<p>We also have several methods to alter the pitch contour of the word-form. As we did before with duration, we can also modify the pitch of the whole word by a constant. Let’s raise the pitch to 400 Hz (double):</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">caffe.make_sound(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffe-high-pitch.wav"</span>, voice<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"it4"</span>, f0_ratio<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.0</span>)</span></code></pre></div>
+<p>Now lets lower it to 100 Hz (half):</p>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">caffe.make_sound(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffe-high-low.wav"</span>, voice<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"it4"</span>, f0_ratio<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span></code></pre></div>
+<p>More interestingly, we can also modify the pitch contout of each phoneme. As we did with duration, we can do it in two ways. First, we can provide a single positive integer in the <code>pitch</code> argument, which will be assigned to all phonemes:</p>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">caffe <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mbrola.MBROLA(</span>
+<span id="cb13-2">    word<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffè"</span>,</span>
+<span id="cb13-3">    phon<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"k"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"E1"</span>],</span>
+<span id="cb13-4">    pitch<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span></span>
+<span id="cb13-5">)</span></code></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<audio controls=""><source src="sounds/caffe-pitch.wav" type="audio/wav"></audio>
+</div>
+</div>
+<p>We can also pass a list of pitch values in a list of length equal to the number of phonemes:</p>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">caffe <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mbrola.MBROLA(</span>
+<span id="cb14-2">    word<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffè"</span>,</span>
+<span id="cb14-3">    phon<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"k"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"E1"</span>],</span>
+<span id="cb14-4">    pitch<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>]</span>
+<span id="cb14-5">)</span></code></pre></div>
+<p>Here we have passed a list of pitch values (in Hz) that make the first syllable have a higher pitch, compared to the second one. Can you hear the difference?</p>
+<div class="cell">
+<div class="cell-output-display">
+<audio controls=""><source src="sounds/caffe-pitch-varying.wav" type="audio/wav"></audio>
+</div>
+</div>
+<p>Finally, we can also pass a list of embedded lists, each of these would specify the pitch contour <em>within</em> each phoneme. For instance:</p>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">caffe <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mbrola.MBROLA(</span>
+<span id="cb15-2">    word<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"caffè"</span>,</span>
+<span id="cb15-3">    phon<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"k"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"E1"</span>],</span>
+<span id="cb15-4">    durations <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>],</span>
+<span id="cb15-5">    pitch<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">400</span>]]</span>
+<span id="cb15-6">)</span></code></pre></div>
+<p>As you can see, I’ve specified a list of values for the pitch of the last phoneme <code>E1</code>: pitch starts at 200 Hz, continues at 250 Hz, 300 Hz, and finally, 44 Hz. The rest of the phonemes have the same values as in the previous example. I’ve also modified the duration of the last phoneme /e/ to 500 milliseconds to make the pith modulation easier to perceive. Under the hood, MBROLA will divide the time span of the last phoneme (500 ms) into <img src="https://latex.codecogs.com/png.latex?k"> equal intervals (where <img src="https://latex.codecogs.com/png.latex?k"> equals the number of values passed for the pitch contour of such phoneme), and change the pitch linear at each point by the corresponding value:</p>
+<div class="cell">
+<div class="cell-output-display">
+<audio controls=""><source src="sounds/caffe-pitch-piecewise.wav" type="audio/wav"></audio>
+</div>
+</div>
+</section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p><strong>pymbrola</strong> provides a convenient Python interface to MBROLA, which allows modifying the duration and pitch contour of particular phonemes by simplify specifying the arguments provided in during the creation of a MBROLA instance, or during the synthesis of the audio when calling the <code>make_sound()</code> method. This makes it easier for the average Python user to generate multiple MBROLA sounds in a programmatic, faster, and more reproducible way.</p>
+
+
+<!-- -->
+
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{garcia-castro2025,
+  author = {Garcia-Castro, Gonzalo},
+  title = {Pymbrola: {A} {Python} Interface to the {MBROLA} Speech
+    Synthesiser},
+  date = {2025-11-08},
+  url = {https://gongcastro.github.io/blog/pymbrola-using/pymbrola-using.html},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-garcia-castro2025" class="csl-entry quarto-appendix-citeas">
+Garcia-Castro, G. (2025, November 8). <em>pymbrola: A Python interface
+to the MBROLA speech synthesiser</em>. <a href="https://gongcastro.github.io/blog/pymbrola-using/pymbrola-using.html">https://gongcastro.github.io/blog/pymbrola-using/pymbrola-using.html</a>
+</div></div></section></div> ]]></description>
+  <category>python</category>
+  <category>package</category>
+  <category>linux</category>
+  <category>wsl</category>
+  <category>speech synthesis</category>
+  <category>language</category>
+  <category>mbrola</category>
+  <category>tutorial</category>
+  <guid>https://gongcastro.github.io/blog/pymbrola-using/pymbrola-using.html</guid>
+  <pubDate>Fri, 07 Nov 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://gongcastro.github.io/blog/pymbrola-using/c3po.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
 <item>
   <title>Installing the MBROLA speech synthesiser</title>
   <dc:creator>Gonzalo Garcia-Castro</dc:creator>
@@ -42,12 +488,12 @@
 </div>
 </div>
 </div>
-<p>It’s been some time since my <a href="http://localhost:5555/blog/dpf-scholkmann/dpf-scholkmann.html">last post</a>. We’ve been pretty busy starting the new lab and setting up the new studies of the <a href="https://neurodevco.github.io/">NeuroDevCo</a> group. I hope we can share our progress soon! Meanwhile, I’m here presenting one of the earliest outputs of the GALA project: <a href="https://pypi.org/project/mbrola/"><strong>pymbrola</strong></a>: <strong>a Python interface to the speech synthesiser MBROLA</strong>. This is a two-part blog post. Here, I provide a detailed guide on how to get MBROLA up and runnig on your machine. This is a pre-requisite for using the <strong>pymbrola</strong> package. In an upcoming post, I’ll illustrate how pymbrola works.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://gongcastro.github.io/blog/pymbrola-installation/c3po.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="https://gongcastro.github.io/blog/pymbrola-installation/c3po.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
+<p>It’s been some time since my <a href="http://localhost:5555/blog/dpf-scholkmann/dpf-scholkmann.html">last post</a>. We’ve been pretty busy starting the new lab and setting up the new studies of the <a href="https://neurodevco.github.io/">NeuroDevCo</a> group. I hope we can share our progress soon! Meanwhile, I’m here presenting one of the earliest outputs of the GALA project: <a href="https://pypi.org/project/mbrola/"><strong>pymbrola</strong></a>: <strong>a Python interface to the speech synthesiser MBROLA</strong>. This is a two-part blog post. Here, I provide a detailed guide on how to get MBROLA up and runnig on your machine. This is a pre-requisite for using the <strong>pymbrola</strong> package. In an upcoming post, I’ll illustrate how pymbrola works.</p>
 <section id="about-mbrola" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="about-mbrola">About MBROLA</h2>
 <p>MBROLA <span class="citation" data-cites="dutoit1996mbrola">(Dutoit et al., 1996)</span> is a speech synthesis software developed in the 90s by Thierry Dutoit and Vinvent Pagel. Vaguely, it consists in a database of <strong>naturally pre-recorded diphones</strong> (combinations of two phones, like /ke/ or /li/), which are put together according to form the desired string of sounds that the user inputs. The result is an intelligible, yet somewhat robotic-like speech stored in a WAV file. The actual machinery behind MBROLA is much more complex than this, and the particular mechanisms that merge pre-recorded diphones is, to date, an important breakthrough in linguistics and speech synthesis research.</p>
@@ -282,7 +728,7 @@ synthesiser</em>. <a href="https://gongcastro.github.io/blog/pymbrola-installati
   <category>tutorial</category>
   <guid>https://gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</guid>
   <pubDate>Sun, 24 Aug 2025 22:00:00 GMT</pubDate>
-  <media:content url="https://gongcastro.github.io/blog/pymbrola-installation/c3po.png" medium="image" type="image/png" height="81" width="144"/>
+  <media:content url="https://gongcastro.github.io/blog/pymbrola-installation/c3po.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Implementing the Differential Pathlength Factor (DPF) in Python: the Scholkmann method</title>
@@ -294,7 +740,7 @@ synthesiser</em>. <a href="https://gongcastro.github.io/blog/pymbrola-installati
 
 
 
-<div id="a856b0ef" class="cell" data-execution_count="1">
+<div id="0ba2f7f8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -476,7 +922,7 @@ font-style: inherit;">return</span> dpf</span></code></pre></div>
 <p>where <img src="https://latex.codecogs.com/png.latex?%5Clambda"> is the wavelength, <img src="https://latex.codecogs.com/png.latex?A"> is the age of the participant, and <img src="https://latex.codecogs.com/png.latex?%5Calpha">, <img src="https://latex.codecogs.com/png.latex?%5Cbeta">, <img src="https://latex.codecogs.com/png.latex?%5Cdelta">, <img src="https://latex.codecogs.com/png.latex?%5Cvarepsilon">, and <img src="https://latex.codecogs.com/png.latex?%5Czeta"> are the certain coefficients that were empirically estimated by <span class="citation" data-cites="scholkmann2013general">Scholkmann &amp; Wolf (2013)</span> using a robust nonlinear least squares method, based on previously published datasets. The result is a formula in which one can introduce the age of the participant and the wavelength of interest, and obtain the estimated DPF:</p>
 <div class="no-row-height column-margin column-container"></div><p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BDPF%7D%20(%5Clambda,%20A)=%20223.3%20+%200.05624%20A%20%5E%7B0.8493%7D%20+%20%E2%88%925.723%20%5Ctimes%2010%5E%7B%E2%88%927%7D%20%5Clambda%20%5E%7B3%7D%20+%200.001245%20%5Clambda%20%5E%7B2%7D%20+%20%E2%88%920.9025%20%5Clambda%0A"></p>
 <p>I made a simple Python function to implement the equation:</p>
-<div id="9093ee7e" class="cell" data-execution_count="2">
+<div id="fc93489d" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
@@ -619,7 +1065,7 @@ font-style: inherit;">return</span> dpf</span></code></pre></div>
 </details>
 </div>
 <p>Let’s try it out:</p>
-<div id="222639b5" class="cell" data-execution_count="3">
+<div id="e745b302" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">age <span class="op" style="color: #5E5E5E;
@@ -8031,7 +8477,7 @@ Expand for Session Info
  collate  English_United Kingdom.utf8
  ctype    English_United Kingdom.utf8
  tz       Europe/Berlin
- date     2025-11-03
+ date     2025-11-08
  pandoc   3.6.3 @ c:\\Program Files\\Positron\\resources\\app\\quarto\\bin\\tools/ (via rmarkdown)
  quarto   1.7.32 @ C:/Users/Gonzalo/AppData/Local/Programs/Quarto/bin/quarto.exe
 
@@ -8552,7 +8998,7 @@ R sin ataques de pánico)</em>. <a href="https://gongcastro.github.io/blog/renv-
 <p>Lo mucho que este clima se extiende a través de toda la comunidad puede deberse en parte a la propia estructura de redes de amistad entre los diferentes perfiles. Mi opinión y la de más personas (aun no hemos mirado los datos, pero en algún momento nos gustaría hacerlo), es que <strong>la estructura de esta comunidad está muy centralizada</strong>: muchas personas con relativamente pocos seguidores (0-400) siguen a unas pocas personas con relativamente muchos seguidores (5.000-20.000). Esto convertiría a las segundas en poseedoras de una parte substancial del espacio de la comunidad. Recientemente hice un pequeño hilo ampliando esta reflexión:</p>
 <blockquote class="twitter-tweet blockquote">
 <p lang="es" dir="ltr">
-Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw”&gt;<span class="citation" data-cites="IreneFPinto">(<strong>IreneFPinto?</strong>)</span>. Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es <em>mi</em> experiencia.<br><br>Ahora bien, tengo una pequeña reflexión sobre la estructura de <a href="https://twitter.com/hashtag/psicotuiter?src=hash&amp;ref_src=twsrc%5Etfw">#psicotuiter</a> (importantes las aclaraciones al final): 🧵 <a href="https://t.co/G77h8YRQdZ">https://t.co/G77h8YRQdZ</a>
+Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/IreneFPinto?ref_src=twsrc%5Etfw”&gt;@IreneFPinto. Mi TL es el mejor y recibo muchísimo apoyo de la gente buena de aquí. Pero esa es <em>mi</em> experiencia.<br><br>Ahora bien, tengo una pequeña reflexión sobre la estructura de <a href="https://twitter.com/hashtag/psicotuiter?src=hash&amp;ref_src=twsrc%5Etfw">#psicotuiter</a> (importantes las aclaraciones al final): 🧵 <a href="https://t.co/G77h8YRQdZ">https://t.co/G77h8YRQdZ</a>
 </p>
 — Gon García-Castro (@gongcastro) <a href="https://twitter.com/gongcastro/status/1472157574522888192?ref_src=twsrc%5Etfw">December 18, 2021</a>
 </blockquote>
@@ -10563,13 +11009,13 @@ time zone: Europe/Berlin
 tzcode source: internal
 
 attached base packages:
-[1] stats     graphics  grDevices datasets  utils     methods   base     
+[1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
  [1] htmlwidgets_1.6.4 compiler_4.5.0    fastmap_1.2.0     cli_3.6.5        
- [5] htmltools_0.5.8.1 tools_4.5.0       yaml_2.3.10       rmarkdown_2.30   
- [9] knitr_1.50        jsonlite_2.0.0    xfun_0.54         digest_0.6.37    
-[13] rlang_1.1.6       renv_1.1.5        evaluate_1.0.5   </code></pre>
+ [5] tools_4.5.0       htmltools_0.5.8.1 yaml_2.3.10       rmarkdown_2.29   
+ [9] knitr_1.50        jsonlite_2.0.0    xfun_0.52         digest_0.6.37    
+[13] rlang_1.1.6       evaluate_1.0.4   </code></pre>
 </div>
 </div>
 
@@ -10616,23 +11062,23 @@ Table&nbsp;1
 </figcaption><div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div style="height:600px; overflow-y: scroll">
-<div id="vikedgsbut" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vikedgsbut table {
+<div id="udkvojvoli" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#udkvojvoli table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vikedgsbut thead, #vikedgsbut tbody, #vikedgsbut tfoot, #vikedgsbut tr, #vikedgsbut td, #vikedgsbut th {
+#udkvojvoli thead, #udkvojvoli tbody, #udkvojvoli tfoot, #udkvojvoli tr, #udkvojvoli td, #udkvojvoli th {
   border-style: none;
 }
 
-#vikedgsbut p {
+#udkvojvoli p {
   margin: 0;
   padding: 0;
 }
 
-#vikedgsbut .gt_table {
+#udkvojvoli .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -10658,12 +11104,12 @@ Table&nbsp;1
   border-left-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_caption {
+#udkvojvoli .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vikedgsbut .gt_title {
+#udkvojvoli .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -10675,7 +11121,7 @@ Table&nbsp;1
   border-bottom-width: 0;
 }
 
-#vikedgsbut .gt_subtitle {
+#udkvojvoli .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -10687,7 +11133,7 @@ Table&nbsp;1
   border-top-width: 0;
 }
 
-#vikedgsbut .gt_heading {
+#udkvojvoli .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -10699,13 +11145,13 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_bottom_border {
+#udkvojvoli .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_col_headings {
+#udkvojvoli .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -10720,7 +11166,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_col_heading {
+#udkvojvoli .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10740,7 +11186,7 @@ Table&nbsp;1
   overflow-x: hidden;
 }
 
-#vikedgsbut .gt_column_spanner_outer {
+#udkvojvoli .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10752,15 +11198,15 @@ Table&nbsp;1
   padding-right: 4px;
 }
 
-#vikedgsbut .gt_column_spanner_outer:first-child {
+#udkvojvoli .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vikedgsbut .gt_column_spanner_outer:last-child {
+#udkvojvoli .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vikedgsbut .gt_column_spanner {
+#udkvojvoli .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -10772,11 +11218,11 @@ Table&nbsp;1
   width: 100%;
 }
 
-#vikedgsbut .gt_spanner_row {
+#udkvojvoli .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vikedgsbut .gt_group_heading {
+#udkvojvoli .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10802,7 +11248,7 @@ Table&nbsp;1
   text-align: left;
 }
 
-#vikedgsbut .gt_empty_group_heading {
+#udkvojvoli .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -10817,15 +11263,15 @@ Table&nbsp;1
   vertical-align: middle;
 }
 
-#vikedgsbut .gt_from_md > :first-child {
+#udkvojvoli .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vikedgsbut .gt_from_md > :last-child {
+#udkvojvoli .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vikedgsbut .gt_row {
+#udkvojvoli .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10844,7 +11290,7 @@ Table&nbsp;1
   overflow-x: hidden;
 }
 
-#vikedgsbut .gt_stub {
+#udkvojvoli .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10857,7 +11303,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#vikedgsbut .gt_stub_row_group {
+#udkvojvoli .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10871,15 +11317,15 @@ Table&nbsp;1
   vertical-align: top;
 }
 
-#vikedgsbut .gt_row_group_first td {
+#udkvojvoli .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vikedgsbut .gt_row_group_first th {
+#udkvojvoli .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vikedgsbut .gt_summary_row {
+#udkvojvoli .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -10889,16 +11335,16 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#vikedgsbut .gt_first_summary_row {
+#udkvojvoli .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_first_summary_row.thick {
+#udkvojvoli .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vikedgsbut .gt_last_summary_row {
+#udkvojvoli .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10908,7 +11354,7 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_grand_summary_row {
+#udkvojvoli .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -10918,7 +11364,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#vikedgsbut .gt_first_grand_summary_row {
+#udkvojvoli .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10928,7 +11374,7 @@ Table&nbsp;1
   border-top-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_last_grand_summary_row_top {
+#udkvojvoli .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10938,11 +11384,11 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_striped {
+#udkvojvoli .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vikedgsbut .gt_table_body {
+#udkvojvoli .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -10951,7 +11397,7 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_footnotes {
+#udkvojvoli .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -10965,7 +11411,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_footnote {
+#udkvojvoli .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -10974,7 +11420,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#vikedgsbut .gt_sourcenotes {
+#udkvojvoli .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -10988,7 +11434,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#vikedgsbut .gt_sourcenote {
+#udkvojvoli .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -10996,72 +11442,72 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#vikedgsbut .gt_left {
+#udkvojvoli .gt_left {
   text-align: left;
 }
 
-#vikedgsbut .gt_center {
+#udkvojvoli .gt_center {
   text-align: center;
 }
 
-#vikedgsbut .gt_right {
+#udkvojvoli .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vikedgsbut .gt_font_normal {
+#udkvojvoli .gt_font_normal {
   font-weight: normal;
 }
 
-#vikedgsbut .gt_font_bold {
+#udkvojvoli .gt_font_bold {
   font-weight: bold;
 }
 
-#vikedgsbut .gt_font_italic {
+#udkvojvoli .gt_font_italic {
   font-style: italic;
 }
 
-#vikedgsbut .gt_super {
+#udkvojvoli .gt_super {
   font-size: 65%;
 }
 
-#vikedgsbut .gt_footnote_marks {
+#udkvojvoli .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vikedgsbut .gt_asterisk {
+#udkvojvoli .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vikedgsbut .gt_indent_1 {
+#udkvojvoli .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vikedgsbut .gt_indent_2 {
+#udkvojvoli .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vikedgsbut .gt_indent_3 {
+#udkvojvoli .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vikedgsbut .gt_indent_4 {
+#udkvojvoli .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vikedgsbut .gt_indent_5 {
+#udkvojvoli .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vikedgsbut .katex-display {
+#udkvojvoli .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vikedgsbut div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#udkvojvoli div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -11742,7 +12188,7 @@ Table&nbsp;1
 <td class="gt_row gt_left" headers="ipa" style="background-color: rgba(255,255,255,0); color: #000000">-</td>
 </tr>
 </tbody>
-<tfoot><tr class="gt_sourcenotes odd">
+<tfoot class="gt_sourcenotes"><tr class="odd">
 <td colspan="4" class="gt_sourcenote">https://drive.google.com/file/d/18SeJTiM2-JXR9SOqEg22wdkvNL3OxG3u/view?usp=sharing</td>
 </tr></tfoot>
 </table>
@@ -11790,27 +12236,27 @@ time zone: Europe/Berlin
 tzcode source: internal
 
 attached base packages:
-[1] stats     graphics  grDevices datasets  utils     methods   base     
+[1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] htmltools_0.5.8.1 kableExtra_1.4.0  knitr_1.50        gt_1.1.0         
- [5] readxl_1.4.5      lubridate_1.9.4   forcats_1.0.1     stringr_1.5.2    
+ [1] htmltools_0.5.8.1 kableExtra_1.4.0  knitr_1.50        gt_1.0.0         
+ [5] readxl_1.4.5      lubridate_1.9.4   forcats_1.0.0     stringr_1.5.1    
  [9] dplyr_1.1.4       purrr_1.1.0       readr_2.1.5       tidyr_1.3.1      
-[13] tibble_3.3.0      ggplot2_4.0.0     tidyverse_2.0.0  
+[13] tibble_3.3.0      ggplot2_3.5.2     tidyverse_2.0.0  
 
 loaded via a namespace (and not attached):
- [1] sass_0.4.10        generics_0.1.4     renv_1.1.5         xml2_1.4.1        
- [5] stringi_1.8.7      hms_1.1.4          digest_0.6.37      magrittr_2.0.4    
- [9] evaluate_1.0.5     grid_4.5.0         timechange_0.3.0   RColorBrewer_1.1-3
-[13] fastmap_1.2.0      cellranger_1.1.0   jsonlite_2.0.0     viridisLite_0.4.2 
-[17] scales_1.4.0       stringdist_0.9.15  textshaping_1.0.4  cli_3.6.5         
-[21] rlang_1.1.6        litedown_0.8       commonmark_2.0.0   base64enc_0.1-3   
-[25] withr_3.0.2        yaml_2.3.10        parallel_4.5.0     tools_4.5.0       
-[29] tzdb_0.5.0         vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4   
-[33] fs_1.6.6           htmlwidgets_1.6.4  pkgconfig_2.0.3    pillar_1.11.1     
-[37] gtable_0.3.6       glue_1.8.0         systemfonts_1.3.1  xfun_0.54         
-[41] tidyselect_1.2.1   rstudioapi_0.17.1  farver_2.1.2       rmarkdown_2.30    
-[45] svglite_2.2.2      compiler_4.5.0     S7_0.2.0           markdown_2.0      </code></pre>
+ [1] sass_0.4.10        generics_0.1.4     xml2_1.4.1         stringi_1.8.7     
+ [5] hms_1.1.3          digest_0.6.37      magrittr_2.0.3     evaluate_1.0.4    
+ [9] grid_4.5.0         timechange_0.3.0   RColorBrewer_1.1-3 fastmap_1.2.0     
+[13] cellranger_1.1.0   jsonlite_2.0.0     viridisLite_0.4.2  scales_1.4.0      
+[17] stringdist_0.9.15  textshaping_1.0.1  cli_3.6.5          rlang_1.1.6       
+[21] litedown_0.7       commonmark_2.0.0   base64enc_0.1-3    withr_3.0.2       
+[25] yaml_2.3.10        parallel_4.5.0     tools_4.5.0        tzdb_0.5.0        
+[29] vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4    htmlwidgets_1.6.4 
+[33] pkgconfig_2.0.3    pillar_1.11.0      gtable_0.3.6       glue_1.8.0        
+[37] systemfonts_1.2.3  xfun_0.52          tidyselect_1.2.1   rstudioapi_0.17.1 
+[41] farver_2.1.2       rmarkdown_2.29     svglite_2.2.1      compiler_4.5.0    
+[45] markdown_2.0      </code></pre>
 </div>
 </div>
 
@@ -11882,23 +12328,23 @@ Figure&nbsp;1: Mean time (and standard deviation) for each combination of method
 Table&nbsp;1: Execution times
 </figcaption><div aria-describedby="tbl-times-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ebjfvogppi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ebjfvogppi table {
+<div id="lnbmnmszef" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lnbmnmszef table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ebjfvogppi thead, #ebjfvogppi tbody, #ebjfvogppi tfoot, #ebjfvogppi tr, #ebjfvogppi td, #ebjfvogppi th {
+#lnbmnmszef thead, #lnbmnmszef tbody, #lnbmnmszef tfoot, #lnbmnmszef tr, #lnbmnmszef td, #lnbmnmszef th {
   border-style: none;
 }
 
-#ebjfvogppi p {
+#lnbmnmszef p {
   margin: 0;
   padding: 0;
 }
 
-#ebjfvogppi .gt_table {
+#lnbmnmszef .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -11924,12 +12370,12 @@ Table&nbsp;1: Execution times
   border-left-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_caption {
+#lnbmnmszef .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ebjfvogppi .gt_title {
+#lnbmnmszef .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -11941,7 +12387,7 @@ Table&nbsp;1: Execution times
   border-bottom-width: 0;
 }
 
-#ebjfvogppi .gt_subtitle {
+#lnbmnmszef .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -11953,7 +12399,7 @@ Table&nbsp;1: Execution times
   border-top-width: 0;
 }
 
-#ebjfvogppi .gt_heading {
+#lnbmnmszef .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -11965,13 +12411,13 @@ Table&nbsp;1: Execution times
   border-right-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_bottom_border {
+#lnbmnmszef .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_col_headings {
+#lnbmnmszef .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -11986,7 +12432,7 @@ Table&nbsp;1: Execution times
   border-right-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_col_heading {
+#lnbmnmszef .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -12006,7 +12452,7 @@ Table&nbsp;1: Execution times
   overflow-x: hidden;
 }
 
-#ebjfvogppi .gt_column_spanner_outer {
+#lnbmnmszef .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -12018,15 +12464,15 @@ Table&nbsp;1: Execution times
   padding-right: 4px;
 }
 
-#ebjfvogppi .gt_column_spanner_outer:first-child {
+#lnbmnmszef .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ebjfvogppi .gt_column_spanner_outer:last-child {
+#lnbmnmszef .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ebjfvogppi .gt_column_spanner {
+#lnbmnmszef .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -12038,11 +12484,11 @@ Table&nbsp;1: Execution times
   width: 100%;
 }
 
-#ebjfvogppi .gt_spanner_row {
+#lnbmnmszef .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ebjfvogppi .gt_group_heading {
+#lnbmnmszef .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -12068,7 +12514,7 @@ Table&nbsp;1: Execution times
   text-align: left;
 }
 
-#ebjfvogppi .gt_empty_group_heading {
+#lnbmnmszef .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -12083,15 +12529,15 @@ Table&nbsp;1: Execution times
   vertical-align: middle;
 }
 
-#ebjfvogppi .gt_from_md > :first-child {
+#lnbmnmszef .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ebjfvogppi .gt_from_md > :last-child {
+#lnbmnmszef .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ebjfvogppi .gt_row {
+#lnbmnmszef .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -12110,7 +12556,7 @@ Table&nbsp;1: Execution times
   overflow-x: hidden;
 }
 
-#ebjfvogppi .gt_stub {
+#lnbmnmszef .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -12123,7 +12569,7 @@ Table&nbsp;1: Execution times
   padding-right: 5px;
 }
 
-#ebjfvogppi .gt_stub_row_group {
+#lnbmnmszef .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -12137,15 +12583,15 @@ Table&nbsp;1: Execution times
   vertical-align: top;
 }
 
-#ebjfvogppi .gt_row_group_first td {
+#lnbmnmszef .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ebjfvogppi .gt_row_group_first th {
+#lnbmnmszef .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ebjfvogppi .gt_summary_row {
+#lnbmnmszef .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -12155,16 +12601,16 @@ Table&nbsp;1: Execution times
   padding-right: 5px;
 }
 
-#ebjfvogppi .gt_first_summary_row {
+#lnbmnmszef .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_first_summary_row.thick {
+#lnbmnmszef .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ebjfvogppi .gt_last_summary_row {
+#lnbmnmszef .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -12174,7 +12620,7 @@ Table&nbsp;1: Execution times
   border-bottom-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_grand_summary_row {
+#lnbmnmszef .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -12184,7 +12630,7 @@ Table&nbsp;1: Execution times
   padding-right: 5px;
 }
 
-#ebjfvogppi .gt_first_grand_summary_row {
+#lnbmnmszef .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -12194,7 +12640,7 @@ Table&nbsp;1: Execution times
   border-top-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_last_grand_summary_row_top {
+#lnbmnmszef .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -12204,11 +12650,11 @@ Table&nbsp;1: Execution times
   border-bottom-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_striped {
+#lnbmnmszef .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ebjfvogppi .gt_table_body {
+#lnbmnmszef .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -12217,7 +12663,7 @@ Table&nbsp;1: Execution times
   border-bottom-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_footnotes {
+#lnbmnmszef .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -12231,7 +12677,7 @@ Table&nbsp;1: Execution times
   border-right-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_footnote {
+#lnbmnmszef .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -12240,7 +12686,7 @@ Table&nbsp;1: Execution times
   padding-right: 5px;
 }
 
-#ebjfvogppi .gt_sourcenotes {
+#lnbmnmszef .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -12254,7 +12700,7 @@ Table&nbsp;1: Execution times
   border-right-color: #D3D3D3;
 }
 
-#ebjfvogppi .gt_sourcenote {
+#lnbmnmszef .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -12262,72 +12708,72 @@ Table&nbsp;1: Execution times
   padding-right: 5px;
 }
 
-#ebjfvogppi .gt_left {
+#lnbmnmszef .gt_left {
   text-align: left;
 }
 
-#ebjfvogppi .gt_center {
+#lnbmnmszef .gt_center {
   text-align: center;
 }
 
-#ebjfvogppi .gt_right {
+#lnbmnmszef .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ebjfvogppi .gt_font_normal {
+#lnbmnmszef .gt_font_normal {
   font-weight: normal;
 }
 
-#ebjfvogppi .gt_font_bold {
+#lnbmnmszef .gt_font_bold {
   font-weight: bold;
 }
 
-#ebjfvogppi .gt_font_italic {
+#lnbmnmszef .gt_font_italic {
   font-style: italic;
 }
 
-#ebjfvogppi .gt_super {
+#lnbmnmszef .gt_super {
   font-size: 65%;
 }
 
-#ebjfvogppi .gt_footnote_marks {
+#lnbmnmszef .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ebjfvogppi .gt_asterisk {
+#lnbmnmszef .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ebjfvogppi .gt_indent_1 {
+#lnbmnmszef .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ebjfvogppi .gt_indent_2 {
+#lnbmnmszef .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ebjfvogppi .gt_indent_3 {
+#lnbmnmszef .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ebjfvogppi .gt_indent_4 {
+#lnbmnmszef .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ebjfvogppi .gt_indent_5 {
+#lnbmnmszef .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ebjfvogppi .katex-display {
+#lnbmnmszef .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ebjfvogppi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lnbmnmszef div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -12594,7 +13040,7 @@ other attached packages:
 
 loaded via a namespace (and not attached):
  [1] gtable_0.3.6       jsonlite_2.0.0     compiler_4.5.0     tidyselect_1.2.1  
- [5] xml2_1.4.0         scales_1.4.0       yaml_2.3.10        fastmap_1.2.0     
+ [5] xml2_1.4.1         scales_1.4.0       yaml_2.3.10        fastmap_1.2.0     
  [9] R6_2.6.1           commonmark_2.0.0   labeling_0.4.3     generics_0.1.4    
 [13] knitr_1.50         htmlwidgets_1.6.4  pillar_1.11.0      RColorBrewer_1.1-3
 [17] tzdb_0.5.0         rlang_1.1.6        stringi_1.8.7      litedown_0.7      
@@ -12678,16 +13124,16 @@ time zone: Europe/Berlin
 tzcode source: internal
 
 attached base packages:
-[1] stats     graphics  grDevices datasets  utils     methods   base     
+[1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
 [1] xaringanExtra_0.8.0
 
 loaded via a namespace (and not attached):
  [1] htmlwidgets_1.6.4 compiler_4.5.0    fastmap_1.2.0     cli_3.6.5        
- [5] htmltools_0.5.8.1 tools_4.5.0       yaml_2.3.10       rmarkdown_2.30   
- [9] knitr_1.50        jsonlite_2.0.0    xfun_0.54         digest_0.6.37    
-[13] rlang_1.1.6       renv_1.1.5        evaluate_1.0.5   </code></pre>
+ [5] tools_4.5.0       htmltools_0.5.8.1 yaml_2.3.10       rmarkdown_2.29   
+ [9] knitr_1.50        jsonlite_2.0.0    xfun_0.52         digest_0.6.37    
+[13] rlang_1.1.6       evaluate_1.0.4   </code></pre>
 </div>
 </div>
 
