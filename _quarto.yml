@@ -62,7 +62,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: pages/cv.qmd
+      - href: https://raw.githubusercontent.com/gongcastro/cv/refs/heads/main/cv.pdf?raw=true
         text: CV
       - href: pages/blog.qmd
         text: Blog
