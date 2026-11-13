@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gongcastro.github.io/blog/visualising-polynomial-regression/visualising-polynomial-regression.html</loc>
-    <lastmod>2026-11-13T21:34:08.445Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/visualising-polynomial-regression/visualising-polynomial-regression.html</loc>
+    <lastmod>2026-11-13T21:52:26.998Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html</loc>
-    <lastmod>2026-11-13T21:34:08.432Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/revaljs-to-pdf/revealjs-to-pdf.html</loc>
+    <lastmod>2026-11-13T21:52:26.983Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/pymbrola-using/pymbrola-using.html</loc>
-    <lastmod>2026-11-13T21:34:08.424Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/pymbrola-using/pymbrola-using.html</loc>
+    <lastmod>2026-11-13T21:52:26.973Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/psicotuiterbot/psicotuiterbot.html</loc>
-    <lastmod>2026-11-13T21:34:08.418Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/psicotuiterbot/psicotuiterbot.html</loc>
+    <lastmod>2026-11-13T21:52:26.966Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/mask-similarity-across-languages/mask-similarity-across-languages.html</loc>
-    <lastmod>2026-11-13T21:34:08.404Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/mask-similarity-across-languages/mask-similarity-across-languages.html</loc>
+    <lastmod>2026-11-13T21:52:26.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/posts/importing-data-multiple/importing-data-multiple.html</loc>
+    <lastmod>2026-11-13T21:52:26.946Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gongcastro.github.io/blog/posts/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html</loc>
+    <lastmod>2026-11-13T21:52:26.942Z</lastmod>
   </url>
   <url>
     <loc>https://gongcastro.github.io/blog/index.html</loc>
-    <lastmod>2026-11-13T21:34:08.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/dpf-scholkmann/dpf-scholkmann.html</loc>
-    <lastmod>2026-11-13T21:34:08.400Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gongcastro.github.io/blog/animated-distributions/animated-distributions.html</loc>
-    <lastmod>2026-11-13T21:34:08.132Z</lastmod>
+    <lastmod>2026-11-13T21:52:26.617Z</lastmod>
   </url>
   <url>
     <loc>https://gongcastro.github.io/index.html</loc>
-    <lastmod>2026-11-13T21:34:08.445Z</lastmod>
+    <lastmod>2026-11-13T21:52:26.998Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html</loc>
-    <lastmod>2026-11-13T21:34:08.399Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/animated-distributions/animated-distributions.html</loc>
+    <lastmod>2026-11-13T21:52:26.633Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/importing-data-multiple/importing-data-multiple.html</loc>
-    <lastmod>2026-11-13T21:34:08.403Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/dpf-scholkmann/dpf-scholkmann.html</loc>
+    <lastmod>2026-11-13T21:52:26.943Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/logistic-regression/logistic-regression.html</loc>
-    <lastmod>2026-11-13T21:34:08.403Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/logistic-regression/logistic-regression.html</loc>
+    <lastmod>2026-11-13T21:52:26.946Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/primer-linear-mixed-models/primer-linear-mixed-models.html</loc>
-    <lastmod>2026-11-13T21:34:08.416Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/primer-linear-mixed-models/primer-linear-mixed-models.html</loc>
+    <lastmod>2026-11-13T21:52:26.962Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/pymbrola-installation/pymbrola-installation.html</loc>
-    <lastmod>2026-11-13T21:34:08.421Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/pymbrola-installation/pymbrola-installation.html</loc>
+    <lastmod>2026-11-13T21:52:26.969Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/renv-package/renv-package.html</loc>
-    <lastmod>2026-11-13T21:34:08.431Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/renv-package/renv-package.html</loc>
+    <lastmod>2026-11-13T21:52:26.982Z</lastmod>
   </url>
   <url>
-    <loc>https://gongcastro.github.io/blog/upfthesis/upfthesis.html</loc>
-    <lastmod>2026-11-13T21:34:08.434Z</lastmod>
+    <loc>https://gongcastro.github.io/blog/posts/upfthesis/upfthesis.html</loc>
+    <lastmod>2026-11-13T21:52:26.984Z</lastmod>
   </url>
 </urlset>
