@@ -160,7 +160,6 @@ p.caption {
     color: $black;
     border-bottom: 6px solid primary;
     background-color: $white;
-    width: 90%;
     height: 100px;
     color: $black;
     text-align: center;
@@ -195,16 +194,6 @@ p.caption {
     border-bottom: 5px solid $primary;
 }
 
-.navbar a {
-    float: left;
-    display: block;
-    color: $black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    border-bottom: 3px solid transparent;
-}
 
 .description {
     .nav.navbar-nav.navbar-right li a {
@@ -316,8 +305,6 @@ legend {
     }
 }
 
-
-
 .band-text {
     background-color: $yellow;
     display: block !important;
@@ -386,16 +373,6 @@ legend {
     }
 }
 
-// Listings
-div.listing-date {
-    text-align: left;
-}
-
-p code:not(.sourceCode),
-li code:not(.sourceCode) {
-    background-color: $white;
-    padding: .2em;
-}
 
 
 body {
@@ -409,10 +386,6 @@ body {
     font-family: Inter;
     color: black
 }
-
-
-
-
 
 .about-image {
     align-items: center !important;

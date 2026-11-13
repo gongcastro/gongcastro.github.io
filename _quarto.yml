@@ -62,7 +62,7 @@ website:
         text: Home
       - href: https://raw.githubusercontent.com/gongcastro/cv/refs/heads/main/cv.pdf?raw=true
         text: CV
-      - href: pages/blog.qmd
+      - href: blog/index.qmd
         text: Blog
 
   page-footer:
@@ -78,8 +78,7 @@ website:
 format:
   html:
     anchor-sections: true
-    theme: assets/css/minty-modified.scss
-    css:  assets/css/styles.css
+    theme: assets/style.scss
     toc: true
     citations-hover: true
     code-link: true

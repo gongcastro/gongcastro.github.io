@@ -1,8 +1,8 @@
 ---
 title-block-banner: true
 title-block-banner-color: "#fcc203"
-main-photo: assets/media/profile.jpg
-main-photo-square: assets/media/profile.jpg
+main-photo: /assets/media/profile.jpg
+main-photo-square: /assets/media/profile.jpg
 format:
   html:
     quarto-template-params:
