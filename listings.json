@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/pages/blog.html",
+    "listing": "/blog/index.html",
     "items": [
       "/blog/pymbrola-using/pymbrola-using.html",
       "/blog/pymbrola-installation/pymbrola-installation.html",
@@ -21,6 +21,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/index.html",
       "/blog/pymbrola-using/pymbrola-using.html",
       "/blog/pymbrola-installation/pymbrola-installation.html",
       "/blog/dpf-scholkmann/dpf-scholkmann.html",
