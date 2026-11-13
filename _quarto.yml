@@ -51,8 +51,6 @@ website:
     logo: /assets/media/favicon.png
     search: true
     tools:
-      - icon: twitter
-        href: https://twitter.com/gongcastro
       - icon: github
         menu:
           - text: Source Code
@@ -66,10 +64,6 @@ website:
         text: CV
       - href: pages/blog.qmd
         text: Blog
-    right:
-      - icon: github
-        href: https://github.com/gongcastro
-        aria-label: GitHub
 
   page-footer:
     left: |

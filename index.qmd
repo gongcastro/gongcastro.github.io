@@ -7,42 +7,44 @@ format:
   html:
     quarto-template-params:
       banner-header-class: home
+about:
+  image: /assets/media/profile.jpg
+  template: jolla
+  links:
+    - icon: twitter-x
+      href: https://x.com/gongcastro
+    - icon: github
+      text: Github
+      href: https://github.com/gongcastro
+    - icon: mastodon
+      href: https://fediscience.org/@gongcastro
+      text: Mastodon
+    - icon: linkedin
+      href: https://www.linkedin.com/in/gongcastro/
+      text: LinkedIn
+    - icon: orcid
+      href: https://www.linkedin.com/in/gongcastro/
+      text: ORCID
+    - icon: envelope
+      href: mailto:gongarciacastro@gmail.com
+      text: E-mail
+
+listing:
+    contents: blog
+    sort: "date desc"
+    type: default
+    categories: false
+    sort-ui: true
 freeze: false
 toc: false
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-
-<br>
-
-::: profile-card
-
-:::: columns
-
-::::: column
-
-<img class="profilepic" src="/assets/media/profile.jpg">
-
-:::::
-
-::::: column
-
 I am a **cognitive scientist** interested in the application of **Bayesian modelling** in the investigation of **early language acquisition** and its evolutionary roots. I am currently working as a post-doctoral researcher at the [Institut de Rercerca Sant Joan de Déu](https://www.irsjd.org/en/) (Barcelona, Spain), were I use brain imaging (**fNIRS**), behavioural, and computational techniques to study how newborns, infants, and non-human animals (Long-Evans rats) perceive and process speech.
 
-:::::
 
-::::
+<br>
+<hr>
 
-<div class="social-grid">
-<a href="https://bsky.app/profile/gongcastro.bsky.social"><i class="fa-brands fa-bluesky"></i></a>
-<a href="https://twitter.com/gongcastro"><i class="fa-brands fa-twitter"></i></a>
-<a href="https://fediscience.org/@gongcastro"><i class="fa-brands fa-mastodon"></i></a>
-<a href="https://scholar.google.com/citations?user=fHetiuQAAAAJ&hl=en"><i class="ai ai-google-scholar"></i></a>
-<a href="https://osf.io/w465d"><i class="ai ai-osf"></i></a>
-<a href="https://orcid.org/0000-0002-8553-4209"><i class="ai ai-orcid"></i></a>
-<a href="https://www.linkedin.com/in/gongcastro/"><i class="fa-brands fa-linkedin"></i></a>
-<a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro"><i class="ai ai-researchgate"></i></a>
-<a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro"><i class="ai ai-stackoverflow"></i></a>
-</div>
+## Latest blog posts
 
-:::
+<br>

@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-title-block-banner: "#fcc203"
+title-block-banner: "#f59542"
 listing:
   contents:
     - ../blog/**/*.qmd
