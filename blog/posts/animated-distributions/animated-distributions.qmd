@@ -1,6 +1,6 @@
 ---
 title: Exploring probability distributions through animations in Julia
-date: '2021-10-04'
+date: 2021-10-04
 description: "Visualising what different **probability distributions** look like under different parameters can be helpful when picking a likelihood function for you Bayesian analysis. I present some **animations** generated with Julia using Distributions.jl"
 categories:
   - julia

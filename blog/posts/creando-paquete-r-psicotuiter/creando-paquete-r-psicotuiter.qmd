@@ -16,10 +16,6 @@ warning: false
 message: false
 ---
 
-```{r}
-#| label: setup
-library(psicotuiteR)
-```
 
 
 En este tutorial en colaboración con Alicia Franco-Martínez  [<i class="fa-brands fa-twitter"></i>](https://twitter.com/AliciaFrancoXVE)^[Merece la pena seguir a Alicia en Twitter: hace muy buena divulgación sobre psicometría, estadística y R.], explicaremos cómo se ha creado el paquete de R **{psicotuiteR}**. En el canal de Twitch de Alicia, [Psicometries](https://t.co/JtxXtTszGi?amp=1) (al que también debéis suscribiros), hicimos un [directo](https://www.twitch.tv/videos/1202539110) en el que intentamos mostrar por encima lo que trataré en este tutorial. Trataremos de explicar cada paso lo mejor que podamos para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.
@@ -323,7 +319,7 @@ Podemos incluir un *data.frame* por defecto en nuestro paquete de dos formas: co
 
 Para guardar un *data.frame* de cualquiera de las dos formas, primero debemos tenerlo **definido entre las variables de nuestra sesión de R**. Por ejemplo, supón que hemos definido el data.frame `clima` (disponible en el paquete psicotuiteR):
 
-```{r}
+```r
 head(clima)
 ```
 

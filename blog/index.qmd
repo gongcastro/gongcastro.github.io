@@ -1,11 +1,14 @@
 ---
+title: "Blog"
 title-block-banner: "#f59542"
-listing:
-  contents:
-    - ../blog/**/*.qmd
-  categories: true
-  sort:
-    - "date desc"
-  feed: true
 freeze: false
+
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: [title, date]
+  filter-ui: [search, category]
+page-layout: full
 ---

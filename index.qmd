@@ -30,7 +30,7 @@ about:
       text: E-mail
 
 listing:
-    contents: blog
+    contents: blog/posts
     sort: "date desc"
     type: default
     categories: false
