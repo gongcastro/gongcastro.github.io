@@ -14,7 +14,7 @@
 <title>Gonzalo García-Castro</title>
 <link>https://gongcastro.github.io/pages/blog.html</link>
 </image>
-<generator>quarto-1.7.32</generator>
+<generator>quarto-1.9.37</generator>
 <lastBuildDate>Fri, 07 Nov 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>pymbrola: A Python interface to the MBROLA speech synthesiser</title>
@@ -29,11 +29,11 @@
 <p>I made <strong>pymbrola</strong> with the intention of providing an intermediate point, in which the Python user can call MBROLA commands from the Python console. This way, manipulating parameters or using for loops can be done <strong>within Python</strong>. Here, I will illustrate some use cases for <strong>pymbrola</strong>.</p>
 <section id="installing-pymbrola" class="level2"><h2 class="anchored" data-anchor-id="installing-pymbrola">Installing pymbrola</h2>
 <p>The module <strong>pymbrola</strong> can be installed from <a href="https://pypi.org/project/mbrola/">PyPi</a> under the name <code>mbrola</code>:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">pip</span> install mbrola</span></code></pre></div>
+font-style: inherit;">pip</span> install mbrola</span></code></pre></div></div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -102,7 +102,7 @@ _   PAUSE</code></pre>
 <p>The authors note that this set of symbols is aligned with the <a href="https://es.wikipedia.org/wiki/SAMPA">SAMPA</a> transcription system, which makes it a bit more predictable. They also provide some nice example to illustrate the phoneme that eah symbol refers to. Now we know we transcibe our word <em>caffè</em> as <code>k a f f E1</code><sup>1</sup>. Let’s now implement this transciption using <strong>pymbrola</strong>.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This particular word is one of the examples provided by the authors, which is reassuring</p></div></div></section><section id="mbrola-class" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="mbrola-class">MBROLA class</h2>
 <p>The main feature of the <strong>pymbrola</strong> module is the <code>MBROLA</code> class, which we can call specifying the word label (<code>caffè</code>), the list of phonmees to be played (<code>k a f f E1</code>).</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> mbrola</span>
 <span id="cb3-2"></span>
@@ -137,7 +137,7 @@ background-color: null;
 font-style: inherit;"># Display phoneme sequence</span></span>
 <span id="cb3-10"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">print</span>(caffe)</span></code></pre></div>
+font-style: inherit;">print</span>(caffe)</span></code></pre></div></div>
 <p>This is what we get when printing the MBROLA object:</p>
 <pre><code>MBROLA object for word 'caffè':
 ; caffè
@@ -149,18 +149,18 @@ f 100 200 200
 E1 100 200 200
 _ 1</code></pre>
 <p>This is a printed representation of the <strong>PHO file</strong> (.pho) which MBROLA will use to synthesise the word under the hood. Normally, one would manually write such a file, but <strong>pymbrola</strong> generates it automatically using the arguments passed to the instance of <code>MBROLA</code>. We can export this PHO file using the <code>export_pho()</code> method:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Export PHO file</span></span>
 <span id="cb5-2">house.export_pho(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"caffe.pho"</span>)</span></code></pre></div>
+font-style: inherit;">"caffe.pho"</span>)</span></code></pre></div></div>
 <p>Inspecting this file, we can see that line <strong>comments are specified with the <code>;</code> character</strong><sup>2</sup>. <strong>pymbrola</strong> prints the word label in this first line, as a comment—it’s easier to read the word label than figuring it out from the phonological symbols that follow.</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Weird choice if you ask me. Luckily for you, you did not, in fact, ask me so I won’t say anything.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;I reached this conclusion after unsuccessfully trying to synthesise words in different languages without such silences.</p></div></div><p>In the next few lines, we define the actual <strong>sounds</strong> that MBROLA will synthesise, specified <em>sequentially</em> in different rows. We first have a <strong>pause symbol</strong> (<code>_</code>). This symbol is universal for all MBROLA languages. <strong>MBROLA needs a silence before and after the other symbols</strong><sup>3</sup>. <strong>The first character after each symbol corresponds to the duration of its associated sound in milliseconds</strong>. We are specifying the duration of this onset silence as a default value of 1 millisecond, which is imperceptible by the human ear, making it equivalent to almost no silence at onset. Same goes for the offset silence at the end of the document.</p>
 <p>In the middle, we have several symbols corresponding to the <strong>phonemes</strong> that make up the word <em>caffè</em> in Italian: <code>k</code>, <code>a</code>, <code>f</code>, <code>f</code>, <code>E1</code>. Again, after each symbol we specify its duration. Since we did not specify otherwise, <strong>the duration of each phoneme is assigned 100 milliseconds by default</strong>. In next examples we will adjust this parameter at will. The two numbers that follow indicate the <strong>pitch contour</strong> inside the phoneme—how the pitch increases and decreases within each sound. Again, we are leaving the default options: the pitch starts and ends at 200 Hz with no changes in the middle.</p>
 </section><section id="synthesising-a-sound" class="level2"><h2 class="anchored" data-anchor-id="synthesising-a-sound">Synthesising a sound</h2>
 <p>The resulting MBROLA object we created is all MBROLA needs to synthesise the sounds we want. Let’s do it:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Synthesize and save audio (WAV file)</span></span>
 <span id="cb6-2">caffe.make_sound(<span class="st" style="color: #20794D;
@@ -169,7 +169,7 @@ font-style: inherit;">"caffe.wav"</span>, voice<span class="op" style="color: #5
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"it4"</span>)</span></code></pre></div>
+font-style: inherit;">"it4"</span>)</span></code></pre></div></div>
 <div class="cell">
 <div class="cell-output-display">
 <audio controls=""><source src="sounds/caffe.wav" type="audio/wav"></audio>
@@ -178,7 +178,7 @@ font-style: inherit;">"it4"</span>)</span></code></pre></div>
 <p>As expected, it sounds quite robotic. But the reason we are interested in using MBROLA is not so much how it sounds (more recent tools produce much more natural results), but the fact that we can manipulate quite flexibly the features of each phoneme. <strong>pymbrola</strong> makes this quite convenient.</p>
 </section><section id="manipulating-duration" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="manipulating-duration">Manipulating duration</h2>
 <p>We can shorten or lengthen the whole audio by a constant (all sounds are modified equally) using the <code>dur_ratio</code> argument in the <code>make_sound()</code> method. A value of <code>1.0</code> leaves the audio unnmodified. Smaller values shorten the audio duration:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># cut audio duration by half</span></span>
 <span id="cb7-2">caffe.make_sound(<span class="st" style="color: #20794D;
@@ -191,14 +191,14 @@ font-style: inherit;">"it4"</span>, dur_ratio<span class="op" style="color: #5E5
 background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.5</span>)</span></code></pre></div>
+font-style: inherit;">0.5</span>)</span></code></pre></div></div>
 <div class="cell">
 <div class="cell-output-display">
 <audio controls=""><source src="sounds/caffe-short.wav" type="audio/wav"></audio>
 </div>
 </div>
 <p>Meanwhile, larger values lengthen the audio duration:</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># souble audio duration</span></span>
 <span id="cb8-2">caffe.make_sound(<span class="st" style="color: #20794D;
@@ -211,14 +211,14 @@ font-style: inherit;">"it4"</span>, dur_ratio<span class="op" style="color: #5E5
 background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2.0</span>)</span></code></pre></div>
+font-style: inherit;">2.0</span>)</span></code></pre></div></div>
 <div class="cell">
 <div class="cell-output-display">
 <audio controls=""><source src="sounds/caffe-long.wav" type="audio/wav"></audio>
 </div>
 </div>
 <p>To manipulate the individual duration of each phoneme, we need to specify it when create the MBROLA instance. We can do this by specifying a single positive integer in the <code>durations</code> argument, or a list of positive integer with same length as number of phonemes. The former option leads to all phonemes being given that same value. The latter, a list, assigns each duration to each phoneme:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">caffe <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">caffe <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> MBROLA(</span>
 <span id="cb9-2">    word<span class="op" style="color: #5E5E5E;
@@ -254,7 +254,7 @@ background-color: null;
 font-style: inherit;">200</span>] <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># or [100, 120, 100, 110]</span></span>
-<span id="cb9-5">)</span></code></pre></div>
+<span id="cb9-5">)</span></code></pre></div></div>
 <p>Let’s inspect the PHO output:</p>
 <pre><code>MBROLA object for word 'caffè':
 ; caffè
@@ -273,7 +273,7 @@ _ 1</code></pre>
 </div>
 </section><section id="manipulating-pitch" class="level2"><h2 class="anchored" data-anchor-id="manipulating-pitch">Manipulating pitch</h2>
 <p>We also have several methods to alter the pitch contour of the word-form. As we did before with duration, we can also modify the pitch of the whole word by a constant. Let’s raise the pitch to 400 Hz (double):</p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">caffe.make_sound(<span class="st" style="color: #20794D;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">caffe.make_sound(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"caffe-high-pitch.wav"</span>, voice<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -283,9 +283,9 @@ font-style: inherit;">"it4"</span>, f0_ratio<span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2.0</span>)</span></code></pre></div>
+font-style: inherit;">2.0</span>)</span></code></pre></div></div>
 <p>Now lets lower it to 100 Hz (half):</p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">caffe.make_sound(<span class="st" style="color: #20794D;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">caffe.make_sound(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"caffe-high-low.wav"</span>, voice<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -295,9 +295,9 @@ font-style: inherit;">"it4"</span>, f0_ratio<span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.5</span>)</span></code></pre></div>
+font-style: inherit;">0.5</span>)</span></code></pre></div></div>
 <p>More interestingly, we can also modify the pitch contout of each phoneme. As we did with duration, we can do it in two ways. First, we can provide a single positive integer in the <code>pitch</code> argument, which will be assigned to all phonemes:</p>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">caffe <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">caffe <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> mbrola.MBROLA(</span>
 <span id="cb13-2">    word<span class="op" style="color: #5E5E5E;
@@ -323,14 +323,14 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">300</span></span>
-<span id="cb13-5">)</span></code></pre></div>
+<span id="cb13-5">)</span></code></pre></div></div>
 <div class="cell">
 <div class="cell-output-display">
 <audio controls=""><source src="sounds/caffe-pitch.wav" type="audio/wav"></audio>
 </div>
 </div>
 <p>We can also pass a list of pitch values in a list of length equal to the number of phonemes:</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">caffe <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">caffe <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> mbrola.MBROLA(</span>
 <span id="cb14-2">    word<span class="op" style="color: #5E5E5E;
@@ -364,7 +364,7 @@ background-color: null;
 font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">200</span>]</span>
-<span id="cb14-5">)</span></code></pre></div>
+<span id="cb14-5">)</span></code></pre></div></div>
 <p>Here we have passed a list of pitch values (in Hz) that make the first syllable have a higher pitch, compared to the second one. Can you hear the difference?</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -372,7 +372,7 @@ font-style: inherit;">200</span>]</span>
 </div>
 </div>
 <p>Finally, we can also pass a list of embedded lists, each of these would specify the pitch contour <em>within</em> each phoneme. For instance:</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">caffe <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">caffe <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> mbrola.MBROLA(</span>
 <span id="cb15-2">    word<span class="op" style="color: #5E5E5E;
@@ -425,7 +425,7 @@ background-color: null;
 font-style: inherit;">300</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">400</span>]]</span>
-<span id="cb15-6">)</span></code></pre></div>
+<span id="cb15-6">)</span></code></pre></div></div>
 <p>As you can see, I’ve specified a list of values for the pitch of the last phoneme <code>E1</code>: pitch starts at 200 Hz, continues at 250 Hz, 300 Hz, and finally, 44 Hz. The rest of the phonemes have the same values as in the previous example. I’ve also modified the duration of the last phoneme /e/ to 500 milliseconds to make the pith modulation easier to perceive. Under the hood, MBROLA will divide the time span of the last phoneme (500 ms) into <img src="https://latex.codecogs.com/png.latex?k"> equal intervals (where <img src="https://latex.codecogs.com/png.latex?k"> equals the number of values passed for the pitch contour of such phoneme), and change the pitch linear at each point by the corresponding value:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -473,12 +473,12 @@ to the MBROLA speech synthesiser</em>. <a href="https://gongcastro.github.io/blo
 
 
 <div class="callout callout-style-default callout-tip callout-titled" title="**TLDR**: install MBROLA in your Unix-based instance using this bash script">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>TLDR</strong>: install MBROLA in your Unix-based instance using this bash script
+<span class="screen-reader-only">Tip</span><strong>TLDR</strong>: install MBROLA in your Unix-based instance using this bash script
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -535,17 +535,17 @@ Tip
 <section id="install-system-dependencies" class="level3">
 <h3 class="anchored" data-anchor-id="install-system-dependencies">Install system dependencies</h3>
 <p>MBROLA needs a few <strong>system dependencies</strong>. These allow to download the necessary code and compile MBROLA from source. We are also installing Python for using pymbrola later. Open the terminal and run the following lines (if using WSL enter the terminal by running <code>wsl</code> on your command prompt).</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">apt-get</span> update</span>
 <span id="cb2-2"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">apt-get</span> install build-essential curl git gcc python3</span></code></pre></div>
+font-style: inherit;">apt-get</span> install build-essential curl git gcc python3</span></code></pre></div></div>
 </section>
 <section id="download-and-compile-mbrola" class="level3">
 <h3 class="anchored" data-anchor-id="download-and-compile-mbrola">Download and compile MBROLA</h3>
 <p>Currently, MBROLA is only available on the <a href="https://github.com/numediart/MBROLA">numediart/MBROLA</a> GitHub repository, so we need to download it from there. I recommend you <strong>clone the repository</strong> using cURL to fetch the latest release:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># get latest release of numediart/MBROLA</span></span>
 <span id="cb3-2"><span class="va" style="color: #111111;
@@ -618,25 +618,25 @@ font-style: inherit;">tar</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-xf</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">${FNAME}</span></span></code></pre></div>
+font-style: inherit;">${FNAME}</span></span></code></pre></div></div>
 <p>Now, let’s compile MBROLA:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="bu" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">cd</span> MBROLA-<span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">${RELEASE}</span></span>
 <span id="cb4-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">make</span></span></code></pre></div>
+font-style: inherit;">make</span></span></code></pre></div></div>
 <p>MBROLA is now ready to go but, for convenience, we may want to make the <code>mbrola</code> command available in our session without having to navigate to the MBROLA folder:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> cp Bin/mbrola /usr/bin/mbrola</span></code></pre></div>
+font-style: inherit;">sudo</span> cp Bin/mbrola /usr/bin/mbrola</span></code></pre></div></div>
 </section>
 <section id="download-mbrola-voices" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="download-mbrola-voices">Download MBROLA voices</h3>
 <p>Different <strong>MBROLA voices</strong> contain different pre-recorded diphones. There are many MBROLA voices available<sup>2</sup>. You may want to download all of them, for which I recommend cloning the <a href="https://github.com/numediart/MBROLA-voices">numediart/MBROLA-voices</a> GitHub repository:</p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;see GitHub repository <a href="https://github.com/numediart/MBROLA-voices/blob/master/README.md">README</a> file</p></div></div><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;see GitHub repository <a href="https://github.com/numediart/MBROLA-voices/blob/master/README.md">README</a> file</p></div></div><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># remove voices/ folder if exists</span></span>
 <span id="cb6-2"><span class="va" style="color: #111111;
@@ -691,7 +691,7 @@ font-style: inherit;"># make voices available to MBROLA</span></span>
 background-color: null;
 font-style: inherit;">cp</span> <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-r</span> voices/data/ /usr/share/mbrola/</span></code></pre></div>
+font-style: inherit;">-r</span> voices/data/ /usr/share/mbrola/</span></code></pre></div></div>
 <p>Here is a <strong>bash script</strong> that runs all of these steps:</p>
 <script src="https://gist.github.com/gongcastro/0e2eda84f7d469c812574a2df68684fe.js"></script>
 </section>
@@ -743,7 +743,7 @@ synthesiser</em>. <a href="https://gongcastro.github.io/blog/pymbrola-installati
 <div id="0ba2f7f8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
 background-color: null;
@@ -769,7 +769,7 @@ font-style: inherit;">100</span>)))</span>
 background-color: null;
 font-style: inherit;">"axes.prop_cycle"</span>] <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> cycler</span></code></pre></div>
+font-style: inherit;">=</span> cycler</span></code></pre></div></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="**TLDR**: there you go">
@@ -778,11 +778,11 @@ font-style: inherit;">=</span> cycler</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>TLDR</strong>: there you go
+<span class="screen-reader-only">Tip</span><strong>TLDR</strong>: there you go
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> dpf_scholkman(</span>
@@ -901,7 +901,7 @@ font-style: inherit;">*</span> wavelength</span>
 <span id="cb2-19">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> dpf</span></code></pre></div>
+font-style: inherit;">return</span> dpf</span></code></pre></div></div>
 </div>
 </div>
 <p>I have news! I’m starting my postdoc at the Institut de Recerca Hospital Sant Joan de Déu (Barcelona, Spain) in September, joining Chiara Santolin’s new research group. We will be carrying out experimental series as part of <a href="https://www.upf.edu/web/mdm-dtic/news/-/asset_publisher/Q8isUSRyuEXA/content/chiara-santolin-obtains-an-erc-starting-grant-for-her-gala-project/maximized">Chiara’s ERC project GaLa (Gates to Language)</a>. This project involves newborns, infants, rats, and some computational modelling to investigate early language acquisition and its evolutionary roots. I’ll be mostly involved with the neonates branch of the project, using fNIRS (functional near-infrared spectroscopy) to measure neonates’ brain response to different audio stimuli.</p>
@@ -925,7 +925,7 @@ font-style: inherit;">return</span> dpf</span></code></pre></div>
 <div id="fc93489d" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
 background-color: null;
@@ -1061,14 +1061,14 @@ font-style: inherit;">*</span> wavelength</span>
 <span id="cb3-24">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> dpf</span></code></pre></div>
+font-style: inherit;">return</span> dpf</span></code></pre></div></div>
 </details>
 </div>
 <p>Let’s try it out:</p>
 <div id="e745b302" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">age <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">age <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -1082,7 +1082,7 @@ background-color: null;
 font-style: inherit;">760</span>  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># wavelength</span></span>
-<span id="cb4-3">dpf_scholkman(age, wl)</span></code></pre></div>
+<span id="cb4-3">dpf_scholkman(age, wl)</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>6.122136155212161</code></pre>
@@ -1094,7 +1094,7 @@ Scholkmann, F., &amp; Wolf, M. (2013). General equation for the differential pat
 </div></div><div id="cell-fig-1a" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">age <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">age <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.linspace(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -1212,7 +1212,7 @@ font-style: inherit;">"gray"</span>, alpha<span class="op" style="color: #5E5E5E
 background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.1</span>)</span></code></pre></div>
+font-style: inherit;">0.1</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-1a" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1230,7 +1230,7 @@ Figure&nbsp;1: Reproduction of Figure 1A in Scholkmann et al.&nbsp;Differential 
 <div id="cell-fig-1b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots(layout<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1321,7 +1321,7 @@ font-style: inherit;">"gray"</span>, alpha<span class="op" style="color: #5E5E5E
 background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.1</span>)</span></code></pre></div>
+font-style: inherit;">0.1</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-1b" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1340,7 +1340,7 @@ Figure&nbsp;2: Reproduction of Figure 1B in Scholkmann et al.&nbsp;Differential 
 <div id="cell-fig-2" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">norm <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">norm <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> mpl.colors.Normalize(vmin<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1472,7 +1472,7 @@ font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.1</span>)</span>
 <span id="cb8-26"></span>
-<span id="cb8-27">plt.show()</span></code></pre></div>
+<span id="cb8-27">plt.show()</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-2" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1554,9 +1554,9 @@ Pathlength Factor (DPF) in Python: the Scholkmann method</em>. <a href="https://
 <section id="installing" class="level2">
 <h2 class="anchored" data-anchor-id="installing">Installing <span class="emoji" data-emoji="arrow_down">⬇️</span></h2>
 <p>This extension requires <a href="https://quarto.org/docs/get-started/">Quarto</a> to be 1.3.0 or higher. I also recommend an updated version of <a href="https://miktex.org/howto/install-miktex">MikTeX</a> complications during compilation.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">quarto</span> use template gongcastro/upfthesis</span></code></pre></div>
+font-style: inherit;">quarto</span> use template gongcastro/upfthesis</span></code></pre></div></div>
 <p>This will install the extension and create an set up the structure of the project. Take a look at the <strong>source code</strong> in the <a href="[**upfthesis**](https://github.com/gongcastro/upfthesis)">GitHub repository <i class="fa-brands fa-github" aria-label="github"></i></a>. If you are used to working from RStudio, I recommend you create a new RStudio project in the same folder.</p>
 </section>
 <section id="template-structure" class="level2">
@@ -1567,7 +1567,7 @@ font-style: inherit;">quarto</span> use template gongcastro/upfthesis</span></co
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/_quarto.yml">_quarto.yml</a>: this is a YAML file with the global settings of the thesis. Here you can change the title, authors, department, etc. You can change most settings as indicated in the <a href="https://quarto.org/docs/reference/projects/books.html">Book Options</a> section of the Quarto reference. Some of these settings are internally set in the <a href="https://github.com/gongcastro/upfthesis/blob/main/_extensions/gongcastro/upfthesis/_extension.yml">_extension.yml</a> file; feel free to change them if you know what you are doing.</li>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/chapters/">chapters/</a> contains the Quarto (<code>.qmd</code>) files with the body of the thesis. Each section embedded in a different file. The chapters included are based on the <a href="https://guiesbibtic.upf.edu/tesis/eng/parts">Theses: Parts and content</a> section of the <a href="https://guiesbibtic.upf.edu/tesis/eng/parts">Guies BibTIC UPF</a> website. Some of these sections might not be required. If so, you may keep them from being included in the rendered output by removing them from the <a href="https://github.com/gongcastro/upfthesis/blob/main/_quarto.yml">_quarto.yml</a> file (<code>chapters:</code>) section. For example, here I am commenting out the <em>Glossary</em> section, which is not required:</li>
 </ul>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">chapters</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1623,7 +1623,7 @@ background-color: null;
 font-style: inherit;"> chapters/05-bibliography.qmd</span></span>
 <span id="cb2-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  #- chapters/06-glossary.qmd</span></span></code></pre></div>
+font-style: inherit;">  #- chapters/06-glossary.qmd</span></span></code></pre></div></div>
 <blockquote class="blockquote">
 <p>Note that the numeric prefix in each <code>.qmd</code> file is only there for convenience: the order in which the files appear in the rendered output is determined by the order in which they appear in <code>chapters:</code>. Also, you may place these files wherever you want in the directory (e.g., in the base directory), as long as you indicate their right paths in <code>chapters:</code>.</p>
 </blockquote>
@@ -1637,7 +1637,7 @@ font-style: inherit;">  #- chapters/06-glossary.qmd</span></span></code></pre></
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/index.qmd">index.qmd</a> is an empty Quarto document that <em>must</em> be present in the main directory. Do not move or rename it. Any content inside this document will be rendered as a separate chapter right after the Table of Contents, which is usually not what one wants.This file must also be listed in <code>chapters:</code> in the <code>_quarto.yml</code> file.</li>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/references.bib">references.bib</a> contains the BibTex references of the thesis. I you are using a reference manager (I strongly recommend using Zotero) you can export you library and replace this file with you desired references. You can also introduce you references manually in BibTex format (e.g., by copy-pasting them from Google Scholar). If you have more tha one <code>.bib</code> document or your <code>.bib</code> document is named differently, you can do the appropriate changes in the <code>_quarto.yml</code> file. For instance, this is how you can indicate more than one <code>.bib</code> file:</li>
 </ul>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bibliography</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1658,7 +1658,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">-</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> other-references.bib</span></span></code></pre></div>
+font-style: inherit;"> other-references.bib</span></span></code></pre></div></div>
 <ul>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/.gitignore">.gitignore</a>: if you are a Git users, you might find this file convenient to avoid committing unwanted documents to your Git history.</li>
 <li><a href="https://github.com/gongcastro/upfthesis/blob/main/apa.csl">apa.csl</a> contains the code necessary to format the citations and bibliography in APA style. You may replace this file by whichever other style you find convenient by replacing <a href="https://github.com/gongcastro/upfthesis/blob/main/apa.csl">apa.csl</a> with the corresponding file from the <a href="https://github.com/citation-style-language/styles/blob/master/apa.csl">citation-style-language</a> repository. Remember to change the path in <a href="_quarto.yml">_quarto.yml</a> if necessary.</li>
@@ -1667,17 +1667,17 @@ font-style: inherit;"> other-references.bib</span></span></code></pre></div>
 <section id="using-the-template" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-template">Using the template <span class="emoji" data-emoji="rocket">🚀</span></h2>
 <p>To render your dissertation to a PDF, you can use the Quarto command line in your console (Command Prompt/Power Shell in Windows, Terminal in MacOS, and command line in Linux):</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">quarto</span> render</span></code></pre></div>
+font-style: inherit;">quarto</span> render</span></code></pre></div></div>
 <p>This will render the thesis in PDF and Word formats by default. You can control in which format the theris is rendered this way:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">quarto</span> render <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">--to</span> upfthesis-pdf</span></code></pre></div>
+font-style: inherit;">--to</span> upfthesis-pdf</span></code></pre></div></div>
 <p>If you don’t want to render the thesis is either document ever, you can change the default behaviour in the <code>_quarto.yml</code> file, by changing:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1702,9 +1702,9 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> default</span></span></code></pre></div>
+font-style: inherit;"> default</span></span></code></pre></div></div>
 <p>To:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1719,7 +1719,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> default</span></span></code></pre></div>
+font-style: inherit;"> default</span></span></code></pre></div></div>
 </section>
 <section id="tricks-and-comments" class="level2">
 <h2 class="anchored" data-anchor-id="tricks-and-comments">Tricks and comments <span class="emoji" data-emoji="bulb">💡</span></h2>
@@ -1773,7 +1773,7 @@ for thesis dissertations at UPF</em>. <a href="https://gongcastro.github.io/blog
   <link>https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.html</link>
   <description><![CDATA[ <section id="tldr" class="level2"><h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
 <p>Install <a href="https://github.com/astefanutti/decktape">decktape</a> and adapt this command to download your slides—which should be deployed on GitHub Pages—as PDF in your local machine:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">decktape</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1783,7 +1783,7 @@ font-style: inherit;">&gt;</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span>slides-file<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&gt;</span>.pdf</span></code></pre></div>
+font-style: inherit;">&gt;</span>.pdf</span></code></pre></div></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="https://gongcastro.github.io/blog/revaljs-to-pdf/revealjs-to-pdf.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
@@ -1794,7 +1794,7 @@ font-style: inherit;">&gt;</span>.pdf</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-An embarrasing confession
+<span class="screen-reader-only">Caution</span>An embarrasing confession
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1819,7 +1819,7 @@ An embarrasing confession
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;<a href="https://rviews.rstudio.com/2021/11/18/deploying-xaringan-slides-a-ten-step-github-pages-workflow/">Here</a> is a nice tutorials on how to deploy your slides on GitHub Pages</p></div></div><p>My plan was to access the URL of the slides whenever I was about to present. But the day before the presentation, I started worrying about the internet not working and the conference venue at the wrong time I needed to export the slides to a PDF. A PDF never (well, rarely) fails.</p>
 </section><section id="the-problem" class="level2"><h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
 <p>Exporting Quarto slides to PDF is not as simple as just adding the <code>pdf: default</code> line to the YAML header of the file, under <code>format:</code>, like this:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1844,7 +1844,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> default</span></span></code></pre></div>
+font-style: inherit;"> default</span></span></code></pre></div></div>
 <p>This will render the slides as a PDF <em>document</em>, not as <em>slides</em>. Also, much of the nice formatting would be lost, as the <code>.scss</code> file that contained the styling only applies to HTML.</p>
 <p>Quarto offers a PDF output format for slides, <a href="https://ctan.org/pkg/beamer?lang=en">Beamer</a>, which is pretty popular among LaTeX users. But again, <a href="https://quarto.org/docs/presentations/beamer.html">generating the presentation in Beamer</a> format would require re-doing the formatting from scratch, and doing so in LaTeX, which I’m not totally comfortable using. This was not an option. Neither it was to use the <a href="https://quarto.org/docs/presentations/powerpoint.html">Power Point</a> output format, as not only the format was lost, but also prevented any possibility of customising the layout of the slides.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1872,24 +1872,24 @@ font-style: inherit;"> default</span></span></code></pre></div>
 </li>
 <li>Install <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">npm</a> from the Node.js console:</li>
 </ol>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1">npm install <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1">npm install <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">-</span>g npm</span></code></pre></div>
+font-style: inherit;">-</span>g npm</span></code></pre></div></div>
 <p>Then following the instructions in the decktape repository:</p>
 <ol start="3" type="1">
 <li>Install decktape from the Node.js console:</li>
 </ol>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1">npm install <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1">npm install <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">-</span>g decktape</span></code></pre></div>
+font-style: inherit;">-</span>g decktape</span></code></pre></div></div>
 <ol start="4" type="1">
 <li>Finally, using the <code>decktape</code> command to download my slides deployed on Github Pages as a PDF:</li>
 </ol>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb5-1">decktape https<span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb5-1">decktape https<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">//gongcastro.github.io/ips_2023_trajectories slides.pdf</span></span></code></pre></div>
+font-style: inherit;">//gongcastro.github.io/ips_2023_trajectories slides.pdf</span></span></code></pre></div></div>
 <p>And it did the job, preserving the layout, SCSS formatting, and even the links!</p>
 
 
@@ -1921,7 +1921,7 @@ slides from RevealJS to PDF</em>. <a href="https://gongcastro.github.io/blog/rev
   <dc:creator>Gonzalo Garcia-Castro</dc:creator>
   <link>https://gongcastro.github.io/blog/logistic-regression/logistic-regression.html</link>
   <description><![CDATA[ <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -2044,7 +2044,7 @@ font-style: inherit;">)</span></span>
 <span></span>
 <span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span></span>
 <span>    <span class="fu" style="color: #4758AB;
@@ -2113,7 +2113,7 @@ font-style: inherit;">"#ff6361"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ffa600"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -2139,7 +2139,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <div class="no-row-height column-margin column-container"><div id="ref-mahr2019anatomy" class="csl-entry">
 Mahr, T. (2019, February 15). <em>Anatomy of a logistic growth curve. Higher order functions</em>. <a href="https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/">https://www.tjmahr.com/anatomy-of-a-logistic-growth-curve/</a>
 </div></div><div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">logistic</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2198,11 +2198,11 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <p>Now we generate a logistic curve by applying <code>logistic()</code> to a numeric vector <code>x</code>. We will set the steepness (<img src="https://latex.codecogs.com/png.latex?%5Cbeta">, <code>slope</code>), mid-point (<img src="https://latex.codecogs.com/png.latex?x_0">, <code>mid</code>), and upper limit (<img src="https://latex.codecogs.com/png.latex?L">, <code>upper</code>) at different values for illustration. In Figure&nbsp;1 we can see how larger values of <img src="https://latex.codecogs.com/png.latex?L">, the asymptote of the logistic curve occurs at higher values, how larger values of <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> make the curve steeper, and how larger values of <img src="https://latex.codecogs.com/png.latex?x_0"> make the mid-point of the curve occur at higher values of the <img src="https://latex.codecogs.com/png.latex?x"> variable.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">x</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2546,7 +2546,7 @@ font-style: inherit;">"top"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div id="fig-logistic-simulation" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-logistic-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2584,7 +2584,7 @@ Lin, H. (2019, April 13). <em>Gentle intro to logistic regression. Data science<
 Horst, A. M., Hill, A. P., &amp; Gorman, K. B. (2020). <em>Palmerpenguins: Palmer archipelago (antarctica) penguin data</em>. <a href="https://doi.org/10.5281/zenodo.3960218">https://doi.org/10.5281/zenodo.3960218</a>
 </div></div><p>We’ll be using the <code>penguins</code> dataset from the <strong><a href="https://allisonhorst.github.io/palmerpenguins/">{palmerpenguins}</a> R package</strong> <span class="citation" data-cites="horst2020palmerpenguins">(Horst et al., 2020)</span>. This dataset contains anatomical measurements by researchers at Palmer Station in Antarctica, of 344 penguins, together with some information about the sex, species, and island (for more details, see <code><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">?palmerpenguins::penguins</a></code>). Let’s first load the data and take a look at them.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -2615,7 +2615,7 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">penguins</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
@@ -2632,7 +2632,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>Say we are interested in exploring <strong>how the flipper length of a penguin is associated to its sex</strong>. Depending on the specific research question at hand, we would model the data in different ways. Conventionally, we may compare the flipper length of male and female penguins using the latter as a predictor. But since we are interested in logistic regression, we will try to predict the sex of penguins (binary response variable, <code>female</code>/<code>male</code>), based on their flipper length (continuous predictor variable, in millimetres).</p>
 <p>For simplicity, let’s say we are only interested in data from penguins of the <em>Adelie</em> species. We will create a data frame with only the relevant variables (<code>sex</code> and <code>flipper_length</code>) and observations (<code>Adelie</code> species and now missing data). We will remove rows with missing data in any of these variables<sup>3</sup>. Finally, we will explicitly recode the <code>sex</code> variable so that R assigns 0s to <code>female</code> and 1s to <code>male</code>. This should be the default behaviour, since R recodes categorical variables in the alphabetical order by default, but it is generally a good idea to double-check.</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Mind that removing observations with any missing values is a particular strategy to deal with missing data that should be taken with caution. Some other strategies (e.g., imputation) might be more appropriate in other occasions</p></div></div><div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">my_data</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2719,11 +2719,11 @@ font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now let’s do some exploratory visualisation on the data (see Figure&nbsp;2). We can see that male penguins have slightly longer flippers. We will now model the association between both variables and perform some statistical inference on it. We will use logistic regression using the <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> function in base R.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">my_data</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2975,7 +2975,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div id="fig-descriptives" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2994,7 +2994,7 @@ Figure&nbsp;2: Flipper length for female and male penguins in the <code>penguins
 <p><span id="eq-logistic-regression"><img src="https://latex.codecogs.com/png.latex?%0Ap%20=%20%5Ctext%7BLogistic%7D(y)%20=%20%5Cfrac%7B1%7D%7B1%20+%20e%5E%7B-(%5Cbeta_0%20+%20%5Cbeta_1%20%C2%B7%20%5C%20%5Ctext%7BFlipper%20length)%7D%7D%7D%0A%5Ctag%7B8%7D"></span></p>
 <p>We can implement the model using the base R function <code>glm(..., family = binomial("logit"))</code> in which the <code>family</code> argument tells the function what type of generalised regression family we are interesting in using, and where <code>binomial("logit")</code> indicates that we want the logistic function to be used with the logit transformation (as opposed to probit).</p>
 <div class="cell">
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">fit</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3026,11 +3026,11 @@ font-style: inherit;">"logit"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>We have fitted a binomial logit regression model in which we estimate the probability of a given penguin being female or male, adjusting for their flipper length in millimetres. This is a <strong>generalised linear model</strong> (GLM): after we transform the response variable (sex, coded as 0s and 1s) to the logit scale, the resulting response variable is modelled as a conventional linear model. This means that we can interpret the coefficients of this model the same way we would in a linear model. These are our <strong>coefficients</strong>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3038,7 +3038,7 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">fit</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      (Intercept) flipper_length_mm 
       -24.1696179         0.1271495 </code></pre>
@@ -3046,7 +3046,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 <p>We can generate and visualise the <strong>predictions</strong> of our model using the <code>predict</code> function. By setting <code>type = "link"</code>, we are asking the function to return the predictions in the <strong>logit</strong> scale.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># model predictions (on the probability scale by default)</span></span>
 <span><span class="va" style="color: #111111;
@@ -3075,11 +3075,11 @@ font-style: inherit;">"link"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Figure&nbsp;3 shows the predictions of the model in the logit scale. The intercept informs us of the <strong>probability of an average penguin being male</strong> (<code>sex = 1</code>) in the logit scale when all predictors are set to zero: in our case, when <code>flipper_lenght_mm</code> = 0. The value of the intercept -24.17 is somewhat difficult to interpret for two reasons.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># predictions of model with unstandardised age</span></span>
 <span><span class="fu" style="color: #4758AB;
@@ -3406,7 +3406,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div id="fig-predictions-natural-logit" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-predictions-natural-logit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -3427,7 +3427,7 @@ Figure&nbsp;3: Predictions of the logistic regression model in the logit scale.
 <p><span id="eq-inv-logit"><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BLogit%7D%5E%7B-1%7D(x)%20=%20%5Cfrac%7Be%5Ex%7D%7B1%20+%20e%5Ex%7D%0A%5Ctag%7B9%7D"></span></p>
 <p>Base R conveniently offers the function <code><a href="https://rdrr.io/r/stats/Logistic.html">plogis()</a></code>, which we can use to transform the intercept of the model to an interpretable probability value:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3447,7 +3447,7 @@ font-style: inherit;">"(Intercept)"</span><span class="op" style="color: #5E5E5E
 background-color: null;
 font-style: inherit;">]</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> (Intercept) 
 3.186166e-11 </code></pre>
@@ -3455,7 +3455,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 <p>This quantity tells us that the probability of a penguin with flipper length of 0 mm being male (remember that the intercept tells us the value of the response variable when predictors are set at 0). As we suspected, this value is extremely close to zero: 0.000000003%. Obviously, if male penguins tend to have longer flippers, the model will predict that penguins with zero-length flippers as extremely likely to be female! (see Figure&nbsp;4). But aside from this issue that we’ll deal with later, transforming the intercept from a logit model to the probability scale seems fairly simple.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">prob</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3758,7 +3758,7 @@ font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">percent</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div id="fig-logit-prob-intercept" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-logit-prob-intercept-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -3773,7 +3773,7 @@ Figure&nbsp;4: The relationship between logits and probabilities.
 <p>Doing the same with the <strong>coefficients of the predictors</strong> is a different story. This is because the intercept of the model maps onto a single point in the logit scale, and so it does in the probability scale too. There is a one-to-one correspondence between each value of the logit and the probability scales. But <strong>a regression coefficient does not refer to single value</strong> in either scale, but to a <strong>difference in values</strong>.</p>
 <p>A regression coefficient tells us the <strong>estimated increase in the response variable for every unit increment in the predictor</strong>—while any other predictor is set at zero. This is true for any linear regression model, including ours. As long as we remain in the logit scale, the coefficient of the <code>flipper_length_mm</code> predictor will inform us of the increase in logits of being male for every millimetre increment in flipper length. But as soon as we move to the probability scale, this stops being true. This is because of the non-linear relationship between logits and probabilities: <strong>a difference of one logit of being male is not the same for the entire range of flipper lengths</strong>. Take a look at Figure&nbsp;5.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">prob</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4840,7 +4840,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div id="fig-logit-prob-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-logit-prob-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -4873,7 +4873,7 @@ Arel-Bundock, V. (2022). <em>Marginaleffects: Marginal effects, marginal means, 
 <p>The derivative of the linear regression equation is a <strong>constant</strong>. This constant corresponds to the regression coefficient of <code>flipper_length_mm</code>, which means that the difference in probability of being a male penguin is going to be same for two penguins whose flippers are 180 mm and 185 mm, respectively, and for two penguins whose flippers are 190 and 195 mm, respectively.</p>
 <p>Take a look at Figure&nbsp;6. The difference in chances of being male between each pair of penguins, in the logit scale, is the same: 0.64, which corresponds to five times the <code>flipper_length_mm</code> regression coefficient because in both cases the difference in flipper length is not 1 mm but 5 mm (<img src="https://latex.codecogs.com/png.latex?5%20%5Ctimes%200.1271%20=%200.635">). But, again, any value in the logit scale is difficult to interpret by itself, so we are interested in translating this to the scale of probabilities.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># predictions of model with unstandardised age</span></span>
 <span><span class="va" style="color: #111111;
@@ -5987,7 +5987,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div id="fig-linear-derivative" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-linear-derivative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -6003,7 +6003,7 @@ Figure&nbsp;6: The derivative of a linear regression equation is a constant.
 <p><span id="eq-logistic-derivative"><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0Ay%20&amp;=%20%5Cfrac%7B1%7D%7B1%20+%20e%5E%7B(-%5Cbeta%20x)%7D%7D%20&amp;%20%5Ctext%7BLogistic%20function%7D%20%5C%5C%0Ay'%20&amp;=%20%5Cfrac%7B%5Cbeta_1%20%C2%B7%20e%5E%7B%5Cbeta_0%20+%20%5Cbeta_1%20%C2%B7%20%5C%20%5Ctext%7BFlipper%20length%7D%7D%20%7D%7B(1%20+%20e%5E%7B-(%5Cbeta_0%20+%20%5Cbeta_1%20%C2%B7%20%5C%20%5Ctext%7BFlipper%20length%7D)%7D)%5E2%7D%20&amp;%20%5Ctext%7BDerivative%7D%0A%5Cend%7Baligned%7D%0A%5Ctag%7B11%7D"></span></p>
 <p>The derivative of the logistic function still takes into account the value of the predictor (<img src="https://latex.codecogs.com/png.latex?%5Ctext%7BFlipper%20length%7D">), which means that the value of the derivative changes depending on such value. Let’s try to visualise this. First, we are going to implement the derivative of the logistic function as an R function that computes it for the <code>fit</code> model:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">logistic_derivative</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -6175,11 +6175,11 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <p>Figure&nbsp;7 shows how the derivative changes for each value of the predictor. As you can see, the difference in probability of being male is largest at around 190 mm, while such difference decreases as <code>flipper_length_mm</code> shifts away from 190 mm.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># model predictions (on the probability scale by default)</span></span>
 <span><span class="va" style="color: #111111;
@@ -7482,7 +7482,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div id="fig-logistic-derivative" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-logistic-derivative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -7501,7 +7501,7 @@ Figure&nbsp;7: The derivative of a non-linear regression equation is not constan
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-The divide-by-four rule
+<span class="screen-reader-only">Tip</span>The divide-by-four rule
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -7515,7 +7515,7 @@ The divide-by-four rule
 </div>
 <p>Let’s put the divide-by-four rule to test. The output of <code>logistic_derivative()</code> that we defined before should, when solved for the mid-point of the logistic curve, return an equivalent value to <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1%20/%204">, where <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1%20=%200.1271495">, and therefore return something close to 0.0317874. We don’t know what value of <code>flipper_length_mm</code> corresponds to the mid-point. In Figure&nbsp;7 we calculated it my finding the value of <code>flipper_length_mm</code> for which <code>logistic_derivative()</code> returned the maximum value:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">derivative_values</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -7554,7 +7554,7 @@ font-style: inherit;">derivative_values</span><span class="op" style="color: #5E
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">]</span></span></code></pre></div>
+font-style: inherit;">]</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 190</code></pre>
 </div>
@@ -7563,7 +7563,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 <p><span id="eq-midpoint-coefs"><img src="https://latex.codecogs.com/png.latex?%0Ax_0%20=%20-%5Cbeta_0%20/%20%5Cbeta_1%0A%5Ctag%7B12%7D"></span></p>
 <p>Where <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> is the intercept of the regression model, and <img src="https://latex.codecogs.com/png.latex?%5Cbeta_1"> is the regression coefficient of the predictor we are calculating the mid-point for. We can implement this formula in R as:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># get point in x at the inflection point (where y = 0.5)</span></span>
 <span><span class="va" style="color: #111111;
@@ -7650,7 +7650,7 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">fit</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept) 
    190.0882 </code></pre>
@@ -7663,7 +7663,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A personal experience
+<span class="screen-reader-only">Tip</span>A personal experience
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -7679,7 +7679,7 @@ Heiss, A. (2022, May 20). <em>Marginalia: A guide to figuring out what the heck 
 </div></div></section></section><section id="combining-our-findings" class="level1"><h1>Combining our findings</h1>
 <p>We have learnt how logistic regression exploits the numerical properties of the <strong>logit</strong> function to use a simple linear regression model to model probabilities, or any other variable covering the <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D"> interval. We have learnt that due to the <strong>non-linear relationship between probabilities and logits</strong>, we need to be careful when interpreting the outcome of the model. We have found that, depending on the value of the predictor for which we find the slope in the probability scale, we may find effects of different sizes, and that we can use the <strong>divide-by-four</strong> rule to report the maximum change in probabilities associated with any change in the predictor. We have also considered how to estimate the mid-point of the logistic curve, which is often interesting since it tells us the value of the predictor at which its effect is largert. We can express all those interesting values in the following graph:</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># get point in x at the intercept of a line with slope beta/4 that passes through 0.5</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -8445,7 +8445,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </details><div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="https://gongcastro.github.io/blog/logistic-regression/logistic-regression_files/figure-html/predictions-natural-probability-1.png" class="img-fluid figure-img" width="4800"></p>
@@ -8454,12 +8454,12 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand for Session Info
+<span class="screen-reader-only">Tip</span>Expand for Session Info
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -8572,11 +8572,11 @@ logistic regression</em>. <a href="https://gongcastro.github.io/blog/logistic-re
 <section id="usando-renv" class="level1">
 <h1>Usando renv</h1>
 <p>Primero hay que <strong>instalar renv</strong>. Como está incluido en el CRAN, podemos hacerlo usando <code>install.packages()</code>:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"renv"</span>)</span></code></pre></div>
+font-style: inherit;">"renv"</span>)</span></code></pre></div></div>
 <p>Ahora abrimos una sesión de R en la carpeta de nuestro proyecto. Digamos que nuestra carpeta tiene la siguiente estructura:</p>
 <pre><code>data
  |-some-data.csv
@@ -8588,11 +8588,11 @@ R
  |-functions.R
 .Rprofile</code></pre>
 <p>Así es la estructura de la mayoría de carpetas de mis proyectos de R. Tiene su razón de ser, pero eso es material para otro post. Lo importante es cómo cambiará esta estructura en unos momentos. La <a href="https://rstudio.github.io/renv/articles/renv.html">documentación de renv</a> incluye los pasos para usar renv, pero explicaré los principales. Primero inicializaremos renv en nuestra consola de R:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">renv<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">renv<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">init</span>()</span></code></pre></div>
+font-style: inherit;">init</span>()</span></code></pre></div></div>
 <p>Esto creará una carpeta (<code>renv</code>) y un archivo (<code>renv.lock</code>) nuevos en nuestro directorio:</p>
 <pre><code>.Rprofile
 data
@@ -8620,23 +8620,23 @@ renv.lock</code></pre>
 </figure>
 </div>
 <p>A continuación, renv ha <strong>instalado todas los paquetes necesarios</strong> en <code>renv/library/</code>. Si comparas esa carpeta con el directorio mostrado en <code>.libPaths()</code> (como hicimos hace un momento), verás que ambas carpetas son muy parecidas. Eso es porque ahora R buscará los paquetes que necesites en esa carpeta, y no en la “biblioteca global” de paquetes de R. Esa es la magia de renv: podrás <strong>instalar y actualizar paquetes de R de forma independiente</strong> para cada uno de tus proyectos. Para instalar nuevos paquetes deberás hacerlo usando la función <code>renv::install()</code>. Por ejemplo:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">renv<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">renv<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">install</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"tidyr"</span>)</span></code></pre></div>
+font-style: inherit;">"tidyr"</span>)</span></code></pre></div></div>
 <p>Esta función es el <strong>equivalente a <code>install.packages()</code></strong> en renv. esta función asumirá que el paquete que quieres se encuentra en CRAN y será allí donde lo buscará. Si el paquete que quieres instalar se encuentra alojado en otro sitio (o quieres instalar una versión experimental del mismo, en un repositorio de GitHub, por ejemplo), puedes indicar el repositorio de la siguiente forma:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">renv<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">renv<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">install</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"crsh/papaja"</span>)</span></code></pre></div>
+font-style: inherit;">"crsh/papaja"</span>)</span></code></pre></div></div>
 <p>Si echas un vistazo a <code>renv.lock</code> verás que incluye una <strong>lista de todas las dependencias de tu proyecto</strong>, en un formato un poco raro, con muchos paréntesis, y la extensión <code>.lock</code>. No necesitas entender este archivo, sólo que sigue un formato parecido al que usan otros leguajes de programación para hacer lo mismo. Es el equivalente al archivo <code>package-lock.json</code> de un proyecto de JavaScript o al archivo <code>Manifest.toml</code> de un proyecto de Julia. Si te fijas, verás que simplemente incluye <strong>información mínima para cada paquete</strong>: nombre, versión, origen y un código que lo identifica. Por ejemplo, el <code>renv.lock</code> de nuestro proyecto incluye lo siguiente:</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span></span>
 <span id="cb8-2">  <span class="dt" style="color: #AD0000;
@@ -8915,19 +8915,19 @@ background-color: null;
 font-style: inherit;">}</span></span>
 <span id="cb8-40"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>Una ventaja enorme de usar renv es que si descargas o copias y pegas esta carpeta en un ordenador diferente (en el que posiblemente tengas una colección de paquetes diferente a la del ordenador donde trabajaste con el proyecto por última vez), <strong>renv podrá consultar este archivo para instalar por tí los paquetes necesarios en sus versiones correspondientes</strong>. Esto se puede hacer usando el comando:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">renv<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">renv<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">restore</span>()</span></code></pre></div>
+font-style: inherit;">restore</span>()</span></code></pre></div></div>
 <p><strong><em>Importante</em></strong>: cuando instales nuevos paquetes usando <code>renv::install()</code>, el archivo <code>renv.lock</code> no se actualizará de forma automática. Para incluir los nuevos paquetes en este archivo, tendremos que usar el siguiente comando:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">renv<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">renv<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">snapshot</span>()</span></code></pre></div>
+font-style: inherit;">snapshot</span>()</span></code></pre></div></div>
 <p>Como podrás imaginar, poder instalar los paquetes que necesita un proyecto en su versión adecuada resuelve uno de los problemas más frecuentes que amenazan la <strong>reproducibilidad computacional</strong> de nuestros proyectos.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -8990,7 +8990,7 @@ R sin ataques de pánico)</em>. <a href="https://gongcastro.github.io/blog/renv-
 <p>Uno de los problemas que muchas personas de esta comunidad verbalizaba durante los últimos meses (aunque probablemente se trate de un fenómeno cíclico) es <strong>lo fácilmente que un debate acalorado o incluso irrespetuoso entre dos personas o grupos de personas podía afecta al clima general de la comunidad</strong>. Independientemente de la legitimidad de la discusión en curso, no es ideal que la experiencia en Twitter de una persona promedio en el día a día sea dependiente de un número de interacciones tan reducidas. Alicia Franco hizo es su momento una encuesta capturando el <strong>clima general de Psicotuiter</strong> en su momento (los resultados están disponibles también en un paquete de R que desarrollamos, llamado <a href="https://gongcastro.github.io/2021/11/14/creando-un-paquete-de-r-una-guia-informal-i/">{psicotuiteR}</a>, disponible en <a href="https://github.com/gongcastro/psicotuiteR">GitHub</a>):</p>
 <blockquote class="twitter-tweet blockquote">
 <p lang="es" dir="ltr">
-¡Hola, hola!🌿 <br>¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter”?<br>👇¡Pues ya tenemos los resultados!👇 <a href="https://t.co/RbDM78LA0k">pic.twitter.com/RbDM78LA0k</a>
+¡Hola, hola!🌿 <br>¿Os acordáis del cuestionario que hicimos sobre “Clima en (Psico)Twitter"?<br>👇¡Pues ya tenemos los resultados!👇 <a href="https://t.co/RbDM78LA0k">pic.twitter.com/RbDM78LA0k</a>
 </p>
 — Ali ☻︎ (@AliciaFrancoXVE) <a href="https://twitter.com/AliciaFrancoXVE/status/1352342172750786560?ref_src=twsrc%5Etfw">January 21, 2021</a>
 </blockquote>
@@ -9015,7 +9015,7 @@ Yo tengo una experiencia parecida a la de &lt;a href=“https://twitter.com/Iren
 <p>Nunca había hecho un bot de Twitter, pero sabía de la existencia de bastantes tutoriales para hacerlo. La mayoría de los bots de Twitter (y por tanto de los tutoriales) están escritos en Python y JavaScript, pero yo me encuentro algo más cómodo con R. Además gran parte de Psicotuiter (especialmente quienes están relacionades con la metodología) también está más familiarizado con R. Mi intención era hacer el bot lo más <strong>trasparente y accesible</strong> para la comunidad, así que me decanté por R. En un pricipio seguí el <a href="https://www.rostrum.blog/2020/09/21/londonmapbot/">tutorial de Matt Dray</a>, en el que utiliza el paquete de R <a href="https://docs.ropensci.org/rtweet/9">{rtweet}</a> para interactuar con la API de Twitter. Hay más tutoriales que usan rtweet para crear un bot con R. Pero a diferencia de otros, este tutorial explicaba cómo usar GitHub actions para ejecutar el código de forma periódica. Ahora explico esto último. Mientras tanto, vamos al código de R.</p>
 <p>Primero creé un <strong><a href="https://github.com/gongcastro/psicotuiterbot">repositorio de GitHub</a></strong> donde alojar el código (GitHub es como un Google Drive especializado en código donde además podemos hacer control de versiones de los archivos que subimos). Puedes echar un vistazo al código de R en la carpeta R/. El código principalmente recoge los <strong>últimos tweets que se han escrito en las últimos 6 horas mencionando <a href="https://twitter.com/hashtag/psicotuiter?src=hashtag_click&amp;f=live">#psicotuiter</a> o <a href="https://twitter.com/search?q=%23psicotwitter&amp;src=typed_query&amp;f=live">#psicotwitter</a> y los retuitea</strong>. No me meteré en detalle a explicar cómo funciona el código, pero aquí va un pequeño resumen del programa. Si tienes curiosidad te recomiendo explorar el repositorio de GitHub, que contiene todo lo necesario para hacer funcionar el bot:</p>
 <p>Primero cargamos el paquete de R <a href="https://dplyr.tidyverse.org/">{dplyr}</a>, que utilizamos en bastantes ocasiones en el programa, ajustamos un pequeño detalle relacionado con el comportamiento de la API de Twitter, e instalamos los paquetes necesarios (en caso de que hayan cambiado) usando el pqeute de R <a href="https://rstudio.github.io/renv/articles/renv.html">{renv}</a> (si no lo conoces y te interesa la reproducibilidad computacional tienes que echarle un vistazo).</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># bot R code</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -9035,9 +9035,9 @@ font-style: inherit;"># restore packages</span></span>
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">restore</span>()</span></code></pre></div>
+font-style: inherit;">restore</span>()</span></code></pre></div></div>
 <p>A continuación extraemos las <strong>credenciales</strong> que necesitamos para acceder a la API de Twitter (las paso a como variables de entorno para evitar hacerlas públicas, ya que eso dería acceso a cualquiera a la cuenta de Twitter del bot).</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># authenticate Twitter API</span></span>
 <span id="cb2-2">my_token <span class="ot" style="color: #003B4F;
@@ -9087,9 +9087,9 @@ background-color: null;
 font-style: inherit;">set_renv =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">FALSE</span></span>
-<span id="cb2-9">)</span></code></pre></div>
+<span id="cb2-9">)</span></code></pre></div></div>
 <p>Luego <strong>extraemos los tweets</strong> usando rtweet, filtramos los que sean relevantes y no contengan posible contenido ofensivo (y algún otro filtro más).</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(dplyr)</span>
 <span id="cb3-2"><span class="co" style="color: #5E5E5E;
@@ -9285,9 +9285,9 @@ background-color: null;
 font-style: inherit;">tzone =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"CET"</span></span>
-<span id="cb3-29">)</span></code></pre></div>
+<span id="cb3-29">)</span></code></pre></div></div>
 <p>Finalmente, <strong>hacemos RT</strong> uno a uno usando rtweet (si ya habíamos hecho RT a uno de ellos simplemente se ignora).</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="cf" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
@@ -9515,7 +9515,7 @@ font-style: inherit;">:</span> Create and post tweet</span>
 background-color: null;
 font-style: inherit;">:</span> Rscript R<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">/</span>bot.R</span></code></pre></div>
+font-style: inherit;">/</span>bot.R</span></code></pre></div></div>
 <p>La gran ventaja de usar este sistema es que <strong>no necesitamos usar nuestro ordenador personal, ya que usamos el que que GitHub nos asigna</strong> (un servidor no deja de ser un ordenador). Pero tiene varios inconvenientes. El primero es que el proceso de establecer un <em>workflow</em> en GitHub Actions suele requerir varios intentos (en mi caso muchos). Esto suele deberse a problemas de reproducibilidad computacional: el código funciona correctamente en mi ordenador porque en él tengo instalado todo el sofware del que depende. Cuando uso el servidor de GitHub, el sistema operativo suele necesitar que instalemos estas <strong>dependencias</strong> antes de ejecutar el código. GitHub Actions permite cierta flexibilidad a la hora de seleccionar el software que viene instalado en el sistema operativo que vamos a usar (ej., R, compiladores de C++, dependencias de Linux, etc.). El problema es que muchas veces ni siquiera somos conscientes de cuántas dependencias requiere nuestro código. Con paciencia y muchas búsquedas de Google es posible solventar este problema.</p>
 <p>Un segundo inconveniente que encontré a la hora de implementar el bot en GitHub Actions tiene que ver con los tiempos: instalar todas las dependencias del código en el servidor cada 15 minutos (la configuración se pierde casi totalmente tras cada ejecución) es <strong>poco eficiente</strong>. Instalar las dependencias puede tardar más de 10 minutos (en el caso de este bot). Esto puede además hacer fallar en ocasiones el flujo de trabajo. GitHub Actions tampoco es lo más consistente del mundo, aunque no deja de ser gratis.</p>
 </section>
@@ -9529,7 +9529,7 @@ font-style: inherit;">/</span>bot.R</span></code></pre></div>
 </figure>
 </div>
 <p>Primero instalé el código en la Raspberry con sus dependencias: básicamente, cloné el repositorio de GitHub en una carpeta dentro de home/Documents/. Para ejecutar el código cada 15 minutos utilicé una función muy útil que incluye Linux (sistema operativo con el que funciona la Raspberry) llamado <strong>CRON</strong>. Simplemente consiste en un archivo en el que incluimos una serie de comandos que queremos que se ejecuten de forma periódica, junto con una código que indica la periodicidad de la ejcución de este comando. Aquí tienes unos <a href="https://crontab.guru/examples.html">ejemplos</a>. Incluí cuatro comandos (cada uno en su propio archivo con extensión .sh, que denota comandos de Linux):</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># descarga el código de GitHub, por si ha habido cambios</span></span>
 <span id="cb5-2"><span class="fu" style="color: #4758AB;
@@ -9579,14 +9579,14 @@ background-color: null;
 font-style: inherit;">"Update repository"</span></span>
 <span id="cb5-11"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">git</span> push</span></code></pre></div>
+font-style: inherit;">git</span> push</span></code></pre></div></div>
 <p>Estos comandos se ejecutan en este orden cada 15 minutos.</p>
 </section>
 </section>
 <section id="bloqueando-usuarios-de-forma-remota" class="level1">
 <h1>Bloqueando usuarios de forma remota</h1>
 <p>Debido a que algunas cuentas intentaron hacer un mal uso del bot, y también porque otras mencionaron no querer ser retuiteadas por el bot a pesar de usar el hashtag, recientemente he añadido un pequeño script que permite <strong>bloquear usuarios que con tan sólo enviar al bot un mensaje directo</strong> de Twitter. El script <strong>R/block.R</strong> accede a los 10 últimos mensajes recibidos por parte de usuaries “VIP” (de momento, sólo yo) y añade el nombre de usuario que contiene el mensaje a la variable global definida en el archivo .Renviron. De esta forma, aunque no tenga acceso a la Raspberry Pi de forma local (y por tanto, tampoco al bot), sí puedo hacer el <strong>que el propio bot modifique los archivos locales</strong> a través de mensajes directos de Twitter sin tener que desvelar el contenido de la lista de usuarios bloqueados. Podría ser más fácil simplemente añadir la lista bloqueados al script como una variable (un vector, por ejemplo). El código se actualizaría cada 15 minutos a través del script sh/git-pull.sh y el vector de usuarios bloqueados lo haría también. Este método tendría la desventaja de que esa lista se haría pública en el repositorio de GitHub. Al pasar esa lista como una variable de entorno a través de .Renviron puedo <strong>cargar ese vector sin desvelar us contenidos</strong>, al igual que hago para pasar las credenciales de la API de Twitter a la sesión de R. Este es el código:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">vip_users <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">vip_users <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9837,7 +9837,7 @@ background-color: null;
 font-style: inherit;">"@"</span>, sender_name)))</span>
 <span id="cb6-33">        }</span>
 <span id="cb6-34">    }</span>
-<span id="cb6-35">}</span></code></pre></div>
+<span id="cb6-35">}</span></code></pre></div></div>
 </section>
 <section id="conclusiones" class="level1">
 <h1>Conclusiones</h1>
@@ -9896,7 +9896,7 @@ Twitter para Psicotuiter</em>. <a href="https://gongcastro.github.io/blog/psicot
 </section><section id="por-qué-hacer-un-paquete-de-r" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="por-qué-hacer-un-paquete-de-r">¿Por qué hacer un paquete de R?</h2>
 <p>Cuando programamos, es común que necesitemos ejecutar la misma línea de código varias veces. Cuando esto ocurre, en lugar de escribir y ejecutar la misma línea de código una y otra vez en la consola de R, podemos escribir un <em>script</em>. Un script de R es un archivo con la extensión <code>.R</code><sup>3</sup> que contiene las diferentes líneas de código que queremos ejecutar.</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Por convención se suele usar la “R” mayúscula, aunque la mayoría de los sistemas operativos son indiferentes a que escribamos las extensiones en mayúsculas o minúsculas. Hagas lo que hagas, trata de ser consistente.</p></div></div><p>A veces el mismo script contiene líneas de código muy parecidas que ejecutamos para aplicar, por ejemplo, la misma función sobre objetos diferentes. Por ejemplo:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -9929,7 +9929,7 @@ font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">df2</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <p>En el bloque de código de arriba, <code>df1</code> y <code>df2</code> son objetos de tipo <em>data.frame</em> con variables similares pero diferentes observaciones. Idealmente, <strong>no deberíamos repetir la misma línea de código más de una vez</strong>. Digo idealmente porque la alternativa es escribir una función. No siempre merece la pena hacer una función, por mucho que la gente más purista insista. Si estás leyendo esto doy por hecho que te interesa hacer tu código más conciso y replicable.</p>
 <p>En todo caso es generalmente recomendable definir una serie de <strong>funciones</strong> antes de trabajar sobre tus datos. Una <strong>función</strong> es un conjunto de comandos que se ejecutan en orden cuando damos la orden<sup>4</sup>. Estos comandos se agrupan bajo el nombre que asignemos a la función. Así podemos condensar nuestro código en funciones para que sea más conciso.</p>
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Definición mediocre pero obligada. Lo siento.</p></div></div><p>En un último nivel de abstracción, nivel cerebro galáctico, está <strong>agrupar nuestras funciones en un paquete</strong>. Hacer esto tiene unos cuantos beneficios:</p>
@@ -9947,7 +9947,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <li>Los siguientes paquetes de R: <a href="https://github.com/r-lib/devtools">devtools</a>, <a href="https://usethis.r-lib.org/">usethis</a> y <a href="https://rmarkdown.rstudio.com/">rmarkdown</a>.</li>
 </ul>
 <p>Puedes instalar estos paquetes así:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -9959,9 +9959,9 @@ font-style: inherit;">"usethis"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"rmarkdown"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <p>Cuando tengamos todo instalado, reiniciaremos nuestra sesión de RStudio y después cargaremos devtools y usethis (usaremos rmarkdown más adelante):</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -9980,11 +9980,11 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </section><section id="inicializando-el-paquete" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="inicializando-el-paquete">Inicializando el paquete</h2>
 <p>Salvo contadas excepciones<sup>7</sup>, las personas de bien utilizaremos <strong>RStudio</strong> para programar en R, en lugar de usar únicamente la consola como hacen les psicópatas. Trabajar en un proyecto de RStudio nos facilitará mucho la vida al hacer un paquete de R y deberías hacerlo casi siempre que programas en R (como mínimo, te ahorrará mucho tiempo buscando documentos dentro de carpetas)<sup>8</sup>.</p>
 <div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;Por ejemplo, si tienes el suficiente tiempo libre como para configurar una sesión de R medianamente funcional en Visual Studio Code.</p></div><div id="fn8"><p><sup>8</sup>&nbsp;Nunca está demás ver este <a href="https://slides.djnavarro.net/project-structure/#1">tutorial</a> de Danielle Navarro sobre cómo organizar un repositorio</p></div></div><p>Para crear un paquete tenemos dos opciones: hacerlo a través de <strong>RStudio</strong> (ver <a href="https://support.rstudio.com/hc/en-us/articles/200486488-Developing-Packages-with-the-RStudio-IDE">tutorial</a>) o usando <strong>usethis</strong> en nuestra consola. A mi me gusta la segunda opción:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">create_package</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -9996,9 +9996,9 @@ font-style: inherit;">"psicotuiteR"</span><span class="op" style="color: #5E5E5E
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># abre nueva ventana</span></span></code></pre></div>
+font-style: inherit;"># abre nueva ventana</span></span></code></pre></div></div>
 <p>Este comando creará una <strong>nueva carpeta</strong>. Lo hará dentro de tu repositorio de inicio, el cual puedes consultar ejecutando <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> en tu consola (asumiendo que nos has cambiado el directorio por tu cuenta previamente). Esta carpeta contendrá varios archivos y una carpeta:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">.gitignore</span></span>
 <span id="cb5-2"><span class="ex" style="color: null;
@@ -10015,7 +10015,7 @@ background-color: null;
 font-style: inherit;">psicotuiteR.Rproj</span></span>
 <span id="cb5-6"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">R</span></span></code></pre></div>
+font-style: inherit;">R</span></span></code></pre></div></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -10031,7 +10031,7 @@ Important
 </div>
 <p>Uno de los archivos en la carpeta tiene el mismo nombre que el paquete y la extensión <code>.Rproj</code>. Cada vez que queramos trabajar en nuestro paquete es recomendable abrir la sesión de RStudio haciendo doble click sobre el archivo <code>.Rproj</code>. Veremos qué son el resto de archivos más adelante.</p>
 <p>Pues bien: técnicamente, ¡ya tenemos un paquete de R! Si ejecutamos el código de abajo, el paquete se instalará como si fuera uno más en nuestro directorio de paquetes de R.</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">devtools</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10041,12 +10041,12 @@ font-style: inherit;">install</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <p>Encontrarás la carpeta de instalación junto a la de los demás paquetes que hays instalado en tu ordenador. Puedes consultar dónde se instalan tus paquetes de R ejecutando <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> en tu consola. La primera ruta que aparezca será donde encontrarás tu paquete instalado (en mi caso, encontraré la carpeta <code>~/Documents/R/win-library/4.0/psicotuiteR</code>).</p>
-<p>La función que hemos ejecutado, <strong><code>install()</code></strong> del paquete devtools simula lo que otra persona haría al ejecutar la función <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> si nuestro paquete estuviera disponible en CRAN. Ahora mismo, podríamos cargar nuestro paquete con <code><a href="https://gongcastro.github.io/psicotuiter/">library(psicotuiteR)</a></code> y trabajar con él. Por supuesto, nuestro paquete aún está vacío. En las próximas secciones veremos cómo añadir funciones, entre otras cosas, a nuestro paquete.</p>
+<p>La función que hemos ejecutado, <strong><code>install()</code></strong> del paquete devtools simula lo que otra persona haría al ejecutar la función <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> si nuestro paquete estuviera disponible en CRAN. Ahora mismo, podríamos cargar nuestro paquete con <code><a href="https://rdrr.io/r/base/library.html">library(psicotuiteR)</a></code> y trabajar con él. Por supuesto, nuestro paquete aún está vacío. En las próximas secciones veremos cómo añadir funciones, entre otras cosas, a nuestro paquete.</p>
 <p>Antes de hacer eso, ahí va un truco: cuando añadimos o hacemos cambios en el paquete, necesitaremos actualizar nuestra sesión y cargar el paquete de nuevo y volver a ejecutar las funciones para comprobar que todo funciona correctamente. En lugar de ejecutar <code>install()</code> cada vez que queremos ver si nuestro paquete funciona, podemos ejecutar <strong><code>load_all()</code></strong> (también del paquete devtools) sin siquera reiniciar la sesión y así cargar de nuevo el paquete actualizado como si alguien hubiera cargado el paquete usando <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Los contenidos del paquete que se cargarán usando <code>load_all()</code> son los que hay en el nuestro repositorio (desde el que estamos desarrollando el paquete), y no desde el directorio en el que se instala el paquete si ejecutamos <code>install()</code>. ¡Esto es mucho más rápido y eficiente!</p>
 <p>Otro truco: puesto que vamos a utilizar las funciones de los paquetes devtools y usethis a menudo–y por lo tanto vamos a necesitar cargar estos paquetes mediante <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code> y <code><a href="https://usethis.r-lib.org">library(usethis)</a></code> cada vez que iniciemos una sesión de R– podría ser recomendable añadir esos dos comandos a nuestro archivo <strong>.Rprofile</strong> (ver esta <a href="https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf">guía</a> para más información sobre .Rprofile. Las líneas de código que contenga ese archivo serán ejecutadas en cada inicio de sesión que hagamos en nuestro proyecto de RStudio. Podemos hacer esto usando las siguientes funciones de usethis:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -10069,14 +10069,14 @@ font-style: inherit;">use_devtools</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <p>Esto creará un archivo llamado <strong>.Rprofile</strong> en nuestro directorio y añadirá, entre otras cosas muy útiles, los comandos <code><a href="https://usethis.r-lib.org">library(usethis)</a></code> y <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code>.</p>
 </section><section id="description" class="level2"><h2 class="anchored" data-anchor-id="description">DESCRIPTION</h2>
 <p>El primer archivo que vamos a explicar se llama <strong>DESCRIPTION</strong>. La mayor parte de la <strong>información general</strong> (o meta-información) de nuestro paquete se encuentra en este archivo: autoría, ajustes generales, dependencias, etc. Puedes consultar el <a href="https://github.com/gongcastro/psicotuiteR/blob/2c8c7c47d97f02509dff0e26b42e41f93c88bd64/DESCRIPTION">DESCRIPTION</a> de psicotuiteR para hacerte una idea de cómo se ve cuando está editado. ¡Presta especial atención a cómo hemos indicado la autoría!</p>
 <p>DESCRIPTION es uno de los pocos archivos que tendremos que editar tanto a mano como mediante otras funciones del paquete usethis. Tendremos que cambiar el título, autoría y descripción del paquete a mano (además de algún otro campo), mientras que, por ejemplo, los campos <em>Imports</em>, <em>Depends</em> y <em>Suggests</em> serán rellenados más adelante mediante la función <code>use_package()</code>, de usethis. Cuando hablemos de dependencias, más adelante, comentaremos un par de cosas saobre estos tres campos.</p>
 </section><section id="funciones-en-r" class="level2"><h2 class="anchored" data-anchor-id="funciones-en-r">Funciones en R</h2>
 <p>Las funciones de R son el cuerpo principal de un paquete de R. Contienen el <strong>código que se ejecutará en nuestras funciones</strong> y su correspondiente <strong>documentación</strong>. Las funciones de por sí no tienen gran misterio. Las puedes hacer más simples o más complejas. Generalmente, por motivos de legibilidad suele ser mejor mantener nuestras funciones lo más simples que podamos. <strong>Es mejor escribir muchas funciones que hacen tareas pequeñas que pocas funciones que lo hacen todo</strong>. No tienes por qué hacer disponibles todas las funciones que escribas: puedes mantener algunas funciones para uso interno dentro de otras funciones que sí están disponibles al público (ahora veremos cómo). Hay muchos tutoriales para aprender a hacer funciones en R. Por ejemplo <a href="https://r-coder.com/function-r/">este</a>. Merece la pena ganar algo de confianza en poder hacer funciones de R: empodera mucho y te hace entender muchos de los errores que te encontrarás a lo largo de tu vida programando en R. Ahí va un ejemplo de función muy simple:</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">print_name</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -10109,10 +10109,10 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>Esas líneas de código definen la función <code>print_name()</code>. Esta función incluye un argumento llamado <em>author</em>, que, por defecto, toma el valor <code>"Gon"</code>. Si definimos la función y ejecutamos <code>print_name()</code> en nuestra consola de R, nos devolverá el valor `“Gon”.</p>
 <p>Guardaremos esta función en un archivo con la extensión .R dentro de la carpeta R/ en nuestro repositorio principal (el nombre que pongamos a este archivo da igual, pero trata de que sea informativo de su contenido). Yo llamaré a este archivo <code>print_name.R</code>. Ahora nuestro directorio se ve así:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">.gitignore</span></span>
 <span id="cb9-2"><span class="ex" style="color: null;
@@ -10135,10 +10135,10 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">|</span><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">-print_name.R</span></span></code></pre></div>
+font-style: inherit;">-print_name.R</span></span></code></pre></div></div>
 </section><section id="documentación" class="level2"><h2 class="anchored" data-anchor-id="documentación">Documentación</h2>
 <p>Ahora vamos a <strong>documentar esa función</strong>. R utiliza un tipo de lenguaje parecido a LaTeX para escribir la documentación de un paquete. Este lenguaje se llama <strong>R documentation</strong>. Técnicamente, podríamos escribir toda la documentación de cada función de nuestro paquete en este lenguaje y guardar cada archivo en la carpeta man/ con la extensión .Rd. En esta carpeta es donde R espera encontrar la documentación. Gracias a Dios (y a la buena voluntad de la comunidad de R), podemos incluir los contenidos de esos archivos como si fueran comentarios en nuestros scripts de R, encima de cada función. La función <strong><code>document()</code></strong> de devtools se encargará de generar todos los .Rd necesarios en la carpeta man/ por nosotrxs. Volveremos a esto más adelante. Por ahora, observa un ejemplo de función documentada:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Print author</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -10195,12 +10195,12 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>En la parte de abajo encontramos las mismas líneas de código que hemos visto antes. En la parte de arriba encontramos la documentación de la función. Estas líneas de código están <strong>precedidas por el símbolo <code>#'</code></strong>. La apóstrofe indica que no es un comentario cualquiera, sino parte de la documentación de la función. En la mayoría de estas líneas indicamos mediante el símbolo <strong><code>@</code></strong> qué campo estamos describiendo (autoría, descripción, un argumento, etc.).</p>
 <p>Por ejemplo, la línea de abajo indica que estamos describiendo uno de los argumentos de la función (por alguna razón que desconozco, se ha decidido refererirse a los argumentos como “<code>@param</code>” y no como <code>@arg</code>“). La primera línea se asume que es el título de la función y por eso no hace falta indicar <code>@title</code> antes de <code>"Print author"</code>.</p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#' @param author Name of the package author</span></span></code></pre></div>
+font-style: inherit;">#' @param author Name of the package author</span></span></code></pre></div></div>
 <p>Una vez hayamos rellenado la documentación de nuestra función, ejecutaremos <code>document()</code> y se generará automáticamente un archivo llamado <code>print_name.Rd</code> en la carpeta man/. Podemos comprobar que la documentación se ha guardado correctamente ejecutando <code>?print_name</code>. Se debería abrir la ventana <em>Help</em> en uno de los paneles de RStudio. Algunos consejos cuando rellenes la documentación de tus funciones:</p>
 <ul>
 <li>Explica las cosas con <strong>claridad</strong>, pero no tengas miedo de extenderte o repetir las cosas. <strong>Más documentación siempre es mejor que menos documentación</strong>, siempre que se expliquen las cosas con claridad y se mantenga cierto sistema en la estructura de la documentación.</li>
@@ -10208,7 +10208,7 @@ font-style: inherit;">#' @param author Name of the package author</span></span><
 </ul>
 <section id="viñetas-y-artículos" class="level3"><h3 class="anchored" data-anchor-id="viñetas-y-artículos">Viñetas y artículos</h3>
 <p>Una forma más elaborada de documentar un paquete es crear <strong>viñetas</strong>. Una viñeta (o <em>vignette</em>, en inglés) es un documento en el que se explica con detalle cómo se trabaja con el paquete, como si fuera un <strong>tutorial</strong>. Las viñetas son particularmente útiles para quienes usan el paquete por primera vez, y deberían ilustrar, como mínimo, algún ejemplo sobre cómo se usan las funciones. Un buen ejemplo de viñeta es <a href="https://dplyr.tidyverse.org/articles/grouping.html">esta</a>, del paquete {dplyr}, en la que indican cómo usar la función <code>group_by()</code>. Para crear una viñeta ejecutaremos el siguiente comando:</p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">use_vignette</span>(</span>
 <span id="cb12-2">  <span class="at" style="color: #657422;
@@ -10225,9 +10225,9 @@ background-color: null;
 font-style: inherit;">"Imprimiendo un nombre"</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># así se titulará la viñeta</span></span>
-<span id="cb12-4">)</span></code></pre></div>
+<span id="cb12-4">)</span></code></pre></div></div>
 <p>Este comando creará una carpeta llamada <strong>vignettes/</strong> y creará un archivo con la extensión .Rmd (Rmarkdown). Los archivos Rmarkdown son una mezcla entre un archivo <strong>Markdown</strong> (que tienen la extensión .md) y un script de R. Markdown es un lenguaje de edición de textos bastante sencillo (desde luego más sencillo que LaTeX). Rmarkdown permite intercalar bloques de código de R en medio del texto. Cuando renderizamos el documento, esos bloques de código se ejecutan y el resultado se incluye como texto o imagen. Este tipo de documentos son muy útiles para crear informes y actualizar los datos que incluyen con sólo un click. Si quieres aprender a user Rmarkdown (100% recomendado), el manual <a href="https://bookdown.org/yihui/rmarkdown/"><strong>R Markdown: The Definitive Guide</strong></a> de Yihui Xie es el mejor recurso. Una vez escribamos nuestra viñeta podremos incluirla en nuestra documentación ejecutando:</p>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">build_vignettes</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -10240,11 +10240,11 @@ font-style: inherit;">document</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <p>Como dato curioso, este mismo tutorial que estás leyendo es una viñeta incluida en el paquete psicotuiteR. Muy meta todo, ¿verdad?</p>
 </section></section><section id="dependencias-y-otras-pesadillas" class="level2"><h2 class="anchored" data-anchor-id="dependencias-y-otras-pesadillas">Dependencias y otras pesadillas</h2>
 <p>Con frecuencia nuestras funciones de R dependerán, a su vez, de funciones de otros paquetes. Considera la siguiente función:</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Una función que añade una variable</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -10302,17 +10302,17 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>Como indica la documentación, esta función devuelve los números incluidos en <code>x</code>, una serie de caracteres que introducimos como argumento, en formato numérico. Para ello utiliza la función <code>str_extract()</code>. Esta función pertenece al paquete <a href="https://stringr.tidyverse.org/">{stringr}.</a> Tal y como está escrita esta función, cuando instalemos el paquete y la ejecutemos no dará un error: R nos indicará que la función <code>str_extract</code> no existe. Podría ocurrírsenos usar algo como <code><a href="https://stringr.tidyverse.org/reference/str_extract.html">stringr::str_extract</a></code> o <code><a href="https://stringr.tidyverse.org">library(stringr)</a></code> dentro de la función. Pero esto no es buena idea porque muchas veces no funcionará. Necesitamos incluir la función <code>str_extract</code> y stringr como <strong>dependencias</strong> de nuestro paquete, para que cuando alguien instale el paquete esa función se encuentre disponible para el paquete cuando ejecutemos nuestra función <code>extrae_numeros()</code>. Para indicar una dependencia, debemos hacerlo en dos pasos:</p>
 <ol type="1">
 <li>Ejecutar <strong><code>use_package("stringr")</code></strong> para incluir stringr en la lista de paquetes que deben instalarse junto al nuestro. Al hacerlo, verás que stringr ha sido incluido en el campo <em>Imports</em> del archivo DESCRIPTION.</li>
 <li>Incluir la función <strong><code>str_extract</code></strong> del paquete stringr en la documentación de la función de la siguiente forma:</li>
 </ol>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#' @importFrom stringr str_extract</span></span></code></pre></div>
+font-style: inherit;">#' @importFrom stringr str_extract</span></span></code></pre></div></div>
 <p>Ahora nuestra función debería verse así:</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Una función que añade una variable</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -10373,9 +10373,9 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>La función <code>str_extract</code> estará disponible y nuestra función podrá ejecutarse sin problemas. Otra opción sería <strong>importar el paquete stringr al completo</strong>, con todas sus funciones. En lugar de indicar @importFrom con el nombre del paquete y la función que queremos importar, indicaríamos <code>@import</code> y solamente nombre del paquete: <code>#' @import stringr</code>. Sin embargo, <strong>casi siempre es mejor indicar las dependencias una a una</strong>, aunque sea repetitivo: así será más fácil detectar de dónde viene cada función que usamos. Si vamos a usar varias funciones del mismo paquete, podemos indicarlas una debajo de otra:</p>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @importFrom stringr str_extract</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -10383,10 +10383,10 @@ background-color: null;
 font-style: inherit;">#' @importFrom stringr str_detect</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#' @importFrom stringr str_replace</span></span></code></pre></div>
+font-style: inherit;">#' @importFrom stringr str_replace</span></span></code></pre></div></div>
 <p>Sólo en el caso de que utilicemos muchísimas funciones del mismo paquete en nuestra función tendrá cierto sentido importar el paquete al completo. <strong>Las dependencias de nuestro paquete sólo estará disponibles cuando ejecutemos <code>document()</code> y se actualice la documentación</strong>. Esto es porque <code>document()</code> no sólo construye la documentación del paquete (los archivos .Rd en man/), sino que también modifica el archivo NAMESPACE para enumerar las dependencias. Echa un vistazo a <a href="https://github.com/gongcastro/psicotuiteR/blob/082bb32fd9bdc95e21414d72a07dd586fd82a37a/NAMESPACE">NAMESPACE</a> de psicotuiteR. Este archivo ha sido generado al ejecutar <code>document()</code>. Una de nuestras funciones incluye <code>#' @import janitor clean_names</code> y por tanto esta función ha sido incluida en el NAMESPACE.</p>
 <p>Hemos aprendido a indicar dependencias de otros paquetes en nuestro código através de la documentación: funciones que nuestras propias funciones necesitan. Para hacer nuestras funciones disponibles en el paquete, necesitaremos incluirlas también en el NAMESPACE, pero no como dependencias, sino como <strong>exportaciones</strong>: en lugar de incluirlas en la documentación usando <code>@importFrom</code>, lo haremos usando <code>#' @export</code>. Volviendo al ejemplo anterior: <code>#' @export extrae_numeros</code>. Nuestra función se ver ahora así:</p>
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Una función que añade una variable</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -10450,7 +10450,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>La segunda línea indica que está función debe estar disponible en nuestro paquete con el nombre <code>extrae_numeros</code>. Aunque es posible exportar la función con un nombre diferente al que le hemos asignado en el script (R nos dará un aviso, pero no un error), es importante que así sea.</p>
 <p>Podrías preguntarte: ¿qué sentido tiene crear funciones si no van a estar disponibles para quien use el paquete? Pues porque <strong>a veces es recomendable hacer funciones pequeñas para uso interno</strong> que, aunque su funcion no es de gran interés para el público, ayuden a otras funciones más complejas que sí tienen sentido que use el público. Sea como sea, técnicamente sí se puede acceder a este tipo de funciones usando el operador <code>:::</code>.</p>
 <p>Si quieres hacer la prueba, ve a la consola de R y compara las sugerencias que salen cuando escribes <code>usethis::</code> y <code>usethis:::</code>. Todas esas funciones que salen en el segundo caso no están disponibles cuando cargamos el paquete usando <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> porque las personas que han creado el paquete usethis han considerado que no las necesitamos, aunque sí las necesitan las funciones que <em>sí</em> usamos.</p>
@@ -10499,7 +10499,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </div>
 </div>
 <p>Utilizaremos la función <code>use_data()</code> del paquete usethis para incluirlo en nuestro paquete. Si queremos exportarlo al NAMESPACE especificaremos <code>internal = FALSE</code> en los argumentos de la función (opción por defecto). Si no queremos exportarlo especificaremos <code>internal = TRUE</code>:</p>
-<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">use_data</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -10524,22 +10524,22 @@ font-style: inherit;">TRUE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># objeto interno</span></span></code></pre></div>
+font-style: inherit;"># objeto interno</span></span></code></pre></div></div>
 <p>Esta función creará (en caso de que no exita ya) una carpeta en nuestro directorio llamada data/ y guardará el data.frame como un archivo .rds (como un objeto de R), en nuestro caso lo guardará con el nombre <code>clima.rds</code>. En el caso de que el objeto ya exista, debemos incluir <code>overwrite = TRUE</code> en los argumentos para que nos permita sobreescribirlo.</p>
 <p><code>use_data()</code> también creará un archivo llamado <code>clima.R</code> en la carpeta R. Como la extensión indica, este archivo es un script de R como el que usamos para las funciones. Debemos documentar nuestros datos en este archivo usando Roxigen, tal y como hacemos para las funciones. Echa un vistazo al archivo <a href="https://github.com/gongcastro/psicotuiteR/blob/082bb32fd9bdc95e21414d72a07dd586fd82a37a/R/clima.R"><code>clima.R</code></a> del paquete psicotuiteR. Verás que sólo contiene documentación, excepto por la línea final, que contiene <code>"clima"</code>. No necesita nada más que el nombre del objeto bajo el cual exportaremos el <em>data.frame</em>. De lo demás se encargará, como siempre la función <code>document()</code>.</p>
 </section><section id="datos-brutos" class="level3"><h3 class="anchored" data-anchor-id="datos-brutos">Datos brutos</h3>
 <p>Hay una forma más de incluir datos, aun más reproducible que la anterior: <strong>incluir los datos brutos</strong>, como un archivo .csv, .txt, .tsv, .xlsx, etc. También podemos incluir en nuestro paquete el script de R con el código de que hemos usando para <strong>procesar los datos contenidos en el archivo</strong> y para llegar a la forma final del objeto que guaradamos mediante <code>use_data()</code>. La función <code>use_raw_data()</code> del paquete usethis se encarga de esto.</p>
-<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">use_raw_data</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <p>Esta función creará dos carpetas (en caso de que no existan ya): inst/ y data-raw/. La carpeta inst/ (abreviatura de <em>installation</em>) de un paquete de R <strong>incluye archivos externos</strong> (por ejemplo, .txt, scripts de Python, Stan, C++…) que queremos que estén disponibles cuando alguien cargue el paquete, pero no son archivos que normalmente se incluyan en un paquete. Es recomendable guardar el archivo con nuestros datos brutos en la carpeta inst/. En la carpeta data-raw/ se creará un archivo con la extensión .R. En este archivo (que se abrirá automáticamente cuando ejecutemos <code>use_data_raw()</code>) escribiremos el código que procesa los datos y los deja como queremos que se guarden en el paquete. La última línea del script (incluida por defecto) guarda el objeto resultante como datos externos mediante la función <code>use_data()</code>. Así, cada vez que queramos actualizar el objeto, sólo tendremos que ejecutar este código.</p>
 </section><section id="archivos-externos-e-inst" class="level3"><h3 class="anchored" data-anchor-id="archivos-externos-e-inst">Archivos externos e inst/</h3>
 <p>Como hemos mencionado, <strong>cualquier archivo que queramos incluir en nuestro paquete y no tenga la extensión .R o .rds, debería estar dentro de la carpeta inst/</strong>. Cuando alguien instale el paquete, los archivos de esta carpeta se moverán al directorio principal del paquete. Puedes hacer la prueba ejecutando la función <code>install()</code> de devtools. Cuando lo hayas hecho ve a la carpeta del paquete (recuerda que los paquetes se instalan en la primera ruta que indique <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code>). <strong>Cualquier archivo que hayas dejado en la carpeta inst/ aparecerá en el directorio principal</strong> ahora. A veces querremos acceder a estos archivos dentro de nuestras funciones. Esto puede ser un poco complicado. La práctica más recomendable es hacerlo usando la función:</p>
-<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">system.file</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -10549,7 +10549,7 @@ font-style: inherit;">package =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"psicotuiteR"</span>)<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span></span></code></pre></div>
+font-style: inherit;">`</span></span></code></pre></div></div>
 <p>En la línea de código anterior, estaremos accediendo al archivo <code>clima.csv</code>, que hemos incluido en la carpeta inst/, pero que al instalar el paquete se encontrará en <code>~/Documents/R/win-library/4.0</code> (al menos en mi ordenador).</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -10562,7 +10562,7 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p>Si la función no encuentra ese archivo devolverá <code>""</code>, en lugar de un error. Esto puede llevar a confusión. Si quieres que la función devuelva un error si no encuentra el archivo, añade <code>mustWork = TRUE</code> a los argumentos:</p>
-<div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">system.file</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -10576,7 +10576,7 @@ font-style: inherit;">mustWork =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">TRUE</span>)<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span></span></code></pre></div>
+font-style: inherit;">`</span></span></code></pre></div></div>
 </div>
 </div>
 </section></section><section id="manteniendo-y-compartiendo-el-paquete" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="manteniendo-y-compartiendo-el-paquete">Manteniendo y compartiendo el paquete</h2>
@@ -10586,7 +10586,7 @@ font-style: inherit;">`</span></span></code></pre></div>
 <div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;No es la única plataforma disponible para hacer esto: Gitlab y Bitbucket, entre otras, hacen lo mismo, aunque son menos populares. Además, por si esto calma alguna conciencia inquita, no son propiedad de Microsoft, al contrario de GitHub.</p></div><div id="fn10"><p><sup>10</sup>&nbsp;El primero de todos siendo que no tengo la confianza suficiente como para hacerlo (yo mismo la lío con Git cada día). El segundo es que aunque stuviera esa confianza, me daría infinita pereza hacerlo. Hacedme caso y echad un vistazo el libro que recomiendo.</p></div><div id="fn11"><p><sup>11</sup>&nbsp;En mi honesta, humilde, ignorable opinión.</p></div><div id="fn12"><p><sup>12</sup>&nbsp;Más que un paquete de R, <code>devtools</code> es una collección de funciones de otros paquetes que han sido agrupadas por su utilidad a la hora de desarrollar paquetes (“devtools” es la abreviatura de <em>developer tools</em>). La función <code>install_github</code> pertenece, originalmente, al paquete {remotes}</p></div></div><p>Git y GitHub cumplen una función muy especial para quienes hacemos un paquete en R: la función <code>install_github</code>, del paquete {devtools}<sup>12</sup>, permite <strong>instalar un paquete sin necesidad de que esté publicado en CRAN</strong>. Hablaremos en otro tutorial sobre CRAN, pero por ahora nos interesa saber que podemos compartir cualquier paquete a través de GitHub usando <code>install_github</code>, pero para poder instalarlo usando <code>install.packages</code>, como normalmente hacemos, ese paquete necesita estar publicado en CRAN. Publicar en CRAN requiere un proceso de revisión que en ocasiones es díficil solventar (y a veces innecesario). Para compartir nuestro paquete sin necesidad de pasar por ese calvario, lo haremos a través de <strong>GitHub</strong>.</p>
 <p>Para hacerlo, primero debemos crear un usuario de GitHub, crear un nuevo repositorio, hacer click en el botón verde que dice <strong><em>Code</em></strong> y finalmente copiar el enlace que aparece.</p>
 <p>En nuestra sesión de R, ejecutamos las siguientes líneas de código:</p>
-<div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">use_git</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -10629,11 +10629,11 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># añade más cosas a .gitignore para evitar subir información sensible a GitHub</span></span></code></pre></div>
+font-style: inherit;"># añade más cosas a .gitignore para evitar subir información sensible a GitHub</span></span></code></pre></div></div>
 </section><section id="poniendo-a-prueba-el-paquete-con-testthat-y-test" class="level3"><h3 class="anchored" data-anchor-id="poniendo-a-prueba-el-paquete-con-testthat-y-test">Poniendo a prueba el paquete con {testthat} y test()</h3>
 <p>Los cambios que introducimos en nuestras funciones de R pueden provocar que fallos que a veces no detectamos inmediatamente. Algunos fallos no producen un error, sino que hacen que nuestras <strong>funciones se comporten de forma diferente a la que esperamos</strong>. Por ejemplo, un <em>data.frame</em> que devuelve nuestra función podría contener una variable con una clase <em>character</em> en lugar de <em>logical</em>. Este comportamiento indeseado podría pasar desapercibido cuando probemos las funciones que hemos cambiado. Para detectar estos problemas debemos <strong>poner a prueba todo el código</strong> cada vez que hacemos cambios. Hacer esto de forma manual cada vez puede ser muy tedioso. El paquete <strong>{testthat}</strong> se encarga de hacer esto por nosotros.</p>
 <p>Si ejecutamos <code>use_testhat</code>, se creará una carpeta llamada <em>tests</em> en nuestro repositorio principal. Dentro de esta carpeta, hay otra carpeta llamada <em>testthat</em>. Cualquier script de R que guardemos en esa carpeta se ejecutará automáticamente cuando ejecutemos <code>test()</code> en nuestra consola. Estos scripts deberían seguir tener el siguiente contenido:</p>
-<div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">test_that</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -10661,7 +10661,7 @@ font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">}</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <p>En esta línea de código estamos creando un test mediante la función <code>test_that</code> (del paquete {testhat}). Primero incluimos un mensaje que indique qué estamos “testeando” en específico (en este caso, que podemos cargar el dataset <code>clima</code> sin error). La función <code>expect_error</code> ejecuta el código de dentro, y evalúa si el resultado se corresponde con lo que indiquemos en el segundo argumento (en nuestro caso <code>NA</code>, que significa que no hay fallo). Para ver con más detalle cómo poner a prueba el paquete que has creado y aprender buenas prácticas en este tema puedes ver la <strong>documentación</strong> del paquete {testhat}.</p>
 
 
@@ -11511,7 +11511,7 @@ Table&nbsp;1
   height: 0px !important;
 }
 </style>
-<table class="gt_table do-not-create-environment caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -12290,7 +12290,7 @@ Garcia-Castro, G. (2020, November 20). <em>How similar is the word
   <description><![CDATA[ <p><img src="https://gongcastro.github.io/blog/importing-data-multiple/traffic-jam.jpg" class="img-fluid"></p>
 <section id="tldr" class="level2"><h2 class="anchored" data-anchor-id="tldr">TLDR</h2>
 <blockquote class="blockquote">
-<p>We need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to <em>for loops</em> (~220ms) or using <code>lapply</code> (~123 ms). <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> is the fastest function for importing data. Importing TXT files is slightly faster than importing CSV files.</p>
+<p>We need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to <em>for loops</em> (~220ms) or using <code>lapply</code> (~123 ms). <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> is the fastest function for importing data. Importing TXT files is slightly faster than importing CSV files.</p>
 </blockquote>
 </section><section id="why-this-post" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="why-this-post">Why this post</h2>
 <p>To analyse data in any programming environment, one must first import some data. Sometimes, the data we want to analyse are distributed across several files in the same folder. I work with eye-tracking data from toddlers. This means that I work with multiple files that have many rows. At 120 Hz sampling frequency, we take ~8.33 samples per second. A session for one participants can take up to 10 minutes. So these files are somewhat big. These data also tend to be messy, requiring a lot of preprocessing. This means that I need to import the same large files many times during the same R session when wrangling my way through the data, which takes a few seconds. After some iterations, it can be annoying. I have decided to invest all my lost time into analysing what method for importing and merging large files is the fastest in R so that the universe and I are even again.</p>
@@ -12777,7 +12777,7 @@ Table&nbsp;1: Execution times
   height: 0px !important;
 }
 </style>
-<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 12%">
 <col style="width: 12%">
@@ -12790,10 +12790,10 @@ Table&nbsp;1: Execution times
 </colgroup>
 <thead>
 <tr class="gt_heading header">
-<th colspan="8" class="gt_heading gt_title gt_font_normal">Time taken to import and merge</th>
+<td colspan="8" class="gt_heading gt_title gt_font_normal">Time taken to import and merge</td>
 </tr>
 <tr class="gt_heading even">
-<th colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">50 datasets with 10 columns and 10,000 rows each</th>
+<td colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">50 datasets with 10 columns and 10,000 rows each</td>
 </tr>
 <tr class="gt_col_headings gt_spanner_row header">
 <th rowspan="2" id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
@@ -12819,10 +12819,10 @@ Table&nbsp;1: Execution times
 </thead>
 <tbody class="gt_table_body">
 <tr class="gt_group_heading_row odd">
-<td colspan="8" id="do.call - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .csv</td>
+<th colspan="8" id="do.call - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .csv</th>
 </tr>
 <tr class="gt_row_group_first even">
-<td id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .csv stub_1_1 package">base</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_1 mean_for loop">1.34</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_1 sd_for loop">0.06</td>
@@ -12832,7 +12832,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_1 sd_purrr::map">0.03</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .csv stub_1_2 package">data.table</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_2 mean_for loop">1.33</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_2 sd_for loop">0.39</td>
@@ -12842,7 +12842,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_2 sd_purrr::map">0.02</td>
 </tr>
 <tr class="even">
-<td id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .csv stub_1_3 package">readr</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_3 mean_for loop">1.38</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_3 sd_for loop">0.05</td>
@@ -12852,7 +12852,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_3 sd_purrr::map">0.02</td>
 </tr>
 <tr class="odd">
-<td id="summary_stub_do.call - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_do.call - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 mean_for loop">1.35</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 sd_for loop">0.17</td>
@@ -12862,10 +12862,10 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 sd_purrr::map">0.02</td>
 </tr>
 <tr class="gt_group_heading_row even">
-<td colspan="8" id="dplyr::bind_rows - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .csv</td>
+<th colspan="8" id="dplyr::bind_rows - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .csv</th>
 </tr>
 <tr class="gt_row_group_first odd">
-<td id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .csv stub_1_4 package">base</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_4 mean_for loop">1.35</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_4 sd_for loop">0.16</td>
@@ -12875,7 +12875,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_4 sd_purrr::map">0.01</td>
 </tr>
 <tr class="even">
-<td id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .csv stub_1_5 package">data.table</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_5 mean_for loop">1.14</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_5 sd_for loop">0.04</td>
@@ -12885,7 +12885,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_5 sd_purrr::map">0.01</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .csv stub_1_6 package">readr</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_6 mean_for loop">1.25</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_6 sd_for loop">0.14</td>
@@ -12895,7 +12895,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_6 sd_purrr::map">0.00</td>
 </tr>
 <tr class="even">
-<td id="summary_stub_dplyr::bind_rows - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_dplyr::bind_rows - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 mean_for loop">1.25</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 sd_for loop">0.11</td>
@@ -12905,10 +12905,10 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 sd_purrr::map">0.01</td>
 </tr>
 <tr class="gt_group_heading_row odd">
-<td colspan="8" id="do.call - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .txt</td>
+<th colspan="8" id="do.call - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .txt</th>
 </tr>
 <tr class="gt_row_group_first even">
-<td id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .txt stub_1_7 package">base</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_7 mean_for loop">1.18</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_7 sd_for loop">0.04</td>
@@ -12918,7 +12918,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_7 sd_purrr::map">0.02</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .txt stub_1_8 package">data.table</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_8 mean_for loop">1.17</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_8 sd_for loop">0.04</td>
@@ -12928,7 +12928,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_8 sd_purrr::map">0.02</td>
 </tr>
 <tr class="even">
-<td id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .txt stub_1_9 package">readr</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_9 mean_for loop">1.18</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_9 sd_for loop">0.05</td>
@@ -12938,7 +12938,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_9 sd_purrr::map">0.02</td>
 </tr>
 <tr class="odd">
-<td id="summary_stub_do.call - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_do.call - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 mean_for loop">1.18</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 sd_for loop">0.05</td>
@@ -12948,10 +12948,10 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 sd_purrr::map">0.02</td>
 </tr>
 <tr class="gt_group_heading_row even">
-<td colspan="8" id="dplyr::bind_rows - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .txt</td>
+<th colspan="8" id="dplyr::bind_rows - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .txt</th>
 </tr>
 <tr class="gt_row_group_first odd">
-<td id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .txt stub_1_10 package">base</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_10 mean_for loop">1.13</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_10 sd_for loop">0.03</td>
@@ -12961,7 +12961,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_10 sd_purrr::map">0.02</td>
 </tr>
 <tr class="even">
-<td id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .txt stub_1_11 package">data.table</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_11 mean_for loop">1.19</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_11 sd_for loop">0.13</td>
@@ -12971,7 +12971,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_11 sd_purrr::map">0.01</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .txt stub_1_12 package">readr</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_12 mean_for loop">1.13</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_12 sd_for loop">0.04</td>
@@ -12981,7 +12981,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_12 sd_purrr::map">0.01</td>
 </tr>
 <tr class="even">
-<td id="summary_stub_dplyr::bind_rows - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_dplyr::bind_rows - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .txt summary_stub_dplyr::bind_rows - .txt_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .txt summary_stub_dplyr::bind_rows - .txt_1 mean_for loop">1.15</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .txt summary_stub_dplyr::bind_rows - .txt_1 sd_for loop">0.07</td>
@@ -13002,10 +13002,10 @@ Table&nbsp;1: Execution times
 <ul>
 <li>It doesn’t really matter what function we use to merge data sets: both <code>do.call</code> and <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> perform roughly similarly.</li>
 <li>What makes the biggest difference is what function we use to vectorise the importing operation across file names to import them. <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> is the fastest. Incredibly, is takes less than 0.3 seconds in all conditions. It is also the least sensitive to the format of the files and the function we use to import them.</li>
-<li>The next vectorising function in terms of temporal efficiency is <code>lapply</code>, which takes ~1.5 seconds. It performs slightly better when working with .txt files, in that when working with .csv files its performance depends on what method we use to import them: <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> is much faster than its base and <code>readr</code> competitors. This <a href="https://www.danielecook.com/speeding-up-reading-and-writing-in-r/">post</a> by Daniele Cook sheds some light into the advantage of <code>data.table</code> over other importing functions, also covering the <code>vroom</code> package, which this post doesn’t cover.</li>
-<li>Using <em>for loops</em> looks like the least efficient method for iterating across data sets when importing data. It also shows a similar profile than <code>lapply</code>: <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> performs a bit better than the rest.</li>
+<li>The next vectorising function in terms of temporal efficiency is <code>lapply</code>, which takes ~1.5 seconds. It performs slightly better when working with .txt files, in that when working with .csv files its performance depends on what method we use to import them: <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> is much faster than its base and <code>readr</code> competitors. This <a href="https://www.danielecook.com/speeding-up-reading-and-writing-in-r/">post</a> by Daniele Cook sheds some light into the advantage of <code>data.table</code> over other importing functions, also covering the <code>vroom</code> package, which this post doesn’t cover.</li>
+<li>Using <em>for loops</em> looks like the least efficient method for iterating across data sets when importing data. It also shows a similar profile than <code>lapply</code>: <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> performs a bit better than the rest.</li>
 </ul></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Under the scenario under which I have simulated the data, it seems that using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> to merge data sets is the most efficient method in terms of time. When using said combination, it doesn’t matter what function we use to import files, but <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> seems like the best choice, as it is also the most flexible (take a look at the <a href="https://github.com/Rdatatable/data.table">documentation</a> of <code>data.table</code> to see all the features it offers).</p>
+<p>Under the scenario under which I have simulated the data, it seems that using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> to merge data sets is the most efficient method in terms of time. When using said combination, it doesn’t matter what function we use to import files, but <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> seems like the best choice, as it is also the most flexible (take a look at the <a href="https://github.com/Rdatatable/data.table">documentation</a> of <code>data.table</code> to see all the features it offers).</p>
 <p>If I have time, I may add another two dimensions: number of rows in the files and number of files, although I dare say similar results are to be expected. If anything, I would say that differences may become greater as file size and number of files increase. Also, it would be interesting to test if pre-allocating the elements of the vector in the for loop speeds up the process (see here what I mean). We shall see.</p>
 <p>Hope this was useful, if not interesting!</p>
 </section><section id="code" class="level2"><h2 class="anchored" data-anchor-id="code">Code</h2>

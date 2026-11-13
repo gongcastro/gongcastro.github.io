@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -31,16 +34,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href=".//assets/media/favicon.ico" rel="icon">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2b91fda96fc4217d309e4768f8eb8023.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e3500c2f2914f3609d95765d13147fbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70c164c9373f8ce826d4b54896ad702a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -70,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>
 
       .quarto-title-block .quarto-title-banner h1,
@@ -87,6 +120,35 @@ ul.task-list li input[type="checkbox"] {
       }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="assets/css/styles.css">
 <meta property="og:title" content="Gonzalo Garcia-Castro">
@@ -112,7 +174,8 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/media/favicon.png" alt="" class="navbar-logo">
+    <img src="./assets/media/favicon.png" alt="" class="navbar-logo light-content">
+    <img src="./assets/media/favicon.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
@@ -129,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pages/cv.html"> 
+    <a class="nav-link" href="https://raw.githubusercontent.com/gongcastro/cv/refs/heads/main/cv.pdf?raw=true"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
@@ -137,16 +200,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://twitter.com/gongcastro" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -172,38 +227,398 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<p><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"></p>
-<p><br></p>
-<div class="profile-card">
-<div class="columns">
-<div class="column">
-<p><img class="profilepic" src="./assets/media/profile.jpg"></p>
-</div><div class="column">
+<div class="quarto-about-jolla">
+  <img src="/assets/media/profile.jpg" class="about-image
+  round " style="height: 15em; width: 15em;">
+ <main class="content quarto-banner-title-block" id="quarto-document-content">
 <p>I am a <strong>cognitive scientist</strong> interested in the application of <strong>Bayesian modelling</strong> in the investigation of <strong>early language acquisition</strong> and its evolutionary roots. I am currently working as a post-doctoral researcher at the <a href="https://www.irsjd.org/en/">Institut de Rercerca Sant Joan de Déu</a> (Barcelona, Spain), were I use brain imaging (<strong>fNIRS</strong>), behavioural, and computational techniques to study how newborns, infants, and non-human animals (Long-Evans rats) perceive and process speech.</p>
-</div>
-</div>
-<div class="social-grid">
-<p><a href="https://bsky.app/profile/gongcastro.bsky.social"><i class="fa-brands fa-bluesky"></i></a> <a href="https://twitter.com/gongcastro"><i class="fa-brands fa-twitter"></i></a> <a href="https://fediscience.org/@gongcastro"><i class="fa-brands fa-mastodon"></i></a> <a href="https://scholar.google.com/citations?user=fHetiuQAAAAJ&amp;hl=en"><i class="ai ai-google-scholar"></i></a> <a href="https://osf.io/w465d"><i class="ai ai-osf"></i></a> <a href="https://orcid.org/0000-0002-8553-4209"><i class="ai ai-orcid"></i></a> <a href="https://www.linkedin.com/in/gongcastro/"><i class="fa-brands fa-linkedin"></i></a> <a href="https://www.researchgate.net/profile/Gonzalo-Garcia-Castro"><i class="ai ai-researchgate"></i></a> <a href="https://stackoverflow.com/users/14847054/gonzalo-garc%c3%ada-castro"><i class="ai ai-stackoverflow"></i></a></p>
-</div>
-</div>
+<br>
+<hr>
+<section id="latest-blog-posts" class="level2">
+<h2 data-anchor-id="latest-blog-posts">Latest blog posts</h2>
+<p><br></p>
 
 
-
-</main> <!-- /main -->
+</section>
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
+  </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="cHl0aG9uJTJDcGFja2FnZSUyQ2xpbnV4JTJDd3NsJTJDc3BlZWNoJTIwc3ludGhlc2lzJTJDbGFuZ3VhZ2UlMkNtYnJvbGElMkN0dXRvcmlhbA==" data-listing-date-sort="1762556400000" data-listing-file-modified-sort="1794603258217" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
+<div class="thumbnail"><a href="./blog/pymbrola-using/pymbrola-using.html" class="no-external">
+<img loading="lazy" src="./blog/pymbrola-using/c3po.png" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/pymbrola-using/pymbrola-using.html" class="no-external">pymbrola: A Python interface to the MBROLA speech synthesiser</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/pymbrola-using/pymbrola-using.html" class="no-external">
+<p>I programmed a Python module that provides an interface to the MBROLA speech synthesiser: pymbrola. This post is a guide on how to synthesise audios with the desired parameters using pymbrola.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/pymbrola-using/pymbrola-using.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2025
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="cHl0aG9uJTJDcGFja2FnZSUyQ2xpbnV4JTJDd3NsJTJDc3BlZWNoJTIwc3ludGhlc2lzJTJDbGFuZ3VhZ2UlMkNtYnJvbGElMkN0dXRvcmlhbA==" data-listing-date-sort="1756072800000" data-listing-file-modified-sort="1794603258214" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="856">
+<div class="thumbnail"><a href="./blog/pymbrola-installation/pymbrola-installation.html" class="no-external">
+<img loading="lazy" src="./blog/pymbrola-installation/c3po.jpg" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/pymbrola-installation/pymbrola-installation.html" class="no-external">Installing the MBROLA speech synthesiser</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/pymbrola-installation/pymbrola-installation.html" class="no-external">
+<p>I programmed a Python module that provides an interface to the MBROLA speech synthesiser. This post is a guide on how to set up MBROLA on your Linux/MacOS or Windows system, so that you can use the pymbrola module (a tutorial in upcoming).</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/pymbrola-installation/pymbrola-installation.html" class="no-external">
+<div class="listing-date">
+Aug 25, 2025
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="cHl0aG9uJTJDZm5pcnMlMkNuZXVyb2ltYWdpbmc=" data-listing-date-sort="1732402800000" data-listing-file-modified-sort="1794603258193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1294">
+<div class="thumbnail"><a href="./blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">
+<img loading="lazy" src="./blog/dpf-scholkmann/scholkmann.png" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">Implementing the Differential Pathlength Factor (DPF) in Python: the Scholkmann method</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">
+I have news! I’m starting my postdoc at the Institut de Recerca Hospital Sant Joan de Déu (Barcelona, Spain) in September, joining Chiara Santolin’s new research group. We…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/dpf-scholkmann/dpf-scholkmann.html" class="no-external">
+<div class="listing-date">
+Nov 24, 2024
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="ciUyQ3F1YXJ0byUyQ3RoZXNpcyUyQ2Jvb2slMkNwZGY=" data-listing-date-sort="1704841200000" data-listing-file-modified-sort="1794603258228" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1364">
+<div class="thumbnail"><a href="./blog/upfthesis/upfthesis.html" class="no-external">
+<img loading="lazy" src="./blog/upfthesis/upfthesis.png" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/upfthesis/upfthesis.html" class="no-external">upfthesis: a Quarto template for thesis dissertations at UPF</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/upfthesis/upfthesis.html" class="no-external">
+<p>I wrote my thesis dissertation in Quarto, using a custom template. Here I illustrate how it works and some tips.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/upfthesis/upfthesis.html" class="no-external">
+<div class="listing-date">
+Jan 10, 2024
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="ciUyQ3F1YXJ0byUyQ3JldmVhbGpzJTJDcHJlc2VudGF0aW9uJTJDcGRm" data-listing-date-sort="1686175200000" data-listing-file-modified-sort="1794603258226" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="866">
+<div class="thumbnail"><a href="./blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">
+<img loading="lazy" src="./blog/revaljs-to-pdf/revealjs-to-pdf.png" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">Using decktape to convert Quarto slides from RevealJS to PDF</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">
+<p>Using decktape to export my Quarto slides to PDF saved my life right before a submission deadline. I might save yours too.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/revaljs-to-pdf/revealjs-to-pdf.html" class="no-external">
+<div class="listing-date">
+Jun 8, 2023
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ3JlZ3Jlc3Npb24lMkNzdGF0aXN0aWNzJTJDbG9naXN0aWM=" data-listing-date-sort="1674342000000" data-listing-file-modified-sort="1794603258195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="50" data-listing-word-count-sort="9922">
+<div class="thumbnail"><a href="./blog/logistic-regression/logistic-regression.html" class="no-external">
+<img loading="lazy" src="./blog/logistic-regression/predictions-natural-probability-1.png" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/logistic-regression/logistic-regression.html" class="no-external">Getting the most out of logistic regression</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/logistic-regression/logistic-regression.html" class="no-external">
+<p>Logistic regression models provide information way beyond a <em>p</em>-value. Using the {palmerpenguins} dataset, I review the relationship between the logistic and the logit functions, and how to interpret the coefficients of a logistic regression model, capitalising on marginal effects.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/logistic-regression/logistic-regression.html" class="no-external">
+<div class="listing-date">
+Jan 22, 2023
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="ciUyQ3BhY2thZ2UlMkNyZXByb2R1Y2liaWxpdHklMkNyZW52" data-listing-date-sort="1645916400000" data-listing-file-modified-sort="1794603258225" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1392">
+<div class="thumbnail"><a href="./blog/renv-package/renv-package.html" class="no-external">
+<img loading="lazy" src="./blog/renv-package/containers.jpg" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/renv-package/renv-package.html" class="no-external">renv (o cómo usar paquetes de R sin ataques de pánico)</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/renv-package/renv-package.html" class="no-external">
+<p>{renv} es un paquete de R que permite instalar paquetes de R gestionar sus versiones para proyectos de forma independiente. Aquí resumo para qué se utiliza y cómo funciona.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/renv-package/renv-package.html" class="no-external">
+<div class="listing-date">
+Feb 27, 2022
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="ciUyQ3J0d2VldCUyQ3R3aXR0ZXIlMkNyYXNwYmVycnklMjBwaSUyQ2JvdCUyQ2dpdGh1Yg==" data-listing-date-sort="1640732400000" data-listing-file-modified-sort="1794603258212" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3002">
+<div class="thumbnail"><a href="./blog/psicotuiterbot/psicotuiterbot.html" class="no-external">
+<img loading="lazy" src="./blog/psicotuiterbot/raspberry.jfif" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/psicotuiterbot/psicotuiterbot.html" class="no-external">@psicotuiterbot: Un bot de Twitter para Psicotuiter</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/psicotuiterbot/psicotuiterbot.html" class="no-external">
+<p>He creado un bot de Twitter que hace RT a cualquier mención a #psicotuiter. El código está escrito en R usando el paquete {rtweet} para interactuar con la API de Twitter, y está alojado en una Raspberry Pi que hace las veces de servidor ejecutando el código cada 15 minutos usando CRON.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/psicotuiterbot/psicotuiterbot.html" class="no-external">
+<div class="listing-date">
+Dec 29, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="ciUyQ3BhY2thZ2UlMkN0d2l0dGVyJTJDdHV0b3JpYWw=" data-listing-date-sort="1636844400000" data-listing-file-modified-sort="1794603258191" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="28" data-listing-word-count-sort="5415">
+<div class="thumbnail"><a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">
+<img loading="lazy" src="./blog/creando-paquete-r-psicotuiter/psicotuiter.png" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">Creando un paquete de R: una guía informal</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">
+</a><p><a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">En el canal de Twitch de </a><a href="https://t.co/JtxXtTszGi?amp=1">Psicometries</a> hicimos un <a href="https://www.twitch.tv/videos/1202539110">directo</a> en el que explicamos cómo se ha creado el paquete de R <strong>{psicotuiteR}</strong>, indicando cada paso lo mejor que hemos podido para que puedas replicarlo, contribuir al mismo paquete o incluso crear tu propio paquete en el futuro.</p>
+</div>
+</div>
+<div class="metadata">
+<a href="./blog/creando-paquete-r-psicotuiter/creando-paquete-r-psicotuiter.html" class="no-external">
+<div class="listing-date">
+Nov 14, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="anVsaWElMkNkaXN0cmlidXRpb24lMkNhbmltYXRpb24lMkNzdGF0aXN0aWNzJTJDcHJvYmFiaWxpdHk=" data-listing-date-sort="1633298400000" data-listing-file-modified-sort="1794603257918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1437">
+<div class="thumbnail"><a href="./blog/animated-distributions/animated-distributions.html" class="no-external">
+<img loading="lazy" src="./blog/animated-distributions/cover.gif" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/animated-distributions/animated-distributions.html" class="no-external">Exploring probability distributions through animations in Julia</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/animated-distributions/animated-distributions.html" class="no-external">
+<p>Visualising what different <strong>probability distributions</strong> look like under different parameters can be helpful when picking a likelihood function for you Bayesian analysis. I present some <strong>animations</strong> generated with Julia using Distributions.jl</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/animated-distributions/animated-distributions.html" class="no-external">
+<div class="listing-date">
+Oct 4, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="ciUyQ3N0YXRpc3RpYyUyQ3JlZ3Jlc3Npb24lMkNhbmltYXRpb24lMkNnZ3Bsb3Q=" data-listing-date-sort="1611183600000" data-listing-file-modified-sort="1794603258241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1438">
+<div class="thumbnail"><a href="./blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">
+<img loading="lazy" src="./blog/visualising-polynomial-regression/quadratic.gif" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">Visualising polynomial regression</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">
+<p>The outputs of polynomial regression can be difficult to interpret. I generated some animated plots to see how model predictions change across different combinations of coefficients for 1st, 2nd, and 3rd degree polynomials.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/visualising-polynomial-regression/visualising-polynomial-regression.html" class="no-external">
+<div class="listing-date">
+Jan 21, 2021
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="ciUyQ2xpbmd1aXN0aWNzJTJDcGhvbm9sb2d5JTJDZ2dwbG90MiUyQ3RyYW5zbGF0aW9u" data-listing-date-sort="1605826800000" data-listing-file-modified-sort="1794603258197" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1283">
+<div class="thumbnail"><a href="./blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">
+<img loading="lazy" src="./blog/mask-similarity-across-languages/masks-ort.png" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">How similar is the word “mask” across languages?</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">
+<p>Using the Levenshtein distance to quantify the orthographic and phonlogical similarity between translation equivalents of the word <em>mask</em> across multiple languages.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/mask-similarity-across-languages/mask-similarity-across-languages.html" class="no-external">
+<div class="listing-date">
+Nov 20, 2020
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="ciUyQ3RpZHl2ZXJzZSUyQ2Jhc2UlMkNwdXJyciUyQ2ltcG9ydA==" data-listing-date-sort="1593900000000" data-listing-file-modified-sort="1794603258195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2143">
+<div class="thumbnail"><a href="./blog/importing-data-multiple/importing-data-multiple.html" class="no-external">
+<img loading="lazy" src="./blog/importing-data-multiple/traffic-jam.jpg" class="thumbnail-image">
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/importing-data-multiple/importing-data-multiple.html" class="no-external">Importing data from multiple files simultaneously in R</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/importing-data-multiple/importing-data-multiple.html" class="no-external">
+<p>A comparison between base R and Tidyverse methods for importing data from multiple files</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/importing-data-multiple/importing-data-multiple.html" class="no-external">
+<div class="listing-date">
+Jul 5, 2020
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="ciUyQ3N0YXRpc3RpY3MlMkNtdWx0aWxldmVsJTJDbWl4ZWQlMjBtb2RlbHMlMkNhbmltYXRpb25z" data-listing-date-sort="1585605600000" data-listing-file-modified-sort="1794603258208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="298">
+<div class="thumbnail"><a href="./blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">
+<p class="card-img-top"><img loading='lazy' src="blog/primer-linear-mixed-models/laces.jpg"  class="thumbnail-image card-img"/></p>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">A primer on mixed-effects Models: theory and practice</a>
+</h3>
+<div class="delink listing-description"><a href="./blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">
+<p>Slides from a tutorial on mixed-effects models I presented to my research group.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog/primer-linear-mixed-models/primer-linear-mixed-models.html" class="no-external">
+<div class="listing-date">
+Mar 31, 2020
+</div>
+<div class="listing-author">
+Gonzalo Garcia-Castro
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> 
+  <hr class="about-sep">
+   <div class="about-links">
+  <a href="https://x.com/gongcastro" class="about-link" rel="" target="">
+    <i class="bi bi-twitter-x"></i>
+     <span class="about-link-text"></span>
+  </a>
+  <a href="https://github.com/gongcastro" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+  <a href="https://fediscience.org/@gongcastro" class="about-link" rel="" target="">
+    <i class="bi bi-mastodon"></i>
+     <span class="about-link-text">Mastodon</span>
+  </a>
+  <a href="https://www.linkedin.com/in/gongcastro/" class="about-link" rel="" target="">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://www.linkedin.com/in/gongcastro/" class="about-link" rel="" target="">
+    <i class="bi bi-orcid"></i>
+     <span class="about-link-text">ORCID</span>
+  </a>
+  <a href="mailto:gongarciacastro@gmail.com" class="about-link" rel="" target="">
+    <i class="bi bi-envelope"></i>
+     <span class="about-link-text">E-mail</span>
+  </a>
+</div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -246,13 +661,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

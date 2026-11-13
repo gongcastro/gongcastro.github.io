@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Gonzalo Garcia-Castro">
 <meta name="description" content="A comparison between base R and Tidyverse methods for importing data from multiple files">
 <title>Gonzalo Garcia-Castro – Gonzalo García-Castro</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-90c2643ab6f776117e85fdd60cb25922.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2b91fda96fc4217d309e4768f8eb8023.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e3500c2f2914f3609d95765d13147fbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-70c164c9373f8ce826d4b54896ad702a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -123,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/media/favicon.png" alt="" class="navbar-logo"></a>
+    <img src="../../assets/media/favicon.png" alt="" class="navbar-logo light-content"><img src="../../assets/media/favicon.png" alt="" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gonzalo García-Castro</span>
     </a>
@@ -139,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/cv.html"> 
+    <a class="nav-link" href="https://raw.githubusercontent.com/gongcastro/cv/refs/heads/main/cv.pdf?raw=true"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
@@ -147,16 +149,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gongcastro"> <i class="bi bi-github" role="img" aria-label="GitHub">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://twitter.com/gongcastro" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -242,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><p><img src="traffic-jam.jpg" class="img-fluid"></p>
 <section id="tldr" class="level2"><h2 class="anchored" data-anchor-id="tldr">TLDR</h2>
 <blockquote class="blockquote">
-<p>We need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to <em>for loops</em> (~220ms) or using <code>lapply</code> (~123 ms). <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> is the fastest function for importing data. Importing TXT files is slightly faster than importing CSV files.</p>
+<p>We need to import several CSV or TXT files and merge them into one data frame in R. Regardless of what function we use to import the files, vectorising the operation using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> is the most time-efficient method (~25 ms importing 50 files with 10,000 rows each), compared to <em>for loops</em> (~220ms) or using <code>lapply</code> (~123 ms). <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> is the fastest function for importing data. Importing TXT files is slightly faster than importing CSV files.</p>
 </blockquote>
 </section><section id="why-this-post" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="why-this-post">Why this post</h2>
 <p>To analyse data in any programming environment, one must first import some data. Sometimes, the data we want to analyse are distributed across several files in the same folder. I work with eye-tracking data from toddlers. This means that I work with multiple files that have many rows. At 120 Hz sampling frequency, we take ~8.33 samples per second. A session for one participants can take up to 10 minutes. So these files are somewhat big. These data also tend to be messy, requiring a lot of preprocessing. This means that I need to import the same large files many times during the same R session when wrangling my way through the data, which takes a few seconds. After some iterations, it can be annoying. I have decided to invest all my lost time into analysing what method for importing and merging large files is the fastest in R so that the universe and I are even again.</p>
@@ -729,7 +723,7 @@ Table&nbsp;1: Execution times
   height: 0px !important;
 }
 </style>
-<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 12%">
 <col style="width: 12%">
@@ -742,10 +736,10 @@ Table&nbsp;1: Execution times
 </colgroup>
 <thead>
 <tr class="gt_heading header">
-<th colspan="8" class="gt_heading gt_title gt_font_normal">Time taken to import and merge</th>
+<td colspan="8" class="gt_heading gt_title gt_font_normal">Time taken to import and merge</td>
 </tr>
 <tr class="gt_heading even">
-<th colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">50 datasets with 10 columns and 10,000 rows each</th>
+<td colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">50 datasets with 10 columns and 10,000 rows each</td>
 </tr>
 <tr class="gt_col_headings gt_spanner_row header">
 <th rowspan="2" id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
@@ -771,10 +765,10 @@ Table&nbsp;1: Execution times
 </thead>
 <tbody class="gt_table_body">
 <tr class="gt_group_heading_row odd">
-<td colspan="8" id="do.call - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .csv</td>
+<th colspan="8" id="do.call - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .csv</th>
 </tr>
 <tr class="gt_row_group_first even">
-<td id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .csv stub_1_1 package">base</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_1 mean_for loop">1.34</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_1 sd_for loop">0.06</td>
@@ -784,7 +778,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_1 sd_purrr::map">0.03</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .csv stub_1_2 package">data.table</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_2 mean_for loop">1.33</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_2 sd_for loop">0.39</td>
@@ -794,7 +788,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_2 sd_purrr::map">0.02</td>
 </tr>
 <tr class="even">
-<td id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .csv stub_1_3 package">readr</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_3 mean_for loop">1.38</td>
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_3 sd_for loop">0.05</td>
@@ -804,7 +798,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .csv stub_1_3 sd_purrr::map">0.02</td>
 </tr>
 <tr class="odd">
-<td id="summary_stub_do.call - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_do.call - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 mean_for loop">1.35</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 sd_for loop">0.17</td>
@@ -814,10 +808,10 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .csv summary_stub_do.call - .csv_1 sd_purrr::map">0.02</td>
 </tr>
 <tr class="gt_group_heading_row even">
-<td colspan="8" id="dplyr::bind_rows - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .csv</td>
+<th colspan="8" id="dplyr::bind_rows - .csv" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .csv</th>
 </tr>
 <tr class="gt_row_group_first odd">
-<td id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .csv stub_1_4 package">base</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_4 mean_for loop">1.35</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_4 sd_for loop">0.16</td>
@@ -827,7 +821,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_4 sd_purrr::map">0.01</td>
 </tr>
 <tr class="even">
-<td id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .csv stub_1_5 package">data.table</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_5 mean_for loop">1.14</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_5 sd_for loop">0.04</td>
@@ -837,7 +831,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_5 sd_purrr::map">0.01</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .csv stub_1_6 package">readr</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_6 mean_for loop">1.25</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_6 sd_for loop">0.14</td>
@@ -847,7 +841,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .csv stub_1_6 sd_purrr::map">0.00</td>
 </tr>
 <tr class="even">
-<td id="summary_stub_dplyr::bind_rows - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_dplyr::bind_rows - .csv_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 mean_for loop">1.25</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 sd_for loop">0.11</td>
@@ -857,10 +851,10 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .csv summary_stub_dplyr::bind_rows - .csv_1 sd_purrr::map">0.01</td>
 </tr>
 <tr class="gt_group_heading_row odd">
-<td colspan="8" id="do.call - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .txt</td>
+<th colspan="8" id="do.call - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">do.call - .txt</th>
 </tr>
 <tr class="gt_row_group_first even">
-<td id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .txt stub_1_7 package">base</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_7 mean_for loop">1.18</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_7 sd_for loop">0.04</td>
@@ -870,7 +864,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_7 sd_purrr::map">0.02</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .txt stub_1_8 package">data.table</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_8 mean_for loop">1.17</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_8 sd_for loop">0.04</td>
@@ -880,7 +874,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_8 sd_purrr::map">0.02</td>
 </tr>
 <tr class="even">
-<td id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="do.call - .txt stub_1_9 package">readr</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_9 mean_for loop">1.18</td>
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_9 sd_for loop">0.05</td>
@@ -890,7 +884,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="do.call - .txt stub_1_9 sd_purrr::map">0.02</td>
 </tr>
 <tr class="odd">
-<td id="summary_stub_do.call - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_do.call - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 mean_for loop">1.18</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 sd_for loop">0.05</td>
@@ -900,10 +894,10 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="do.call - .txt summary_stub_do.call - .txt_1 sd_purrr::map">0.02</td>
 </tr>
 <tr class="gt_group_heading_row even">
-<td colspan="8" id="dplyr::bind_rows - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .txt</td>
+<th colspan="8" id="dplyr::bind_rows - .txt" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">dplyr::bind_rows - .txt</th>
 </tr>
 <tr class="gt_row_group_first odd">
-<td id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .txt stub_1_10 package">base</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_10 mean_for loop">1.13</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_10 sd_for loop">0.03</td>
@@ -913,7 +907,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_10 sd_purrr::map">0.02</td>
 </tr>
 <tr class="even">
-<td id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .txt stub_1_11 package">data.table</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_11 mean_for loop">1.19</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_11 sd_for loop">0.13</td>
@@ -923,7 +917,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_11 sd_purrr::map">0.01</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></td>
+<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row"></th>
 <td class="gt_row gt_left" headers="dplyr::bind_rows - .txt stub_1_12 package">readr</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_12 mean_for loop">1.13</td>
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_12 sd_for loop">0.04</td>
@@ -933,7 +927,7 @@ Table&nbsp;1: Execution times
 <td class="gt_row gt_right" headers="dplyr::bind_rows - .txt stub_1_12 sd_purrr::map">0.01</td>
 </tr>
 <tr class="even">
-<td id="summary_stub_dplyr::bind_rows - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</td>
+<th id="summary_stub_dplyr::bind_rows - .txt_1" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row" data-quarto-table-cell-role="th" scope="row">mean</th>
 <td class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .txt summary_stub_dplyr::bind_rows - .txt_1 package">—</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .txt summary_stub_dplyr::bind_rows - .txt_1 mean_for loop">1.15</td>
 <td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row" headers="dplyr::bind_rows - .txt summary_stub_dplyr::bind_rows - .txt_1 sd_for loop">0.07</td>
@@ -954,10 +948,10 @@ Table&nbsp;1: Execution times
 <ul>
 <li>It doesn’t really matter what function we use to merge data sets: both <code>do.call</code> and <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> perform roughly similarly.</li>
 <li>What makes the biggest difference is what function we use to vectorise the importing operation across file names to import them. <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> is the fastest. Incredibly, is takes less than 0.3 seconds in all conditions. It is also the least sensitive to the format of the files and the function we use to import them.</li>
-<li>The next vectorising function in terms of temporal efficiency is <code>lapply</code>, which takes ~1.5 seconds. It performs slightly better when working with .txt files, in that when working with .csv files its performance depends on what method we use to import them: <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> is much faster than its base and <code>readr</code> competitors. This <a href="https://www.danielecook.com/speeding-up-reading-and-writing-in-r/">post</a> by Daniele Cook sheds some light into the advantage of <code>data.table</code> over other importing functions, also covering the <code>vroom</code> package, which this post doesn’t cover.</li>
-<li>Using <em>for loops</em> looks like the least efficient method for iterating across data sets when importing data. It also shows a similar profile than <code>lapply</code>: <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> performs a bit better than the rest.</li>
+<li>The next vectorising function in terms of temporal efficiency is <code>lapply</code>, which takes ~1.5 seconds. It performs slightly better when working with .txt files, in that when working with .csv files its performance depends on what method we use to import them: <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> is much faster than its base and <code>readr</code> competitors. This <a href="https://www.danielecook.com/speeding-up-reading-and-writing-in-r/">post</a> by Daniele Cook sheds some light into the advantage of <code>data.table</code> over other importing functions, also covering the <code>vroom</code> package, which this post doesn’t cover.</li>
+<li>Using <em>for loops</em> looks like the least efficient method for iterating across data sets when importing data. It also shows a similar profile than <code>lapply</code>: <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> performs a bit better than the rest.</li>
 </ul></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Under the scenario under which I have simulated the data, it seems that using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> to merge data sets is the most efficient method in terms of time. When using said combination, it doesn’t matter what function we use to import files, but <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread</a></code> seems like the best choice, as it is also the most flexible (take a look at the <a href="https://github.com/Rdatatable/data.table">documentation</a> of <code>data.table</code> to see all the features it offers).</p>
+<p>Under the scenario under which I have simulated the data, it seems that using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map</a></code> in combination with <code>do.call</code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows</a></code> to merge data sets is the most efficient method in terms of time. When using said combination, it doesn’t matter what function we use to import files, but <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread</a></code> seems like the best choice, as it is also the most flexible (take a look at the <a href="https://github.com/Rdatatable/data.table">documentation</a> of <code>data.table</code> to see all the features it offers).</p>
 <p>If I have time, I may add another two dimensions: number of rows in the files and number of files, although I dare say similar results are to be expected. If anything, I would say that differences may become greater as file size and number of files increase. Also, it would be interesting to test if pre-allocating the elements of the vector in the for loop speeds up the process (see here what I mean). We shall see.</p>
 <p>Hope this was useful, if not interesting!</p>
 </section><section id="code" class="level2"><h2 class="anchored" data-anchor-id="code">Code</h2>
@@ -1068,13 +1062,14 @@ simultaneously in R</em>. <a href="https://gongcastro.github.io/blog/importing-d
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1498,7 +1493,7 @@ simultaneously in R</em>. <a href="https://gongcastro.github.io/blog/importing-d
   }
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Importing data from multiple files simultaneously in R</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "A comparison between base R and Tidyverse methods for importing data from multiple files"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2020-07-05</span></span>
@@ -1714,7 +1709,7 @@ simultaneously in R</em>. <a href="https://gongcastro.github.io/blog/importing-d
 <span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-info</span></span>
 <span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
 <span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

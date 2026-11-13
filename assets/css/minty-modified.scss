@@ -23,7 +23,7 @@ $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #e83e8c !default;
 $red: #ff7851 !default;
-$orange: #fd7e14 !default;
+$orange: #f59542 !default;
 $yellow: #ffe1a0ff !default;
 $green: #56cc9d !default;
 $teal: #20c997 !default;
@@ -413,63 +413,16 @@ body {
 
 
 
-.profile-card {
-    img {
-        align-items: center !important;
-        border: 10px solid $yellow-main;
-        border-radius: 50%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        float: left;
-        width: 350px;
-    }
 
-    p {
-        text-align: left;
-        padding: 1em 2em 1em 2em;
-    }
-}
-
-.social-grid {
-    grid-template-rows: 100px 100px 100px;
-    grid-template-columns: 100px 100px 100px;
-    grid-gap: 3px;
-    align-self: center;
-    display: flex;
-    justify-content: center;
+.about-image {
+    align-items: center !important;
+    border: 10px solid $yellow-main;
+    outline: 10px solid $orange;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
-    font-size: 30pt !important;
-
-
-    a {
-        color: black !important;
-        align-items: center !important;
-        align-self: center !important;
-        align-content: center !important;
-    }
-}
-
-
-@media only screen and (max-device-width: 1000px) {
-    .profilepic {
-        position: relative;
-    }
-
-    .social-grid {
-        display: inline-grid;
-        grid-template-rows: 200px 200px 200px;
-        grid-template-columns: 200px 200px 200px;
-        grid-gap: 3px;
-    }
-
-    social {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid black;
-        color: rgba(0, 0, 0, .05);
-    }
-
+    float: left;
+    width: 350px;
 }
